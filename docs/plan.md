@@ -78,6 +78,12 @@ Research on shrinking models:
 
 The registry rows for these, Q239 to Q1142, are at the end of [experiments.md](../experiments.md).
 
+A survey of every row, its extensions and new ideas (2026-11-09):
+- [idea_survey_2026-11.md](research/notes/idea_survey_2026-11.md): what the published bench runs and the literature add
+  to each experiment, and rows E13–E45;
+- [study_order_2026-11.md](research/notes/study_order_2026-11.md): a proposed order for all of them, starting with the
+  bar, the ceiling and the task factory.
+
 ## Where work runs
 
 - **The rig** (nine P106-090 6 GB cards) runs only what needs it: the speed of a candidate and whether it fits.

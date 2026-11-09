@@ -1,0 +1,241 @@
+model	quantization	harness	run	seed	case	passed	generated_tokens	model_calls	budget
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	plausible-pr-5939	true	15489	39	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	plausible-pr-6449	true	50298	111	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	plausible-pr-5956	false	65536	116	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-2219	false	3028	23	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-2527	true	48609	96	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-2663	true	55625	81	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-2800	false	41192	85	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-2822	false	48673	82	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebook-pr-3076	true	31704	92	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	accent-pr-183	false	65536	95	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	ash-pr-3031	false	65536	134	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	livebeats-pr-37	true	27390	40	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	operately-pr-1069	true	21883	57	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	operately-pr-1205	true	12140	43	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	absinthe-pr-1176	false	65536	128	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	cachex-pr-341	true	65536	117	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	guardian-pr-748	true	65536	113	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	pinchflat-pr-610	false	65536	116	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	beacon-pr-687	false	65536	88	65536
+Qwen3.8-Flash-Next-GSQ-RCO	IQ1_M	pi	1	101	vutuv-pr-1759	false	65536	106	65536
+Sonnet 5.5	-	claude_code	1	-	plausible-pr-5939	true	42562	43	262144
+Sonnet 5.5	-	claude_code	1	-	plausible-pr-6449	true	147610	110	262144
+Sonnet 5.5	-	claude_code	1	-	plausible-pr-5956	true	181103	143	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-2219	true	322902	155	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-2527	true	149837	88	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-2663	true	228895	101	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-2800	true	126165	72	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-2822	true	159653	85	262144
+Sonnet 5.5	-	claude_code	1	-	livebook-pr-3076	true	88956	77	262144
+Sonnet 5.5	-	claude_code	1	-	accent-pr-183	true	137890	89	262144
+Sonnet 5.5	-	claude_code	1	-	ash-pr-3031	false	288183	196	262144
+Sonnet 5.5	-	claude_code	1	-	livebeats-pr-37	true	207403	101	262144
+Sonnet 5.5	-	claude_code	1	-	operately-pr-1069	true	115505	86	262144
+Sonnet 5.5	-	claude_code	1	-	operately-pr-1205	true	47559	59	262144
+Sonnet 5.5	-	claude_code	1	-	absinthe-pr-1176	true	324113	204	262144
+Sonnet 5.5	-	claude_code	1	-	cachex-pr-341	true	248978	97	262144
+Sonnet 5.5	-	claude_code	1	-	guardian-pr-748	false	213354	101	262144
+Sonnet 5.5	-	claude_code	1	-	pinchflat-pr-610	true	241944	144	262144
+Sonnet 5.5	-	claude_code	1	-	beacon-pr-687	true	328536	157	262144
+Sonnet 5.5	-	claude_code	1	-	vutuv-pr-1759	true	226770	238	262144
+Sonnet 5.5	-	claude_code	2	-	plausible-pr-5939	true	51238	48	262144
+Sonnet 5.5	-	claude_code	2	-	plausible-pr-6449	true	134390	88	262144
+Sonnet 5.5	-	claude_code	2	-	plausible-pr-5956	true	150180	116	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-2219	true	209868	119	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-2527	true	217101	137	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-2663	true	188516	103	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-2800	true	102886	57	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-2822	true	197675	107	262144
+Sonnet 5.5	-	claude_code	2	-	livebook-pr-3076	true	77635	65	262144
+Sonnet 5.5	-	claude_code	2	-	accent-pr-183	true	158748	106	262144
+Sonnet 5.5	-	claude_code	2	-	ash-pr-3031	false	283991	200	262144
+Sonnet 5.5	-	claude_code	2	-	livebeats-pr-37	true	170452	68	262144
+Sonnet 5.5	-	claude_code	2	-	operately-pr-1069	true	113921	78	262144
+Sonnet 5.5	-	claude_code	2	-	operately-pr-1205	true	57620	58	262144
+Sonnet 5.5	-	claude_code	2	-	absinthe-pr-1176	true	302070	175	262144
+Sonnet 5.5	-	claude_code	2	-	cachex-pr-341	true	269082	110	262144
+Sonnet 5.5	-	claude_code	2	-	guardian-pr-748	false	223530	95	262144
+Sonnet 5.5	-	claude_code	2	-	pinchflat-pr-610	true	274979	144	262144
+Sonnet 5.5	-	claude_code	2	-	beacon-pr-687	true	292979	119	262144
+Sonnet 5.5	-	claude_code	2	-	vutuv-pr-1759	true	240082	193	262144
+Opus 5.5	-	claude_code	1	-	plausible-pr-5939	true	9476	20	262144
+Opus 5.5	-	claude_code	1	-	plausible-pr-6449	true	21128	28	262144
+Opus 5.5	-	claude_code	1	-	plausible-pr-5956	true	38844	45	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-2219	true	37191	58	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-2527	true	11944	15	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-2663	true	36299	26	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-2800	false	19022	27	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-2822	true	46912	22	262144
+Opus 5.5	-	claude_code	1	-	livebook-pr-3076	true	9585	18	262144
+Opus 5.5	-	claude_code	1	-	accent-pr-183	true	36311	43	262144
+Opus 5.5	-	claude_code	1	-	ash-pr-3031	false	95313	112	262144
+Opus 5.5	-	claude_code	1	-	livebeats-pr-37	true	28001	23	262144
+Opus 5.5	-	claude_code	1	-	operately-pr-1069	true	17751	20	262144
+Opus 5.5	-	claude_code	1	-	operately-pr-1205	true	6345	17	262144
+Opus 5.5	-	claude_code	1	-	absinthe-pr-1176	true	132043	119	262144
+Opus 5.5	-	claude_code	1	-	cachex-pr-341	true	83364	55	262144
+Opus 5.5	-	claude_code	1	-	guardian-pr-748	true	71480	43	262144
+Opus 5.5	-	claude_code	1	-	pinchflat-pr-610	true	85384	73	262144
+Opus 5.5	-	claude_code	1	-	beacon-pr-687	true	80446	52	262144
+Opus 5.5	-	claude_code	1	-	vutuv-pr-1759	true	83114	112	262144
+Opus 5.5	-	claude_code	2	-	plausible-pr-5939	true	10033	22	262144
+Opus 5.5	-	claude_code	2	-	plausible-pr-6449	true	23869	33	262144
+Opus 5.5	-	claude_code	2	-	plausible-pr-5956	true	37561	42	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-2219	true	25867	42	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-2527	true	17622	22	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-2663	true	72249	35	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-2800	false	26434	34	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-2822	true	27216	24	262144
+Opus 5.5	-	claude_code	2	-	livebook-pr-3076	true	8940	17	262144
+Opus 5.5	-	claude_code	2	-	accent-pr-183	true	36070	46	262144
+Opus 5.5	-	claude_code	2	-	ash-pr-3031	false	90517	103	262144
+Opus 5.5	-	claude_code	2	-	livebeats-pr-37	true	33490	29	262144
+Opus 5.5	-	claude_code	2	-	operately-pr-1069	true	20951	27	262144
+Opus 5.5	-	claude_code	2	-	operately-pr-1205	true	6826	17	262144
+Opus 5.5	-	claude_code	2	-	absinthe-pr-1176	true	132830	111	262144
+Opus 5.5	-	claude_code	2	-	cachex-pr-341	true	86579	59	262144
+Opus 5.5	-	claude_code	2	-	guardian-pr-748	true	77500	48	262144
+Opus 5.5	-	claude_code	2	-	pinchflat-pr-610	true	93943	86	262144
+Opus 5.5	-	claude_code	2	-	beacon-pr-687	true	95657	66	262144
+Opus 5.5	-	claude_code	2	-	vutuv-pr-1759	false	83797	111	262144
+Opus 5.5	-	claude_code	3	-	plausible-pr-5939	true	12857	27	262144
+Opus 5.5	-	claude_code	3	-	plausible-pr-6449	true	23599	32	262144
+Opus 5.5	-	claude_code	3	-	plausible-pr-5956	true	41568	46	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-2219	true	43736	56	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-2527	true	18359	20	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-2663	true	35978	29	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-2800	false	16860	24	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-2822	true	43376	26	262144
+Opus 5.5	-	claude_code	3	-	livebook-pr-3076	true	8271	14	262144
+Opus 5.5	-	claude_code	3	-	accent-pr-183	true	33562	42	262144
+Opus 5.5	-	claude_code	3	-	ash-pr-3031	false	106125	88	262144
+Opus 5.5	-	claude_code	3	-	livebeats-pr-37	true	42181	32	262144
+Opus 5.5	-	claude_code	3	-	operately-pr-1069	true	16711	21	262144
+Opus 5.5	-	claude_code	3	-	operately-pr-1205	true	5825	17	262144
+Opus 5.5	-	claude_code	3	-	absinthe-pr-1176	true	127800	99	262144
+Opus 5.5	-	claude_code	3	-	cachex-pr-341	true	68662	50	262144
+Opus 5.5	-	claude_code	3	-	guardian-pr-748	true	76955	43	262144
+Opus 5.5	-	claude_code	3	-	pinchflat-pr-610	true	104878	96	262144
+Opus 5.5	-	claude_code	3	-	beacon-pr-687	true	92851	64	262144
+Opus 5.5	-	claude_code	3	-	vutuv-pr-1759	true	85491	106	262144
+Flint	Q8_0	pi	1	101	plausible-pr-5939	true	20550	70	65536
+Flint	Q8_0	pi	1	101	plausible-pr-6449	false	19982	28	65536
+Flint	Q8_0	pi	1	101	plausible-pr-5956	false	65536	81	65536
+Flint	Q8_0	pi	1	101	livebook-pr-2219	false	65536	207	65536
+Flint	Q8_0	pi	1	101	livebook-pr-2527	true	60766	96	65536
+Flint	Q8_0	pi	1	101	livebook-pr-2663	false	44649	30	65536
+Flint	Q8_0	pi	1	101	livebook-pr-2800	false	55079	98	65536
+Flint	Q8_0	pi	1	101	livebook-pr-2822	false	18311	21	65536
+Flint	Q8_0	pi	1	101	livebook-pr-3076	true	36158	77	65536
+Flint	Q8_0	pi	1	101	accent-pr-183	false	65536	155	65536
+Flint	Q8_0	pi	1	101	ash-pr-3031	false	65536	175	65536
+Flint	Q8_0	pi	1	101	livebeats-pr-37	false	20744	22	65536
+Flint	Q8_0	pi	1	101	operately-pr-1069	true	41326	90	65536
+Flint	Q8_0	pi	1	101	operately-pr-1205	true	27263	95	65536
+Flint	Q8_0	pi	1	101	absinthe-pr-1176	false	61990	119	65536
+Flint	Q8_0	pi	1	101	cachex-pr-341	false	19190	28	65536
+Flint	Q8_0	pi	1	101	guardian-pr-748	false	8924	20	65536
+Flint	Q8_0	pi	1	101	pinchflat-pr-610	true	65536	135	65536
+Flint	Q8_0	pi	1	101	beacon-pr-687	false	65536	109	65536
+Flint	Q8_0	pi	1	101	vutuv-pr-1759	false	65536	175	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	plausible-pr-5939	true	20100	58	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	plausible-pr-6449	false	21384	37	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	plausible-pr-5956	true	44913	81	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-2219	true	52161	122	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-2527	false	29409	36	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-2663	false	65536	88	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-2800	false	24742	53	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-2822	false	9716	3	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebook-pr-3076	true	23087	58	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	accent-pr-183	true	65536	140	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	ash-pr-3031	false	65536	116	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	livebeats-pr-37	false	45251	48	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	operately-pr-1069	true	6990	20	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	operately-pr-1205	true	13550	59	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	absinthe-pr-1176	false	30100	68	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	cachex-pr-341	false	65536	98	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	guardian-pr-748	false	9689	23	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	pinchflat-pr-610	false	16212	23	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	beacon-pr-687	false	24875	32	65536
+Ornith-1.5-122B	UD-Q5_K_XL	pi	1	101	vutuv-pr-1759	false	65536	100	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	plausible-pr-5939	true	10617	31	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	plausible-pr-6449	true	52029	108	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	plausible-pr-5956	true	47051	76	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-2219	true	65536	132	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-2527	true	58014	98	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-2663	true	38780	58	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-2800	false	27370	64	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-2822	true	39469	34	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebook-pr-3076	true	9997	33	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	accent-pr-183	false	65536	121	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	ash-pr-3031	false	65536	122	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	livebeats-pr-37	true	30276	35	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	operately-pr-1069	true	24703	59	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	operately-pr-1205	true	8215	29	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	absinthe-pr-1176	false	65536	89	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	cachex-pr-341	false	65536	106	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	guardian-pr-748	false	65536	158	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	pinchflat-pr-610	true	65525	110	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	beacon-pr-687	false	65536	120	65536
+DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder	IQ2_XXS	pi	1	101	vutuv-pr-1759	false	43807	68	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	plausible-pr-5939	true	7831	22	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	plausible-pr-6449	true	21726	41	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	plausible-pr-5956	true	27419	51	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-2219	true	28409	55	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-2527	true	24544	39	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-2663	true	36272	49	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-2800	false	15564	41	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-2822	true	30977	39	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebook-pr-3076	true	15166	37	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	accent-pr-183	true	35122	50	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	ash-pr-3031	false	60559	99	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	livebeats-pr-37	true	20902	42	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	operately-pr-1069	true	11640	28	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	operately-pr-1205	true	9724	31	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	absinthe-pr-1176	false	65536	100	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	cachex-pr-341	true	41974	64	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	guardian-pr-748	true	51369	57	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	pinchflat-pr-610	true	51369	76	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	beacon-pr-687	true	45333	60	65536
+DeepSeek-V4.1-Flash-1017	UD-IQ1_M	pi	1	101	vutuv-pr-1759	false	55955	90	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	plausible-pr-5939	true	16170	41	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	plausible-pr-6449	false	14596	41	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	plausible-pr-5956	false	32182	40	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-2219	true	38601	105	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-2527	true	17715	35	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-2663	false	22187	36	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-2800	false	18807	53	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-2822	true	33381	56	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebook-pr-3076	true	11536	27	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	accent-pr-183	false	52624	127	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	ash-pr-3031	false	64699	137	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	livebeats-pr-37	false	29848	51	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	operately-pr-1069	true	24001	55	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	operately-pr-1205	false	33034	85	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	absinthe-pr-1176	false	13331	30	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	cachex-pr-341	false	51595	67	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	guardian-pr-748	false	29584	42	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	pinchflat-pr-610	false	65536	108	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	beacon-pr-687	false	65536	110	65536
+Ornith-1.5-122B	UD-Q3_K_XL	pi	1	101	vutuv-pr-1759	false	65536	120	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	plausible-pr-5939	true	17963	54	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	plausible-pr-6449	true	29814	52	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	plausible-pr-5956	true	38360	67	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-2219	false	65536	63	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-2527	true	30514	50	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-2663	false	23810	14	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-2800	false	34646	69	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-2822	true	41279	51	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebook-pr-3076	true	20697	56	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	accent-pr-183	true	50962	106	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	ash-pr-3031	false	65536	128	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	livebeats-pr-37	true	33243	50	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	operately-pr-1069	true	16821	42	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	operately-pr-1205	true	13835	47	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	absinthe-pr-1176	true	65536	106	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	cachex-pr-341	false	36476	49	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	guardian-pr-748	false	65536	75	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	pinchflat-pr-610	false	65536	106	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	beacon-pr-687	false	65536	70	65536
+Qwen3.8-Flash-Next-Gyro-L	TQ3_0	pi	1	101	vutuv-pr-1759	false	29510	59	65536

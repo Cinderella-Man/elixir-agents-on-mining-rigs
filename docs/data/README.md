@@ -8,3 +8,4 @@ One folder per experiment, `docs/data/<date>_<experiment>/`. Each holds:
 
 | Folder | Experiment | Result |
 |---|---|---|
+| [2026-11-09_bench_runs_read](2026-11-09_bench_runs_read/README.md) | E14: budget hits and tokens per solved case in the bench's published runs | 7 of the Flash-Next Coder's 10 failures and 5 of Gyro-L's 9 ended at the 65,536-token budget; DeepSeek UD-IQ1_M used 28,736 tokens per passed case, the Flash-Next files 32,639 and 39,421 |
