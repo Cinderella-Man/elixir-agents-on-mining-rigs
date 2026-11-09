@@ -50,7 +50,7 @@ Order:
 Why it can work:
 - DeepSeek-V4.1-Flash-1017 solves 16 of 20 cases even at 1-bit (Unsloth UD-IQ1_M).
 - Tuned small models win on narrow work, and nobody has measured a language-specific tune inside a multi-turn agent
-  loop ([report](https://github.com/Cinderella-Man/llm-finetunning/blob/main/reports/Fine%20tuning%20small%20models%20for%20Elixir.md)).
+  loop ([report](research/finetuning/reports/Fine%20tuning%20small%20models%20for%20Elixir.md)).
 - Only sessions whose fixes pass `mix test` are kept, so the student learns from verified work.
 
 Order:
@@ -63,10 +63,20 @@ Order:
    the bar, and finally its rig-sized file and its speed on the rig.
 4. Later, reinforcement learning with the tests as the reward, only if fine-tuning gains.
 
-Earlier research on this track, in the [llm-finetunning](https://github.com/Cinderella-Man/llm-finetunning)
-reports:
-- *Fine tuning small models for Elixir*: which bases can be tuned, cost estimates, and why agentic data matters.
-- *Agentic RL for a DeepSeek teacher*: filtering sessions and the teacher's pass rate.
+Earlier research on this track is in [research/finetuning](research/finetuning/), with its notes:
+- [Fine tuning small models for Elixir](research/finetuning/reports/Fine%20tuning%20small%20models%20for%20Elixir.md):
+  which bases can be tuned, cost estimates, and why agentic data matters (registry rows Q472–Q503).
+- [Agentic RL for a DeepSeek teacher](research/finetuning/reports/Agentic%20RL%20for%20a%20DeepSeek%20teacher.md):
+  filtering sessions and the teacher's pass rate (Q524–Q545).
+
+Research on shrinking models:
+- [expert_pruning_survey.md](research/notes/expert_pruning_survey.md): REAP, REAM, merging, domain pruning, available
+  pruned files;
+- [pruning_from_flint_surveys.md](research/notes/pruning_from_flint_surveys.md): pruning heads, experts and layers;
+- [pruning_and_lottery_tickets.md](research/notes/pruning_and_lottery_tickets.md): what pruning saves in bytes on a
+  P106, and why lottery tickets don't help.
+
+The registry rows for these, Q239 to Q1142, are at the end of [experiments.md](../experiments.md).
 
 ## Where work runs
 

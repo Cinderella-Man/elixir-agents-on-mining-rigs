@@ -56,7 +56,8 @@ Two things follow:
 The two can meet: prune Flash-Next, then repair what the cut lost with a short fine-tune on the teacher's sessions.
 
 The plan, its order and its gates are in [docs/plan.md](docs/plan.md). Every idea, tried or not, has a row in
-[experiments.md](experiments.md).
+[experiments.md](experiments.md). The research behind both tracks is in [docs/research/](docs/research/): the
+fine-tuning reports and the notes on pruning.
 
 ## What counts as a win
 
