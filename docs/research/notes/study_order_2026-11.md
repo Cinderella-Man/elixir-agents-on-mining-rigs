@@ -91,7 +91,9 @@ A run is 20 attempts. The published Pi runs generated between 657,391 and 945,85
 - **Repair the cut** with E26, at home through E27 or on a rented node (E28). Check that the repaired tensors
   differ from the unrepaired ones before trusting any score. Then E29.
 - **E40** if E39 gained; **E42** as an arm of the first fine-tune.
-- **Reinforcement learning** (Q485, Q486, Q531) only after a fine-tune gains.
+- **Self-training rounds** (E54 with E55 and E56, judged on E57) after the first fine-tune: at most two, stopping at
+  the first round without a gain ([report](../finetuning/reports/Recursive%20self-improvement%20for%20an%20Elixir%20model.md)).
+- **Reinforcement learning** (Q485, Q486, Q531) only if those rounds are still gaining when they stop being cheap.
 
 ## What waits
 

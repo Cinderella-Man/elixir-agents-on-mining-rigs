@@ -68,6 +68,9 @@ Earlier research on this track is in [research/finetuning](research/finetuning/)
   which bases can be tuned, cost estimates, and why agentic data matters (registry rows Q472–Q503).
 - [Agentic RL for a DeepSeek teacher](research/finetuning/reports/Agentic%20RL%20for%20a%20DeepSeek%20teacher.md):
   filtering sessions and the teacher's pass rate (Q524–Q545).
+- [Recursive self-improvement for an Elixir model](research/finetuning/reports/Recursive%20self-improvement%20for%20an%20Elixir%20model.md):
+  what self-improvement loops are, what they have gained, and the bounded loop to run after the first fine-tune
+  (E54–E61).
 
 Research on shrinking models:
 - [expert_pruning_survey.md](research/notes/expert_pruning_survey.md): REAP, REAM, merging, domain pruning, available
