@@ -1,0 +1,9 @@
+repo	use	note
+thechangelog/changelog.com	hold	its licence file gives the code under MIT terms and reserves all rights in content and design; HTML and SCSS are 38 % of the repository. Hold until the files are read one by one
+hexpm/hexpm	yes	no licence file; the README carries the Apache-2.0 notice
+elixir-nx/nx	yes	no licence file at the root; read in nx/, the other two package folders still to read
+nerves-project/nerves	yes	REUSE layout: documentation is CC-BY-4.0 and the logo has its own terms, so those files stay out
+bors-ng/bors-ng	yes	archived upstream; licence file is LICENSE-APACHE
+papercups-io/papercups	yes	old toolchain (Elixir 1.11.3, OTP 23); last pushed 2024-02-15
+firezone/firezone	yes	mixed languages; the Elixir application sits in a subfolder
+elixir-lang/elixir	yes	built with make, tests under lib/*/test

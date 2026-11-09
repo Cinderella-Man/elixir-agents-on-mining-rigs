@@ -25,7 +25,10 @@ trust signals. Only metadata was read: nothing was cloned, and no project code r
 - [first_wave.tsv](first_wave.tsv) is the 40 tier-A repositories with the most merged pull requests: 51,592 between
   them.
 
-## The approved first batch
+## The first batch of 40 (superseded)
+
+**Superseded the same day by the application-first batch below:** only 6 of the 40 are applications. 18 of the 40 are
+in the new batch; the other 22 keep their mirrors and are not used for now.
 
 **The first wave was approved on 2026-11-09 as the first batch to build training tasks from, under MIT, Apache-2.0 and
 BSD licences only.** [approved_first_batch.tsv](approved_first_batch.tsv) checks each of the 40 against that rule at
@@ -53,11 +56,11 @@ today's default branch and adds what building it will need:
 
 ## The mirrors
 
-All 40 were forked on 2026-11-09 into the maintainer's GitHub account, where the bench's forks already are
-([mirrors.tsv](mirrors.tsv)). Each fork's default branch pointed at the same commit as its upstream when checked,
-and that commit is recorded. No fork has an active workflow: GitHub leaves a new fork's workflows off until its
-owner turns them on. A mirror keeps the commits reachable if a project is deleted or rewritten; tasks point at commit
-ids, and no branch is made per task.
+88 repositories were forked on 2026-11-09 into the maintainer's GitHub account, where the bench's forks already are
+([mirrors.tsv](mirrors.tsv)): the first 40, then the 48 applications of the application-first batch. Each fork's
+default branch pointed at the same commit as its upstream when checked, and that commit is recorded. No fork has an
+active workflow: GitHub leaves a new fork's workflows off until its owner turns them on. A mirror keeps the commits
+reachable if a project is deleted or rewritten; tasks point at commit ids, and no branch is made per task.
 
 ## Applications against libraries
 
@@ -89,8 +92,9 @@ the frameworks, and 43 of those have 100 or more merged pull requests, 24,568 be
 ([applications_below_100.tsv](applications_below_100.tsv)). The largest: santiment/sanbase2 (5,112 merged pull
 requests, 94 stars), mbta/dotcom (3,171, 82), mbta/screens (2,468, 23), edgehog (1,374, 50), ambry (1,083, 89).
 
-**[draft_app_first_batch.tsv](draft_app_first_batch.tsv) is a draft, not approved, and nothing in it has been forked
-beyond the first batch.** It puts applications first and keeps libraries as the smaller share:
+[draft_app_first_batch.tsv](draft_app_first_batch.tsv) puts applications first and keeps libraries as the smaller
+share. **Its application and library groups were approved on 2026-11-09 and are the batch to build tasks from**
+([approved_app_first_batch.tsv](approved_app_first_batch.tsv)); the two optional groups are not approved.
 
 | Group | Rule | Repositories | Merged pull requests | Already forked |
 |---|---|---:|---:|---:|
@@ -109,6 +113,24 @@ beyond the first batch.** It puts applications first and keeps libraries as the 
 - 22 of the 40 repositories forked on 2026-11-09 are in neither group of this draft.
 - At the two published survival rates the 54 would give est. 930 to 1,370 tasks from real pull requests, fewer where
   pull requests touch no Elixir.
+
+## The approved application-first batch
+
+54 applications and 12 libraries, approved on 2026-11-09 under MIT, Apache-2.0 and BSD only. It replaces the first
+batch of 40 as the list tasks are built from. Each row of
+[approved_app_first_batch.tsv](approved_app_first_batch.tsv) has the mirror, the licence as GitHub names it and as
+the licence file reads, the Elixir share, the frameworks used and the service dependencies.
+
+- **Mirrors:** the 48 applications that were not yet forked were forked the same day; all 66 have a mirror. Seven
+  whose names say nothing alone were forked as owner-name (`mbta-dotcom`, `erlef-website`, and so on).
+- **Licence files:** 37 read as MIT and 24 as Apache-2.0. hexpm/hexpm has only the notice in its README, nx and
+  nerves keep theirs in folders, and bors-ng names its file `LICENSE-APACHE`.
+- **One is on hold:** thechangelog/changelog.com gives its code under MIT terms and reserves all rights in content
+  and design, and HTML and SCSS are 38 % of it. It is not used until its files are read one by one.
+- **Mixed languages:** 14 of the 54 applications are less than 70 % Elixir.
+- **Services:** 47 of the 54 name a database or broker driver in `mix.exs`, so the sandbox needs Postgres from the
+  start.
+- **Upstream state:** 8 of the 54 are archived by their owners (read-only); their history is what tasks are made from.
 
 ## What the columns mean
 
@@ -145,7 +167,9 @@ beyond the first batch.** It puts applications first and keeps libraries as the 
 | [usage_kinds.tsv](usage_kinds.tsv) | every repository outside the hold-out: application or library, the frameworks it uses, the signals behind the class |
 | [applications_below_100.tsv](applications_below_100.tsv) | the 274 applications among the permissively licensed repositories with 10 to 99 stars |
 | [below_100_counts.tsv](below_100_counts.tsv) | those 3,290 repositories by usage class |
-| [draft_app_first_batch.tsv](draft_app_first_batch.tsv) | the application-first draft batch (not approved) |
+| [draft_app_first_batch.tsv](draft_app_first_batch.tsv) | the application-first draft batch: four groups, two of them approved |
+| [approved_app_first_batch.tsv](approved_app_first_batch.tsv) | the approved 54 applications and 12 libraries, with mirror, licence readings, Elixir share, service dependencies and notes |
+| [approved_hand.tsv](approved_hand.tsv) | the hand-written use and note columns of that table |
 | [draft_hand.tsv](draft_hand.tsv), [library_share.tsv](library_share.tsv) | the hand-made inclusions and exclusions, and the 12 libraries with the reason for each |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
 | [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
@@ -157,6 +181,7 @@ beyond the first batch.** It puts applications first and keeps libraries as the 
 | [run/classify.sh](run/classify.sh) | reads `mix.exs` and the folders of every repository and writes the usage classes |
 | [run/low_stars.sh](run/low_stars.sh) | gathers and classes the repositories with 10 to 99 stars |
 | [run/draft_batch.sh](run/draft_batch.sh) | builds the draft from the tables above |
+| [run/approve_app_first.sh](run/approve_app_first.sh) | joins the approved groups with their checks, mirrors and notes |
 
 ## Commands
 
@@ -164,9 +189,13 @@ beyond the first batch.** It puts applications first and keeps libraries as the 
 export OUT=pool
 bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
 LIST=first_wave.tsv bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve.sh
-DATA=. DATE=2026-11-09 bash run/mirror.sh
+LIST=approved_first_batch.tsv DATA=. DATE=2026-11-09 bash run/mirror.sh
 DATA=. bash run/classify.sh
 DATA=. bash run/low_stars.sh && DATA=. bash run/draft_batch.sh
+# the approved groups of the draft, as a list for the next two scripts
+{ head -1 draft_app_first_batch.tsv; awk -F'\t' '$1 == "application" || $1 == "library"' draft_app_first_batch.tsv; } > "$OUT/approved_list.tsv"
+LIST="$OUT/approved_list.tsv" COL=2 DATA=. DATE=2026-11-09 bash run/mirror.sh
+LIST="$OUT/approved_list.tsv" bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve_app_first.sh
 ```
 
 ## Provenance

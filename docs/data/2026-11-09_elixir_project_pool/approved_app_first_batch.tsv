@@ -1,0 +1,67 @@
+repo	approved	group	use	mirror	licence	licence_file_reads_as	stars	merged_prs	elixir_share	uses	mix_elixir	service_deps	last_pushed	note
+firezone/firezone	2026-11-09	application	yes	Cinderella-Man/firezone	Apache-2.0	Apache-2.0	9172	10976	63.4	phoenix,live_view,ecto,oban	-		2026-11-09	mixed languages; the Elixir application sits in a subfolder
+Simon-Initiative/oli-torus	2026-11-09	application	yes	Cinderella-Man/oli-torus	MIT	MIT	119	5116	68.1	phoenix,live_view,ecto,oban,broadway	~> 1.19	ecto_sql,postgrex	2026-11-09	
+santiment/sanbase2	2026-11-09	application	yes	Cinderella-Man/sanbase2	MIT	MIT	94	5112	63.3	phoenix,live_view,ecto,oban,absinthe	~> 1.19	brod,ch,ecto_sql,postgrex	2026-11-09	
+Logflare/logflare	2026-11-09	application	yes	Cinderella-Man/logflare	Apache-2.0	Apache-2.0	1004	3401	89.9	phoenix,live_view,ecto,oban,broadway	~> 1.4	ch,ecto_sql,postgrex	2026-11-09	
+mbta/dotcom	2026-11-09	application	yes	Cinderella-Man/mbta-dotcom	MIT	MIT	82	3171	70.6	phoenix,live_view,ecto	~> 1.17	redix	2026-11-09	
+mbta/screens	2026-11-09	application	yes	Cinderella-Man/mbta-screens	MIT	MIT	23	2468	77.5	phoenix,ecto	~> 1.20	ecto_sql,postgrex	2026-11-09	
+nerves-hub/nerves_hub_web	2026-11-09	application	yes	Cinderella-Man/nerves_hub_web	Apache-2.0	Apache-2.0	272	2455	92.2	phoenix,live_view,ecto,oban	~> 1.20.0	ecto_sql,postgrex	2026-11-09	
+supabase/realtime	2026-11-09	application	yes	Cinderella-Man/realtime	Apache-2.0	Apache-2.0	7678	1687	88.9	phoenix,live_view,ecto	~> 1.19	ecto_sql,postgrex	2026-11-09	
+sequinstream/sequin	2026-11-09	application	yes	Cinderella-Man/sequin	MIT	MIT	2226	1507	70.9	phoenix,live_view,ecto,oban,broadway	~> 1.19	amqp,brod,ecto_sql,postgrex	2026-02-23	
+hexpm/hexpm	2026-11-09	application	yes	Cinderella-Man/hexpm	Apache-2.0	no licence file at the root	1173	1402	93.8	phoenix,live_view,ecto,oban,broadway	~> 1.20	ecto_sql,postgrex	2026-11-08	no licence file; the README carries the Apache-2.0 notice
+edgehog-device-manager/edgehog	2026-11-09	application	yes	Cinderella-Man/edgehog	Apache-2.0	Apache-2.0	50	1374	63	phoenix,ecto,ash,oban,absinthe	-		2026-11-09	
+FarmBot/farmbot_os	2026-11-09	application	yes	Cinderella-Man/farmbot_os	MIT	MIT	1180	1204	71	ecto,nerves	-	ecto_sqlite3	2026-11-04	
+ambry-app/ambry	2026-11-09	application	yes	Cinderella-Man/ambry	MIT	MIT	89	1083	92.9	phoenix,live_view,ecto,oban,absinthe	~> 1.18	ecto_sql,postgrex	2026-11-09	
+ckruse/cforum_ex	2026-11-09	application	yes	Cinderella-Man/cforum_ex	MIT	MIT	16	1058	64.4	phoenix,ecto,oban	~> 1.12	ecto_sql,postgrex	2025-03-13	
+Flo0807/share-a-secret	2026-11-09	application	yes	Cinderella-Man/share-a-secret	Apache-2.0	Apache-2.0	17	985	88.6	phoenix,live_view,ecto	~> 1.16	ecto_sql,postgrex	2026-11-09	
+supabase/supavisor	2026-11-09	application	yes	Cinderella-Man/supavisor	Apache-2.0	Apache-2.0	2284	963	92.5	phoenix,live_view,ecto	~> 1.14	ecto_sql,postgrex	2026-11-07	
+bors-ng/bors-ng	2026-11-09	application	yes	Cinderella-Man/bors-ng	Apache-2.0	no licence file at the root	1527	939	92	phoenix,ecto	-	ecto_sql,myxql,postgrex	2024-04-04	archived upstream; licence file is LICENSE-APACHE
+axelclark/ex338	2026-11-09	application	yes	Cinderella-Man/ex338	MIT	MIT	23	749	96.8	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex	2026-09-10	
+source-academy/backend	2026-11-09	application	yes	Cinderella-Man/source-academy-backend	Apache-2.0	Apache-2.0	44	695	98.7	phoenix,oban	~> 1.19	postgrex	2026-11-09	
+hashrocket/tilex	2026-11-09	application	yes	Cinderella-Man/tilex	MIT	MIT	506	525	73.5	phoenix,live_view,ecto	~> 1.14	ecto_sql,postgrex	2025-11-07	
+papercups-io/papercups	2026-11-09	application	yes	Cinderella-Man/papercups	MIT	MIT	6123	501	59.3	phoenix,ecto,oban	~> 1.10	ecto_sql,postgrex	2024-02-15	old toolchain (Elixir 1.11.3, OTP 23); last pushed 2024-02-15
+adoptoposs/adoptoposs	2026-11-09	application	yes	Cinderella-Man/adoptoposs	MIT	MIT	145	468	71.2	phoenix,live_view,ecto	~> 1.14	ecto_sql,postgrex	2026-02-01	
+erlef/website	2026-11-09	application	yes	Cinderella-Man/erlef-website	Apache-2.0	Apache-2.0	85	444	63.1	phoenix,live_view,ecto	~> 1.13	ecto_sql,postgrex	2026-09-17	
+tomasz-tomczyk/crit-web	2026-11-09	application	yes	Cinderella-Man/crit-web	MIT	MIT	35	444	50.3	phoenix,live_view,ecto,oban	~> 1.15	ecto_sql,postgrex	2026-11-07	
+cesium/safira	2026-11-09	application	yes	Cinderella-Man/safira	MIT	MIT	55	407	84.4	phoenix,live_view,ecto,oban	~> 1.19	ecto_sql,postgrex	2026-10-29	
+cesium/atomic	2026-11-09	application	yes	Cinderella-Man/cesium-atomic	MIT	MIT	48	369	70.6	phoenix,live_view,ecto	~> 1.14	ecto_sql,postgrex	2025-07-20	
+bikebrigade/dispatch	2026-11-09	application	yes	Cinderella-Man/bikebrigade-dispatch	Apache-2.0	Apache-2.0	78	306	73.4	phoenix,live_view,ecto	~> 1.20	ecto_sql,postgrex	2026-11-07	
+jaxernst/lasso-rpc	2026-11-09	application	yes	Cinderella-Man/lasso-rpc	Apache-2.0	Apache-2.0	36	306	95.9	phoenix,live_view,ecto	~> 1.17	ecto_sql,postgrex	2026-11-06	
+wanderer-industries/wanderer	2026-11-09	application	yes	Cinderella-Man/wanderer	MIT	MIT	80	303	66.1	phoenix,live_view,ecto,ash	~> 1.16	ecto_sql,postgrex	2026-11-08	
+midarrlabs/midarr-server	2026-11-09	application	yes	Cinderella-Man/midarr-server	MIT	MIT	1404	296	46.9	phoenix,live_view,ecto,oban	~> 1.17	ecto_sql,postgrex	2026-03-03	
+lambdaclass/stark_compass_explorer	2026-11-09	application	yes	Cinderella-Man/stark_compass_explorer	Apache-2.0	Apache-2.0	68	282	85.5	phoenix,live_view,ecto	~> 1.14	ecto_sql,ecto_sqlite3,postgrex	2024-10-04	
+podlove/radiator	2026-11-09	application	yes	Cinderella-Man/radiator	MIT	MIT	136	252	90.3	phoenix,live_view,ecto,ash,oban	~> 1.17	ecto_sql,postgrex	2026-10-27	
+blablatdinov/croniq	2026-11-09	application	yes	Cinderella-Man/croniq	MIT	MIT	13	232	81.3	phoenix,live_view,ecto	~> 1.20	ecto_sql,postgrex,redix	2026-10-28	
+jeffdc/gallformers	2026-11-09	application	yes	Cinderella-Man/gallformers	Apache-2.0	Apache-2.0	22	227	86.9	phoenix,live_view,ecto,oban	~> 1.15	ecto_sql,postgrex	2026-11-08	
+thechangelog/changelog.com	2026-11-09	application	hold	Cinderella-Man/changelog.com	MIT	MIT for code; content and design reserved	2774	223	53.7	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex	2026-10-29	its licence file gives the code under MIT terms and reserves all rights in content and design; HTML and SCSS are 38 % of the repository. Hold until the files are read one by one
+covalenthq/refiner	2026-11-09	application	yes	Cinderella-Man/refiner	Apache-2.0	Apache-2.0	10	220	99	phoenix,broadway	~> 1.18.0		2026-05-22	
+coderdojobraga/bokken	2026-11-09	application	yes	Cinderella-Man/bokken	MIT	MIT	16	192	72.1	phoenix,ecto	~> 1.14	ecto_sql,postgrex	2024-03-08	
+stride-nyc/remote_retro	2026-11-09	application	yes	Cinderella-Man/remote_retro	MIT	MIT	586	190	44.1	phoenix,live_view,ecto	1.11.4	ecto_sql,postgrex	2026-10-19	
+Clivern/Lynx	2026-11-09	application	yes	Cinderella-Man/Lynx	MIT	MIT	368	184	95.7	phoenix,live_view,ecto	~> 1.16	ecto_sql,postgrex	2026-09-11	
+jehrhardt/cozyauth	2026-11-09	application	yes	Cinderella-Man/cozyauth	Apache-2.0	Apache-2.0	23	181	95.5	phoenix,ecto	~> 1.18	ecto_sql,postgrex	2025-08-18	
+revelrylabs/slax	2026-11-09	application	yes	Cinderella-Man/slax	MIT	MIT	15	178	84.5	phoenix,ecto,oban	~> 1.6	ecto_sql,postgrex	2026-11-05	
+joladev/jola.dev	2026-11-09	application	yes	Cinderella-Man/jola.dev	MIT	MIT	18	175	82.1	phoenix,live_view	~> 1.18		2026-11-09	
+notesclub/notesclub	2026-11-09	application	yes	Cinderella-Man/notesclub	MIT	MIT	100	163	91	phoenix,live_view,ecto,oban	~> 1.20.2	ecto_sql,postgrex	2026-11-05	
+elementary/appcenter-dashboard	2026-11-09	application	yes	Cinderella-Man/appcenter-dashboard	MIT	MIT	14	161	65.4	phoenix,live_view	~> 1.7		2026-11-02	
+zorn/flick	2026-11-09	application	yes	Cinderella-Man/flick	MIT	MIT	21	155	95.9	phoenix,live_view,ecto	~> 1.20.5	ecto_sql,postgrex	2026-11-08	
+hexpm/preview	2026-11-09	application	yes	Cinderella-Man/hexpm-preview	Apache-2.0	Apache-2.0	32	153	85.2	phoenix,live_view,broadway	~> 1.18		2026-07-16	
+mercadona/postoffice	2026-11-09	application	yes	Cinderella-Man/postoffice	Apache-2.0	Apache-2.0	21	140	65.4	phoenix,live_view,ecto,oban	~> 1.11	ecto_sql,postgrex	2024-03-07	
+brunojppb/turbo-racer	2026-11-09	application	yes	Cinderella-Man/turbo-racer	MIT	MIT	34	138	82.9	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex	2026-04-22	
+astarte-platform/astarte_flow	2026-11-09	application	yes	Cinderella-Man/astarte_flow	Apache-2.0	Apache-2.0	18	130	98.7	phoenix	~> 1.7	amqp	2026-07-17	
+cr0t/lexin	2026-11-09	application	yes	Cinderella-Man/lexin	MIT	MIT	12	130	80.3	phoenix,live_view	~> 1.18	exqlite	2026-09-05	
+zorn/local_cents	2026-11-09	application	yes	Cinderella-Man/local_cents	MIT	MIT	10	130	92.9	phoenix,live_view,ecto	~> 1.20		2026-11-01	
+youcongress/youcongress	2026-11-09	application	yes	Cinderella-Man/youcongress	MIT	MIT	18	121	84.7	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex,redix	2026-11-09	
+texttile-blog/texttile	2026-11-09	application	yes	Cinderella-Man/texttile	MIT	MIT	28	119	83.7	phoenix,live_view,ecto	~> 1.15	ecto_sql,ecto_sqlite3	2026-11-09	
+asciinema/asciinema-server	2026-11-09	application	yes	Cinderella-Man/asciinema-server	Apache-2.0	Apache-2.0	2505	106	76.9	phoenix,live_view,ecto,oban	~> 1.19	ecto_sql,postgrex	2026-11-08	
+elixir-lang/elixir	2026-11-09	library	yes	Cinderella-Man/elixir	Apache-2.0	Apache-2.0	26707	8267	93.1		-		2026-11-09	built with make, tests under lib/*/test
+phoenixframework/phoenix	2026-11-09	library	yes	Cinderella-Man/phoenix	MIT	MIT	23213	3144	79.4		-	ecto_sql	2026-11-09	62 of the 63 applications use it
+elixir-ecto/ecto	2026-11-09	library	yes	Cinderella-Man/ecto	Apache-2.0	Apache-2.0	6500	2158	99.9		~> 1.15	ecto_sql	2026-11-08	40 of the 63 use Ecto
+phoenixframework/phoenix_live_view	2026-11-09	library	yes	Cinderella-Man/phoenix_live_view	MIT	MIT	6837	2011	57.8		~> 1.15		2026-11-05	35 of the 63 use it
+elixir-nx/nx	2026-11-09	library	yes	Cinderella-Man/nx	none	no licence file at the root	2921	1225	93.7		-		2026-11-06	no licence file at the root; read in nx/, the other two package folders still to read
+nerves-project/nerves	2026-11-09	library	yes	Cinderella-Man/nerves	none	no licence file at the root	2507	920	96		~> 1.20.0 or ~> 1.19.0 or ~> 1.18.0 or ~> 1.17.0 or ~> 1.16.0 or ~> 1.15.1		2026-11-09	REUSE layout: documentation is CC-BY-4.0 and the logo has its own terms, so those files stay out
+swoosh/swoosh	2026-11-09	library	yes	Cinderella-Man/swoosh	MIT	MIT	1530	866	92		~> 1.16		2026-11-09	the mailer new Phoenix applications ship with
+elixir-plug/plug	2026-11-09	library	yes	Cinderella-Man/plug	NOASSERTION	Apache-2.0	3020	701	93.1		~> 1.15		2026-11-04	under every Phoenix request
+oban-bg/oban	2026-11-09	library	yes	Cinderella-Man/oban	Apache-2.0	Apache-2.0	4002	591	100		~> 1.15	ecto_sql,ecto_sqlite3,myxql,postgrex	2026-11-09	12 of the 63 use it for background jobs
+mtrudel/bandit	2026-11-09	library	yes	Cinderella-Man/bandit	MIT	MIT	1934	467	100		~> 1.13		2026-11-09	the web server new Phoenix applications ship with
+philss/floki	2026-11-09	library	yes	Cinderella-Man/floki	MIT	MIT	2149	459	98.5		~> 1.15		2026-11-03	HTML parsing, used in LiveView tests
+elixir-ecto/ecto_sql	2026-11-09	library	yes	Cinderella-Man/ecto_sql	Apache-2.0	Apache-2.0	657	441	99.5		~> 1.15	ecto_sql,myxql,postgrex,tds	2026-10-17	the database half of Ecto
