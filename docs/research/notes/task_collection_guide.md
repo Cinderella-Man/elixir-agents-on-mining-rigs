@@ -251,7 +251,7 @@ Elixir applications are AGPL (teslamate, keila, claper) and so are out.
 
 **Counted afterwards:** only 6 of the 40 are applications that use the frameworks, and 63 of the 929 candidates. The
 batch was picked by merged pull requests, which favours frameworks and libraries. **It was replaced the same day by
-an application-first batch:** 54 applications, 34 of them found below 100 stars, and 12 libraries capped at a quarter
+an application-first batch:** 53 applications, 34 of them found below 100 stars, and 12 libraries capped at a quarter
 of the tasks ([the list](../../data/2026-11-09_elixir_project_pool/approved_app_first_batch.tsv)). Building tasks on
 generator-made applications is E64.
 
@@ -276,7 +276,7 @@ row whose inputs are not all approved.
 1. Approve the licence allow-list (E51) and the first wave (E46). **Done 2026-11-09:** the first wave of 40 is the
    first batch, under MIT, Apache-2.0 and BSD only
    ([the checked list](../../data/2026-11-09_elixir_project_pool/approved_first_batch.tsv)).
-2. Fork the batch as mirrors (E47). **Done 2026-11-09:** 88 forks in the maintainer's account, all 66 of the
+2. Fork the batch as mirrors (E47). **Done 2026-11-09:** 88 forks in the maintainer's account, all 65 of the
    application-first batch among them.
 3. Count SWE-rebench V2's and Open-SWE-Traces' Elixir rows and see which repositories they cover (E36, E52).
 4. Build the sandbox rules for third-party projects (E49) and the environment recipes (E50).

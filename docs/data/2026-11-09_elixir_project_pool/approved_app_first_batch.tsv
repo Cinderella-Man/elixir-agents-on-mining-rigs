@@ -33,7 +33,6 @@ lambdaclass/stark_compass_explorer	2026-11-09	application	yes	Cinderella-Man/sta
 podlove/radiator	2026-11-09	application	yes	Cinderella-Man/radiator	MIT	MIT	136	252	90.3	phoenix,live_view,ecto,ash,oban	~> 1.17	ecto_sql,postgrex	2026-10-27	
 blablatdinov/croniq	2026-11-09	application	yes	Cinderella-Man/croniq	MIT	MIT	13	232	81.3	phoenix,live_view,ecto	~> 1.20	ecto_sql,postgrex,redix	2026-10-28	
 jeffdc/gallformers	2026-11-09	application	yes	Cinderella-Man/gallformers	Apache-2.0	Apache-2.0	22	227	86.9	phoenix,live_view,ecto,oban	~> 1.15	ecto_sql,postgrex	2026-11-08	
-thechangelog/changelog.com	2026-11-09	application	hold	Cinderella-Man/changelog.com	MIT	MIT for code; content and design reserved	2774	223	53.7	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex	2026-10-29	its licence file gives the code under MIT terms and reserves all rights in content and design; HTML and SCSS are 38 % of the repository. Hold until the files are read one by one
 covalenthq/refiner	2026-11-09	application	yes	Cinderella-Man/refiner	Apache-2.0	Apache-2.0	10	220	99	phoenix,broadway	~> 1.18.0		2026-05-22	
 coderdojobraga/bokken	2026-11-09	application	yes	Cinderella-Man/bokken	MIT	MIT	16	192	72.1	phoenix,ecto	~> 1.14	ecto_sql,postgrex	2024-03-08	
 stride-nyc/remote_retro	2026-11-09	application	yes	Cinderella-Man/remote_retro	MIT	MIT	586	190	44.1	phoenix,live_view,ecto	1.11.4	ecto_sql,postgrex	2026-10-19	

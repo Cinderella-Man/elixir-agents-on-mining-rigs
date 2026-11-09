@@ -1,58 +1,57 @@
 group	repo	found	stars	merged_prs	licence	uses	last_pushed	already_forked	note
 application	firezone/firezone	100 stars or more	9172	10976	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-09	yes	
-application	Simon-Initiative/oli-torus	100 stars or more	119	5116	MIT	phoenix,live_view,ecto,oban,broadway	2026-11-09	no	
-application	santiment/sanbase2	below 100 stars	94	5112	MIT	phoenix,live_view,ecto,oban,absinthe	2026-11-09	no	
+application	Simon-Initiative/oli-torus	100 stars or more	119	5116	MIT	phoenix,live_view,ecto,oban,broadway	2026-11-09	yes	
+application	santiment/sanbase2	below 100 stars	94	5112	MIT	phoenix,live_view,ecto,oban,absinthe	2026-11-09	yes	
 application	Logflare/logflare	100 stars or more	1004	3401	Apache-2.0	phoenix,live_view,ecto,oban,broadway	2026-11-09	yes	
-application	mbta/dotcom	below 100 stars	82	3171	MIT	phoenix,live_view,ecto	2026-11-09	no	
-application	mbta/screens	below 100 stars	23	2468	MIT	phoenix,ecto	2026-11-09	no	
-application	nerves-hub/nerves_hub_web	100 stars or more	272	2455	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-09	no	
+application	mbta/dotcom	below 100 stars	82	3171	MIT	phoenix,live_view,ecto	2026-11-09	yes	
+application	mbta/screens	below 100 stars	23	2468	MIT	phoenix,ecto	2026-11-09	yes	
+application	nerves-hub/nerves_hub_web	100 stars or more	272	2455	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-09	yes	
 application	supabase/realtime	100 stars or more	7678	1687	Apache-2.0	phoenix,live_view,ecto	2026-11-09	yes	
-application	sequinstream/sequin	100 stars or more	2226	1507	MIT	phoenix,live_view,ecto,oban,broadway	2026-02-23	no	
-application	hexpm/hexpm	100 stars or more, licence read by hand	1173	1402	Apache-2.0	phoenix,live_view,ecto,oban,broadway	2026-11-08	no	no licence file; the README carries the Apache-2.0 notice. The Hex.pm website itself
-application	edgehog-device-manager/edgehog	below 100 stars	50	1374	Apache-2.0	phoenix,ecto,ash,oban,absinthe	2026-11-09	no	
+application	sequinstream/sequin	100 stars or more	2226	1507	MIT	phoenix,live_view,ecto,oban,broadway	2026-02-23	yes	
+application	hexpm/hexpm	100 stars or more, licence read by hand	1173	1402	Apache-2.0	phoenix,live_view,ecto,oban,broadway	2026-11-08	yes	no licence file; the README carries the Apache-2.0 notice. The Hex.pm website itself
+application	edgehog-device-manager/edgehog	below 100 stars	50	1374	Apache-2.0	phoenix,ecto,ash,oban,absinthe	2026-11-09	yes	
 application	FarmBot/farmbot_os	100 stars or more	1180	1204	MIT	ecto,nerves	2026-11-04	yes	
-application	ambry-app/ambry	below 100 stars	89	1083	MIT	phoenix,live_view,ecto,oban,absinthe	2026-11-09	no	
-application	ckruse/cforum_ex	below 100 stars	16	1058	MIT	phoenix,ecto,oban	2025-03-13	no	
-application	Flo0807/share-a-secret	below 100 stars	17	985	Apache-2.0	phoenix,live_view,ecto	2026-11-09	no	
+application	ambry-app/ambry	below 100 stars	89	1083	MIT	phoenix,live_view,ecto,oban,absinthe	2026-11-09	yes	
+application	ckruse/cforum_ex	below 100 stars	16	1058	MIT	phoenix,ecto,oban	2025-03-13	yes	
+application	Flo0807/share-a-secret	below 100 stars	17	985	Apache-2.0	phoenix,live_view,ecto	2026-11-09	yes	
 application	supabase/supavisor	100 stars or more	2284	963	Apache-2.0	phoenix,live_view,ecto	2026-11-07	yes	
-application	bors-ng/bors-ng	100 stars or more	1527	939	Apache-2.0	phoenix,ecto	2024-04-04	no	
-application	axelclark/ex338	below 100 stars	23	749	MIT	phoenix,live_view,ecto,oban	2026-09-10	no	
-application	source-academy/backend	below 100 stars	44	695	Apache-2.0	phoenix,oban	2026-11-09	no	
-application	hashrocket/tilex	100 stars or more	506	525	MIT	phoenix,live_view,ecto	2025-11-07	no	
+application	bors-ng/bors-ng	100 stars or more	1527	939	Apache-2.0	phoenix,ecto	2024-04-04	yes	
+application	axelclark/ex338	below 100 stars	23	749	MIT	phoenix,live_view,ecto,oban	2026-09-10	yes	
+application	source-academy/backend	below 100 stars	44	695	Apache-2.0	phoenix,oban	2026-11-09	yes	
+application	hashrocket/tilex	100 stars or more	506	525	MIT	phoenix,live_view,ecto	2025-11-07	yes	
 application	papercups-io/papercups	100 stars or more	6123	501	MIT	phoenix,ecto,oban	2024-02-15	yes	
-application	adoptoposs/adoptoposs	100 stars or more	145	468	MIT	phoenix,live_view,ecto	2026-02-01	no	
-application	erlef/website	below 100 stars	85	444	Apache-2.0	phoenix,live_view,ecto	2026-09-17	no	
-application	tomasz-tomczyk/crit-web	below 100 stars	35	444	MIT	phoenix,live_view,ecto,oban	2026-11-07	no	
-application	cesium/safira	below 100 stars	55	407	MIT	phoenix,live_view,ecto,oban	2026-10-29	no	
-application	cesium/atomic	below 100 stars	48	369	MIT	phoenix,live_view,ecto	2025-07-20	no	
-application	bikebrigade/dispatch	below 100 stars	78	306	Apache-2.0	phoenix,live_view,ecto	2026-11-07	no	
-application	jaxernst/lasso-rpc	below 100 stars	36	306	Apache-2.0	phoenix,live_view,ecto	2026-11-06	no	
-application	wanderer-industries/wanderer	below 100 stars	80	303	MIT	phoenix,live_view,ecto,ash	2026-11-08	no	
-application	midarrlabs/midarr-server	100 stars or more	1404	296	MIT	phoenix,live_view,ecto,oban	2026-03-03	no	
-application	lambdaclass/stark_compass_explorer	below 100 stars	68	282	Apache-2.0	phoenix,live_view,ecto	2024-10-04	no	
-application	podlove/radiator	100 stars or more	136	252	MIT	phoenix,live_view,ecto,ash,oban	2026-10-27	no	
-application	blablatdinov/croniq	below 100 stars	13	232	MIT	phoenix,live_view,ecto	2026-10-28	no	
-application	jeffdc/gallformers	below 100 stars	22	227	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-08	no	
-application	thechangelog/changelog.com	100 stars or more	2774	223	MIT	phoenix,live_view,ecto,oban	2026-10-29	no	MIT by its licence file, which GitHub could not name
-application	covalenthq/refiner	below 100 stars	10	220	Apache-2.0	phoenix,broadway	2026-05-22	no	
-application	coderdojobraga/bokken	below 100 stars	16	192	MIT	phoenix,ecto	2024-03-08	no	
-application	stride-nyc/remote_retro	100 stars or more	586	190	MIT	phoenix,live_view,ecto	2026-10-19	no	
-application	Clivern/Lynx	100 stars or more	368	184	MIT	phoenix,live_view,ecto	2026-09-11	no	
-application	jehrhardt/cozyauth	below 100 stars	23	181	Apache-2.0	phoenix,ecto	2025-08-18	no	
-application	revelrylabs/slax	below 100 stars	15	178	MIT	phoenix,ecto,oban	2026-11-05	no	
-application	joladev/jola.dev	below 100 stars	18	175	MIT	phoenix,live_view	2026-11-09	no	
-application	notesclub/notesclub	100 stars or more	100	163	MIT	phoenix,live_view,ecto,oban	2026-11-05	no	
-application	elementary/appcenter-dashboard	below 100 stars	14	161	MIT	phoenix,live_view	2026-11-02	no	
-application	zorn/flick	below 100 stars	21	155	MIT	phoenix,live_view,ecto	2026-11-08	no	
-application	hexpm/preview	below 100 stars	32	153	Apache-2.0	phoenix,live_view,broadway	2026-07-16	no	
-application	mercadona/postoffice	below 100 stars	21	140	Apache-2.0	phoenix,live_view,ecto,oban	2024-03-07	no	
-application	brunojppb/turbo-racer	below 100 stars	34	138	MIT	phoenix,live_view,ecto,oban	2026-04-22	no	
-application	astarte-platform/astarte_flow	below 100 stars	18	130	Apache-2.0	phoenix	2026-07-17	no	
-application	cr0t/lexin	below 100 stars	12	130	MIT	phoenix,live_view	2026-09-05	no	
-application	zorn/local_cents	below 100 stars	10	130	MIT	phoenix,live_view,ecto	2026-11-01	no	
-application	youcongress/youcongress	below 100 stars	18	121	MIT	phoenix,live_view,ecto,oban	2026-11-09	no	
-application	texttile-blog/texttile	below 100 stars	28	119	MIT	phoenix,live_view,ecto	2026-11-09	no	
-application	asciinema/asciinema-server	100 stars or more	2505	106	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-08	no	
+application	adoptoposs/adoptoposs	100 stars or more	145	468	MIT	phoenix,live_view,ecto	2026-02-01	yes	
+application	erlef/website	below 100 stars	85	444	Apache-2.0	phoenix,live_view,ecto	2026-09-17	yes	
+application	tomasz-tomczyk/crit-web	below 100 stars	35	444	MIT	phoenix,live_view,ecto,oban	2026-11-07	yes	
+application	cesium/safira	below 100 stars	55	407	MIT	phoenix,live_view,ecto,oban	2026-10-29	yes	
+application	cesium/atomic	below 100 stars	48	369	MIT	phoenix,live_view,ecto	2025-07-20	yes	
+application	bikebrigade/dispatch	below 100 stars	78	306	Apache-2.0	phoenix,live_view,ecto	2026-11-07	yes	
+application	jaxernst/lasso-rpc	below 100 stars	36	306	Apache-2.0	phoenix,live_view,ecto	2026-11-06	yes	
+application	wanderer-industries/wanderer	below 100 stars	80	303	MIT	phoenix,live_view,ecto,ash	2026-11-08	yes	
+application	midarrlabs/midarr-server	100 stars or more	1404	296	MIT	phoenix,live_view,ecto,oban	2026-03-03	yes	
+application	lambdaclass/stark_compass_explorer	below 100 stars	68	282	Apache-2.0	phoenix,live_view,ecto	2024-10-04	yes	
+application	podlove/radiator	100 stars or more	136	252	MIT	phoenix,live_view,ecto,ash,oban	2026-10-27	yes	
+application	blablatdinov/croniq	below 100 stars	13	232	MIT	phoenix,live_view,ecto	2026-10-28	yes	
+application	jeffdc/gallformers	below 100 stars	22	227	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-08	yes	
+application	covalenthq/refiner	below 100 stars	10	220	Apache-2.0	phoenix,broadway	2026-05-22	yes	
+application	coderdojobraga/bokken	below 100 stars	16	192	MIT	phoenix,ecto	2024-03-08	yes	
+application	stride-nyc/remote_retro	100 stars or more	586	190	MIT	phoenix,live_view,ecto	2026-10-19	yes	
+application	Clivern/Lynx	100 stars or more	368	184	MIT	phoenix,live_view,ecto	2026-09-11	yes	
+application	jehrhardt/cozyauth	below 100 stars	23	181	Apache-2.0	phoenix,ecto	2025-08-18	yes	
+application	revelrylabs/slax	below 100 stars	15	178	MIT	phoenix,ecto,oban	2026-11-05	yes	
+application	joladev/jola.dev	below 100 stars	18	175	MIT	phoenix,live_view	2026-11-09	yes	
+application	notesclub/notesclub	100 stars or more	100	163	MIT	phoenix,live_view,ecto,oban	2026-11-05	yes	
+application	elementary/appcenter-dashboard	below 100 stars	14	161	MIT	phoenix,live_view	2026-11-02	yes	
+application	zorn/flick	below 100 stars	21	155	MIT	phoenix,live_view,ecto	2026-11-08	yes	
+application	hexpm/preview	below 100 stars	32	153	Apache-2.0	phoenix,live_view,broadway	2026-07-16	yes	
+application	mercadona/postoffice	below 100 stars	21	140	Apache-2.0	phoenix,live_view,ecto,oban	2024-03-07	yes	
+application	brunojppb/turbo-racer	below 100 stars	34	138	MIT	phoenix,live_view,ecto,oban	2026-04-22	yes	
+application	astarte-platform/astarte_flow	below 100 stars	18	130	Apache-2.0	phoenix	2026-07-17	yes	
+application	cr0t/lexin	below 100 stars	12	130	MIT	phoenix,live_view	2026-09-05	yes	
+application	zorn/local_cents	below 100 stars	10	130	MIT	phoenix,live_view,ecto	2026-11-01	yes	
+application	youcongress/youcongress	below 100 stars	18	121	MIT	phoenix,live_view,ecto,oban	2026-11-09	yes	
+application	texttile-blog/texttile	below 100 stars	28	119	MIT	phoenix,live_view,ecto	2026-11-09	yes	
+application	asciinema/asciinema-server	100 stars or more	2505	106	Apache-2.0	phoenix,live_view,ecto,oban	2026-11-08	yes	
 application_older	code-corps/code-corps-api	100 stars or more	234	670	MIT	phoenix	2019-02-08	no	
 application_older	operable/cog	100 stars or more	917	626	NOASSERTION	phoenix,ecto	2021-09-08	no	
 application_older	Glimesh/glimesh.tv	100 stars or more, licence read by hand	492	607	MIT	phoenix,live_view,ecto,oban,absinthe	2023-07-11	no	MIT by its README; its licence file sets other terms for one theme folder, which stays out

@@ -57,10 +57,11 @@ today's default branch and adds what building it will need:
 ## The mirrors
 
 88 repositories were forked on 2026-11-09 into the maintainer's GitHub account, where the bench's forks already are
-([mirrors.tsv](mirrors.tsv)): the first 40, then the 48 applications of the application-first batch. Each fork's
-default branch pointed at the same commit as its upstream when checked, and that commit is recorded. No fork has an
-active workflow: GitHub leaves a new fork's workflows off until its owner turns them on. A mirror keeps the commits
-reachable if a project is deleted or rewritten; tasks point at commit ids, and no branch is made per task.
+([mirrors.tsv](mirrors.tsv)): the first 40, then 48 applications of the application-first batch (one of them
+since dropped). Each fork's default branch pointed at the same commit as its upstream when checked, and that commit
+is recorded. No fork has an active workflow: GitHub leaves a new fork's workflows off until its owner turns them
+on. A mirror keeps the commits reachable if a project is deleted or rewritten; tasks point at commit ids, and no
+branch is made per task.
 
 ## Applications against libraries
 
@@ -98,39 +99,40 @@ share. **Its application and library groups were approved on 2026-11-09 and are 
 
 | Group | Rule | Repositories | Merged pull requests | Already forked |
 |---|---|---:|---:|---:|
-| application | uses the frameworks, 100 or more merged pull requests, pushed since 2024 | 54 | 54,896 | 6 |
+| application | uses the frameworks, 100 or more merged pull requests, pushed since 2024 | 53 | 54,673 | 53 |
 | application_older | the same, last pushed before 2024 (older Phoenix habits) | 11 | 3,668 | 0 |
 | application_small | 30 to 99 merged pull requests, pushed since 2024 (ground for planted bugs) | 32 | 1,791 | 0 |
 | library | the 12 of [library_share.tsv](library_share.tsv) | 12 | 21,250 | 12 |
 
-- **The 54 applications:** 20 were found at 100 stars or more and 34 below. 33 are MIT and 21 Apache-2.0. They use
-  Phoenix 53, Ecto 47, LiveView 42, Oban 25, Broadway 6, Ash 3, Absinthe 3, Nerves 1.
+- **The 53 applications:** 19 were found at 100 stars or more and 34 below. 32 are MIT and 21 Apache-2.0. They use
+  Phoenix 52, Ecto 46, LiveView 41, Oban 24, Broadway 6, Ash 3, Absinthe 3, Nerves 1.
 - **Two came in by a licence read:** hexpm/hexpm has no licence file, only the Apache-2.0 notice in its README;
   Glimesh/glimesh.tv is MIT by its README, with one theme folder under other terms (it sits in the older group).
 - **Left out by hand** ([draft_hand.tsv](draft_hand.tsv)): a consensus client, a blockchain node, a push relay, a
   terminal agent, a game server emulator and two more that are not application work of the day-to-day kind.
+- **Dropped for its licence:** thechangelog/changelog.com gives its code under MIT terms and reserves all rights in
+  content and design; HTML and SCSS are 38 % of it.
 - **The library share** is capped by rule, not by this list: at most a quarter of the tasks come from libraries.
 - 22 of the 40 repositories forked on 2026-11-09 are in neither group of this draft.
-- At the two published survival rates the 54 would give est. 930 to 1,370 tasks from real pull requests, fewer where
+- At the two published survival rates the 53 would give est. 930 to 1,370 tasks from real pull requests, fewer where
   pull requests touch no Elixir.
 
 ## The approved application-first batch
 
-54 applications and 12 libraries, approved on 2026-11-09 under MIT, Apache-2.0 and BSD only. It replaces the first
+53 applications and 12 libraries, approved on 2026-11-09 under MIT, Apache-2.0 and BSD only. It replaces the first
 batch of 40 as the list tasks are built from. Each row of
 [approved_app_first_batch.tsv](approved_app_first_batch.tsv) has the mirror, the licence as GitHub names it and as
 the licence file reads, the Elixir share, the frameworks used and the service dependencies.
 
-- **Mirrors:** the 48 applications that were not yet forked were forked the same day; all 66 have a mirror. Seven
+- **Mirrors:** the applications that were not yet forked were forked the same day; all 65 have a mirror. Seven
   whose names say nothing alone were forked as owner-name (`mbta-dotcom`, `erlef-website`, and so on).
 - **Licence files:** 37 read as MIT and 24 as Apache-2.0. hexpm/hexpm has only the notice in its README, nx and
   nerves keep theirs in folders, and bors-ng names its file `LICENSE-APACHE`.
-- **One is on hold:** thechangelog/changelog.com gives its code under MIT terms and reserves all rights in content
-  and design, and HTML and SCSS are 38 % of it. It is not used until its files are read one by one.
-- **Mixed languages:** 14 of the 54 applications are less than 70 % Elixir.
-- **Services:** 47 of the 54 name a database or broker driver in `mix.exs`, so the sandbox needs Postgres from the
+- **One was dropped after approval:** thechangelog/changelog.com, for the mixed terms above. Its mirror stays.
+- **Mixed languages:** 13 of the 53 applications are less than 70 % Elixir.
+- **Services:** 46 of the 53 name a database or broker driver in `mix.exs`, so the sandbox needs Postgres from the
   start.
-- **Upstream state:** 8 of the 54 are archived by their owners (read-only); their history is what tasks are made from.
+- **Upstream state:** 8 of the 53 are archived by their owners (read-only); their history is what tasks are made from.
 
 ## What the columns mean
 
@@ -168,7 +170,7 @@ the licence file reads, the Elixir share, the frameworks used and the service de
 | [applications_below_100.tsv](applications_below_100.tsv) | the 274 applications among the permissively licensed repositories with 10 to 99 stars |
 | [below_100_counts.tsv](below_100_counts.tsv) | those 3,290 repositories by usage class |
 | [draft_app_first_batch.tsv](draft_app_first_batch.tsv) | the application-first draft batch: four groups, two of them approved |
-| [approved_app_first_batch.tsv](approved_app_first_batch.tsv) | the approved 54 applications and 12 libraries, with mirror, licence readings, Elixir share, service dependencies and notes |
+| [approved_app_first_batch.tsv](approved_app_first_batch.tsv) | the approved 53 applications and 12 libraries, with mirror, licence readings, Elixir share, service dependencies and notes |
 | [approved_hand.tsv](approved_hand.tsv) | the hand-written use and note columns of that table |
 | [draft_hand.tsv](draft_hand.tsv), [library_share.tsv](library_share.tsv) | the hand-made inclusions and exclusions, and the 12 libraries with the reason for each |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
