@@ -12,7 +12,7 @@ legal advice.
 |---|---|
 | Do we need many projects? | Not to start. The first published results of this kind used 10 or 11 big projects. Breadth matters later, because the model is judged on projects it never saw. A first wave of 40 projects, then a few hundred, is the proposal. |
 | Do tasks need prepared branches that show the fix, like the bench's cases? | No. A training task is one row of data: a repository, a commit, and patches. The bench prepares branches by hand because it has 20 cases that must stay frozen and reviewed. Thousands of training tasks are made and checked by scripts. |
-| Do we need a fork of every project? | Not to make tasks: a commit id pins the code. Forks are still worth having as mirrors, so the data keeps working if a project is deleted or rewritten. One mirror per project, in a GitHub organisation made for this, with no branch per task. |
+| Do we need a fork of every project? | Not to make tasks: a commit id pins the code. Forks are still worth having as mirrors, so the data keeps working if a project is deleted or rewritten. One mirror per project, with no branch per task. |
 | Do the projects need a particular licence? | Yes, because the published sessions contain their code. Only licences that allow copying and changing the code with a notice: MIT, Apache-2.0 and BSD. Not GPL, AGPL, LGPL or MPL, not source-available licences, not "no licence". |
 | Can a project hack us? | Listing, forking and cloning run none of a project's code. Fetching dependencies, compiling and testing do. Those steps run only inside locked containers with no secrets and no network. Popular projects lower the odds; the container is what protects. |
 | Can all of it be public? | Yes, if every step uses only publishable inputs: permissive code, task texts from an approved writer, sessions from a model whose terms allow it. The export ships the licences and notices with the data. |
@@ -118,12 +118,14 @@ one, removes the history, and starts the model there.
 
 **Proposal: pointers, plus one mirror per project.**
 - A row points at a commit; the patches travel in the row. No branch per task.
-- Each project is forked once into a GitHub organisation made for the dataset, not into a personal account. The
-  fork is a mirror: it keeps the commits reachable if the project is deleted, renamed or rewritten, and gives every
-  user of the dataset one stable place to clone from.
+- Each project is forked once. The fork is a mirror: it keeps the commits reachable if the project is deleted,
+  renamed or rewritten, and gives every user of the dataset one stable place to clone from. An organisation made for
+  the dataset keeps a personal profile tidy; the first batch is mirrored in the maintainer's own account, beside the
+  bench's forks ([the list](../../data/2026-11-09_elixir_project_pool/mirrors.tsv)).
 - GitHub's terms allow forking any public repository on GitHub (section D.5). The fork changes nothing about the
   code's licence.
-- GitHub Actions stay switched off in that organisation, so no project's workflow ever runs there.
+- A new fork's workflows are off until its owner turns them on, and they stay off, so no project's workflow runs
+  there.
 
 ## 6. Environments: making an old commit build
 
@@ -268,7 +270,7 @@ row whose inputs are not all approved.
 1. Approve the licence allow-list (E51) and the first wave (E46). **Done 2026-11-09:** the first wave of 40 is the
    first batch, under MIT, Apache-2.0 and BSD only
    ([the checked list](../../data/2026-11-09_elixir_project_pool/approved_first_batch.tsv)).
-2. Create the mirror organisation and fork the first wave (E47).
+2. Fork the first wave as mirrors (E47). **Done 2026-11-09:** 40 forks in the maintainer's account.
 3. Count SWE-rebench V2's and Open-SWE-Traces' Elixir rows and see which repositories they cover (E36, E52).
 4. Build the sandbox rules for third-party projects (E49) and the environment recipes (E50).
 5. Mine tasks from the first wave, in three strata (E8, E37), screened against the bench (E12) and gated (Q526).

@@ -51,6 +51,14 @@ today's default branch and adds what building it will need:
 - **To look at before use:** anoma (33,549 stars against 898 merged pull requests) and papercups (Elixir 1.11.3 and
   OTP 23, last pushed 2024-02-15).
 
+## The mirrors
+
+All 40 were forked on 2026-11-09 into the maintainer's GitHub account, where the bench's forks already are
+([mirrors.tsv](mirrors.tsv)). Each fork's default branch pointed at the same commit as its upstream when checked,
+and that commit is recorded. No fork has an active workflow: GitHub leaves a new fork's workflows off until its
+owner turns them on. A mirror keeps the commits reachable if a project is deleted or rewritten; tasks point at commit
+ids, and no branch is made per task.
+
 ## What the columns mean
 
 | Column | Meaning |
@@ -82,12 +90,14 @@ today's default branch and adds what building it will need:
 | [first_wave.tsv](first_wave.tsv) | the 40 tier-A repositories with the most merged pull requests |
 | [approved_first_batch.tsv](approved_first_batch.tsv) | the approved 40: kind, licence and where it was read, Elixir share, toolchain, service dependencies, notes |
 | [first_batch_hand.tsv](first_batch_hand.tsv) | the hand-written columns of that table: kind, licence, notes |
+| [mirrors.tsv](mirrors.tsv) | each approved repository's fork, its default branch, the commit it pointed at when forked, and its active workflows |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
 | [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
 | [run/prs.sh](run/prs.sh) | merged pull requests, the two root checks and the licence files' first lines |
 | [run/tier.sh](run/tier.sh) | the tiers and the final table |
 | [run/first_batch.sh](run/first_batch.sh) | per approved repository: language shares, root entries, the licence file's first lines, `mix.exs`, `.tool-versions` |
 | [run/approve.sh](run/approve.sh) | joins those checks with the hand-written columns |
+| [run/mirror.sh](run/mirror.sh) | forks every approved repository into the logged-in account and checks each fork |
 
 ## Commands
 
@@ -95,6 +105,7 @@ today's default branch and adds what building it will need:
 export OUT=pool
 bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
 LIST=first_wave.tsv bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve.sh
+DATA=. DATE=2026-11-09 bash run/mirror.sh
 ```
 
 ## Provenance
