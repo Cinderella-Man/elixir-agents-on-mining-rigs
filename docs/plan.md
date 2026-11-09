@@ -61,7 +61,12 @@ Order:
 3. **E10:** pick the student by scoring the candidates untuned (about 3B active parameters: Ornith-1.5-35B-A3B,
    Qwen3.6-35B-A3B). Then a LoRA fine-tune on the kept sessions, three bench seeds against its own base and against
    the bar, and finally its rig-sized file and its speed on the rig.
-4. Later, reinforcement learning with the tests as the reward, only if fine-tuning gains.
+4. **E54:** after that fine-tune, at most two self-training rounds. The tuned student attempts every training task,
+   and the attempts that pass the held-back tests join the training set. A task it failed gets a short hint written
+   from the reference fix, and the student tries again (E55). The student is then trained again from its base on
+   everything. Each round is judged on a held-out set of 300 or more mined tasks from projects no training task comes
+   from (E57), and the loop stops at the first round without a gain there.
+5. Reinforcement learning with the tests as the reward, only if those rounds are still gaining when they stop.
 
 Earlier research on this track is in [research/finetuning](research/finetuning/), with its notes:
 - [Fine tuning small models for Elixir](research/finetuning/reports/Fine%20tuning%20small%20models%20for%20Elixir.md):

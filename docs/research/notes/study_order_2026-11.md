@@ -2,7 +2,8 @@
 
 A proposed order for the registry's rows, from the [survey](idea_survey_2026-11.md). The rows and their evidence are
 there and in [experiments.md](../../../experiments.md); this page only orders them. Times are estimates (est.).
-[plan.md](../../plan.md) stays the plan of record until this order is adopted.
+[plan.md](../../plan.md) is the plan of record. Of this order, the self-training rounds of step 3 were adopted into it on
+2026-11-09; the rest is still a proposal.
 
 ## The order in six lines
 
