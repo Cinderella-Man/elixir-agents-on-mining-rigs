@@ -15,6 +15,10 @@ live in the sister repo `llms-on-crypto-mining-rigs`.
   a range, and estimates are marked est.
 - **Every idea gets a row in `experiments.md` at once,** however small. Ideas the evidence argues against stay as
   parked rows with the reason and what would reopen them.
+- **Search both registries before adding an idea:** this `experiments.md`, and the sister repo's
+  [registry](https://github.com/Cinderella-Man/llms-on-crypto-mining-rigs/blob/main/quants/experiments.md). The sister
+  holds the finished expert-cut runs (Q232, Q890, Q891) and every engine, format and speculation idea (run-time expert
+  skipping, activation sparsity). Ideas about running a model faster without changing it go there.
 
 ## The data behind every result
 
