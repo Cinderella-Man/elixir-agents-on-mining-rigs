@@ -249,6 +249,11 @@ From GitHub's and Hex's public metadata on 2026-11-09
 Applications matter most, because the bench's cases are application work, and they are the scarcest: many open
 Elixir applications are AGPL (teslamate, keila, claper) and so are out.
 
+**Counted afterwards:** only 6 of the 40 are applications that use the frameworks, and 63 of the 929 candidates. The
+batch was picked by merged pull requests, which favours frameworks and libraries. Weighting it toward applications,
+finding applications below 100 stars and building tasks on generator-made applications are E62, E63 and E64
+([counts](../../data/2026-11-09_elixir_project_pool/README.md)).
+
 At the two published survival rates the first wave would give est. 880 to 1,290 tasks from real pull requests, and
 all 929 candidates est. 2,600 to 3,800. Planted bugs add to that without limit.
 

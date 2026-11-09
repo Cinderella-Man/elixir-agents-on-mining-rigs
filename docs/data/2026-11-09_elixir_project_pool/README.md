@@ -59,6 +59,28 @@ and that commit is recorded. No fork has an active workflow: GitHub leaves a new
 owner turns them on. A mirror keeps the commits reachable if a project is deleted or rewritten; tasks point at commit
 ids, and no branch is made per task.
 
+## Applications against libraries
+
+Most real use of an Elixir model is work inside an application that uses Phoenix, Ecto, Ash, Nerves or Nx, not work on
+those frameworks themselves. [usage_kinds.tsv](usage_kinds.tsv) classes every repository from its `mix.exs` and
+folders: an application has no Hex package, depends on a framework, and has a web folder or database migrations.
+The classes are a reading of signals, not a review.
+
+| | Applications that use the frameworks | Libraries, frameworks and tools | Other |
+|---|---:|---:|---:|
+| The 40 forked | 6 | 32 | 2 |
+| The 929 usable candidates | 63 | 761 | 105 |
+
+- **The 6 in the first batch:** firezone, logflare, supabase/realtime, supabase/supavisor, papercups and farmbot_os,
+  with 18,732 of the batch's 51,592 merged pull requests (firezone alone 10,976).
+- **The 63 usable applications** hold 34,589 merged pull requests; 26 of them have 100 or more, 34,019 between them.
+  The 761 libraries, frameworks and tools hold 89,603.
+- **What the 63 use:** Phoenix 62, Ecto 40, LiveView 35, Oban 12, Broadway 3, Ash 2, Absinthe 2, Nerves 1, Nx 0.
+- **57 more applications are outside the usable set:** 24 are copyleft and 33 need their licence read.
+- **Stars undercount applications:** oli-torus has 119 stars and 5,116 merged pull requests. Repositories below 100
+  stars are not in this list at all.
+- For scale, 15 of the Elixir SWE Bench's 20 cases come from applications and 5 from libraries.
+
 ## What the columns mean
 
 | Column | Meaning |
@@ -91,6 +113,7 @@ ids, and no branch is made per task.
 | [approved_first_batch.tsv](approved_first_batch.tsv) | the approved 40: kind, licence and where it was read, Elixir share, toolchain, service dependencies, notes |
 | [first_batch_hand.tsv](first_batch_hand.tsv) | the hand-written columns of that table: kind, licence, notes |
 | [mirrors.tsv](mirrors.tsv) | each approved repository's fork, its default branch, the commit it pointed at when forked, and its active workflows |
+| [usage_kinds.tsv](usage_kinds.tsv) | every repository outside the hold-out: application or library, the frameworks it uses, the signals behind the class |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
 | [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
 | [run/prs.sh](run/prs.sh) | merged pull requests, the two root checks and the licence files' first lines |
@@ -98,6 +121,7 @@ ids, and no branch is made per task.
 | [run/first_batch.sh](run/first_batch.sh) | per approved repository: language shares, root entries, the licence file's first lines, `mix.exs`, `.tool-versions` |
 | [run/approve.sh](run/approve.sh) | joins those checks with the hand-written columns |
 | [run/mirror.sh](run/mirror.sh) | forks every approved repository into the logged-in account and checks each fork |
+| [run/classify.sh](run/classify.sh) | reads `mix.exs` and the folders of every repository and writes the usage classes |
 
 ## Commands
 
@@ -106,6 +130,7 @@ export OUT=pool
 bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
 LIST=first_wave.tsv bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve.sh
 DATA=. DATE=2026-11-09 bash run/mirror.sh
+DATA=. bash run/classify.sh
 ```
 
 ## Provenance

@@ -1,0 +1,1138 @@
+repo	tier	usage_kind	uses	web_folder	migrations	hex_package_or_package_section	deploy_files	stars	merged_prs
+anoma/anoma	A	library_framework_or_tool		no	no	yes	0	33549	898
+openai/symphony	C	application_other	phoenix,live_view,ecto	no	no	no	0	27989	64
+elixir-lang/elixir	A	unclear_no_root_mix		no	no	no	0	26707	8267
+phoenixframework/phoenix	A	library_framework_or_tool	ecto	no	no	yes	0	23213	3144
+h4cc/awesome-elixir	C	learning_or_template		no	no	no	0	13164	1069
+teslamate-org/teslamate	out:copyleft	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	1	9248	-
+firezone/firezone	A	application_other	phoenix,live_view,ecto,oban	no	no	no	1	9172	10976
+supabase/realtime	A	application_web	phoenix,live_view,ecto	yes	yes	no	8	7678	1687
+phoenixframework/phoenix_live_view	A	library_framework_or_tool	phoenix,ecto	no	no	yes	0	6837	2011
+elixir-ecto/ecto	A	library_framework_or_tool		no	no	yes	0	6500	2158
+papercups-io/papercups	A	application_web	phoenix,ecto,oban	yes	yes	no	4	6123	501
+tuist/tuist	out:copyleft	application_other	phoenix,live_view,ecto,oban,broadway	no	no	no	0	5864	11206
+rrrene/credo	A	library_framework_or_tool		no	no	yes	0	5230	486
+blockscout/blockscout	check:licence	unpublished_tool_or_library		yes	no	no	1	4777	6128
+christopheradams/elixir_style_guide	check:no_licence_file	library_framework_or_tool		no	no	yes	0	4425	101
+oban-bg/oban	A	library_framework_or_tool	ecto	no	no	yes	1	4002	591
+elixirschool/elixirschool	C	learning_or_template		no	no	no	0	3675	2540
+sergiotapia/magnetissimo	A	application_web	phoenix,live_view,ecto	yes	yes	no	3	3107	38
+seven1m/30-days-of-elixir	C	learning_or_template		no	no	no	0	3065	29
+elixir-plug/plug	A	library_framework_or_tool		no	no	yes	0	3020	701
+bitwalker/distillery	A	library_framework_or_tool		no	no	yes	2	2952	237
+elixir-nx/nx	A	library_framework_or_tool	nx	no	no	yes	0	2921	1225
+thechangelog/changelog.com	A	application_web	phoenix,live_view,ecto,oban	yes	yes	no	1	2774	223
+elixir-broadway/broadway	A	library_framework_or_tool		no	no	yes	0	2692	208
+nerves-project/nerves	A	library_framework_or_tool		no	no	yes	0	2507	920
+asciinema/asciinema-server	A	application_web	phoenix,live_view,ecto,oban	yes	yes	no	1	2505	106
+quantum-elixir/quantum-core	A	library_framework_or_tool		no	no	yes	0	2418	439
+elixirkoans/elixir-koans	C	learning_or_template		no	no	no	1	2397	175
+edgurgel/httpoison	A	library_framework_or_tool		no	no	yes	0	2288	185
+supabase/supavisor	A	application_web	phoenix,live_view,ecto	yes	yes	no	5	2284	963
+pentacent/keila	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	0	2260	-
+sequinstream/sequin	B	application_web	phoenix,live_view,ecto,oban,broadway	yes	yes	no	4	2226	1507
+phoenixframework/phoenix_live_dashboard	A	library_framework_or_tool	live_view,ecto	no	no	yes	0	2176	272
+bitwalker/libcluster	A	library_framework_or_tool		no	no	yes	0	2161	85
+philss/floki	A	library_framework_or_tool		no	no	yes	0	2149	459
+surface-ui/surface	A	library_framework_or_tool	live_view	no	no	yes	0	2134	354
+elixir-tesla/tesla	A	library_framework_or_tool		no	no	yes	0	2076	542
+expert-lsp/expert	B	unclear_no_root_mix		no	no	no	0	2070	578
+ScenicFramework/scenic	A	library_framework_or_tool		no	no	yes	0	2062	210
+beam-community/ex_machina	A	library_framework_or_tool	ecto	no	no	yes	0	2062	272
+commanded/commanded	A	library_framework_or_tool		no	no	yes	0	2034	290
+devinus/poison	A	library_framework_or_tool		no	no	yes	2	2030	50
+beam-community/bamboo	A	library_framework_or_tool		no	no	yes	0	1960	362
+mtrudel/bandit	A	library_framework_or_tool		no	no	yes	0	1934	467
+agentjido/jido	B	library_framework_or_tool		no	no	yes	0	1908	244
+discord/manifold	A	library_framework_or_tool		no	no	yes	0	1853	12
+elixir-desktop/desktop	A	library_framework_or_tool	phoenix,live_view	no	no	yes	0	1816	50
+elixir-wallaby/wallaby	A	library_framework_or_tool	ecto	no	no	yes	0	1806	372
+bitwalker/timex	A	library_framework_or_tool		no	no	yes	0	1805	277
+jeremyjh/dialyxir	A	library_framework_or_tool		no	no	yes	0	1796	245
+nccgroup/sobelow	A	library_framework_or_tool		no	no	yes	0	1795	50
+elixir-lsp/elixir-ls	A	unpublished_tool_or_library		no	no	no	1	1781	536
+dwyl/learn-elixir	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	1698	55
+elixir-nx/axon	A	library_framework_or_tool	nx	no	no	yes	0	1698	363
+michalmuskala/jason	A	library_framework_or_tool		no	no	yes	0	1680	53
+elixir-nx/bumblebee	A	library_framework_or_tool	nx	no	no	yes	0	1678	260
+pow-auth/pow	A	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	1670	320
+woutdp/live_svelte	A	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	1661	56
+ghuntley/overalls	C	unclear_no_root_mix		no	no	no	0	1656	0
+discord/sorted_set_nif	A	library_framework_or_tool		no	no	yes	0	1651	15
+semaphoreio/semaphore	C	unclear_no_root_mix		no	no	no	0	1636	978
+dashbitco/flow	A	library_framework_or_tool		no	no	yes	0	1624	66
+elixir-lang/ex_doc	A	library_framework_or_tool		no	no	yes	0	1619	1089
+elixir-lang/gen_stage	A	library_framework_or_tool		no	no	yes	0	1593	166
+bartblast/hologram	A	library_framework_or_tool	phoenix,ecto	no	no	yes	0	1571	686
+elixirscript/elixirscript	A	library_framework_or_tool		no	no	yes	0	1566	179
+algora-io/algora	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	3	1541	-
+akira/exq	A	library_framework_or_tool		no	no	yes	0	1533	228
+elixir-grpc/grpc	A	library_framework_or_tool		no	no	yes	1	1531	315
+swoosh/swoosh	A	library_framework_or_tool		no	no	yes	0	1530	866
+bors-ng/bors-ng	C	application_web	phoenix,ecto	yes	yes	no	3	1527	939
+bencheeorg/benchee	A	library_framework_or_tool		no	no	yes	0	1522	318
+membraneframework/membrane_core	A	library_framework_or_tool		no	no	yes	0	1521	538
+lucasvegi/Elixir-Code-Smells	C	learning_or_template		no	no	yes	0	1515	14
+elixir-horde/horde	A	library_framework_or_tool		no	no	yes	0	1508	142
+Phineas/lanyard	A	unpublished_tool_or_library		yes	no	no	1	1491	184
+aesmail/kaffy	A	library_framework_or_tool	phoenix,ecto	yes	no	yes	0	1419	119
+elixir-mint/mint	A	library_framework_or_tool		no	no	yes	1	1418	333
+midarrlabs/midarr-server	A	application_web	phoenix,live_view,ecto,oban	yes	yes	no	2	1404	296
+elixir-nebulex/nebulex	A	library_framework_or_tool		no	no	yes	0	1402	60
+dashbitco/mox	A	library_framework_or_tool		no	no	yes	0	1401	87
+HashNuke/hound	A	library_framework_or_tool		no	no	yes	0	1368	86
+sneako/finch	A	library_framework_or_tool		no	no	yes	0	1364	219
+ex-aws/ex_aws	A	library_framework_or_tool		no	no	yes	0	1344	586
+zoonk/uneebee	out:copyleft	learning_or_template	phoenix,live_view,ecto,oban	no	yes	no	0	1342	-
+wojtekmach/req	A	library_framework_or_tool		no	no	yes	0	1333	214
+riverrun/comeonin	A	library_framework_or_tool		no	no	yes	0	1317	49
+elixir-maru/maru	A	library_framework_or_tool		no	no	yes	0	1310	40
+elixir-explorer/explorer	A	library_framework_or_tool	nx	no	no	yes	0	1298	703
+devonestes/fast-elixir	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	1289	16
+Hentioe/policr-mini	A	application_web	phoenix,live_view,ecto	yes	yes	no	5	1270	2
+smpallen99/coherence	A	library_framework_or_tool	phoenix,ecto	no	no	yes	0	1255	93
+bitwalker/swarm	A	library_framework_or_tool		no	no	yes	0	1254	42
+algora-io/tv	check:licence	application_web	phoenix,live_view,ecto,nx,oban	yes	yes	no	3	1247	71
+technomancy-dev/00	out:copyleft	application_web	phoenix,live_view,ecto,oban,broadway	yes	yes	no	3	1245	-
+witchcrafters/witchcraft	A	library_framework_or_tool		no	no	yes	0	1235	41
+DockYard-Academy/curriculum	C	learning_or_template		no	no	no	0	1223	605
+elixir-ecto/postgrex	A	library_framework_or_tool		no	no	yes	0	1215	378
+brainlid/langchain	A	library_framework_or_tool	ecto,nx	no	no	yes	0	1213	448
+elixirs/faker	A	library_framework_or_tool		no	no	yes	0	1199	479
+smpallen99/ex_admin	A	library_framework_or_tool	phoenix,ecto	no	no	yes	0	1196	117
+phoenixframework/flame	A	library_framework_or_tool		no	no	yes	0	1184	32
+FarmBot/farmbot_os	A	application_nerves	ecto,nerves	no	yes	no	1	1180	1204
+discord/fastglobal	A	library_framework_or_tool		no	no	yes	0	1176	2
+hexpm/hexpm	check:no_licence_file	application_web	phoenix,live_view,ecto,oban,broadway	yes	yes	no	3	1173	1402
+mojotech/torch	A	library_framework_or_tool	phoenix,live_view	no	no	yes	0	1173	283
+tompave/fun_with_flags	A	library_framework_or_tool	ecto	no	no	yes	0	1170	99
+commanded/eventstore	A	library_framework_or_tool		no	no	yes	1	1165	150
+stavro/arc	A	library_framework_or_tool		no	no	yes	0	1165	80
+puemos/craftplan	out:copyleft	application_web	phoenix,live_view,ecto,ash	yes	yes	no	7	1156	-
+whatyouhide/redix	A	library_framework_or_tool		no	no	yes	1	1143	136
+StephenGrider/ElixirCode	check:no_licence_file	learning_or_template		no	no	no	0	1139	0
+elixir-crawly/crawly	A	library_framework_or_tool		no	no	yes	2	1128	148
+dynamo/dynamo	A	unpublished_tool_or_library		no	no	no	0	1107	107
+cbh123/stickerbaker	check:no_licence_file	application_web	phoenix,live_view,ecto,nx	yes	yes	no	3	1101	4
+hexpm/hex	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	1088	624
+edgurgel/poxa	A	unpublished_tool_or_library		no	no	no	2	1086	70
+googleapis/elixir-google-api	C	library_framework_or_tool		no	no	yes	0	1081	9878
+beam-community/stripity-stripe	A	library_framework_or_tool		no	no	yes	0	1080	563
+petalframework/petal_components	A	library_framework_or_tool	phoenix,live_view	yes	no	yes	2	1065	429
+bluzky/salad_ui	B	library_framework_or_tool	live_view	no	no	yes	0	1059	150
+sasa1977/elixir-in-action	check:no_licence_file	learning_or_template		no	no	no	0	1034	5
+Logflare/logflare	A	application_web	phoenix,live_view,ecto,oban,broadway	yes	yes	no	11	1004	3401
+sasa1977/boundary	A	library_framework_or_tool		no	no	yes	0	1003	31
+PSPDFKit-labs/bypass	A	library_framework_or_tool		no	no	yes	0	1001	54
+mtrudel/thousand_island	A	library_framework_or_tool		no	no	yes	0	997	185
+firestormforum/firestorm	B	application_other	phoenix	no	no	no	0	969	88
+daryllxd/lifelong-learning	C	learning_or_template		no	no	no	0	968	2
+Nebo15/sage	B	library_framework_or_tool		no	no	yes	0	963	25
+liveview-native/live_view_native	C	library_framework_or_tool	phoenix,live_view	no	no	yes	0	962	124
+fredwu/crawler	check:no_licence_file	library_framework_or_tool		no	no	yes	0	961	11
+alco/porcelain	B	library_framework_or_tool		no	no	yes	0	958	6
+kittoframework/kitto	B	library_framework_or_tool		no	no	yes	1	958	36
+lpil/mix-test.watch	C	learning_or_template		no	no	yes	0	955	59
+whatyouhide/stream_data	check:no_licence_file	library_framework_or_tool		no	no	yes	0	952	103
+lexical-lsp/lexical	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	950	462
+bonfire-networks/bonfire-app	check:no_licence_file	application_other	nx,absinthe	no	no	no	6	949	272
+carverauto/serviceradar	C	unclear_no_root_mix		no	no	no	2	932	3824
+shinyscorpion/wobserver	B	library_framework_or_tool		no	no	yes	0	927	7
+sasa1977/con_cache	B	library_framework_or_tool		no	no	yes	0	926	47
+ExHammer/hammer	A	library_framework_or_tool		no	no	yes	0	923	117
+bitwalker/exrm	C	library_framework_or_tool		no	no	yes	0	917	79
+operable/cog	B	application_web	phoenix,ecto	no	yes	no	9	917	626
+elixir-protobuf/protobuf	A	library_framework_or_tool		no	no	yes	0	908	243
+hexlet-codebattle/codebattle	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	1	900	-
+pragdave/earmark	C	library_framework_or_tool		no	no	yes	0	895	199
+gothinkster/elixir-phoenix-realworld-example-app	C	learning_or_template	phoenix	yes	yes	no	1	891	17
+phenixdigital/phoenix_storybook	B	library_framework_or_tool	phoenix,live_view	no	no	yes	0	886	538
+dashbitco/nimble_parsec	A	library_framework_or_tool		no	no	yes	0	883	63
+grych/drab	B	library_framework_or_tool	phoenix	no	no	yes	0	878	21
+parroty/excoveralls	A	library_framework_or_tool		no	no	yes	0	862	158
+tidewave-ai/tidewave_phoenix	C	library_framework_or_tool		no	no	yes	0	858	132
+graphql-elixir/graphql	C	library_framework_or_tool		no	no	yes	0	856	54
+ndreynolds/ratatouille	B	library_framework_or_tool		no	no	yes	0	852	7
+elixirmoney/money	A	library_framework_or_tool	ecto	no	no	yes	0	847	143
+naymspace/backpex	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	2	847	2055
+JakeBecker/elixir-ls	B	unpublished_tool_or_library		no	no	no	0	844	33
+open-api-spex/open_api_spex	out:copyleft	library_framework_or_tool	phoenix	no	no	yes	0	837	-
+ClaperCo/Claper	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	5	827	-
+dashbitco/nimble_csv	A	library_framework_or_tool		no	no	yes	0	824	45
+pinterest/elixometer	B	library_framework_or_tool		no	no	yes	0	824	163
+duffelhq/paginator	B	library_framework_or_tool	ecto	no	no	yes	0	822	86
+elixir-waffle/waffle	B	library_framework_or_tool		no	no	yes	2	821	60
+woylie/flop	B	library_framework_or_tool	ecto	no	no	yes	1	820	513
+dwyl/phoenix-chat-example	check:no_licence_file	learning_or_template	phoenix,live_view,ecto	yes	yes	no	3	817	259
+joken-elixir/joken	A	library_framework_or_tool		no	no	yes	0	816	201
+losvedir/ephemeral2	B	application_web	phoenix	yes	no	no	1	814	2
+antonmi/espec	B	library_framework_or_tool		no	no	yes	0	812	145
+adobe/elixir-styler	B	library_framework_or_tool		no	no	yes	0	810	93
+getmydia/mydia	out:copyleft	application_web	phoenix,live_view,ecto,oban,absinthe	yes	yes	no	4	805	-
+Adriandmen/05AB1E	B	unpublished_tool_or_library		no	no	no	0	797	80
+schrockwell/bodyguard	B	library_framework_or_tool		no	no	yes	0	797	29
+sheharyarn/memento	B	library_framework_or_tool		no	no	yes	0	797	13
+wojtekmach/mix_install_examples	check:no_licence_file	learning_or_template		no	no	no	0	797	35
+thmsmlr/instructor_ex	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	784	25
+software-mansion/popcorn	B	unclear_no_root_mix		no	no	no	0	783	668
+discord/semaphore	B	library_framework_or_tool		no	no	yes	0	774	5
+mindok/contex	B	library_framework_or_tool		no	no	yes	0	771	33
+phoenixframework/phoenix_pubsub	A	library_framework_or_tool		no	no	yes	0	771	101
+ejpcmac/typed_struct	C	learning_or_template		no	no	yes	0	770	6
+wojtekmach/acme_bank	C	learning_or_template		yes	no	no	1	768	3
+software-mansion/live-debugger	B	library_framework_or_tool	phoenix,live_view	no	no	yes	0	767	564
+aaronrenner/phx_gen_auth	C	library_framework_or_tool	phoenix	no	no	yes	1	759	36
+mishka-group/mishka_chelekom	B	library_framework_or_tool	live_view	no	no	yes	0	756	345
+parroty/exvcr	A	library_framework_or_tool		no	no	yes	0	746	119
+erlef/elixir-secure-coding	C	learning_or_template		no	no	no	0	732	37
+Kraigie/nostrum	B	library_framework_or_tool		no	no	yes	0	729	451
+edgurgel/verk	B	library_framework_or_tool		no	no	yes	0	726	111
+elixir-tools/next-ls	C	library_framework_or_tool		no	no	yes	1	726	337
+koudelka/honeydew	B	library_framework_or_tool	ecto	no	no	yes	0	724	52
+valpackett/httpotion	B	library_framework_or_tool		no	no	yes	0	719	56
+akoutmos/prom_ex	B	library_framework_or_tool	phoenix,live_view,ecto,oban,absinthe,broadway	no	no	yes	0	712	138
+xerions/phoenix_swagger	out:copyleft	library_framework_or_tool		no	no	yes	0	709	-
+meh/amnesia	check:no_licence_file	library_framework_or_tool		no	no	yes	0	707	8
+otobus/event_bus	B	library_framework_or_tool		no	no	yes	0	704	115
+elixir-toniq/norm	B	library_framework_or_tool		no	no	yes	0	701	68
+mroth/phoenix-showdown	check:no_licence_file	unclear_no_root_mix		no	no	no	0	700	11
+techlore/plexus	out:copyleft	application_web	phoenix,live_view,ecto	yes	yes	no	4	696	-
+getsentry/sentry-elixir	A	library_framework_or_tool	phoenix,live_view,oban	no	no	yes	0	692	669
+jjh42/mock	A	library_framework_or_tool		no	no	yes	0	691	72
+meh/elixir-socket	check:no_licence_file	library_framework_or_tool		no	no	yes	0	690	12
+pma/amqp	A	library_framework_or_tool		no	no	yes	3	689	102
+sheharyarn/que	B	library_framework_or_tool		no	no	yes	0	687	10
+sasa1977/exactor	A	library_framework_or_tool		no	no	yes	0	685	14
+codedge-llc/pigeon	A	library_framework_or_tool		no	no	yes	0	684	139
+BlakeWilliams/Elixir-Slack	B	library_framework_or_tool		no	no	yes	0	682	116
+felt/geo	B	library_framework_or_tool		no	no	yes	0	678	136
+oestrich/ex_venture	C	application_web	phoenix,ecto	yes	yes	no	5	670	117
+EMI-Group/genesis	out:copyleft	unpublished_tool_or_library		no	no	no	1	667	-
+exercism/elixir	C	learning_or_template		no	no	no	0	665	1175
+lucaong/cubdb	B	library_framework_or_tool		no	no	yes	0	658	35
+elixir-ecto/ecto_sql	A	library_framework_or_tool	ecto	no	no	yes	0	657	441
+hedwig-im/hedwig	B	library_framework_or_tool		no	no	yes	0	649	30
+elixir-error-tracker/error-tracker	B	library_framework_or_tool	live_view,ecto	no	yes	yes	0	648	86
+cbh123/emoji	check:no_licence_file	application_web	phoenix,live_view,ecto,nx	yes	yes	no	3	646	14
+slashmili/alchemist.vim	out:copyleft	unclear_no_root_mix		no	no	no	0	645	-
+joshnuss/design-patterns-in-elixir	check:no_licence_file	unclear_no_root_mix		no	no	no	0	643	3
+infinitered/thesis-phoenix	C	library_framework_or_tool	phoenix,ecto	no	no	yes	0	638	80
+trenpixster/addict	B	library_framework_or_tool	phoenix,ecto	no	no	yes	0	638	45
+vt-elixir/ja_serializer	B	library_framework_or_tool	ecto	no	no	yes	0	638	150
+danielberkompas/cloak	B	library_framework_or_tool		no	no	yes	0	630	60
+droptheplot/awesome-phoenix	C	learning_or_template		no	no	no	0	618	8
+kafkaex/kafka_ex	A	library_framework_or_tool		no	no	yes	2	611	357
+CrowdHailer/OK	B	library_framework_or_tool		no	no	yes	0	608	25
+robconery/moebius	B	library_framework_or_tool		no	no	yes	0	606	46
+agentjido/req_llm	C	library_framework_or_tool		no	no	yes	0	605	781
+Accenture/reactive-interaction-gateway	B	library_framework_or_tool	phoenix	yes	no	yes	2	603	202
+ex-money/money	B	library_framework_or_tool		no	no	yes	0	601	53
+izelnakri/paper_trail	B	library_framework_or_tool	ecto	no	yes	yes	2	601	95
+CargoSense/vex	B	library_framework_or_tool		no	no	yes	0	600	31
+elixir-toniq/vapor	B	library_framework_or_tool		no	no	yes	0	600	79
+msz/hammox	B	library_framework_or_tool		no	no	yes	0	596	93
+yujonglee/canary	B	unclear_no_root_mix		no	no	no	0	596	24
+aws-beam/aws-elixir	B	library_framework_or_tool		no	no	yes	0	594	147
+dashbitco/nimble_publisher	B	library_framework_or_tool		no	no	yes	0	590	26
+Valian/live_vue	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	589	89
+discord/ex_hash_ring	B	library_framework_or_tool		no	no	yes	0	586	14
+elixir-mogrify/mogrify	B	library_framework_or_tool		no	no	yes	0	586	49
+stride-nyc/remote_retro	B	application_web	phoenix,live_view,ecto	yes	yes	no	2	586	190
+mojotech/scrivener_ecto	A	library_framework_or_tool	ecto	no	yes	yes	1	585	24
+edgurgel/mimic	B	library_framework_or_tool		no	no	yes	0	579	64
+phoenixframework/phoenix_ecto	A	library_framework_or_tool	ecto	no	no	yes	0	578	93
+bitwalker/libgraph	B	library_framework_or_tool		no	no	yes	0	571	31
+AFK-surf/Comma	out:copyleft	unclear_no_root_mix		no	no	no	1	570	-
+gjaldon/ecto_enum	A	library_framework_or_tool	ecto	no	no	yes	0	570	37
+joaomdmoura/machinery	B	library_framework_or_tool	ecto	no	no	yes	0	568	45
+elixir-mongo/mongodb	C	library_framework_or_tool		no	no	yes	0	564	123
+dashbitco/nimble_options	A	library_framework_or_tool		no	no	yes	0	563	90
+dominicletz/websockex	B	library_framework_or_tool		no	no	yes	0	560	41
+derekkraan/delta_crdt_ex	B	library_framework_or_tool		no	no	yes	0	558	42
+mojotech/scrivener	B	library_framework_or_tool		no	no	yes	0	557	20
+chrismccord/phoenix_live_view_example	check:no_licence_file	learning_or_template	phoenix,live_view,ecto	yes	yes	no	0	543	20
+pow-auth/assent	B	library_framework_or_tool		no	no	yes	0	539	160
+aviacommerce/avia	B	unpublished_tool_or_library		no	no	no	1	537	387
+whatyouhide/corsica	B	library_framework_or_tool		no	no	yes	0	537	30
+Qqwy/elixir-type_check	B	library_framework_or_tool		no	no	yes	0	533	80
+fuelen/owl	B	library_framework_or_tool		no	no	yes	0	533	12
+bigardone/phoenix-battleship	B	application_other	phoenix	no	no	no	0	520	3
+oreillymedia/etudes-for-elixir	check:no_licence_file	learning_or_template		no	no	no	0	519	31
+beatrichartz/csv	A	library_framework_or_tool		no	no	yes	0	516	43
+alco/benchfella	B	library_framework_or_tool		no	no	yes	0	515	15
+mhanberg/temple	B	library_framework_or_tool		no	no	yes	0	515	107
+redrabbit/git.limo	B	unpublished_tool_or_library		yes	no	no	0	515	3
+thoughtbot/constable	out:copyleft	application_web	phoenix,live_view,ecto	yes	yes	no	1	513	-
+woylie/flop_phoenix	B	library_framework_or_tool	phoenix,live_view	no	no	yes	0	512	399
+beam-community/jsonapi	B	library_framework_or_tool	phoenix	no	no	yes	0	511	295
+geolessel/react-phoenix	B	library_framework_or_tool		no	no	yes	0	508	39
+phoenixframework/tailwind	A	library_framework_or_tool		no	no	yes	0	508	50
+hashrocket/tilex	B	application_web	phoenix,live_view,ecto	yes	yes	no	1	506	525
+inertiajs/inertia-phoenix	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	504	24
+aviabird/gringotts	B	library_framework_or_tool		no	no	yes	0	503	90
+ateliware/triplex	B	library_framework_or_tool	ecto	no	no	yes	1	502	41
+elixir-nx/scholar	B	library_framework_or_tool	nx	no	no	yes	0	498	254
+fremantle-industries/tai	B	unpublished_tool_or_library		no	no	no	0	498	299
+DockYard/elixir-mail	A	library_framework_or_tool		no	no	yes	0	495	127
+sasa1977/site_encrypt	B	library_framework_or_tool	phoenix	no	no	yes	0	495	29
+elixir-gettext/gettext	A	library_framework_or_tool		no	no	yes	0	494	238
+hashrocket/gatling	check:no_licence_file	library_framework_or_tool		no	no	yes	0	493	18
+Glimesh/glimesh.tv	check:licence	application_web	phoenix,live_view,ecto,oban,absinthe	yes	yes	no	7	492	607
+hamiltop/rethinkdb-elixir	B	library_framework_or_tool		no	no	yes	0	491	26
+versilov/matrex	B	library_framework_or_tool		no	no	yes	0	488	13
+cpjk/canary	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	487	27
+bitcrowd/chromic_pdf	B	library_framework_or_tool		no	no	yes	0	485	238
+bitwalker/exprotobuf	C	library_framework_or_tool		no	no	yes	0	483	39
+elixir-webrtc/ex_webrtc	B	library_framework_or_tool		no	no	yes	0	483	203
+ericmj/decimal	A	library_framework_or_tool		no	no	yes	0	478	123
+dashbitco/nimble_totp	B	library_framework_or_tool		no	no	yes	0	477	27
+phoenixframework/phoenix_html	A	library_framework_or_tool		no	no	yes	0	473	224
+elixir-cldr/cldr	B	library_framework_or_tool		no	no	yes	0	472	40
+lau/calendar	B	library_framework_or_tool		no	no	yes	0	468	26
+lpil/dogma	C	library_framework_or_tool		no	no	yes	0	468	80
+Hubs-Foundation/reticulum	out:copyleft	application_web	phoenix,ecto,absinthe	yes	yes	no	1	460	-
+elixir-image/image	B	library_framework_or_tool	nx	no	no	yes	0	459	100
+grempe/ex_rated	B	library_framework_or_tool		no	no	yes	0	459	35
+jarednorman/canada	B	library_framework_or_tool		no	no	yes	0	458	16
+lalabuy948/PhoenixAnalytics	B	library_framework_or_tool	live_view,ecto	no	no	yes	1	458	24
+leandrocp/mdex	B	library_framework_or_tool	live_view	no	no	yes	1	458	307
+samsondav/rihanna	B	library_framework_or_tool	ecto	no	no	yes	0	455	48
+michalmuskala/plug_attack	B	library_framework_or_tool		no	no	yes	0	454	13
+safwank/ElixirRetry	A	library_framework_or_tool		no	no	yes	0	454	36
+edgurgel/tentacat	B	library_framework_or_tool		no	no	yes	0	452	129
+dwyl/hits	out:copyleft	library_framework_or_tool	phoenix,live_view,ecto	yes	yes	yes	3	451	-
+coryodaniel/bonny	B	library_framework_or_tool		no	no	yes	1	436	220
+esl/gradient	B	unpublished_tool_or_library		no	no	no	0	436	80
+elixir-toniq/raft	B	library_framework_or_tool		no	no	yes	0	434	6
+mathieuprog/polymorphic_embed	B	library_framework_or_tool	live_view,ecto	no	no	yes	0	433	39
+lpil/exfmt	C	library_framework_or_tool		no	no	yes	0	430	33
+sugar-framework/sugar	B	library_framework_or_tool		no	no	yes	0	430	34
+whatyouhide/xandra	B	library_framework_or_tool		no	no	yes	1	430	223
+losvedir/transit-lang-cmp	B	unclear_no_root_mix		no	no	no	0	425	2
+prometheus-erl/prometheus.ex	A	library_framework_or_tool		no	no	yes	0	425	24
+Zatvobor/tirexs	B	library_framework_or_tool		no	no	yes	0	424	83
+dwyl/phoenix-liveview-counter-tutorial	out:copyleft	learning_or_template	phoenix,live_view	yes	no	no	3	424	-
+poteto/terraform	B	library_framework_or_tool	phoenix	no	no	yes	0	423	21
+neodgm/neodgm	check:licence	unpublished_tool_or_library		no	no	no	0	422	3
+antonmi/flowex	B	library_framework_or_tool		no	no	yes	0	421	10
+danielberkompas/elasticsearch-elixir	B	library_framework_or_tool	ecto	no	no	yes	2	420	39
+hexedpackets/trot	B	library_framework_or_tool		no	no	yes	0	417	10
+chrismccord/todo_trek	B	application_web	phoenix,live_view,ecto	yes	yes	no	0	416	1
+jonklein/niex	check:no_licence_file	application_web	phoenix,live_view	yes	yes	no	0	414	2
+parroty/extwitter	B	library_framework_or_tool		no	no	yes	0	411	89
+chrisgreg/bloom	B	library_framework_or_tool	phoenix,live_view	no	no	yes	0	409	13
+CrowdHailer/raxx	B	library_framework_or_tool		no	no	yes	0	407	73
+kagux/ex_debug_toolbar	check:no_licence_file	library_framework_or_tool	phoenix,ecto	no	no	yes	0	407	51
+arjan/decorator	A	library_framework_or_tool		no	no	yes	0	406	23
+nerves-project/nerves_examples	check:no_licence_file	learning_or_template		no	no	no	0	405	594
+straightdave/programming_elixir	check:no_licence_file	unclear_no_root_mix		no	no	no	0	404	9
+ArneVogel/listudy	out:copyleft	application_web	phoenix,live_view,ecto	yes	yes	no	0	403	-
+msaraiva/atom-elixir	B	unclear_no_root_mix		no	no	no	0	403	6
+mschae/cors_plug	A	library_framework_or_tool		no	no	yes	0	403	40
+woylie/doggo	B	library_framework_or_tool	live_view	no	no	yes	2	403	729
+labzero/bootleg	B	library_framework_or_tool		no	no	yes	0	402	224
+riverrun/phauxth	check:no_licence_file	library_framework_or_tool		no	no	yes	0	402	22
+robinmonjo/coincoin	check:no_licence_file	unpublished_tool_or_library		yes	no	no	2	399	16
+mrluc/peerage	B	library_framework_or_tool		no	no	yes	0	398	8
+rrrene/elixir-style-guide	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	396	7
+elixir-ecto/ecto_psql_extras	B	library_framework_or_tool	ecto	no	no	yes	0	395	51
+cocoa-xu/evision	B	library_framework_or_tool	nx	no	no	yes	0	394	237
+fredwu/simple_bayes	check:no_licence_file	library_framework_or_tool		no	no	yes	0	394	2
+BennyHallett/obelisk	C	library_framework_or_tool		no	no	yes	0	393	10
+jonasschmidt/ex_json_schema	A	library_framework_or_tool	phoenix	no	no	yes	0	393	23
+mana-ethereum/ethereumex	B	library_framework_or_tool		no	no	yes	1	393	120
+alfert/propcheck	out:copyleft	library_framework_or_tool		no	no	yes	0	392	-
+dashbitco/nimble_pool	A	library_framework_or_tool		no	no	yes	0	391	35
+marciok/gust	C	unpublished_tool_or_library	live_view	yes	no	no	0	391	108
+evadne/etso	B	library_framework_or_tool	ecto	no	no	yes	0	388	4
+cbh123/shlinked	out:copyleft	application_web	phoenix,live_view,ecto	yes	yes	no	3	387	-
+nurugger07/inflex	A	library_framework_or_tool		no	no	yes	0	385	59
+urbint/cortex	C	library_framework_or_tool		no	no	yes	0	383	21
+bitwalker/conform	B	library_framework_or_tool		no	no	yes	0	379	47
+elixir-mongo/mongodb_ecto	B	library_framework_or_tool	ecto	no	no	yes	1	378	45
+kbrw/sweet_xml	A	library_framework_or_tool		no	no	yes	0	378	42
+slab/delta-elixir	B	library_framework_or_tool		no	no	yes	0	378	21
+angristan/docker-pleroma	B	unclear_no_root_mix		no	no	no	2	377	27
+benjamintanweihao/the-little-elixir-otp-guidebook-code	check:no_licence_file	learning_or_template		no	no	no	0	377	10
+eigr/spawn	B	library_framework_or_tool	broadway	no	no	yes	1	376	372
+AndrewDryga/emisar	check:licence	unclear_no_root_mix		no	no	no	1	375	63
+vic/params	B	library_framework_or_tool	ecto	no	no	yes	0	373	25
+elixir-web/weber	B	library_framework_or_tool		no	no	yes	0	372	76
+kbrw/reaxt	B	library_framework_or_tool		no	no	yes	0	372	10
+ZennerIoT/ex_audit	B	library_framework_or_tool	ecto	no	yes	yes	0	371	22
+api-hogs/bureaucrat	B	library_framework_or_tool	phoenix	no	no	yes	0	371	69
+phoenix-diff/phoenix-diff	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	no	no	2	371	295
+slime-lang/slime	B	library_framework_or_tool		no	no	yes	0	371	77
+zorbash/opus	B	library_framework_or_tool		no	no	yes	0	371	15
+agoodway/walex	B	library_framework_or_tool		no	no	yes	1	370	45
+zhyu/nadia	B	library_framework_or_tool		no	no	yes	0	370	72
+Clivern/Lynx	B	application_web	phoenix,live_view,ecto	yes	yes	no	5	368	184
+ThePrimeagen/vim-apm	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	0	368	5
+zyro/elixir-uuid	A	library_framework_or_tool		no	no	yes	0	368	16
+pragdave/component	check:no_licence_file	library_framework_or_tool		no	no	yes	0	366	5
+sasa1977/fsm	B	library_framework_or_tool		no	no	yes	0	364	5
+hissssst/pathex	B	library_framework_or_tool		no	no	yes	0	363	15
+rauversion/rauversion-phx	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	4	362	-
+slashdotdash/conduit	C	learning_or_template	phoenix	yes	yes	no	0	360	6
+kblake/functional-programming	check:no_licence_file	unclear_no_root_mix		no	no	no	0	358	6
+artemeff/redis	B	library_framework_or_tool		no	no	yes	0	357	46
+elixir-ecto/db_connection	A	library_framework_or_tool		no	no	yes	0	353	172
+mgallo/openai.ex	B	library_framework_or_tool		no	no	yes	0	353	27
+dwyl/quotes	out:copyleft	learning_or_template		no	no	yes	0	349	-
+danielberkompas/ex_twilio	A	library_framework_or_tool		no	no	yes	0	348	82
+spandex-project/spandex	A	library_framework_or_tool		no	no	yes	0	346	72
+georgeguimaraes/arcana	C	library_framework_or_tool	live_view,ecto,nx	yes	no	yes	1	345	150
+coryodaniel/k8s	B	library_framework_or_tool		no	no	yes	0	344	272
+jwhiteman/a-little-elixir-goes-a-long-way	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	344	4
+pow-auth/pow_assent	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	343	111
+elixir-lsp/elixir_sense	B	library_framework_or_tool		no	no	yes	0	342	187
+elixir-sqlite/ecto_sqlite3	B	library_framework_or_tool	ecto	no	no	yes	0	342	86
+gutschilla/elixir-pdf-generator	B	library_framework_or_tool		no	no	yes	0	342	29
+appcues/mojito	C	library_framework_or_tool		no	no	yes	0	341	45
+Dahrkael/ExTracker	C	unpublished_tool_or_library		no	no	no	3	340	1
+nerves-livebook/nerves_livebook	B	library_framework_or_tool	nerves,nx	no	no	yes	1	339	373
+JustAman62/progress_bar	B	library_framework_or_tool		no	no	yes	0	338	13
+discord/instruments	B	library_framework_or_tool		no	no	yes	0	338	37
+Anonyfox/elixir-scrape	out:copyleft	library_framework_or_tool		no	no	yes	0	336	-
+dashbitco/bytepack_archive	check:no_licence_file	unpublished_tool_or_library		yes	no	no	1	336	0
+joakimk/toniq	check:no_licence_file	library_framework_or_tool		no	no	yes	0	336	12
+noxdafox/rabbitmq-message-deduplication	out:copyleft	unpublished_tool_or_library		no	no	no	0	335	-
+witchcrafters/algae	B	library_framework_or_tool		no	no	yes	0	335	26
+Nebo15/annon.api	B	library_framework_or_tool	ecto	no	no	yes	2	334	191
+germsvel/phoenix_test	B	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	334	157
+uesteibar/neuron	B	library_framework_or_tool		no	no	yes	0	333	35
+phoenixframework/phoenix_live_reload	A	library_framework_or_tool	phoenix	no	no	yes	0	332	66
+Recruitee/mix_docker	C	library_framework_or_tool		no	no	yes	0	331	11
+karolsluszniak/ex_check	B	library_framework_or_tool		no	no	yes	0	331	24
+felt/geo_postgis	B	library_framework_or_tool	ecto	no	no	yes	0	330	157
+danhper/opencov	B	application_web	phoenix,ecto	no	yes	no	2	327	11
+wojtekmach/oop	check:no_licence_file	library_framework_or_tool		no	no	yes	0	327	6
+lau/tzdata	A	library_framework_or_tool		no	no	yes	0	326	63
+mischov/meeseeks	B	library_framework_or_tool		no	no	yes	0	325	62
+peburrows/goth	A	library_framework_or_tool		no	no	yes	0	325	81
+batate/elixir-pipes	B	library_framework_or_tool		no	no	yes	0	323	10
+svycal/og-image	B	application_web	phoenix,live_view	yes	no	no	2	323	5
+vinsol/nectarcommerce	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	323	28
+Dalgona/Serum	C	library_framework_or_tool		no	no	yes	0	322	35
+witchcrafters/quark	B	library_framework_or_tool		no	no	yes	0	322	14
+OpenFn/lightning	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	4	321	-
+bontaq/textdb	check:no_licence_file	application_web	phoenix,ecto	yes	yes	no	0	319	3
+gausby/tortoise	B	library_framework_or_tool		no	no	yes	0	319	67
+omgnetwork/ewallet	C	unpublished_tool_or_library		no	no	no	3	319	658
+hrzndhrn/recode	B	library_framework_or_tool		no	no	yes	0	316	68
+tallarium/reverse_proxy_plug	B	library_framework_or_tool		no	no	yes	0	316	146
+danielbergholz/techschool.dev	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	3	315	75
+onkel-dirtus/logger_file_backend	B	library_framework_or_tool		no	no	yes	0	315	32
+xou/elixlsx	A	library_framework_or_tool		no	no	yes	0	315	75
+ericentin/gen_state_machine	A	library_framework_or_tool		no	no	yes	0	313	13
+parroty/excheck	B	library_framework_or_tool		no	no	yes	0	313	22
+slime-lang/phoenix_slime	B	library_framework_or_tool	phoenix	no	no	yes	0	311	41
+woylie/let_me	B	library_framework_or_tool		no	no	yes	0	311	177
+rob-brown/MonadEx	B	library_framework_or_tool		no	no	yes	0	309	2
+Tymeslot/tymeslot	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	5	308	-
+elixir-tools/tableau	B	library_framework_or_tool		no	no	yes	0	308	139
+Nebo15/confex	B	library_framework_or_tool		no	no	yes	0	306	27
+codedge-llc/scribe	B	library_framework_or_tool		no	no	yes	0	306	18
+pinterest/riffed	C	library_framework_or_tool		no	no	yes	0	306	27
+patrickgwsmith/Orb	B	library_framework_or_tool		no	no	yes	0	305	3
+CrowdHailer/Ace	B	library_framework_or_tool		no	no	yes	0	304	63
+GenericJam/mob	C	library_framework_or_tool	live_view	no	no	yes	0	304	172
+Artur-Sulej/excellent_migrations	B	library_framework_or_tool		no	no	yes	0	303	21
+CargoSense/briefly	B	library_framework_or_tool		no	no	yes	0	302	26
+lexmag/msgpax	A	library_framework_or_tool		no	no	yes	0	302	38
+bamorim/typed_ecto_schema	C	learning_or_template	ecto	no	no	yes	0	300	39
+doawoo/teex	B	library_framework_or_tool		no	no	yes	0	300	3
+solnic/drops	check:licence	library_framework_or_tool	ecto	no	no	yes	0	300	42
+ahamez/protox	B	library_framework_or_tool		no	no	yes	0	299	269
+tfwright/live_admin	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	2	299	58
+thisistonydang/liveview-svelte-pwa	C	application_web	phoenix,live_view,ecto	yes	yes	no	3	299	0
+elixir-ecto/myxql	B	library_framework_or_tool		no	no	yes	1	298	63
+appcues/exconstructor	A	library_framework_or_tool		no	no	yes	0	297	31
+expede/exceptional	C	library_framework_or_tool		no	no	yes	0	297	12
+hassox/phoenix_guardian	C	learning_or_template	phoenix,ecto	no	yes	no	0	297	9
+Nebo15/logger_json	A	library_framework_or_tool	ecto	no	no	yes	0	296	76
+rrrene/html_sanitize_ex	B	library_framework_or_tool		no	no	yes	0	296	29
+qcam/saxy	B	library_framework_or_tool		no	no	yes	0	295	81
+GoogleCloudPlatform/elixir-samples	C	learning_or_template		no	no	no	0	293	22
+sasa1977/erlangelist	C	unclear_no_root_mix		no	no	no	0	293	12
+appsignal/appsignal-elixir	B	library_framework_or_tool		no	no	yes	1	292	619
+electric-sql/phoenix_sync	C	library_framework_or_tool	live_view,ecto	no	no	yes	1	292	55
+dwyl/elixir-auth-google	out:copyleft	library_framework_or_tool		no	no	yes	0	291	-
+dwyl/phoenix-ecto-encryption-example	check:no_licence_file	learning_or_template	phoenix,live_view,ecto	yes	yes	no	0	291	210
+AlloyCI/alloy_ci	out:copyleft	application_web	phoenix,ecto	no	yes	no	3	290	-
+poeticoding/yolo_elixir	C	library_framework_or_tool	nx	no	no	yes	0	290	12
+utkarshkukreti/ex_top	C	unpublished_tool_or_library		no	no	no	0	289	0
+alfert/reaxive	C	library_framework_or_tool		no	no	yes	0	288	7
+schneidmaster/socializer	C	application_web	phoenix,ecto,absinthe	yes	yes	no	0	288	20
+lexmag/statix	A	library_framework_or_tool		no	no	yes	0	286	16
+keepcosmos/readability	C	library_framework_or_tool		no	no	yes	0	285	33
+rrrene/elixirstatus-web	C	application_web	phoenix	no	yes	no	0	285	20
+chrismccord/elixir_express	check:no_licence_file	unclear_no_root_mix		no	no	no	0	283	7
+ex-phone-number/ex_phone_number	A	library_framework_or_tool		no	no	yes	0	283	40
+alco/hashids-elixir	B	library_framework_or_tool		no	no	yes	0	282	5
+alexdovzhanyn/elixium_core	check:no_licence_file	library_framework_or_tool		no	no	yes	0	282	44
+swoosh/phoenix_swoosh	B	library_framework_or_tool	phoenix	no	no	yes	0	282	406
+nats-io/nats.ex	B	library_framework_or_tool		no	no	yes	0	281	142
+sasa1977/parent	B	library_framework_or_tool		no	no	yes	0	281	15
+ajvondrak/remote_ip	A	library_framework_or_tool		no	no	yes	0	280	10
+gp-pereira/refactorex	C	unpublished_tool_or_library		no	no	no	0	280	5
+synrc/bpmn	C	library_framework_or_tool		no	no	yes	0	280	57
+falood/file_system	A	library_framework_or_tool		no	no	yes	0	279	60
+sagents-ai/sagents	C	library_framework_or_tool	phoenix,ecto	no	no	yes	0	279	200
+BjRo/apex	check:no_licence_file	learning_or_template		no	no	yes	0	278	17
+hexpm/bob	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	2	278	199
+AccessOwl/open_owl	C	unpublished_tool_or_library		no	no	no	2	276	0
+phoenixframework/esbuild	A	library_framework_or_tool		no	no	yes	0	276	42
+hahuang65/beaker	out:copyleft	library_framework_or_tool	phoenix,ecto	yes	no	yes	0	275	-
+mana-ethereum/mana	check:no_licence_file	unpublished_tool_or_library		no	no	no	1	275	468
+mbuhot/ecto_job	C	library_framework_or_tool	ecto	no	no	yes	1	275	42
+fhunleth/muontrap	B	library_framework_or_tool		no	no	yes	0	274	89
+astarte-platform/astarte	check:no_licence_file	unpublished_tool_or_library		no	no	no	4	273	1752
+fidr/phoenix_live_react	C	library_framework_or_tool		no	no	yes	0	273	16
+elixir-desktop/desktop-example-app	C	learning_or_template	phoenix,live_view	yes	no	no	1	272	17
+mrdotb/live_react	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	272	19
+nerves-hub/nerves_hub_web	C	application_web	phoenix,live_view,ecto,oban	yes	yes	no	3	272	2455
+phoenixframework/firenest	C	unpublished_tool_or_library		no	no	no	0	272	11
+carleryd/elm-hipster-stack	check:no_licence_file	application_web	phoenix,absinthe	yes	yes	no	0	271	7
+ecsx-framework/ECSx	out:copyleft	library_framework_or_tool		no	no	yes	0	270	-
+zookzook/elixir-mongodb-driver	B	library_framework_or_tool		no	no	yes	0	270	122
+AntonFagerberg/rackla	C	library_framework_or_tool		no	no	yes	0	269	8
+fredwu/opq	check:no_licence_file	library_framework_or_tool		no	no	yes	0	269	6
+DockYard/flame_on	C	library_framework_or_tool	live_view,ecto	no	no	yes	0	268	33
+dwyl/learn-elasticsearch	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	268	9
+florinpatrascu/bolt_sips	C	library_framework_or_tool		no	no	yes	1	268	38
+SchedEx/SchedEx	C	library_framework_or_tool		no	no	yes	0	267	48
+TheAlgorithms/Elixir	C	unpublished_tool_or_library		no	no	no	0	267	15
+elixir-ecto/connection	A	library_framework_or_tool		no	no	yes	0	267	13
+newrelic/elixir_agent	B	library_framework_or_tool	phoenix,ecto,oban,absinthe	no	no	yes	0	267	337
+elixir-dbvisor/sql	C	library_framework_or_tool		no	no	yes	0	266	16
+holsee/chroxy	C	library_framework_or_tool		no	no	yes	1	266	20
+pragdave/quixir	check:no_licence_file	library_framework_or_tool		no	no	yes	0	266	3
+srcrip/live_toast	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	2	265	33
+elixir-plug/plug_cowboy	A	library_framework_or_tool		no	no	yes	0	264	57
+phoenix-playground/phoenix_playground	check:no_licence_file	learning_or_template	phoenix,live_view	no	no	yes	0	264	13
+djm/table_rex	A	library_framework_or_tool		no	no	yes	0	263	28
+andersju/webbkoll	C	application_web	phoenix,live_view	yes	no	no	0	262	5
+derpibooru/philomena	out:copyleft	application_web	phoenix,ecto	yes	yes	no	1	262	-
+nietaki/rexbug	B	library_framework_or_tool		no	no	yes	0	262	21
+xerions/mariaex	B	library_framework_or_tool		no	no	yes	0	262	100
+supabase/libcluster_postgres	C	library_framework_or_tool		no	no	yes	2	261	23
+timmhirsens/vscode-elixir	C	unclear_no_root_mix		no	no	no	0	261	38
+edgurgel/solid	B	library_framework_or_tool		no	no	yes	0	260	122
+beam-telemetry/telemetry_metrics	A	library_framework_or_tool		no	no	yes	0	259	88
+deepfates/imp	C	library_framework_or_tool		no	no	yes	0	259	275
+membraneframework/boombox	C	library_framework_or_tool		no	no	yes	0	259	95
+tony612/exchat	check:no_licence_file	application_web	phoenix,ecto	no	yes	no	0	259	0
+bitcrowd/carbonite	C	library_framework_or_tool	ecto	no	no	yes	0	258	109
+hiett/serverless-redis-http	C	unpublished_tool_or_library		no	no	no	2	258	12
+still-ex/still	C	library_framework_or_tool		no	no	yes	0	257	150
+costajob/app-servers	check:no_licence_file	unclear_no_root_mix		no	no	no	0	256	7
+dimamik/torus	C	library_framework_or_tool	ecto,nx	no	no	yes	0	256	8
+werbitzky/elastix	B	library_framework_or_tool		no	no	yes	0	254	48
+membraneframework/membrane_demo	C	learning_or_template		no	no	no	0	253	185
+stavro/arc_ecto	B	library_framework_or_tool	ecto	no	no	yes	0	253	29
+benawad/stripcode	C	application_web	phoenix,live_view,ecto	yes	yes	no	1	252	3
+cainophile/cainophile	C	library_framework_or_tool		no	no	yes	0	252	2
+riverrun/argon2_elixir	B	library_framework_or_tool		no	no	yes	0	252	13
+christomitov/soundbored	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	2	251	38
+elixir-broadway/broadway_kafka	check:no_licence_file	library_framework_or_tool	broadway	no	no	yes	1	251	93
+revelrylabs/elixir-nodejs	C	library_framework_or_tool		no	no	yes	0	251	55
+akash-akya/vix	B	library_framework_or_tool		no	no	yes	0	250	127
+undeadlabs/discovery	C	library_framework_or_tool		no	no	yes	0	250	9
+visciang/telegram	C	unpublished_tool_or_library		no	no	no	0	250	55
+cheerfulstoic/ecto_watch	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	249	22
+elixir-broadway/broadway_dashboard	C	library_framework_or_tool	broadway	no	no	yes	0	249	27
+fuelen/ecto_erd	C	library_framework_or_tool	ecto	no	no	yes	0	249	43
+maxmarcon/live_select	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	3	249	27
+phoenixframework/dns_cluster	B	library_framework_or_tool		no	no	yes	0	249	12
+dojo-toulouse/elixir-koans	check:no_licence_file	learning_or_template		no	no	no	0	248	25
+smpoulsen/focus	C	library_framework_or_tool		no	no	yes	0	247	17
+Nebo15/ecto_mnesia	C	library_framework_or_tool	ecto	no	no	yes	0	245	18
+deployex/deployex	C	library_framework_or_tool		yes	no	yes	1	245	271
+talklittle/ffmpex	C	library_framework_or_tool		no	no	yes	0	245	19
+software-mansion/legion	C	library_framework_or_tool	ecto	no	no	yes	0	244	65
+tyre/gutenex	C	library_framework_or_tool		no	no	yes	0	244	6
+coryodaniel/arbor	C	library_framework_or_tool	ecto	no	yes	yes	1	243	9
+sasa1977/demo_system	check:no_licence_file	learning_or_template		no	no	no	0	243	1
+rockneurotiko/ex_gram	check:licence	library_framework_or_tool		no	no	yes	0	242	141
+sasa1977/ci	C	library_framework_or_tool		no	no	yes	0	242	8
+avdi/dotenv_elixir	C	library_framework_or_tool		no	no	yes	0	241	24
+ForzaElixir/rollbax	C	library_framework_or_tool		no	no	yes	0	240	54
+pikdum/thistle_tea	out:copyleft	application_web	phoenix,live_view	yes	no	no	0	240	-
+alanvardy/exzeitable	C	library_framework_or_tool	phoenix,live_view,ecto	yes	yes	yes	1	239	670
+nickjj/docker-phoenix-example	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	2	239	5
+J0/phoenix_gen_socket_client	C	library_framework_or_tool	phoenix	no	no	yes	0	238	44
+icoretech/codex-pooler	check:licence	application_web	phoenix,live_view,ecto,oban	yes	yes	no	4	238	441
+wemake-services/recase	A	library_framework_or_tool		no	no	yes	0	237	189
+crbelaus/trans	C	library_framework_or_tool	ecto	no	yes	yes	0	236	39
+railsmechanic/nanoid	B	library_framework_or_tool		no	no	yes	0	236	11
+danielberkompas/number	A	library_framework_or_tool		no	no	yes	0	235	39
+etalab/transport-site	check:no_licence_file	unpublished_tool_or_library		no	no	no	3	235	3335
+meyercm/shorter_maps	C	library_framework_or_tool		no	no	yes	0	235	2
+code-corps/code-corps-api	C	application_web	phoenix	yes	yes	no	1	234	670
+tanguilp/wax	C	library_framework_or_tool		no	no	yes	0	234	16
+X-Plane/elixir-raknet	C	unpublished_tool_or_library		no	no	no	0	233	2
+Miosa-osa/canopy	C	application_other	phoenix,ecto,oban	no	no	no	0	232	15
+access-company/antikythera	C	library_framework_or_tool		yes	no	yes	1	232	334
+SiliconJungles/eqrcode	B	library_framework_or_tool		no	no	yes	0	230	18
+elixirdrops/kerosene	C	library_framework_or_tool	ecto	no	yes	yes	0	230	19
+fika-lang/fika	C	unpublished_tool_or_library		no	no	no	1	230	37
+meadery/white-bread	C	library_framework_or_tool		no	no	yes	0	230	51
+peek-travel/cocktail	C	library_framework_or_tool		no	no	yes	0	230	143
+bitwalker/libring	B	library_framework_or_tool		no	no	yes	0	229	15
+hauleth/mix_unused	C	library_framework_or_tool		no	no	yes	0	229	16
+phcurado/zoi	C	library_framework_or_tool		no	no	yes	0	229	156
+tv-labs/lua	C	library_framework_or_tool		no	no	yes	2	229	285
+asonge/loom	C	library_framework_or_tool		no	no	yes	0	228	1
+mneudert/instream	B	library_framework_or_tool		no	no	yes	0	228	21
+pnezis/tucan	C	library_framework_or_tool	nx	no	no	yes	0	228	48
+team-alembic/realworld	C	application_web	phoenix,live_view,ash	yes	yes	no	3	228	6
+sabiwara/aja	C	library_framework_or_tool		no	no	yes	0	227	4
+pgvector/pgvector-elixir	B	library_framework_or_tool	ecto,nx	no	no	yes	0	226	8
+bharani91/ex-shop	C	application_web	phoenix	no	yes	no	1	224	0
+coingaming/moon	C	library_framework_or_tool	phoenix,live_view,ecto	yes	no	yes	2	223	706
+glific/glific	out:copyleft	library_framework_or_tool	phoenix,live_view,ecto,oban,absinthe	yes	yes	yes	3	223	-
+wasmCloud/wasmcloud-otp	C	unclear_no_root_mix		no	no	no	0	223	375
+boydm/phoenix_integration	C	library_framework_or_tool	phoenix	no	no	yes	0	220	29
+jakub-zawislak/formex	C	library_framework_or_tool	phoenix	no	no	yes	0	220	3
+open-telemetry/opentelemetry-erlang-contrib	B	library_framework_or_tool		no	no	yes	0	220	639
+TheFirstAvenger/ets	B	library_framework_or_tool		no	no	yes	0	219	34
+elixir-haystack/haystack	C	library_framework_or_tool		no	no	yes	0	219	2
+jsonkenl/xlsxir	B	library_framework_or_tool		no	no	yes	0	219	53
+meh/elixir-datastructures	check:no_licence_file	library_framework_or_tool		no	no	yes	0	219	1
+nickjj/docker-web-framework-examples	C	learning_or_template		no	no	no	0	219	1
+pinterest/elixir-thrift	C	library_framework_or_tool		no	no	yes	0	219	469
+cblage/elixir-json	B	library_framework_or_tool		no	no	yes	0	218	38
+cyberchitta/openai_ex	C	library_framework_or_tool		no	no	yes	0	218	98
+danhper/ex_cli	C	library_framework_or_tool		no	no	yes	0	218	6
+elixir-makeup/makeup	A	library_framework_or_tool		no	no	yes	0	218	36
+IdahoEv/cowboy-elixir-example	C	learning_or_template		no	no	no	0	217	1
+IvanRublev/Domo	C	library_framework_or_tool	ecto	no	no	yes	0	217	6
+chrismccord/atlas	C	library_framework_or_tool		no	no	yes	0	216	8
+coderplanets/coderplanets_server	C	application_web	phoenix,ecto,absinthe	yes	yes	no	0	216	252
+curiosum-dev/kanta	C	library_framework_or_tool	phoenix,live_view,ecto	yes	yes	yes	0	216	76
+liveshowy/webauthn_components	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	216	53
+mhanberg/advent-of-code-elixir-starter	check:no_licence_file	learning_or_template		no	no	no	0	216	9
+mobileoverlord/phoenix_client	C	library_framework_or_tool	phoenix	no	no	yes	0	216	21
+danielberkompas/cloak_ecto	B	library_framework_or_tool	ecto	no	no	yes	2	215	16
+edisonywh/backoffice	C	application_other	phoenix,live_view,ecto	no	no	no	0	215	27
+elixir-tempo/tempo	C	library_framework_or_tool		no	no	yes	0	215	10
+erlef/security-wg	check:no_licence_file	unclear_no_root_mix		no	no	no	0	215	36
+gleam-lang/mix_gleam	C	library_framework_or_tool		no	no	yes	0	215	17
+implicitly-awesome/exop	C	learning_or_template		no	no	yes	0	215	33
+ma2gedev/power_assert_ex	C	library_framework_or_tool		no	no	yes	0	215	28
+ihumanable/patch	B	library_framework_or_tool		no	no	yes	0	214	56
+jayjun/rambo	C	library_framework_or_tool		no	no	yes	0	214	5
+agentjido/term_ui	C	library_framework_or_tool		no	no	yes	0	213	72
+fully-forged/tune	C	application_web	phoenix,live_view	yes	no	no	0	213	231
+navinpeiris/logster	B	library_framework_or_tool		no	no	yes	0	213	19
+omgnetwork/elixir-omg	C	unpublished_tool_or_library		no	no	no	11	213	1131
+vectordotdev/timber-elixir	C	library_framework_or_tool		no	no	yes	0	213	163
+aeternity/elixir-node	C	unpublished_tool_or_library		no	no	no	3	212	324
+elixir-nx/ortex	C	library_framework_or_tool	nx	no	no	yes	0	212	22
+functional-rewire/dune	C	library_framework_or_tool		no	no	yes	0	212	2
+gurujada/live_table	C	library_framework_or_tool	live_view,ecto	no	yes	yes	0	212	2
+patrickdavey/caster	check:no_licence_file	application_web	phoenix	no	yes	no	0	212	0
+zorbash/observer_live	C	application_web	phoenix,live_view	yes	yes	no	0	212	1
+agentjido/jido_ai	C	library_framework_or_tool		no	no	yes	0	211	191
+antonmi/ALF	C	library_framework_or_tool		no	no	yes	0	211	15
+dashbitco/mix_phx_gen_auth_demo	check:no_licence_file	learning_or_template	phoenix,ecto	yes	yes	no	0	211	2
+rrrene/inch_ex	B	library_framework_or_tool		no	no	yes	0	211	19
+wavezync/durable	C	unpublished_tool_or_library		no	no	no	1	210	30
+curiosum-dev/permit	check:no_licence_file	library_framework_or_tool		no	no	yes	0	209	28
+nickgnd/programming-machine-learning-livebooks	C	unclear_no_root_mix		no	no	no	1	208	2
+dwyl/phoenix-todo-list-tutorial	out:copyleft	learning_or_template	phoenix,live_view,ecto	yes	yes	no	3	207	-
+bitwalker/toml-elixir	B	library_framework_or_tool		no	no	yes	0	206	12
+adolfont/caes005-introduction-to-functional-programming	C	unclear_no_root_mix		no	no	no	0	205	7
+discord/zen_monitor	C	library_framework_or_tool		no	no	yes	0	205	7
+mailman-elixir/mailman	check:licence	library_framework_or_tool		no	no	yes	0	205	36
+melpon/memoize	A	library_framework_or_tool		no	no	yes	0	205	10
+philss/rustler_precompiled	B	library_framework_or_tool		no	no	yes	0	204	69
+software-mansion-labs/live-stash	C	library_framework_or_tool	live_view	no	no	yes	0	204	62
+elixir-lang/elixir_make	A	library_framework_or_tool		no	no	yes	0	203	59
+elixir-volt/volt	C	library_framework_or_tool		no	no	yes	0	203	36
+riverrun/openmaize	C	library_framework_or_tool	ecto	no	no	yes	0	202	30
+ericmj/ex2ms	A	library_framework_or_tool		no	no	yes	0	201	21
+mcrumm/phoenix_profiler	C	library_framework_or_tool	phoenix,live_view	no	no	yes	0	201	30
+bitwalker/combine	A	library_framework_or_tool		no	no	yes	0	200	22
+ex-aws/ex_aws_s3	A	library_framework_or_tool		no	no	yes	0	200	201
+mimiquate/tower	C	library_framework_or_tool	phoenix,live_view,ash,oban	no	no	yes	0	200	167
+obrok/lens	C	library_framework_or_tool		no	no	yes	0	200	9
+rcdilorenzo/filtrex	C	library_framework_or_tool	ecto	no	yes	yes	0	200	26
+danschultzer/ex_oauth2_provider	C	library_framework_or_tool	ecto	no	no	yes	0	199	47
+shinyscorpion/task_bunny	C	library_framework_or_tool		no	no	yes	0	199	41
+appcues/gen_retry	C	library_framework_or_tool		no	no	yes	0	198	10
+elixir-geolix/geolix	B	library_framework_or_tool		no	no	yes	0	198	6
+wojtekmach/mini_repo	check:no_licence_file	unpublished_tool_or_library		no	no	no	2	198	9
+OpenRiak/riak-elixir-client	C	library_framework_or_tool		no	no	yes	0	197	26
+chrismccord/mailgun	C	library_framework_or_tool		no	no	yes	0	197	17
+nurugger07/calliope	C	library_framework_or_tool		no	no	yes	0	197	27
+oestrich/kalevala	C	library_framework_or_tool		no	no	yes	2	197	22
+pedromtavares/moba	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	0	197	15
+edisonywh/gearbox	C	library_framework_or_tool	ecto	no	no	yes	0	196	12
+batate/blacksmith	B	library_framework_or_tool		no	no	yes	0	195	11
+bigardone/calendlex	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	1	195	1
+elixir-broadway/broadway_rabbitmq	check:no_licence_file	library_framework_or_tool	broadway	no	no	yes	1	195	80
+SocialfiPanda/elixir-china	check:no_licence_file	application_web	phoenix	no	yes	no	0	194	32
+elixir-vibe/reach	C	library_framework_or_tool		no	no	yes	0	194	14
+imfycc/short_url	C	application_web	phoenix,ecto	yes	yes	no	1	194	1
+josephwilk/amrita	check:no_licence_file	library_framework_or_tool		no	no	yes	0	194	33
+lucasvegi/Elixir-Refactorings	C	library_framework_or_tool		no	no	yes	0	194	0
+malach-it/boruta-server	C	unpublished_tool_or_library		yes	no	no	6	194	128
+safwank/Numerix	C	library_framework_or_tool		no	no	yes	0	194	5
+danschultzer/premailex	A	library_framework_or_tool		no	no	yes	0	193	74
+georgeguimaraes/elixir-agent-tools	C	unclear_no_root_mix		no	no	no	0	193	5
+heywhy/ex_elasticlunr	C	library_framework_or_tool		no	no	yes	0	193	11
+slogsdon/placid	C	library_framework_or_tool		no	no	yes	0	193	2
+CuatroElixir/slipstream	C	library_framework_or_tool	phoenix	no	no	yes	0	192	46
+tonini/alchemist-server	check:no_licence_file	unclear_no_root_mix		yes	no	no	0	192	7
+akoutmos/doctor	B	library_framework_or_tool		no	no	yes	0	191	30
+coreyti/playwright-elixir	C	library_framework_or_tool		no	no	yes	0	191	20
+littlelines/littlechat	C	application_web	phoenix,live_view,ecto	yes	yes	no	2	191	6
+funbox/optimus	C	library_framework_or_tool		no	no	yes	0	190	13
+msaraiva/elixir_sense	check:no_licence_file	library_framework_or_tool		no	no	yes	0	190	8
+CaptainFact/captain-fact-api	out:copyleft	unpublished_tool_or_library		no	no	no	1	189	-
+akash-akya/exile	C	library_framework_or_tool		no	no	yes	0	189	34
+bigardone/phoenix-and-elm	check:no_licence_file	learning_or_template	phoenix	no	yes	no	0	189	0
+feliperenan/heex_formatter	check:no_licence_file	unpublished_tool_or_library	live_view	no	no	no	0	189	38
+alexdovzhanyn/AlchemyVM	C	library_framework_or_tool		no	no	yes	0	188	17
+thestonefox/elixir_poolboy_example	check:no_licence_file	learning_or_template		no	no	no	0	188	1
+zeam-vm/pelemay	C	library_framework_or_tool		no	no	yes	0	188	58
+joshnuss/xml_builder	A	library_framework_or_tool		no	no	yes	0	187	35
+oban-bg/oban_web	B	library_framework_or_tool	phoenix,live_view,oban	no	no	yes	0	187	44
+strobe-audio/strobe-hub	out:copyleft	unpublished_tool_or_library		no	no	no	0	187	-
+change/linguist	C	library_framework_or_tool		no	no	yes	0	185	73
+boydm/policy_wonk	C	library_framework_or_tool		no	no	yes	0	184	6
+honeybadger-io/honeybadger-elixir	B	library_framework_or_tool	phoenix,ecto,ash	no	no	yes	0	184	480
+phoenixframework/durable_server	C	library_framework_or_tool		no	no	yes	0	184	25
+seb3s/kandesk	C	application_web	phoenix,live_view,ecto	yes	yes	no	0	184	2
+GoogleCloudPlatform/elixir-runtime	C	unpublished_tool_or_library		no	no	no	0	183	16
+fazibear/export	C	library_framework_or_tool		no	no	yes	0	183	5
+joshnuss/commerce_billing	C	library_framework_or_tool		no	no	yes	0	183	6
+phoenixframework/phoenix_pubsub_redis	B	library_framework_or_tool		no	no	yes	0	183	37
+KamilLelonek/yaml-elixir	A	library_framework_or_tool		no	no	yes	0	182	28
+pass-agent/loomkin	C	unclear_no_root_mix		no	no	no	1	182	144
+phcurado/daisy_ui_components	C	library_framework_or_tool	live_view	no	no	yes	0	182	67
+zoedsoupe/anubis-mcp	out:copyleft	library_framework_or_tool		no	no	yes	0	182	205
+Dania02525/apartmentex	C	library_framework_or_tool	ecto	no	no	yes	0	181	25
+MeltwaterArchive/gen_rmq	C	library_framework_or_tool		no	no	yes	1	181	158
+fuelen/ecto_dev_logger	B	library_framework_or_tool	ecto	no	no	yes	0	181	15
+parroty/exprof	B	library_framework_or_tool		no	no	yes	0	180	11
+qgadrian/elixir_git_hooks	B	library_framework_or_tool		no	no	yes	0	180	141
+AgentBull/ankole	C	unclear_no_root_mix		no	no	no	0	179	127
+LivewareProblems/Orion	C	library_framework_or_tool	live_view	yes	no	yes	0	179	3
+elpassion/sprint-poker	C	application_web	phoenix	no	yes	no	1	179	37
+CultivateHQ/seat_saver	check:no_licence_file	application_web	phoenix	no	yes	no	0	178	1
+TheRealReal/new-relixir	C	library_framework_or_tool	phoenix,ecto	no	no	yes	0	178	43
+elixir-mint/castore	A	library_framework_or_tool		no	no	yes	0	178	68
+elixir-toniq/regulator	C	library_framework_or_tool		no	no	yes	0	178	13
+subvisual/fsmx	C	library_framework_or_tool	ecto	no	yes	yes	0	178	10
+CrowdHailer/elixir-on-docker	check:no_licence_file	unclear_no_root_mix		no	no	no	2	176	1
+bitcrowd/sshkit.ex	C	library_framework_or_tool		no	no	yes	0	176	87
+coosto/redex	C	unpublished_tool_or_library		no	no	no	2	176	0
+petalframework/petal_boilerplate	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	0	176	10
+securityelixir/potion_shop	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	0	176	2
+synrc/kvs	C	library_framework_or_tool		no	no	yes	0	176	42
+danielberkompas/immortal	C	library_framework_or_tool		no	no	yes	0	175	5
+elixir-vibe/ex_slop	C	library_framework_or_tool		no	no	yes	0	175	5
+upstarter/automata	C	learning_or_template	ecto	no	no	no	0	175	11
+vic/expat	C	library_framework_or_tool		no	no	yes	0	175	1
+harmont-dev/hyper	C	library_framework_or_tool	ecto	no	yes	yes	0	174	88
+josevalim/sync	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	0	174	2
+elixirschool/school_house	C	learning_or_template	phoenix,live_view	yes	no	no	3	173	147
+pkinney/topo	C	library_framework_or_tool		no	no	yes	0	173	15
+testcontainers/testcontainers-elixir	C	library_framework_or_tool		no	no	yes	0	173	121
+bigardone/phoenix-toggl	C	application_web	phoenix	no	yes	no	0	172	1
+emkguts/quokka	C	library_framework_or_tool		no	no	yes	0	172	148
+BanchanArt/banchan	check:licence	application_web	phoenix,live_view,ecto,oban	yes	yes	no	3	171	259
+falood/exsync	C	library_framework_or_tool		no	no	yes	0	170	37
+DockYard/inquisitor	C	library_framework_or_tool	ecto	no	no	yes	0	169	24
+team-alembic/ash_authentication	B	library_framework_or_tool	ash	no	yes	yes	0	169	870
+telegex/telegex	C	library_framework_or_tool		no	no	yes	1	169	2
+evadne/packmatic	C	library_framework_or_tool		no	no	yes	0	168	6
+wraft/wraft	out:copyleft	application_web	phoenix,ecto,oban	yes	yes	no	5	168	-
+DockYard/ecto_fixtures	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	167	38
+dawarich-app/atlas	out:copyleft	unclear_no_root_mix		no	no	no	5	167	-
+mathieuprog/tz	B	library_framework_or_tool		no	no	yes	0	167	11
+surface-ui/surface_catalogue	C	library_framework_or_tool		no	no	yes	0	167	32
+buren/chartkick-ex	C	library_framework_or_tool		no	no	yes	0	166	19
+elixir-nx/scidata	C	library_framework_or_tool		no	no	yes	0	166	28
+heroku/plexy	C	library_framework_or_tool		no	no	yes	0	166	39
+paulanthonywilson/basic_auth	C	library_framework_or_tool		no	no	yes	0	165	25
+spreedly/kaffe	B	library_framework_or_tool		no	no	yes	0	165	44
+oestrich/grapevine	C	unclear_no_root_mix		no	no	no	1	164	90
+satoren/y_ex	C	library_framework_or_tool		no	no	yes	0	164	308
+manukall/phoenix_token_auth	C	library_framework_or_tool	phoenix,ecto	no	no	yes	0	163	25
+talonframework/talon	C	application_other	phoenix	no	no	no	0	163	16
+zanderxyz/veil	C	library_framework_or_tool		no	no	yes	0	163	12
+akoutmos/ecto_dbg	C	library_framework_or_tool	ecto	no	no	yes	0	162	3
+bitwalker/timex_ecto	B	library_framework_or_tool	ecto	no	no	yes	0	162	26
+dwyl/phoenix-liveview-chat-example	check:no_licence_file	learning_or_template	phoenix,live_view,ecto	yes	yes	no	3	162	219
+elixir-nx/emlx	C	unpublished_tool_or_library		no	no	no	0	161	117
+fishcakez/dbg	C	library_framework_or_tool		no	no	yes	0	161	7
+michalmuskala/decompile	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	161	4
+ntrepid8/ex_crypto	B	library_framework_or_tool		no	no	yes	0	161	25
+zven21/mipha	C	application_web	phoenix,ecto	yes	yes	no	1	161	46
+Main-Proxy/main_proxy	C	library_framework_or_tool	phoenix	no	no	yes	0	160	17
+h4cc/slugger	B	library_framework_or_tool		no	no	yes	0	160	14
+Phineas/pika	check:no_licence_file	unclear_no_root_mix		no	no	no	0	159	14
+aj-foster/open-api-generator	C	library_framework_or_tool		no	no	yes	0	159	39
+felt/ultimate-elixir-ci	C	learning_or_template		no	no	no	0	159	35
+mrluc/mex	check:no_licence_file	library_framework_or_tool		no	no	yes	0	159	1
+piotrklibert/pyscrapex	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	159	0
+rubencaro/sshex	C	library_framework_or_tool		no	no	yes	0	159	7
+shankardevy/passport	C	application_other	phoenix	no	no	no	0	159	10
+chrismccord/phoenix_haml	C	library_framework_or_tool	phoenix	no	no	yes	0	158	19
+inaka/Dayron	C	library_framework_or_tool		no	no	yes	0	158	24
+sasa1977/soul_of_erlang_and_elixir	C	application_web	phoenix,live_view	yes	no	no	1	158	1
+supabase-community/supabase-ex	C	library_framework_or_tool	ecto	no	no	yes	0	158	48
+SebastianSzturo/countries	B	library_framework_or_tool		no	no	yes	0	157	29
+akira/exq_ui	B	library_framework_or_tool	phoenix,live_view	yes	no	yes	1	157	64
+discord/deque	C	library_framework_or_tool		no	no	yes	0	157	4
+lexmag/tty2048	C	unpublished_tool_or_library		no	no	no	0	157	1
+pedroassumpcao/incident	C	library_framework_or_tool	ecto	no	no	yes	0	157	152
+brainlid/langchain_demo	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	0	156	8
+norbusan/elixir-debian	C	unclear_no_root_mix		no	no	no	0	156	0
+seanmor5/genex	C	library_framework_or_tool		no	no	yes	0	156	1
+yltsrc/geocalc	B	library_framework_or_tool		no	no	yes	0	156	71
+zachdaniel/git_ops	C	library_framework_or_tool		no	no	yes	0	156	42
+fertapric/async_with	C	library_framework_or_tool		no	no	yes	0	155	34
+bitwalker/exirc	C	library_framework_or_tool		no	no	yes	0	154	52
+blackode/elixir_cli_spinners	check:no_licence_file	library_framework_or_tool		no	no	yes	0	154	5
+cabbage-ex/cabbage	C	library_framework_or_tool		no	no	yes	1	154	35
+devinus/execjs	C	library_framework_or_tool		no	no	yes	0	153	5
+devinus/sh	C	library_framework_or_tool		no	no	yes	0	153	4
+elixir-mint/mint_web_socket	B	library_framework_or_tool		no	no	yes	1	153	20
+jsncmgs1/spotify_ex	C	library_framework_or_tool		no	no	yes	0	153	32
+jvoegele/external_service	C	library_framework_or_tool		no	no	yes	0	153	79
+philomena-dev/philomena	out:copyleft	application_web	phoenix,ecto	yes	yes	no	1	153	-
+rclex/rclex	C	library_framework_or_tool		no	no	yes	1	153	298
+t3dotgg/1app5stacks	C	unclear_no_root_mix		no	no	no	0	153	2
+wemake-services/ecto_autoslug_field	C	library_framework_or_tool	ecto	no	no	yes	0	153	276
+fredwu/stemmer	check:no_licence_file	library_framework_or_tool		no	no	yes	0	152	1
+cronokirby/alchemy	C	library_framework_or_tool		no	no	yes	0	151	57
+devonestes/assertions	B	library_framework_or_tool	ecto,absinthe	no	no	yes	0	151	11
+hswick/exw3	C	library_framework_or_tool		no	no	yes	1	151	79
+scrogson/oauth2_example	C	learning_or_template	phoenix,ecto	no	yes	no	0	151	12
+talentdeficit/exjsx	C	library_framework_or_tool		no	no	yes	0	151	19
+oestrich/aino	C	library_framework_or_tool		no	no	yes	1	150	5
+streamband/hydra-srt	C	application_web	phoenix,ecto	yes	yes	no	4	150	88
+GesJeremie/faker-elixir	check:no_licence_file	library_framework_or_tool		no	no	yes	0	149	4
+Qqwy/elixir-tensor	C	library_framework_or_tool		no	no	yes	0	149	11
+alex-min/ex_platform	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	1	149	1161
+AgilionApps/remix	C	library_framework_or_tool		no	no	yes	0	148	5
+TheRealReal/ecto-ulid	C	library_framework_or_tool	ecto	no	no	yes	0	148	3
+groupoid/henk	C	library_framework_or_tool		no	no	yes	0	148	4
+alexdesousa/ayesql	C	library_framework_or_tool	ecto	no	no	yes	0	147	22
+thmsmlr/livescript	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	147	0
+tompave/fun_with_flags_ui	B	library_framework_or_tool		no	no	yes	0	147	20
+lau/calecto	C	library_framework_or_tool	ecto	no	no	yes	0	146	15
+lubien/elixir-telegram-bot-boilerplate	C	learning_or_template		no	no	no	0	146	12
+slogsdon/elixir-reverse-proxy	C	library_framework_or_tool		no	no	yes	0	146	6
+adoptoposs/adoptoposs	C	application_web	phoenix,live_view,ecto	yes	yes	no	5	145	468
+martosaur/instructor_lite	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	145	78
+minibikini/paasaa	C	library_framework_or_tool		no	no	yes	0	145	73
+pcorey/elixir_poster	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	145	3
+tyrchen/quenya	C	library_framework_or_tool		no	no	yes	0	145	11
+adoptoposs/mjml_nif	B	library_framework_or_tool		no	no	yes	0	144	182
+fabrik42/writing_an_interpreter_in_elixir	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	144	2
+garyf/json_web_token_ex	B	library_framework_or_tool		no	no	yes	0	144	12
+supabase/workflows	C	library_framework_or_tool		no	no	yes	0	144	2
+dbernheisel/phoenix_seo	C	library_framework_or_tool	live_view	no	no	yes	0	143	13
+dwyl/labels	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	3	143	254
+elixir-circuits/circuits_gpio	C	library_framework_or_tool		no	no	yes	0	143	173
+gordalina/hush	C	library_framework_or_tool		no	no	yes	0	143	8
+b310-digital/mindwendel	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	5	142	-
+dwyl/auth	out:copyleft	library_framework_or_tool	phoenix,live_view,ecto	yes	yes	yes	4	142	-
+georgeguimaraes/soothsayer	C	library_framework_or_tool	nx	no	no	yes	0	142	37
+bobfp/skooma	C	library_framework_or_tool		no	no	yes	0	141	7
+derekkraan/highlander	B	library_framework_or_tool		no	no	yes	0	141	0
+msharp/elixir-statistics	B	library_framework_or_tool		no	no	yes	0	141	22
+stavro/remodel	C	library_framework_or_tool		no	no	yes	0	141	3
+tleyden/neurlang	out:copyleft	unpublished_tool_or_library		no	no	no	0	141	-
+zachallaun/mneme	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	141	19
+elixir-inspector/ua_inspector	B	library_framework_or_tool		no	no	yes	0	140	7
+keathley/twirp-elixir	C	library_framework_or_tool		no	no	yes	0	140	79
+polleverywhere/chaperon	C	library_framework_or_tool		no	no	yes	0	140	15
+witchcrafters/type_class	C	library_framework_or_tool		no	no	yes	0	140	28
+cblavier/phx_component_helpers	C	learning_or_template	live_view	no	no	yes	0	139	9
+elixir-lang/registry	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	139	5
+keathley/distsys_training	check:no_licence_file	unclear_no_root_mix		no	no	no	0	139	7
+martinthenth/uuidv7	B	library_framework_or_tool	ecto	no	no	yes	0	139	52
+Spectral-Finance/lux	C	unclear_no_root_mix		no	no	no	0	138	122
+antonmi/espec_phoenix	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	138	34
+elixir-soap/soap	C	library_framework_or_tool		no	no	yes	0	138	59
+fewlinesco/bamboo_smtp	C	library_framework_or_tool		no	no	yes	0	138	134
+mbta/api	C	unpublished_tool_or_library		yes	no	no	3	138	695
+membraneframework-labs/membrane_rtc_engine	C	unclear_no_root_mix		no	no	no	0	138	312
+obmarg/kazan	C	library_framework_or_tool		no	no	yes	0	138	40
+McEx/McEx	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	137	2
+aaronrussell/ollama-ex	C	library_framework_or_tool		no	no	yes	0	137	7
+beamlens/beamlens	C	library_framework_or_tool		no	no	yes	0	137	47
+mruoss/flame_k8s_backend	C	library_framework_or_tool		no	no	yes	0	137	159
+mweibel/facebook.ex	C	library_framework_or_tool		no	no	yes	0	137	51
+ElixirSeattle/tanx	C	unpublished_tool_or_library		yes	no	no	1	136	1
+JohnnyCurran/TimeTravel	C	library_framework_or_tool	phoenix,live_view,ecto	no	no	yes	0	136	4
+albirrkarim/mozilla-hubs-installation-detailed	check:no_licence_file	unclear_no_root_mix		no	no	no	0	136	3
+beardedeagle/mnesiac	C	library_framework_or_tool		no	no	yes	0	136	27
+crbelaus/bun	C	library_framework_or_tool		no	no	yes	0	136	36
+podlove/radiator	C	application_web	phoenix,live_view,ecto,ash,oban	yes	yes	no	3	136	252
+z80dev/lemon	C	unpublished_tool_or_library		yes	no	no	1	136	425
+Gazler/termite	C	library_framework_or_tool		no	no	yes	0	135	5
+akoutmos/mjml_eex	C	library_framework_or_tool		no	no	yes	0	135	14
+benhaney/Jsonrs	C	library_framework_or_tool		no	no	yes	0	135	11
+bitgamma/boltun	check:no_licence_file	library_framework_or_tool		no	no	yes	0	135	4
+handnot2/samly	C	library_framework_or_tool		no	no	yes	0	135	8
+launchscout/live_elements	C	library_framework_or_tool	phoenix,live_view	no	no	yes	0	135	1
+michalmuskala/persistent_ets	C	library_framework_or_tool		no	no	yes	0	135	4
+AlexR2D2/duckdbex	C	library_framework_or_tool		no	no	yes	0	134	17
+batate/shouldi	C	library_framework_or_tool		no	no	yes	0	134	12
+cogini/mix_deploy	C	library_framework_or_tool		no	no	yes	0	134	11
+jamen/elixir-wasm	C	library_framework_or_tool		no	no	yes	0	134	1
+navinpeiris/ex_unit_notifier	B	library_framework_or_tool		no	no	yes	0	134	6
+voltone/x509	B	library_framework_or_tool		no	no	yes	0	134	53
+bleacherreport/plug_logger_json	C	library_framework_or_tool		no	no	yes	0	133	19
+cure-lang/cure-lang	C	library_framework_or_tool		no	no	yes	0	133	32
+elixir-nx/nx_signal	C	library_framework_or_tool	nx	no	no	yes	0	133	28
+exponentially/extreme	C	library_framework_or_tool		no	no	yes	1	133	38
+ozziexsh/bling	check:no_licence_file	library_framework_or_tool	phoenix,live_view,ecto	no	yes	yes	1	133	8
+rao/mc-name-sniper	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	133	0
+bitwalker/artificery	A	library_framework_or_tool		no	no	yes	0	132	6
+wojtekmach/elixir-run	check:no_licence_file	unpublished_tool_or_library		no	no	no	1	132	0
+HCA-Healthcare/elixir-hl7	C	library_framework_or_tool		no	no	yes	0	131	38
+Qqwy/elixir-map_diff	C	library_framework_or_tool		no	no	yes	0	131	10
+bigardone/phoenix-react-redux-template	C	application_web	phoenix	no	yes	no	0	131	1
+jayjun/slugify	B	library_framework_or_tool		no	no	yes	0	131	6
+skirino/croma	C	library_framework_or_tool		no	no	yes	0	131	9
+BennyHallett/anubis	C	library_framework_or_tool		no	no	yes	0	130	2
+am-kantox/finitomata	C	library_framework_or_tool		no	no	yes	0	130	34
+andreapavoni/nova	check:no_licence_file	application_web	phoenix	no	yes	no	0	130	4
+davydog187/timescale	C	library_framework_or_tool	ecto	no	yes	yes	0	130	23
+mcass19/ex_ratatui	C	library_framework_or_tool		no	no	yes	0	130	82
+randycoulman/mix_test_interactive	C	library_framework_or_tool		no	no	yes	0	130	134
+stueccles/analytics-elixir	A	library_framework_or_tool		no	no	yes	0	130	17
+zoedsoupe/peri	B	library_framework_or_tool	ecto	no	no	yes	0	130	53
+100phlecs/tailwind_formatter	C	library_framework_or_tool		no	no	yes	0	129	29
+ExWeb3/elixir_ethers	C	library_framework_or_tool		no	no	yes	0	129	197
+angelikatyborska/mazes	C	application_web	phoenix,live_view	yes	no	no	0	129	0
+aws-samples/aws-lambda-elixir-runtime	C	learning_or_template		no	no	no	0	129	0
+deepfates/cantrip	C	library_framework_or_tool		no	no	yes	0	129	19
+mikehostetler/wreckit	C	unclear_no_root_mix		no	no	no	0	129	8
+CyrusNuevoDia/geocoder	C	library_framework_or_tool		no	no	yes	0	128	125
+conduitframework/conduit	C	library_framework_or_tool		no	no	yes	0	128	19
+entropealabs/states_language	C	library_framework_or_tool		no	no	yes	0	128	5
+gabiz/tracer	C	library_framework_or_tool		no	no	yes	0	128	0
+sevenseacat/cinder	C	library_framework_or_tool	live_view,ash	no	no	yes	0	128	128
+sproutapp/pavlov	C	library_framework_or_tool		no	no	yes	0	128	33
+virkillz/sveltex	C	library_framework_or_tool		no	no	yes	0	128	1
+VoiceLayer/dispatch	C	library_framework_or_tool		no	no	yes	0	127	0
+rdf-elixir/rdf-ex	C	library_framework_or_tool		no	no	yes	0	127	11
+simonstl/introducing-elixir	check:no_licence_file	learning_or_template		no	no	no	0	127	12
+zblanco/runic	C	library_framework_or_tool		no	no	yes	0	127	31
+elixir-crab/gpui	C	unpublished_tool_or_library		no	no	no	0	126	2
+graphql-elixir/plug_graphql	C	library_framework_or_tool		no	no	yes	0	126	12
+mykewould/crutches	C	library_framework_or_tool		no	no	yes	0	126	61
+navinpeiris/geoip	C	library_framework_or_tool		no	no	yes	0	126	32
+polvalente/handoff	C	library_framework_or_tool		no	no	yes	0	125	26
+E-xyza/Exonerate	C	library_framework_or_tool		no	no	yes	0	124	13
+mgwidmann/scrivener_html	B	library_framework_or_tool	phoenix	no	no	yes	0	124	42
+AgilionApps/relax	C	library_framework_or_tool	ecto	no	no	yes	0	123	12
+cwbriones/scientist	C	library_framework_or_tool		no	no	yes	0	123	2
+elixir-toniq/maestro	C	library_framework_or_tool	ecto	no	yes	yes	0	123	25
+elixir-waffle/waffle_ecto	B	library_framework_or_tool	ecto	no	no	yes	2	123	21
+getpaseo/paseo-relay	C	unpublished_tool_or_library		no	no	no	1	123	5
+mveytsman/heroicons_elixir	B	library_framework_or_tool	live_view	no	no	yes	0	123	19
+revelrylabs/ecto_soft_delete	C	library_framework_or_tool	ecto	no	no	yes	0	123	49
+sevenseacat/tunez	C	learning_or_template	phoenix,live_view,ecto	yes	yes	no	0	123	2
+xavier/xlsx_reader	B	library_framework_or_tool		no	no	yes	0	123	30
+BlakeWilliams/doorman	C	library_framework_or_tool	ecto	no	no	yes	0	122	20
+avencera/fast_rss	C	library_framework_or_tool		no	no	yes	0	122	14
+derek-zhou/liv	out:copyleft	application_web	phoenix,live_view	yes	no	no	0	122	-
+elixir-tools/gen_lsp	C	library_framework_or_tool		no	no	yes	0	122	71
+fremantle-industries/workbench	C	library_framework_or_tool	phoenix,live_view,ecto	yes	yes	yes	3	122	665
+geolessel/vox	check:no_licence_file	library_framework_or_tool		no	no	yes	0	122	22
+liveforeverx/exrun	C	library_framework_or_tool		no	no	yes	0	122	3
+Perhap/perhap	C	library_framework_or_tool		no	no	yes	0	121	4
+ScenicFramework/scenic_new	C	library_framework_or_tool		no	no	yes	0	121	47
+bitfeed-project/bitfeed	C	unpublished_tool_or_library		no	no	no	1	121	28
+bitwalker/uniq	B	library_framework_or_tool	ecto	no	no	yes	0	121	16
+bluzky/tarams	C	library_framework_or_tool		no	no	yes	0	121	19
+tallakt/codepagex	C	library_framework_or_tool		no	no	yes	0	121	20
+wojtekmach/github_ecto	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	121	1
+MatthieuSegret/yummy-phoenix-graphql	check:no_licence_file	application_web	phoenix,absinthe	yes	yes	no	2	120	0
+MikaAK/ecto_shorts	C	library_framework_or_tool	ecto	no	yes	yes	0	120	39
+alfredbaudisch/pardall_markdown	C	library_framework_or_tool	ecto	no	no	yes	0	120	9
+izelnakri/eth	C	library_framework_or_tool		no	no	yes	1	120	20
+ospaarmann/exdgraph	C	library_framework_or_tool		no	no	yes	1	120	10
+pragdave/mix_generator	C	library_framework_or_tool		no	no	yes	0	120	4
+rbino/tigerbeetlex	C	library_framework_or_tool		no	no	yes	0	120	104
+shankardevy/mango	C	application_web	phoenix	yes	yes	no	0	120	1
+thmsmlr/livebook_tools	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	120	1
+Simon-Initiative/oli-torus	C	application_web	phoenix,live_view,ecto,oban,broadway	yes	yes	no	4	119	5116
+acalejos/flint	C	library_framework_or_tool	ecto	no	no	yes	0	119	2
+elixir-ecto/tds	C	library_framework_or_tool		no	no	yes	1	119	70
+elixir-sqlite/sqlitex	C	library_framework_or_tool		no	no	yes	0	119	72
+elixir-vibe/ex_dna	C	library_framework_or_tool		no	no	yes	0	119	3
+georgeguimaraes/tribunal	C	library_framework_or_tool		no	no	yes	0	119	49
+hansihe/live_data	check:no_licence_file	library_framework_or_tool	phoenix	no	no	yes	0	119	0
+hrzndhrn/beam_file	C	library_framework_or_tool		no	no	yes	0	119	18
+pushex-project/pushex	C	library_framework_or_tool	phoenix	yes	no	yes	0	119	27
+stuart/elixir-webdriver	C	library_framework_or_tool		no	no	yes	0	119	15
+thatsme/AlexClaw	C	application_web	phoenix,live_view,ecto	yes	yes	no	6	119	0
+PragTob/deep_merge	A	library_framework_or_tool		no	no	yes	0	118	15
+blue-heron/blue_heron	check:no_licence_file	library_framework_or_tool		no	no	yes	0	118	94
+elixir-sqlite/sqlite_ecto2	C	library_framework_or_tool	ecto	no	no	yes	0	118	205
+esl/MongooseICE	C	library_framework_or_tool		no	no	yes	1	118	36
+mattvonrocketstein/elixir-microservice-architecture	check:no_licence_file	unpublished_tool_or_library		no	no	no	2	118	0
+msaraiva/exsamples	C	library_framework_or_tool		no	no	yes	0	118	5
+rrrene/bunt	A	library_framework_or_tool		no	no	yes	0	118	7
+tyre/imagineer	C	library_framework_or_tool		no	no	yes	0	118	10
+bettyblocks/sql_dust	check:no_licence_file	library_framework_or_tool	ecto	no	no	yes	0	117	13
+elixir-ai-tools/just_bash	C	library_framework_or_tool		no	no	yes	0	117	68
+zeromq/exzmq	out:copyleft	library_framework_or_tool		no	no	yes	0	117	-
+Ljzn/ElixrGettingStartedChinese	check:no_licence_file	unclear_no_root_mix		no	no	no	0	116	2
+elixir-vibe/pi-elixir	check:no_licence_file	unclear_no_root_mix		no	no	no	0	116	8
+exthereum/evm	C	library_framework_or_tool		no	no	yes	0	116	38
+doorgan/channel_handler	C	library_framework_or_tool	phoenix	no	no	yes	0	115	4
+ericdude4/shopifex	C	library_framework_or_tool	phoenix,live_view,ecto	yes	no	yes	0	115	38
+fireproofsocks/dotenvy	B	library_framework_or_tool		no	no	yes	0	115	20
+sentientwave/automata	check:licence	unpublished_tool_or_library	live_view	yes	no	no	4	115	48
+tungd/elixir-dns	B	library_framework_or_tool		no	no	yes	0	115	21
+alice-bot/alice	C	library_framework_or_tool		no	no	yes	0	114	113
+nerves-networking/vintage_net	C	library_framework_or_tool		no	no	yes	0	114	450
+redrabbit/rethinkdb_ecto	C	library_framework_or_tool	ecto	no	no	yes	0	114	10
+revelrylabs/elixir_react_render	C	library_framework_or_tool		no	no	yes	0	114	27
+suvash/hulaaki	C	library_framework_or_tool		no	no	yes	2	114	20
+zambal/eml	C	library_framework_or_tool		no	no	yes	0	114	2
+8thlight/ex_state	C	library_framework_or_tool	ecto	no	no	yes	0	113	1
+Diamond/pxblog	check:no_licence_file	learning_or_template	phoenix	no	yes	no	0	113	16
+Strech/avrora	B	library_framework_or_tool		no	no	yes	0	113	71
+akoutmos/deno_ex	C	library_framework_or_tool		no	no	yes	0	113	25
+andrewtimberlake/elixir-pdf	C	library_framework_or_tool		no	no	yes	0	113	15
+chadbrading-zz/phoenix-webrtc	check:no_licence_file	application_other	phoenix	no	no	no	0	113	1
+elixir-vibe/vibe	C	library_framework_or_tool	phoenix,live_view,ecto	no	yes	yes	0	113	0
+girishramnani/elixir-ksuid	C	library_framework_or_tool		no	no	yes	0	113	1
+kblake/neural_network_elixir	check:no_licence_file	library_framework_or_tool		no	no	yes	0	113	3
+samueljseay/recaptcha	C	library_framework_or_tool		no	no	yes	0	113	33
+sikanhe/apollo-tracing-elixir	B	library_framework_or_tool	absinthe	no	no	yes	0	113	8
+software-mansion/voyager	check:licence	application_web	phoenix,live_view,ecto	yes	yes	no	1	113	234
+stephanos/rewire	C	library_framework_or_tool		no	no	yes	0	113	16
+victorolinasc/junit-formatter	A	library_framework_or_tool		no	no	yes	0	113	26
+vt-elixir/ja_resource	C	learning_or_template	phoenix,ecto	no	no	yes	0	113	38
+yeo/betterdev.link	C	unclear_no_root_mix		no	no	no	2	113	11
+akash-akya/ex_cmd	C	library_framework_or_tool		no	no	yes	0	112	30
+bedrock-kv/bedrock	C	library_framework_or_tool		no	no	yes	0	112	185
+elixir-toniq/mentat	C	library_framework_or_tool		no	no	yes	0	112	15
+esl/MongoosePush	C	application_web	phoenix	yes	no	no	2	112	152
+sheharyarn/ecto_rut	C	library_framework_or_tool	ecto	no	no	yes	0	112	0
+Adzz/ecto_morph	C	library_framework_or_tool	ecto	no	no	yes	0	111	35
+acutario/ravenx	C	library_framework_or_tool		no	no	yes	0	111	19
+alexocode/knigge	C	library_framework_or_tool		no	no	yes	0	111	8
+elixir-toolshed/toolshed	C	library_framework_or_tool		no	no	yes	0	111	150
+gmcabrita/bloomex	C	library_framework_or_tool		no	no	yes	0	111	21
+lambdaclass/lambda_ethereum_consensus	C	application_other	phoenix	no	no	no	1	111	815
+mhanberg/lazyasdf	C	unpublished_tool_or_library		no	no	no	0	111	4
+revelrylabs/text_chunker_ex	C	library_framework_or_tool		no	no	yes	0	111	78
+PhoenixInAction/phoenix-in-action	check:no_licence_file	learning_or_template		no	no	no	0	110	1
+WhiteRookPL/learn-elixir-the-hard-way	check:licence	learning_or_template		no	no	no	1	110	0
+arjan/singleton	C	library_framework_or_tool		no	no	yes	0	110	6
+danielberkompas/destructure	C	library_framework_or_tool		no	no	yes	0	110	5
+elixir-vibe/phoenix_replay	C	library_framework_or_tool	live_view,ecto,oban	no	no	yes	0	110	37
+ityonemo/mavis	C	library_framework_or_tool		no	no	yes	0	110	43
+mcrumm/live_upload_example	check:no_licence_file	learning_or_template	phoenix,live_view,ecto	yes	yes	no	2	110	8
+mtrudel/hap	C	library_framework_or_tool		no	no	yes	0	110	217
+benvp/ex_cva	C	library_framework_or_tool	live_view	no	no	yes	0	109	2
+chrismccord/fly_deploy	C	library_framework_or_tool	live_view	no	no	yes	0	109	9
+danhper/elixir-browser	B	library_framework_or_tool		no	no	yes	0	109	23
+dmkenney/xamal	C	library_framework_or_tool		no	no	yes	0	109	24
+fcevado/phone	A	library_framework_or_tool		no	no	yes	0	109	141
+francis-build/francis	C	learning_or_template		no	no	yes	0	109	60
+sportradar/elixir-workspace	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	109	8
+superfly/fly_postgres_elixir	C	library_framework_or_tool	ecto	no	no	yes	0	109	18
+zhongwencool/maxwell	C	library_framework_or_tool		no	no	yes	0	109	51
+assert-value/assert_value_elixir	C	library_framework_or_tool		no	no	yes	0	108	5
+dwyl/imgup	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	3	108	204
+elixir-dux/dux	C	library_framework_or_tool	nx	no	no	yes	0	108	50
+funbox/smppex	C	library_framework_or_tool		no	no	yes	1	108	38
+gridpoint-com/plox	C	library_framework_or_tool	live_view	no	no	yes	0	108	17
+memoetapp/memoet	out:copyleft	application_web	phoenix,live_view,ecto,oban	yes	yes	no	4	108	-
+nerves-project/nerves_system_rpi0	check:no_licence_file	library_framework_or_tool	nerves	no	no	yes	0	108	385
+qcam/nabo	C	library_framework_or_tool		no	no	yes	0	108	9
+usecanvas/api-v2	C	application_web	phoenix,ecto	no	yes	no	2	108	0
+dannote/ghostty_ex	C	library_framework_or_tool	live_view	no	no	yes	0	107	5
+derekkraan/merkle_map	B	library_framework_or_tool		no	no	yes	0	107	7
+findmypast/vaultex	C	library_framework_or_tool		no	no	yes	1	107	28
+folz/math	C	library_framework_or_tool		no	no	yes	0	107	20
+gofenix/nex	C	unclear_no_root_mix		no	no	no	0	107	0
+ndreynolds/toby	C	unpublished_tool_or_library		no	no	no	1	107	3
+norbajunior/machinist	C	library_framework_or_tool		no	no	yes	0	107	16
+parkerl/ecto_query_library	check:no_licence_file	application_other	ecto	no	yes	no	0	107	2
+peburrows/kane	C	library_framework_or_tool		no	no	yes	0	107	20
+progval/matrix2051	out:copyleft	unpublished_tool_or_library		no	no	no	0	107	-
+smeevil/cloudex	check:licence	library_framework_or_tool		no	no	yes	0	107	34
+sorentwo/flippant	C	library_framework_or_tool		no	no	yes	0	107	171
+dashbitco/lazy_html	C	library_framework_or_tool		no	no	yes	0	106	27
+elixir-nx/xla	C	library_framework_or_tool		no	no	yes	0	106	58
+keatz55/phoenix_ui	C	application_web	phoenix,live_view	yes	no	no	3	106	33
+lexmag/fluxter	C	library_framework_or_tool		no	no	yes	0	106	16
+lpil/icalendar	C	library_framework_or_tool		no	no	yes	0	106	31
+orthagonal/langchainex	C	library_framework_or_tool	nx	no	no	yes	0	106	25
+rabbitmq/rabbitmq-cli	check:licence	unpublished_tool_or_library		no	no	no	0	106	264
+Ethelo/kronky	C	library_framework_or_tool	ecto,absinthe	no	no	yes	0	105	4
+ZXZs/elixir-design-patterns	check:no_licence_file	unclear_no_root_mix		no	no	no	0	105	0
+balance-platform/pillar	C	library_framework_or_tool		no	no	yes	1	105	46
+beam-community/formulator	C	library_framework_or_tool	ecto	no	no	yes	0	105	40
+britton-jb/sentinel	C	library_framework_or_tool	phoenix,ecto	no	no	yes	0	105	20
+gmtprime/skogsra	C	library_framework_or_tool		no	no	yes	0	105	19
+gmtprime/yggdrasil	C	library_framework_or_tool		no	no	yes	0	105	3
+ikeikeikeike/sitemap	C	library_framework_or_tool	ecto	no	no	yes	0	105	14
+mroth/exmoji	C	library_framework_or_tool		no	no	yes	0	105	13
+omohokcoj/filterable	C	library_framework_or_tool	ecto	no	yes	yes	0	105	3
+rkallos/peep	B	library_framework_or_tool		no	no	yes	0	105	43
+team-telnyx/pogo	out:copyleft	library_framework_or_tool		no	no	yes	0	105	-
+wyeworks/boom	C	library_framework_or_tool	phoenix	no	no	yes	0	105	68
+beyond-all-reason/teiserver	C	library_framework_or_tool	phoenix,live_view,ecto,oban	yes	yes	yes	4	104	1210
+danhper/pushex	C	library_framework_or_tool		no	no	yes	0	104	5
+elixir-circuits/circuits_quickstart	check:no_licence_file	application_nerves	nerves	no	no	no	1	104	182
+elixirscript/elixir-estree	check:no_licence_file	library_framework_or_tool		no	no	yes	0	104	19
+mortont/axon_onnx	C	library_framework_or_tool	nx	no	no	yes	0	104	30
+slashdotdash/eventsourced	C	library_framework_or_tool		no	no	yes	0	104	0
+CargoSense/dart_sass	B	library_framework_or_tool		no	no	yes	0	103	42
+CrowdHailer/pachyderm	check:no_licence_file	library_framework_or_tool		no	no	yes	1	103	6
+akoutmos/litestream	C	library_framework_or_tool		no	no	yes	0	103	6
+beatrichartz/parallel_stream	A	library_framework_or_tool		no	no	yes	0	103	8
+bitcrowd/rag	C	library_framework_or_tool	nx	no	no	yes	0	103	19
+dersnek/chirp	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	0	103	3
+elixir-tools/spitfire	B	library_framework_or_tool		no	no	yes	0	103	101
+fazibear/defql	C	library_framework_or_tool	ecto	no	no	yes	0	103	5
+nsweeting/shopify	check:no_licence_file	library_framework_or_tool		no	no	yes	0	103	52
+sorentwo/braintree-elixir	B	library_framework_or_tool		no	no	yes	0	103	149
+tsurupin/job_search	C	unpublished_tool_or_library		no	no	no	1	103	14
+Cinderella-Man/igthorn	C	unpublished_tool_or_library		no	no	no	1	102	34
+dnlserrano/exavier	C	library_framework_or_tool		no	no	yes	0	102	11
+dvcrn/ex_openai	C	library_framework_or_tool		no	no	yes	0	102	22
+eeue56/elm-blogger	C	application_other	phoenix	no	no	no	0	102	8
+hexlet-basics/hexlet_basics	check:no_licence_file	unpublished_tool_or_library		no	no	no	1	102	159
+kyleaa/libcluster_ec2	B	library_framework_or_tool		no	no	yes	0	102	21
+the-nix-way/nix-flake-dev-environments	check:no_licence_file	learning_or_template		no	no	no	0	102	0
+Group4Layers/ex_image_info	A	library_framework_or_tool		no	no	yes	0	101	8
+QuinnWilton/dissentr	check:no_licence_file	unpublished_tool_or_library		no	no	no	0	101	2
+cabol/kvx	C	library_framework_or_tool		no	no	yes	0	101	2
+cbh123/shinstagram	check:no_licence_file	application_web	phoenix,live_view,ecto	yes	yes	no	3	101	0
+dvcrn/chatgpt-ui	C	application_web	phoenix,live_view,ecto	yes	yes	no	1	101	8
+elixir-nx/tokenizers	C	library_framework_or_tool		no	no	yes	0	101	54
+elixir-plug/mime	A	library_framework_or_tool		no	no	yes	0	101	52
+folz/bento	out:copyleft	library_framework_or_tool		no	no	yes	0	101	-
+maennchen/crontab	A	library_framework_or_tool	ecto	no	no	yes	0	101	171
+mustafaturan/sse	check:no_licence_file	library_framework_or_tool		no	no	yes	0	101	54
+tidewave-ai/mcp_proxy_elixir	C	library_framework_or_tool		no	no	yes	0	101	9
+vic/ok_jose	check:no_licence_file	library_framework_or_tool		no	no	yes	0	101	1
+SweetIQ/expostal	C	library_framework_or_tool		no	no	yes	0	100	5
+asiniy/ecto_state_machine	C	library_framework_or_tool	ecto	no	no	yes	0	100	10
+beam-bots/bb	check:licence	library_framework_or_tool	nx	no	no	yes	0	100	270
+bravobike/efx	C	library_framework_or_tool		no	no	yes	0	100	7
+checkiz/elixir-mongo	C	library_framework_or_tool		no	no	yes	0	100	4
+graphql-elixir/hello_graphql_phoenix	C	learning_or_template	phoenix	no	yes	no	0	100	5
+jfrolich/authorize	check:no_licence_file	library_framework_or_tool		no	no	yes	0	100	4
+notesclub/notesclub	C	application_web	phoenix,live_view,ecto,oban	yes	yes	no	4	100	163
+ryanswapp/react-phoenix-starter-template	check:no_licence_file	learning_or_template	phoenix	no	no	no	0	100	4
