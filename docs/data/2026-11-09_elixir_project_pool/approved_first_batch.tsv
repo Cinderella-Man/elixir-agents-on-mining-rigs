@@ -1,0 +1,41 @@
+repo	approved	kind	licence	licence_read_from	stars	merged_prs	elixir_share	mix_elixir	tool_versions	service_deps	note
+firezone/firezone	2026-11-09	application	Apache-2.0	root file	9172	10976	63.4	-	# Used for static analysis; python 3.11.14; shfmt 3.9.0; # Used to lint Bash scr		mixed languages; the Elixir application sits in a subfolder
+elixir-lang/elixir	2026-11-09	language	Apache-2.0	root file	26707	8267	93.1	-			built with make, tests under lib/*/test
+Logflare/logflare	2026-11-09	application	Apache-2.0	root file	1004	3401	89.9	~> 1.4	elixir 1.19.5-otp-27; erlang 27.3.4.6; nodejs 22.9.0; protoc 28.0; rust 1.96.0; 	ch,ecto_sql,postgrex	needs Postgres and ClickHouse
+phoenixframework/phoenix	2026-11-09	framework	MIT	root file	23213	3144	79.4	-		ecto_sql	JavaScript beside the Elixir code
+elixir-ecto/ecto	2026-11-09	framework	Apache-2.0	root file	6500	2158	99.9	~> 1.15		ecto_sql	
+phoenixframework/phoenix_live_view	2026-11-09	framework	MIT	root file	6837	2011	57.8	~> 1.15			JavaScript and TypeScript are 42 % of the code
+supabase/realtime	2026-11-09	application	Apache-2.0	root file	7678	1687	88.9	~> 1.19		ecto_sql,postgrex	needs Postgres
+elixir-nx/nx	2026-11-09	library	Apache-2.0	subfolder files	2921	1225	93.7	-			three packages (nx, exla, torchx) and no licence file at the root; read in nx/, the other two still to read
+FarmBot/farmbot_os	2026-11-09	application	MIT	root file	1180	1204	71	-	erlang 26.2.5; elixir 1.16.2-otp-26; 	ecto_sqlite3	embedded application; Python is 22 % of the code
+elixir-lang/ex_doc	2026-11-09	tool	Apache-2.0	root file	1619	1089	71	~> 1.15			JavaScript and CSS are 28 % of the code
+supabase/supavisor	2026-11-09	application	Apache-2.0	root file	2284	963	92.5	~> 1.14	rust 1.84.1; elixir 1.18.5-otp-27; nodejs 19.9.0; erlang 27.3.4.16; 	ecto_sql,postgrex	needs Postgres
+nerves-project/nerves	2026-11-09	framework	Apache-2.0	LICENSES folder	2507	920	96	~> 1.20.0 or ~> 1.19.0 or ~> 1.18.0 or ~> 1.17.0 or ~> 1.16.0 or ~> 1.15.1			REUSE layout: documentation is CC-BY-4.0 and the logo has its own terms, so those files stay out
+anoma/anoma	2026-11-09	application	MIT	root file	33549	898	99.5	~> 1.17			33,549 stars against 898 merged pull requests: look at it before use
+swoosh/swoosh	2026-11-09	library	MIT	root file	1530	866	92	~> 1.16			
+elixir-explorer/explorer	2026-11-09	library	MIT	root file	1298	703	84.5	~> 1.15			Rust is 15 % of the code
+elixir-plug/plug	2026-11-09	framework	Apache-2.0	root file	3020	701	93.1	~> 1.15			
+bartblast/hologram	2026-11-09	framework	Apache-2.0	root file	1571	686	57.7	~> 1.19	elixir 1.20.0-otp-29; erlang 29.0.1; nodejs 24.13.0		JavaScript is 42 % of the code
+getsentry/sentry-elixir	2026-11-09	library	MIT	root file	692	669	94	~> 1.13			
+oban-bg/oban	2026-11-09	library	Apache-2.0	root file	4002	591	100	~> 1.15		ecto_sql,ecto_sqlite3,myxql,postgrex	needs Postgres; also SQLite and MySQL engines
+ex-aws/ex_aws	2026-11-09	library	MIT	root file	1344	586	100	~> 1.15	elixir 1.18.4; erlang 28.1; 		
+beam-community/stripity-stripe	2026-11-09	library	MIT	root file	1080	563	100	~> 1.11	elixir 1.19-otp-27; erlang 27.3; 		
+elixir-tesla/tesla	2026-11-09	library	MIT	root file	2076	542	100	~> 1.14	elixir 1.19-otp-28; erlang 28.5; 		
+membraneframework/membrane_core	2026-11-09	framework	Apache-2.0	root file	1521	538	99.9	~> 1.17			
+elixir-lsp/elixir-ls	2026-11-09	tool	Apache-2.0	root file	1781	536	99.5	>= 1.16.0			umbrella project
+papercups-io/papercups	2026-11-09	application	MIT	root file	6123	501	59.3	~> 1.10	erlang 23.0.3; elixir 1.11.3-otp-23; nodejs 12.18.3; postgres 12.3; 	ecto_sql,postgrex	needs Postgres; old toolchain (Elixir 1.11.3, OTP 23); TypeScript is 40 % of the code; last push 2024-02-15
+rrrene/credo	2026-11-09	tool	MIT	root file	5230	486	99.5	>= 1.13.0	erlang 29.0; elixir 1.20.4-otp-29; 		
+elixirs/faker	2026-11-09	library	MIT	root file	1199	479	100	~> 1.6	erlang 29.1.2; elixir 1.20.5; nodejs 26.13.0; 		
+mtrudel/bandit	2026-11-09	library	MIT	root file	1934	467	100	~> 1.13			
+philss/floki	2026-11-09	library	MIT	root file	2149	459	98.5	~> 1.15			
+brainlid/langchain	2026-11-09	library	Apache-2.0	root file	1213	448	100	~> 1.17	elixir 1.20.4-otp-29; erlang 29.0.1; 		
+elixir-ecto/ecto_sql	2026-11-09	library	Apache-2.0	root file	657	441	99.5	~> 1.15		ecto_sql,myxql,postgrex,tds	needs Postgres and MySQL for its integration tests
+quantum-elixir/quantum-core	2026-11-09	library	Apache-2.0	root file	2418	439	100	~> 1.15	erlang 29.1.2; elixir 1.20.5; 		
+petalframework/petal_components	2026-11-09	library	MIT	root file	1065	429	72.3	~> 1.14	erlang 26.2.1; elixir 1.17.2; 		
+elixir-ecto/postgrex	2026-11-09	library	Apache-2.0	README notice	1215	378	100	~> 1.15		postgrex	no licence file; the README carries the Apache-2.0 notice and its Hex package says Apache-2.0
+elixir-wallaby/wallaby	2026-11-09	library	MIT	root file	1806	372	95.3	~> 1.17	elixir 1.19.1-otp-28; erlang 28.1.1	ecto_sql	browser tests need a browser driver
+elixir-nx/axon	2026-11-09	library	Apache-2.0	root file	1698	363	100	~> 1.13	erlang 27.3; elixir 1.20.2-otp-27; 		
+beam-community/bamboo	2026-11-09	library	MIT	root file	1960	362	95.8	~> 1.6	elixir 1.19-otp-27; erlang 27.3; 		
+kafkaex/kafka_ex	2026-11-09	library	MIT	root file	611	357	99.9	~> 1.14			integration tests need a Kafka broker
+surface-ui/surface	2026-11-09	library	MIT	root file	2134	354	100	~> 1.14	erlang 28.3.1; elixir 1.19.5-otp-28; 		
+elixir-mint/mint	2026-11-09	library	Apache-2.0	root file	1418	333	98.9	~> 1.15			

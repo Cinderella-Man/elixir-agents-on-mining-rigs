@@ -1,0 +1,41 @@
+repo	kind	licence	licence_read_from	note
+firezone/firezone	application	Apache-2.0	root file	mixed languages; the Elixir application sits in a subfolder
+elixir-lang/elixir	language	Apache-2.0	root file	built with make, tests under lib/*/test
+Logflare/logflare	application	Apache-2.0	root file	needs Postgres and ClickHouse
+phoenixframework/phoenix	framework	MIT	root file	JavaScript beside the Elixir code
+elixir-ecto/ecto	framework	Apache-2.0	root file	
+phoenixframework/phoenix_live_view	framework	MIT	root file	JavaScript and TypeScript are 42 % of the code
+supabase/realtime	application	Apache-2.0	root file	needs Postgres
+elixir-nx/nx	library	Apache-2.0	subfolder files	three packages (nx, exla, torchx) and no licence file at the root; read in nx/, the other two still to read
+FarmBot/farmbot_os	application	MIT	root file	embedded application; Python is 22 % of the code
+elixir-lang/ex_doc	tool	Apache-2.0	root file	JavaScript and CSS are 28 % of the code
+supabase/supavisor	application	Apache-2.0	root file	needs Postgres
+nerves-project/nerves	framework	Apache-2.0	LICENSES folder	REUSE layout: documentation is CC-BY-4.0 and the logo has its own terms, so those files stay out
+anoma/anoma	application	MIT	root file	33,549 stars against 898 merged pull requests: look at it before use
+swoosh/swoosh	library	MIT	root file	
+elixir-explorer/explorer	library	MIT	root file	Rust is 15 % of the code
+elixir-plug/plug	framework	Apache-2.0	root file	
+bartblast/hologram	framework	Apache-2.0	root file	JavaScript is 42 % of the code
+getsentry/sentry-elixir	library	MIT	root file	
+oban-bg/oban	library	Apache-2.0	root file	needs Postgres; also SQLite and MySQL engines
+ex-aws/ex_aws	library	MIT	root file	
+beam-community/stripity-stripe	library	MIT	root file	
+elixir-tesla/tesla	library	MIT	root file	
+membraneframework/membrane_core	framework	Apache-2.0	root file	
+elixir-lsp/elixir-ls	tool	Apache-2.0	root file	umbrella project
+papercups-io/papercups	application	MIT	root file	needs Postgres; old toolchain (Elixir 1.11.3, OTP 23); TypeScript is 40 % of the code; last push 2024-02-15
+rrrene/credo	tool	MIT	root file	
+elixirs/faker	library	MIT	root file	
+mtrudel/bandit	library	MIT	root file	
+philss/floki	library	MIT	root file	
+brainlid/langchain	library	Apache-2.0	root file	
+elixir-ecto/ecto_sql	library	Apache-2.0	root file	needs Postgres and MySQL for its integration tests
+quantum-elixir/quantum-core	library	Apache-2.0	root file	
+petalframework/petal_components	library	MIT	root file	
+elixir-ecto/postgrex	library	Apache-2.0	README notice	no licence file; the README carries the Apache-2.0 notice and its Hex package says Apache-2.0
+elixir-wallaby/wallaby	library	MIT	root file	browser tests need a browser driver
+elixir-nx/axon	library	Apache-2.0	root file	
+beam-community/bamboo	library	MIT	root file	
+kafkaex/kafka_ex	library	MIT	root file	integration tests need a Kafka broker
+surface-ui/surface	library	MIT	root file	
+elixir-mint/mint	library	Apache-2.0	root file	

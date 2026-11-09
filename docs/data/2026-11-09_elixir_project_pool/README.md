@@ -25,6 +25,32 @@ trust signals. Only metadata was read: nothing was cloned, and no project code r
 - [first_wave.tsv](first_wave.tsv) is the 40 tier-A repositories with the most merged pull requests: 51,592 between
   them.
 
+## The approved first batch
+
+**The first wave was approved on 2026-11-09 as the first batch to build training tasks from, under MIT, Apache-2.0 and
+BSD licences only.** [approved_first_batch.tsv](approved_first_batch.tsv) checks each of the 40 against that rule at
+today's default branch and adds what building it will need:
+
+| Kind | Repositories | Merged pull requests |
+|---|---:|---:|
+| Applications | 7 | 19,630 |
+| The language | 1 | 8,267 |
+| Frameworks | 7 | 10,158 |
+| Libraries | 22 | 11,426 |
+| Tools | 3 | 2,111 |
+
+- **Licences:** 20 are MIT and 20 are Apache-2.0. 37 state it in a licence file at the root. Three do not: `nx` keeps
+  its licence files inside its three package folders (read: `nx/LICENSE`; the other two are still to read), `nerves`
+  uses a `LICENSES` folder (its documentation and logo are under other terms and stay out), and `postgrex` has no
+  licence file, only the Apache-2.0 notice in its README.
+- **Mixed languages:** 8 repositories are less than 80 % Elixir (firezone 63.4 %, phoenix_live_view 57.8 %, hologram
+  57.7 %, papercups 59.3 %, ex_doc 71 %, farmbot_os 71 %, petal_components 72.3 %, phoenix 79.4 %). Pull requests
+  that touch no Elixir give no task, so these yield less than their counts suggest.
+- **Services:** 11 name a database driver in `mix.exs` (two of them are drivers themselves): Postgres most often,
+  logflare also ClickHouse. kafka_ex needs a Kafka broker and wallaby a browser driver for their integration tests.
+- **To look at before use:** anoma (33,549 stars against 898 merged pull requests) and papercups (Elixir 1.11.3 and
+  OTP 23, last pushed 2024-02-15).
+
 ## What the columns mean
 
 | Column | Meaning |
@@ -54,16 +80,21 @@ trust signals. Only metadata was read: nothing was cloned, and no project code r
 |---|---|
 | [projects.tsv](projects.tsv) | all 1,182 repositories, one row each, sorted by stars |
 | [first_wave.tsv](first_wave.tsv) | the 40 tier-A repositories with the most merged pull requests |
+| [approved_first_batch.tsv](approved_first_batch.tsv) | the approved 40: kind, licence and where it was read, Elixir share, toolchain, service dependencies, notes |
+| [first_batch_hand.tsv](first_batch_hand.tsv) | the hand-written columns of that table: kind, licence, notes |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
 | [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
 | [run/prs.sh](run/prs.sh) | merged pull requests, the two root checks and the licence files' first lines |
 | [run/tier.sh](run/tier.sh) | the tiers and the final table |
+| [run/first_batch.sh](run/first_batch.sh) | per approved repository: language shares, root entries, the licence file's first lines, `mix.exs`, `.tool-versions` |
+| [run/approve.sh](run/approve.sh) | joins those checks with the hand-written columns |
 
 ## Commands
 
 ```bash
 export OUT=pool
 bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
+LIST=first_wave.tsv bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve.sh
 ```
 
 ## Provenance

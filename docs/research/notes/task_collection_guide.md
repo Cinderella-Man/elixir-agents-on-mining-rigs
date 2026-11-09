@@ -172,7 +172,7 @@ output. Publishing sessions is publishing parts of that code, so the code's lice
 | Licence | Among the 1,182 repositories | Use | Why |
 |---|---:|---|---|
 | MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause | 826 by GitHub's reading | yes | copying and changing are allowed if the notices are kept; the sister repo's pipeline already works under this rule |
-| ISC, 0BSD, Unlicense, CC0-1.0, MIT-0 | 18 | yes, once added to the allow-list (E51) | the same kind of terms, or fewer |
+| ISC, 0BSD, Unlicense, CC0-1.0, MIT-0 | 18 | not for now (decided 2026-11-09, E51) | the same kind of terms, or fewer; they can be added later |
 | No licence GitHub can name | 285 | only after a read: 125 are permissive by their Hex package or licence file, 141 have no licence file under the usual names, 17 have custom or unclear terms, 2 are copyleft | no licence means no permission |
 | MPL-2.0, LGPL | 10 | no | changed files must stay under the same licence: workable, but it splits the dataset's terms |
 | GPL, AGPL | 42 | no | the rows quoting them would have to carry that licence |
@@ -265,7 +265,9 @@ row whose inputs are not all approved.
 
 ## 12. The order of work
 
-1. Approve the licence allow-list (E51) and the first wave (E46).
+1. Approve the licence allow-list (E51) and the first wave (E46). **Done 2026-11-09:** the first wave of 40 is the
+   first batch, under MIT, Apache-2.0 and BSD only
+   ([the checked list](../../data/2026-11-09_elixir_project_pool/approved_first_batch.tsv)).
 2. Create the mirror organisation and fork the first wave (E47).
 3. Count SWE-rebench V2's and Open-SWE-Traces' Elixir rows and see which repositories they cover (E36, E52).
 4. Build the sandbox rules for third-party projects (E49) and the environment recipes (E50).

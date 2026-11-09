@@ -35,7 +35,7 @@ These can start before the 7-GPU machine is free.
 |---|---|---|---|
 | E17 | the rule for "beats the bar", and six seeds for the bar | a decision | every later comparison |
 | E19 | the sibling and fork rules in E12 (the reserved list is dropped: the bench will not grow for some time) | code | a mining pool that stays clean |
-| E46, E51 | the first wave of 40 projects and the licence allow-list ([guide](task_collection_guide.md)) | a decision | what may be mined |
+| E46, E51 | the first wave of 40 projects and the licence allow-list ([guide](task_collection_guide.md)): **decided 2026-11-09**, the 40 under MIT, Apache-2.0 and BSD only | a decision | what may be mined |
 | E47 | one mirror per project in a GitHub organisation made for the dataset | setup | stable places to clone from |
 | E49, E50 | the sandbox rules and the environment recipes for third-party projects | code | project code that can be run safely |
 | E36, E52 | list the repositories of SWE-rebench V2's 416 Elixir tasks; count Open-SWE-Traces' Elixir sessions | metadata queries | whether E8 and E9 start from ready rows |
@@ -112,7 +112,7 @@ A run is 20 attempts. The published Pi runs generated between 657,391 and 945,85
 
 ## Decisions that unblock the most
 
-1. The first wave of projects (E46) and the licence allow-list (E51). Mining cannot start without them.
+1. Decided 2026-11-09: the first wave of projects (E46) is the first batch, under MIT, Apache-2.0 and BSD only (E51).
 2. The GitHub organisation for the mirrors (E47).
 3. The download of SWE-rebench V2's Elixir rows (E36).
 4. The decision rule and the six-seed bar (E17).
