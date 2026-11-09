@@ -1,0 +1,41 @@
+tier	repo	stars	merged_prs	test_dir	mix_exs	licence_github	licence_class	kind_guess	holdout	archived	created	pushed	forks	size_kb	hex_package	hex_downloads	description
+A	firezone/firezone	9172	10976	no	no	Apache-2.0	permissive	code	-	false	2020-04-22	2026-11-09	464	449644	-	0	Blazing-fast remote access
+A	elixir-lang/elixir	26707	8267	no	no	Apache-2.0	permissive	code	-	false	2011-01-09	2026-11-09	3715	73103	-	0	Simple from zero to scale
+A	Logflare/logflare	1004	3401	yes	yes	Apache-2.0	permissive	code	-	false	2019-01-10	2026-11-09	100	53447	-	0	Never get surprised by a logging bill again. Centralized structured logging for Cloudflare, Vercel, Elixir and Javascript.
+A	phoenixframework/phoenix	23213	3144	yes	yes	MIT	permissive	code	-	false	2014-01-20	2026-11-09	3214	25484	phoenix	159787901	Peace of mind from prototype to production
+A	elixir-ecto/ecto	6500	2158	yes	yes	Apache-2.0	permissive	code	-	false	2013-06-12	2026-11-08	1488	16890	ecto	151201601	A toolkit for data mapping and language integrated query.
+A	phoenixframework/phoenix_live_view	6837	2011	yes	yes	MIT	permissive	code	-	false	2018-09-12	2026-11-05	1061	23742	phoenix_live_view	48557898	Rich, real-time user experiences with server-rendered HTML
+A	supabase/realtime	7678	1687	yes	yes	Apache-2.0	permissive	code	-	false	2019-09-23	2026-11-09	481	17058	-	0	Broadcast, Presence, and Postgres Changes via WebSockets
+A	elixir-nx/nx	2921	1225	no	yes	none	permissive_per_hex	code	-	false	2020-10-29	2026-11-06	234	8240	nx	1847955	Multi-dimensional arrays (tensors) and numerical definitions for Elixir
+A	FarmBot/farmbot_os	1180	1204	yes	yes	MIT	permissive	code	-	false	2014-01-12	2026-11-04	287	83237	-	0	The operating system and all related software that runs on FarmBot's Raspberry Pi.
+A	elixir-lang/ex_doc	1619	1089	yes	yes	NOASSERTION	permissive_per_hex	code	-	false	2012-03-06	2026-11-02	376	15654	ex_doc	101168841	ExDoc produces HTML, EPUB, and Markdown documentation for Erlang and Elixir projects
+A	supabase/supavisor	2284	963	yes	yes	Apache-2.0	permissive	code	-	false	2023-01-12	2026-11-07	125	6076	-	0	A cloud-native, multi-tenant Postgres connection pooler.
+A	nerves-project/nerves	2507	920	yes	yes	none	permissive_per_hex	code	-	false	2016-01-23	2026-11-09	206	8657	nerves	683761	Craft and deploy bulletproof embedded software in Elixir
+A	anoma/anoma	33549	898	yes	yes	MIT	permissive	code	-	false	2021-02-02	2026-06-15	4111	78483	-	0	Reference implementation of Anoma
+A	swoosh/swoosh	1530	866	yes	yes	MIT	permissive	code	-	false	2016-03-04	2026-11-09	269	2529	swoosh	23993149	Compose, deliver and test your emails easily in Elixir
+A	elixir-explorer/explorer	1298	703	yes	yes	MIT	permissive	code	-	false	2021-07-23	2026-09-28	154	3942	-	0	Series (one-dimensional) and dataframes (two-dimensional) for fast and elegant data exploration in Elixir
+A	elixir-plug/plug	3020	701	yes	yes	NOASSERTION	permissive_per_hex	code	-	false	2013-11-15	2026-11-04	607	2901	plug	169690510	Compose web applications with functions
+A	bartblast/hologram	1571	686	yes	yes	Apache-2.0	permissive	code	-	false	2020-07-23	2026-11-09	120	42492	-	0	Full-stack Elixir web framework that runs your Elixir code in the browser
+A	getsentry/sentry-elixir	692	669	yes	yes	MIT	permissive	code	-	false	2014-08-13	2026-11-09	219	3356	sentry	77213742	The official Elixir SDK for Sentry (sentry.io)
+A	oban-bg/oban	4002	591	yes	yes	Apache-2.0	permissive	code	-	false	2019-02-25	2026-11-09	378	3569	oban	29285919	💎 Robust job processing in Elixir, backed by modern PostgreSQL, SQLite3, and MySQL
+A	ex-aws/ex_aws	1344	586	yes	yes	MIT	permissive	code	-	false	2014-09-15	2026-09-22	579	2175	ex_aws	72623439	A flexible, easy to use set of clients AWS APIs for Elixir
+A	beam-community/stripity-stripe	1080	563	yes	yes	MIT	permissive	code	-	false	2015-10-02	2026-11-09	378	5276	-	0	An Elixir Library for Stripe
+A	elixir-tesla/tesla	2076	542	yes	yes	MIT	permissive	code	-	false	2015-03-16	2026-11-08	369	2893	tesla	75650659	The flexible HTTP client library for Elixir, with support for middleware and multiple adapters.
+A	membraneframework/membrane_core	1521	538	yes	yes	Apache-2.0	permissive	code	-	false	2017-01-26	2026-11-09	46	6136	membrane_core	340713	The core of Membrane Framework, multimedia processing framework written in Elixir
+A	elixir-lsp/elixir-ls	1781	536	no	yes	Apache-2.0	permissive	code	-	false	2018-03-25	2026-10-27	229	8945	-	0	A frontend-independent IDE "smartness" server for Elixir. Implements the "Language Server Protocol" standard and provides debugger support v
+A	papercups-io/papercups	6123	501	yes	yes	MIT	permissive	code	-	false	2020-07-15	2024-02-15	581	4816	-	0	Open-source live customer chat
+A	rrrene/credo	5230	486	yes	yes	MIT	permissive	code	-	false	2015-09-27	2026-10-21	457	5895	credo	94808076	A static code analysis tool for the Elixir language with a focus on code consistency and teaching.
+A	elixirs/faker	1199	479	yes	yes	MIT	permissive	code	-	false	2014-04-08	2026-11-06	261	1402	faker	73757079	Faker is a pure Elixir library for generating fake data.
+A	mtrudel/bandit	1934	467	yes	yes	MIT	permissive	code	-	false	2019-11-10	2026-11-09	129	16471	bandit	17784644	Bandit is a pure Elixir HTTP server for Plug & WebSock applications
+A	philss/floki	2149	459	yes	yes	MIT	permissive	code	-	false	2014-11-02	2026-11-03	167	1795	floki	54432525	Floki is a simple HTML parser that enables search for nodes using CSS selectors.
+A	brainlid/langchain	1213	448	yes	yes	NOASSERTION	permissive_per_hex	code	-	false	2023-07-12	2026-11-02	218	3289	langchain	1046020	Elixir implementation of a LangChain style framework that lets Elixir projects integrate with and leverage LLMs.
+A	elixir-ecto/ecto_sql	657	441	yes	yes	Apache-2.0	permissive	code	-	false	2018-10-03	2026-10-17	343	2330	ecto_sql	132235366	SQL-based adapters for Ecto and database migrations
+A	quantum-elixir/quantum-core	2418	439	yes	yes	Apache-2.0	permissive	code	-	false	2015-04-27	2026-11-09	156	1078	quantum	12724202	:watch: Cron-like job scheduler for Elixir
+A	petalframework/petal_components	1065	429	yes	yes	MIT	permissive	code	-	false	2021-10-13	2026-10-21	103	34475	petal_components	1505392	Phoenix + Live View HEEX Components 
+A	elixir-ecto/postgrex	1215	378	yes	yes	none	permissive_per_hex	code	-	false	2013-09-08	2026-10-31	317	2216	postgrex	143692444	PostgreSQL driver for Elixir
+A	elixir-wallaby/wallaby	1806	372	yes	yes	MIT	permissive	code	-	false	2016-02-26	2026-10-22	209	1323	wallaby	3474972	Concurrent browser tests for your Elixir web apps.
+A	elixir-nx/axon	1698	363	yes	yes	Apache-2.0	permissive	code	-	false	2021-01-25	2026-10-08	131	156637	axon	611284	Nx-powered Neural Networks
+A	beam-community/bamboo	1960	362	yes	yes	MIT	permissive	code	-	false	2015-11-03	2026-11-03	340	961	-	0	Testable, composable, and adapter based Elixir email library for devs that love piping.
+A	kafkaex/kafka_ex	611	357	yes	yes	MIT	permissive	code	-	false	2015-01-03	2026-11-09	164	4330	kafka_ex	32476188	Kafka client library for Elixir
+A	surface-ui/surface	2134	354	yes	yes	MIT	permissive	code	-	false	2019-07-17	2026-03-25	144	2872	surface	908929	A server-side rendering component library for Phoenix
+A	elixir-mint/mint	1418	333	yes	yes	Apache-2.0	permissive	code	-	false	2017-10-25	2026-10-25	129	1391	mint	70055817	Functional HTTP client for Elixir with support for HTTP/1 and HTTP/2 🌱

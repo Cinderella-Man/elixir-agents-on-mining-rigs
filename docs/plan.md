@@ -83,6 +83,8 @@ A survey of every row, its extensions and new ideas (2026-11-09):
   to each experiment, and rows E13–E45;
 - [study_order_2026-11.md](research/notes/study_order_2026-11.md): a proposed order for all of them, starting with the
   bar, the ceiling and the task factory.
+- [task_collection_guide.md](research/notes/task_collection_guide.md): how training tasks and sessions are made,
+  which licences the projects need, how their code is run safely, and the pool of 929 candidate projects.
 
 ## Where work runs
 

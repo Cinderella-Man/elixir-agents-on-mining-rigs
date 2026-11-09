@@ -1,0 +1,75 @@
+# The Elixir project pool (2026-11-09)
+
+A list of the Elixir repositories on GitHub that training tasks could be mined from, with each one's licence, size and
+trust signals. Only metadata was read: nothing was cloned, and no project code ran. Registry row:
+[E46](../../../experiments.md). What the tiers are for, and how tasks are made from these projects:
+[the guide](../../research/notes/task_collection_guide.md).
+
+**Result.** GitHub lists 1,182 Elixir repositories with 100 or more stars. 929 of them are candidates:
+
+| Tier | What it means | Repositories | Merged pull requests | With a `test/` folder at the root |
+|---|---|---:|---:|---:|
+| A | permissive licence, a code base, not archived, created before 2024, and 1,000 or more stars or a Hex package with 10,000,000 or more downloads | 171 | 64,766 | 165 |
+| B | the same with 300 or more stars or 1,000,000 or more downloads, created before 2025 | 264 | 28,782 | 251 |
+| C | every other permissive candidate: fewer stars, newer, archived, or learning material and templates | 494 | 59,556 | 438 |
+| check:licence | a custom or unclear licence text | 16 | 8,641 | 11 |
+| check:no_licence_file | no licence file under the usual names | 140 | 13,047 | 99 |
+| out:copyleft | GPL, AGPL, LGPL or MPL | 52 | — | — |
+| out:holdout | the bench's projects and other repositories of their organisations | 45 | — | — |
+
+- Tiers A, B and C together: 929 repositories and 153,104 merged pull requests; 242 repositories have 100 or more
+  merged pull requests and 59 have 500 or more; 546 were pushed to since 2025; 62 are archived.
+- Licences among the 929, as GitHub names them: MIT 587, Apache-2.0 196, ISC 9, BSD-3-Clause 9, Unlicense 5,
+  BSD-2-Clause 3, CC0-1.0 2, MIT-0 1, 0BSD 1. For 116 GitHub named none; 73 of those are permissive by their Hex
+  package's metadata and 43 by the first lines of their licence file. These 116 need the per-file scan before use.
+- [first_wave.tsv](first_wave.tsv) is the 40 tier-A repositories with the most merged pull requests: 51,592 between
+  them.
+
+## What the columns mean
+
+| Column | Meaning |
+|---|---|
+| `tier` | as above |
+| `merged_prs` | merged pull requests (GitHub, 2026-11-09); the raw material for tasks, not a count of tasks |
+| `test_dir`, `mix_exs` | whether the default branch has `test/` and `mix.exs` at its root; "no" often means an umbrella or a mixed-language repository |
+| `licence_github` | GitHub's SPDX id; `NOASSERTION` and `none` mean GitHub could not tell |
+| `licence_class` | `permissive` (GitHub's id), `permissive_per_hex` (the Hex package's licences), `permissive_per_file` (the licence file's first lines), `copyleft`, `weak_copyleft`, `check`, `none` |
+| `kind_guess` | `learning_or_template` when the name or description reads like a list, a course, exercises, an example or a starter; a guess from words, not a review |
+| `holdout` | `bench` for a project of the Elixir SWE Bench, `same_org` for another repository of such a project's organisation |
+| `hex_package`, `hex_downloads` | the most downloaded Hex package whose links name this repository, among Hex's 1,500 most downloaded; 0 means no match, not no downloads |
+
+## What this list is not
+
+- **Not a safety check.** Stars, age and downloads lower the odds of a hostile project. They do not make its code
+  safe to run. Every project's code runs only in the sandbox the guide describes.
+- **Not a licence clearance.** The licence that counts is the one in the repository at a task's commit, read file by
+  file. This table reads today's default branch.
+- **Not a task count.** In two public pipelines, 1.7 % and 2.5 % of pull requests became verified tasks (100,000 of
+  6,000,000 in Scale-SWE; 2,294 of about 90,000 in SWE-bench). At those rates the 929 candidates would give est.
+  2,600 to 3,800 tasks from real pull requests, before planted bugs.
+
+## Files
+
+| File | What it holds |
+|---|---|
+| [projects.tsv](projects.tsv) | all 1,182 repositories, one row each, sorted by stars |
+| [first_wave.tsv](first_wave.tsv) | the 40 tier-A repositories with the most merged pull requests |
+| [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
+| [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
+| [run/prs.sh](run/prs.sh) | merged pull requests, the two root checks and the licence files' first lines |
+| [run/tier.sh](run/tier.sh) | the tiers and the final table |
+
+## Commands
+
+```bash
+export OUT=pool
+bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
+```
+
+## Provenance
+
+- GitHub's REST search (`language:Elixir stars:>=100`, three star ranges) and GraphQL API, read 2026-11-09 with `gh`.
+  A repository whose main language GitHub counts as something else is not in the list.
+- Hex's public API, `packages?sort=total_downloads`, pages 1 to 15, read 2026-11-09.
+- The descriptions are the repositories' own. The hold-out list is the bench's twelve upstream projects.
+- Licence: the tables and scripts in this folder are under this repository's MIT licence.

@@ -119,6 +119,9 @@ The hold-out rule names today's 12 projects only. Three additions close the gap:
   Livebook's Kino) can carry the twin of a bench pull request;
 - forks and vendored copies of the 12, matched by file hashes, not by name.
 
+**Update, the same day:** the bench will not grow for some time, so the reserved list is dropped. The sibling and fork
+screening stays, and the [project pool](../../data/2026-11-09_elixir_project_pool/README.md) marks 45 such repositories.
+
 ## 2. Track A: shrinking Qwen3.8-Flash-Next
 
 ### 2.1 What the cut can and cannot buy

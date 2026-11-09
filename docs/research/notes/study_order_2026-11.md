@@ -7,7 +7,8 @@ there and in [experiments.md](../../../experiments.md); this page only orders th
 ## The order in six lines
 
 1. **Measure before building:** the bar, the ceiling and the failure diagnostics in one block (E1, E13, E20, E15).
-2. **Build the task factory first among the build work** (E19, then E36, E8 and E37, screened by E12, split by E18).
+2. **Build the task factory first among the build work** (E46 to E51, then E36, E8 and E37, screened by E12, split by
+   E18 and E53).
    Every later step consumes its tasks.
 3. **Try the cheapest candidates early:** the rules block in the chat template (E39) and the effort setting (E16).
 4. **Then the cut** (E2, E3 with E22 and E23, E4 with E21's arms), judged by KLD, by tokens per solved case and on
@@ -32,8 +33,11 @@ These can start before the 7-GPU machine is free.
 | Row | Work | Kind | Gives |
 |---|---|---|---|
 | E17 | the rule for "beats the bar", and six seeds for the bar | a decision | every later comparison |
-| E19 | the list of projects reserved for the bench's growth; the sibling and fork rules in E12 | a decision, then code | a mining pool that stays clean |
-| E36 | count SWE-rebench V2's Elixir rows and their repositories | a metadata query | whether E8 starts from several hundred ready tuples |
+| E19 | the sibling and fork rules in E12 (the reserved list is dropped: the bench will not grow for some time) | code | a mining pool that stays clean |
+| E46, E51 | the first wave of 40 projects and the licence allow-list ([guide](task_collection_guide.md)) | a decision | what may be mined |
+| E47 | one mirror per project in a GitHub organisation made for the dataset | setup | stable places to clone from |
+| E49, E50 | the sandbox rules and the environment recipes for third-party projects | code | project code that can be run safely |
+| E36, E52 | list the repositories of SWE-rebench V2's 416 Elixir tasks; count Open-SWE-Traces' Elixir sessions | metadata queries | whether E8 and E9 start from ready rows |
 | E8, E12, E37 | the mining code with the hold-out, for applications, frameworks and libraries | code | tasks in the bench's case format |
 | Q526 | the nine grader gates as checks on every mined task | code | tasks that can be trusted |
 | E39 | the text of the rules block | writing, by the owner or an approved writer | the cheapest candidate |
@@ -105,9 +109,9 @@ A run is 20 attempts. The published Pi runs generated between 657,391 and 945,85
 
 ## Decisions that unblock the most
 
-1. The reserved-projects list (E19). Mining cannot start cleanly without it.
-2. The repository list for mining, with applications and frameworks beside packages (E37, with Q479's list).
-3. The download of SWE-rebench V2's Elixir rows, after the count (E36).
+1. The first wave of projects (E46) and the licence allow-list (E51). Mining cannot start without them.
+2. The GitHub organisation for the mirrors (E47).
+3. The download of SWE-rebench V2's Elixir rows (E36).
 4. The decision rule and the six-seed bar (E17).
 5. Who writes the rules block (E39).
 6. DeepSeek as an approved writer, and the API spend for Q524 (est. $10–35).
