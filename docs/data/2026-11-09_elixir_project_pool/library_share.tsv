@@ -1,0 +1,13 @@
+repo	why
+elixir-lang/elixir	the language and its standard library
+phoenixframework/phoenix	62 of the 63 applications use it
+phoenixframework/phoenix_live_view	35 of the 63 use it
+elixir-ecto/ecto	40 of the 63 use Ecto
+elixir-ecto/ecto_sql	the database half of Ecto
+elixir-plug/plug	under every Phoenix request
+oban-bg/oban	12 of the 63 use it for background jobs
+swoosh/swoosh	the mailer new Phoenix applications ship with
+mtrudel/bandit	the web server new Phoenix applications ship with
+philss/floki	HTML parsing, used in LiveView tests
+elixir-nx/nx	no open application of this size uses Nx, so its own repository stands in
+nerves-project/nerves	one open application uses Nerves, so its own repository stands in

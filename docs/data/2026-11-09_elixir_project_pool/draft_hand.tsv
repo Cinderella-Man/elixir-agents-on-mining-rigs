@@ -1,0 +1,11 @@
+repo	decision	licence	note
+hexpm/hexpm	include	Apache-2.0	no licence file; the README carries the Apache-2.0 notice. The Hex.pm website itself
+Glimesh/glimesh.tv	include	MIT	MIT by its README; its licence file sets other terms for one theme folder, which stays out
+lambdaclass/lambda_ethereum_consensus	exclude		an Ethereum consensus client: not application work of the day-to-day kind
+esl/MongoosePush	exclude		a push-notification relay service with little web or database code
+anoma/anoma	exclude		a blockchain node; uses none of the frameworks
+Miosa-osa/OSA	exclude		an AI agent for the terminal, not an application of the web or device kind
+satoren/y-phoenix-channel	exclude		a library with a demo application
+sgessa/ms2ex	exclude		a game server emulator
+noizu-labs-ml/NoizuPromptLingo	exclude		a prompt language with a small service around it
+thechangelog/changelog.com	include	MIT	MIT by its licence file, which GitHub could not name

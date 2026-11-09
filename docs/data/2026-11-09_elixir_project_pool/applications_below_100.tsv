@@ -1,0 +1,275 @@
+repo	usage_kind	stars	merged_prs	licence_github	uses	web_folder	migrations	test_dir	archived	pushed	holdout	description
+santiment/sanbase2	application_web	94	5112	MIT	phoenix,live_view,ecto,oban,absinthe	yes	yes	yes	false	2026-11-09	-	The GraphQL API server https://api.santiment.net/graphiql. It powers the backend of Sanbase https://app.santiment.net. A
+mbta/dotcom	application_web	82	3171	MIT	phoenix,live_view,ecto	yes	no	yes	false	2026-11-09	-	mbta.com
+mbta/screens	application_web	23	2468	MIT	phoenix,ecto	yes	yes	yes	false	2026-11-09	-	Screens
+edgehog-device-manager/edgehog	application_other	50	1374	Apache-2.0	phoenix,ecto,ash,oban,absinthe	no	no	no	false	2026-11-09	-	Easily manage your IoT device fleet with Edgehog at once. Get information on device status, deploy updates, geolocate yo
+ambry-app/ambry	application_web	89	1083	MIT	phoenix,live_view,ecto,oban,absinthe	yes	yes	yes	false	2026-11-09	-	Self-hosted audiobook streaming server
+ckruse/cforum_ex	application_web	16	1058	MIT	phoenix,ecto,oban	yes	yes	yes	false	2025-03-13	-	
+Flo0807/share-a-secret	application_web	17	985	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-09	-	Share a Secret is an open-source and self-hosted secret sharing platform built with Elixir, Phoenix and daisyUI.
+axelclark/ex338	application_web	23	749	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-09-10	-	Web application to manage the 338 Challenge fantasy sports league
+source-academy/backend	application_web	44	695	Apache-2.0	phoenix,oban	yes	yes	yes	false	2026-11-09	-	Backend of Source Academy @ NUS, LMS extension of Source Academy (Elixir, Ecto, Phoenix, PostgreSQL)
+satoren/y-phoenix-channel	application_web	55	630	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-05	-	
+wintermeyer/animina	application_web	27	602	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-07-31	same_org	👫❤️ ANIMINA Dating Platform
+lee-dohm/atom-style-tweaks	application_web	13	475	MIT	phoenix	yes	yes	yes	true	2022-05-08	-	A database of tweaks for the Atom text editor
+erlef/website	application_web	85	444	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-09-17	-	Erlang Ecosystem Foundation Website
+tomasz-tomczyk/crit-web	application_web	35	444	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-11-07	-	The hosted share target for crit - Your feedback loop with the agent.
+cesium/safira	application_web	55	407	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-10-29	-	💎 Sofware Engineering Week platform
+cesium/atomic	application_web	48	369	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-07-20	-	⚛️ De-engineered bifurcarted intranet
+bikebrigade/dispatch	application_web	78	306	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-07	-	Bike Brigade's dispatching software! 🚴
+jaxernst/lasso-rpc	application_web	36	306	Apache-2.0	phoenix,live_view,ecto	yes	no	yes	false	2026-11-06	-	Fault-tolerant Ethereum JSON-RPC proxy with intelligent, low-latency, and deeply configurable routing. Lasso gives you f
+wanderer-industries/wanderer	application_web	80	303	MIT	phoenix,live_view,ecto,ash	yes	yes	yes	false	2026-11-08	-	#1 EVE Online Mapper
+lambdaclass/stark_compass_explorer	application_web	68	282	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	true	2024-10-04	-	Stark Compass: the only open source explorer
+novalabsxyz/blockchain-api	application_web	12	235	Apache-2.0	phoenix,ecto	yes	yes	yes	true	2020-07-21	-	Rest API for blockchain
+blablatdinov/croniq	application_web	13	232	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-10-28	-	Modern open-source job scheduler with cron syntax, web UI, and REST API. Built with Elixir & Phoenix.
+jeffdc/gallformers	application_web	22	227	Apache-2.0	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-11-08	-	The gallformers site
+covalenthq/refiner	application_other	10	220	Apache-2.0	phoenix,broadway	no	no	yes	false	2026-05-22	-	Concurrent block specimen data processing and transformation framework for the Covalent Network.
+Miosa-osa/OSA	application_other	79	212	Apache-2.0	ecto	no	yes	yes	false	2026-10-29	-	An AI agent for your terminal, built on signal theory: every output is signal, not noise. Codes, runs multi-step work wi
+coderdojobraga/bokken	application_web	16	192	MIT	phoenix,ecto	yes	yes	yes	true	2024-03-08	-	⚔️ Backend platform for managing session registrations and recording ninjas' progress
+jehrhardt/cozyauth	application_web	23	181	Apache-2.0	phoenix,ecto	yes	yes	yes	true	2025-08-18	-	Easy Passkey authentication for Supabase and Postgres
+revelrylabs/slax	application_web	15	178	MIT	phoenix,ecto,oban	yes	yes	yes	false	2026-11-05	-	Elixir Slack slash command handler
+joladev/jola.dev	application_web	18	175	MIT	phoenix,live_view	yes	no	yes	false	2026-11-09	-	My personal blog and portfolio, built in Elixir using Phoenix and NimblePublisher.
+FiniteMonkeys/kerbal-maps	application_web	12	172	Apache-2.0	phoenix,ecto	yes	yes	no	false	2022-12-03	-	A Google Maps-like UI for Kerbal Space Program (KSP) celestial bodies.
+elementary/appcenter-dashboard	application_web	14	161	MIT	phoenix,live_view	yes	no	yes	false	2026-11-02	-	Developer dashboard for publishing to AppCenter
+zorn/flick	application_web	21	155	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-08	-	Flick is a simple Elixir / Phoenix LiveView app that helps capture ranked votes.
+hexpm/preview	application_web	32	153	Apache-2.0	phoenix,live_view,broadway	yes	no	yes	true	2026-07-16	-	Hex Preview
+wyeworks/elixir_console	application_web	80	144	MIT	phoenix,live_view	yes	no	yes	false	2023-05-22	-	Elixir Web Console
+mercadona/postoffice	application_web	21	140	Apache-2.0	phoenix,live_view,ecto,oban	yes	yes	yes	true	2024-03-07	-	A dispatching service implemented in Elixir. Communicate services or sent api calls to yourself to process anything late
+queer/singyeong	application_web	82	139	BSD-3-Clause	phoenix	yes	no	yes	true	2023-03-28	-	신경 - Cloud-native messaging/pubsub with powerful routing
+brunojppb/turbo-racer	application_web	34	138	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	true	2026-04-22	-	High-performance distributed remote cache for Turborepo.
+astarte-platform/astarte_flow	application_web	18	130	Apache-2.0	phoenix	yes	no	yes	false	2026-07-17	-	Build data processing pipelines with Astarte Flow.
+cr0t/lexin	application_web	12	130	MIT	phoenix,live_view	yes	no	yes	false	2026-09-05	-	Swedish Dictionary App
+zorn/local_cents	application_web	10	130	MIT	phoenix,live_view,ecto	yes	no	yes	false	2026-11-01	-	LocalCents is an open-source expense-tracking application built for local-first, offline collaboration across multiple d
+youcongress/youcongress	application_web	18	121	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-11-09	-	Database of sourced quotes on AI governance + participation layer with liquid democracy
+texttile-blog/texttile	application_web	28	119	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-09	-	The Multiplayer Blog Engine
+sgessa/ms2ex	application_web	17	116	MIT	phoenix,ecto,oban	yes	yes	yes	false	2026-10-22	-	MapleStory2 Server Emulator in Elixir
+noizu-labs-ml/NoizuPromptLingo	application_other	13	107	MIT	phoenix,ecto,oban	no	no	no	false	2026-10-27	-	A Standardized Prompt Syntax/Language to train models and humans against for faster behavior tuning of models. 
+siwapp/siwapp	application_web	24	99	MIT	phoenix,live_view,ecto,absinthe	yes	yes	yes	false	2026-10-19	-	
+bitcrowd/exmeralda	application_web	53	93	Apache-2.0	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-04-22	-	
+mreishus/spades	application_other	25	91	MIT	phoenix,ecto	no	no	no	false	2023-12-01	-	Multiplayer online spades card game written in Elixir, Phoenix, React, and Typescript.
+danbee/chess	application_web	34	90	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-02-10	-	Multiplayer chess game in Elixir/Phoenix and React
+markevich/co2_offset	application_web	16	89	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2020-04-04	-	Offset your carbon footpring
+dustessavdh/hergetto	application_web	10	86	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-04-07	-	A website to watch videos together
+fastpaca/starcite	application_web	18	85	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	true	2026-04-16	-	
+ocsf/ocsf-server	application_web	65	84	Apache-2.0	phoenix	yes	no	yes	false	2026-11-03	-	OCSF Schema WEB Server
+thewca/wca-live	application_web	81	76	Apache-2.0	phoenix,ecto,absinthe	yes	yes	yes	false	2026-10-19	-	Platform for running WCA competitions and sharing live results with the world
+zorn/franklin	application_web	17	76	MIT	phoenix,live_view,ecto,absinthe	yes	yes	yes	true	2023-07-22	-	Franklin is written in Elixir, Phoenix, and LiveView and is an intentionally over-engineered blog application. It uses a
+fully-forged/memento	application_web	98	74	MIT	phoenix,live_view,ecto	yes	yes	yes	true	2022-12-21	-	Collect saved items from different sources around the web
+helium/mappers	application_web	76	71	Apache-2.0	phoenix,ecto	yes	yes	yes	true	2026-10-12	-	Mappers Frontend and API
+aschiavon91/harpoon	application_web	17	69	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-06-26	-	easy to use web app to capture and visualize HTTP requests, built with Phoenix Liveview
+cesium/cesium.link	application_web	11	69	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-06-14	-	:link: Mapping CeSIUM's website to shorter urls
+djthread/lucidboard	application_web	82	63	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2019-12-12	-	A realtime, collaborative kanban tool, built on Elixir, Phoenix, and LiveView.
+extism/game_box	application_web	40	62	BSD-3-Clause	phoenix,live_view,ecto	yes	yes	yes	false	2023-06-18	-	Jackbox games like platform where each game is a user generated Extism plug-in 
+kamidev/survey_api	application_web	10	58	MIT	phoenix,ecto	yes	yes	yes	false	2025-05-23	-	Elixir API for data gathering using SurveyJS
+kyroco/vitalaize	application_web	15	57	Apache-2.0	phoenix,live_view	yes	no	yes	false	2026-11-04	-	A wall screen for Claude Code and Codex sessions and your GitHub builds
+eventrelay/eventrelay	application_web	28	50	MIT	phoenix,live_view,ecto,broadway	yes	yes	yes	false	2024-03-19	-	An event streaming/storage system for the rest of us
+wesleydebruijn/orlog	application_web	10	50	MIT	phoenix,live_view	yes	no	yes	false	2026-10-29	-	Clone of minigame from Assassin's Creed: Valhalla written in Elixir
+viche-ai/viche	application_web	27	49	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-08-17	-	Bespoke agent-to-agent discovery and communication protocol
+TechforgoodCAST/tech-for-good-near-you	application_web	11	48	MIT	phoenix	no	yes	yes	false	2018-01-09	-	an app to find tech for good events near you
+wintermeyer/abuuba	application_web	10	48	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-10-02	same_org	A fast fediverse server in Elixir and Phoenix that speaks Mastodon's protocols. Always at least 12x faster than Mastodon
+nornscode/norns	application_web	12	45	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-11-06	-	The runtime for long-lived Agents
+agentjido/jido_managed_agents	application_web	23	44	Apache-2.0	phoenix,live_view,ecto,ash	yes	yes	yes	true	2026-09-29	-	Retired historical prototype of Jido Managed Agents. Unsupported and preserved for reference.
+inaka/credo_server	application_other	15	42	Apache-2.0	ecto	no	yes	yes	true	2018-07-19	-	Credo Server
+V-Sekai/uro	application_web	11	40	MIT	phoenix,live_view,ecto	no	yes	yes	false	2026-04-24	-	Provides functionality needed to run your V-Sekai backend. It will serve custom game content, support content caching, a
+bookmark-org/bookmark	application_web	15	40	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-01-03	-	Bookmark.org digital archive service
+jonatanklosko/meow	application_other	74	40	Apache-2.0	nx	no	no	yes	false	2024-07-30	-	Multi-population evolutionary algorithms with support for GPU and distributed computing
+code-for-nashville/nashville-zone-lookup	application_web	17	38	MIT	phoenix	yes	yes	yes	true	2021-01-05	-	Answering your Nashville acceptable land use questions
+nerves-hub/nerves_hub_ca	application_other	12	38	Apache-2.0	ecto	no	yes	yes	true	2021-06-29	-	NervesHub Certificate Authority
+tuist/pulso	application_web	25	38	MIT	phoenix	yes	no	yes	false	2026-11-05	-	Headless observability
+mjftw/Tetrex	application_web	50	37	MIT	phoenix,live_view	yes	no	yes	false	2025-07-23	-	Yet another Tetris game, because everyone loves Tetris!
+nerves-metal-detector/nerves_metal_detector	application_web	12	37	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2023-10-27	-	Find hardware supported by the Nerves Framework and where to buy it
+openpantry/open_pantry	application_web	62	36	MIT	phoenix	no	yes	yes	false	2018-11-20	-	A management system for pantry programs to help people eat healthy meals with dignity
+barsoom/ex-remit	application_web	49	35	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-09	-	A self-hosted web app for commit-by-commit code review, written using Phoenix LiveView.
+brunojppb/react-phoenix-ts	application_web	63	35	MIT	phoenix,live_view,ecto	yes	yes	yes	true	2025-03-31	-	Production-ready Phoenix backend with React and TypeScript frontend
+AndrGab/MediRepo	application_web	14	34	MIT	phoenix,ecto,absinthe	yes	yes	yes	false	2025-10-04	-	MediRepo API helps Hospitals with Daily Medical Reports - for COVID19 patients with restricted visits 
+NetWatchInc/hexpds	application_other	44	34	MIT	ecto	no	no	yes	false	2025-02-27	-	An ATProto PDS written in Elixir
+abdelaz3r/forbidden_lands	application_web	13	30	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-05-02	-	Web companion for your Forbidden Lands journey
+greecex/greecex	application_web	11	30	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-03	-	The Greece |> Elixir web site
+odarriba/elixir_jobs	application_web	86	29	MIT	phoenix,ecto	yes	yes	yes	true	2023-09-01	-	A job board to publish and find Elixir offers.
+starkware-bitcoin/cashubrew	application_web	17	28	MIT	phoenix,live_view,ecto	no	yes	yes	true	2024-11-12	-	Cashu Mint, written in Elixir.
+amacgregor/crimson_commerce	application_web	94	27	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-01-25	-	An OpenSource Ecommerce platform on the Elixir/Phoenix stack, which aims to leverage the power of functional programming
+firezone/probe	application_web	20	27	Apache-2.0	phoenix,live_view,ecto	no	yes	yes	false	2026-05-25	-	Probe for WireGuard® connectivity
+theanht1/vim_snake	application_web	22	27	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-10-22	-	Classical multiplayer snake game with Vim-style keybinding
+DivvyPayHQ/web-homework	application_other	10	26	MIT	phoenix,ecto,absinthe	no	no	no	false	2023-04-09	-	Front-end (web) homework project.
+dnsbty/level10	application_web	79	26	MIT	phoenix,live_view,ecto	yes	no	yes	false	2026-09-03	-	Phoenix LiveView multiplayer card game
+launchscout/launch_elements	application_web	10	26	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-11-08	-	Launch Elements: dynamic functionality for static websites
+theoretick/discuss-it	application_other	12	24	Apache-2.0	phoenix	no	no	yes	false	2018-10-09	-	online article discussion finder, DEPRECATED repo: https://gitlab.com/theoretick/discuss_it
+Ohio-Elixir/ohio_elixir	application_web	10	23	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-09-11	-	Main site repo
+guildatech/GuildaEx	application_web	10	23	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-02-23	-	Site da Guilda feito com Elixir e Phoenix LiveView.
+pepe-agent/pepe	application_web	73	23	MIT	phoenix,ecto,nx	yes	yes	yes	false	2026-10-29	-	An Elixir/OTP AI agent runtime: define agents, connect any OpenAI-compatible model, and run a tool-calling loop. CLI, HT
+sasa1977/mix_phx_alt	application_web	66	23	MIT	phoenix,live_view,ecto,oban	no	yes	yes	false	2024-03-22	-	
+jessestimpson/livesecret	application_web	47	22	Apache-2.0	phoenix,live_view,ecto	yes	no	yes	false	2026-06-17	-	Share end-to-end-encrypted data
+mirego/dispatch	application_web	26	22	BSD-3-Clause	phoenix	yes	no	yes	false	2024-06-06	same_org	🦀 Dispatch makes sure pull requests within a GitHub organization get reviewed by the right people.
+zestcreative/elixirstream	application_web	65	22	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-08-24	-	Utilties for the Developer. Regex, HTTP echo. Diffing
+infinitered/phoenix_base	application_web	65	21	MIT	phoenix	no	yes	yes	false	2017-05-03	-	Template project for Phoenix
+mu-box/core	application_web	14	21	MIT	phoenix,ecto,oban	yes	yes	yes	false	2023-10-27	-	An open source clone of Nanobox, focusing initially on feature-parity with Nanobox v1.
+neopoly/neoboard	application_other	13	21	MIT	phoenix	no	no	yes	true	2019-04-01	-	A dashboard solution instrumenting Elixir, Phoenix and React
+OctoconDev/octocon	application_web	14	20	MIT	phoenix,ecto,oban	yes	yes	no	false	2026-03-14	-	
+nianxiaoyou/handan	application_web	17	20	MIT	phoenix,live_view,ecto,absinthe	yes	yes	yes	false	2025-01-21	-	ERP (MES) system suitable for small and medium-sized enterprises. 面向中小企业的 ERP(MES) 系统
+Hiyori-API/checker_mal	application_web	19	19	MIT	phoenix,ecto	yes	yes	yes	false	2026-01-02	-	maintains an ID cache for MAL anime/manga, with some complimentary web endpoints
+jackjoe/mailgun_logger	application_web	77	19	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-10-28	-	Simple Mailgun log persistence in Phoenix/Elixir
+lulabad/murky	application_web	12	19	MIT	phoenix,live_view	yes	no	yes	false	2023-01-06	-	Murky is a simple Markdown wiki written in Elixir.
+maciejgryka/regex_help	application_web	11	19	MIT	phoenix,live_view	yes	no	yes	false	2022-09-08	-	Get a computer to write regex for you. A front-end for grex (https://github.com/pemistahl/grex).
+mgwidmann/slack_coder	application_web	15	19	MIT	phoenix,ecto,absinthe	no	yes	yes	false	2017-11-27	-	Slack Bot for watching your Github & CI builds
+nighthawk-apps/zcash-explorer	application_web	35	19	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2024-07-17	-	Zcash Block Explorer
+IciaCarroBarallobre/elixir_wordle	application_web	10	18	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2023-08-23	-	Elixir Wordle Web App featuring daily words related to Elixir.
+infinityoneframework/infinity_one	application_web	23	18	MIT	phoenix,ecto	yes	yes	yes	false	2018-11-30	-	A Team Collaboration Suite
+wunsh/docdog-engine	application_web	42	18	MIT	phoenix	yes	yes	yes	false	2018-08-18	-	Collaborative translation service written in Elixir and Elm
+appunite/imager	application_web	66	17	MIT	phoenix	yes	no	yes	false	2021-03-15	-	Image processing proxy
+bitcrowd/chatbot_ex	application_web	22	15	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-03-24	-	
+byronsalty/questify	application_web	27	15	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-10-08	-	
+imsoulfly/local_hex_repo	application_web	15	15	Apache-2.0	phoenix,live_view	yes	yes	yes	false	2026-03-06	-	Hosting Elixir libraries on your own in your own server infrastructure 
+devsnorte/cosmopolitan	application_other	18	14	MIT	phoenix,ecto	no	no	no	false	2024-05-14	-	Gerenciar eventos devsnorte
+jmnda-dev/fleetms	application_web	36	14	MIT	phoenix,live_view,ecto,ash,oban	yes	yes	yes	false	2026-10-17	-	An open source Fleet Maintenance and Management software
+appsinacup/gamend	application_web	58	13	MIT	phoenix,live_view	yes	yes	yes	false	2026-11-09	-	Open source Elixir game server with authentication, users, lobbies, groups, parties, friends, chat, notifications, achie
+simedw/langseed	application_web	66	13	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2026-01-26	-	
+kevinastone/requestbox	application_web	23	11	MIT	phoenix,ecto	yes	yes	yes	false	2022-08-26	-	HTTP Request Logger Similar to RequestBin written in Elixir+Phoenix
+slab/elixir-formatter	application_web	17	11	BSD-3-Clause	phoenix	yes	no	yes	true	2023-03-01	-	mix format in your browser.
+sheharyarn/ztd	application_web	24	10	MIT	phoenix	yes	yes	yes	false	2018-06-16	-	Distributed real-time Todo App over RabbitMQ in Elixir 🐰⚡️🌐💧💻
+cristianodabc/dialekt	application_web	23	9	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-09-01	-	AI language tutor with CEFR enforcement, formal/informal register, and native-phonetic transliteration
+girishramnani/polly	application_web	49	9	MIT	phoenix,live_view	yes	no	yes	false	2025-02-05	-	A social poll application
+knewter/elixir_friends	application_web	22	9	MIT	phoenix	no	yes	yes	false	2016-08-30	-	
+lawik/noted	application_web	35	9	BSD-3-Clause	phoenix,live_view,ecto	yes	yes	yes	false	2022-01-07	-	
+eyrmedical/mongo_ecto	application_other	11	8	MIT	ecto	no	no	yes	false	2017-02-21	-	Ecto 2 compliant repository to work with MongoDb database, written in Elixir.
+maartenvanvliet/absinthe_trace_reporter	application_other	15	7	MIT	absinthe	no	no	yes	false	2022-12-15	-	 Apollo Engine reporter that sends Absinthe traces built by https://github.com/sikanhe/apollo-tracing-elixir to Apollo e
+mbuhot/chinook	application_web	25	7	MIT	phoenix,ecto,absinthe	yes	yes	yes	false	2024-01-24	-	Explore the Chinook Database
+usetrmnl/byos_phoenix	application_web	39	7	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-08-14	-	Phoenix server implementation for TRMNL devices
+ynd-consult/ynd-phx-bootstrap	application_web	35	7	MIT	phoenix	yes	yes	yes	false	2018-02-12	-	Production ready, maintainable, fast & scalable template for Elixir Phoenix api server
+hassanshaikley/stabby-flies	application_web	10	6	MIT	phoenix,ecto	yes	yes	yes	false	2019-10-25	-	Multiplayer Browser Game featured at the MAGWest gaming convention
+lexlapax/allbert-assist	application_other	12	6	Apache-2.0	live_view	yes	no	no	false	2026-08-15	-	Allbert Assist is a local-first assistant runtime for long-running personal work built in elixir/otp, jido agents etc
+mcrumm/elogram	application_other	41	6	MIT	live_view	no	no	yes	false	2022-11-07	-	A mechanism to capture screenshots from Phoenix LiveView tests without a camera.
+acai-sh/server	application_web	33	5	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-05-26	-	Self-hostable acai.sh server that hosts the frontend, API, database, backup service and reverse proxy.
+fogbender/supafana	application_other	27	5	MIT	ecto	no	no	no	false	2025-09-11	-	Supafana is a one-click, Grafana and Prometheus metrics, observability, and alerting solution for Supabase
+metachaos-systems/glasnost	application_web	22	5	MIT	phoenix,absinthe	yes	yes	yes	true	2017-11-02	-	Glasnost is a GraphQL app server for Golos/Steem 
+nsidnev/edgebeats	application_web	23	5	MIT	phoenix,live_view	yes	no	yes	false	2023-07-04	-	LiveBeats + EdgeDB
+valuechainfactory/vc_utils	application_other	11	5	MIT	ecto	no	no	yes	false	2026-07-07	-	Tools and helpers we constantly find repeated in most of our projects.
+SDPyle/groove	application_web	28	4	MIT	phoenix,live_view,ecto,ash	yes	yes	yes	false	2023-10-11	-	A groovy open source scrum application utilizing the STAPLE stack (Surface, Tailwind, Ash, Phoenix, LiveView, Elixir)
+StabbyMcDuck/elixir_ravelry	application_web	25	4	Apache-2.0	phoenix	yes	no	yes	false	2017-10-11	-	Elixir API using Neo4j database for ElixirConf 2017 talk
+XRPL-Labs/XRPL-Webhooks	application_web	14	4	MIT	phoenix,ecto	yes	yes	yes	false	2022-12-09	-	XRPL Webhook
+marinac-dev/openai	application_other	10	4	MIT	nx	no	no	yes	false	2026-08-04	-	Elixir OpenAi Library with streaming support
+michelada/dash	application_web	10	4	MIT	phoenix	no	yes	yes	false	2018-03-07	-	Blog app written in Elixir
+national-voter-file/national-voter-file-api	application_web	15	4	MIT	phoenix	no	yes	yes	false	2017-07-29	-	API for National Voter File.
+nbw/gems	application_web	82	4	MIT	phoenix,live_view	yes	no	yes	false	2025-12-08	-	A music sequencer on a distributed cluster. Written with Phoenix LiveView
+rocketseat-education/nlw-06-elixir	application_web	77	4	MIT	phoenix,ecto,absinthe	yes	yes	yes	false	2023-05-05	-	Projeto Wabanex
+seanmor5/echo	application_web	84	4	Apache-2.0	phoenix,nx	yes	no	yes	false	2024-08-20	-	
+SquashConsulting/ArangoPhx	application_web	10	3	BSD-3-Clause	phoenix	yes	yes	yes	false	2019-12-12	-	Elixir Phoenix Project Template With ArangoDB support
+easco/absinthe_apollo_sockets	application_other	19	3	MIT	absinthe	no	no	yes	false	2024-06-18	-	Use the Apollo Websocket protocol to drive Absinthe GraphQL functionality
+egsam98/kafka-pipe	application_web	12	3	MIT	phoenix,live_view,ecto	yes	no	yes	false	2026-06-04	-	
+jmanhype/MCPhoenix	application_web	67	3	MIT	phoenix,live_view,ash,broadway	yes	no	yes	false	2026-03-25	-	A simplified implementation of the Model Context Protocol (MCP) server using Elixir's Phoenix Framework.
+rcdilorenzo/repeatex	application_web	53	3	MIT	phoenix	yes	no	yes	false	2019-03-22	-	Natural language for repeating dates
+riverrun/phoenix-todoapp	application_web	20	3	MIT	phoenix,ecto	yes	yes	yes	true	2022-01-19	-	Phoenix todo app using Phauxth authentication
+ryanwinchester/ctrlv	application_web	15	3	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2024-04-12	-	Code paste-bin and editor.
+supersimple/devito	application_web	39	3	Apache-2.0	phoenix	yes	no	yes	false	2023-01-06	-	An open-source url shortener written in Elixir and Phoenix, with no need for a separate database
+ChristianTovar/better-big-canvas	application_web	25	2	MIT	phoenix,live_view	yes	no	yes	false	2021-12-22	-	🎨 Improved version of Big Canvas built from scratch using Phoenix LiveView.
+VeryBigThings/provider	application_other	44	2	MIT	ecto	no	no	yes	false	2021-09-02	-	Elixir library for managing the operator configuration of a system
+acalejos/mighty	application_other	19	2	Apache-2.0	nx	no	no	yes	false	2024-03-30	-	Natural Language Processing in Elixir
+hbcondo/last10k_liveview	application_web	13	2	Apache-2.0	phoenix,live_view	yes	no	yes	false	2023-10-16	-	Streams new SEC Filings in real-time using Phoenix LiveView
+juanpabloaj/phoenix_gitlab_monitor	application_web	14	2	MIT	phoenix	yes	no	yes	false	2023-01-04	-	Gitlab pipelines monitor created with Elixir/Phoenix
+nicksergeant/leather	application_web	60	2	MIT	phoenix	yes	yes	yes	true	2018-02-05	-	💰 A super fast money management app.
+njwest/Phoenix-JWT-Auth-API	application_web	26	2	MIT	phoenix,ecto	yes	yes	yes	false	2019-12-03	-	A Phoenix 1.3 JSON Web Token Authentication API, built with Ueberauth Guardian
+tamanugi/realworld-phoenix	application_web	47	2	MIT	phoenix,ecto	yes	yes	yes	false	2026-04-25	-	Exemplary real world application built with Elixir+Phoenix https://realworld.io
+vereis/blog_old	application_other	31	2	MIT	live_view	yes	no	no	true	2025-12-30	-	Source for my personal blog
+youfun/Cortex	application_web	25	2	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-03-01	-	
+JediLuke/memelex	application_other	17	1	Apache-2.0	nx	yes	no	yes	false	2025-09-29	-	A personal knowledge-base, written in Elixir, used via IEx.
+aerosol/fotd	application_web	11	1	Apache-2.0	phoenix	yes	no	yes	false	2018-11-14	-	 :calendar: Elixir Function of the Day
+alpcanaydin/githubist-api	application_web	38	1	MIT	phoenix,absinthe	yes	yes	yes	false	2018-12-24	-	API repository for Github.ist
+altenwald/conta	application_other	22	1	MIT	live_view	yes	no	no	false	2026-11-09	-	Conta - Accounting system
+appdojolabs/myapp	application_other	42	1	MIT	phoenix	no	no	yes	false	2018-12-19	-	
+clone1018/WebSubHub	application_web	47	1	MIT	phoenix,live_view,ecto,oban	yes	yes	yes	false	2022-07-09	-	A WebSub Hub
+cometsh/comet	application_web	30	1	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-04-29	-	Music streaming on ATProto!
+dnlgrv/stranger	application_other	67	1	MIT	phoenix	no	no	yes	false	2016-02-21	-	Chat anonymously with a randomly chosen stranger
+elixirprogrammer/InstagramClonePETAL	application_web	96	1	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-01-06	-	Instagram Clone With The PETAL(Phoenix, Elixir, TailwindCSS, AlpineJS, LiveView) Stack.
+florinpatrascu/bolt_movies_elixir_phoenix	application_web	20	1	MIT	phoenix	yes	no	yes	false	2019-04-19	-	A very simple web application using Neo4j with Elixir, Phoenix, and: Bolt.Sips; an Elixir driver for Neo4j’s Bolt newest
+freshcom/freshcom	application_other	54	1	BSD-3-Clause	ecto	no	yes	yes	false	2020-10-01	-	 Fast, scalable and extensible eCommerce backend in Elixir.
+gpad/les	application_web	13	1	Apache-2.0	phoenix	yes	yes	yes	false	2018-05-21	-	Engineering is hard but can be harder withuout the BEAM
+inaka/phoenix_passwordless_login	application_web	29	1	Apache-2.0	phoenix	no	yes	yes	false	2016-07-25	-	Phoenix Passwordless Login
+madvoidhq/gaga	application_web	31	1	MIT	phoenix,live_view	yes	no	yes	false	2021-06-22	-	Gaga is an online simple planning poker app built in Elixir, using Phoenix and LiveView.
+mgwidmann/options_tracker	application_web	14	1	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-03-03	-	
+miguelcoba/saturn	application_web	18	1	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2021-11-16	-	"Deploying Elixir" series' source code
+mjason/longx	application_web	10	1	MIT	phoenix,live_view,ecto,ash,oban	yes	yes	yes	false	2026-10-24	-	An agent development environment on Ash + Phoenix: codex-app-server embedded behind its own AI gateway, React SPA, tools
+mjrusso/hex2txt	application_web	37	1	Apache-2.0	phoenix,live_view	yes	no	yes	false	2026-06-09	-	hex.pm package → llms.txt
+mrdotb/probuild_ex	application_web	12	1	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-01-01	-	:star: League of Legends Probuild clone in elixir
+my-flow/raftex	application_other	24	1	MIT	phoenix	no	no	yes	true	2015-06-23	-	An implementation of the Raft Consensus Algorithm in Elixir/Erlang
+petalframework/petal_development	application_other	10	1	MIT	live_view	no	no	no	false	2026-07-28	-	
+rocketseat-education/nlw-04-elixir	application_web	87	1	MIT	phoenix,ecto	yes	yes	yes	false	2023-05-05	-	Projeto construído durante o Next Level Week #04, na trilha de Elixir
+samsondav/rihanna_ui	application_web	26	1	MIT	phoenix	yes	no	yes	false	2023-01-04	-	A pretty UI for rihanna
+sb8244/okr_app_pub	application_web	18	1	MIT	phoenix	yes	yes	yes	false	2019-07-07	-	Public snapshot of OKR App
+smpallen99/unbrella	application_other	11	1	MIT	phoenix,ecto	no	no	yes	false	2026-10-16	-	Unbrella is a library to help Phoenix designers build an application that can be extended with plugins
+zaynetro/zaynetro.com	application_web	12	1	MIT	phoenix,live_view	yes	no	yes	false	2026-04-11	-	Powers https://www.zaynetro.com/ site
+7-iris/iris_server	application_web	32	0	MIT	phoenix	yes	yes	yes	false	2017-08-10	-	Self hosted push notifications
+9elements/hex-mcp	application_web	38	0	MIT	phoenix,live_view	yes	no	yes	false	2025-06-05	-	MCP Server for Hex Package Versions
+ChristianAlexander/todo_backend_commanded	application_web	10	0	MIT	phoenix,ecto	yes	yes	yes	false	2022-06-01	-	An implementation of Todo Backend using the Commanded CQRS Elixir library
+Code-My-Spec/market_my_spec	application_web	27	0	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	false	2026-09-01	-	
+GBH/loaded.bike	application_web	49	0	MIT	phoenix	no	yes	yes	false	2018-01-07	-	Phoenix/Elixir web app for exploring and sharing bicycle touring routes
+HackTuah/HackTui	application_other	54	0	MIT	ecto	no	yes	yes	false	2026-03-02	-	TUI SIEM in Elixir on BEAM 
+JuneKelly/marc	application_other	11	0	MIT	phoenix	no	no	yes	false	2018-04-13	-	The Meditations of Marcus Aurelius, in a Phoenix web-app
+Metrist-Software/backend	application_web	15	0	Apache-2.0	phoenix,live_view,ecto	yes	yes	yes	true	2024-01-13	-	
+NonceGeek/Tai-Shang-Combiner	application_web	19	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2021-07-05	-	太上老君，基于 Elixir 的 NFT 炼丹炉
+Nostrology/astro	application_web	30	0	MIT	phoenix,ecto	yes	yes	yes	false	2023-02-21	-	An Elixir based Nostr relay.
+PJUllrich/UoG-WebDev-2024	application_web	18	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-01-16	-	
+PJUllrich/twomillioncheckboxes	application_web	70	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2024-06-29	-	A reimplementation of the origin One Million Checkboxes page
+absinthe-graphql/absinthe_client	application_other	10	0	MIT	absinthe	no	no	yes	false	2019-06-12	same_org	Elixir client for GraphQL
+agundy/fly-faast	application_web	20	0	MIT	phoenix	yes	no	yes	false	2023-08-13	-	A quick proof of concept Fly.io Function as a Service powered by Phoenix.
+amalbuquerque/elixir-keeb	application_nerves	12	0	MIT	nerves	no	no	yes	false	2022-06-29	-	
+antp/locations	application_web	18	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2020-09-16	-	
+api-hogs/ecto-oracle	application_other	17	0	MIT	ecto	no	no	yes	false	2016-01-07	-	Ecto adapter for oracle db
+arjit95/elixir-chat	application_other	16	0	MIT	ecto	no	yes	yes	false	2021-01-13	-	A simple elixir  chat system, supporting direct & group chats
+audioslides/audioslides.io	application_web	26	0	MIT	phoenix,ecto	yes	yes	yes	false	2022-12-06	-	Use Amazon Polly, Google Slides and FFMpeg to create videos that can be updated at anytime by anyone. This project is wr
+ayarodionov/otp_debug_mcp	application_other	13	0	MIT	phoenix,live_view	no	no	yes	false	2026-11-06	-	MCP server for AI-driven debugging of live Erlang/Elixir OTP nodes: hidden-node attach, recon-based diagnostic battery, 
+barnabasJ/ash_commanded	application_other	12	0	MIT	ash	no	no	yes	false	2025-04-24	-	Datalayer to use Commanded and Ash
+bendyworks/liveview-rich-text-editor-collab	application_web	11	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2022-05-11	-	A Phoenix LiveView backed rich text editor with collaboration feature
+bismark/matrex	application_web	38	0	MIT	phoenix	yes	no	yes	false	2018-02-22	-	A WIP toy Matrix server implementation in Elixir
+blueberryvertigo/traitee	application_web	37	0	MIT	phoenix,live_view,ecto,nx	yes	yes	yes	false	2026-10-14	-	Your primitively secured AI operating system.
+btkostner/hexagon	application_web	18	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2022-08-28	-	A package server for your organization.
+chenxsan/telegram-bot-for-twitter	application_web	19	0	MIT	phoenix,ecto	yes	yes	yes	false	2023-01-03	-	Phoenix Framework 开发笔记
+cjen07/social_network	application_web	15	0	MIT	phoenix	no	yes	yes	false	2017-03-15	-	a social network application powered by elixir, phoenix and neo4j 
+coletiv/blog-phoenix-live-view-google-maps	application_web	12	0	MIT	phoenix,live_view	yes	no	yes	false	2021-06-10	-	How to use Google Maps with Phoenix Live View
+dailydaniel/cool-whisper-server	application_other	10	0	MIT	nx	no	no	yes	false	2025-02-03	-	
+danielbergholz/threadit	application_web	19	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2025-01-28	-	Social media platform built with Phoenix, React and Inertia
+doawoo/elixir_rpg	application_other	61	0	MIT	live_view	no	no	yes	false	2021-10-23	-	
+dzmbs/symphony-pi	application_web	11	0	Apache-2.0	phoenix,live_view,ecto	yes	no	yes	false	2026-04-10	-	Symphony orchestration with pi-coding-agent as the runtime
+elias-ba/algo-visualizer	application_web	11	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-02-28	-	Interactive algorithm visualizer built with Elixir and Phoenix LiveView. Explore pathfinding, sorting, and graph algorit
+elvanja/abbr	application_web	13	0	MIT	phoenix	yes	no	yes	false	2023-11-30	-	An experiment in distributed Elixir.
+emcmanus/robocoder-server	application_web	13	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-11-16	-	
+endeepak/stub_on_web	application_web	55	0	MIT	phoenix	yes	yes	yes	false	2016-01-05	-	Create stub urls to test external API integration
+evadne/supervised-scaler	application_other	45	0	MIT	phoenix	no	no	yes	false	2017-04-26	-	An Elixir integration with libVIPS
+fiqus/lqchatex	application_web	10	0	MIT	phoenix,live_view	yes	no	yes	false	2023-01-06	-	Live Qchatex, an open-source web chat application done by Fiqus for educational and experimental purposes.
+flexagoon/med	application_web	21	0	MIT	phoenix,live_view	yes	no	yes	false	2026-01-06	-	
+fly-apps/bumblebee-model-harness	application_web	53	0	MIT	phoenix,live_view,nx	yes	no	yes	false	2024-04-16	same_org	Minimal Elixir application that can host AI models on Fly.io GPUs and make them available via WireGuard to remote cluste
+folkswhocode/diversity-in-tech	application_web	10	0	MIT	phoenix	yes	yes	yes	true	2018-06-20	-	DEPRECATED · Phoenix application to rate tech companies according to how diverse friendly they are.
+freshcom/freshcom-api	application_web	43	0	BSD-3-Clause	phoenix,ecto	yes	yes	yes	false	2018-10-16	-	Deprecated
+freshcom/freshcom_web	application_web	11	0	BSD-3-Clause	phoenix	yes	no	yes	false	2019-02-06	-	Intuitive, developer friendly and highly scalable eCommerce web API built using Elixir & Phoenix
+gabrielmaialva33/streamix	application_web	12	0	MIT	phoenix,live_view,ecto,oban,broadway	yes	yes	yes	false	2026-11-09	-	📺 A streaming experience bringing all your IPTV providers into one intelligent, beautiful interface.
+gogoplusyeal/Bnb-Bot	application_other	11	0	MIT	ecto,oban	no	no	no	false	2024-02-25	-	Rewrite of BnBBot
+google/strabo	application_web	60	0	Apache-2.0	phoenix	no	yes	yes	true	2015-11-29	-	
+hexfaktor/hex_faktor_web	application_web	23	0	MIT	phoenix	no	yes	yes	false	2018-05-24	-	HexFaktor discontinued
+howtographql/graphql-elixir	application_web	14	0	MIT	phoenix	no	yes	yes	false	2020-06-18	-	
+itsHabib/cortex	application_web	36	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-07-27	-	Multi-agent orchestration system built on Elixir/OTP.  DAG workflows + mesh mode + real-time LiveView dashboards on loca
+jeffcole/loops_with_friends	application_web	34	0	MIT	phoenix	no	yes	yes	false	2019-07-07	-	Collaborative music in Elixir, Elm, and WebAudio
+jeffkreeftmeijer/hayago	application_web	70	0	Apache-2.0	phoenix,live_view	yes	no	yes	true	2023-02-28	-	The Go game, implemented with Phoenix LiveView.
+johndavedecano/CoderJobs	application_web	27	0	MIT	phoenix	yes	yes	yes	false	2018-06-26	-	A job board application built using Elixir and Phoenix Framework. 
+josevalim/erl_phoenix	application_other	45	0	MIT	phoenix,live_view	no	no	yes	true	2024-06-18	-	Writing Phoenix controllers, templates, plugs, and live views from Erlang
+kdiogenes/phoenix_channels_horizontal_scalability	application_web	12	0	MIT	phoenix	yes	no	yes	false	2023-01-04	-	Simple scaffold to play with phoenix channels in an auto-scaling environment
+keyan/tonic-time	application_other	12	0	MIT	phoenix	no	no	yes	false	2019-02-17	-	Demonstration of dynamic pages with Phoenix Channels
+knewter/s3_direct	application_other	14	0	MIT	phoenix	no	no	yes	false	2017-01-15	-	An Elixir/Phoenix application demonstrating AWS S3 Client-Side Uploads.
+krodante/liveview_date_range_picker	application_web	33	0	Apache-2.0	phoenix,live_view	yes	no	yes	false	2024-02-02	-	
+logicboard/logicboard	application_web	40	0	MIT	phoenix,live_view	yes	no	yes	false	2023-06-29	-	
+mbuhot/ecto_row_level_security	application_web	39	0	MIT	phoenix,ecto	no	yes	yes	false	2017-01-23	-	Demonstration of postgres row level security policies using Elixir/Ecto
+nbw/figmex	application_web	87	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-10-15	-	Figmex: Making Figma distributed with Elixir (proof of concept).
+outstand/diamond	application_web	17	0	MIT	phoenix,live_view	yes	no	yes	false	2022-09-02	-	
+paradox460/imagecaption	application_web	10	0	MIT	phoenix,live_view,ecto	yes	no	yes	false	2025-12-19	-	A quick and dirty LLM powered image describing tool
+piacerex/notex	application_web	18	0	Apache-2.0	phoenix,live_view	yes	no	yes	false	2026-08-23	-	
+pthompson/liveview_tailwind_modal	application_web	27	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2023-01-06	-	
+quaywin/hermit	application_web	11	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-10-15	-	A modular multi-tunnel VPN orchestrator and DNS control plane with Tailscale, WireGuard, and Ad-blocking DoH support.
+razuf/elixir-phoenix-liveview-realworld	application_web	16	0	MIT	phoenix,live_view,ecto	yes	no	yes	false	2020-09-15	-	Exemplary real world application built with Elixir Phoenix LiveView
+razuf/elixir-phoenix-surface-realworld	application_web	22	0	MIT	phoenix,live_view,ecto	yes	no	yes	false	2020-09-19	-	Exemplary real world application built with Elixir Phoenix Surface
+robertohluna/jido_claw	application_web	29	0	MIT	phoenix,live_view,ecto,ash	no	yes	yes	false	2026-03-21	-	JidoClaw — Open-source OpenClaw alternative built on Jido for Elixir/OTP. AI agent CLI with swarm orchestration, 30 tool
+runhyve/webapp	application_web	18	0	BSD-2-Clause	phoenix,live_view,ecto	yes	yes	yes	false	2022-09-16	-	Web application for the Runhyve platform. Uses PostgreSQL for data storage, written in Elixir. Mirror of https://gitlab.
+sheharyarn/dbfs	application_web	63	0	MIT	phoenix,ecto	yes	yes	yes	false	2018-08-28	-	Distributed Blockchain-based File Storage 📡 
+silicium14/peertube_index	application_other	26	0	MIT	ecto	no	yes	yes	true	2021-01-17	-	A centralized search engine for PeerTube videos
+smpallen99/ucx_chat	application_web	54	0	MIT	phoenix	no	yes	yes	false	2017-05-26	-	UcxUcc is a simple but powerful team collaboration suite of applications designed to improve communications, information
+ssselixir/ssselixir	application_other	52	0	Apache-2.0	ecto	no	yes	yes	false	2018-09-17	-	Shadowsocks server for Elixir, but more
+tanguilp/asteroid	application_web	39	0	Apache-2.0	phoenix	yes	yes	yes	false	2023-01-06	-	An OAuth2 and OpenID Connect server written in Elixir
+thometnanni/vantage	application_web	15	0	MIT	phoenix,live_view,ecto	yes	yes	yes	false	2026-05-13	-	Vantage is an open-source tool designed for fact-checkers, investigative journalists, and OSINT practitioners. It enable
+ulissesalmeida/ikki	application_web	11	0	MIT	phoenix	no	yes	yes	false	2015-09-08	-	Ikki a Web Chat written in Phoenix.
+yawaramin/stubbex	application_web	11	0	MIT	phoenix	yes	no	yes	false	2018-11-17	-	Stub and validate HTTP endpoints with ease.
+yliaho/suomi.dev	application_web	27	0	MIT	phoenix,ecto	yes	yes	yes	false	2020-09-07	-	Like Hacker News, but for Finns! 

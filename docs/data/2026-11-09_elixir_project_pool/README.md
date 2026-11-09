@@ -81,6 +81,35 @@ The classes are a reading of signals, not a review.
   stars are not in this list at all.
 - For scale, 15 of the Elixir SWE Bench's 20 cases come from applications and 5 from libraries.
 
+## Below 100 stars, and the application-first draft
+
+GitHub lists 5,744 Elixir repositories with 10 to 99 stars; 3,290 of them have an MIT, Apache-2.0 or BSD licence by
+GitHub's reading. Classed the same way ([below_100_counts.tsv](below_100_counts.tsv)), 274 are applications that use
+the frameworks, and 43 of those have 100 or more merged pull requests, 24,568 between them
+([applications_below_100.tsv](applications_below_100.tsv)). The largest: santiment/sanbase2 (5,112 merged pull
+requests, 94 stars), mbta/dotcom (3,171, 82), mbta/screens (2,468, 23), edgehog (1,374, 50), ambry (1,083, 89).
+
+**[draft_app_first_batch.tsv](draft_app_first_batch.tsv) is a draft, not approved, and nothing in it has been forked
+beyond the first batch.** It puts applications first and keeps libraries as the smaller share:
+
+| Group | Rule | Repositories | Merged pull requests | Already forked |
+|---|---|---:|---:|---:|
+| application | uses the frameworks, 100 or more merged pull requests, pushed since 2024 | 54 | 54,896 | 6 |
+| application_older | the same, last pushed before 2024 (older Phoenix habits) | 11 | 3,668 | 0 |
+| application_small | 30 to 99 merged pull requests, pushed since 2024 (ground for planted bugs) | 32 | 1,791 | 0 |
+| library | the 12 of [library_share.tsv](library_share.tsv) | 12 | 21,250 | 12 |
+
+- **The 54 applications:** 20 were found at 100 stars or more and 34 below. 33 are MIT and 21 Apache-2.0. They use
+  Phoenix 53, Ecto 47, LiveView 42, Oban 25, Broadway 6, Ash 3, Absinthe 3, Nerves 1.
+- **Two came in by a licence read:** hexpm/hexpm has no licence file, only the Apache-2.0 notice in its README;
+  Glimesh/glimesh.tv is MIT by its README, with one theme folder under other terms (it sits in the older group).
+- **Left out by hand** ([draft_hand.tsv](draft_hand.tsv)): a consensus client, a blockchain node, a push relay, a
+  terminal agent, a game server emulator and two more that are not application work of the day-to-day kind.
+- **The library share** is capped by rule, not by this list: at most a quarter of the tasks come from libraries.
+- 22 of the 40 repositories forked on 2026-11-09 are in neither group of this draft.
+- At the two published survival rates the 54 would give est. 930 to 1,370 tasks from real pull requests, fewer where
+  pull requests touch no Elixir.
+
 ## What the columns mean
 
 | Column | Meaning |
@@ -114,6 +143,10 @@ The classes are a reading of signals, not a review.
 | [first_batch_hand.tsv](first_batch_hand.tsv) | the hand-written columns of that table: kind, licence, notes |
 | [mirrors.tsv](mirrors.tsv) | each approved repository's fork, its default branch, the commit it pointed at when forked, and its active workflows |
 | [usage_kinds.tsv](usage_kinds.tsv) | every repository outside the hold-out: application or library, the frameworks it uses, the signals behind the class |
+| [applications_below_100.tsv](applications_below_100.tsv) | the 274 applications among the permissively licensed repositories with 10 to 99 stars |
+| [below_100_counts.tsv](below_100_counts.tsv) | those 3,290 repositories by usage class |
+| [draft_app_first_batch.tsv](draft_app_first_batch.tsv) | the application-first draft batch (not approved) |
+| [draft_hand.tsv](draft_hand.tsv), [library_share.tsv](library_share.tsv) | the hand-made inclusions and exclusions, and the 12 libraries with the reason for each |
 | [run/gather.sh](run/gather.sh) | reads GitHub's repository search and Hex's package list |
 | [run/build.sh](run/build.sh) | one row per repository, with the licence class and the hold-out mark |
 | [run/prs.sh](run/prs.sh) | merged pull requests, the two root checks and the licence files' first lines |
@@ -122,6 +155,8 @@ The classes are a reading of signals, not a review.
 | [run/approve.sh](run/approve.sh) | joins those checks with the hand-written columns |
 | [run/mirror.sh](run/mirror.sh) | forks every approved repository into the logged-in account and checks each fork |
 | [run/classify.sh](run/classify.sh) | reads `mix.exs` and the folders of every repository and writes the usage classes |
+| [run/low_stars.sh](run/low_stars.sh) | gathers and classes the repositories with 10 to 99 stars |
+| [run/draft_batch.sh](run/draft_batch.sh) | builds the draft from the tables above |
 
 ## Commands
 
@@ -131,6 +166,7 @@ bash run/gather.sh && bash run/build.sh && bash run/prs.sh && bash run/tier.sh
 LIST=first_wave.tsv bash run/first_batch.sh && DATA=. DATE=2026-11-09 bash run/approve.sh
 DATA=. DATE=2026-11-09 bash run/mirror.sh
 DATA=. bash run/classify.sh
+DATA=. bash run/low_stars.sh && DATA=. bash run/draft_batch.sh
 ```
 
 ## Provenance
