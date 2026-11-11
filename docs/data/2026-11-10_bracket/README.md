@@ -46,6 +46,8 @@ on better files moves down. If IQ3_S passes three cases or more above Q2_0, bett
 | [run/tunnel.sh](run/tunnel.sh) | keeps the servers' ports forwarded to the machine that runs the bench |
 | [run/count_check.py](run/count_check.py) | compares the token-count route with a generation's prompt tokens for a request with tools |
 | [run/counts.py](run/counts.py) | the count tables of one run, from the bench's evidence |
+| [run/fit_delta.py](run/fit_delta.py) | a cut file's memory per card, from its source's measured load and both files' headers |
+| [run/start_e448.sh](run/start_e448.sh), [run/stop_e448.sh](run/stop_e448.sh) | the server for the 448-expert file, through `serve.sh` (cards by PCI bus id) |
 
 ## Commands
 
@@ -71,6 +73,40 @@ The tables of one finished run (the run's folder copied out of the bench's conta
 ```bash
 docker exec <bench container> tar -C /data/runs -cf - $RUN_ID | ssh <the 7-GPU machine> "tar -C $WORK/runs -xf -"
 python3 -I run/counts.py --data $WORK --run $RUN_ID --label q2-seed101 --out $WORK/tables/q2-seed101
+```
+
+## The third file: IQ3_S cut to 448 experts per layer (E65)
+
+Swift GSQ-RCO IQ3_S with 448 of its 512 experts kept in every layer, chosen by the sister repo's agent routing counts
+(its Q890 and Q891, `scripts/gguf_prune.py`): shards 1 and 2 are cut, shard 3 is the same n-gram table, and every kept
+tensor is the maker's bytes. It is 6,025.6 MiB (6.32 GB) smaller than IQ3_S; agent KLD 0.122 against IQ3_S's 0.118.
+Registry row [E65](../../../experiments.md). It runs three seeds in the same harness and settings as IQ3_S, served on
+the three cards IQ3_S used, with the same server line, at port 18230.
+
+| | |
+|---|---|
+| Files | `Swift-Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-e448-0000{1,2,3}-of-00003.gguf`: 14,333,664,032 and 34,291,936,704 bytes (md5 `adec55215a0415f00aa39aadd08212a0`, `e6ee17adddf5b4979e847bea2a2a9e92`), and the table shard, 28,800,138,432 bytes (md5 `98ce140e641bc5d68af9f31df0f1c048`) |
+| Projected memory on the cards | 18,824 + 19,326 + 19,409 = 57,558 MiB at the 262,144-token window ([run/fit_delta.py](run/fit_delta.py)): IQ3_S's measured load less the weight bytes the cut removed from each card's layers, read from both files' headers. llama.cpp's default split gives both files layers 0-16, 17-32 and 33-47 plus the output layer on the three cards |
+
+```bash
+. run/bracket.env
+bash run/start_e448.sh plan      # writes serve/iq3s-e448/server.cmd and shows the cards' memory; starts nothing
+bash run/start_e448.sh           # starts only if each card in CARDS_iq3s_e448 holds under 500 MiB
+bash run/stop_e448.sh
+```
+
+On the machine that runs the bench, a second tunnel beside the first, for this port only:
+
+```bash
+SERVER_SSH="<the 7-GPU machine>" PORTS=18230 PIDFILE=tunnel-18230.pid setsid -f nohup bash tunnel.sh > tunnel-18230.log 2>&1 < /dev/null
+```
+
+In the dashboard: server `http://127.0.0.1:18230`, seed 101, 102 or 103, thinking preset `xhigh`, every other
+setting at its default. Each finished run joins the results page as a series of its own:
+
+```bash
+mix eab.results add run.json --quantized-by 'ukisai' --quantization 'IQ3_S-e448' \
+  --note 'IQ3_S with 448 of 512 experts kept per layer (agent routing counts; every kept tensor is the maker'"'"'s bytes)'
 ```
 
 ## Provenance
