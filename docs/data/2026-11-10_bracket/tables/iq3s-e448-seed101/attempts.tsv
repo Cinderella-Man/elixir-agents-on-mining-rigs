@@ -1,0 +1,21 @@
+case	status	passed	model_calls	generated_tokens	stop_reason	generated_at_budget	peak_prompt_tokens	new_prompt_tokens_sum	new_prompt_tokens_largest_call	cached_prompt_tokens_sum	calls_with_usage	error
+plausible-pr-5939	completed	1	46	19085	agent_completed	0	48306	31278	3510	1240028	46	
+plausible-pr-6449	completed	1	124	62384	agent_completed	0	115846	60416	5083	8395366	124	
+plausible-pr-5956	completed	1	96	44850	agent_completed	0	90693	49464	9046	4554702	96	
+livebook-pr-2219	completed	1	84	37786	agent_completed	0	86223	53059	3979	4113011	84	
+livebook-pr-2527	completed	1	70	35280	agent_completed	0	75661	47413	3494	3156721	70	
+livebook-pr-2663	completed	1	71	45640	agent_completed	0	68316	23553	3514	2755725	71	
+livebook-pr-2800	completed	0	45	28533	agent_completed	0	80576	57805	9548	1986345	45	
+livebook-pr-2822	completed	1	64	37956	agent_completed	0	67882	32025	8198	2722584	64	
+livebook-pr-3076	completed	1	44	16912	agent_completed	0	52730	36803	5793	1438994	44	
+accent-pr-183	completed	1	123	65536	token_budget	1	108218	46902	3513	8009481	123	
+ash-pr-3031	completed	0	115	65536	token_budget	1	144630	89400	3955	8434759	115	
+livebeats-pr-37	completed	1	45	27508	agent_completed	0	59396	32852	5535	1808779	45	
+operately-pr-1069	completed	1	34	11956	agent_completed	0	33008	22148	2756	682648	34	
+operately-pr-1205	completed	1	47	11618	agent_completed	0	36764	26191	3697	1077530	47	
+absinthe-pr-1176	completed	0	141	65536	agent_completed	1	147121	92115	5040	12438728	141	
+cachex-pr-341	completed	1	83	65536	agent_completed	1	116685	61865	6485	5870117	83	
+guardian-pr-748	completed	1	67	65536	token_budget	1	130023	76404	8844	5363115	67	
+pinchflat-pr-610	completed	1	94	64058	agent_completed	0	133343	70452	6177	8014738	94	
+beacon-pr-687	completed	0	94	65536	token_budget	1	119716	62857	4908	6133742	94	
+vutuv-pr-1759	completed	0	103	65536	token_budget	1	160125	114915	22993	10676502	103	

@@ -1,0 +1,2 @@
+series	run_id	seed	status	cases	passed	failed	errors	stopped_at_generation_budget	stopped_at_window	generated_tokens	model_calls	tokens_per_passed_case	calls_per_passed_case	window_tokens	response_tokens	max_tokens	reasoning_effort	release_id
+q2-seed101	20261110-100513-80595be0	101	completed	20	14	6	0	5	0	895310	1921	42230.7	95.1	262144	8192	65536	xhigh	ea0af77dfce3350f133cc5517ce867072cff80fe6f00cc475cda956cc26e9920

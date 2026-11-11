@@ -1,11 +1,60 @@
 # The bracket: the rig's 2-bit file against a high-precision file on the Elixir SWE Bench (2026-11-10)
 
 Two files of one model, Qwen3.8-Flash-Next, on the Elixir SWE Bench (20 cases, the Pi agent, three seeds each):
-Swift GSQ-RCO Q2_0, the file the rig serves, and Swift GSQ-RCO IQ3_S, the high-precision end. Registry rows:
-[E1](../../../experiments.md) (the bar) and [E13](../../../experiments.md) (the ceiling).
+Swift GSQ-RCO Q2_0, the file the rig serves, and Swift GSQ-RCO IQ3_S, the high-precision end. A third file, IQ3_S cut
+to 448 of 512 experts per layer, runs in the same harness ([below](#the-third-file-iq3_s-cut-to-448-experts-per-layer-e65)).
+Registry rows: [E1](../../../experiments.md) (the bar), [E13](../../../experiments.md) (the ceiling) and
+[E65](../../../experiments.md) (the cut file).
 
-**Result.** None yet: the first series (Q2_0, seed 101) started on 2026-11-10. This page describes the setup; the
-tables are added when the six series have ended.
+**Result, seed 101 only.** Seed 101 has ended for all three files; seeds 102 and 103 have not run. One case is 5
+points of the 20.
+
+| File | Passed of 20 | Failed | Attempts stopped at the generation budget | Generated tokens, 20 attempts | Model calls, 20 attempts | Generated tokens per passed case | Model calls per passed case |
+|---|---|---|---|---|---|---|---|
+| Swift GSQ-RCO Q2_0 | 14 | 6 | 5 | 895,310 | 1,921 | 42,230.7 | 95.1 |
+| Swift GSQ-RCO IQ3_S | 14 | 6 | 2 | 862,612 | 1,544 | 34,185.6 | 67.4 |
+| Swift GSQ-RCO IQ3_S cut to 448 experts per layer | 15 | 5 | 5 | 902,318 | 1,590 | 40,776.1 | 72.8 |
+
+All three runs: seed 101, thinking `xhigh`, window 262,144 tokens, 65,536 generated tokens a case, 20 of 20 attempts
+completed, none stopped at the window. The passes are the bench's own grades in each run's `run.json`. The tables
+come from [run/counts.py](run/counts.py): [tables/q2-seed101](tables/q2-seed101),
+[tables/iq3s-seed101](tables/iq3s-seed101) and [tables/iq3s-e448-seed101](tables/iq3s-e448-seed101), each with
+`series.tsv` (the row above), `attempts.tsv` (one row per case) and `calls.tsv` (one row per model call). "Stopped at
+the generation budget" is the bench's stop reason `token_budget`; the generated tokens of an attempt reached 65,536 in
+7 attempts of Q2_0, 6 of IQ3_S and 7 of the cut file, because an attempt that ends itself in the call that reaches the
+budget keeps the stop reason `agent_completed`. The per-passed-case columns sum the passed attempts and divide by the
+number passed.
+
+Pass or fail per case (the bench's order):
+
+| Case | Q2_0 | IQ3_S | IQ3_S, 448 experts |
+|---|---|---|---|
+| plausible-pr-5939 | pass | pass | pass |
+| plausible-pr-6449 | pass | pass | pass |
+| plausible-pr-5956 | pass | pass | pass |
+| livebook-pr-2219 | pass | pass | pass |
+| livebook-pr-2527 | pass | pass | pass |
+| livebook-pr-2663 | pass | pass | pass |
+| livebook-pr-2800 | fail | fail | fail |
+| livebook-pr-2822 | pass | pass | pass |
+| livebook-pr-3076 | pass | pass | pass |
+| accent-pr-183 | fail | pass | pass |
+| ash-pr-3031 | fail | fail | fail |
+| livebeats-pr-37 | pass | pass | pass |
+| operately-pr-1069 | pass | pass | pass |
+| operately-pr-1205 | pass | pass | pass |
+| absinthe-pr-1176 | pass | fail | fail |
+| cachex-pr-341 | fail | fail | pass |
+| guardian-pr-748 | pass | pass | pass |
+| pinchflat-pr-610 | fail | pass | pass |
+| beacon-pr-687 | pass | fail | fail |
+| vutuv-pr-1759 | fail | fail | fail |
+| **Passed** | **14** | **14** | **15** |
+
+The three files have the same outcome on 15 cases: 12 passed by all three and 3 failed by all three (livebook-pr-2800,
+ash-pr-3031, vutuv-pr-1759). On the other 5: accent-pr-183 and pinchflat-pr-610 pass in both IQ3_S files and fail in
+Q2_0; absinthe-pr-1176 and beacon-pr-687 pass in Q2_0 and fail in both IQ3_S files; cachex-pr-341 passes only in the
+cut file.
 
 **What it decides.** If the two files pass the same cases, file quality is not what limits the rig's model, and work
 on better files moves down. If IQ3_S passes three cases or more above Q2_0, better files are the first lever.
@@ -48,6 +97,7 @@ on better files moves down. If IQ3_S passes three cases or more above Q2_0, bett
 | [run/counts.py](run/counts.py) | the count tables of one run, from the bench's evidence |
 | [run/fit_delta.py](run/fit_delta.py) | a cut file's memory per card, from its source's measured load and both files' headers |
 | [run/start_e448.sh](run/start_e448.sh), [run/stop_e448.sh](run/stop_e448.sh) | the server for the 448-expert file, through `serve.sh` (cards by PCI bus id) |
+| [tables/](tables) | `series.tsv`, `attempts.tsv` and `calls.tsv` of each finished run, from `counts.py` (seed 101: `q2-seed101`, `iq3s-seed101`, `iq3s-e448-seed101`) |
 
 ## Commands
 
@@ -75,6 +125,19 @@ docker exec <bench container> tar -C /data/runs -cf - $RUN_ID | ssh <the 7-GPU m
 python3 -I run/counts.py --data $WORK --run $RUN_ID --label q2-seed101 --out $WORK/tables/q2-seed101
 ```
 
+The three seed-101 tables above, with `WORK` the work folder on the 7-GPU machine. The copy runs on the machine that
+runs the bench, the tables on the 7-GPU machine at low CPU priority (no GPU, nothing else running):
+
+```bash
+# on the machine that runs the bench, once per run
+docker exec <bench container> tar -C /data/runs -cf - $RUN_ID | ssh <the 7-GPU machine> "nice -n 19 tar -C $WORK/runs -xf -"
+
+# on the 7-GPU machine, in $WORK
+nice -n 19 python3 -I run/counts.py --data $WORK --run 20261110-100513-80595be0 --label q2-seed101 --out $WORK/tables/q2-seed101
+nice -n 19 python3 -I run/counts.py --data $WORK --run 20261110-192333-3dd3f555 --label iq3s-seed101 --out $WORK/tables/iq3s-seed101
+nice -n 19 python3 -I run/counts.py --data $WORK --run 20261111-064414-a40d01b1 --label iq3s-e448-seed101 --out $WORK/tables/iq3s-e448-seed101
+```
+
 ## The third file: IQ3_S cut to 448 experts per layer (E65)
 
 Swift GSQ-RCO IQ3_S with 448 of its 512 experts kept in every layer, chosen by the sister repo's agent routing counts
@@ -88,7 +151,8 @@ the three cards IQ3_S used, with the same server line, at port 18230.
 | Files | `Swift-Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-e448-0000{1,2,3}-of-00003.gguf`: 14,333,664,032 and 34,291,936,704 bytes (md5 `adec55215a0415f00aa39aadd08212a0`, `e6ee17adddf5b4979e847bea2a2a9e92`), and the table shard, 28,800,138,432 bytes (md5 `98ce140e641bc5d68af9f31df0f1c048`) |
 | Projected memory on the cards | 18,824 + 19,326 + 19,409 = 57,559 MiB at the 262,144-token window ([run/fit_delta.py](run/fit_delta.py)): IQ3_S's measured load less the weight bytes the cut removed from each card's layers, read from both files' headers. llama.cpp's default split gives both files layers 0-16, 17-32 and 33-47 plus the output layer on the three cards |
 | Memory on the cards after loading | 18,824 + 19,324 + 19,410 = 57,558 MiB (2026-11-11), within 2 MiB of the projection on each card |
-| Series | seed 101 started on 2026-11-11; seeds 102 and 103 follow |
+| Series | seed 101 ended on 2026-11-11 with 15 of 20 cases passed (run `20261111-064414-a40d01b1`, [tables](tables/iq3s-e448-seed101)); seeds 102 and 103 have not run |
+| Routing text | the experts were chosen by the sister repo's agent routing counts on its publishable agent sessions; whether any of that text comes from the bench's 12 projects (E12) is not yet checked |
 
 ```bash
 . run/bracket.env
