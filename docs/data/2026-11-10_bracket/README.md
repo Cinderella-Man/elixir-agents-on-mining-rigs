@@ -151,7 +151,7 @@ the three cards IQ3_S used, with the same server line, at port 18230.
 | Files | `Swift-Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-e448-0000{1,2,3}-of-00003.gguf`: 14,333,664,032 and 34,291,936,704 bytes (md5 `adec55215a0415f00aa39aadd08212a0`, `e6ee17adddf5b4979e847bea2a2a9e92`), and the table shard, 28,800,138,432 bytes (md5 `98ce140e641bc5d68af9f31df0f1c048`) |
 | Projected memory on the cards | 18,824 + 19,326 + 19,409 = 57,559 MiB at the 262,144-token window ([run/fit_delta.py](run/fit_delta.py)): IQ3_S's measured load less the weight bytes the cut removed from each card's layers, read from both files' headers. llama.cpp's default split gives both files layers 0-16, 17-32 and 33-47 plus the output layer on the three cards |
 | Memory on the cards after loading | 18,824 + 19,324 + 19,410 = 57,558 MiB (2026-11-11), within 2 MiB of the projection on each card |
-| Series | seed 101 ended on 2026-11-11 with 15 of 20 cases passed (run `20261111-064414-a40d01b1`, [tables](tables/iq3s-e448-seed101)); seeds 102 and 103 have not run |
+| Series | seed 101 ended on 2026-11-11 with 15 of 20 cases passed (run `20261111-064414-a40d01b1`, [tables](tables/iq3s-e448-seed101)); seeds 102 and 103 have not run. This run is not yet in the bench's published results |
 | Routing text | the experts were chosen by the sister repo's agent routing counts on its publishable agent sessions; whether any of that text comes from the bench's 12 projects (E12) is not yet checked |
 
 ```bash
