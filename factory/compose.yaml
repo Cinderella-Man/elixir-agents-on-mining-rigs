@@ -1,0 +1,25 @@
+services:
+  benchmark:
+    image: elixir-agent-benchmark:local
+    build: .
+    init: true
+    network_mode: host
+    environment:
+      PORT: ${PORT:-4000}
+      EAB_PREPARE_AHEAD: ${EAB_PREPARE_AHEAD:-4}
+      EAB_PREPARE_WORKERS: ${EAB_PREPARE_WORKERS:-2}
+      EAB_CACHE_MIN_FREE_GB: ${EAB_CACHE_MIN_FREE_GB:-5}
+      EAB_OFFLINE: ${EAB_OFFLINE:-}
+      EAB_MEMORY: ${EAB_MEMORY:-}
+      EAB_MEMORY_SSH_TARGET: ${EAB_MEMORY_SSH_TARGET:-}
+      EAB_MEMORY_SSH_KEY: ${EAB_MEMORY_SSH_KEY:-}
+      EAB_MEMORY_HOSTS: ${EAB_MEMORY_HOSTS:-}
+      EAB_MEMORY_REMOTE_COLLECTOR: ${EAB_MEMORY_REMOTE_COLLECTOR:-/srv/elixir-agent-benchmark/memory-collector/bin/eab_memory_collector}
+      EAB_MEMORY_REMOTE_KEY_FILE: ${EAB_MEMORY_REMOTE_KEY_FILE:-}
+    volumes:
+      - benchmark-data:/data
+      - ./results-page:/app/results-page
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+volumes:
+  benchmark-data:
