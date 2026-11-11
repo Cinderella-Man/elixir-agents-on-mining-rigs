@@ -1,0 +1,9 @@
+kind	distinct_images	smallest	median	largest	unit
+toolchain	33	0.77	0.90	3.35	GB
+project	58	0.82	1.07	3.53	GB
+seed	70	0.82	1.09	3.53	GB
+agent	74	1.19	1.44	3.89	GB
+layout	8	0.35	0.49	0.92	GB
+snapshot_postgres	22	406	493.5	704	MB
+snapshot_clickhouse	9	727	936	945	MB
+sealed_clickhouse	9	727	936	945	MB

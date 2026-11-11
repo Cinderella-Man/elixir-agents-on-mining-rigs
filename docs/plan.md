@@ -93,6 +93,9 @@ A survey of every row, its extensions and new ideas (2026-11-09):
   bar, the ceiling and the task factory.
 - [task_collection_guide.md](research/notes/task_collection_guide.md): how training tasks and sessions are made,
   which licences the projects need, how their code is run safely, and the pool of 929 candidate projects.
+- [task_factory_on_the_bench_engine.md](research/notes/task_factory_on_the_bench_engine.md): how the Elixir SWE
+  Bench's own engine makes training tasks for the pilot (E68), which checks a training task keeps, and the pilot as
+  single-job sessions.
 
 ## Where work runs
 
