@@ -1,0 +1,2 @@
+repo	reverting	reverted	evidence
+nerves-hub/nerves_hub_web	1212	1061	its title says it reverts a change and its body gives the reason; the target is the earlier pull request that made that change, found by reading the earlier titles by hand on 2026-11-12; #1226 (2024-02-21) made the change again

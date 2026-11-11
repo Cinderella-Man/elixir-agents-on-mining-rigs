@@ -1,0 +1,16 @@
+min_line_length	repo	pairs_tested	pairs_repaired	pairs_repaired_same_place
+8	axelclark/ex338	3	1	1
+8	nerves-hub/nerves_hub_web	101	47	43
+8	podlove/radiator	7	1	1
+12	axelclark/ex338	3	1	1
+12	nerves-hub/nerves_hub_web	101	47	43
+12	podlove/radiator	7	1	1
+16	axelclark/ex338	3	1	1
+16	nerves-hub/nerves_hub_web	101	46	43
+16	podlove/radiator	7	1	1
+20	axelclark/ex338	3	1	1
+20	nerves-hub/nerves_hub_web	101	45	43
+20	podlove/radiator	7	1	1
+30	axelclark/ex338	3	1	1
+30	nerves-hub/nerves_hub_web	101	45	43
+30	podlove/radiator	7	1	1
