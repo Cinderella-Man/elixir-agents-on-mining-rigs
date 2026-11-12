@@ -1,0 +1,5 @@
+pull_requests	verdict	dropped_at	reason
+9	checked	-	-
+5	not run	-	not reached
+1	refused	maker	no_existing_tests
+1	not run	-	contains_other_candidates

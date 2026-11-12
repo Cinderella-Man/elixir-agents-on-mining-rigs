@@ -1,0 +1,10 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+flick-pr-222	feature	feature	1	2	cap max_ranked_answers
+flick-pr-261	bug_fix	bug_fix	0	0	-
+flick-pr-274	bug_fix	bug_fix	0	0	-
+flick-pr-276	bug_fix	bug_fix	0	0	-
+flick-pr-310	feature	feature	1	1	database_reachable?
+flick-pr-327	feature	feature	0	1	git_sha
+flick-pr-330	bug_fix	bug_fix	0	0	-
+flick-pr-339	feature	feature	1	2	down up
+flick-pr-341	bug_fix	bug_fix	0	0	-
