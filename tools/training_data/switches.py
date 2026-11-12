@@ -142,3 +142,20 @@ def parse_assignments(items):
             value = json.loads(value)
         given[name] = value
     return given
+
+
+def table():
+    """The switches as a tab-separated table: name, default, other values, what it decides, what settles it."""
+    import json
+
+    lines = ["switch\tdefault\tother_values\twhat_it_decides\twhat_settles_it"]
+    for name, (default, allowed, decides, settles) in SWITCHES.items():
+        others = "any text" if allowed is None else ", ".join(value for value in allowed if value != default)
+        lines.append("\t".join((name, json.dumps(default, ensure_ascii=False), others, decides, settles)))
+    return "\n".join(lines) + "\n"
+
+
+if __name__ == "__main__":
+    import sys
+
+    sys.stdout.write(table())

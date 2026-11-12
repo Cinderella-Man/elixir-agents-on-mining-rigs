@@ -1,0 +1,45 @@
+{
+  "converter": {
+    "files": {
+      "bridge.py": "34ff3f659bc6620936ad11421cbc091cc980d08b471cc3fc942c59c7dbae495c",
+      "record.py": "9813cee33f976ec924650932c5349e6fbfeea5f675b5128de64d0f9057040a6a",
+      "render.py": "dc2375c23855e99055a350558edcd126ec8045865f3f3194d65023f727b3989a",
+      "switches.py": "97f3f458224f1e68865d89d43a1e6bdaae3a8630ee91690af124bf02161e7dd0"
+    },
+    "version": "b0da3dc57a3eccc438540b384b53fc75a3bd8242b76c7d0d415e50456c5e8aa1"
+  },
+  "format": "teacher-session-training-record/1",
+  "kept": "no",
+  "not_converted": 0,
+  "records": 3,
+  "sessions_listed": 3,
+  "software": {
+    "jinja2": "3.1.6",
+    "python": "3.14.4"
+  },
+  "switches": {
+    "begin_token": "",
+    "enable_thinking": "unset",
+    "end_token": "<|im_end|>",
+    "final_tool_calls_field": "omit",
+    "integral_floats": "as_integers",
+    "jinja_lstrip_blocks": "true",
+    "jinja_trim_blocks": "true",
+    "json_ensure_ascii": "false",
+    "json_escape_html": "false",
+    "json_item_separator": ", ",
+    "json_key_separator": ": ",
+    "no_thinking_field": "omit",
+    "param_order": "stream",
+    "preserve_thinking": "unset",
+    "reasoning_effort": "unset",
+    "strip_generation_tags": "true",
+    "trim": "jinja2"
+  },
+  "system_fixed_sha256": "259fed2d5473ca12afd69e576b5da2abc8e7d68d7b22f1539fd5b13d06fa4d8e",
+  "template": {
+    "name": "bench_gguf_chat_template.jinja",
+    "sha256": "12827f24b742ea4e80cdc12dbcf9622227056b9f797252a3149263d4f9aaadce"
+  },
+  "tools_sha256": "b72b0ec532c465c9e8b78520d7cc7ed3664d9a720ea87dc99c78336184f010c0"
+}

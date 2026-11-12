@@ -1,0 +1,23 @@
+change	records	not_converted	text_changes_in	text_bytes	text_bytes_first_run	fixed_text_changes	records_with_problems
+trim=c_isspace	13	0	0	2867960	2867960	0	0
+param_order=sorted	13	0	6	2867960	2867960	0	0
+integral_floats=keep	13	0	0	2867960	2867960	0	0
+json_ensure_ascii=true	13	0	1	2867966	2867960	0	0
+json_escape_html=true	13	0	13	2873590	2867960	13	0
+json_item_separator=,	13	0	13	2867222	2867960	13	0
+json_key_separator=:	13	0	13	2866806	2867960	13	0
+begin_token=<|endoftext|>	13	0	13	2868129	2867960	13	0
+enable_thinking=true	13	0	0	2867960	2867960	0	0
+reasoning_effort=xhigh	13	0	0	2867960	2867960	0	0
+reasoning_effort=high	13	0	0	2867960	2867960	0	0
+reasoning_effort=medium	13	0	13	2865243	2867960	13	0
+reasoning_effort=low	13	0	13	2867037	2867960	13	0
+preserve_thinking=true	13	0	0	2867960	2867960	0	0
+preserve_thinking=false	13	0	0	2867960	2867960	0	0
+jinja_trim_blocks=false	13	0	0	2867960	2867960	0	0
+jinja_lstrip_blocks=false	13	0	0	2867960	2867960	0	0
+no_thinking_field=empty	13	0	0	2867960	2867960	0	0
+no_thinking_field=null	13	0	0	2867960	2867960	0	0
+final_tool_calls_field=empty	13	0	0	2867960	2867960	0	0
+template: the maker's file of 2026-11-07	13	0	0	2867960	2867960	0	0
+template: the maker's file of 2026-08-13	13	0	0	2867960	2867960	0	0

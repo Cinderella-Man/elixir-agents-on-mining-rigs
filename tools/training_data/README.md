@@ -68,7 +68,21 @@ python3 -I tools/training_data/tests/test_converter.py
 `attempt.json`, with `run.json` one level up). `--switch name=value` changes a switch; it may be repeated.
 
 A session that cannot be converted gives no record. The reason is printed with hashes, lengths and counts, never with
-the session's text, and the exit code is 2. `check_records.py` exits with 1 when a check fails.
+the session's text, and the exit code is 2. `python3 -I tools/training_data/switches.py` prints the switches as a
+table.
+
+**What `check_records.py` checks,** for every record, without trusting the conversion ([`verify.py`](verify.py)):
+
+1. the template's text, built again from the record's messages, is the stored text;
+2. the spans cover the text exactly once, in characters and in bytes;
+3. every answer's stretch ends with the end token, and the text before it is the prompt the template writes for the
+   request that asks for that answer, with its generation prompt: what the student reads before it writes;
+4. every span holds what it says it holds, and every piece of content of the messages has its span;
+5. no span of the teacher's holds a line of the fixed text;
+6. the fixed text at the start is the stated one, and across the records it is the same in all of them;
+7. the file is the record's own way of writing it, and the messages come back unchanged.
+
+It exits with 1 when a check fails.
 
 ## What is read
 
@@ -297,7 +311,7 @@ with another input file.
 
 ## Tests
 
-[`tests/test_converter.py`](tests/test_converter.py), 30 tests. Every conversation in them is made up
+[`tests/test_converter.py`](tests/test_converter.py), 33 tests. Every conversation in them is made up
 ([`tests/fake_session.py`](tests/fake_session.py) writes it in the engine's own files and shapes); the only real
 text is the recorded fixed text.
 
@@ -311,6 +325,8 @@ text is the recorded fixed text.
   with a cut-off answer; a session whose last request has no reply.
 - **The record:** the messages come back unchanged from the file; the same session in another folder gives the same
   bytes; the stored session's files are not changed; the provenance lists every file read with its hash; every
-  character has a source; the check notices a changed text, span or message.
+  character has a source; the check notices a changed text, span or message, and an answer that starts in the wrong
+  place.
 - **The switches:** each changes what it names and nothing else; unknown names and values are refused.
-- **Refusals:** another system text and other tools are refused without quoting them.
+- **Refusals:** another system text and other tools are refused without quoting them; so are a block of an unknown
+  kind and a character that cannot be written as UTF-8.

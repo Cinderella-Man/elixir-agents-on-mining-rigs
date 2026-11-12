@@ -61,10 +61,18 @@ def verify(record, raw, fixed):
         bad("the spans end at character %d, the text at %d" % (position, len(text)))
 
     # 3. each answer's stretch ends with the end token, and spans lie on the right side of it
+    #    and what stands before an answer is the prompt the template writes for the request that asks for it
     end_token = switches["end_token"]
+    answers = [index for index, message in enumerate(messages) if message["role"] == "assistant"]
+    if [turn["message"] for turn in turns] != answers:
+        bad("the answers listed are not the assistant messages")
     for turn in turns:
         if text[turn["end"] - len(end_token):turn["end"]] != end_token:
             bad("answer %d does not end with the end token" % turn["turn"])
+        prompt = renderer.render(messages[:turn["message"]], tools, add_generation_prompt=True)
+        if text[:turn["start"]] != prompt:
+            bad("the text before answer %d is not the prompt the template writes for the request that asks for it"
+                % turn["turn"])
     for number, span in enumerate(spans):
         inside = [turn for turn in turns if turn["start"] <= span["start"] and span["end"] <= turn["end"]]
         if span["kind"] in TEACHER_KINDS + ("turn_markup",):

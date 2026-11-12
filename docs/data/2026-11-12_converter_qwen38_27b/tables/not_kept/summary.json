@@ -1,0 +1,126 @@
+{
+  "by_kind": {
+    "answer": {
+      "bytes": 1819,
+      "characters": 1819,
+      "spans": 3
+    },
+    "call_name": {
+      "bytes": 988,
+      "characters": 988,
+      "spans": 247
+    },
+    "description": {
+      "bytes": 11046,
+      "characters": 10978,
+      "spans": 3
+    },
+    "instructions": {
+      "bytes": 3007,
+      "characters": 3007,
+      "spans": 3
+    },
+    "param_name": {
+      "bytes": 2129,
+      "characters": 2129,
+      "spans": 342
+    },
+    "param_value": {
+      "bytes": 146013,
+      "characters": 146013,
+      "spans": 342
+    },
+    "prompt_markup": {
+      "bytes": 23595,
+      "characters": 23595,
+      "spans": 471
+    },
+    "system_fixed": {
+      "bytes": 7992,
+      "characters": 7992,
+      "spans": 3
+    },
+    "system_rest": {
+      "bytes": 15295,
+      "characters": 15235,
+      "spans": 3
+    },
+    "thinking": {
+      "bytes": 364326,
+      "characters": 364298,
+      "spans": 193
+    },
+    "tool_result": {
+      "bytes": 892908,
+      "characters": 892800,
+      "spans": 246
+    },
+    "tools": {
+      "bytes": 8844,
+      "characters": 8844,
+      "spans": 12
+    },
+    "turn_markup": {
+      "bytes": 25421,
+      "characters": 25421,
+      "spans": 1138
+    }
+  },
+  "checks": {
+    "agent_log_error_messages_left_out": 1,
+    "characters_cut_by_trim": 324,
+    "description_file_found": {
+      "false": 0,
+      "true": 3
+    },
+    "instructions_found": {
+      "false": 0,
+      "true": 3
+    },
+    "json_values": 95,
+    "json_values_with_html_characters": 35,
+    "json_values_with_non_ascii": 0,
+    "param_order_agent_log_cut_call": 1,
+    "param_order_request_one_key": 1,
+    "param_order_stream": 245,
+    "read_spans_holding_a_template_tag": 0,
+    "system_fixed_found": {
+      "false": 0,
+      "true": 3
+    },
+    "teacher_spans_holding_a_fixed_line": 0,
+    "teacher_spans_holding_a_template_tag": 0,
+    "texts_the_two_trim_rules_cut_differently": 0,
+    "tool_lines_with_html_characters": 3,
+    "tool_lines_with_non_ascii": 0,
+    "tool_results_after_the_last_reply": 1
+  },
+  "converter_versions": [
+    "b0da3dc57a3eccc438540b384b53fc75a3bd8242b76c7d0d415e50456c5e8aa1"
+  ],
+  "fixed_text_forms": [
+    {
+      "bytes": 6733,
+      "records": 3,
+      "sha256": "4296c7bdb651bf3c9b23dec3dd8b6f5170dff94a8affc646509d5332efee8be9"
+    }
+  ],
+  "problems": [],
+  "records": 3,
+  "records_with_problems": 0,
+  "sum": {
+    "answers_cut_by_the_reply_limit": 2,
+    "answers_without_thinking": 11,
+    "read_bytes": 962687,
+    "read_characters": 962451,
+    "record_bytes": 3551522,
+    "teacher_bytes": 515275,
+    "teacher_characters": 515247,
+    "text_bytes": 1503383,
+    "text_characters": 1503119,
+    "tool_calls": 247,
+    "turn_markup_bytes": 25421,
+    "turn_markup_characters": 25421,
+    "turns": 204
+  }
+}

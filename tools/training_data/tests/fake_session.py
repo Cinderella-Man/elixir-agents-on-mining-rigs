@@ -23,9 +23,9 @@ import json
 import os
 
 
-def _dump(value):
+def _dump(value, ascii_only=False):
     # the engine writes every object's keys in alphabetical order
-    return json.dumps(value, sort_keys=True, ensure_ascii=False, indent=2)
+    return json.dumps(value, sort_keys=True, ensure_ascii=ascii_only, indent=2)
 
 
 def _chunks(text, size=7):
@@ -130,7 +130,7 @@ def write_session(root, fixed_folder, spec):
             "tools": request_tools,
         }
         with open(os.path.join(folder, "request-%04d.json" % number), "w", encoding="utf-8") as handle:
-            handle.write(_dump(request))
+            handle.write(_dump(request, spec.get("ascii_json", False)))
         if not (last and not spec.get("reply_to_last_request", True)):
             with open(os.path.join(folder, "response-%04d.sse" % number), "w", encoding="utf-8", newline="") as handle:
                 handle.write(_stream(turn, ids))
@@ -170,7 +170,7 @@ def write_session(root, fixed_folder, spec):
     with open(os.path.join(folder, "pi-events.jsonl"), "w", encoding="utf-8") as handle:
         handle.write(json.dumps({"type": "agent_start"}, sort_keys=True) + "\n")
         handle.write(json.dumps({"type": "agent_end", "messages": agent_log, "willRetry": False},
-                                sort_keys=True, ensure_ascii=False) + "\n")
+                                sort_keys=True, ensure_ascii=spec.get("ascii_json", False)) + "\n")
     with open(os.path.join(folder, "attempt.json"), "w", encoding="utf-8") as handle:
         handle.write(_dump({
             "agent": {"lock_sha256": "0" * 64, "package": "made-up-agent", "version": "0.0.0"},

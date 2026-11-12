@@ -607,6 +607,29 @@ class Refusals(Case):
         self.assertEqual(caught.exception.code, "tools_differ")
         self.assertNotIn("made-up tool", str(caught.exception))
 
+    def test_a_character_that_cannot_be_written_is_refused(self):
+        spec = {"ascii_json": True, "turns": [
+            {"thinking": "Print.", "calls": [{"name": "bash", "raw": '{"command":"cat a"}'}],
+             "results": [{"content": "half a character: \ud83d"}]},
+            {"thinking": "Seen.", "text": "Done.", "stop": "end_turn"},
+        ]}
+        folder = self.session(spec)
+        with self.assertRaises(ConversionError) as caught:
+            convert(folder, os.path.join(self.root, "r.json"), None, None, FIXED)
+        self.assertEqual(caught.exception.code, "text_not_utf8")
+        self.assertFalse(os.path.exists(os.path.join(self.root, "r.json")))
+
+    def test_the_check_notices_an_answer_that_starts_in_the_wrong_place(self):
+        record, _ = self.convert(TWO_CALLS)
+        changed = copy.deepcopy(record)
+        changed["turns"][1]["start"] -= 1
+        self.assertTrue(any("before answer 1" in problem for problem in verify(changed, None, FIXED)))
+
+    def test_the_switch_table_lists_every_switch(self):
+        table = switches_module.table().split("\n")
+        self.assertEqual(table[0].split("\t")[0], "switch")
+        self.assertEqual([line.split("\t")[0] for line in table[1:] if line], list(switches_module.SWITCHES))
+
     def test_a_block_the_converter_does_not_know_is_refused(self):
         request = frame("teacher_middle_request.frame.json")
         request = copy.deepcopy(request)

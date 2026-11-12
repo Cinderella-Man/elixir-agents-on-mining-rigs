@@ -1,0 +1,18 @@
+switch	default	other_values	what_it_decides	what_settles_it
+enable_thinking	"unset"	true, false	the template variable enable_thinking; unset leaves the template's own default, thinking on	the server's preset, read from a live server
+reasoning_effort	"unset"	xhigh, high, medium, low	the template variable reasoning_effort; unset leaves the template's own default, xhigh, and its sentence at the top of the system turn	the server's preset, read from a live server
+preserve_thinking	"unset"	true, false	the template variable preserve_thinking; unset leaves the template's own default, earlier thinking kept. With false the template drops the thinking of answers before the last user message. A session has one user message, the description, so its text is the same either way; a conversation with a later user message would no longer be one text that only grows, and the converter refuses it	the server's preset, read from a live server
+begin_token	""	any text	text put before the first turn; the template writes none. The server reported the begin token <|endoftext|>	the server's own rendering of one request
+trim	"jinja2"	c_isspace	which characters the template's trim removes at the ends of every text: jinja2 removes all Unicode white space, c_isspace only space, tab, line feed, vertical tab, form feed and carriage return (what the server's source does)	the server's own rendering of a text that ends in such a character
+json_item_separator	", "	any text	the text between two items when the template writes a value as JSON (tool lines, parameters that are not text)	the server's own rendering of the tool lines
+json_key_separator	": "	any text	the text after a key when the template writes a value as JSON	the server's own rendering of the tool lines
+json_ensure_ascii	"false"	true	whether non-ASCII characters inside a JSON value are written as \uXXXX	the server's own rendering of a parameter that holds non-ASCII text
+json_escape_html	"false"	true	whether <, >, & and ' inside a JSON value are written as \uXXXX, as Jinja2's stock filter does	the server's own rendering of the tool lines
+jinja_trim_blocks	"true"	false	the template engine's trim_blocks setting, which decides the white space between the template's blocks	the server's own rendering of one request
+jinja_lstrip_blocks	"true"	false	the template engine's lstrip_blocks setting, which decides the white space between the template's blocks	the server's own rendering of one request
+strip_generation_tags	"true"	false	remove the maker's generation tags before rendering; they write nothing, and Jinja2 does not know them	the server's rendering of the tuned file
+param_order	"stream"	sorted	the order of a call's parameters: stream is the order the teacher wrote, read from the reply stream; sorted is the alphabetical order of the stored requests	the model's raw reply on a live server, beside the template's writing of the same call
+integral_floats	"as_integers"	keep	a number the teacher wrote with a fraction of zero (120.0): as_integers writes 120, as the agent's JSON.stringify does before the server sees it; keep writes 120.0	one such call sent through the agent to a live server
+no_thinking_field	"omit"	empty, null	the reasoning_content key of an answer without thinking: left out, an empty text, or null	one answer without thinking recorded on the bench's route
+final_tool_calls_field	"omit"	empty	the tool_calls key of an answer without calls (the closing words): left out, or an empty list	the agent's request after a closing answer, recorded on the bench's route
+end_token	"<|im_end|>"	any text	the token that ends a turn, as the server reported it; the model's own writing in a turn ends with it	recorded: the server's report in the target-text folder

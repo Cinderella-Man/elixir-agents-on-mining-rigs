@@ -167,14 +167,13 @@ def build(attempt, fixed, given_switches=None, label=None):
     bridged, tools = bridge_module.bridge_attempt(attempt, fixed, values)
     messages = bridged.messages
     renderer = Renderer(fixed.template, values)
-    text, spans, regions = renderer.layout(messages, tools, add_generation_prompt=False)
-    spans, found = split_system(spans, text, fixed, attempt.instructions)
-
     try:
+        text, spans, regions = renderer.layout(messages, tools, add_generation_prompt=False)
         encoded = text.encode("utf-8")
-    except UnicodeEncodeError as error:
-        raise ConversionError("text_not_utf8", "the text holds a character that cannot be written as UTF-8",
-                              {"position": error.start}) from None
+    except UnicodeEncodeError:
+        raise ConversionError("text_not_utf8",
+                              "the session holds a character that cannot be written as UTF-8") from None
+    spans, found = split_system(spans, text, fixed, attempt.instructions)
 
     turns = []
     for info, region in zip(bridged.turns, regions):

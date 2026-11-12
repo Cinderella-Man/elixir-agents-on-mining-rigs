@@ -1,0 +1,122 @@
+{
+  "by_kind": {
+    "answer": {
+      "bytes": 10486,
+      "characters": 10456,
+      "spans": 13
+    },
+    "call_name": {
+      "bytes": 1958,
+      "characters": 1958,
+      "spans": 489
+    },
+    "description": {
+      "bytes": 20729,
+      "characters": 20655,
+      "spans": 13
+    },
+    "instructions": {
+      "bytes": 10735,
+      "characters": 10735,
+      "spans": 13
+    },
+    "param_name": {
+      "bytes": 4249,
+      "characters": 4249,
+      "spans": 667
+    },
+    "param_value": {
+      "bytes": 271966,
+      "characters": 271962,
+      "spans": 667
+    },
+    "prompt_markup": {
+      "bytes": 53511,
+      "characters": 53511,
+      "spans": 962
+    },
+    "system_fixed": {
+      "bytes": 34632,
+      "characters": 34632,
+      "spans": 13
+    },
+    "system_rest": {
+      "bytes": 55425,
+      "characters": 55205,
+      "spans": 13
+    },
+    "thinking": {
+      "bytes": 538705,
+      "characters": 538651,
+      "spans": 363
+    },
+    "tool_result": {
+      "bytes": 1777617,
+      "characters": 1776761,
+      "spans": 489
+    },
+    "tools": {
+      "bytes": 38324,
+      "characters": 38324,
+      "spans": 52
+    },
+    "turn_markup": {
+      "bytes": 49623,
+      "characters": 49623,
+      "spans": 2218
+    }
+  },
+  "checks": {
+    "characters_cut_by_trim": 757,
+    "description_file_found": {
+      "false": 0,
+      "true": 13
+    },
+    "instructions_found": {
+      "false": 0,
+      "true": 13
+    },
+    "json_values": 176,
+    "json_values_with_html_characters": 60,
+    "json_values_with_non_ascii": 1,
+    "param_order_stream": 489,
+    "read_spans_holding_a_template_tag": 0,
+    "system_fixed_found": {
+      "false": 0,
+      "true": 13
+    },
+    "teacher_spans_holding_a_fixed_line": 0,
+    "teacher_spans_holding_a_template_tag": 0,
+    "texts_the_two_trim_rules_cut_differently": 0,
+    "tool_lines_with_html_characters": 13,
+    "tool_lines_with_non_ascii": 0
+  },
+  "converter_versions": [
+    "b0da3dc57a3eccc438540b384b53fc75a3bd8242b76c7d0d415e50456c5e8aa1"
+  ],
+  "fixed_text_forms": [
+    {
+      "bytes": 6733,
+      "records": 13,
+      "sha256": "4296c7bdb651bf3c9b23dec3dd8b6f5170dff94a8affc646509d5332efee8be9"
+    }
+  ],
+  "problems": [],
+  "records": 13,
+  "records_with_problems": 0,
+  "sum": {
+    "answers_cut_by_the_reply_limit": 0,
+    "answers_without_thinking": 19,
+    "read_bytes": 1990973,
+    "read_characters": 1989823,
+    "record_bytes": 6819245,
+    "teacher_bytes": 827364,
+    "teacher_characters": 827276,
+    "text_bytes": 2867960,
+    "text_characters": 2866722,
+    "tool_calls": 489,
+    "turn_markup_bytes": 49623,
+    "turn_markup_characters": 49623,
+    "turns": 382
+  }
+}
