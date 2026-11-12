@@ -1,5 +1,5 @@
 {
-  "note": "Pinned images for the bundle maker's toolchain resolver (factory/README.md, section 3.5). One line per pair, each printed by scripts/toolchain_image.sh and read before it was added. A pair missing here is refused as no_image:<elixir>/<otp>. Elixir before 1.12 is never added: the engine's Hex install (lib/eab/fixtures.ex) pins Hex 2.5.3 only from Elixir 1.12 on. OTP 27.2 is never added: its ssl rejects the certificate of builds.hex.pm (key_usage_mismatch), so the image cannot install Hex (1.18.1/27.2 and 1.18.2/27.2 were added and removed on 2026-11-12, docs/data/2026-11-12_pilot_tasks_all). Nor is OTP 27.2.1, the next patch release: its image for Elixir 1.18.2 fails the same way (radiator #607, docs/data/2026-11-12_pilot_tasks_retry), so commits that name OTP 27.2 stay refused.",
+  "note": "Pinned images for the bundle maker's toolchain resolver (factory/README.md, section 3.5). One line per pair, each printed by scripts/toolchain_image.sh and read before it was added. A pair missing here is refused as no_image:<elixir>/<otp>. Elixir before 1.12 is never added: the engine's Hex install (lib/eab/fixtures.ex) pins Hex 2.5.3 only from Elixir 1.12 on. A service the engine runs beside the workspace without capturing it (Redis) is served when this table pins an image for it, else refused as needs_service:<name>. OTP 27.2 is never added: its ssl rejects the certificate of builds.hex.pm (key_usage_mismatch), so the image cannot install Hex (1.18.1/27.2 and 1.18.2/27.2 were added and removed on 2026-11-12, docs/data/2026-11-12_pilot_tasks_all). Nor is OTP 27.2.1, the next patch release: its image for Elixir 1.18.2 fails the same way (radiator #607, docs/data/2026-11-12_pilot_tasks_retry), so commits that name OTP 27.2 stay refused.",
   "elixir": [
     {"elixir": "1.13.4", "otp": "25.0", "image": "hexpm/elixir:1.13.4-erlang-25.0-ubuntu-noble-20260509.1@sha256:6229d1e61a2ed52d33b2abf43a99ce0b15491fa9c60b9b86ad2cdf53c89361eb"},
     {"elixir": "1.14.4", "otp": "25.3.2", "image": "hexpm/elixir:1.14.4-erlang-25.3.2-ubuntu-noble-20260509.1@sha256:a5d083810fa4176c3e49d320197db550e584269f2133efced56e23fd6015595f"},
@@ -21,6 +21,9 @@
   ],
   "clickhouse": [
     {"version": "25.4.2.31", "image": "clickhouse/clickhouse-server:25.4.2.31@sha256:5311f717b7a3ee1e8ed2c198fee498c636ba6c2da3e39dbe45769088ebc858d0"}
+  ],
+  "redis": [
+    {"version": "7.2", "image": "redis:7.2-alpine@sha256:2f66de68111e64c3927859f158f8e666066dae2b97d9f82770a6f37a5aa1c335"}
   ],
   "service_clients": {
     "redis": ["redix", "exredis", "eredis", "redis"]

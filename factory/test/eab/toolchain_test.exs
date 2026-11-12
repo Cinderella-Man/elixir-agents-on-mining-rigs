@@ -348,6 +348,121 @@ defmodule Eab.ToolchainTest do
     assert get_in(record, ["postgres", "value"]) =~ "postgres:14.24-alpine@"
   end
 
+  @redis_table Map.put(@table, "redis", [
+                 %{
+                   "version" => "7.2",
+                   "image" => "redis:7.2-alpine@sha256:#{String.duplicate("7", 64)}"
+                 },
+                 %{
+                   "version" => "6.2",
+                   "image" => "redis:6.2-alpine@sha256:#{String.duplicate("6", 64)}"
+                 }
+               ])
+
+  defp redis_files(ci_image, mix \\ nil) do
+    mix = mix || String.replace(@mix, ~s|[{:ecto_sql|, ~s|[{:redix, "~> 1.3"}, {:ecto_sql|)
+
+    workflow =
+      "jobs:\n  t:\n    services:\n      postgres:\n        image: postgres:14\n      redis:\n        image: #{ci_image}\n"
+
+    %{
+      ".tool-versions" => "elixir 1.18.3\nerlang 27.3\n",
+      ".github/workflows/t.yml" => workflow,
+      "mix.exs" => mix
+    }
+  end
+
+  test "served: a Redis client in mix.exs gets the table's Redis image, even when the template marks the CI's Redis not needed" do
+    assert {:ok, resolved} = Toolchain.resolve(redis_files("redis"), @template, @redis_table)
+
+    assert resolved["services"] == %{
+             "postgres" => %{
+               "image" => "postgres:14.24-alpine@sha256:" <> String.duplicate("b", 64)
+             },
+             "redis" => %{"image" => "redis:7.2-alpine@sha256:" <> String.duplicate("7", 64)}
+           }
+
+    assert source(resolved, "redis") ==
+             "mix.exs depends on redix; config/toolchain_images.json: redis 7.2, its newest line: " <>
+               ".github/workflows/t.yml: redis names no version"
+
+    assert Enum.map(resolved["record"].values, &elem(&1, 0)) ==
+             ~w(elixir otp image postgres redis baseline services_checked)
+
+    assert get_in(resolved["record"], ["services_checked", "mix_clients"]) == ["redix (redis)"]
+    assert get_in(resolved["record"], ["services_checked", "not_needed_by_template"]) == ["redis"]
+  end
+
+  test "served: the CI file's Redis version picks the table's line by prefix; a version the table lacks is refused" do
+    assert {:ok, resolved} = Toolchain.resolve(redis_files("redis:6"), @template, @redis_table)
+    assert resolved["services"]["redis"]["image"] =~ "redis:6.2-alpine@"
+
+    assert source(resolved, "redis") ==
+             "mix.exs depends on redix; .github/workflows/t.yml: redis:6; config/toolchain_images.json: redis 6.2"
+
+    assert {:ok, resolved} =
+             Toolchain.resolve(redis_files("redis:7-alpine"), @template, @redis_table)
+
+    assert resolved["services"]["redis"]["image"] =~ "redis:7.2-alpine@"
+
+    assert {:refused, "no_service_image:redis/5.0", "no_service_image:redis/5.0", record} =
+             Toolchain.resolve(redis_files("redis:5.0"), @template, @redis_table)
+
+    assert get_in(record, ["redis", "value"]) == nil
+    assert get_in(record, ["redis", "source"]) =~ "config/toolchain_images.json has no redis 5.0"
+  end
+
+  test "served: a CI Redis the template does not mark, with no client; the template's default before the table's newest line" do
+    unmarked = put_in(@template, ["toolchain", "ci_services_not_needed"], %{})
+
+    assert {:ok, resolved} =
+             Toolchain.resolve(redis_files("redis", @mix), unmarked, @redis_table)
+
+    assert resolved["services"]["redis"]["image"] =~ "redis:7.2-alpine@"
+    assert source(resolved, "redis") =~ "a CI file starts redis; config/toolchain_images.json"
+
+    default = "registry.example.test/redis:7.0@sha256:" <> String.duplicate("8", 64)
+    with_default = put_in(unmarked, ["services", "redis"], %{"image" => default})
+
+    assert {:ok, resolved} =
+             Toolchain.resolve(redis_files("redis", @mix), with_default, @redis_table)
+
+    assert resolved["services"]["redis"] == %{"image" => default}
+
+    assert source(resolved, "redis") ==
+             "a CI file starts redis; the template's default: .github/workflows/t.yml: redis names no version"
+
+    # A client and an unmarked CI service give one Redis entry with both reasons
+    assert {:ok, resolved} = Toolchain.resolve(redis_files("redis"), unmarked, @redis_table)
+    assert source(resolved, "redis") =~ "mix.exs depends on redix and a CI file starts redis; "
+  end
+
+  test "with a Redis line in the table: no client and a CI Redis the template marks give no Redis; other services stay refused" do
+    files = redis_files("redis", @mix)
+    assert {:ok, without} = Toolchain.resolve(files, @template, @table)
+    assert {:ok, with_line} = Toolchain.resolve(files, @template, @redis_table)
+    assert with_line["services"] == without["services"]
+    assert Map.keys(with_line["services"]) == ["postgres"]
+    assert with_line["record"] == without["record"]
+    assert get_in(with_line["record"], ["redis"]) == nil
+
+    minio =
+      Map.update!(
+        files,
+        ".github/workflows/t.yml",
+        &(&1 <> "      minio:\n        image: minio/minio:latest\n")
+      )
+      |> Map.put(
+        "mix.exs",
+        String.replace(@mix, ~s|[{:ecto_sql|, ~s|[{:redix, "~> 1.3"}, {:ecto_sql|)
+      )
+
+    assert {:refused, "needs_service:minio", "needs_service:minio", record} =
+             Toolchain.resolve(minio, @template, @redis_table)
+
+    assert get_in(record, ["redis", "value"]) =~ "redis:7.2-alpine@"
+  end
+
   test "several refusals: the first in the resolver's order is the reason, the detail lists all" do
     redix = String.replace(@mix, ~s|[{:ecto_sql|, ~s|[{:redix, "~> 1.3"}, {:ecto_sql|)
 
@@ -385,6 +500,31 @@ defmodule Eab.ToolchainTest do
     # OTP 27.2's ssl rejects the certificate of builds.hex.pm, so such an image cannot install Hex; 27.2.1's does
     # too (radiator #607, 2026-11-12), so no pair of OTP 27.2 or its patch releases is in the table
     refute Enum.any?(table["elixir"], &Toolchain.prefix?("27.2", &1["otp"]))
+
+    # Redis: the image the engine's own tests pin (test/eab/redis_service_docker_test.exs)
+    assert table["redis"] == [
+             %{
+               "version" => "7.2",
+               "image" =>
+                 "redis:7.2-alpine@sha256:2f66de68111e64c3927859f158f8e666066dae2b97d9f82770a6f37a5aa1c335"
+             }
+           ]
+
+    unpinned =
+      Path.join(System.tmp_dir!(), "toolchain-#{System.unique_integer([:positive])}.json")
+
+    File.write!(
+      unpinned,
+      Jason.encode!(Map.put(table, "redis", [%{"version" => "7.2", "image" => "redis:7.2"}]))
+    )
+
+    try do
+      assert_raise RuntimeError, ~r/is not a toolchain image table/, fn ->
+        Toolchain.read_table!(unpinned)
+      end
+    after
+      File.rm(unpinned)
+    end
 
     for name <- ["axelclark__ex338", "podlove__radiator"] do
       recipe = Eab.BundleMaker.read_recipe!(Eab.Inventory.path("recipes/#{name}.json"))

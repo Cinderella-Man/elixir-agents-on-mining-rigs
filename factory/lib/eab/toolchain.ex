@@ -13,13 +13,18 @@ defmodule Eab.Toolchain do
   3. the database: the Postgres or ClickHouse version the CI files start, pinned by the table, or the template's
      default when they name none (`no_service_image:<service>/<version>` when the table lacks it);
   4. the baseline commands: the template's first candidate whose condition holds at the commit;
-  5. services the engine lacks: a Redis client in `mix.exs`, or a CI service other than Postgres and ClickHouse
-     that the template does not mark as not needed (`needs_service:<name>`).
+  5. the services beside the database: a Redis client in `mix.exs`, or a CI service other than Postgres and ClickHouse
+     that the template does not mark as not needed. Redis is served when the table pins an image for it (the CI
+     file's version, else the template's default, else the table's newest line; `no_service_image:redis/<version>`
+     when the table lacks the CI file's version); any other such service, or Redis with no line in the table, is
+     refused (`needs_service:<name>`).
   """
 
   @ci_files [".travis.yml", ".drone.yml", ".gitlab-ci.yml"]
   @fixed_files [".tool-versions", "mise.toml", ".mise.toml", "Dockerfile", "mix.exs"]
   @engine_services ["postgres", "clickhouse"]
+  # Services the engine starts empty beside the workspace (README section 6, change 9), served when the table pins them
+  @served_services ["redis"]
   @version ~r/^\d+(\.\d+)*$/
 
   @doc """
@@ -46,7 +51,7 @@ defmodule Eab.Toolchain do
                &(is_binary(&1["elixir"]) and is_binary(&1["otp"]) and pinned?(&1["image"]))
              ) and
              Enum.all?(
-               ["postgres", "clickhouse"],
+               ["postgres", "clickhouse" | @served_services],
                &Enum.all?(table[&1] || [], fn row ->
                  is_binary(row["version"]) and pinned?(row["image"])
                end)
@@ -100,6 +105,8 @@ defmodule Eab.Toolchain do
     {services, service_record, service_refusals} = database(files, recipe, table)
     baseline = baseline(files, template, recipe)
     {checked, needs} = needs(files, template, table)
+    {served, needs} = Enum.split_with(needs, fn {kind, _why} -> servable?(kind, table) end)
+    {extra, extra_record, extra_refusals} = served(served, files, recipe, table)
 
     record =
       Jason.OrderedObject.new(
@@ -109,6 +116,7 @@ defmodule Eab.Toolchain do
           {"image", obj([{"value", image.value}, {"source", image.source}])}
         ] ++
           service_record ++
+          extra_record ++
           [
             {"baseline", obj([{"value", baseline.value}, {"source", baseline.source}])},
             {"services_checked", checked}
@@ -116,7 +124,9 @@ defmodule Eab.Toolchain do
       )
 
     refusals =
-      List.wrap(image[:refusal]) ++ service_refusals ++ Enum.map(needs, &"needs_service:#{&1}")
+      List.wrap(image[:refusal]) ++
+        service_refusals ++
+        extra_refusals ++ Enum.map(needs, fn {kind, _why} -> "needs_service:#{kind}" end)
 
     case refusals do
       [] ->
@@ -125,7 +135,7 @@ defmodule Eab.Toolchain do
         {:ok,
          %{
            "runtime" => runtime,
-           "services" => services,
+           "services" => Map.merge(services, extra),
            "baseline" => baseline.value,
            "record" => record
          }}
@@ -613,8 +623,10 @@ defmodule Eab.Toolchain do
   @doc "True when a `mix.exs` lists `name` as a direct dependency (`{:name, ...}`)."
   def depends?(mix, name), do: Regex.match?(~r/\{\s*:#{Regex.escape(name)}\s*,/, mix)
 
-  ## 5. Services the engine lacks
+  ## 5. The services beside the database
 
+  # The services a commit needs beyond the databases, each `{kind, why}` in order: a client library in `mix.exs`
+  # first, then a CI service the template does not mark as not needed.
   defp needs(files, template, table) do
     mix = files["mix.exs"] || ""
     not_needed = template["ci_services_not_needed"] || %{}
@@ -626,8 +638,15 @@ defmodule Eab.Toolchain do
           depends?(mix, library),
           do: {kind, library}
 
-    from_ci = Enum.reject(ci, &(&1 in @engine_services or Map.has_key?(not_needed, &1)))
-    from_mix = clients |> Enum.map(&elem(&1, 0)) |> Enum.reject(&(&1 in @engine_services))
+    from_ci =
+      for kind <- ci,
+          kind not in @engine_services and not Map.has_key?(not_needed, kind),
+          do: {kind, "a CI file starts #{kind}"}
+
+    from_mix =
+      for {kind, library} <- clients,
+          kind not in @engine_services,
+          do: {kind, "mix.exs depends on #{library}"}
 
     checked =
       obj([
@@ -636,6 +655,81 @@ defmodule Eab.Toolchain do
         {"mix_clients", Enum.map(clients, fn {kind, library} -> "#{library} (#{kind})" end)}
       ])
 
-    {checked, Enum.uniq(from_mix ++ from_ci)}
+    pairs = from_mix ++ from_ci
+
+    needs =
+      for kind <- pairs |> Enum.map(&elem(&1, 0)) |> Enum.uniq(),
+          do: {kind, for({^kind, why} <- pairs, do: why)}
+
+    {checked, needs}
+  end
+
+  defp servable?(kind, table), do: kind in @served_services and (table[kind] || []) != []
+
+  # The image of each needed service the engine starts empty (Redis): the version the CI file names, matched by
+  # prefix in the table; else the template's default; else the table's newest line. Returns the services, the
+  # record's entries and the refusals.
+  defp served(needs, files, recipe, table) do
+    found = ci_services(files)
+
+    results =
+      for {kind, why} <- needs do
+        ci =
+          Enum.find(found, &(&1.kind == kind and &1.version != nil)) ||
+            Enum.find(found, &(&1.kind == kind))
+
+        result = served_image(kind, ci, get_in(recipe, ["services", kind]), table[kind])
+        {kind, Map.update!(result, :source, &"#{Enum.join(why, " and ")}; #{&1}")}
+      end
+
+    services =
+      for {kind, %{image: image}} <- results,
+          image != nil,
+          into: %{},
+          do: {kind, %{"image" => image}}
+
+    record =
+      for {kind, result} <- results,
+          do: {kind, obj([{"value", result.image}, {"source", result.source}])}
+
+    {services, record, for({_kind, %{refusal: refusal}} <- results, do: refusal)}
+  end
+
+  defp served_image(kind, %{version: version} = ci, _default, rows) when is_binary(version) do
+    rows
+    |> Enum.filter(&prefix?(version, &1["version"]))
+    |> Enum.max_by(&parts(&1["version"]), fn -> nil end)
+    |> case do
+      nil ->
+        %{
+          image: nil,
+          source: "#{ci.source}; config/toolchain_images.json has no #{kind} #{version}",
+          refusal: "no_service_image:#{kind}/#{version}"
+        }
+
+      row ->
+        %{
+          image: row["image"],
+          source: "#{ci.source}; config/toolchain_images.json: #{kind} #{row["version"]}"
+        }
+    end
+  end
+
+  defp served_image(kind, ci, default, rows) do
+    why = if ci, do: "#{ci.source} names no version", else: "no CI file starts #{kind}"
+
+    case default do
+      %{"image" => image} ->
+        %{image: image, source: "the template's default: #{why}"}
+
+      _ ->
+        row = Enum.max_by(rows, &parts(&1["version"]))
+
+        %{
+          image: row["image"],
+          source:
+            "config/toolchain_images.json: #{kind} #{row["version"]}, its newest line: #{why}"
+        }
+    end
   end
 end

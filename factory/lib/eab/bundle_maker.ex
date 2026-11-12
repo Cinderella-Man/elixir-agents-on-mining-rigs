@@ -230,9 +230,9 @@ defmodule Eab.BundleMaker do
   end
 
   @resolve_columns ~w(repository number start_revision merged_at result reason elixir elixir_source otp otp_source
-    image postgres clickhouse baseline ci_services mix_clients detail)
+    image postgres clickhouse baseline ci_services mix_clients detail redis)
 
-  @doc "The columns of a line of `resolve_list/2`, in order."
+  @doc "The columns of a line of `resolve_list/2`, in order (`redis` last, added after the first lists were written)."
   def resolve_columns, do: @resolve_columns
 
   @doc """
@@ -282,6 +282,7 @@ defmodule Eab.BundleMaker do
         "image" => value.("image"),
         "postgres" => value.("postgres"),
         "clickhouse" => value.("clickhouse"),
+        "redis" => value.("redis"),
         "baseline" => record |> get_in(["baseline", "value"]) |> baseline_text(),
         "ci_services" => Enum.join(get_in(record, ["services_checked", "ci_starts"]) || [], ";"),
         "mix_clients" =>

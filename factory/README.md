@@ -232,7 +232,7 @@ early exit must stay in the allowed folders, and the hidden tests in the test fo
 | `runtime.setup_commands`, `runtime.before_test_commands` | commands run at build time and before each test run | the project's recipe |
 | `runtime.packages` | optional: extra system packages for the image, a list of package names, each matching `[a-z0-9][a-z0-9+.-]*` (section 6, change 3) | the project's recipe |
 | `runtime.release_files` | optional: release files the image installs, a list of `{"url": ..., "sha256": ..., "kind": "deb"}`, such as a program's own `.deb` that the project's CI installs from its releases page. The URL must be `https`, on a host the installation allows (section 6, change 3) | the project's recipe |
-| `services` | `postgres`, `clickhouse` and `redis`, each `{"image": ...}` with the image pinned by digest; absent when the project needs none. The import check refuses a `redis` entry in any other form or without a digest (`Eab.TaskContract.services!/1`); Redis holds no data and starts empty in every container (section 6, change 9) | the toolchain resolver (3.5): the version the starting commit's CI files start, or the recipe's default |
+| `services` | `postgres`, `clickhouse` and `redis`, each `{"image": ...}` with the image pinned by digest; absent when the project needs none. The import check refuses a `redis` entry in any other form or without a digest (`Eab.TaskContract.services!/1`); Redis holds no data and starts empty in every container (section 6, change 9) | the toolchain resolver (3.5): the version the starting commit's CI files start, or the recipe's default; `redis` when the commit has a Redis client or its CI file starts Redis (3.5, step 5) |
 | `baseline` | the commands that build the database once, as the engine's policy object: `{"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}` | the toolchain resolver (3.5): the recipe's first candidate whose condition holds at the starting commit, or the recipe's default |
 | `test_timeout` | seconds for one test command; 240 when absent | the project's recipe |
 | `permitted_exclusion_tags` | optional: tags of tests the project itself excludes | the project's recipe |
@@ -362,10 +362,16 @@ resolver reads each starting commit's own files instead. In order, each step rec
 4. **The baseline commands:** the recipe's `toolchain.baseline` lists candidates in order, each with an optional
    condition, `{"mix_dep": name}` (a direct dependency in `mix.exs`) or `{"mix_alias_uses": task}` (`mix.exs` names
    the task in an alias); the first whose condition holds is taken, else the recipe's `baseline`.
-5. **Services the engine lacks:** a direct dependency on a Redis client (the table's `service_clients`: `redix`,
-   `exredis`, `eredis`, `redis`), or a CI service other than Postgres and ClickHouse, is refused,
-   `needs_service:<name>`. A recipe may list CI services the project's tests do not use in
-   `toolchain.ci_services_not_needed`, each with its reason; a Redis client in `mix.exs` is refused all the same.
+5. **The services beside the database:** a direct dependency on a Redis client (the table's `service_clients`:
+   `redix`, `exredis`, `eredis`, `redis`), or a CI service other than Postgres and ClickHouse. A recipe may list CI
+   services the project's tests do not use in `toolchain.ci_services_not_needed`, each with its reason; a Redis
+   client in `mix.exs` counts all the same. **Redis** (section 6, change 9) is served when the table has a `redis`
+   line: the task's `services` gets `redis` with the image of the CI file's Redis version, matched by prefix
+   (`no_service_image:redis/<version>` when the table lacks it), else the recipe's `services.redis`, else the table's
+   newest line; the record names why (`mix.exs depends on redix`, `a CI file starts redis`) and where the image came
+   from. The table pins `redis:7.2-alpine`, the image of the engine's own Redis tests; `scripts/toolchain_image.sh
+   redis <version>` prints such a line. Any other such service, or Redis with no line in the table, is refused,
+   `needs_service:<name>`. A commit that needs none gets no `redis` entry, whatever the table holds.
 
 Several refusals at once give the first in this order as the reason and all of them in the detail. Nothing in the
 task format changes: the resolved values go into the same `runtime`, `services` and `baseline` fields. The
@@ -738,6 +744,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | Every candidate the resolver serves, made and checked (E68, E72): radiator 27 checked of 64, ex338 7 of 12 tried. Two fixes from the lists: `bundle_probe.ex` `settle/4` leaves out an existing test file with a skipped test (`skipped_on_unchanged`, `skipped_on_reference`), since the grader does not pass a skipped test (2.2); the OTP 27.2 pairs left `config/toolchain_images.json`, since such an image cannot install Hex ([data](../docs/data/2026-11-12_pilot_tasks_all/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 231 passed, 0 failed, 10 excluded without Docker and 241, 0, 0 with it, every test as on `origin/main` (with P6) the same hour; one new case in `bundle_maker_test`'s settling test and one assertion in `toolchain_test`; the parity test 6 of 6, not edited |
 | 2026-11-12 | nerves_hub_web with `fwup` (E68): `recipes/nerves-hub__nerves_hub_web.json` becomes a template (a `toolchain` block) with `runtime.packages` (`xdelta3`, `mtools`), one release file (fwup 1.17.1's `.deb`, SHA-256 from the release's `SHA256SUMS`), the four tests that need `detools` left out of the whole-suite command by their `describe`, and `mtools` no longer excluded. The project's suite ran twice in the engine: 4,033 and 4,025 of 4,046 passed; 29 of the 30 newest P02 candidates made, none checked (the disk floor) ([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)) | see the data folder | no code changed; no factory test reads this recipe; the maker read and resolved the template for 29 pull requests |
 | 2026-11-12 | The mass run's drops tried again through a controller built from this code and `bin/factoryctl` only (`import`, `check`, `export`): 11 tried, 1 checked; the "Workspace command failed" drops explained (the grader's `git add -A` killed by its 120-second limit). Fix in `factory.ex`: a result holds the time of every step (`probe_ms`, `controls_ms`, and a failing step's), and a long `detail` keeps its head and its tail (a failed build says why at its end); the image table's note: OTP 27.2.1 cannot install Hex either ([data](../docs/data/2026-11-12_pilot_tasks_retry/README.md)) | see the data folder | format check passes; without Docker 232 passed, 0 failed, 10 excluded (one new test); with Docker not run (the job's disk floor); parity test untouched |
+| 2026-11-12 | The bundle maker names the Redis service (E71, E72): `lib/eab/toolchain.ex` step 5 gives a commit with a Redis client in `mix.exs`, or a CI Redis the template does not mark, `services.redis` when `config/toolchain_images.json` has a `redis` line (the CI file's version by prefix, else the template's `services.redis`, else the table's newest line), and still refuses every other service the engine lacks and Redis with no line; the table's line `redis:7.2-alpine`, pinned as in the engine's Redis tests, printed by `scripts/toolchain_image.sh redis 7.2`; the `redis` column of `resolve`; ex338's recipe note. All 26 ex338 candidates refused before resolve with Redis; four made through a controller built from it, one prepared with Redis beside Postgres; the list was stopped on the owner's order ([data](../docs/data/2026-11-12_pilot_tasks_ex338_redis/README.md)) | see the data folder | format check passes; compiles with warnings as errors; without Docker 236 passed, 0 failed, 10 excluded (`main` the same hour 231, 0, 10), the 5 new tests pass (4 in `toolchain_test`, 1 in `bundle_maker_test`) and the refusal tests pass unchanged; the Docker suite was stopped under another program's disk load after 216 passed and 4 time-outs, not settled; the parity test 6 of 6, not edited |
 
 ## 8. What is not decided, and what is not verified
 
@@ -805,8 +812,9 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
 - Since E71, Redis was run by the Docker test with a made-up project whose tests speak the Redis protocol over a
   plain socket, in an image built from the tooling image, not with a real project's Redis client (Redix) through
   the workspace recipe. A database baseline prepared with Redis beside Postgres (the bootstrap commands running while
-  Redis is up) was read from the code and checked with a cached record, not prepared for real. The bundle maker does
-  not yet write a `redis` entry.
+  Redis is up) was read from the code and checked with a cached record; since the maker names Redis (3.5), one real
+  commit, ex338 #1271, was prepared that way through a controller and its hidden tests ran, but no task with Redis
+  has passed the gate yet, and the Docker suite of that change is not settled.
 
 ## 9. Calling the factory
 

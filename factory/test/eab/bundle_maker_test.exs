@@ -376,6 +376,101 @@ defmodule Eab.BundleMakerTest do
              "hexpm/elixir:made-up"
   end
 
+  test "a template names the Redis service for a starting commit with a Redis client, when the table pins Redis",
+       %{root: root, upstream: upstream, opts: opts} do
+    pin = &"@sha256:#{String.duplicate(&1, 64)}"
+    table = Path.join(root, "toolchain_images.json")
+
+    File.write!(
+      table,
+      Jason.encode!(%{
+        "elixir" => [
+          %{
+            "elixir" => "1.17.2",
+            "otp" => "27.0.1",
+            "image" => "hexpm/elixir:1.17.2-erlang-27.0.1-made-up" <> pin.("a")
+          }
+        ],
+        "postgres" => [%{"version" => "14", "image" => "postgres:14.24-alpine" <> pin.("b")}],
+        "redis" => [%{"version" => "7.2", "image" => "redis:7.2-alpine" <> pin.("c")}],
+        "service_clients" => %{"redis" => ["redix"]}
+      })
+    )
+
+    template = Path.join(root, "template.json")
+    recipe = opts[:recipe] |> File.read!() |> Jason.decode!()
+
+    File.write!(
+      template,
+      Jason.encode!(
+        Map.merge(recipe, %{
+          "baseline" => %{"mode" => "prepared", "commands" => ["mix ecto.create --quiet"]},
+          "toolchain" => %{
+            "baseline" => [
+              %{"commands" => ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+            ],
+            "ci_services_not_needed" => %{"redis" => "not used without a client"}
+          }
+        })
+      )
+    )
+
+    opts = Keyword.merge(opts, recipe: template, toolchain_table: table)
+
+    workflow =
+      "jobs:\n  test:\n    services:\n      postgres:\n        image: postgres:14\n      redis:\n        image: redis\n"
+
+    commit(upstream, "Toolchain", %{
+      ".tool-versions" => "elixir 1.17.2-otp-27\nerlang 27.0.1\n",
+      ".github/workflows/test.yml" => workflow
+    })
+
+    # No client: the CI's Redis is marked not needed, so the task has Postgres alone
+    {_, merge, paths} = squash_again(upstream)
+    summary = BundleMaker.make(request(merge, paths, 50), opts)
+    spec = Inventory.read_json(Path.join(summary["dir"], "case.json"))
+    assert spec["services"] == %{"postgres" => %{"image" => "postgres:14.24-alpine" <> pin.("b")}}
+
+    refute Map.has_key?(
+             Inventory.read_json(Path.join(summary["dir"], "provenance.json"))["toolchain"],
+             "redis"
+           )
+
+    # A Redis client in mix.exs: the task names Redis beside Postgres, and passes the import check
+    commit(upstream, "Redis", %{
+      "mix.exs" =>
+        ~s|defmodule Shopette.MixProject do\n  defp deps, do: [{:redix, "~> 1.3"}]\nend\n|
+    })
+
+    {start, merge, paths} = squash_again(upstream)
+    summary = BundleMaker.make(request(merge, paths, 51), opts)
+    assert summary["toolchain"] == "1.17.2/27.0.1"
+    spec = Inventory.read_json(Path.join(summary["dir"], "case.json"))
+
+    assert spec["services"] == %{
+             "postgres" => %{"image" => "postgres:14.24-alpine" <> pin.("b")},
+             "redis" => %{"image" => "redis:7.2-alpine" <> pin.("c")}
+           }
+
+    record = Inventory.read_json(Path.join(summary["dir"], "provenance.json"))["toolchain"]
+
+    assert record["redis"] == %{
+             "value" => "redis:7.2-alpine" <> pin.("c"),
+             "source" =>
+               "mix.exs depends on redix; config/toolchain_images.json: redis 7.2, its newest line: " <>
+                 ".github/workflows/test.yml: redis names no version"
+           }
+
+    assert Eab.TaskContract.services!(spec["services"]) == spec["services"]
+    ref = Candidates.import(summary["dir"])
+    assert Candidates.read!(ref)["id"] == "shopette-pr-51"
+
+    [row] = BundleMaker.resolve_list([request(merge, paths, 51)], opts)
+    assert {row["result"], row["start_revision"]} == {"resolved", start}
+    assert row["redis"] == "redis:7.2-alpine" <> pin.("c")
+    assert List.last(BundleMaker.resolve_columns()) == "redis"
+  end
+
   # A second pull request on top of whatever the upstream holds now: one code change and one test change.
   defp squash_again(upstream) do
     start = git(upstream, ["rev-parse", "HEAD"]) |> String.trim()
