@@ -541,6 +541,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | The copy, unchanged, from the bench's commit `28c064ca` | `470301e` | not run |
 | 2026-11-12 | T0: the tooling image built; the unchanged copy's format check and tests run; `test/eab/bench_parity_test.exs` and `test/eab/model_identity_test.exs` added ([data](../docs/data/2026-11-12_factory_t0/README.md)) | `dd8a86b` | format check passes; unchanged copy 212 of 284 passed without Docker and 217 with it, 65 failed in both (48 need the bench's cases, 17 read a bench file that was not copied), 2 not run; the two new tests 6 of 6 and 8 of 8 |
 | 2026-11-12 | T1: `lib/eab_web/`, the results page (`results.ex`, `results/`), the run series, the comparison, the log sections, the Mix task, `priv/static/`, `priv/admitted_validation_runs.json` and their 6 test files removed; Phoenix, LiveView, Bandit and LazyHTML out of the dependencies (14 packages leave `mix.lock`); the edits in `runs.ex`, `application.ex`, `config/`, `mix.exs` and the root files ([data](../docs/data/2026-11-12_factory_t1/README.md)) | `fb64f08` | format check passes; compiles with warnings as errors; 176 of 218 passed without Docker and 181 of 223 with it, 42 failed in both (41 need the bench's cases, 1 reads an uncopied bench file), 7 and 2 excluded; all 225 remaining tests end as in T0, 73 are gone (63 with their files, 10 removed from `claude_code_test`); the parity test 6 of 6, untouched |
+| 2026-11-12 | T5: the one task format (change 7) in `task_contract.ex`, `grader.ex` (`qualify/5`, `partial_patch/1`, `valid_controls?/5`), `candidates.ex`, `inventory.ex` and `release.ex`; three made-up tasks in `test/support/` replace the bench's cases in 7 test files; the parity test's inputs in the one format ([data](../docs/data/2026-11-12_factory_t5/README.md)) | `f6dbdde` | format check passes; compiles with warnings as errors; 194 of 218 passed without Docker and 199 of 223 with it (T1 176 and 181), 24 failed in both, 7 and 2 excluded; no test that passed in T1 fails: 16 now pass, 4 replaced by 4 new ones that pass; the 24 failures are T1's, 22 need tasks in the inventory (T6) and 2 are in `claude_code_test` (T2); the Docker test grades a made-up task with a partial fix and one without; the parity test 6 of 6, with the bug-fix and requirements texts unchanged, the optional-tests and refactor texts removed and a captured feature text added |
 
 ## 8. What is not decided, and what is not verified
 
@@ -562,6 +563,10 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 - Two tests of the copy have not run: `eab/browser_docker_test` (it builds from the Playwright image, a download job
   T0 was not allowed) and `eab/claude_code_hook_test` (the tooling image has no `python3`). Both are dropped.
 - That each trimming job fits three hours.
+- The made-up tasks are graded in an image built from the tooling image, not through the workspace recipe of
+  section 2.1; the recipe is built for a made-up task first in T10. `fixtures_test` "recipes reconcile seeds before
+  compilation and export an independent fixture" loops over the inventory, which is empty until T6, so it passes
+  without checking any task (job T5).
 - That many hundred tasks in one folder are fast enough. The engine lists the folder on every lookup and hashes every
   task's files when a run starts. Change 2 makes a run work on its own list; the cost that remains is measured in
   the pilot.
