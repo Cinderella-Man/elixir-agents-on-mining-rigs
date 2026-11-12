@@ -1,6 +1,12 @@
 id	licence_result	licence_families	files_touched	files_passing	failing	holdout_result	name_hits	seconds
+hexpm-pr-2051	pass	Apache-2.0	8	8	-	pass	0	18
 hexpm-pr-2056	pass	Apache-2.0	8	8	-	pass	0	30
+hexpm-pr-2058	pass	Apache-2.0	6	6	-	pass	0	21
+hexpm-pr-2073	fail	Apache-2.0	86	83	lib/hexpm/oauth/clients.ex (exclude:proprietary); lib/hexpm_web/templates/dashboard/audit_log/components/audit_log_card.ex (review:CC); test/hexpm/oauth/clients_test.exs (exclude:proprietary)	pass	0	21
 hexpm-pr-2077	pass	Apache-2.0	11	11	-	pass	0	30
+hexpm-pr-2078	pass	Apache-2.0	10	10	-	pass	0	22
+hexpm-pr-2079	pass	Apache-2.0	12	12	-	pass	0	19
+hexpm-pr-2080	pass	Apache-2.0	19	19	-	pass	0	20
 hexpm-pr-2085	pass	Apache-2.0	6	6	-	pass	0	28
 hexpm-pr-2091	pass	Apache-2.0	2	2	-	pass	0	25
 hexpm-pr-2094	pass	Apache-2.0	4	4	-	pass	0	24

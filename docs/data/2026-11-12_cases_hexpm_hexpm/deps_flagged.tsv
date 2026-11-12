@@ -1,11 +1,11 @@
 kind	package	version	licences	class	tasks
-git	finch	https://github.com/sneako/finch.git#79885b6cd1ca072824149389b6ab8899f8b970d1		git dependency: licence not read	15
-git	git_diff	https://github.com/ericmj/git_diff.git#d47473d661ff0073ce4080ae04db1a439d78a62b		git dependency: licence not read	15
+git	finch	https://github.com/sneako/finch.git#79885b6cd1ca072824149389b6ab8899f8b970d1		git dependency: licence not read	21
+git	git_diff	https://github.com/ericmj/git_diff.git#d47473d661ff0073ce4080ae04db1a439d78a62b		git dependency: licence not read	21
 git	hex_core	https://github.com/hexpm/hex_core.git#4edcd645ff95b4436c46c37ee2e5cb1f47727925		git dependency: licence not read	5
-git	hex_core	https://github.com/hexpm/hex_core.git#9390b3fb3e3e3947555361cb2a263d3609322d9f		git dependency: licence not read	2
+git	hex_core	https://github.com/hexpm/hex_core.git#9390b3fb3e3e3947555361cb2a263d3609322d9f		git dependency: licence not read	6
 git	hex_core	https://github.com/hexpm/hex_core.git#d366662b7f753d3d94c0a2da402fc8e0e9fc29fd		git dependency: licence not read	7
-git	hex_core	https://github.com/hexpm/hex_core.git#e277b76c9d8deff24bf03589487efd17c753fef6		git dependency: licence not read	1
-hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside	15
-hex	iso8601	1.3.4	BSD	allowed, not an SPDX id	15
-hex	mmdb2_decoder	3.0.1	Apache 2.0	allowed, not an SPDX id	15
-hex	plug_attack	0.4.3	Apache 2.0	allowed, not an SPDX id	15
+git	hex_core	https://github.com/hexpm/hex_core.git#e277b76c9d8deff24bf03589487efd17c753fef6		git dependency: licence not read	3
+hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside	21
+hex	iso8601	1.3.4	BSD	allowed, not an SPDX id	21
+hex	mmdb2_decoder	3.0.1	Apache 2.0	allowed, not an SPDX id	21
+hex	plug_attack	0.4.3	Apache 2.0	allowed, not an SPDX id	21

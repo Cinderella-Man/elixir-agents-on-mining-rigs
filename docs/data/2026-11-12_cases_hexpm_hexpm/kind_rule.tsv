@@ -1,0 +1,21 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+hexpm-pr-2051	bug_fix	bug_fix	0	0	-
+hexpm-pr-2056	feature	bug_fix	0	0	-
+hexpm-pr-2058	feature	bug_fix	0	0	-
+hexpm-pr-2073	feature	feature	2	23	access? build capability? capability? capability_domains changeset check full_api? full_api? grantable? key_creation_access keys new permission_to_scopes request required_role required_role required_role required_role verify_permissions verify_permissions verify_permissions verify_permissions
+hexpm-pr-2077	bug_fix	bug_fix	0	0	-
+hexpm-pr-2079	feature	feature	0	1	render
+hexpm-pr-2080	feature	feature	5	14	create create_all delete path_for_retire_all path_for_retire_all path_for_retirement path_for_retirement reason_label reason_options reasons show show_all versions_text versions_text
+hexpm-pr-2085	bug_fix	bug_fix	0	0	-
+hexpm-pr-2091	bug_fix	bug_fix	0	0	-
+hexpm-pr-2094	bug_fix	bug_fix	0	0	-
+hexpm-pr-2095	feature	feature	1	11	action_path change get html_url_for_staged_release html_url_for_staged_release path_for_staged_release path_for_staged_release url_for_staged_release url_for_staged_release url_for_staged_release url_for_staged_release
+hexpm-pr-2096	bug_fix	bug_fix	0	0	-
+hexpm-pr-2097	feature	feature	9	5	down path_for_staged_publishing staged_publishing_disabled staged_publishing_disabled up
+hexpm-pr-2098	feature	feature	1	0	-
+hexpm-pr-2104	feature	feature	0	1	admin_emails
+hexpm-pr-2110	feature	feature	1	2	change delete_owner
+hexpm-pr-2111	feature	feature	0	5	list_direct_objects list_direct_objects list_direct_objects list_direct_objects list_direct_objects
+hexpm-pr-2112	feature	feature	0	6	approval_blocker approval_blocker_message approval_blocker_message approval_blocker_message approval_blocker_message staged_publishing_default
+hexpm-pr-2113	feature	feature	0	2	remove_superseded remove_superseded
+hexpm-pr-2119	feature	feature	0	2	staged_release_url staged_release_url

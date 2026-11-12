@@ -9,7 +9,8 @@
 # emptied. It ends when TARGET_FINAL is reached, a round adds no row (the candidates are used up), or the watcher
 # wrote out/STOP.
 # Environment: T (this run's folder: run/, kinds.tsv, out/, logs/), DEST (the exported task folders), TARGET_FINAL,
-# MIN_BUGFIX, MAX_TRIED, and for all.sh WORK, CTL, NAME, JOB_LABEL, TASK_LABEL, MAX_LOAD, MIN_FREE.
+# MIN_BUGFIX, MAX_TRIED, ROUND0 (the last round's number of an earlier start; 0), and for all.sh WORK, CTL, NAME,
+# JOB_LABEL, TASK_LABEL, MAX_LOAD, MIN_FREE.
 # Writes T/numbers_round<N>.txt, T/numbers.txt, T/logs/round<N>.start and T/logs/all_round<N>.log, and one line per
 # decision to standard output.
 set -uo pipefail
@@ -34,7 +35,7 @@ bugfixes() { # the checked bug fixes of the project
 rows_n() { awk 'END {print NR}' out/rows.tsv; }
 while driver_up; do sleep 10; done
 echo "$(date -Is) no driver left; checked in this run: $(checked_in_run), bug fixes: $(bugfixes)"
-round=0
+round=${ROUND0:-0}
 while :; do
   [ ! -e out/STOP ] || { echo "$(date -Is) stopped: $(head -1 out/STOP)"; break; }
   c=$(checked_in_run) b=$(bugfixes)
