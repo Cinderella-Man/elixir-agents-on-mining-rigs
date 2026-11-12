@@ -5,7 +5,13 @@ the task factory ([`factory/`](../../../factory/README.md)). This one sets up `m
 newest usable merged pull requests as cases, one at a time, until 3 are checked or 12 have been tried. Everything ran
 on the data-mining machine, beside six other jobs.
 
-**Result: 3 checked cases, and all 3 pass the licence scan and the hold-out check.** They are pull requests 3388 and
+**A second job, toward 15 checked cases, is running (from 14:09).** At this commit 5 cases are checked (3 bug fixes,
+2 features): 3358 and 3353 were added from 3 more candidates, and 3359 was dropped at the probe (its cause is read at
+the end of the job). [`cases_mbta_screens.tsv`](cases_mbta_screens.tsv) holds every try so far, written by
+[`run/cases_table.sh`](run/cases_table.sh). The free-space stop of `run/watch.sh` is now 50,000,000,000 bytes (the
+owner's line since 14:20). The rest of this page describes the first job until the second one ends.
+
+**Result of the first job: 3 checked cases, and all 3 pass the licence scan and the hold-out check.** They are pull requests 3388 and
 3387 (bug fixes, Elixir 1.20.4 with OTP 29.1.2) and 3363 (a feature, Elixir 1.20.2 with OTP 29.0.2). They came from
 the 9 newest candidates; the other 6 were dropped at the probe, all for the pull request's own cause (3 whose tests
 need code the pull request adds, 2 whose tests pass without the fix, 1 with no existing test left to protect). One

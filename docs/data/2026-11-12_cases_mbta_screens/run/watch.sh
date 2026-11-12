@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # watch.sh: samples the data-mining machine every INTERVAL seconds (10) until the file END exists, and applies the
 # job's stop rules:
-#   - free bytes on / under MIN_FREE (700,000,000,000);
+#   - free bytes on / under MIN_FREE (50,000,000,000; the owner's line since 2026-11-12 14:20, before it 700,000,000,000);
 #   - the 1-minute load above MAX_LOAD (26) in two readings LOAD_EVERY seconds apart (300);
 #   - a bench run: a running container of the bench's images (BENCH_IMAGE, a prefix) or names (BENCH_NAME, a prefix)
 #     other than its controller BENCH_CONTROLLER.
@@ -13,7 +13,7 @@
 set -uo pipefail
 : "${END:?}" "${STOP:?}" "${CTL:?}" "${NAME:?}" "${JOB_LABEL:?JOB_LABEL=<key=value>}" "${TASK_LABEL:?}"
 INTERVAL=${INTERVAL:-10}
-MIN_FREE=${MIN_FREE:-700000000000}
+MIN_FREE=${MIN_FREE:-50000000000}
 MAX_LOAD=${MAX_LOAD:-26}
 LOAD_EVERY=${LOAD_EVERY:-300}
 BENCH_IMAGE=${BENCH_IMAGE:-elixir-agent-benchmark}
