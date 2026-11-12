@@ -9,3 +9,8 @@ oli-torus-pr-6611	bug_fix	1	21	1	0	-	present	yes
 oli-torus-pr-6596	feature	34	95	6	0	-	present	yes
 oli-torus-pr-6601	bug_fix	2	18	2	0	-	present	yes
 oli-torus-pr-6593	feature	1	34	2	0	-	present	yes
+oli-torus-pr-6592	feature	1	34	2	0	-	present	yes
+oli-torus-pr-6574	feature	9	34	1	0	-	present	yes
+oli-torus-pr-6576	feature	1	9	2	0	-	present	yes
+oli-torus-pr-6573	feature	4	145	4	0	-	present	yes
+oli-torus-pr-6562	bug_fix	3	13	1	1	fails_on_reference	present	yes

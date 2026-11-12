@@ -1,0 +1,16 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+oli-torus-pr-6562	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6573	feature	bug_fix	0	0	-
+oli-torus-pr-6574	feature	feature	2	5	handle_event handle_event load mount render
+oli-torus-pr-6576	feature	feature	1	2	change get_pending_provider_payment
+oli-torus-pr-6592	feature	feature	1	3	call call init
+oli-torus-pr-6593	feature	feature	1	3	call call init
+oli-torus-pr-6596	feature	feature	2	14	context create create_bulk delete delete_bulk execute_directive handle query query_section_publication resolve_activity_type_slug resolve_objective_references resolve_tag_references serialize_revision update
+oli-torus-pr-6601	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6611	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6615	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6623	feature	feature	0	2	certificate_email_template_assigns certificate_email_template_assigns
+oli-torus-pr-6629	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6639	bug_fix	bug_fix	0	0	-
+oli-torus-pr-6664	feature	feature	0	6	get_section_research_consent_by_slug user_research_consent_required? user_research_consent_required? user_research_consent_required_for_slug? user_research_consent_required_for_slug? user_research_consent_required_for_slug?
+oli-torus-pr-6722	feature	feature	1	4	handle_async handle_event handle_event render
