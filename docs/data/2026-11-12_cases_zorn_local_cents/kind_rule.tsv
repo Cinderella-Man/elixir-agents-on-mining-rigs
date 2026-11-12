@@ -1,0 +1,13 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+local-cents-pr-127	feature	feature	5	21	category_row category_row empty_state function function handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_info mount render render_source render_source variations variations
+local-cents-pr-130	feature	feature	3	9	function handle_info handle_info handle_info handle_info render_source select select variations
+local-cents-pr-134	feature	feature	3	7	create_books function handle_async handle_async loading_state render_source variations
+local-cents-pr-184	bug_fix	bug_fix	0	0	-
+local-cents-pr-241	feature	feature	0	3	generate_sync_message new_sync_state receive_sync_message
+local-cents-pr-250	feature	feature	1	19	handle_call handle_cast handle_cast handle_cast handle_cast handle_disconnect handle_info handle_info handle_info init link_state link_topic resume set_offline_menu set_offline_menu_command start_link subscribe suspend toggle_link
+local-cents-pr-254	feature	feature	1	2	on_mount put_title
+local-cents-pr-263	feature	feature	3	15	alternative_value dismiss_field_conflict dismiss_field_conflict expense_conflicts function handle_call handle_event handle_event handle_event handle_event handle_event reject_field_conflict render_source variations views
+local-cents-pr-270	feature	feature	0	1	field_label
+local-cents-pr-275	feature	feature	0	10	dismiss_edit_delete_conflict handle_call handle_call handle_event handle_event keep_deleted reject_edit_delete_conflict restore_expense restore_expense restore_expense
+local-cents-pr-86	feature	feature	3	10	get_book handle_event handle_event handle_info mount mount open_book open_book_command render render
+local-cents-pr-94	feature	feature	4	24	close_book close_book_command doc doc handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event handle_event menu modal mount mount render render set_book_title set_title_command

@@ -10,6 +10,10 @@ local-cents-pr-275	test/local_cents/tracking/book_server_test.exs	grading.preser
 local-cents-pr-275	test/local_cents/tracking/sync_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	8	Mike Zornek	0	-	-
 local-cents-pr-275	test/local_cents/tracking_test.exs	grading.preservation=named	13	Mike Zornek	0	-	-
 local-cents-pr-275	test/local_cents_web/live/book_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	13	Mike Zornek	0	-	-
+local-cents-pr-270	docs/research/phoenix-field-label-helpers.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-270	lib/local_cents_web/bond/composites/synced_changes_popup.ex	reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-270	lib/local_cents_web/conflict_presenter.ex	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-270	test/local_cents_web/live/book_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	12	Mike Zornek	0	-	-
 local-cents-pr-263	lib/local_cents/tracking.ex	reference.patch=modified	22	Mike Zornek	0	Copilot Autofix powered by AI	-
 local-cents-pr-263	lib/local_cents/tracking/book_document.ex	incomplete.patch=modified,reference.patch=modified	9	Mike Zornek	0	-	-
 local-cents-pr-263	lib/local_cents/tracking/book_server.ex	incomplete.patch=modified,reference.patch=modified	15	Mike Zornek	0	-	-
@@ -51,3 +55,111 @@ local-cents-pr-250	test/local_cents_web/desktop_shell_test.exs	grading.acceptanc
 local-cents-pr-241	lib/local_cents/tracking/ex_automerge.ex	reference.patch=modified	8	Mike Zornek	0	Copilot Autofix powered by AI	-
 local-cents-pr-241	native/ex_automerge/src/lib.rs	incomplete.patch=modified,reference.patch=modified	7	Mike Zornek	0	-	-
 local-cents-pr-241	test/local_cents/tracking/ex_automerge_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-184	docs/adr/0017-in-window-secondary-views.md	upstream-docs.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-184	docs/book-runtime-lifecycle.md	upstream-docs.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/book_window.ex	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/live/book_categories_live.ex	reference.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/live/book_live.ex	incomplete.patch=modified,reference.patch=modified	15	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/live/book_report_live.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/live/library_live.ex	incomplete.patch=modified,reference.patch=modified	10	Mike Zornek	0	-	-
+local-cents-pr-184	lib/local_cents_web/router.ex	incomplete.patch=modified,reference.patch=modified	9	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-184	test/local_cents_web/book_window_attachment_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-184	test/local_cents_web/book_window_test.exs	grading.preservation=named	1	Mike Zornek	0	-	-
+local-cents-pr-184	test/local_cents_web/live/book_categories_live_test.exs	grading.preservation=named	1	Mike Zornek	0	-	-
+local-cents-pr-184	test/local_cents_web/live/book_live_test.exs	grading.preservation=named	6	Mike Zornek	0	-	-
+local-cents-pr-184	test/local_cents_web/live/book_report_live_test.exs	grading.preservation=named	1	Mike Zornek	0	-	-
+local-cents-pr-184	test/local_cents_web/live/library_live_test.exs	grading.preservation=named	7	Mike Zornek	0	-	-
+local-cents-pr-134	codebook.toml	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-134	config/test.exs	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	-	-
+local-cents-pr-134	docs/module-boundaries.md	upstream-docs.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-134	docs/proposals/mvp.md	upstream-docs.patch=modified	4	Mike Zornek	0	-	-
+local-cents-pr-134	docs/research/doc-vs-spec-return-shape.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	docs/research/spec-on-private-functions.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	lib/local_cents/demo_seeding.ex	reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	lib/local_cents_web.ex	incomplete.patch=modified,reference.patch=modified	7	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-134	lib/local_cents_web/bond.ex	incomplete.patch=modified,reference.patch=modified	7	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-134	lib/local_cents_web/bond/elements/loading_state.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	lib/local_cents_web/live/library_live.ex	incomplete.patch=modified,reference.patch=modified	9	Mike Zornek	0	-	-
+local-cents-pr-134	storybook/elements/loading_state.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	test/local_cents/demo_seeding_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-134	test/local_cents_web/live/library_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-130	docs/adr/0018-category-assignment-through-the-editor.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-130	docs/adr/0019-liveview-unhandled-info-fallback.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents/tracking/book_document.ex	reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents/tracking/book_server.ex	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents/tracking/expense.ex	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents_web.ex	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-130	lib/local_cents_web/bond.ex	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-130	lib/local_cents_web/bond/composites/expense_cell.ex	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-130	lib/local_cents_web/bond/elements/input.ex	incomplete.patch=modified,reference.patch=modified	5	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-130	lib/local_cents_web/bond/elements/select.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents_web/live/book_categories_live.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents_web/live/book_live.ex	incomplete.patch=modified,reference.patch=modified	9	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents_web/live/library_live.ex	incomplete.patch=modified,reference.patch=modified	8	Mike Zornek	0	-	-
+local-cents-pr-130	lib/local_cents_web/live_view_unhandled_info.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-130	storybook/composites/expense_cell.story.exs	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-130	storybook/demos/family_expenses.story.exs	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-130	storybook/elements/select.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents/tracking/book_document_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents/tracking/book_server_test.exs	grading.preservation=named	3	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents/tracking_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	9	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents_web/live/book_categories_live_test.exs	grading.preservation=named	1	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents_web/live/book_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	5	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents_web/live/library_live_test.exs	grading.preservation=named	5	Mike Zornek	0	-	-
+local-cents-pr-130	test/local_cents_web/live_view_unhandled_info_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	docs/adr/0017-in-window-secondary-views.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	docs/research/apple-hig-destructive-confirmation-alerts.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	docs/research/params-variable-naming-convention.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	docs/research/route-path-param-naming.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	docs/ui-language.md	upstream-docs.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-127	lib/local_cents_web/bond.ex	reference.patch=modified	5	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-127	lib/local_cents_web/bond/composites/category_row.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	lib/local_cents_web/bond/elements/button.ex	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-127	lib/local_cents_web/bond/elements/empty_state.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	lib/local_cents_web/live/book_categories_live.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	lib/local_cents_web/live/book_live.ex	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-127	lib/local_cents_web/router.ex	incomplete.patch=modified,reference.patch=modified	6	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-127	storybook/composites/category_row.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	storybook/elements/button.story.exs	incomplete.patch=modified,reference.patch=modified	4	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-127	storybook/elements/empty_state.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	test/local_cents_web/live/book_categories_live_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-127	test/local_cents_web/live/book_live_test.exs	grading.preservation=named	4	Mike Zornek	0	-	-
+local-cents-pr-94	CODING_STANDARDS.md	upstream-docs.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-94	assets/js/storybook.js	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-94	lib/local_cents/tracking.ex	reference.patch=modified	7	Mike Zornek	0	Copilot Autofix powered by AI	-
+local-cents-pr-94	lib/local_cents_web/bond.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/bond.css	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/composites/book_cell.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/elements/button.ex	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/elements/input.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/elements/list_view.ex	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/elements/menu.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-94	lib/local_cents_web/bond/layouts/desktop_window.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	lib/local_cents_web/bond/layouts/modal.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-94	lib/local_cents_web/components/layouts.ex	incomplete.patch=modified,reference.patch=modified	5	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-94	lib/local_cents_web/desktop_shell.ex	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-94	lib/local_cents_web/live/book_live.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-94	lib/local_cents_web/live/library_live.ex	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-94	storybook/composites/book_cell.story.exs	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	storybook/demos/library_window.story.exs	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	storybook/elements/button.story.exs	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	storybook/elements/list_view.story.exs	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	Claude Sonnet 4.6	-
+local-cents-pr-94	storybook/elements/menu.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-94	storybook/layouts/modal.story.exs	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-94	tauri/src/lib.rs	incomplete.patch=modified,reference.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-94	test/local_cents/tracking_test.exs	grading.acceptance=named,grading.preservation_left_out=named,reference-tests.patch=modified	4	Mike Zornek	0	-	-
+local-cents-pr-94	test/local_cents_web/desktop_shell_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-94	test/local_cents_web/live/book_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-94	test/local_cents_web/live/library_live_test.exs	grading.acceptance=named,grading.preservation_left_out=named,reference-tests.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-86	AGENTS.md	upstream-docs.patch=modified	6	Mike Zornek	0	-	-
+local-cents-pr-86	CODING_STANDARDS.md	upstream-docs.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	lib/local_cents/tracking.ex	reference.patch=modified	6	Mike Zornek	0	Copilot Autofix powered by AI	-
+local-cents-pr-86	lib/local_cents_web/desktop_shell.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	lib/local_cents_web/live/book_live.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	lib/local_cents_web/live/library_live.ex	incomplete.patch=added,reference.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	lib/local_cents_web/router.ex	incomplete.patch=modified,reference.patch=modified	5	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	-
+local-cents-pr-86	tauri/src/lib.rs	incomplete.patch=modified,reference.patch=modified	2	Mike Zornek	0	-	-
+local-cents-pr-86	test/local_cents/tracking_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	3	Mike Zornek	0	-	-
+local-cents-pr-86	test/local_cents_web/desktop_shell_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	test/local_cents_web/live/book_live_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-
+local-cents-pr-86	test/local_cents_web/live/library_live_test.exs	grading.acceptance=named,reference-tests.patch=added	1	Mike Zornek	0	-	-

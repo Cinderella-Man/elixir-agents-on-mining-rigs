@@ -1,6 +1,13 @@
 task	start	licence_file	licence_families	files_touched	files_passing	licence_result	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_to_read	holdout_result
+local-cents-pr-127	8a438ed50a5d6a4fc86ebf75fdb4bfb4515611fd		none	17	17	fail	pass	0	6	4	2	0	0	0	0	pass
+local-cents-pr-130	ebc46e1ee9bcf24378b1d1ccc503db98ae5de0e7		none	24	24	fail	pass	0	4	4	0	0	0	0	0	pass
+local-cents-pr-134	6b294b3dec8bd94972a12c36470f0cf300d2bc9b		none	14	14	fail	pass	0	6	3	3	0	0	0	0	pass
+local-cents-pr-184	b84af02b2c7f60725b020300db8282fc5b19ef61		none	14	14	fail	pass	0	3	3	0	0	0	0	0	pass
 local-cents-pr-241	fc75e565ff4b260b466e6f5482fcce5ba66a542d		none	3	3	fail	pass	0	4	4	0	0	0	0	0	pass
 local-cents-pr-250	8d7665381146eafd4a0e28e8e195c1a261605801		none	9	9	fail	pass	0	7	4	3	0	0	0	0	pass
 local-cents-pr-254	1c442a4150872d1e3c5f7484576feab28981938b		none	15	15	fail	pass	0	3	3	0	0	0	0	0	pass
 local-cents-pr-263	3457e7c2d22e9e15a3af41d55cac499066c8d740		none	14	14	fail	pass	0	8	4	4	0	0	0	0	pass
+local-cents-pr-270	512374a854c91be0085853a5d4cab51c32263635		none	4	4	fail	pass	0	3	3	0	0	0	0	0	pass
 local-cents-pr-275	a4fa3bf7384ff0d3dd0399703f83c8872d9a9146		none	11	11	fail	pass	0	3	3	0	0	0	0	0	pass
+local-cents-pr-86	d6859952eb886c15f80012319e38f2ffc71a46b1		none	12	12	fail	pass	0	3	3	0	0	0	0	0	pass
+local-cents-pr-94	2b6496add45c98e19f5dc8fe1c057718ed2aa9ab		none	27	27	fail	pass	0	5	3	2	0	0	0	0	pass

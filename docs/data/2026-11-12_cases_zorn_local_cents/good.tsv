@@ -1,6 +1,13 @@
 id	licence	holdout	kind	good	licence_verdict
 local-cents-pr-275	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-270	fail	pass	feature	yes	pass_later_licence
 local-cents-pr-263	fail	pass	feature	yes	pass_later_licence
 local-cents-pr-254	fail	pass	feature	yes	pass_later_licence
 local-cents-pr-250	fail	pass	feature	yes	pass_later_licence
 local-cents-pr-241	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-184	fail	pass	bug_fix	yes	pass_later_licence
+local-cents-pr-134	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-130	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-127	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-94	fail	pass	feature	yes	pass_later_licence
+local-cents-pr-86	fail	pass	feature	yes	pass_later_licence

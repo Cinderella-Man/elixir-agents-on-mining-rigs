@@ -11,8 +11,9 @@ jobs used the same Docker daemon.
 
 ## Result
 
-**Milestone 1 (2026-11-12 19:04): 5 good cases of 9 pull requests tried; 12 candidates still to run.** A case is good
-when the gate checked it and it passes both scans. This page is brought up to date at each milestone.
+**12 good cases of 21 pull requests tried: 11 features and 1 bug fix. The list is used up, so the project stops at
+12, short of the 20 asked for.** A case is good when the gate checked it and it passes both scans. The job ran from
+18:22 to 19:53 on 2026-11-12.
 
 - **The project needs Rust, and gets it from Ubuntu's own packages.** Its data layer is a Rustler library compiled from
   the project's own source (`native/ex_automerge`, crates `automerge`, `autosurgeon`, `rustler`) every time the module
@@ -24,20 +25,33 @@ when the gate checked it and it passes both scans. This page is brought up to da
   no `postgrex` and no Repo. A book is a file in a folder each test sets for itself.
 - **The project's own suite passes whole** at the newest candidate's starting commit: 402 passed (6 doctests, 396
   tests), 0 failed, 0 excluded, in 20.5 s.
-- **Good (5): 275, 263, 254, 250 and 241,** merged 2026-08-11 to 2026-08-18, all features (the maker's label and the
-  written rule agree for all five). 241 changes the Rust library itself: the library was rebuilt inside the test
-  containers, with no network, from the packages the image keeps.
+- **Good (12): 275, 270, 263, 254, 250, 241, 184, 134, 130, 127, 94 and 86,** merged 2026-07-08 to 2026-08-18. 184
+  is the bug fix; the other 11 are features. The maker's label and the written rule agree for all 12
+  ([`kind_rule.tsv`](kind_rule.tsv)). 241 changes the Rust library itself: the library was rebuilt inside the test
+  containers, with no network, from the crates the image keeps.
 - **Every good case is older than the project's licence file** (`LICENSE`, MIT, added 2026-08-31). The licence scan
   fails them for "no licence" at their starting commits; they count under the owner's rule for such cases (rules page,
   section 9: "Yes, count them"): one author, the licence's holder, wrote every file they touch, and the licence is
-  unchanged on `main` (section 4).
-- **Left out so far (3), and 1 to run again:** 296 and 289 (the only candidates newer than the licence) and 242 have
-  no existing test left to protect (`no_existing_tests`), the pull request's own reason. 270 was dropped at the second
-  round as unstable while the machine's 1-minute load reached 15.38; it is run once more at the end.
-- **Time per checked case** (the engine's own count): 558.5, 339.5, 351.8, 176.4 and 154.8 s for 275, 263, 254, 250
-  and 241. The first case also built the shared toolchain image; each later case is seeded from the one before.
-- **Disk per checked case:** a workspace image of about 2.79 GB by Docker's size, of which about 433 MB is its own
-  (Docker's rounded unique size in [`own_images.tsv`](own_images.tsv)); the shared toolchain image is 2.36 GB.
+  unchanged on `main` (section 4). The hold-out check passes all 12 with nothing to read.
+- **Left out (9), all for the pull request's own reason:** 6 are features whose tests use modules the fix adds, so the
+  hidden tests cannot compile on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`:
+  189, 170, 168, 150, 112, 89); 3 have no existing test left to protect (`no_existing_tests`: 296 and 289, the only
+  candidates newer than the licence, refused by the maker; 242 at the probe, whose only existing test file is the one
+  it rewrites). None was the machine's or the factory's.
+- **270 counts on its third try.** Its first try was dropped at the second round (one existing test of the group
+  "synced conflict signal" in `test/local_cents_web/live/book_live_test.exs` changed from passed to failed on the
+  unchanged project, while the machine's load reached 15.38); its second, on a quiet machine, at the controls (another
+  test of the same group failed on the merged code with a 5 s `GenServer.call` time-out). Both were read as the
+  machine's, a load and a time-out, and the third try passed both rounds at a load of at most 7.25. That group of tests
+  may be sensitive to timing; a session graded on 270 can meet it.
+- **Time per checked case** (the engine's own count): 558.5, 367.3, 339.5, 351.8, 176.4, 154.8, 372.3, 342.2, 114.6,
+  102.6, 143.3 and 94.4 s for 275, 270 (third try), 263, 254, 250, 241, 184, 134, 130, 127, 94 and 86; the median is
+  257.95 s. Most of it is the preparation of the workspace image (the Rust library is compiled again in every image) and
+  the controls. The maker's step took 5 to 11 s.
+- **Disk per try:** a workspace image of about 2.76 to 2.79 GB by Docker's size, of which about 431 to 440 MB is its
+  own (Docker's rounded unique size in [`own_images.tsv`](own_images.tsv)); one toolchain image per Elixir/OTP pair,
+  2.36 GB each by Docker's size (three pairs). Free bytes on `/` went from 644,087,119,872 at 18:06 to
+  560,021,454,848 at 19:53, for all the jobs on the machine.
 
 ## 1. The project's set-up
 
@@ -104,26 +118,44 @@ Then [`run/licence_later.sh`](run/licence_later.sh) applies the rule for a case 
 [`cases.tsv`](cases.tsv) has one line per try: the merge date, the resolved Elixir/OTP, the kind, the verdict, the step
 and reason of a drop, the wall time of each step, the engine's own step times, the 1-minute load at the start and the
 end and its highest value during the check, the bytes of this job's own images the try added, the two scans and whose
-cause a drop is ([`causes.tsv`](causes.tsv) holds the reading). The machine ran nine jobs at once; every check so far
-saw a 1-minute load between 12.06 and 15.38 on its 28 threads, so none is marked settled (the job's own mark, under 12).
+cause a drop is ([`causes.tsv`](causes.tsv) holds the reading). The machine ran nine jobs at once. The checks up to
+241 saw a highest 1-minute load between 12.06 and 15.38 on its 28 threads, so they are not marked settled (the job's own mark, under 12); from 189 on, and 270's second and third tries,
+every check stayed under 12. The checked verdicts stand either way.
 
 | Pull request | Merged | Kind | Verdict | Step, reason | Hidden tests failing first / passing after | Licence | Hold-out |
 |---|---|---|---|---|---|---|---|
 | 296 | 2026-09-10 | - | refused | maker, no_existing_tests | - | - | - |
 | 289 | 2026-09-01 | - | refused | maker, no_existing_tests | - | - | - |
 | 275 | 2026-08-18 | feature | checked | - | 6 / 49 | pass (licence later, section 4) | pass |
-| 270 | 2026-08-18 | feature | dropped, to run again | second_round, unstable | - | - | - |
+| 270 (try 1) | 2026-08-18 | feature | dropped | second_round, unstable (the machine's: load 15.38) | - | - | - |
+| 270 (try 2) | 2026-08-18 | feature | dropped | controls, reference_regression_fails (the machine's: a 5 s time-out) | - | - | - |
+| 270 (try 3) | 2026-08-18 | feature | checked | - | 1 / 34 | pass (licence later) | pass |
 | 263 | 2026-08-17 | feature | checked | - | 8 / 42 | pass (licence later) | pass |
 | 254 | 2026-08-15 | feature | checked | - | 3 / 4 | pass (licence later) | pass |
 | 250 | 2026-08-14 | feature | checked | - | 9 / 18 | pass (licence later) | pass |
 | 242 | 2026-08-11 | bug_fix | dropped | probe, no_existing_tests | 9 / 9 | - | - |
 | 241 | 2026-08-11 | feature | checked | - | 3 / 18 | pass (licence later) | pass |
+| 189 | 2026-07-29 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 184 | 2026-07-29 | bug_fix | checked | - | 1 / 1 | pass (licence later) | pass |
+| 170 | 2026-07-25 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 168 | 2026-07-23 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 150 | 2026-07-19 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 134 | 2026-07-18 | feature | checked | - | 10 / 23 | pass (licence later) | pass |
+| 130 | 2026-07-17 | feature | checked | - | 18 / 110 | pass (licence later) | pass |
+| 127 | 2026-07-14 | feature | checked | - | 17 / 17 | pass (licence later) | pass |
+| 112 | 2026-07-14 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 94 | 2026-07-09 | feature | checked | - | 14 / 38 | pass (licence later) | pass |
+| 89 | 2026-07-08 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 86 | 2026-07-08 | feature | checked | - | 11 / 25 | pass (licence later) | pass |
 
-Counts by the last try: [`counts.tsv`](counts.tsv).
+Counts by the last try ([`counts.tsv`](counts.tsv)): 12 checked, all good; 6 dropped at the probe because the hidden
+tests do not finish on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`); 3
+`no_existing_tests` (2 refused by the maker, 1 at the probe). Whose cause: the pull request's for all 9 (read one by
+one in [`causes.tsv`](causes.tsv)); none the factory's, none the machine's as a final verdict.
 
-**The balance of kinds** (rules page, section 7): all good cases so far are features. Once 10 are good and one kind has
-fewer than 3, the driver makes a candidate of the other kind but defers it; every candidate still runs, since the list
-is shorter than the target.
+**The balance of kinds** (rules page, section 7): of the 12 good cases 11 are features and 1 is a bug fix. Of
+the 19 candidates the maker made into folders, only 2 are bug fixes (184 and 242; the other two were refused before a
+kind was given), so no order of the list could give more: every candidate was tried. The 30 % guard of section 7 applies to the dataset, not to one project.
 
 ## 4. The licence
 
@@ -148,8 +180,8 @@ and every touched file passes the scan on its own. Co-author lines that name AI 
 **The hold-out check** found no held-out name and no shared span to read in any checked case
 ([`scans.tsv`](scans.tsv)).
 
-**Dependencies, for the later scan of sessions** ([`deps.tsv`](deps.tsv)): of the 85 locked packages, every Hex package
-declares a licence of the list (`yamerl` spells BSD-2-Clause as "BSD 2-Clause"); the two Git dependencies are read by
+**Dependencies, for the later scan of sessions** ([`deps.tsv`](deps.tsv)): of the 110 locked package versions over the 12
+cases, every Hex package declares a licence of the list (`yamerl` spells BSD-2-Clause as "BSD 2-Clause"); the two Git dependencies are read by
 hand in section 1.
 
 ## 5. Files
@@ -160,6 +192,7 @@ hand in section 1.
 | [`counts.tsv`](counts.tsv) | the pull requests by their last try's verdict, step and reason |
 | [`causes.tsv`](causes.tsv) | the drops read by a person: whose cause, and why |
 | [`good.tsv`](good.tsv) | every checked case with its licence and hold-out results, its kind, whether it counts and its licence verdict |
+| [`kind_rule.tsv`](kind_rule.tsv) | every checked case's kind as the maker labelled it and by the written rule read one line at a time, with the files and public functions it adds |
 | [`scans.tsv`](scans.tsv) | the two scans per checked case: licence file and family, files touched and passing; the hold-out's checks and span counts |
 | [`licence_proof.tsv`](licence_proof.tsv) | the licence file: the commit and date that added it, its pull request, copyright line and SHA-256, whether `main` still holds it, and the README sentence |
 | [`authors_cases.tsv`](authors_cases.tsv) | per candidate: whether its starting and merge commits hold the licence, and the authors of its changed files |
@@ -199,6 +232,11 @@ D=$CTL/data/env OUT=$JOB/suite_tables ROUNDS=1 $JOB/run/suite_tables.sh
 BENCH_SRC=<the bench's cases folder> BENCH=$JOB/bench_cases OUT=$JOB/scans $JOB/run/scans.sh cases
 WORK=$WORK JOB=$JOB CTL=$CTL NAME=factory-localcents JOB_LABEL=task-factory-job=hb-localcents TASK_LABEL=task-factory=1 \
   TARGET=20 MAX_TRIES=21 KIND_AFTER=10 KIND_MIN=3 MAX_LOAD=26 MIN_FREE=50000000000 $JOB/run/all.sh run
+# 270 once more after the list, twice (its second and third tries)
+WORK=$WORK JOB=$JOB CTL=$CTL NAME=factory-localcents JOB_LABEL=task-factory-job=hb-localcents TASK_LABEL=task-factory=1 \
+  MAX_LOAD=26 MIN_FREE=50000000000 $JOB/run/all.sh retry 270 2
+WORK=$WORK JOB=$JOB CTL=$CTL NAME=factory-localcents JOB_LABEL=task-factory-job=hb-localcents TASK_LABEL=task-factory=1 \
+  MAX_LOAD=26 MIN_FREE=50000000000 $JOB/run/all.sh retry 270 3
 # the licence record, the rule for cases older than the licence, the kinds by the written rule
 G=$JOB/local_cents-full.git NUMBERS=$JOB/numbers.txt CLASSES=$JOB/tables/classes_local_cents.tsv \
   CENSUS=$JOB/tables/prs_zorn__local_cents.tsv HOLDER='Mike Zornek' OUT=$JOB/authors $JOB/run/authors.sh

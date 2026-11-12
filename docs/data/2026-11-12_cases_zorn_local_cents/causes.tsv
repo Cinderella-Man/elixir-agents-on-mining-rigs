@@ -1,5 +1,11 @@
 id	cause
 local-cents-pr-296	pull_request: a new module with a new test file; no existing test file is changed or matches a changed code file
 local-cents-pr-289	pull_request: its one test file is new; no existing test file is changed or matches a changed code file
-local-cents-pr-270	not settled yet: one existing LiveView test of the unchanged project passed in round one and failed in round two while the 1-minute load reached 15.38; to be checked once more at the end
+local-cents-pr-270	checked on its third try (settled, both rounds the same). Try 1: one existing test of the synced conflict signal group in book_live_test.exs passed in round one and failed in round two on the unchanged project, highest load 15.38 (no output kept). Try 2: another test of the same group failed on the merged code with a GenServer call time-out (5 s), highest load 6.35. Both read as the machine (a load, a time-out) and run again, as the job brief says; the group may be timing-sensitive
 local-cents-pr-242	pull_request: its only existing test file is the file it rewrites; that file at the starting commit fails on the merged code (fails_on_reference). Its 9 hidden tests failed before and passed after, with the Rust library rebuilt in the test container
+local-cents-pr-189	pull_request: a feature that adds 7 files, among them test support modules its tests use; the hidden tests cannot compile on the unchanged project (no_starting_failure)
+local-cents-pr-170	pull_request: a feature that adds 5 code files and 2 test files; the hidden tests use the new modules and cannot compile on the unchanged project (no_starting_failure)
+local-cents-pr-168	pull_request: a feature that adds a new module and its new test; the hidden tests cannot compile on the unchanged project (no_starting_failure)
+local-cents-pr-150	pull_request: a feature that adds two new modules and their tests; the hidden tests cannot compile on the unchanged project (no_starting_failure)
+local-cents-pr-112	pull_request: a feature whose tests use a struct the fix adds (a new module); the hidden tests cannot compile on the unchanged project (no_starting_failure)
+local-cents-pr-89	pull_request: a feature that adds a new module and its new test; the hidden tests cannot compile on the unchanged project (no_starting_failure)
