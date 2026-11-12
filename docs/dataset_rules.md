@@ -17,7 +17,7 @@ THE RULES that lead to selecting them"). The list, the 32 approved applications 
 | Rule | It passes when | Left out as | Why |
 |---|---|---|---|
 | An application | it is an application of the approved batch, not a library, a framework or a tool | `not_an_application` | the model is meant for day-to-day work, and that happens inside applications that use Phoenix, Ecto, Ash, Nerves or Nx |
-| A permissive licence | the repository states one of the licences of section 8 | `licence_outside_list` | every task and session republishes the project's code; without a permissive licence there is no permission to do that |
+| A permissive licence | the repository states one of the licences of section 9 | `licence_outside_list` | every task and session republishes the project's code; without a permissive licence there is no permission to do that |
 | Alive | it was pushed to in the six months before the decision (on or after 2026-05-12) | `not_alive` | a project nobody works on shows how Elixir was written, not how it is written |
 | A new Elixir | its `mix.exs` asks for Elixir 1.18 or newer | `old_elixir`, `no_elixir_version` | the owner, 2026-11-12: "we should prioritize the newest elixir codebases as Elixir changed a bit - we need to use "alive" repositories" |
 | Not held out | it is none of the Elixir SWE Bench's 12 projects (absinthe, accent, ash, beacon, cachex, guardian, live_beats, livebook, operately, pinchflat, plausible-analytics, vutuv) | `held_out` | the model is judged on that bench; nothing that shapes it may come from there |
@@ -118,17 +118,30 @@ A session is the teacher's whole attempt at one task: its messages, its tool cal
 
 | Left out as | When | Why |
 |---|---|---|
-| `quotes_dependency_outside_licence_list` | the session read or printed a file of a dependency (under `deps/`) whose licence is not in section 8, or that has no licence | the session would republish that code, and there is no permission for it. The task itself stays |
+| `quotes_dependency_outside_licence_list` | the session read or printed a file of a dependency (under `deps/`) whose licence is not in section 9, or that has no licence | the session would republish that code, and there is no permission for it. The task itself stays |
 | `quotes_held_out` | the session read or printed a file of a held-out project's own package (for example Ash's files in an application built on Ash) | the bench's projects must stay unseen (the owner, 2026-11-12) |
 
 These two scans run on every kept session before it is published. They are not built yet: no session has been made.
 
-## 7. What is recorded
+## 7. Balance
+
+Decided by the owner on 2026-11-12 ("Yes, add them"), so that no project and no kind of work dominates the dataset.
+
+| Rule | Left out as | Why |
+|---|---|---|
+| **No project gives more than 15 of the first 100 cases,** and no more than 15 % of the cases after that. Inside a project the newest cases are kept | `over_project_cap` | a model trained mostly on one code base learns that code base. In SWE-smith's test at a fixed 700 sessions, 4, 25, 50 and 100 repositories gave better results each time ([paper](https://arxiv.org/abs/2504.21798), section 4.1) |
+| **Neither bug fixes nor features fall under 30 % of the cases.** The kind is the task's `task_kind`. When one kind is short, cases of the other kind wait until it catches up | `over_kind_share` | both kinds of work must be well represented. No study read gives a right ratio, so this is a guard, not a target |
+| **At most 3 kept sessions per case** | `over_session_cap` | easy cases are solved again and again, and many copies of them made the trained model worse; SWE-smith keeps at most 3 per task for that reason (section 4) |
+
+No study read tests a cap per project or a ratio of kinds; the first two numbers are the owner's choice on a proposal.
+A case left out by a cap is not lost: it enters when the dataset grows.
+
+## 8. What is recorded
 
 Nothing is dropped silently. For every project, pull request, candidate, statement and session that is left out, a
 table keeps its id and the reason name of this page, and the counts per reason are published with the data.
 
-## 8. Licences
+## 9. Licences
 
 | | Licences |
 |---|---|
@@ -140,7 +153,7 @@ dependency file a session quotes (section 6). The dataset's own licence: third-p
 per row with the notices shipped; the licence of the owner's own part is not final (the owner leans to MIT). This page
 is not legal advice.
 
-## 9. Where each rule runs
+## 10. Where each rule runs
 
 | Rule | Tool or file |
 |---|---|
@@ -153,12 +166,10 @@ is not legal advice.
 | Sessions kept | `factory/README.md` section 2.2; `bin/factoryctl kept_sessions` |
 | Sessions dropped for what they quote | not built yet |
 
-## 10. Open points
+## 11. Open points
 
 - Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
   the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
 - The licence tool's own list does not hold ISC yet.
-- Balance (registry E89), proposed and not decided: no project above 15 % of the cases, neither bug fixes nor features
-  under 30 %, and at most 3 kept sessions per case.
 - `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.
