@@ -1,0 +1,17 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+ex338-pr-1350	https://github.com/axelclark/ex338	pass	0	8	4	4	0	0	0	0	0	0	0	pass
+ex338-pr-1390	https://github.com/axelclark/ex338	pass	0	8	4	0	4	0	0	0	0	0	0	pass
+ex338-pr-1392	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+ex338-pr-1394	https://github.com/axelclark/ex338	pass	0	8	4	0	4	0	0	0	0	0	0	pass
+ex338-pr-1395	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+ex338-pr-1398	https://github.com/axelclark/ex338	pass	0	8	4	0	4	0	0	0	0	0	0	pass
+ex338-pr-1411	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+ex338-pr-1446	https://github.com/axelclark/ex338	pass	0	9	4	1	4	0	0	0	0	0	0	pass
+ex338-pr-1450	https://github.com/axelclark/ex338	pass	0	5	4	0	1	0	0	0	0	0	0	pass
+ex338-pr-1451	https://github.com/axelclark/ex338	pass	0	13	6	7	0	0	1	0	1	0	0	pass
+ex338-pr-1452	https://github.com/axelclark/ex338	pass	0	6	4	0	2	0	0	0	0	0	0	pass
+ex338-pr-1457	https://github.com/axelclark/ex338	pass	0	6	4	0	2	0	0	0	0	0	0	pass
+ex338-pr-1458	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+ex338-pr-1460	https://github.com/axelclark/ex338	pass	0	7	4	3	0	0	0	0	0	0	0	pass
+ex338-pr-1461	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+ex338-pr-1463	https://github.com/axelclark/ex338	pass	0	4	4	0	0	0	0	0	0	0	0	pass
