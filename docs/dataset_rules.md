@@ -34,6 +34,15 @@ No task, statement, session or screening is made for a project outside the list.
   (`.tool-versions`, the CI workflow, `mix.exs`). That pair must be in the factory's image table
   (`factory/config/toolchain_images.json`, 36 pairs on 2026-11-12, the newest 1.20.5 with OTP 29.1.2; E84). A commit on a
   pair the table lacks is left out as `no_image:<elixir>/<otp>` until the pair is added; pairs are added newest first.
+- **The database and the cache:** a task runs on the Postgres, ClickHouse or Redis version its CI names when the
+  factory's table has that version. When the table lacks it, the task is built and checked on the newest version of
+  that service the table has (on 2026-11-12: Postgres 18.6, Redis 7.2), set in the project's recipe, and both versions
+  (the one CI names, the one used) are recorded with the task. The check decides whether the task works there: the
+  hidden tests must still fail before the fix and pass after it. A candidate that fails in a way that points to the
+  service's version is set aside as `no_service_image:<service>/<version>` until that version is added; it is not
+  counted as the pull request's own fault. A project that needs an extension the table's images lack (PostGIS,
+  pgvector) needs an image of its own, and that download is allowed by the owner per image. Decided by the manager on
+  2026-11-12, when two projects' tests named Postgres 17 and the table held 10, 14 and 18; the owner was told.
 - **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 and 27.1.3 (their ssl
   rejects the package server's certificate, so the image cannot install Hex).
 - **The order inside a project:** from the newest merged pull request backwards.
