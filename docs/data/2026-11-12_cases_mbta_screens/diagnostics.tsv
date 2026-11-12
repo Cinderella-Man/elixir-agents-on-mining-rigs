@@ -1,0 +1,5 @@
+id	side	run_at	completed	returncode	counts	ms	first_error
+screens-pr-3397	reference	2026-11-12T13:53:03+01:00	true	0	passed 8	7852	-
+screens-pr-3379	start	2026-11-12T13:53:03+01:00	false	1	-	3307	error: Screens.V2.WidgetInstance.Departures.NormalSection.HeadwayRow.__struct__/1 is undefined, cannot expand struct
+screens-pr-3375	start	2026-11-12T13:53:03+01:00	false	1	-	3490	== Compilation error in file test/support/mocks.ex == ** (ArgumentError) could not load module Screens.Assets.Cleanup due to reason :nofile
+screens-pr-3371	start	2026-11-12T13:53:03+01:00	false	1	-	2955	== Compilation error in file test/screens/v2/candidate_generator/dup/departures_test.exs == ** (KeyError) key :mode not found

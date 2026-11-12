@@ -1,0 +1,6 @@
+test	file	marked_by
+Elixir.Screens.ScreensByAlertTest::test get_screens_by_alert/1 returns map with data when called before expiration	test/screens/screens_by_alert_test.exs	@describetag :skip
+Elixir.Screens.ScreensByAlertTest::test get_screens_by_alert/1 returns map with default empty list when called after expiration	test/screens/screens_by_alert_test.exs	@describetag :skip
+Elixir.Screens.ScreensByAlertTest::test get_screens_by_alert/1 returns map with no expired	test/screens/screens_by_alert_test.exs	@describetag :skip
+Elixir.Screens.ScreensByAlertTest::test get_screens_last_updated/1 returns map with default timestamp of 0 after expiration	test/screens/screens_by_alert_test.exs	@describetag :skip
+Elixir.Screens.ScreensByAlertTest::test get_screens_last_updated/1 returns when screen was last updated	test/screens/screens_by_alert_test.exs	@describetag :skip

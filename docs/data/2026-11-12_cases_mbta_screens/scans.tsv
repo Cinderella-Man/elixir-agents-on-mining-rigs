@@ -1,0 +1,4 @@
+id	licence_file	licence_families	files_touched	files_passing	licence_result	failing	name_hits	spans8	spans8_to_read	spans12	spans12_to_read	holdout_result	deps_classes	scan_rc
+screens-pr-3388	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3387	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3363	LICENSE	MIT	5	5	pass	-	0	11	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
