@@ -1,4 +1,7 @@
 task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+flick-pr-213	feature	feature	0	1	answer_values
+flick-pr-217	feature	feature	2	0	-
+flick-pr-221	bug_fix	bug_fix	0	0	-
 flick-pr-222	feature	feature	1	2	cap max_ranked_answers
 flick-pr-261	bug_fix	bug_fix	0	0	-
 flick-pr-274	bug_fix	bug_fix	0	0	-

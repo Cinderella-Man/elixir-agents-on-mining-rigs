@@ -1,5 +1,6 @@
 pull_requests	verdict	dropped_at	reason
-9	checked	-	-
-5	not run	-	not reached
+12	checked	-	-
+1	refused	maker	no_image:1.18.0/27.1.3
 1	refused	maker	no_existing_tests
 1	not run	-	contains_other_candidates
+1	dropped	probe	no_existing_tests

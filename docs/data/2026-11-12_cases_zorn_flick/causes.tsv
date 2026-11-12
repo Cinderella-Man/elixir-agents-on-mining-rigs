@@ -1,0 +1,6 @@
+id	cause	why
+flick-pr-322	pull_request	no existing test file is changed by the pull request or matches a code file it changes (refused by the maker)
+flick-pr-215	pull_request	both existing test files fail on the merged code in both runs of the probe (fails_on_reference): the change alters what their starting-commit versions check; load 10.67, settled
+flick-pr-217	pull_request	checked, but the licence scan fails: the pull request adds assets/vendor/sortable.js, a minified third-party JavaScript library (Sortable 1.15.7, MIT; 45,478 bytes), which the scan marks exclude:vendored (rules page, section 4)
+flick-pr-109	factory	Elixir 1.18.0 with OTP 27.1.3, a pair the factory never builds (rules page, section 2: OTP 27.1.3 cannot install Hex); also Postgres 16 in CI
+flick-pr-223	-	not made: contains_other_candidates (rules page, section 3); its parts 213, 215, 217, 221, 222

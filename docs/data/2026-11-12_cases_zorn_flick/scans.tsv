@@ -1,4 +1,7 @@
 task	start	licence_file	licence_families	files_touched	files_passing	licence_result	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_to_read	holdout_result
+flick-pr-213	7248f46946b7b590516c2dcb7c64cbf618c89327	LICENSE	MIT	9	9	pass	pass	0	10	10	0	0	0	3	0	pass
+flick-pr-217	8d4cb9d4937d3b3feaedeaad90b8edba34de4597	LICENSE	MIT	7	6	fail	pass	0	10	10	0	0	0	3	0	pass
+flick-pr-221	b6b50d20c6989fe5bd59e6c8778984f35b8ca7ed	LICENSE	MIT	2	2	pass	pass	0	10	10	0	0	0	3	0	pass
 flick-pr-222	601a5adee7a96e3b3d24d12f91322a7ebfc14d64	LICENSE	MIT	7	7	pass	pass	0	10	10	0	0	0	3	0	pass
 flick-pr-261	e154ab55ccfeac3d9fa9429c4498f72d3dab5ae3	LICENSE	MIT	2	2	pass	pass	0	10	10	0	0	0	3	0	pass
 flick-pr-274	e2926849f910418d4f1362d651d46d480e1bc247	LICENSE	MIT	7	7	pass	pass	0	10	10	0	0	0	3	0	pass

@@ -9,26 +9,40 @@ cases). Everything ran on the data-mining machine through a controller of its ow
 
 ## Result
 
-**Milestone 1 of the job (2026-11-12 19:05): 9 good cases of 10 pull requests tried.** A case is good when the gate
-checked it and it passes both scans. The job goes on, newest merged first, until the list runs out; this page is
-brought up to date at each milestone.
+**flick has 11 good cases, and its list is used up (2026-11-12 19:14).** A case is good when the gate checked it and
+it passes both scans. Every candidate on Elixir 1.18 or newer was tried; the target of 20 cannot be reached in this
+project.
 
 - **The project runs in the engine.** Its own suite passes whole at the newest candidate's starting commit: 210
   passed, 0 failed, in 1.9 s. Beyond the factory's defaults it needs one setting: the database port
   (`POSTGRES_PORT=5432`), because its test configuration defaults to 5418.
 - **The list is short.** Of the project's 30 screened candidates, 14 are on Elixir 1.17 or 1.14
   (`elixir_before_1.18`), one is on Elixir 1.18.0 with OTP 27.1.3, which the factory never builds
-  (`no_image:1.18.0/27.1.3`), and one is the merge of a side branch whose own pull requests are candidates
-  (`contains_other_candidates`, section 3). That leaves 14 to make and check.
-- **Good (9): 341, 339, 330, 327, 310, 276, 274, 261 and 222** (merged 2026-09-28 to 2026-10-28). Five are bug fixes,
-  four features; the maker's label agrees with its written rule read line by line for all nine
-  ([`kind_rule.tsv`](kind_rule.tsv)). All pass the licence scan (MIT, every touched file) and the hold-out check, 310
-  after its one shared 8-word run was read (test-file syntax).
-- **Left out (1), for the pull request's own reason:** 322 has no existing test file to protect (`no_existing_tests`,
-  refused by the maker).
-- **Time per checked case** (the engine's own count): 343.8, 193.5, 165.2, 193.8, 277.3, 353.8, 346.3, 317.1 and
-  288.1 s for 341, 339, 330, 327, 310, 276, 274, 261 and 222. Making each case took 6, 5, 6, 5, 5, 15, 5, 6 and 10 s
-  (the `make_s` column of [`cases.tsv`](cases.tsv)).
+  (`no_image:1.18.0/27.1.3`, refused by the maker in seconds), and one is the merge of a side branch whose own pull
+  requests are candidates (`contains_other_candidates`, section 3; never made). That left 14 to make and check.
+- **Good (11): 341, 339, 330, 327, 310, 276, 274, 261, 222, 221 and 213** (merged 2026-09-27 to 2026-10-28). By the
+  maker's label six are bug fixes (341, 330, 276, 274, 261, 221) and five features (339, 327, 310, 222, 213); the
+  label agrees with its written rule read line by line for every checked case ([`kind_rule.tsv`](kind_rule.tsv)). By
+  the project's own commit type two of the five features are bug fixes (339 and 222, type `fix`): each adds a file
+  (339 a migration), which the rule counts as a feature; 213 is a refactor. All 11 pass the licence scan (MIT, every
+  touched file) and the hold-out check, 310 after its one shared 8-word run was read (test-file syntax).
+- **Checked but not counted (1): 217.** The gate checked it, but it fails the licence scan: it adds
+  `assets/vendor/sortable.js`, a minified copy of a third-party JavaScript library (Sortable 1.15.7, whose header
+  names MIT), which the scan marks `exclude:vendored`; the rules page, section 4, fails a case for such a file. The
+  case folder is kept.
+- **Left out (2), for the pull request's own reason, both `no_existing_tests`:** 322 has no existing test file to
+  protect (refused by the maker); 215's two existing test files fail on its own merged code in both of the probe's
+  runs (`fails_on_reference`: the change alters what their old versions check), so none is left to protect.
+- **None failed for the machine's reasons;** no candidate was run twice.
+- **Time per checked case** (the engine's own count): 343.8, 193.5, 165.2, 193.8, 277.3, 353.8, 346.3, 317.1, 288.1,
+  184.6, 169.2 and 127.5 s for 341, 339, 330, 327, 310, 276, 274, 261, 222, 221, 217 and 213; 215's check ended at
+  the probe after 70.0 s. Making each case took 6, 5, 6, 5, 5, 15, 5, 6, 10, 5, 6 and 5 s in the same order (the
+  `make_s` column of [`cases.tsv`](cases.tsv)). The whole run of 15 pull requests took 56 min (18:18:12 to 19:14:39).
+- **Disk:** each made case adds a project image of about 1.04 GB by Docker's size (est.; most of it shared with the
+  other cases' images) and a database snapshot of about 489 MB, of which Docker counts about 56 MB as its own; every
+  image's exact bytes and Docker's own share are in [`own_images.tsv`](own_images.tsv). Shared once: two toolchain
+  images (909,190,563 bytes for 1.20.1 / 28.5.0.2, 869,696,758 bytes for 1.20.4 / 29.1.2) and the Postgres 18.6
+  layout (432,794,066 bytes).
 
 ## 1. The project's set-up
 
@@ -102,8 +116,10 @@ so it was skipped without any step.
 and reason of a drop, the wall time of each step, the engine's own step times, the 1-minute load at the start and the
 end and its highest value during the check, the bytes of this job's own images the try added, the two scans and whose
 cause a drop is. A check counts as settled when the machine’s 1-minute load stayed under 12 during it. With the other
-jobs running, the load rose above 12 during most checks (the highest value of each is in `load_max_check`), so most are
-"not settled". That matters for a drop, which is then run again; a check that passed under load passed all the same.
+jobs running, the load rose above 12 during eight of the first nine checks (all but 330's; the highest value of each is
+in `load_max_check`), so those are "not settled"; the last four, from 221 on, are settled. That matters for a drop,
+which is then run again; a check that passed under load passed all the same. Both drops (322 at the maker, 215 at a
+load of 10.67) are settled.
 
 | Pull request | Merged | Elixir / OTP | Kind | Verdict | Step, reason | Hidden tests failing first / passing after | Licence | Hold-out |
 |---|---|---|---|---|---|---|---|---|
@@ -118,17 +134,20 @@ jobs running, the load rose above 12 during most checks (the highest value of ea
 | 261 | 2026-10-06 | 1.20.1 / 28.5.0.2 | bug_fix | checked | - | 2 / 74 | pass | pass |
 | 223 | 2026-09-28 | - | - | left out | contains_other_candidates (parts: 213, 215, 217, 221, 222) | - | - | - |
 | 222 | 2026-09-28 | 1.20.1 / 28.5.0.2 | feature | checked | - | 5 / 70 | pass | pass |
-| 221 | 2026-09-28 | | | not run yet | | | | |
-| 217 | 2026-09-28 | | | not run yet | | | | |
-| 215 | 2026-09-28 | | | not run yet | | | | |
-| 213 | 2026-09-27 | | | not run yet | | | | |
-| 109 | 2025-01-11 | 1.18.0 / 27.1.3 | - | not run yet | (the resolver refuses it: no_image:1.18.0/27.1.3) | | | |
+| 221 | 2026-09-28 | 1.20.1 / 28.5.0.2 | bug_fix | checked | - | 1 / 31 | pass | pass |
+| 217 | 2026-09-28 | 1.20.1 / 28.5.0.2 | feature | checked, not counted | - | 4 / 35 | fail: `assets/vendor/sortable.js` (`exclude:vendored`) | pass |
+| 215 | 2026-09-28 | 1.20.1 / 28.5.0.2 | feature | dropped | probe, no_existing_tests (both existing test files `fails_on_reference`) | - | - | - |
+| 213 | 2026-09-27 | 1.20.1 / 28.5.0.2 | feature | checked | - | 1 / 61 | pass | pass |
+| 109 | 2025-01-11 | 1.18.0 / 27.1.3 | - | refused | maker, no_image:1.18.0/27.1.3 | - | - | - |
 
-Every checked case has a partial fix that the gate rejected (`partial_fix` present).
+Every checked case but one has a partial fix that the gate rejected (`partial_fix` present); 221 changes one hunk, so it
+has none (`single_hunk`). Whose cause each drop is, read by a person: [`causes.tsv`](causes.tsv).
 
 **The scans** ([`scans.tsv`](scans.tsv), [`good.tsv`](good.tsv), [`holdout_reviews.tsv`](holdout_reviews.tsv),
 [`deps.tsv`](deps.tsv)): the licence file is `LICENSE` (MIT, "Copyright (c) 2024 Mike Zornek") at every starting
-commit, and every file a case touches passes. The hold-out check found no held-out name. Its shared runs are classed
+commit, and every file a case touches passes, except one in 217: `assets/vendor/sortable.js`, which the pull request
+adds, is a minified third-party library (its first line names Sortable 1.15.7 and MIT; 45,478 bytes), and the scan
+marks it `exclude:vendored`, which fails the case (the rules page, section 4). The hold-out check found no held-out name. Its shared runs are classed
 `common` (found in several held-out projects: mostly the task format’s own `case.json` fields, and Elixir syntax such as
 closing `end`s), one is already in flick’s own tree (327), and one in 310 was to be read (span id in
 [`holdout_reviews.tsv`](holdout_reviews.tsv)): read as boilerplate, the end of one test, ExUnit's `capture_log` tag
@@ -145,6 +164,7 @@ own `LICENSE` inside the workspace image; the scan does not read Git dependencie
 |---|---|
 | [`cases.tsv`](cases.tsv) | one line per try (above); the pull requests not reached have one line "not run" with the reason |
 | [`counts.tsv`](counts.tsv) | the pull requests by their last try's verdict, step and reason |
+| [`causes.tsv`](causes.tsv) | the drops and the case not counted, read by a person: whose cause, and why |
 | [`good.tsv`](good.tsv) | every checked case with its licence and hold-out results, its kind, and whether it counts |
 | [`kind_rule.tsv`](kind_rule.tsv) | each checked case's kind in `case.json` beside the maker's written rule read one line at a time (registry E108) |
 | [`scans.tsv`](scans.tsv) | the two scans per checked case: licence file, family, files touched and passing; the hold-out's checks and span counts |

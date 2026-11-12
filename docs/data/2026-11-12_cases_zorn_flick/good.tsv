@@ -1,4 +1,7 @@
 id	licence	holdout	kind	good	long_file_read
+flick-pr-213	pass	pass	feature	yes	-
+flick-pr-217	fail	pass	feature	no	no
+flick-pr-221	pass	pass	bug_fix	yes	-
 flick-pr-222	pass	pass	feature	yes	-
 flick-pr-261	pass	pass	bug_fix	yes	-
 flick-pr-274	pass	pass	bug_fix	yes	-
