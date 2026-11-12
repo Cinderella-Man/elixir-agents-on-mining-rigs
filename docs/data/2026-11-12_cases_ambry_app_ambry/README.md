@@ -7,6 +7,12 @@ time. Everything ran on the data-mining machine on 2026-11-12 between 13:16 and 
 its own built from the factory's `main` at `772f3bd`, while the four other case jobs, a check job of another project
 and a teacher run used the same Docker daemon.
 
+**In progress (a second job, from 14:36 the same day):** the project is taken toward 15 checked cases, on the same
+controller rebuilt from the factory's `main` at `0d99a67` (each service image under a tag of its own installation).
+5 cases are checked so far: pull request 1284 passed on its second try, and 1279 is new. `cases_ambry.tsv`,
+`counts.tsv` and `whose.tsv` already hold the new tries and a `try` column; the text below is the first job's until the
+second one ends.
+
 ## Result
 
 - **The project's set-up works without a release file.** The recipe

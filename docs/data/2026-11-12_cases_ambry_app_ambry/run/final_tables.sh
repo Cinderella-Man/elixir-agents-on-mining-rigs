@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # final_tables.sh: the job's public tables, on the data-mining machine, from table.sh's output and the screening.
-#   cases     one line per pull request tried: table.sh's tasks table (the engine's step times, the load), whose cause
-#             each drop is (WHOSE, written by a person from each drop's detail), the job's own images added during
-#             the try (OWN: own_images.tsv, by the engine's job label) and the machine-wide disk change
+#   cases     one line per try: table.sh's tasks table (the engine's step times, the load), whose cause each try's
+#             drop is (WHOSE: id, try, whose, why; written by a person from each drop's detail), the job's own images
+#             added during the try (OWN: own_images.sh tries, by the engine's job label) and the machine-wide disk
+#             change
 #   ready     every screened candidate of the project (CLASSES, the screening's classes table): its Elixir/OTP as the
 #             resolver reads it after the newer pairs (RESOLVE: resolve_after.tsv), what else it needs, and where it
 #             stands after this job (TASKS: the cases table)
@@ -14,14 +15,15 @@ case $what in
 cases)
   : "${TASKS:?}" "${OWN:?}" "${WHOSE:?}"
   awk -F'\t' -v OFS='\t' '
-    FILENAME == ARGV[1] {if (FNR > 1) {own[$1] = $2 "\t" $4}; next}
-    FILENAME == ARGV[2] {if (FNR > 1) {whose[$1] = $2}; next}
-    FNR == 1 {print "number", "id", "merged", "elixir_otp", "task_kind", "verdict", "dropped_at", "reason", "whose",
+    FILENAME == ARGV[1] {if (FNR > 1) {own[$1 "\t" $2] = $3 "\t" $5}; next}
+    FILENAME == ARGV[2] {if (FNR > 1) {whose[$1 "\t" $2] = $3}; next}
+    FNR == 1 {print "number", "id", "try", "merged", "elixir_otp", "task_kind", "verdict", "dropped_at", "reason", "whose",
       "make_s", "check_s", "export_s", "engine_prepare_s", "engine_probe_s", "engine_controls_s", "engine_total_s",
       "load_start", "load_end", "load_max_check", "settled", "own_images_added", "own_images_unique_bytes",
       "machine_disk_used_bytes", "start", "end"; next}
-    {print $2, $3, $4, $5, $6, $8, $9, $10, whose[$3], $11, $13, $14, $17, $18, $19, $20, $21, $22, $23, $24,
-      own[$3], $27, $28, $29}' "$OWN" "$WHOSE" "$TASKS"
+    {k = $3 "\t" $1
+     print $2, $3, $1, $4, $5, $6, $8, $9, $10, (k in whose) ? whose[k] : "-", $11, $13, $14, $17, $18, $19, $20, $21,
+      $22, $23, $24, (k in own) ? own[k] : "-\t-", $27, $28, $29}' "$OWN" "$WHOSE" "$TASKS"
   ;;
 ready)
   : "${CLASSES:?}" "${RESOLVE:?}" "${TASKS:?}"
