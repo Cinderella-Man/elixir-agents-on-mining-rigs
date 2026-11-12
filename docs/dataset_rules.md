@@ -1,0 +1,160 @@
+# The dataset's rules: which projects, tasks and sessions get in, and why the others are left out
+
+One place for every rule that decides what enters the public Elixir dataset (tasks cut from merged pull requests, and
+the sessions in which the teacher model solves them). Each rule has a reason name. Whatever is left out is kept in a
+table with that name, so every rejection can be counted and explained. Where the owner decided a rule, the date is
+given. A rule that is not built into a tool yet says so.
+
+The order is the order of the work: a project is chosen, its pull requests are screened, a candidate is made into a
+task and checked, the teacher writes its statement, the teacher solves it, and the session is kept or dropped.
+
+## 1. Projects
+
+The dataset is limited to 21 applications (the owner, 2026-11-12: "limit our dataset to those 21 projects and SAVE
+THE RULES that lead to selecting them"). The list, the 32 approved applications left out and the script are in
+[data/2026-11-12_dataset_projects](data/2026-11-12_dataset_projects/README.md).
+
+| Rule | It passes when | Left out as | Why |
+|---|---|---|---|
+| An application | it is an application of the approved batch, not a library, a framework or a tool | `not_an_application` | the model is meant for day-to-day work, and that happens inside applications that use Phoenix, Ecto, Ash, Nerves or Nx |
+| A permissive licence | the repository states one of the licences of section 8 | `licence_outside_list` | every task and session republishes the project's code; without a permissive licence there is no permission to do that |
+| Alive | it was pushed to in the six months before the decision (on or after 2026-05-12) | `not_alive` | a project nobody works on shows how Elixir was written, not how it is written |
+| A new Elixir | its `mix.exs` asks for Elixir 1.18 or newer | `old_elixir`, `no_elixir_version` | the owner, 2026-11-12: "we should prioritize the newest elixir codebases as Elixir changed a bit - we need to use "alive" repositories" |
+| Not held out | it is none of the Elixir SWE Bench's 12 projects (absinthe, accent, ash, beacon, cachex, guardian, live_beats, livebook, operately, pinchflat, plausible-analytics, vutuv) | `held_out` | the model is judged on that bench; nothing that shapes it may come from there |
+
+No task, statement, session or screening is made for a project outside the list.
+
+## 2. Versions
+
+- **The project:** `mix.exs` asks for Elixir 1.18 or newer (section 1).
+- **The task:** it is built on the Elixir and OTP of its own starting commit, read from the commit's files
+  (`.tool-versions`, the CI workflow, `mix.exs`). That pair must be in the factory's image table
+  (`factory/config/toolchain_images.json`, 12 pairs on 2026-11-12, the newest 1.20.3 with OTP 29.0.5). A commit on a
+  pair the table lacks is left out as `no_image:<elixir>/<otp>` until the pair is added; pairs are added newest first.
+- **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 (its ssl rejects
+  the package server's certificate).
+- **The order inside a project:** from the newest merged pull request backwards.
+- **Not decided:** whether a task of a chosen project that was built on an Elixir older than 1.18 is left out. Until
+  it is, such tasks are taken last.
+
+## 3. Pull requests
+
+A merged pull request is a candidate unless one of these rules rejects it; the first that applies is its reason. The
+rules read paths, authors and titles, not the code.
+
+| Left out as | When | Why |
+|---|---|---|
+| `no_code_change` | no changed code file (`.ex`, `.heex`, `.eex`, `.leex` under `lib/`) | nothing for a model to write |
+| `no_test_change` | code changed, but no `_test.exs` file under `test/` | the task's hidden tests are the pull request's own tests; without them a solution cannot be judged |
+| `bot` | the author is a bot | version bumps and generated changes, not development work |
+| `dependency_only`, `docs_only`, `ci_only` | every changed file is a manifest or lock file, documentation, or under `.github/` | no application code |
+| `mix_files` | it changes `mix.exs` or `mix.lock` | the task's environment is built before the change, and a changed dependency set would need another environment after it |
+| `revert`, `reverted_later` | it is a revert, or a later pull request reverts it | the project itself took the change back |
+| `repaired_by` | a later pull request repairs it | the change had a bug. The follow-up is kept as its own task (the owner, 2026-11-12: "Yes, do that"); the pairs are counted |
+
+Recorded on a candidate and never a reason to reject: written with an AI tool (the owner, 2026-11-12: "I don't see
+the point of avoiding "co-authored by Claude""), adds a migration, touches `assets/`.
+
+## 4. Tasks
+
+A candidate becomes a task folder (the starting commit, the reference fix, the hidden tests) and must pass the
+factory's gate. Each drop names the step and the cause, and a cause is one of three kinds: the pull request's own, the
+factory's, or the machine's. Only the first is a verdict on the pull request; the other two are fixed and run again.
+
+| Check | Dropped when | Whose cause |
+|---|---|---|
+| The task folder is valid | a patch touches a folder it may not, a test command is not an explicit `mix test`, or the repository is held out | the pull request's, or the maker's |
+| The source rebuilds exactly | the starting commit plus the three patches does not give the merged tree | the maker's |
+| The environment builds | `no_image` (section 2), `needs_service:<name>` (a service the engine does not run; Postgres, ClickHouse and Redis are run), a package that can no longer be downloaded, a missing system program | the factory's |
+| The unchanged project fails a hidden test in the test's own body | `no_starting_failure`: the hidden tests pass before the fix, or cannot run at all | the pull request's |
+| The failing tests are the same in every run | the set of failures changes between runs | the pull request's (an unstable test) |
+| The reference fix passes | the hidden or the existing tests fail on the merged tree: they need the network, the clock or a service, or `no_existing_tests` is left to protect | the pull request's |
+| An early exit is rejected | the project's test command can report success without running the tests | the project's |
+| A partial fix is rejected, where the task has one | a half-done fix passes the hidden tests | the pull request's (weak tests); the task stays without the control |
+| A second round agrees | a named test ends differently in a fresh container | the pull request's |
+
+Then two scans, on every checked task:
+
+- **Licence, per file** (`factory/tools/task_licence.py`): every file the fix or the tests touch must be under the
+  project's own permissive licence. `fail` when a touched file carries another licence notice or is a third-party
+  file kept in the repository (`exclude:vendored`, for example a minified JavaScript library under `assets/vendor/`);
+  binary files are left out of the task.
+- **Hold-out** (`factory/tools/task_holdout.py`): the repository and the names in the task are not a held-out
+  project's, and the task shares no run of 8 or 12 words with the bench's 20 cases other than boilerplate. A shared
+  run that is not boilerplate is `review` and is read before the task is used.
+
+A task may depend on a held-out library, or on a dependency whose licence is outside the list (the owner,
+2026-11-12: "Yes, that rule"): the task's own code is the application's. What that means for a session is in section 6.
+
+## 5. Statements
+
+The statement is the text the model is given as its assignment.
+
+- **The teacher model writes it,** from the fix and the hidden tests, which the solver never sees (decided
+  2026-11-12). No statement by any other writer is used, and none is edited, trimmed or repaired by hand.
+- **The voice** (the owner, 2026-11-12: "actually real-world ones as developer would type, unless it's a feature, then
+  assume quite a lot of text"): a developer typing a request to a coding agent in their own repository. A bug fix or a
+  small change is short and plain. A feature is long and detailed, as a developer writes it after being questioned
+  about every decision: the goal, the settled behaviour with examples, the edge cases, what is out of scope, and the
+  names the rest of the code will use.
+- **The leak check:** a statement is rejected as `leak` when it gives the fix away: a line or an identifier that
+  exists only in the fix, a hidden test's name, the name of a file or function the fix adds and the tests do not use.
+  It is asked for again, at most 3 times; after that the task is `no_statement` and is not run.
+
+## 6. Sessions
+
+A session is the teacher's whole attempt at one task: its messages, its tool calls and what the tools returned.
+
+**Kept** when the attempt ended as completed and its patch passes, each step in a fresh container:
+1. the patch changes only files under the task's allowed folders, is at most 1 MiB and adds no symbolic link or
+   submodule;
+2. the existing tests and the model's own tests pass with the patch;
+3. the hidden tests pass, and every required test is among them;
+4. the existing tests pass again;
+5. the model's own tests, alone on the unchanged project, fail at least once.
+
+**Dropped although its patch passed** when its text may not be published or would leak the bench:
+
+| Left out as | When | Why |
+|---|---|---|
+| `quotes_dependency_outside_licence_list` | the session read or printed a file of a dependency (under `deps/`) whose licence is not in section 8, or that has no licence | the session would republish that code, and there is no permission for it. The task itself stays |
+| `quotes_held_out` | the session read or printed a file of a held-out project's own package (for example Ash's files in an application built on Ash) | the bench's projects must stay unseen (the owner, 2026-11-12) |
+
+These two scans run on every kept session before it is published. They are not built yet: no session has been made.
+
+## 7. What is recorded
+
+Nothing is dropped silently. For every project, pull request, candidate, statement and session that is left out, a
+table keeps its id and the reason name of this page, and the counts per reason are published with the data.
+
+## 8. Licences
+
+| | Licences |
+|---|---|
+| In the list | MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC (ISC added by the owner on 2026-11-12) |
+| Outside the list | copyleft and weak copyleft (GPL, AGPL, LGPL, MPL, EPL), no licence at all, a custom or unclear licence text, and any other licence until it is read and added |
+
+The list is applied three times: to the repository (section 1), to every file a task touches (section 4) and to every
+dependency file a session quotes (section 6). The dataset's own licence: third-party code keeps its licence, named
+per row with the notices shipped; the licence of the owner's own part is not final (the owner leans to MIT). This page
+is not legal advice.
+
+## 9. Where each rule runs
+
+| Rule | Tool or file |
+|---|---|
+| Projects | `docs/data/2026-11-12_dataset_projects/run/select.sh` on the pool table |
+| Pull requests | the screening scripts of `docs/data/2026-11-12_pilot_pr_screen/` |
+| Versions | `factory/lib/eab/toolchain.ex`, `factory/config/toolchain_images.json` |
+| The gate | `factory/README.md` section 4; `bin/factoryctl check` |
+| Licence and hold-out of a task | `factory/tools/task_licence.py`, `factory/tools/task_holdout.py` |
+| Statements and the leak check | the statement tool under `factory/tools/` |
+| Sessions kept | `factory/README.md` section 2.2; `bin/factoryctl kept_sessions` |
+| Sessions dropped for what they quote | not built yet |
+
+## 10. Open points
+
+- Whether a task on an Elixir older than 1.18 is left out inside a chosen project (section 2).
+- The two session scans of section 6 are to be built before the first session is published.
+- The licence tool's own list does not hold ISC yet.
+- `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.
