@@ -1,0 +1,9 @@
+kind	package	version	licences	class	tasks
+git	ecto_view_migrations	https://github.com/mveytsman/ecto_view_migrations#6beb9e0da8649c581f4db8d39bc0f59c3dd27255		git dependency: licence not read	2
+git	linkify	https://github.com/mveytsman/linkify#42c1aca5da2c2ab28abf8f304b211c2a5d2c89c7		git dependency: licence not read	2
+hex	cowboy_telemetry	0.4.0	Apache 2.0	allowed, not an SPDX id	2
+hex	exexif	0.0.5	MIT. See LICENSE.md	outside	2
+hex	google_gax	0.4.1	Apache 2.0	allowed, not an SPDX id	1
+hex	inflex	2.1.0	Apache 2.0	allowed, not an SPDX id	2
+hex	parse_trans	3.4.2	Apache 2.0	allowed, not an SPDX id	2
+hex	poison	4.0.1	CC0-1.0	outside	1

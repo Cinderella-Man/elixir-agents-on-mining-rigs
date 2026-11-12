@@ -1,0 +1,52 @@
+number	merged	start_commit	elixir_otp_named	class	outcome	dropped_at	reason
+558	2026-11-07	10f7e3a012019ff6abe0447ea381832eff1dc961	1.20/29	service_missing	checked	-	-
+550	2026-10-29	7d3b456bc8b5f9a0c37cf88436dd4891b590d24d	1.20/29	service_missing	refused	maker	paths_never_match
+549	2026-10-22	5f9769570c3bb2b664017b6d104624532ea20560	1.20/29	service_missing	checked	-	-
+540	2026-10-21	733b1f85e6fe3820ecd3d580aacb7299685746eb	1.20/29	service_missing	dropped	probe	skipped_test
+538	2026-10-21	832b2eaadc04d4b16d01a40020218bc1d1f9da7f	1.20/29	service_missing	dropped	second_round	unstable
+510	2026-10-08	12f9bfbcbf3d51b320aef833e0604e217984616d	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+508	2026-09-30	6ad20ca7275844e15bb6749fd99f40c116a93739	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+525	2026-09-05	55c7b1e9a6f9b7b3f9276c4daff2dc46c161d99d	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+523	2026-09-05	5cbe4d96fe2ae8ed2d11b4217a5d8bb74b2d6f97	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+520	2026-09-05	d49f4f1bb478d7045aa991d3cf0637f3f9de2df9	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+516	2026-09-05	17bd449f1217908e9ef10a43ebaf748d6865d570	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+497	2026-05-28	ff808be9a9f9b6ec8dca834cc8aeda25ca179694	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+494	2026-04-30	f9f2db7ead79dee4b041d4f248501e8a200430fb	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+486	2026-04-17	a27f40fabcfd4e101b1dec21ed6771a164982459	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+480	2026-03-20	9a1888b485bb5b65b1b96b6f8ed20916868d7a6c	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+473	2026-03-06	1afaf7d3c9fcde495b4fd56e42841d7a9346d203	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+470	2026-02-07	dabbf192cc530d4598d916fe09a29bcedf7d0f5f	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+467	2026-02-03	b65a8d95167b183c17db1e4007d704789bcbde51	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+466	2026-02-03	3405594539d779d6c8ca53878b6171e043ec86c0	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+463	2026-02-03	4e08e7ae5e57eaa0e426710d552cc23977458a47	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+465	2026-01-28	a21804acc06b0a48c69a452f5d3a46357b5533e6	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+450	2025-12-23	d4a532972fff0f62bcc6b4bd177d8dea5c2a03c6	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+451	2025-12-23	2743efd91a7f9b8283cb35cf73981c24d88a2ba8	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+447	2025-10-29	f5ed32655b85606a57be05ec81c31abade97259e	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+442	2025-09-03	d885a6439409d271dfab8b950cd7f905087598be	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+445	2025-08-25	a1bbc15d9015a8ec4e439b554ffbf0e7e0ca0f5b	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+440	2025-08-22	53baa8e659686e0385fbcce0a1b486c59ee2ec95	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+438	2025-08-06	0456256d585b46c49256b79f5b7d0ef09fd1b3f3	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+431	2025-06-19	49f968fe3fb95612d1949c5055cf8b9bf1fce2f8	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+422	2024-11-12	0aa95104e63a72ca851adc06e219f8c81229a04a	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+387	2024-07-28	1b98879bf7071989c435040d8f72a8d16b0dff2b	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+404	2024-07-22	3f367002f1bdb7a964218a188ae0ae90759283cc	1.15/26	elixir_before_1.18	not made	-	elixir_before_1.18
+391	2024-07-01	cb404683642404afa4e06f41748f7751ec51bc89	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+389	2024-06-21	8e2de460125341074e7e5a357b918440939e851d	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+385	2024-06-19	bf4fec80a4681053b94e8a6009636885864d26cc	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+375	2024-06-17	e0f91efb83b716dd53a73eb2737e65572ad1d540	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+372	2024-05-23	6105ca0e602c290d9d46b7531dbeb6218bcad3aa	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+344	2024-04-26	f6662e2209f852d9c50443a1d3659763b4fccbed	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+327	2024-04-22	3da2b15f10e0e03a063672a377b1acb0a3e8bbbc	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+329	2024-04-22	908f2bf6a0cfc4e8b8e9f958567dd8dd93dba4aa	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+328	2024-04-22	f5fa41427319eb2f1f1d7a7380162ef3d1901df2	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+320	2024-04-16	1b3e4f856a2a6a08632804997ed1f28fde9cefa9	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+313	2024-04-16	5f31c77d37658501ec93c99eff5430c21e03edf4	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+315	2024-04-15	7d01f6da86ef578abfc2db731c11d14563be9635	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+314	2024-04-12	1aeb7e067488f64f5e41dee889b8f3b5af06da00	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+303	2024-03-30	d58e7845931878ab3f6ba9cffd8e528ed2f15ed9	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+284	2024-03-22	65994d3eb14c6b69a891a93a63c883e49fdf90b9	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+281	2024-03-04	522d8b35ef71503087f48a18edd392c97905c1cf	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+273	2024-02-29	ff97eb8d254d287ccf911771fb714f8b2d4854b3	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+263	2024-01-05	34fd6175481c42f88296f500a2fc1402bcf0ce8d	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18
+259	2024-01-03	4e827cff8e98d1d782761a1a1c1a4ccd2f0fc6f2	1.14.2/25	elixir_before_1.18	not made	-	elixir_before_1.18

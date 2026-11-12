@@ -1,0 +1,3 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+dispatch-pr-549	https://github.com/bikebrigade/dispatch	pass	0	4	4	0	0	0	0	0	0	0	0	pass
+dispatch-pr-558	https://github.com/bikebrigade/dispatch	pass	0	4	4	0	0	0	0	0	0	0	0	pass

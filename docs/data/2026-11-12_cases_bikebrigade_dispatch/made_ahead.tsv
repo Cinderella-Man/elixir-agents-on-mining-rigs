@@ -1,0 +1,6 @@
+number	id	result	reason	kind	start	end	seconds
+558	dispatch-pr-558	made	-	feature	2026-11-12T17:59:33+01:00	2026-11-12T17:59:37+01:00	4
+550	dispatch-pr-550	refused	paths_never_match	-	2026-11-12T17:59:37+01:00	2026-11-12T17:59:39+01:00	2
+549	dispatch-pr-549	made	-	feature	2026-11-12T17:59:39+01:00	2026-11-12T17:59:41+01:00	2
+540	dispatch-pr-540	made	-	feature	2026-11-12T17:59:41+01:00	2026-11-12T17:59:46+01:00	5
+538	dispatch-pr-538	made	-	feature	2026-11-12T17:59:46+01:00	2026-11-12T17:59:48+01:00	2

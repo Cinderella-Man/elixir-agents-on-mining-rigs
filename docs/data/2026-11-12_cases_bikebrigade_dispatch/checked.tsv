@@ -1,0 +1,3 @@
+task	try	kind	hidden_failing_first	hidden_passing_after	existing_files_kept	existing_files_left_out	left_out_reasons	partial_fix	second_round_same
+dispatch-pr-558	1	feature	7	61	3	0	-	present	yes
+dispatch-pr-549	2	feature	1	23	2	0	-	present	yes

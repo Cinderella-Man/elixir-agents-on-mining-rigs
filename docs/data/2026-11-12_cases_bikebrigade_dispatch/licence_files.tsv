@@ -1,0 +1,15 @@
+task	path	sources	verdict_start	verdict_merge	result
+dispatch-pr-549	lib/bike_brigade/messaging.ex	reference.patch=modified	ok	ok	pass
+dispatch-pr-549	lib/bike_brigade_web/components/sms_message_list_component.ex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-549	lib/bike_brigade_web/live/sms_message_live/inbox.ex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-549	lib/bike_brigade_web/live/sms_message_live/inbox.html.heex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-549	test/bike_brigade/messaging_test.exs	grading.preservation=named	ok	ok	pass
+dispatch-pr-549	test/bike_brigade_web/live/messaging_inbox_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	ok	ok	pass
+dispatch-pr-558	lib/bike_brigade/delivery.ex	reference.patch=modified	ok	ok	pass
+dispatch-pr-558	lib/bike_brigade_web/helpers/delivery_helpers.ex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-558	lib/bike_brigade_web/live/campaign_signup_live/index.ex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-558	lib/bike_brigade_web/live/delivery_live/show.ex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-558	lib/bike_brigade_web/live/delivery_live/show.html.heex	incomplete.patch=modified,reference.patch=modified	ok	ok	pass
+dispatch-pr-558	test/bike_brigade/delivery_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	ok	ok	pass
+dispatch-pr-558	test/bike_brigade_web/live/itinerary_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	ok	ok	pass
+dispatch-pr-558	test/bike_brigade_web/live/messaging_inbox_live_test.exs	grading.acceptance=named,grading.preservation=named,reference-tests.patch=modified	ok	ok	pass

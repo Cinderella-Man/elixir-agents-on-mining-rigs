@@ -1,0 +1,5 @@
+pull_requests	verdict	dropped_at	reason
+2	checked	-	-
+1	refused	maker	paths_never_match
+1	dropped	second_round	unstable
+1	dropped	probe	skipped_test
