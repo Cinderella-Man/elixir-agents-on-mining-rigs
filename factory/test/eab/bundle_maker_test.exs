@@ -271,6 +271,126 @@ defmodule Eab.BundleMakerTest do
     end
   end
 
+  test "a template resolves the toolchain from the starting commit, records each source, and refuses what it cannot serve",
+       %{root: root, upstream: upstream, opts: opts} do
+    pin = &"@sha256:#{String.duplicate(&1, 64)}"
+    table = Path.join(root, "toolchain_images.json")
+
+    File.write!(
+      table,
+      Jason.encode!(%{
+        "elixir" => [
+          %{
+            "elixir" => "1.17.2",
+            "otp" => "27.0.1",
+            "image" => "hexpm/elixir:1.17.2-erlang-27.0.1-made-up" <> pin.("a")
+          }
+        ],
+        "postgres" => [%{"version" => "14", "image" => "postgres:14.24-alpine" <> pin.("b")}],
+        "service_clients" => %{"redis" => ["redix"]}
+      })
+    )
+
+    template = Path.join(root, "template.json")
+    recipe = opts[:recipe] |> File.read!() |> Jason.decode!()
+
+    File.write!(
+      template,
+      Jason.encode!(
+        Map.merge(recipe, %{
+          "baseline" => %{"mode" => "prepared", "commands" => ["mix ecto.create --quiet"]},
+          "toolchain" => %{
+            "baseline" => [
+              %{"commands" => ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+            ],
+            "ci_services_not_needed" => %{"redis" => "not used by the tests"}
+          }
+        })
+      )
+    )
+
+    opts = Keyword.merge(opts, recipe: template, toolchain_table: table)
+
+    workflow =
+      "jobs:\n  test:\n    services:\n      postgres:\n        image: postgres:14\n      redis:\n        image: redis\n"
+
+    commit(upstream, "Toolchain", %{
+      ".tool-versions" => "elixir 1.17.2-otp-27\nerlang 27.0.1\n",
+      ".github/workflows/test.yml" => workflow
+    })
+
+    {start, merge, paths} = squash(upstream)
+    summary = BundleMaker.make(request(merge, paths), opts)
+    assert summary["toolchain"] == "1.17.2/27.0.1"
+
+    spec = Inventory.read_json(Path.join(summary["dir"], "case.json"))
+    assert spec["runtime"]["image"] == "hexpm/elixir:1.17.2-erlang-27.0.1-made-up" <> pin.("a")
+    assert spec["runtime"]["setup_commands"] == ["mix compile"]
+    assert spec["services"] == %{"postgres" => %{"image" => "postgres:14.24-alpine" <> pin.("b")}}
+    assert spec["baseline"]["commands"] == ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]
+    refute Map.has_key?(spec, "toolchain")
+
+    record = Inventory.read_json(Path.join(summary["dir"], "provenance.json"))["toolchain"]
+    assert record["elixir"] == %{"value" => "1.17.2", "source" => ".tool-versions"}
+    assert record["image"]["source"] == "config/toolchain_images.json: 1.17.2/27.0.1"
+    assert record["postgres"]["source"] =~ ".github/workflows/test.yml: postgres:14"
+    assert record["services_checked"]["not_needed_by_template"] == ["redis"]
+
+    # The resolver alone, as `resolve` runs it over a list
+    [row] = BundleMaker.resolve_list([request(merge, paths)], opts)
+    assert {row["result"], row["start_revision"], row["elixir"]} == {"resolved", start, "1.17.2"}
+    assert row["postgres"] == "postgres:14.24-alpine" <> pin.("b")
+
+    # A Redis client in mix.exs, and a pair the table lacks
+    commit(upstream, "Redis", %{
+      "mix.exs" =>
+        ~s|defmodule Shopette.MixProject do\n  defp deps, do: [{:redix, "~> 1.3"}]\nend\n|
+    })
+
+    {_, merge2, paths2} = squash_again(upstream)
+    row = BundleMaker.make_one(request(merge2, paths2, 40), opts)
+    assert {row["result"], row["reason"]} == {"refused", "needs_service:redis"}
+
+    commit(upstream, "Old Elixir", %{
+      "mix.exs" => "defmodule Shopette.MixProject do\nend\n",
+      ".tool-versions" => "elixir 1.16.3\nerlang 26.2.5\n"
+    })
+
+    {_, merge3, paths3} = squash_again(upstream)
+    row = BundleMaker.make_one(request(merge3, paths3, 41), opts)
+    assert {row["result"], row["reason"]} == {"refused", "no_image:1.16.3/26.2.5"}
+
+    assert BundleMaker.resolve_one(request(merge3, paths3, 41), opts)["reason"] ==
+             "no_image:1.16.3/26.2.5"
+
+    # A plain recipe (no toolchain block) is used as it is
+    plain =
+      BundleMaker.make(
+        request(merge3, paths3, 42),
+        Keyword.put(opts, :recipe, Path.join(root, "recipe.json"))
+      )
+
+    assert plain["toolchain"] == "recipe"
+
+    assert Inventory.read_json(Path.join(plain["dir"], "case.json"))["runtime"]["image"] ==
+             "hexpm/elixir:made-up"
+  end
+
+  # A second pull request on top of whatever the upstream holds now: one code change and one test change.
+  defp squash_again(upstream) do
+    start = git(upstream, ["rev-parse", "HEAD"]) |> String.trim()
+    n = System.unique_integer([:positive])
+
+    merge =
+      commit(upstream, "Change #{n}", %{
+        "lib/shopette.ex" => shop(1) <> "\n# change #{n}\n",
+        "test/shopette_test.exs" =>
+          String.replace(shop_test(1), "[1, 2]) == 2", "[1, 2, #{n}]) == 3")
+      })
+
+    {start, merge, ~w(lib/shopette.ex test/shopette_test.exs)}
+  end
+
   test "a rebase merge walks back first parents until the census's paths match", %{
     upstream: upstream,
     opts: opts

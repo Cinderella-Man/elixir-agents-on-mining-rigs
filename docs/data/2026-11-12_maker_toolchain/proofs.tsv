@@ -1,0 +1,7 @@
+id	period	elixir_otp	baseline	prepared	hidden_start	hidden_reference	verdict	dropped_at	reason	preservation_files	partial	second_round_same	prepare_s	diagnostic_s	probe_s	gate_s	second_s	total_s
+ex338-pr-1313	4b	1.16.1/26.2.1	mix ecto.create --quiet && mix ecto.migrate --quiet	true	failed 2, passed 8	passed 10	checked	-	-	3	present	true	222.922	25.588	57.192	49.25	53.361	408.339
+ex338-pr-1331	4b	1.16.1/26.2.1	mix ecto.create --quiet && mix ecto.migrate --quiet	true	failed 3, passed 54	passed 57	checked	-	-	4	present	true	212.888	20.291	65.996	52.004	52.315	403.528
+ex338-pr-1350	5	1.17.2/27.0.1	mix ecto.create --quiet && mix ecto.migrate --quiet	true	failed 1	passed 1	checked	-	-	2	present	true	232.689	17.695	50.888	41.198	38.647	381.143
+radiator-pr-542	E	1.16.3/26.2.5	mix ecto.create --quiet && mix ecto.migrate --quiet	true	failed 3, passed 48	passed 51	checked	-	-	3	present	true	172.381	18.739	43.823	37.141	24.503	296.615
+radiator-pr-598	D	1.17.2/27.0.1	mix ecto.create --quiet && mix ecto.migrate --quiet	true	failed 1, passed 128	passed 129	dropped	probe	no_existing_tests	0	-	-	105.891	12.757	49.358	0	0	168.022
+radiator-pr-639	B	1.19.5/28.4.1	mix ash.setup --quiet	true	failed 14, passed 27	passed 41	checked	-	-	2	present	true	291.307	12.156	56.11	49.121	30.636	439.365

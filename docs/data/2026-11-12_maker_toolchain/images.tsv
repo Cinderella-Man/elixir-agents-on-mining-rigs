@@ -1,0 +1,13 @@
+image	how	id	size_docker_images	size_inspect_bytes	note
+hexpm/elixir:1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	pulled by digest	6fa52b245786	254MB	79832725	ex338 period 5 and radiator period D
+hexpm/elixir:1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	pulled by digest	c04786fe52e5	251MB	80719740	ex338 period 4b
+hexpm/elixir:1.19.5-erlang-28.4.1-ubuntu-noble-20260509.1	pulled by digest	454a42ec0043	260MB	82981729	radiator period B
+hexpm/elixir:1.16.3-erlang-26.2.5-ubuntu-noble-20260509.1	pulled by digest	5c68347f4bf2	251MB	80772729	radiator period E
+elixir-task-factory:e72	built (the controller, from this change)	2ce86ab767c9	771MB	191482377	kept
+elixir-agent-benchmark:toolchain (1.17.2/27.0.1)	built by the engine	7ea8de9974bf	902MB	246698417	shared by ex338-pr-1350 and radiator-pr-598
+elixir-agent-benchmark:toolchain (1.16.1/26.2.1)	built by the engine	6852a22e3100	899MB	247585814	shared by ex338-pr-1331 and ex338-pr-1313
+elixir-agent-benchmark:toolchain (1.19.5/28.4.1)	built by the engine	aa2276a0c472	908MB	249886380	radiator-pr-639
+elixir-agent-benchmark:toolchain (1.16.3/26.2.5)	built by the engine	b31219f01810	899MB	247640004	radiator-pr-542
+elixir-agent-benchmark:project (6 workspaces)	built by the engine	-	1.03GB, 1.03GB, 1.03GB, 986MB, 967MB, 1.17GB	-	one per starting commit, each also tagged seed-<id>
+elixir-agent-benchmark:snapshot (6 databases)	committed by the engine	-	475MB, 475MB, 475MB, 490MB, 489MB, 490MB	-	the database after the resolved baseline commands
+postgres:14.24-alpine, postgres:18.6-alpine	already on the machine	-	415MB, 433MB	-	no layer pulled

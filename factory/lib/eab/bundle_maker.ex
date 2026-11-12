@@ -8,7 +8,7 @@ defmodule Eab.BundleMaker do
   statement. The test names and the partial fix it writes are a first reading of the diff; `Eab.BundleProbe`
   replaces them with what a run observes, once the project is prepared.
   """
-  alias Eab.{Candidates, Command, Inventory, Provenance}
+  alias Eab.{Candidates, Command, Inventory, Provenance, Toolchain}
   alias Jason.OrderedObject, as: Ordered
 
   defmodule Refusal do
@@ -18,14 +18,14 @@ defmodule Eab.BundleMaker do
   end
 
   @pair_selection "first parent of the merge commit, and the merge commit"
-  @recipe_fields ~w(runtime services baseline test_timeout permitted_exclusion_tags grading)
+  @recipe_fields ~w(runtime services baseline test_timeout permitted_exclusion_tags grading toolchain)
   @recipe_grading ~w(protected_paths preservation test_suffixes)
   @test_suffixes ["_test.exs"]
   @max_walk 30
   @patch_limit 1_048_576
   @diff_limit 8_388_608
   @columns ~w(repository number id result reason start_revision walked code_files test_files docs_files
-    hidden_tests task_kind partial licence recipe detail)
+    hidden_tests task_kind partial licence recipe detail toolchain)
 
   @doc "The columns of a result line, in order."
   def columns, do: @columns
@@ -101,6 +101,7 @@ defmodule Eab.BundleMaker do
           "no existing test file is changed or matches a changed code file"
         )
 
+    {recipe, toolchain} = toolchain!(git, start, recipe, opts)
     prefixes = edit_prefixes(split.reference, protected)
     reference = join(split.reference)
     variant = List.first(Eab.BundleProbe.variants(reference))
@@ -132,6 +133,7 @@ defmodule Eab.BundleMaker do
         {"licence", licence!(git, start)},
         {"merged_at", String.slice(request["merged_at"] || "", 0, 10)},
         {"marks", request["marks"] || []}
+        | if(toolchain, do: [{"toolchain", toolchain}], else: [])
       ])
 
     files =
@@ -166,8 +168,163 @@ defmodule Eab.BundleMaker do
       "task_kind" => spec["task_kind"],
       "partial" => if(variant, do: "first_variant", else: "single_hunk"),
       "licence" => provenance["licence"],
-      "recipe" => if(recipe["provisional"], do: "provisional", else: "final")
+      "recipe" => if(recipe["provisional"], do: "provisional", else: "final"),
+      "toolchain" => toolchain_label(toolchain)
     }
+  end
+
+  ## The toolchain
+
+  # A template (a recipe with a `toolchain` block) has the environment resolved from the starting commit's own files
+  # by `Eab.Toolchain`; a recipe without the block is used as it is. Returns the recipe with the resolved `runtime`,
+  # `services` and `baseline`, and the record that goes into the provenance (nil for a plain recipe).
+  defp toolchain!(git, start, recipe, opts) do
+    if Map.has_key?(recipe, "toolchain") do
+      case Toolchain.resolve(commit_files(git, start), recipe, toolchain_table!(opts)) do
+        {:ok, resolved} ->
+          recipe =
+            recipe
+            |> Map.put("runtime", resolved["runtime"])
+            |> Map.put("baseline", resolved["baseline"])
+            |> then(fn r ->
+              if resolved["services"] == %{},
+                do: Map.delete(r, "services"),
+                else: Map.put(r, "services", resolved["services"])
+            end)
+
+          {recipe, resolved["record"]}
+
+        {:refused, reason, detail, _record} ->
+          refuse!(reason, detail)
+      end
+    else
+      {recipe, nil}
+    end
+  end
+
+  defp toolchain_table!(opts) do
+    path = opts[:toolchain_table] || Inventory.path("config/toolchain_images.json")
+
+    try do
+      Toolchain.read_table!(path)
+    rescue
+      error -> refuse!(:toolchain_table, Exception.message(error))
+    end
+  end
+
+  # The files the resolver reads, as they are at `commit`.
+  defp commit_files(git, commit) do
+    names = fn args ->
+      git!(git, ["ls-tree", "--name-only", commit | args]) |> String.split("\n", trim: true)
+    end
+
+    (names.([]) ++ names.(["--", ".github/workflows/"]))
+    |> Toolchain.wanted()
+    |> Map.new(&{&1, git!(git, ["show", "#{commit}:#{&1}"], 1_000_000)})
+  end
+
+  defp toolchain_label(nil), do: "recipe"
+
+  defp toolchain_label(record) do
+    "#{get_in(record, ["elixir", "value"]) || "-"}/#{get_in(record, ["otp", "value"]) || "-"}"
+  end
+
+  @resolve_columns ~w(repository number start_revision merged_at result reason elixir elixir_source otp otp_source
+    image postgres clickhouse baseline ci_services mix_clients detail)
+
+  @doc "The columns of a line of `resolve_list/2`, in order."
+  def resolve_columns, do: @resolve_columns
+
+  @doc """
+  Resolves the environment of one pull request's starting commit without making a task (the same source pair and
+  the same resolver as `make/2`). Needs `:recipe` (a template), `:cache`, and optionally `:fetch_url` and
+  `:toolchain_table`. Returns one line as a map; never raises.
+  """
+  def resolve_one(request, opts) do
+    row = %{
+      "repository" => request["repository"],
+      "number" => request["number"],
+      "merged_at" => request["merged_at"]
+    }
+
+    try do
+      recipe = read_recipe!(opts[:recipe])
+      url = String.replace_suffix(request["repository"] || "", ".git", "")
+      {owner, name} = repository!(url)
+      git = cache!(opts[:cache], owner, name)
+
+      unless is_binary(request["merge_commit"]),
+        do: refuse!(:not_in_census, "no merge commit for pull request #{request["number"]}")
+
+      {start, _walked} =
+        source_pair!(git, opts[:fetch_url] || url, request["merge_commit"], request["paths"])
+
+      files = commit_files(git, start)
+      table = toolchain_table!(opts)
+
+      {result, reason, detail, record} =
+        case Toolchain.resolve(files, Map.put_new(recipe, "toolchain", %{}), table) do
+          {:ok, resolved} -> {"resolved", "-", "-", resolved["record"]}
+          {:refused, reason, detail, record} -> {"refused", reason, detail, record}
+        end
+
+      value = &(get_in(record, [&1, "value"]) || "-")
+      source = &(get_in(record, [&1, "source"]) || "-")
+
+      Map.merge(row, %{
+        "start_revision" => start,
+        "result" => result,
+        "reason" => reason,
+        "elixir" => value.("elixir"),
+        "elixir_source" => source.("elixir"),
+        "otp" => value.("otp"),
+        "otp_source" => source.("otp"),
+        "image" => value.("image"),
+        "postgres" => value.("postgres"),
+        "clickhouse" => value.("clickhouse"),
+        "baseline" => record |> get_in(["baseline", "value"]) |> baseline_text(),
+        "ci_services" => Enum.join(get_in(record, ["services_checked", "ci_starts"]) || [], ";"),
+        "mix_clients" =>
+          Enum.join(get_in(record, ["services_checked", "mix_clients"]) || [], ";"),
+        "detail" => detail
+      })
+    rescue
+      error in Refusal ->
+        Map.merge(row, %{
+          "result" => "error",
+          "reason" => to_string(error.reason),
+          "detail" => error.detail
+        })
+
+      error ->
+        Map.merge(row, %{
+          "result" => "error",
+          "reason" => "error",
+          "detail" => Exception.message(error)
+        })
+    end
+  end
+
+  defp baseline_text(nil), do: "-"
+  defp baseline_text(baseline), do: Enum.join(baseline["commands"] || [], " && ")
+
+  @doc "Resolves every request in turn and appends one line each to `opts[:results]` when given."
+  def resolve_list(requests, opts) do
+    for request <- requests do
+      row = resolve_one(request, opts)
+
+      if opts[:results] do
+        path = opts[:results]
+
+        unless File.exists?(path),
+          do: File.write!(path, Enum.join(@resolve_columns, "\t") <> "\n")
+
+        line = Enum.map_join(@resolve_columns, "\t", &one_line(to_string(Map.get(row, &1, "-"))))
+        File.write!(path, line <> "\n", [:append])
+      end
+
+      row
+    end
   end
 
   @doc "Makes one task and returns its result line as a map; never raises."
@@ -270,10 +427,13 @@ defmodule Eab.BundleMaker do
   end
 
   @doc """
-  The script entry point. `make` makes a list of tasks; `verify` checks made folders.
+  The script entry point. `make` makes a list of tasks; `verify` checks made folders; `resolve` resolves the
+  toolchain of each pull request's starting commit without making a task.
 
       make --repository URL --numbers 1,2 --census TSV --screen TSV --recipe JSON --out DIR --results TSV
-           [--cache DIR] [--holdout JSON]
+           [--cache DIR] [--holdout JSON] [--toolchain-table JSON]
+      resolve --repository URL --numbers 1,2 --census TSV --screen TSV --recipe JSON --cache DIR --results TSV
+           [--toolchain-table JSON]
       verify --out DIR [--ids a,b] --results TSV
   """
   def main([mode | argv]) do
@@ -289,7 +449,8 @@ defmodule Eab.BundleMaker do
           results: :string,
           cache: :string,
           holdout: :string,
-          ids: :string
+          ids: :string,
+          toolchain_table: :string
         ]
       )
 
@@ -305,6 +466,16 @@ defmodule Eab.BundleMaker do
 
         for row <- rows,
             do: IO.puts("#{row["number"]}\t#{row["result"]}\t#{row["reason"]}\t#{row["id"]}")
+
+      "resolve" ->
+        numbers =
+          opts[:numbers] |> String.split(",", trim: true) |> Enum.map(&String.to_integer/1)
+
+        requests =
+          requests(opts[:repository], numbers, census: opts[:census], screen: opts[:screen])
+
+        for row <- resolve_list(requests, opts),
+            do: IO.puts("#{row["number"]}\t#{row["result"]}\t#{row["reason"]}\t#{row["image"]}")
 
       "verify" ->
         ids =
@@ -738,7 +909,9 @@ defmodule Eab.BundleMaker do
   (`runtime`, `services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
   `grading.preservation`, the project's whole-suite command for its own check, which a task never carries;
   `grading.test_suffixes` may be there, and then is the fixed `["_test.exs"]`). A recipe that is not final yet
-  carries one more field, `provisional`, a note that the maker never copies.
+  carries one more field, `provisional`, a note that the maker never copies. A recipe with a `toolchain` block is a
+  template: its `runtime.image`, `services` and `baseline` become defaults, and the maker resolves the three from
+  each starting commit (`Eab.Toolchain`).
   """
   def read_recipe!(nil), do: refuse!(:recipe, "no recipe given")
 
@@ -762,7 +935,9 @@ defmodule Eab.BundleMaker do
                &(is_binary(&1) and String.ends_with?(&1, "/"))
              ) and
              Enum.take(OptionParser.split(grading["preservation"] || ""), 2) == ["mix", "test"] and
-             (grading["test_suffixes"] || @test_suffixes) == @test_suffixes,
+             (grading["test_suffixes"] || @test_suffixes) == @test_suffixes and
+             (not Map.has_key?(recipe, "toolchain") or
+                Toolchain.valid_template?(recipe["toolchain"])),
            do: refuse!(:recipe, "#{path} does not hold exactly the per-project fields")
 
     recipe

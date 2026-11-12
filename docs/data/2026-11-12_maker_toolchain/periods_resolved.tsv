@@ -1,0 +1,50 @@
+project	period	number	result	reason	elixir_otp	image_tag	postgres	baseline
+ex338	6	1460	resolved	-	1.18.3/27.3	1.18.3-erlang-27.3-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	6	1458	resolved	-	1.18.3/27.3	1.18.3-erlang-27.3-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	6	1457	resolved	-	1.18.3/27.3	1.18.3-erlang-27.3-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	6	1452	resolved	-	1.18.3/27.3	1.18.3-erlang-27.3-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	6	1392	resolved	-	1.18.3/27.3	1.18.3-erlang-27.3-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	5	1350	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1331	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1313	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1302	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1300	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1288	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4b	1284	resolved	-	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	4a	1252	refused	needs_service:redis	1.16.1/26.2.1	1.16.1-erlang-26.2.1-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	3	1208	refused	needs_service:redis	1.14.4/25.3.2	1.14.4-erlang-25.3.2-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	3	1177	refused	needs_service:redis	1.14.4/25.3.2	1.14.4-erlang-25.3.2-ubuntu-noble-20260509.1	postgres:14.24-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1168	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1129	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1119	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1108	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1093	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	2	1086	refused	needs_service:redis	1.13.4/25.0	1.13.4-erlang-25.0-ubuntu-noble-20260509.1	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	981	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	980	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	976	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	959	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	957	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	933	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	914	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	911	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+ex338	1	841	refused	no_image:1.10.3/22.3.4.1	1.10.3/22.3.4.1	-	postgres:10.23-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	A	647	resolved	-	1.20.3/29.0.5	1.20.3-erlang-29.0.5-ubuntu-noble-20260810	postgres:18.6-alpine	mix ash.setup --quiet
+radiator	B	639	resolved	-	1.19.5/28.4.1	1.19.5-erlang-28.4.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ash.setup --quiet
+radiator	C	635	resolved	-	1.19.2/28.1	1.19.2-erlang-28.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ash.setup --quiet
+radiator	C	628	resolved	-	1.19.2/28.1	1.19.2-erlang-28.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ash.setup --quiet
+radiator	D	598	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	587	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	586	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	583	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	582	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	578	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	561	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	550	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	D	546	resolved	-	1.17.2/27.0.1	1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	E	542	resolved	-	1.16.3/26.2.5	1.16.3-erlang-26.2.5-ubuntu-noble-20260509.1	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	F	240	refused	no_image:1.5/-	1.5/-	-	-	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	F	193	refused	no_image:1.8.1/-	1.8.1/-	-	-	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	F	103	refused	no_image:1.8.1/-	1.8.1/-	-	-	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	F	67	refused	no_image:1.8.1/-	1.8.1/-	-	-	mix ecto.create --quiet && mix ecto.migrate --quiet
+radiator	F	16	refused	no_image:1.8/-	1.8/-	-	postgres:18.6-alpine	mix ecto.create --quiet && mix ecto.migrate --quiet

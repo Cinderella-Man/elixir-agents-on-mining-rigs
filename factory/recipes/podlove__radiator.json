@@ -16,5 +16,11 @@
     "preservation": "mix test",
     "protected_paths": ["test/"],
     "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": [
+      {"when": {"mix_alias_uses": "ash.setup"}, "commands": ["mix ash.setup --quiet"]},
+      {"commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+    ]
   }
 }

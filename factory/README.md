@@ -225,14 +225,14 @@ early exit must stay in the allowed folders, and the hidden tests in the test fo
 | `project` | the repository's name | the screening row |
 | `repository.url`, `repository.revision` | the upstream repository, and the starting commit: the first parent of the merge commit | Git |
 | `runtime.profile` | `mix` | fixed |
-| `runtime.image` | a `hexpm/elixir` image, pinned by digest | the project's recipe |
+| `runtime.image` | a `hexpm/elixir` image, pinned by digest | the toolchain resolver (3.5): the Elixir and OTP versions of the starting commit's own files, looked up in `config/toolchain_images.json`; the recipe's image for a recipe with no `toolchain` block |
 | `runtime.node_image` | optional: a Node image, for a project whose tests need Node | the project's recipe |
 | `runtime.environment` | environment variables | the project's recipe |
 | `runtime.setup_commands`, `runtime.before_test_commands` | commands run at build time and before each test run | the project's recipe |
 | `runtime.packages` | optional: extra system packages for the image, a list of package names, each matching `[a-z0-9][a-z0-9+.-]*` (section 6, change 3) | the project's recipe |
 | `runtime.release_files` | optional: release files the image installs, a list of `{"url": ..., "sha256": ..., "kind": "deb"}`, such as a program's own `.deb` that the project's CI installs from its releases page. The URL must be `https`, on a host the installation allows (section 6, change 3) | the project's recipe |
-| `services` | `postgres` and `clickhouse` images, pinned by digest; absent when the project needs none | the project's recipe |
-| `baseline` | the commands that build the database once, as the engine's policy object: `{"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}` | the project's recipe |
+| `services` | `postgres` and `clickhouse` images, pinned by digest; absent when the project needs none | the toolchain resolver (3.5): the version the starting commit's CI files start, or the recipe's default |
+| `baseline` | the commands that build the database once, as the engine's policy object: `{"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}` | the toolchain resolver (3.5): the recipe's first candidate whose condition holds at the starting commit, or the recipe's default |
 | `test_timeout` | seconds for one test command; 240 when absent | the project's recipe |
 | `permitted_exclusion_tags` | optional: tags of tests the project itself excludes | the project's recipe |
 | `allowed_edit_prefixes` | the top-level folders the pull request changes | the pull request's diff |
@@ -250,8 +250,9 @@ early exit must stay in the allowed folders, and the hidden tests in the test fo
 | `clarifications` | optional: an object, written into the instruction text as `Task details: <JSON>`. Empty by default. | only a writer the owner approves |
 | `partial_control` | `{"present": true}`, or `{"present": false, "reason": "..."}` | the bundle maker's search |
 
-A project's recipe is one file per project and period of its history: the Elixir image, the services, the
-environment and the commands. It is written once per project (job P3 of the design note) and is not part of a task.
+A project's recipe is one file per project: the environment, the commands, and the defaults and candidates of the
+toolchain resolver (3.5), which reads the Elixir image, the database and the baseline commands from each starting
+commit (E72). It is written once per project (job P3 of the design note) and is not part of a task.
 
 The reasons a task has no partial fix, each counted apart: `single_hunk` (the fix is one hunk in one file, so there
 is nothing to leave out), `no_variant_compiles`, `no_variant_fails` (every variant that compiles passes the hidden
@@ -269,6 +270,7 @@ tests, which says the tests do not cover the part left out).
 | `licence` | the SPDX id of the repository's licence at the starting commit (E51) | the licence scan |
 | `merged_at` | the merge date | the screening row |
 | `marks` | `ai_written` with the tool's name (E70), `adds_migration`, `touches_assets`, `after_cutoff` (E53) | the screening row |
+| `toolchain` | where each value of the environment came from: `elixir`, `otp`, `image`, `postgres` or `clickhouse`, `baseline` (each `{"value", "source"}`), and `services_checked` (the services the CI files start, those the recipe marks as not needed, the service clients in `mix.exs`); absent for a recipe with no `toolchain` block | the toolchain resolver (3.5) |
 
 A task has one pull request. A fix spread over two is not combined in the pilot: the first is dropped, the follow-up
 is a task of its own, and the pairs are counted.
@@ -301,7 +303,9 @@ paths (the census), its verdict and marks (the screen), and the project's recipe
 `services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
 `grading.preservation` (the project's whole-suite command, for the project's own check of job P3; a task never
 carries it); `grading.test_suffixes` may be there and is then the fixed `["_test.exs"]`. A recipe that is not final carries one more field, `provisional`, a note the maker never
-copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is job P3's.
+copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is job P3's. A recipe with a `toolchain`
+block is a template: the maker resolves the image, the services and the baseline from each starting commit (below),
+and the recipe's own `runtime.image`, `services` and `baseline` are only the defaults.
 
 **What it does,** in order:
 1. **The source pair.** The merge commit and its first parents are fetched by id into a local cache. The starting
@@ -331,6 +335,40 @@ copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is j
    variant of the search below, or `partial_control` is `single_hunk` when there is none.
 5. **The import check** (`Eab.Candidates.validate!/1`) on the written folder; a folder that fails it is not kept.
 
+**The toolchain resolver** (`Eab.Toolchain`, `lib/eab/toolchain.ex`, E72) runs between steps 3 and 4 for a template.
+A project changes its toolchain every few months, so one hand-written recipe fits one period of its history; the
+resolver reads each starting commit's own files instead. In order, each step recorded in the task's
+`provenance.json` (`toolchain`, 3.3) with the file it came from:
+1. **Elixir and OTP,** each from the first file that names it: `.tool-versions` (its `erlang` line is the OTP;
+   the `-otp-N` of an `elixir` line is not), `mise.toml` or `.mise.toml`, the CI files (GitHub's
+   `elixir-version`/`otp-version` or a matrix's first item, Travis's `elixir`/`otp_release`), a `Dockerfile`
+   (`ARG ELIXIR_VERSION`, `ARG OTP_VERSION`, or a `hexpm/elixir` base), and last the lower bound of `mix.exs`'s
+   `elixir:` requirement (`~> 1.17` gives `1.17`).
+2. **The image:** [`config/toolchain_images.json`](config/toolchain_images.json) maps a pair of Elixir and OTP to one
+   `hexpm/elixir` image pinned by digest. A version with fewer parts matches by prefix (`1.17` matches `1.17.2`), and
+   the newest matching pair is taken; a missing OTP matches any. A pair the table lacks is refused,
+   `no_image:<elixir>/<otp>`. The maker never asks a registry: [`scripts/toolchain_image.sh`](scripts/toolchain_image.sh),
+   run by a person on the build machine, looks a pair up at Docker Hub (ubuntu-noble first, then older bases) and
+   prints the line to add, so the table grows only by lines someone has read. Elixir before 1.12 is never added: the
+   engine's Hex install (2.1) pins Hex 2.5.3 only from Elixir 1.12 on. With no version in any file, the recipe's
+   image is the default.
+3. **The database:** the Postgres or ClickHouse image a CI file starts (a GitHub `services:` entry, Travis's
+   `addons: postgresql`), pinned by the table's line for that Postgres major version or ClickHouse version
+   prefix; the recipe's default when the CI files name no version or start none.
+   `no_service_image:<service>/<version>` when the table lacks it.
+4. **The baseline commands:** the recipe's `toolchain.baseline` lists candidates in order, each with an optional
+   condition, `{"mix_dep": name}` (a direct dependency in `mix.exs`) or `{"mix_alias_uses": task}` (`mix.exs` names
+   the task in an alias); the first whose condition holds is taken, else the recipe's `baseline`.
+5. **Services the engine lacks:** a direct dependency on a Redis client (the table's `service_clients`: `redix`,
+   `exredis`, `eredis`, `redis`), or a CI service other than Postgres and ClickHouse, is refused,
+   `needs_service:<name>`. A recipe may list CI services the project's tests do not use in
+   `toolchain.ci_services_not_needed`, each with its reason; a Redis client in `mix.exs` is refused all the same.
+
+Several refusals at once give the first in this order as the reason and all of them in the detail. Nothing in the
+task format changes: the resolved values go into the same `runtime`, `services` and `baseline` fields. The
+recipe's environment, set-up commands, whole-suite command, test suffixes and exclusion tags apply to every period.
+`resolve` (below) runs the source pair and the resolver alone over a list, without making a task.
+
 **The three steps that need a prepared project,** `Eab.BundleProbe.finish/4`, for a task whose runtime the gate has
 prepared:
 - **Observing the test names:** only the hidden tests run, on the unchanged project and on the reference.
@@ -357,7 +395,8 @@ tree), `symbolic_link`, `binary_file`, `unsupported_path` (a path with a space, 
 engine's patch check cannot read), `patch_over_1_mib`, `no_code_part`, `no_test_part` (no added or changed
 `_test.exs` file), `no_test_names` (no test with a literal name and a changed body), `no_existing_tests`
 (no existing test file is changed or matches a changed code file), `does_not_apply`,
-`does_not_rebuild`, `import_check`, `no_folder_for_early_exit`, `exists` (the task folder is already there), and
+`does_not_rebuild`, `import_check`, `no_folder_for_early_exit`, `exists` (the task folder is already there), for a
+template `no_image:<elixir>/<otp>`, `no_service_image:<service>/<version>` and `needs_service:<name>` (above), and
 `error` with the message for anything else. One refusal never stops a list.
 
 **How it is called,** on the build machine, in the tooling image, with the network (it fetches from GitHub). The
@@ -368,6 +407,12 @@ WORK=<work folder> LABEL=<key=value> CENSUS=prs_axelclark__ex338.tsv SCREEN=scre
   run/make.sh make --repository https://github.com/axelclark/ex338 --numbers 1460,1463,1394
 WORK=<work folder> LABEL=<key=value> run/make.sh verify
 ```
+
+With a template, the image table is passed as `--toolchain-table` (default `config/toolchain_images.json`).
+`Eab.BundleMaker.main(["resolve", ...])` (`resolve_list/2`) takes the same `--repository`, `--numbers`, `--census`,
+`--screen`, `--recipe` and `--cache` and writes one line per pull request: the resolved versions, image, database
+and baseline with their sources, or the refusal. The scripts that ran the maker through a controller with the
+resolver are in [`docs/data/2026-11-12_maker_toolchain/run/`](../docs/data/2026-11-12_maker_toolchain/README.md).
 
 `make` writes the folders to `WORK/tasks/` and one line per pull request to `WORK/out/results.tsv` (made, or
 refused with the reason). `verify` runs the source check (`Eab.Provenance.verify/3`) and the import check
@@ -680,6 +725,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | T7: the name and the labels (changes 1 and 6): the new `lib/eab/docker_settings.ex` adds `EAB_DOCKER_LABELS` and `EAB_CPU_SHARES` to the three `docker run` calls of `sandbox.ex` and the labels to the engine's image builds (`fixtures.ex`, `agent_image.ex`, `service_images.ex`); image tags `elixir-task-factory:`, labels `etf.installation` and `etf.run`, containers `etf-`, `config/factory.json` with the id `elixir-task-factory-v1`, the release, Compose service, image and volume `factory`, the report "Task run report"; the parity test's three name lines; two new test files ([data](../docs/data/2026-11-12_factory_t7/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 193 without Docker and 199 with it (T4 187 and 192; P5 r2 189 and 194), 6 and 0 excluded; 192 tests end as in T4, 7 are new and pass (5 of T7, 2 of P5 r2); the labels and the share are on all three containers the engine starts, with no wrapper in front of `docker`, and on the images it builds; the parity test 6 of 6 with only `@name_prefix`, `@installation_label` and `@run_label` changed; the controller's image builds as the release `factory` |
 | 2026-11-12 | T8: extra packages and release files per task, and the mirror (changes 3 and 4): `runtime.packages` and `runtime.release_files` (a `.deb` by URL and SHA-256, from hosts in `EAB_RELEASE_FILE_HOSTS`, empty by default) checked in `task_contract.ex` and installed by one line each in the recipe's toolchain stage (`fixtures.ex`), fetched and checked by the new `release_files.ex`; the source from the mirror in `EAB_MIRRORS` when upstream fails (`source.ex`); `config/runtime.exs`, `compose.yaml`; one new test each in `task_contract_test`, `fixtures_test` and `source_test`, and two new test files ([data](../docs/data/2026-11-12_factory_t8/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 198 without Docker and 206 with it (T7 193 and 199), 8 and 0 excluded; 199 tests end as in T7, 7 are new and pass; a made-up task's added lines build with one distribution package and one self-made `.deb`, and a wrong checksum fails the build; the parity test 6 of 6, untouched |
 | 2026-11-12 | T9: the entry points for scripts (change 5), `lib/eab/factory.ex` with `import`, `check`, `export`, `start_run`, `kept_sessions`, `status` and `job`, called through the release's `rpc` by `bin/factoryctl` (section 9); the second round of controls (change 8) in `Eab.Grader.qualify/3` with the new `second_round/4`; `candidates.ex` gives its limits on a folder's files to `files!/1`; the controller's image copies `config/holdout.json` ([data](../docs/data/2026-11-12_factory_t9/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 205 without Docker and 214 with it (T8 198 and 206), 9 and 0 excluded; 206 tests end as in T8 and the 8 new ones pass (6 in `factory_test`, 1 in `factory_docker_test`, 1 in `grader_test`); the same on the trees of P5 r2 and T7 (196 and 202, 200 and 207); the parity test 6 of 6, not edited |
+| 2026-11-12 | E72: the toolchain resolver (3.5): `lib/eab/toolchain.ex`, the image table `config/toolchain_images.json` (14 pairs), `scripts/toolchain_image.sh`, the two recipes as templates (`toolchain` blocks), and in `bundle_maker.ex` the resolved `runtime`, `services` and `baseline`, the `toolchain` record in `provenance.json` and the `resolve` mode. Six ex338 and radiator pull requests from five other periods made, prepared and gated through a controller built from it: five checked tasks, one dropped by the probe for its own reason ([data](../docs/data/2026-11-12_maker_toolchain/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 207 passed, 0 failed, 5 excluded without Docker and 212, 0, 0 with it (`origin/main` run the same hour: 189, 0, 5 and 193, 1, 0, the failure a race with another job's Docker tests that passes alone); 193 tests end as in the reference and the 18 new ones pass (17 in `toolchain_test`, 1 in `bundle_maker_test`); the parity test 6 of 6, untouched |
 
 ## 8. What is not decided, and what is not verified
 
@@ -728,6 +774,11 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
 - The entry points of section 9 through a controller: `bin/factoryctl` and the controller's image with
   `config/holdout.json` have not been run yet (job T10). `Eab.Factory.check/2` has run on made-up tasks only, with
   the source check and the preparation replaced; on real tasks the same sequence ran as the pilot's gate script.
+- The toolchain resolver (3.5) reads YAML and TOML by line patterns, not with a parser. It was checked on the CI
+  files, `.tool-versions`, `mise.toml` and Dockerfiles of ex338's and radiator's 410 screened candidates and on the
+  made-up files of `toolchain_test`; a CI file written in another style (anchors, a version only in a matrix
+  include, a service named by a variable) may be read wrongly or not at all. Pairs in the image table that no
+  proof used (`docs/data/2026-11-12_maker_toolchain/pairs.tsv`) are looked up, not built.
 
 ## 9. Calling the factory
 
