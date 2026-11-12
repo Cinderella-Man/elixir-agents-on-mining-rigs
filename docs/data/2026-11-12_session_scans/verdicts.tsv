@@ -1,0 +1,17 @@
+project	case	attempt	kept	verdict	drop_reasons	tries_to_leave_sandbox	tool_calls	dep_quote_files	dep_quote_packages	outside_quotes	held_out_quotes	unclear_findings	unclear_items	stdlib_quote_files	listings	trace_lines	mention_lines	no_content_reads	network_tries	network_detail	loopback_probes	results_not_sent
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	yes	pass		yes	87	3	ecto_sql 3.11.3 (allowed): 1; phoenix 1.7.12 (allowed): 1; plug 1.16.1 (allowed): 1	0	0	0		0	35	9	60	0	4	turn 18: git_remote github.com (the project's repository); turn 19: name_lookup github.com; turn 19: dev_tcp github.com; turn 44: dev_tcp ipv4:public	0	0
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	yes	pass		no	49	0		0	0	0		0	0	11	1	0	0		0	0
+axelclark__ex338	ex338-pr-1392	20261112-150900-3157aa83	yes	pass		no	25	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1394	20261112-145706-2c3a6c63	no	pass		no	39	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1394	20261112-160105-8e8bc313	yes	pass		no	43	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1395	20261112-145221-bbcf6549	yes	pass		no	17	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1411	20261112-144837-26fdf2e0	yes	pass		no	17	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	no	pass		yes	111	0		0	0	0		0	14	3	55	0	3	turn 21: git_remote github.com (the project's repository); turn 84: name_lookup archive.ubuntu.com; turn 84: package_registry (no host named)	1	0
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	yes	pass		no	24	0		0	0	0		0	0	8	0	0	0		1	0
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	no	pass		no	97	2	jason 1.4.4 (allowed): 2	0	0	0		0	0	29	0	0	0		0	1
+axelclark__ex338	ex338-pr-1452	20261112-131816-8c1b102a	yes	pass		no	48	0		0	0	0		0	0	2	0	0	0		0	0
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	yes	pass		no	44	7	phoenix 1.7.21 (allowed): 4; plug 1.18.0 (allowed): 3	0	0	0		0	0	95	0	1	0		0	0
+axelclark__ex338	ex338-pr-1458	20261112-125647-9e23dbf9	yes	pass		no	23	0		0	0	0		0	0	0	0	0	0		0	0
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	yes	pass		no	60	3	ecto_enum 1.4.0 (allowed): 3	0	0	0		0	0	29	0	0	0		0	0
+axelclark__ex338	ex338-pr-1461	20261112-123224-21ff4ec2	yes	pass		no	16	0		0	0	0		0	0	3	0	0	0		0	0
+axelclark__ex338	ex338-pr-1463	20261112-122138-217eee81	yes	pass		no	36	0		0	0	0		0	0	0	0	0	0		0	0

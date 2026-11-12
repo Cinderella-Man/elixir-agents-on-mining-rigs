@@ -1,0 +1,207 @@
+project	case	attempt	turn	call	tool	finding	category	package	version	licences	class	rule	target	how	lines	sent	note
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency						/workspace/deps	grep (command)	0	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency	ecto_enum						output line	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency	number						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency	plug						output line	12	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency	styler						output line	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	5	14	bash	listing	dependency	tailwind						output line	3	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	8	22	bash	listing	dependency						/workspace/_build	find (command)	0	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	8	23	bash	quote	dependency	ecto_sql	3.11.3	Apache-2.0	allowed	in_list	/workspace/deps/ecto_sql/lib/ecto/adapters/tds/connection.ex	search output	4	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	csvh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	ectoh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	expoh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	flokih						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	idnah						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	jasonh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	kaffyh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	mimeh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	obanh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	plugh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	ranchh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	redixh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	listing	dependency	tableh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	bcrypt_elixirh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	canadah						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	canaryh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	castoreh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	certifih						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	comeoninh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	cowboy_telemetryh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	cowboyh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	cowlibh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	db_connectionh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	decimalh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	earmarkh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	ecto_enumh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	ecto_sqlh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	elixir_makeh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	esbuildh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	ex_machinah						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	exgravatarh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	gen_smtph						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	gettexth						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	hackneyh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	heroiconsh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	honeybadgerh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	makeuph						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	metricsh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	mimerlh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	nimble_optionsh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	nimble_parsech						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	nimble_publisherh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	numberh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	parse_transh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_ectoh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_htmlh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_live_viewh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_pubsubh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_templateh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenix_viewh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	phoenixh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	plug_cowboyh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	plug_cryptoh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	poolboyh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	postgrexh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	ssl_verify_funh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	stylerh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	swooshh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	tailwindh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	telemetry_metricsh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	telemetry_pollerh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	telemetryh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	tzdatah						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	vega_liteh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	websock_adapterh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	15	34	bash	mention	dependency	websockh						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	18	39	bash	network_try	network						github.com	git_remote	0	yes	names the project's repository
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	19	40	bash	network_try	network						github.com	name_lookup	0	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	19	40	bash	network_try	network						github.com	dev_tcp	0	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	21	43	bash	quote	dependency	phoenix	1.7.12	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/controller.ex	sed	107	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	22	44	bash	quote	dependency	phoenix	1.7.12	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/controller.ex	sed	39	yes	the output is shared with other printed files
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	22	44	bash	quote	dependency	plug	1.16.1	Apache-2.0	allowed	in_list	/workspace/deps/plug/lib/plug/conn.ex	sed	39	yes	the output is shared with other printed files
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	23	45	bash	trace	stdlib	elixir						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	23	45	bash	trace	stdlib	stdlib						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	24	46	bash	mention	dependency	ecto						output line	1	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	24	46	bash	mention	dependency	idna						output line	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	24	46	bash	mention	dependency	makeup						output line	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	24	46	bash	mention	dependency	parse_trans						output line	2	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	44	67	bash	network_try	network						ipv4:public	dev_tcp	0	yes	
+axelclark__ex338	ex338-pr-1350	20261112-153206-f5d6163e	62	85	bash	trace	stdlib	stdlib						stack frame	5	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	6	12	bash	mention	dependency	heroicons						output line	1	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	26	38	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	26	38	bash	trace	dependency	phoenix_live_view						stack frame	4	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	26	38	bash	trace	dependency	plug						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	26	38	bash	trace	dependency	telemetry						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1390	20261112-151610-54d3f177	26	38	bash	trace	stdlib	elixir						stack frame	3	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	18	29	bash	loopback	network						localhost	raw_socket	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	20	31	bash	listing	dependency						/workspace/_build	ls (command)	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	20	31	bash	listing	dependency						/workspace/deps	ls (command)	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	21	32	bash	network_try	network						github.com	git_remote	0	yes	names the project's repository
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	54	66	bash	mention	dependency	cowboy						output line	2	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	54	66	bash	mention	dependency	mime						output line	2	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	54	66	bash	mention	dependency	phoenix_pubsub						output line	2	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	75	89	bash	listing	dependency	canada						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	castore						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	ecto_enum						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	gen_smtp						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	glob_ex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	hackney						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	hpax						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	igniter						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	inflex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	mime						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	number						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	oban_met						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	plug						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	postgrex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	ranch						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	styler						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	tailwind						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	76	90	bash	mention	dependency	text_diff						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	77	91	bash	listing	dependency	tailwind						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	79	93	bash	listing	dependency	tailwind						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	80	94	bash	listing	dependency	tailwind					/workspace/_build/test/lib/tailwind	find (command)	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	80	94	bash	listing	dependency	tailwind					/workspace/_build/test/lib/tailwind/ebin	ls (command)	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	80	94	bash	listing	dependency	tailwind						output line	7	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	bcrypt_elixir						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	castore						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	cowlib						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	ecto_enum						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	exgravatar						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	gen_smtp						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	gettext						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	glob_ex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	hackney						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	honeybadger						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	hpax						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	igniter						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	inflex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	jasonhi						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	metrics						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	mime						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	nimble_parsec						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	nimble_publisher						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	number						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	oban_met						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	owl						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	phoenix_live_view						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	plug						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	postgrex						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	ranch						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	sourceror						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	spitfire						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	styler						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	tailwind						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	telemetry_metrics						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	text_diff						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	81	95	bash	mention	dependency	unicode_util_compat						output line	1	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	84	98	bash	network_try	network						archive.ubuntu.com	name_lookup	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	84	98	bash	network_try	network							package_registry	0	yes	
+axelclark__ex338	ex338-pr-1446	20261112-141318-80795bd9	90	104	bash	trace	stdlib	stdlib						stack frame	3	yes	
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	8	12	bash	trace	dependency	db_connection						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	8	12	bash	trace	dependency	ecto_sql						stack frame	5	yes	
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	8	12	bash	trace	stdlib	elixir						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	8	12	bash	trace	stdlib	mix						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1450	20261112-140710-417194c7	11	16	bash	loopback	network						localhost	dev_tcp	0	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	35	50	bash	trace	stdlib	stdlib						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	55	70	bash	trace	dependency	ecto						stack frame	5	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	55	70	bash	trace	dependency	phoenix						stack frame	12	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	55	70	bash	trace	dependency	plug						stack frame	6	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	55	70	bash	trace	stdlib	elixir						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	60	75	bash	trace	dependency	ecto						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	60	75	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	60	75	bash	trace	dependency	plug						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	63	78	bash	quote	dependency	jason	1.4.4	Apache-2.0	allowed	in_list	/workspace/deps/jason/lib/encode.ex	search output	1	yes	
+axelclark__ex338	ex338-pr-1451	20261112-133250-aad90564	63	78	bash	quote	dependency	jason	1.4.4	Apache-2.0	allowed	in_list	/workspace/deps/jason/lib/encoder.ex	search output	1	yes	
+axelclark__ex338	ex338-pr-1452	20261112-131816-8c1b102a	23	40	bash	trace	stdlib	elixir						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	6	7	bash	quote	dependency	plug	1.18.0	Apache-2.0	allowed	in_list	/workspace/deps/plug/lib/plug/head.ex	cat	15	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	10	13	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	11	14	bash	quote	dependency	phoenix	1.7.21	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/router.ex	search output	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	12	15	bash	quote	dependency	phoenix	1.7.21	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/router.ex	sed	71	yes	the output is shared with other printed files
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	12	15	bash	no_content	dependency	phoenix					/workspace/deps/phoenix/lib/phoenix/router/scope.ex	grep	0	yes	nothing but error lines, or a search without a hit
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	13	16	bash	quote	dependency	phoenix	1.7.21	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/router/scope.ex	grep	81	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	14	17	bash	quote	dependency	phoenix	1.7.21	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/router/route.ex	grep	100	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	16	19	bash	trace	dependency	phoenix						stack frame	80	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	16	19	bash	trace	stdlib	elixir						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	19	22	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	21	24	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	24	28	bash	trace	dependency	jason						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	24	28	bash	trace	stdlib	elixir						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	25	29	bash	quote	dependency	phoenix	1.7.21	MIT	allowed	in_list	/workspace/deps/phoenix/lib/phoenix/test/conn_test.ex	sed	136	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	26	30	bash	quote	dependency	plug	1.18.0	Apache-2.0	allowed	in_list	/workspace/deps/plug/lib/plug/adapters/test/conn.ex	grep	76	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	30	34	bash	trace	dependency	phoenix						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	30	34	bash	trace	stdlib	elixir						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	32	36	bash	trace	dependency	phoenix						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	32	36	bash	trace	stdlib	elixir						stack frame	1	yes	
+axelclark__ex338	ex338-pr-1457	20261112-130557-011a1bb0	37	41	bash	quote	dependency	plug	1.18.0	Apache-2.0	allowed	in_list	/workspace/deps/plug/lib/plug/conn.ex	grep	119	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	10	21	bash	quote	dependency	ecto_enum	1.4.0	MIT	allowed	in_list	/workspace/deps/ecto_enum/lib/ecto_enum.ex	search output	3	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	10	21	bash	quote	dependency	ecto_enum	1.4.0	MIT	allowed	in_list	/workspace/deps/ecto_enum/lib/ecto_enum/postgres/use.ex	search output	10	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	10	21	bash	quote	dependency	ecto_enum	1.4.0	MIT	allowed	in_list	/workspace/deps/ecto_enum/lib/ecto_enum/use.ex	search output	8	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	10	21	bash	quote	dependency	ecto_enum	1.4.0	MIT	allowed	in_list	/workspace/deps/ecto_enum/lib/ecto_enum.ex	sed	137	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	29	40	bash	trace	dependency	phoenix						stack frame	6	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	29	40	bash	trace	dependency	plug						stack frame	3	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	32	43	bash	trace	dependency	db_connection						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	32	43	bash	trace	dependency	ecto						stack frame	8	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	32	43	bash	trace	dependency	ecto_sql						stack frame	2	yes	
+axelclark__ex338	ex338-pr-1460	20261112-123709-68fbd7b4	32	43	bash	trace	stdlib	elixir						stack frame	8	yes	
+axelclark__ex338	ex338-pr-1461	20261112-123224-21ff4ec2	8	13	bash	trace	stdlib	elixir						stack frame	3	yes	

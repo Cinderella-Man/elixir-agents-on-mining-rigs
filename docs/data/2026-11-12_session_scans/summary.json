@@ -1,0 +1,27 @@
+{
+ "sessions": 16,
+ "verdicts": {
+  "pass": 16,
+  "drop": 0,
+  "unclear": 0
+ },
+ "kept": {
+  "pass": 13,
+  "drop": 0,
+  "unclear": 0
+ },
+ "drop_reasons": {
+  "quotes_dependency_outside_licence_list": 0,
+  "quotes_held_out": 0
+ },
+ "tries_to_leave_sandbox": 2,
+ "findings": {
+  "listing": 28,
+  "quote": 18,
+  "mention": 110,
+  "network_try": 7,
+  "trace": 40,
+  "loopback": 2,
+  "no_content": 1
+ }
+}
