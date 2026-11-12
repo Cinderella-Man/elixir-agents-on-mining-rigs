@@ -1,0 +1,4 @@
+task	start	licence_file	licence_families	provenance_licence	files_touched	files_passing	licence_result	failing
+ambry-pr-1283	fe8a5fb03a95bfce3400d4f5ef072a17453bf5ae	LICENSE	MIT	MIT	8	8	pass	
+ambry-pr-1282	014c1be1b212f26a23accc55330874f8b50666de	LICENSE	MIT	MIT	10	10	pass	
+ambry-pr-1281	bbc7edcbf1e8ab6c29d084d943098b0ffe922845	LICENSE	MIT	MIT	14	14	pass	

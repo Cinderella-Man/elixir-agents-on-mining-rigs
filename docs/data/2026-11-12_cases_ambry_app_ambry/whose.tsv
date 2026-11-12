@@ -1,0 +1,10 @@
+id	whose	why
+ambry-pr-1290	pull_request	the hidden tests pass on the unchanged project: no hidden test fails in its body
+ambry-pr-1289	pull_request	the pull request's patch is over 1 MiB, more than the engine takes
+ambry-pr-1288	pull_request	a feature: its hidden tests call modules the fix adds, so they cannot compile before it
+ambry-pr-1287	pull_request	a feature: a new test calls a function the fix adds, so it cannot compile before it
+ambry-pr-1286	machine_probably	not settled: two tests that wait for background work with LiveView's render_async (default limit 100 ms) passed in the first round and failed in the second; the second round keeps no output; not run again, as 3 cases were checked
+ambry-pr-1284	factory	Docker no longer held the content of the shared layout image (elixir-task-factory:layout-e418e414...) while the workspace image built; the engine names that image by its recipe only, but each controller adds its own job label, so the controllers on one Docker keep building and re-tagging it (its ID changed five times during this job); to be run again
+ambry-pr-1283	-	checked
+ambry-pr-1282	-	checked
+ambry-pr-1281	-	checked
