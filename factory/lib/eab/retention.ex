@@ -343,7 +343,7 @@ defmodule Eab.Retention do
       [info] = Jason.decode!(result["output"])
       tags = info["RepoTags"] || []
 
-      if tags != [] and Enum.all?(tags, &String.starts_with?(&1, "elixir-agent-benchmark:")) do
+      if tags != [] and Enum.all?(tags, &String.starts_with?(&1, "elixir-task-factory:")) do
         result = Command.run("docker", ["image", "rm" | tags], timeout: 120)
 
         if result["returncode"] == 0,

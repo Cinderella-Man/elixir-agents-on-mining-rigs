@@ -4,7 +4,7 @@ defmodule Eab.PiDockerTest do
   alias Eab.{Command, Model, Pi, Sandbox, Store}
 
   test "production launcher runs Pi as an unprivileged user in an offline problem container" do
-    name = "eab-pi-check-#{System.unique_integer([:positive])}"
+    name = "etf-pi-check-#{System.unique_integer([:positive])}"
     prefix = "runs/#{name}/case"
 
     endpoint = %{

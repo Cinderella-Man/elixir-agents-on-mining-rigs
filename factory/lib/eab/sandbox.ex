@@ -1,5 +1,5 @@
 defmodule Eab.Sandbox do
-  alias Eab.{AgentImage, Command, Inventory, Store}
+  alias Eab.{AgentImage, Command, DockerSettings, Inventory, Store}
 
   def with_box(id, run_id, fun, opts \\ []) do
     runtime = Store.read("runtimes/#{id}.json") || raise "Fixture is not prepared"
@@ -20,7 +20,7 @@ defmodule Eab.Sandbox do
         do: Map.put(runtime, "image", AgentImage.ensure(spec, runtime["image"])),
         else: runtime
 
-    name = "eab-" <> Base.encode16(:crypto.strong_rand_bytes(8), case: :lower)
+    name = "etf-" <> Base.encode16(:crypto.strong_rand_bytes(8), case: :lower)
     box = %{name: name, id: id, spec: spec, runtime: runtime, run_id: run_id}
 
     try do
@@ -34,7 +34,12 @@ defmodule Eab.Sandbox do
 
   defp start(box, opts) do
     services = box.runtime["services"]
-    labels = ["--label", "eab.installation=#{installation()}", "--label", "eab.run=#{box.run_id}"]
+
+    # The installation's own labels and CPU share follow the two labels; unset, they add nothing (section 6, change 1).
+    labels =
+      ["--label", "etf.installation=#{installation()}", "--label", "etf.run=#{box.run_id}"] ++
+        DockerSettings.run_args()
+
     network = if services["postgres"], do: "container:#{box.name}-db", else: "none"
 
     if services["postgres"] do
@@ -225,9 +230,9 @@ defmodule Eab.Sandbox do
           "ps",
           "-aq",
           "--filter",
-          "label=eab.installation=#{installation()}",
+          "label=etf.installation=#{installation()}",
           "--filter",
-          "label=eab.run=#{run_id}"
+          "label=etf.run=#{run_id}"
         ],
         timeout: 30
       )

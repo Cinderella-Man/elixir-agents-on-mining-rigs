@@ -81,7 +81,7 @@ defmodule Eab.Storage do
       data["Images"]
       |> Enum.uniq_by(& &1["Id"])
       |> Enum.filter(fn image ->
-        Enum.any?(image["RepoTags"] || [], &String.starts_with?(&1, "elixir-agent-benchmark:"))
+        Enum.any?(image["RepoTags"] || [], &String.starts_with?(&1, "elixir-task-factory:"))
       end)
       |> Enum.map(fn image ->
         size = image["Size"]

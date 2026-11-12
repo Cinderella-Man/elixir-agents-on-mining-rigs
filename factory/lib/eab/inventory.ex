@@ -11,7 +11,7 @@ defmodule Eab.Inventory do
   def tasks_dir, do: Application.get_env(:eab, :tasks_dir, "/tasks") |> Path.expand()
 
   @doc "The inventory's settings (its id and the budgets), without any list of tasks."
-  def config, do: read_json(path("config/benchmark.json")) |> Map.delete("cases")
+  def config, do: read_json(path("config/factory.json")) |> Map.delete("cases")
 
   def definition, do: Map.put(config(), "cases", all())
 

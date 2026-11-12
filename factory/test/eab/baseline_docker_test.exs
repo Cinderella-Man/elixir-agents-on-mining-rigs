@@ -8,7 +8,7 @@ defmodule Eab.BaselineDockerTest do
   @tag timeout: 600_000
   test "clean snapshots preserve both database families and independent writable clones" do
     previous = Store.root()
-    id = "eab-snapshot-check-#{System.unique_integer([:positive])}"
+    id = "etf-snapshot-check-#{System.unique_integer([:positive])}"
     root = Path.join(System.tmp_dir!(), id)
     Application.put_env(:eab, :data_dir, root)
     project = "#{id}:project"
@@ -146,14 +146,14 @@ defmodule Eab.BaselineDockerTest do
 
   defp rebase(root, name, seed, engine) do
     cleanup = Path.join(root, "cleanup-tags")
-    layout = "elixir-agent-benchmark:layout-" <> Cache.key(ServiceImages.recipe(name, engine))
+    layout = "elixir-task-factory:layout-" <> Cache.key(ServiceImages.recipe(name, engine))
     File.write!(cleanup, layout <> "\n", [:append])
     base = ServiceImages.ensure(name, engine)
 
     tags = [
-      "elixir-agent-benchmark:checkpoint-" <> Cache.key([name, seed, base]),
-      "elixir-agent-benchmark:database-parent-" <> String.replace_prefix(seed, "sha256:", ""),
-      "elixir-agent-benchmark:database-layout-" <> String.replace_prefix(base, "sha256:", "")
+      "elixir-task-factory:checkpoint-" <> Cache.key([name, seed, base]),
+      "elixir-task-factory:database-parent-" <> String.replace_prefix(seed, "sha256:", ""),
+      "elixir-task-factory:database-layout-" <> String.replace_prefix(base, "sha256:", "")
     ]
 
     File.write!(cleanup, Enum.join(tags, "\n") <> "\n", [:append])

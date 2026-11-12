@@ -212,7 +212,7 @@ defmodule Eab.Fixtures do
 
     # Resolve the *installed* toolchain, not just its base image. Package updates
     # after Docker cache eviction must not inherit incompatible native objects.
-    toolchain = build(dest, "elixir-agent-benchmark:toolchain-#{id}", "toolchain")
+    toolchain = build(dest, "elixir-task-factory:toolchain-#{id}", "toolchain")
     toolchain_tag = BuildCache.tag(toolchain, "toolchain")
     key = BuildCache.key(spec, toolchain, node, inputs["recipe_hash"])
     seed = BuildCache.find(key)
@@ -230,7 +230,7 @@ defmodule Eab.Fixtures do
       )
 
     File.write!(Path.join(dest, "Dockerfile"), recipe)
-    tag = "elixir-agent-benchmark:project-#{Cache.key(inputs)}"
+    tag = "elixir-task-factory:project-#{Cache.key(inputs)}"
     image = build(dest, tag, "fixture")
 
     runtime = %{
@@ -269,11 +269,8 @@ defmodule Eab.Fixtures do
           "--provenance=false",
           "--progress=plain",
           "--target",
-          target,
-          "-t",
-          tag,
-          dest
-        ],
+          target
+        ] ++ Eab.DockerSettings.build_args() ++ ["-t", tag, dest],
         timeout: 3600,
         limit: 2_000_000
       )

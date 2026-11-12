@@ -28,11 +28,11 @@ FROM ubuntu:24.04 AS app
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git docker.io docker-buildx util-linux libstdc++6 libssl3t64 libncurses6 locales && rm -rf /var/lib/apt/lists/*
 ENV LANG=C.UTF-8 EAB_ROOT=/app EAB_DATA_DIR=/data EAB_TASKS_DIR=/tasks ERL_FLAGS="+S 2:2"
 WORKDIR /app
-COPY --from=build /app/.local/docker-build/prod/rel/eab ./
-COPY config/benchmark.json config/benchmark.json
+COPY --from=build /app/.local/docker-build/prod/rel/factory ./
+COPY config/factory.json config/factory.json
 COPY lib lib
 COPY mix.lock mix.lock
 COPY priv/fixtures priv/fixtures
 COPY priv/pi priv/pi
 VOLUME /data
-CMD ["bin/eab", "start"]
+CMD ["bin/factory", "start"]

@@ -7,7 +7,7 @@ defmodule Eab.StorageTest do
       "Id" => "one",
       "Size" => 100,
       "SharedSize" => 70,
-      "RepoTags" => ["elixir-agent-benchmark:one"]
+      "RepoTags" => ["elixir-task-factory:one"]
     }
 
     other = %{image | "Id" => "two", "Size" => 120}

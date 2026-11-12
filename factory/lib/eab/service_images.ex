@@ -105,7 +105,7 @@ defmodule Eab.ServiceImages do
     unless state["Running"] == false and state["ExitCode"] == 0 and state["OOMKilled"] == false,
       do: raise("Refusing to capture #{name} after an unclean shutdown")
 
-    tag = "elixir-agent-benchmark:snapshot-#{identity}-#{name}"
+    tag = "elixir-task-factory:snapshot-#{identity}-#{name}"
     image = Command.run!("docker", ["commit", container, tag], timeout: 300) |> String.trim()
 
     if name == "clickhouse" do
@@ -218,11 +218,12 @@ defmodule Eab.ServiceImages do
     dest = Store.path("build/services/#{identity}")
     File.mkdir_p!(dest)
     File.write!(Path.join(dest, "Dockerfile"), recipe)
-    tag = "elixir-agent-benchmark:#{identity}"
+    tag = "elixir-task-factory:#{identity}"
 
     Command.run!(
       "docker",
-      ["buildx", "build", "--load", "--provenance=false", "--progress=plain", "-t", tag, dest],
+      ["buildx", "build", "--load", "--provenance=false", "--progress=plain"] ++
+        Eab.DockerSettings.build_args() ++ ["-t", tag, dest],
       timeout: 600,
       limit: 1_000_000
     )

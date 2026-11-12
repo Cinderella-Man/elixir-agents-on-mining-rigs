@@ -5,7 +5,7 @@ defmodule Eab.BuildSeedDockerTest do
 
   @tag timeout: 240_000
   test "generated Docker recipe forks a pristine seed into an isolated offline image" do
-    id = "eab-seed-check-#{System.unique_integer([:positive])}"
+    id = "etf-seed-check-#{System.unique_integer([:positive])}"
     context = Path.join(System.tmp_dir!(), id)
     toolchain = "#{id}:tools"
     first = "#{id}:first"

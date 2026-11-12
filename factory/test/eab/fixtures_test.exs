@@ -268,8 +268,8 @@ defmodule Eab.FixturesTest do
     File.mkdir_p!(Path.join(fixture_root, "config"))
 
     File.cp!(
-      Inventory.path("config/benchmark.json"),
-      Path.join(fixture_root, "config/benchmark.json")
+      Inventory.path("config/factory.json"),
+      Path.join(fixture_root, "config/factory.json")
     )
 
     # A copy of the made-up tasks as the task folder, so that the test's writes never reach test/support.

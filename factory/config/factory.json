@@ -1,0 +1,12 @@
+{
+  "id": "elixir-task-factory-v1",
+  "defaults": {
+    "context_cap_tokens": 262144,
+    "response_tokens": 8192,
+    "safety_tokens": 8,
+    "max_tokens": 65536,
+    "seed": 101,
+    "compaction": false,
+    "completion_accounting": "server_completion_including_reasoning_and_tool_syntax"
+  }
+}

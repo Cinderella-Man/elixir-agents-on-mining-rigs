@@ -34,9 +34,9 @@ defmodule Eab.BenchParityTest do
   }
 
   # The names the factory replaces with its own (section 6, change 6).
-  @name_prefix "eab-"
-  @installation_label "eab.installation"
-  @run_label "eab.run"
+  @name_prefix "etf-"
+  @installation_label "etf.installation"
+  @run_label "etf.run"
 
   @settings %{
     "compaction" => false,

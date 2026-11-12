@@ -44,7 +44,7 @@ defmodule Eab.Report do
       end)
 
     Store.write_text("runs/#{run["id"]}/report.md", """
-    # Benchmark report
+    # Task run report
 
     - Run: #{run["id"]}
     - Scope: #{scope(run)}

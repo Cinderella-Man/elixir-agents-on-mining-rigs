@@ -8,7 +8,7 @@ defmodule Eab.TaskGradingDockerTest do
     previous = Store.root()
     root = Path.join(System.tmp_dir!(), "eab-task-grade-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
-    tag = "elixir-agent-benchmark:made-up-tasks-#{System.unique_integer([:positive])}"
+    tag = "elixir-task-factory:made-up-tasks-#{System.unique_integer([:positive])}"
 
     on_exit(fn ->
       Eab.Sandbox.cleanup("made-up-tasks")

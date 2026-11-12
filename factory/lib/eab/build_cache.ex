@@ -32,7 +32,7 @@ defmodule Eab.BuildCache do
   end
 
   def tag(image, kind) do
-    tag = "elixir-agent-benchmark:#{kind}-" <> String.replace_prefix(image, "sha256:", "")
+    tag = "elixir-task-factory:#{kind}-" <> String.replace_prefix(image, "sha256:", "")
     Command.run!("docker", ["image", "tag", image, tag])
     tag
   end

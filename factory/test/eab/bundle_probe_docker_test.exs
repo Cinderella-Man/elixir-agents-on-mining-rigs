@@ -8,7 +8,7 @@ defmodule Eab.BundleProbeDockerTest do
     previous = Store.root()
     root = Path.join(System.tmp_dir!(), "eab-bundle-probe-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
-    tag = "elixir-agent-benchmark:bundle-probe-#{System.unique_integer([:positive])}"
+    tag = "elixir-task-factory:bundle-probe-#{System.unique_integer([:positive])}"
 
     on_exit(fn ->
       Eab.Sandbox.cleanup("bundle-probe")

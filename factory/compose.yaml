@@ -1,19 +1,25 @@
 services:
-  benchmark:
-    image: elixir-agent-benchmark:local
+  factory:
+    image: factory:local
     build: .
     init: true
     network_mode: host
+    # The share of the controller itself; Docker's own default (1024) when EAB_CPU_SHARES is unset. Compose cannot
+    # split EAB_DOCKER_LABELS into labels, so the controller's own labels go in compose.override.yaml (section 6,
+    # change 1, of factory/README.md).
+    cpu_shares: ${EAB_CPU_SHARES:-1024}
     environment:
       EAB_PREPARE_AHEAD: ${EAB_PREPARE_AHEAD:-4}
       EAB_PREPARE_WORKERS: ${EAB_PREPARE_WORKERS:-2}
       EAB_CACHE_MIN_FREE_GB: ${EAB_CACHE_MIN_FREE_GB:-5}
       EAB_OFFLINE: ${EAB_OFFLINE:-}
       EAB_TASKS_DIR: /tasks
+      EAB_DOCKER_LABELS: ${EAB_DOCKER_LABELS:-}
+      EAB_CPU_SHARES: ${EAB_CPU_SHARES:-}
     volumes:
-      - benchmark-data:/data
+      - factory:/data
       - ${EAB_TASKS_HOST_DIR:-./tasks}:/tasks
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
 volumes:
-  benchmark-data:
+  factory:

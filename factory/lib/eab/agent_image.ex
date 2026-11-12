@@ -48,11 +48,12 @@ defmodule Eab.AgentImage do
 
     project = BuildCache.tag(inputs["project"], "project")
     File.write!(Path.join(dest, "Dockerfile"), recipe(project, inputs["node"]))
-    tag = "elixir-agent-benchmark:agent-#{id}"
+    tag = "elixir-task-factory:agent-#{id}"
 
     Command.run!(
       "docker",
-      ["buildx", "build", "--load", "--provenance=false", "--progress=plain", "-t", tag, dest],
+      ["buildx", "build", "--load", "--provenance=false", "--progress=plain"] ++
+        Eab.DockerSettings.build_args() ++ ["-t", tag, dest],
       timeout: 1200,
       limit: 2_000_000
     )

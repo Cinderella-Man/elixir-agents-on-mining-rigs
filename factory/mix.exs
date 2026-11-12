@@ -10,7 +10,9 @@ defmodule Eab.MixProject do
       deps: deps(),
       elixirc_paths: ["lib"],
       # test_helper.exs loads the helpers in test/support/; they hold no tests.
-      test_ignore_filters: [&String.starts_with?(&1, "test/support/")]
+      test_ignore_filters: [&String.starts_with?(&1, "test/support/")],
+      # The release has the factory's own name (factory/README.md, section 6, change 6).
+      releases: [factory: []]
     ]
   end
 

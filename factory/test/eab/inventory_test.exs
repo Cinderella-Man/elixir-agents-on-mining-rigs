@@ -18,7 +18,7 @@ defmodule Eab.InventoryTest do
 
     # A list of cases in the configuration is ignored: the folder decides.
     File.write!(
-      Path.join(root, "config/benchmark.json"),
+      Path.join(root, "config/factory.json"),
       Jason.encode!(%{"id" => "test", "cases" => ["listed-case"], "defaults" => %{}})
     )
 
@@ -43,7 +43,7 @@ defmodule Eab.InventoryTest do
     assert Inventory.all() == ["existing-case", "new-case"]
     protocol = Inventory.protocol(Inventory.all())
     release = %{"id" => Cache.key(protocol), "protocol" => protocol}
-    config = File.read!(Inventory.path("config/benchmark.json"))
+    config = File.read!(Inventory.path("config/factory.json"))
     assert :ok = Release.verify!(release)
 
     for id <- Inventory.all() do
@@ -66,7 +66,7 @@ defmodule Eab.InventoryTest do
     assert Inventory.all() == ["existing-case", "new-case"]
     assert Inventory.protocol(Inventory.all()) == protocol
     assert :ok = Release.verify!(release)
-    assert File.read!(Inventory.path("config/benchmark.json")) == config
+    assert File.read!(Inventory.path("config/factory.json")) == config
   end
 
   test "only direct case folders containing manifests are discovered" do
