@@ -1,0 +1,4 @@
+id	licence_result	licence_families	files_touched	files_passing	failing	holdout_result	name_hits	seconds
+hexpm-pr-2112	fail	none	11	11	root licence not MIT, Apache-2.0, BSD or ISC; 	pass	0	20
+hexpm-pr-2113	fail	none	6	6	root licence not MIT, Apache-2.0, BSD or ISC; 	pass	0	19
+hexpm-pr-2119	fail	none	4	4	root licence not MIT, Apache-2.0, BSD or ISC; 	pass	0	26

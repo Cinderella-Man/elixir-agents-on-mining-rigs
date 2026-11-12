@@ -1,0 +1,3 @@
+pull_requests	verdict	dropped_at	reason
+3	checked	-	-
+1	dropped	probe	no_existing_tests
