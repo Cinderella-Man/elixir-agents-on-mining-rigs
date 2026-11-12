@@ -1,0 +1,3 @@
+run	command	returncode	engine_completed	engine_passed	engine_ms	reporter_rows	reporter_distinct	duplicated_identities	exunit_tests	exunit_passed	exunit_failed	exunit_excluded	exunit_seconds	output_bytes	under_2_mib
+1	mix test --exclude describe:create_firmware_delta_file/3	2	false	false	284885	4050	4013	37	4046	4033	13	4	282.7	730465	yes
+2	mix test --exclude describe:create_firmware_delta_file/3	2	false	false	780185	4050	4013	37	4046	4025	21	4	764.6	770106	yes

@@ -670,11 +670,12 @@ mounted with the data. Both settings pass through `compose.yaml`. Because `lib/e
 changed, the image inputs change (`source_export`, `recipe_hash`), so every project image is built once more after
 the update, as after any change to those files.
 
-**`nerves-hub/nerves_hub_web`, the first project that needs both lists.** Its recipe would add
-`"packages": ["xdelta3", "mtools"]` and one release file, fwup's own `.deb` for amd64 (the version the period's CI
-names, 1.16.0 or 1.17.1 in P02) with its SHA-256, and the installation would allow GitHub's hosts. Fetching that
-release file waits for the owner's word: no release file has been downloaded, and the recipe in `recipes/` is
-unchanged.
+**`nerves-hub/nerves_hub_web`, the first project that needs both lists.** Its template has
+`"packages": ["xdelta3", "mtools"]` and one release file, fwup 1.17.1's own `.deb` for amd64 (the version CI names at
+the starting commit of pull request 3155), with the SHA-256 the release publishes in its `SHA256SUMS`. The owner
+allowed this one download on 2026-11-12. An installation that builds its images allows `github.com` and
+`release-assets.githubusercontent.com` (the host GitHub's download redirects to); no other host is needed
+([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)).
 
 ## 7. The order of the trimming jobs
 
@@ -734,6 +735,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | E71: a Redis service in the engine (change 9): a task may list `redis` in `services`, pinned by digest (`task_contract.ex`, `services!/1`); `sandbox.ex` starts it beside the workspace in the same private network (Postgres's, or its own when alone) with Postgres's limits, the labels and the share, an empty `/data` tmpfs and saving off, and removes it with the workspace; the database baseline never captures it (`service_images.ex`, `baseline.ex`, `fixtures.ex`); one new test in `task_contract_test` and two new test files ([data](../docs/data/2026-11-12_factory_redis/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 231 without Docker and 241 with it (T10 224 and 233; T8 198 and 206), 10 and 0 excluded; 233 tests end as in T10, 8 are new and pass; a made-up task whose tests talk to Redis passes the gate with Redis alone and beside Postgres, is refused without it, and each new container starts with an empty Redis; a task without Redis gets the same containers and arguments as before; the parity test 6 of 6, untouched |
 | 2026-11-12 | P6 (pilot): the licence scan and the hold-out check for task folders in `factory/tools/` ([README](tools/README.md)): `check_tasks.sh` over any list of task folders, the reader `task_folder.py`, `task_licence.py` (per-file verdicts of the sister repository's `license_scan.py`, copied unchanged, at the starting and merge commits; the licences the locked Hex packages declare), `task_holdout.py` (repository and names, 8- and 12-word spans against the bench's cases, the method of `heldout_check.py`, copied unchanged); run on the 16 checked ex338 tasks ([data](../docs/data/2026-11-12_pilot_licence_holdout/README.md)) | see the data folder | no engine code changed, no engine test run; a positive control (a task with one bench case's hidden tests) gives 533 and 557 spans to read, and the repository rule holds out a held-out organisation, repository and name |
 | 2026-11-12 | Every candidate the resolver serves, made and checked (E68, E72): radiator 27 checked of 64, ex338 7 of 12 tried. Two fixes from the lists: `bundle_probe.ex` `settle/4` leaves out an existing test file with a skipped test (`skipped_on_unchanged`, `skipped_on_reference`), since the grader does not pass a skipped test (2.2); the OTP 27.2 pairs left `config/toolchain_images.json`, since such an image cannot install Hex ([data](../docs/data/2026-11-12_pilot_tasks_all/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 231 passed, 0 failed, 10 excluded without Docker and 241, 0, 0 with it, every test as on `origin/main` (with P6) the same hour; one new case in `bundle_maker_test`'s settling test and one assertion in `toolchain_test`; the parity test 6 of 6, not edited |
+| 2026-11-12 | nerves_hub_web with `fwup` (E68): `recipes/nerves-hub__nerves_hub_web.json` becomes a template (a `toolchain` block) with `runtime.packages` (`xdelta3`, `mtools`), one release file (fwup 1.17.1's `.deb`, SHA-256 from the release's `SHA256SUMS`), the four tests that need `detools` left out of the whole-suite command by their `describe`, and `mtools` no longer excluded. The project's suite ran twice in the engine: 4,033 and 4,025 of 4,046 passed; 29 of the 30 newest P02 candidates made, none checked (the disk floor) ([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)) | see the data folder | no code changed; no factory test reads this recipe; the maker read and resolved the template for 29 pull requests |
 
 ## 8. What is not decided, and what is not verified
 
@@ -777,9 +779,15 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
   label and the share on every container it started.
 - Since T8, the extra packages and release files were built on the tooling image as the base, as the lines the
   recipe adds, not through a whole toolchain stage: the rest of that stage downloads the bench's build tools and Hex.
-  The release file was a `.deb` the test made itself; no real one (fwup's) has been fetched or installed, and the
-  engine's fetch was tested with a stand-in for the HTTP client, not over the network. The mirror was tested with
-  local repositories only.
+  The release file was a `.deb` the test made itself, and the engine's fetch was tested with a stand-in for the HTTP
+  client. The mirror was tested with local repositories only. Since nerves_hub_web's template (2026-11-12), one real
+  release file has gone through the whole path in a real toolchain stage: fwup 1.17.1's `.deb`, fetched over the
+  network through one redirect, checked, installed with its dependencies from Ubuntu, and used by the project's
+  tests ([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)).
+- A test module under ExUnit's `parameterize:` runs each test once per parameter set under the same name, and
+  `Eab.Grader.parse/2` (2.2, must stay) then calls the run unfinished (nerves_hub_web's `websocket_test.exs`, 37 names
+  twice). A task whose test command names such a file cannot have a finished run; what the bench does with one is not
+  checked.
 - The toolchain resolver (3.5) reads YAML and TOML by line patterns, not with a parser. It was checked on the CI
   files, `.tool-versions`, `mise.toml` and Dockerfiles of ex338's and radiator's 410 screened candidates and on the
   made-up files of `toolchain_test`; a CI file written in another style (anchors, a version only in a matrix

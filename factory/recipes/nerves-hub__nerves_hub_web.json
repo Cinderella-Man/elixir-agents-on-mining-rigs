@@ -4,7 +4,15 @@
     "image": "hexpm/elixir:1.20.3-erlang-29.0.5-ubuntu-noble-20260810@sha256:f1ee5c316e7716d3c4f5b482cf60d465473d1eb9aef3254a39d6bd9502c80258",
     "environment": {"MIX_ENV": "test"},
     "setup_commands": ["mix compile"],
-    "before_test_commands": []
+    "before_test_commands": [],
+    "packages": ["xdelta3", "mtools"],
+    "release_files": [
+      {
+        "url": "https://github.com/fwup-home/fwup/releases/download/v1.17.1/fwup_1.17.1_amd64.deb",
+        "sha256": "b73ca78effe61e4c8cedcff567ca137b6bdaa1772b84f9e4d88913f192c09bf2",
+        "kind": "deb"
+      }
+    ]
   },
   "services": {
     "postgres": {"image": "postgres:18.6-alpine@sha256:9ba53c7d41ea093baf5c1ba635ba5434c4f979880527d49bb7d9237d3193085b"},
@@ -12,10 +20,15 @@
   },
   "baseline": {"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]},
   "test_timeout": 240,
-  "permitted_exclusion_tags": ["pending", "mtools"],
+  "permitted_exclusion_tags": ["pending"],
   "grading": {
-    "preservation": "mix test --exclude mtools",
+    "preservation": "mix test --exclude describe:create_firmware_delta_file/3",
     "protected_paths": ["test/"],
     "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": [
+      {"commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+    ]
   }
 }
