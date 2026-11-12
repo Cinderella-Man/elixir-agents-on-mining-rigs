@@ -1,3 +1,5 @@
 pull_requests	verdict	dropped_at	reason
-3	checked	-	-
-1	dropped	probe	no_existing_tests
+9	checked	-	-
+2	dropped	probe	no_existing_tests
+1	refused	maker	binary_file
+1	dropped	probe	start_run_did_not_finish

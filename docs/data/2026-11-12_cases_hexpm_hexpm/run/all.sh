@@ -6,13 +6,16 @@
 #                  earlier job's task folders of the listed numbers found in the folders COPY (space-separated; empty:
 #                  every folder is made again)
 #   all.sh run     every number of JOB/numbers.txt, in order, through one.sh into OUT/<id>/1, until TARGET tasks are
-#                  checked or MAX_TRIED pull requests have been tried; then once more, into OUT/<id>/2, each one
-#                  whose check was not settled (the load reached SETTLE_LOAD during it). A pull request whose row exists is not run again. OUT/rows.tsv holds every
+#                  checked or MAX_TRIED pull requests have been tried (both counted in OUT only); a try whose row
+#                  shows the machine's failure (a time-out, a lost database connection, a lost image: "content
+#                  digest ... not found") is run again at once, into OUT/<id>/2. Then once more, into OUT/<id>/2, each
+#                  one whose check was not settled (the load reached SETTLE_LOAD during it). A pull request whose row
+#                  exists is not run again. OUT/rows.tsv holds every
 #                  try's row, the try first. The watcher (watch.sh) runs for the whole run; a stop it writes ends the
 #                  run at once.
 # Environment: WORK (the factory's work folder: tasks/), JOB (this job's folder: run/, src/, tables/, numbers.txt),
 # SRC (default JOB/src), CTL, NAME, OUT (default JOB/out), JOB_LABEL, TASK_LABEL, TARGET (3), MAX_TRIED (12); for
-# the watcher MAX_LOAD (26) and MIN_FREE (700,000,000,000); for stage CACHE and
+# the watcher MAX_LOAD (26) and MIN_FREE (50,000,000,000); for stage CACHE and
 # COPY. Writes OUT/rows.tsv (again after each try), OUT/watch.tsv, OUT/all.done at the end, and one line per start
 # and end to standard output.
 set -euo pipefail
@@ -21,7 +24,7 @@ OUT=${OUT:-$JOB/out}
 SRC=${SRC:-$JOB/src}
 TARGET=${TARGET:-3}
 MAX_TRIED=${MAX_TRIED:-12}
-export MAX_LOAD=${MAX_LOAD:-26} MIN_FREE=${MIN_FREE:-700000000000}
+export MAX_LOAD=${MAX_LOAD:-26} MIN_FREE=${MIN_FREE:-50000000000}
 LIST=hexpm
 REPOSITORY=https://github.com/hexpm/hexpm
 PREFIX=hexpm
@@ -91,11 +94,20 @@ run)
       echo "$(date -Is) end $id try $try: $(cut -f9-11,16 "$o/row.tsv" | tr '\t' ' ') (checked: $(checked))"
     fi
   }
+  machine() { # $1 a row.tsv: not checked, and its reason or detail shows the machine's failure
+    awk -F'\t' '{v = $9; s = tolower($11 " " $NF)}
+      END {exit !(v != "checked" && s ~ /content digest|dbconnection|connection (refused|closed|lost|not available)|timed? ?out|timeout/)}' "$1"
+  }
   rows
   for n in $(cat "$JOB/numbers.txt"); do
     [ "$(checked)" -lt "$TARGET" ] || { echo "$(date -Is) $TARGET checked: no further pull request is started"; break; }
     [ "$(tried)" -lt "$MAX_TRIED" ] || { echo "$(date -Is) $MAX_TRIED tried: no further pull request is started"; break; }
     one "$n" 1
+    r=$OUT/$PREFIX-pr-$n/1/row.tsv
+    if [ -e "$r" ] && [ ! -e "$STOP" ] && machine "$r"; then
+      echo "$(date -Is) $PREFIX-pr-$n: the machine's failure, run again"
+      one "$n" 2
+    fi
   done
   for n in $(cat "$JOB/numbers.txt"); do
     r=$OUT/$PREFIX-pr-$n/1/row.tsv
