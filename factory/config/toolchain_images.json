@@ -1,5 +1,5 @@
 {
-  "note": "Pinned images for the bundle maker's toolchain resolver (factory/README.md, section 3.5). One line per pair, each printed by scripts/toolchain_image.sh and read before it was added. A pair missing here is refused as no_image:<elixir>/<otp>. Elixir before 1.12 is never added: the engine's Hex install (lib/eab/fixtures.ex) pins Hex 2.5.3 only from Elixir 1.12 on.",
+  "note": "Pinned images for the bundle maker's toolchain resolver (factory/README.md, section 3.5). One line per pair, each printed by scripts/toolchain_image.sh and read before it was added. A pair missing here is refused as no_image:<elixir>/<otp>. Elixir before 1.12 is never added: the engine's Hex install (lib/eab/fixtures.ex) pins Hex 2.5.3 only from Elixir 1.12 on. OTP 27.2 is never added: its ssl rejects the certificate of builds.hex.pm (key_usage_mismatch), so the image cannot install Hex (1.18.1/27.2 and 1.18.2/27.2 were added and removed on 2026-11-12, docs/data/2026-11-12_pilot_tasks_all).",
   "elixir": [
     {"elixir": "1.13.4", "otp": "25.0", "image": "hexpm/elixir:1.13.4-erlang-25.0-ubuntu-noble-20260509.1@sha256:6229d1e61a2ed52d33b2abf43a99ce0b15491fa9c60b9b86ad2cdf53c89361eb"},
     {"elixir": "1.14.4", "otp": "25.3.2", "image": "hexpm/elixir:1.14.4-erlang-25.3.2-ubuntu-noble-20260509.1@sha256:a5d083810fa4176c3e49d320197db550e584269f2133efced56e23fd6015595f"},
@@ -9,8 +9,6 @@
     {"elixir": "1.16.3", "otp": "26.2.5", "image": "hexpm/elixir:1.16.3-erlang-26.2.5-ubuntu-noble-20260509.1@sha256:5c68347f4bf2e19d49b118f433502f5ef6d53e5ff8249b0bd3100c362ff3135f"},
     {"elixir": "1.17.1", "otp": "26.2.5", "image": "hexpm/elixir:1.17.1-erlang-26.2.5-ubuntu-noble-20260509.1@sha256:ad4aab64e5fdb8c621cbe22776c5433d5e264f9c9b498c682700b6fc54ec480e"},
     {"elixir": "1.17.2", "otp": "27.0.1", "image": "hexpm/elixir:1.17.2-erlang-27.0.1-ubuntu-noble-20260509.1@sha256:6fa52b2457866e12b23482fe5f20027223c0187e249ad1e2e318801397d8148b"},
-    {"elixir": "1.18.1", "otp": "27.2", "image": "hexpm/elixir:1.18.1-erlang-27.2-ubuntu-noble-20260509.1@sha256:9e8276f7d6e7c400a8209784e327c0e3bfc38d624692e034352e3614f86b6e5a"},
-    {"elixir": "1.18.2", "otp": "27.2", "image": "hexpm/elixir:1.18.2-erlang-27.2-ubuntu-noble-20260509.1@sha256:d1f9c62fad6076a5a92c0930c6c0d824187c28bd34741265cc3f9a14828514ac"},
     {"elixir": "1.18.3", "otp": "27.3", "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble-20260509.1@sha256:05d0223efb52293e146b2b20fee462fd1372264fdd9491d9ea222dbf527c703f"},
     {"elixir": "1.19.2", "otp": "28.1", "image": "hexpm/elixir:1.19.2-erlang-28.1-ubuntu-noble-20260509.1@sha256:110251dc74530bb9773e271fea7afe4eae59e21052931d65ec669bf94cbc476d"},
     {"elixir": "1.19.5", "otp": "28.4.1", "image": "hexpm/elixir:1.19.5-erlang-28.4.1-ubuntu-noble-20260509.1@sha256:454a42ec00439749f20a82875422a1185a9887549d4fd92908ec97dba442806f"},

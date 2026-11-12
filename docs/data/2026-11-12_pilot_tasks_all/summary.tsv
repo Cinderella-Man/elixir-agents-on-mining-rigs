@@ -1,0 +1,16 @@
+repository	check	reason	count
+radiator	checked	-	27
+radiator	probe	no_existing_tests	10
+radiator	probe	start_run_did_not_finish	9
+radiator	probe	no_starting_failure	5
+radiator	prepare	environment	4
+radiator	controls	reference_existing_tests_fail	3
+radiator	gate_prepare	environment	3
+radiator	make	no_existing_tests	3
+ex338	not tried	deadline	19
+ex338	checked	-	7
+ex338	controls	starting_failures_differ	1
+ex338	probe	no_existing_tests	1
+ex338	probe	no_starting_failure	1
+ex338	probe	reference_run_did_not_finish	1
+ex338	probe	start_run_did_not_finish	1

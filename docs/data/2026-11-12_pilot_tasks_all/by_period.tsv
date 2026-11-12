@@ -1,0 +1,15 @@
+repository	elixir_otp	baseline	tried	checked	dropped	not_tried	drops_by_cause
+radiator	1.15.7/26.0.2	mix ecto.create --quiet && mix ecto.migrate --quiet	5	2	3	0	make: no_existing_tests 2; probe: start_run_did_not_finish 1
+radiator	1.16.2/26.0.2	mix ecto.create --quiet && mix ecto.migrate --quiet	6	1	5	0	probe: no_existing_tests 3; probe: start_run_did_not_finish 2
+radiator	1.16.3/26.2.5	mix ecto.create --quiet && mix ecto.migrate --quiet	1	1	0	0	-
+radiator	1.17.1/26.2.5	mix ecto.create --quiet && mix ecto.migrate --quiet	1	0	1	0	probe: start_run_did_not_finish 1
+radiator	1.17.2/27.0.1	mix ecto.create --quiet && mix ecto.migrate --quiet	32	19	13	0	probe: no_starting_failure 2; controls: reference_existing_tests_fail 3; probe: no_existing_tests 4; probe: start_run_did_not_finish 4
+radiator	1.18.1/27.2	mix ecto.create --quiet && mix ecto.migrate --quiet	1	0	1	0	prepare: environment 1
+radiator	1.18.2/27.2	mix ecto.create --quiet && mix ecto.migrate --quiet	3	0	3	0	prepare: environment 3
+radiator	1.18.3/27.3	mix ecto.create --quiet && mix ecto.migrate --quiet	3	0	3	0	gate_prepare: environment 3
+radiator	1.19.2/28.1	mix ash.setup --quiet	4	0	4	0	probe: no_starting_failure 3; probe: no_existing_tests 1
+radiator	1.19.5/28.4.1	mix ash.setup --quiet	2	2	0	0	-
+radiator	1.20.3/29.0.5	mix ash.setup --quiet	6	2	4	0	make: no_existing_tests 1; probe: no_existing_tests 2; probe: start_run_did_not_finish 1
+ex338	1.16.1/26.2.1	mix ecto.create --quiet && mix ecto.migrate --quiet	12	7	5	0	probe: no_starting_failure 1; probe: reference_run_did_not_finish 1; controls: starting_failures_differ 1; probe: no_existing_tests 1; probe: start_run_did_not_finish 1
+ex338	1.17.2/27.0.1	mix ecto.create --quiet && mix ecto.migrate --quiet	0	0	0	2	-
+ex338	1.18.3/27.3	mix ecto.create --quiet && mix ecto.migrate --quiet	0	0	0	17	-

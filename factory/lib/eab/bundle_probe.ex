@@ -108,7 +108,8 @@ defmodule Eab.BundleProbe do
   does not finish, or a failing test belongs to no file, each file is run alone on that side.
 
   Returns `{:ok, kept, left_out}` with `left_out` a list of `%{"file" => ..., "reason" => ...}` (`unstable`,
-  `fails_on_unchanged`, `fails_on_reference`, `does_not_finish_on_unchanged`, `does_not_finish_on_reference`), or
+  `fails_on_unchanged`, `fails_on_reference`, `skipped_on_unchanged`, `skipped_on_reference` (a skipped test, which
+  the grader does not pass), `does_not_finish_on_unchanged`, `does_not_finish_on_reference`), or
   `{:error, "no_existing_tests", detail}` when no file is left.
   """
   def settle(files, reference, modules, run) do
@@ -144,6 +145,7 @@ defmodule Eab.BundleProbe do
   end
 
   defp reason(:unstable, _side), do: "unstable"
+  defp reason(:skipped, side), do: "skipped_on_" <> side
   defp reason(:fails, side), do: "fails_on_" <> side
   defp reason(:does_not_finish, side), do: "does_not_finish_on_" <> side
 
@@ -188,6 +190,9 @@ defmodule Eab.BundleProbe do
     cond do
       a != b -> :unstable
       Enum.any?(a, fn {_, state} -> not good?(state) end) -> :fails
+      # The grader passes a run only when every test passed or was excluded by a permitted tag, so a skipped test
+      # fails the existing-tests step even on the reference.
+      Enum.any?(a, fn {_, state} -> state == "skipped" end) -> :skipped
       true -> :ok
     end
   end

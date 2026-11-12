@@ -593,6 +593,13 @@ defmodule Eab.BundleMakerTest do
 
     assert {:ok, ^files, []} = BundleProbe.settle(files, "REF", modules, run)
 
+    # A skipped test fails the grader's existing-tests step, so its file is left out (radiator, 2026-11-12).
+    skip = fn _, _ -> result.(Map.put(pass, "Elixir.CTest::test t", "skipped")) end
+
+    assert BundleProbe.settle(files, "REF", modules, skip) ==
+             {:ok, ~w(test/a_test.exs test/b_test.exs test/d_test.exs),
+              [%{"file" => "test/c_test.exs", "reason" => "skipped_on_unchanged"}]}
+
     assert {:error, "no_existing_tests", "test/a_test.exs: fails_on_unchanged"} =
              BundleProbe.settle(["test/a_test.exs"], "REF", modules, fn _, _ ->
                result.(%{"Elixir.ATest::test t" => "failed"})

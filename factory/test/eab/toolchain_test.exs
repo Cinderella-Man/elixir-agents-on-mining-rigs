@@ -381,6 +381,8 @@ defmodule Eab.ToolchainTest do
     pairs = Enum.map(table["elixir"], &"#{&1["elixir"]}/#{&1["otp"]}")
     assert "1.18.3/27.3" in pairs and "1.20.3/29.0.5" in pairs
     assert Enum.all?(table["elixir"], &(Version.compare(&1["elixir"], "1.12.0") != :lt))
+    # OTP 27.2's ssl rejects the certificate of builds.hex.pm, so such an image cannot install Hex
+    refute Enum.any?(table["elixir"], &Toolchain.prefix?("27.2", &1["otp"]))
 
     for name <- ["axelclark__ex338", "podlove__radiator"] do
       recipe = Eab.BundleMaker.read_recipe!(Eab.Inventory.path("recipes/#{name}.json"))

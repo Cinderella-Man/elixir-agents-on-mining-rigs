@@ -171,7 +171,35 @@ defmodule P5Gate do
     Sandbox.cleanup(run_id)
   end
 
+  # P5_DEADLINE (Unix seconds) and P5_MIN_FREE (bytes free on the data disk): a pull request whose turn comes after
+  # the deadline, or when the disk holds less, is not started; its row says `not_tried` and why.
   def run(id, dir, checked, out, emit) do
+    deadline = String.to_integer(System.get_env("P5_DEADLINE", "0"))
+    min_free = String.to_integer(System.get_env("P5_MIN_FREE", "0"))
+    free = free_bytes()
+
+    cond do
+      deadline > 0 and System.os_time(:second) > deadline ->
+        skip(id, out, emit, "deadline", free)
+
+      min_free > 0 and is_integer(free) and free < min_free ->
+        skip(id, out, emit, "disk", free)
+
+      true ->
+        run_one(id, dir, checked, out, emit)
+    end
+  end
+
+  defp skip(id, out, emit, why, free) do
+    here = Path.join(out, id)
+    File.mkdir_p!(here)
+    row = %{"id" => id, "verdict" => "not_tried", "reason" => why, "free_before" => free}
+    File.write!(Path.join(here, "row.json"), Jason.encode!(row, pretty: true))
+    emit.("#{id}: not tried (#{why})")
+    row
+  end
+
+  def run_one(id, dir, checked, out, emit) do
     task = Path.join(dir, id)
     here = Path.join(out, id)
     File.mkdir_p!(here)

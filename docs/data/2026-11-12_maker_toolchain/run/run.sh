@@ -10,7 +10,8 @@
 # Environment: JOB (this job's folder: run/ with these scripts and controller.sh, src/ the factory folder, tables/,
 # numbers.txt), WORK (the controller's folder; its data is WORK/NAME/data), NAME (factory), IMAGE (the controller's
 # image), RECIPE (relative to src/, default recipes/axelclark__ex338.json), CENSUS and SCREEN (file names in
-# tables/), REPOSITORY, P5_CONCURRENCY (2), SUB (the folder in the controller's data, default e72), KEEP (where the checked folders are copied).
+# tables/), REPOSITORY, P5_CONCURRENCY (2), P5_DEADLINE (Unix seconds; no pull request starts after it) and P5_MIN_FREE (bytes;
+# none starts below it), SUB (the folder in the controller's data, default e72), KEEP (where the checked folders are copied).
 # The controller is started and stopped with controller.sh (up, down) around these steps.
 set -euo pipefail
 : "${JOB:?}" "${WORK:?}"
@@ -52,7 +53,7 @@ gate)
   # ids.txt: the made folders that passed the source check and the import check
   awk -F'\t' 'NR>1 && $2=="passed" && $3 ~ /^accepted/ {print $1}' "$DATA/out/verify.tsv" > "$DATA/ids.txt"
   rm -f "$DATA/out/gate.done"
-  rpc "System.put_env(%{\"P5_DIR\" => \"/data/$SUB\", \"P5_CONCURRENCY\" => \"$P5_CONCURRENCY\"}); spawn(fn -> Code.eval_file(\"/data/$SUB/gate.exs\") end)"
+  rpc "System.put_env(%{\"P5_DIR\" => \"/data/$SUB\", \"P5_CONCURRENCY\" => \"$P5_CONCURRENCY\", \"P5_DEADLINE\" => \"${P5_DEADLINE:-0}\", \"P5_MIN_FREE\" => \"${P5_MIN_FREE:-0}\"}); spawn(fn -> Code.eval_file(\"/data/$SUB/gate.exs\") end)"
   until [ -e "$DATA/out/gate.done" ]; do sleep 60; done
   cat "$DATA/out/gate.done"
   ;;

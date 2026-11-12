@@ -351,7 +351,8 @@ resolver reads each starting commit's own files instead. In order, each step rec
    `no_image:<elixir>/<otp>`. The maker never asks a registry: [`scripts/toolchain_image.sh`](scripts/toolchain_image.sh),
    run by a person on the build machine, looks a pair up at Docker Hub (ubuntu-noble first, then older bases) and
    prints the line to add, so the table grows only by lines someone has read. Elixir before 1.12 is never added: the
-   engine's Hex install (2.1) pins Hex 2.5.3 only from Elixir 1.12 on. With no version in any file, the recipe's
+   engine's Hex install (2.1) pins Hex 2.5.3 only from Elixir 1.12 on. OTP 27.2 is never added either: its `ssl`
+   rejects the certificate of builds.hex.pm, so the image cannot install Hex. With no version in any file, the recipe's
    image is the default.
 3. **The database:** the Postgres or ClickHouse image a CI file starts (a GitHub `services:` entry, Travis's
    `addons: postgresql`), pinned by the table's line for that Postgres major version or ClickHouse version
@@ -378,11 +379,12 @@ prepared:
   test fails on the reference, or nothing fails in its body on the unchanged project.
 - **Settling the existing tests:** the files of `grading.preservation` run in their starting-commit version, as the
   grader's regression step runs them, twice on the unchanged project and twice on the reference code. A file is
-  left out when one of its tests fails on either side or ends differently in the two runs of the same code; its
+  left out when one of its tests fails or is skipped on either side (the grader passes a run only when every test
+  passed or was excluded by a permitted tag, 2.2), or ends differently in the two runs of the same code; its
   tests are found by the modules the file defines, and each file runs alone on a side where the run of all of them
   does not finish. The files left out are written to `grading.preservation_left_out` with the reason
-  (`fails_on_unchanged`, `fails_on_reference`, `unstable`, `does_not_finish_on_unchanged`,
-  `does_not_finish_on_reference`). When no file is left, it refuses with `no_existing_tests`.
+  (`fails_on_unchanged`, `fails_on_reference`, `skipped_on_unchanged`, `skipped_on_reference`, `unstable`,
+  `does_not_finish_on_unchanged`, `does_not_finish_on_reference`). When no file is left, it refuses with `no_existing_tests`.
 - **The search for a partial fix:** the reference with one file left out, each in turn when there are two or more,
   then with one hunk left out of each file that has two or more. The first variant whose hidden run finishes and
   fails a starting failure in its body becomes `incomplete.patch`. Otherwise `partial_control` records
@@ -731,6 +733,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | T10: the made-up task `ledgerette-pr-1`, with real commits from a local mirror and a made-up statement, through a controller built from this code (`elixir-task-factory:t10`) by `bin/factoryctl` only: imported, checked (42.6 s), exported, run against a stand-in model server that plays back a fixed conversation (7 calls through Pi 1.2.0), and listed by `kept` as one kept session with the files of the design note's section 7; a second attempt with a wrong change ended as not passed and was not listed. Labels, CPU share and `etf-` names seen on every container the engine started. `bin/factoryctl` now prints only the JSON answer (the VM printed a warning first), with a new test in `factory_test` ([data](../docs/data/2026-11-12_factory_t10/README.md)) | see the data folder | format check passes; compiles with warnings as errors; on the tree after E72 224 passed, 0 failed, 9 excluded without Docker and 233 passed, 0 failed with it (E72 223 and 232); before the rebase 206 and 215 (T9 205 and 214), 213 tests as in T9 and the new one passing; the parity test 6 of 6, not edited |
 | 2026-11-12 | E71: a Redis service in the engine (change 9): a task may list `redis` in `services`, pinned by digest (`task_contract.ex`, `services!/1`); `sandbox.ex` starts it beside the workspace in the same private network (Postgres's, or its own when alone) with Postgres's limits, the labels and the share, an empty `/data` tmpfs and saving off, and removes it with the workspace; the database baseline never captures it (`service_images.ex`, `baseline.ex`, `fixtures.ex`); one new test in `task_contract_test` and two new test files ([data](../docs/data/2026-11-12_factory_redis/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 231 without Docker and 241 with it (T10 224 and 233; T8 198 and 206), 10 and 0 excluded; 233 tests end as in T10, 8 are new and pass; a made-up task whose tests talk to Redis passes the gate with Redis alone and beside Postgres, is refused without it, and each new container starts with an empty Redis; a task without Redis gets the same containers and arguments as before; the parity test 6 of 6, untouched |
 | 2026-11-12 | P6 (pilot): the licence scan and the hold-out check for task folders in `factory/tools/` ([README](tools/README.md)): `check_tasks.sh` over any list of task folders, the reader `task_folder.py`, `task_licence.py` (per-file verdicts of the sister repository's `license_scan.py`, copied unchanged, at the starting and merge commits; the licences the locked Hex packages declare), `task_holdout.py` (repository and names, 8- and 12-word spans against the bench's cases, the method of `heldout_check.py`, copied unchanged); run on the 16 checked ex338 tasks ([data](../docs/data/2026-11-12_pilot_licence_holdout/README.md)) | see the data folder | no engine code changed, no engine test run; a positive control (a task with one bench case's hidden tests) gives 533 and 557 spans to read, and the repository rule holds out a held-out organisation, repository and name |
+| 2026-11-12 | Every candidate the resolver serves, made and checked (E68, E72): radiator 27 checked of 64, ex338 7 of 12 tried. Two fixes from the lists: `bundle_probe.ex` `settle/4` leaves out an existing test file with a skipped test (`skipped_on_unchanged`, `skipped_on_reference`), since the grader does not pass a skipped test (2.2); the OTP 27.2 pairs left `config/toolchain_images.json`, since such an image cannot install Hex ([data](../docs/data/2026-11-12_pilot_tasks_all/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 231 passed, 0 failed, 10 excluded without Docker and 241, 0, 0 with it, every test as on `origin/main` (with P6) the same hour; one new case in `bundle_maker_test`'s settling test and one assertion in `toolchain_test`; the parity test 6 of 6, not edited |
 
 ## 8. What is not decided, and what is not verified
 
