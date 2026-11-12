@@ -200,6 +200,25 @@ licensed text in the file, and a dependency is judged where a session quotes its
 `santiment/sanbase2` 5405 and 5394 (`priv/repo/structure.sql`, the database layout written by the project's own
 tools) and `mbta/screens` 3307 (`assets/package-lock.json`).
 
+**A case older than its project's licence counts when the licence holder wrote it** (the owner, 2026-11-12: "Yes,
+count them", to "Count cases older than the project's licence, when the same author licensed it later?"). The scan
+reads the project as it was at the case's own starting commit, and a commit from before the project stated a licence
+fails it for "no licence". Such a case counts when all four hold:
+
+- the project stated a licence of the list later, in a licence file at its root or in a README statement that counts
+  (above), and states it still at its newest commit;
+- every file the case's change touches, the fix and the tests, was written only by the holder that licence names, in
+  every commit up to the case's merge. A bot's dependency bumps count as the project's own only when they touch none
+  of those files;
+- no touched file carries another licence notice: the per-file check of section 4 applies as always;
+- recorded with the case: the licence file or the README sentence, the commit and the date that added it, its
+  copyright line, and the authors of the touched files.
+
+A case with another author in a touched file is left out as `no_licence_at_commit`. Lines that name an AI tool as
+co-author are recorded, as for any candidate (section 3). First projects: `zorn/local_cents` (licence file added on
+2026-08-31; 19 candidates are older) and `blablatdinov/croniq` (README statement on 2025-07-13, licence file on
+2025-07-28; 18 candidates are older); in both, one author wrote all the code.
+
 The list is applied three times: to the repository (section 1), to every file a task touches (section 4) and to every
 dependency file a session quotes (section 6). The dataset's own licence: third-party code keeps its licence, named
 per row with the notices shipped; the licence of the owner's own part is not final (the owner leans to MIT). This page
@@ -225,3 +244,5 @@ is not legal advice.
 - The two session scans of section 6 are to be built before the first session is published.
 - The licence tool still marks a case `fail` when a file is left out only for its length; the rule of section 9 is
   applied by a recorded reading until the tool reads such files itself (registry E110).
+- The licence tool still marks a case `fail` when its starting commit is older than the project's licence; the rule
+  of section 9 is applied from recorded tables of authors until the tool compares them itself (registry E113).
