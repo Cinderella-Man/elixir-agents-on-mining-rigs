@@ -10,8 +10,8 @@
 #                              ClickHouse and Redis, no release file, no other toolchain (a Rust one, for example)
 #   resolver_reads_it          of those, the candidates whose pair the resolver finds today (the resolver reads fewer places than CI
 #                              names versions in: an environment variable such as ELIXIR_VERSION, a container image)
-#   with_redis                 of no_lack_found, those that start Redis or depend on a Redis client (the engine has the service; the
-#                              resolver still answers needs_service:redis, so a template must say so)
+#   with_redis                 of no_lack_found, those that start Redis or depend on a Redis client (the engine has the service and
+#                              the table pins redis:7.2; periods_resolve.jq does not check the Redis version CI names against it)
 #   commit_not_found           candidates whose merge commit GitHub no longer serves (no toolchain read)
 #   lack_*                     candidates by kind of lack (a candidate can have several)
 set -euo pipefail

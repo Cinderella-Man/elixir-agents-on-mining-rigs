@@ -135,7 +135,7 @@ programs are the same. The pilot read each starting commit's files from a clone;
 starting commit (the first parent of its merge commit, from the census) are read through GraphQL: the root tree, the
 `.github/workflows` and `.github/actions` trees (names and blob ids), then each distinct blob once.
 `run/periods_facts.jq` and `run/periods_resolve.jq` are a port to `jq` of the readers of the factory's toolchain
-resolver (`factory/lib/eab/toolchain.ex`): `.tool-versions`, `mise.toml` and `.mise.toml`, the CI files, a `Dockerfile`
+resolver (`factory/lib/eab/toolchain.ex`, as of public commit `b2a2cf7`): `.tool-versions`, `mise.toml` and `.mise.toml`, the CI files, a `Dockerfile`
 and the lower bound of the `elixir:` requirement of `mix.exs`, in that order, each version from the first file that
 names it; the image from `factory/config/toolchain_images.json` by prefix; the Postgres major and the ClickHouse version
 from CI's services, matched against the same table. The port was tried on made-up files and on these two applications;
@@ -159,9 +159,13 @@ the second reading gives no lack; `resolver_gap` is `yes` where the first readin
 
 Apt packages (`apt_packages`), Docker Compose use in a test job (`docker_compose`), and services started only by
 workflows that do not run the tests (`services_in_other_workflows`) are recorded as columns and are not lacks: the
-engine installs distribution packages per task, and the resolver refuses any CI service other than Postgres and
-ClickHouse unless the project's template marks it as not needed. Redis is served by the engine; the resolver still
-answers `needs_service:redis`, so a period with `redis` set needs its template to say so.
+engine installs distribution packages per task, and the resolver refuses any CI service other than Postgres, ClickHouse
+and Redis unless the project's template marks it as not needed. **Redis:** the port follows the resolver and the image
+table as they stood at public commit `b2a2cf7` (the table had no Redis line and the resolver answered
+`needs_service:redis`). Since commit `1a0f888` the table pins `redis:7.2` and the resolver serves Redis, matching the
+version CI names by prefix (`redis:7` is served, `redis:6` would be `no_service_image:redis/6`). `periods_resolve.jq`
+has not been given that rule: it records `redis` as `yes` and leaves the version unchecked. The two applications
+screened here start no Redis.
 
 | Application | Candidates | Periods | No lack | Elixir older than 1.12 | Pair missing | Postgres version missing | Release file |
 |---|---:|---:|---:|---:|---:|---:|---:|
