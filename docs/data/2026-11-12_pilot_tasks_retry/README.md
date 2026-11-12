@@ -6,7 +6,9 @@ run tried them again with a controller built from public `main` at `8b8bb99` (`e
 is the first real list that went through the factory's own entry points (`import`, `check`, `export` through
 `bin/factoryctl`, [section 9](../../../factory/README.md)) instead of the hand-driven gate script. Everything ran on
 the CPU of the 7-GPU machine on 2026-11-12 between 07:56 and 08:24 (UTC+1), three pull requests at once, while three
-other jobs used the same Docker daemon and disk (load average 8.6 to 17.9).
+other jobs used the same Docker daemon and disk (load average 8.59 at 08:02, 11.31 at 08:07, 12.70 at 08:09 and 17.87
+at 08:23); the diagnostic runs, the reproduction and
+the tests followed between 08:37 and 09:03, while a copy of 258 GB was being written to the same disk.
 
 ## Result
 
@@ -14,9 +16,9 @@ other jobs used the same Docker daemon and disk (load average 8.6 to 17.9).
 
 | Cause in the mass run | Pull requests | Tried | Checked now | Still dropped, and why |
 |---|---|---:|---:|---|
-| the probe kept a test file with a skipped test (fixed in `main` since) | radiator #599, #601, #603 | 3 | 0 | none reached the controls this time: #599 at the probe (`start_run_did_not_finish`), #601 at the preparation (a Postgres time-out in `mix ecto.migrate`), #603 at the probe (`reference_run_did_not_finish`) |
-| "Workspace command failed" with no output (radiator 1.18.3/27.3) | radiator #611, #613, #615 | 3 | 0 | **explained** (below): the workspace's `git add -A` hit its 120-second limit in the first control of #611 and #615; #613 is now dropped by the probe for its own reason (its only existing test file has a skipped test) |
-| possibly the load | radiator #521, #523, #525, ex338 #1331 | 4 | **1** | #1331 checked; #521, #523, #525 at the probe (`start_run_did_not_finish`: the hidden-test command exits 1 within seconds) |
+| the probe kept a test file with a skipped test (fixed in `main` since) | radiator #599, #601, #603 | 3 | 0 | none reached the controls this time, all three for the disk's load: #599 and #603 at the probe (the test command could not get a Postgres connection within 2 s), #601 at the preparation (the same time-out in `mix ecto.migrate`) |
+| "Workspace command failed" with no output (radiator 1.18.3/27.3) | radiator #611, #613, #615 | 3 | 0 | **explained and reproduced** (below): the workspace's `git add -A` hit its 120-second limit in the first control of #611 and #615; #613 is now dropped by the probe for its own reason (its only existing test file has a skipped test) |
+| possibly the load | radiator #521, #523, #525, ex338 #1331 | 4 | **1** | #1331 checked; #521, #523, #525 at the probe, for the disk's load: the test command could not get a Postgres connection within 2 s, on both sides |
 | OTP 27.2 cannot install Hex | radiator #605, #606, #607, #609 | 1 | 0 | the next patch release, OTP 27.2.1, fails the same way (#607); the four stay refused, and #605, #606, #609 were refused by the maker (`no_image`) |
 
 `tasks.tsv` has two lines per pull request, the mass run's line and this run's, in the columns of the mass run's
@@ -38,23 +40,41 @@ file system's journal to commit), at 2.5 % of a CPU, with `.git/index.lock` and 
 1.18.3/27.3 period track 9,302 files, most of them those icons. The same command is slow in other workspaces too,
 but under the limit: ex338 #1331's six grades ran `git add -A` in 35.7, 15.0, 50.8, 2.5, 2.1 and 12.9 s.
 
-The likely mechanism (inferred, not proved here): in a new container git's index does not match the files' stat
-data, so `git add -A` adds every tracked file again; each file's object already exists, so git refreshes the
-object's time stamp, and on Docker's overlay file system each such write to a file of the image's layer copies the
-file up and waits for the disk. On a disk that other jobs keep busy that wait is long enough to cross 120 s for
-9,302 files. The fix cannot be in the grader or the workspace recipe (README section 2); two places outside it
-would do: the task's `runtime.before_test_commands` with `git update-index -q --refresh` (stat data refreshed once,
-no objects written), or the maker refusing workspaces above a number of tracked files. Neither is done here.
+**Reproduced outside the engine** (`run/repro.sh`, three fresh containers from #615's own workspace image with the
+workspace container's limits, one after another; load average 10.74, 9.74, 10.64 and 10.20 at their starts and end):
+1. all 9,307 tracked files differ from git's index in their stat data: the index holds inode 29528129 and an older
+   change time for `assets/vendor/phosphor/fill/behance-logo-fill.svg`, the container shows inode 30164765
+   (`git diff-files` lists all 9,307); the repository's 9,371 objects are all loose, none packed;
+2. `git add -A` alone: stopped by the reproduction's own limit of 240 s (exit 124, 243.0 s);
+3. `git update-index -q --refresh` first: 0.2 s, and then `git add -A`: 0.0 s, exit 0.
+
+So the mechanism: in a fresh container every tracked file's inode differs from the one in the index, `git add -A`
+therefore adds every file again, and since each object already exists git refreshes its time stamp; that write to a
+file of the image's layer makes Docker's overlay file system copy it up and wait for the disk, 9,371 times. On a
+disk other jobs keep busy that crosses 120 s. Refreshing the index's stat data first reads the files but writes no
+object, and the add after it has nothing to do. The fix cannot be in the grader or the workspace recipe (README
+section 2); two places outside it would do: the task's `runtime.before_test_commands` with
+`git update-index -q --refresh`, or the maker refusing workspaces above a number of tracked files. Neither is done
+here (registry row E78). The same `git add -A` runs, with a limit of 60 s, after every tool call of a teacher's
+session (`Eab.Sandbox.patch/1`), so these workspaces would break sessions too.
 
 ### The other drops
 
 - **#599, #521, #523, #525** (and **#603** on the reference): the probe's hidden-test command exited with code 1
   (an error of `mix` itself, not test failures, which exit 2) after 6.9, 5.6, 5.6 and 7.8 s; in the mass run the
-  same tasks' runs finished. `check` keeps no output of these runs (below), so the cause is not recorded. The
-  same pattern, a quick exit 1, is what a Postgres pool time-out at start-up gives, the error #601's preparation
-  logged in full ("connection not available and request was dropped from queue after 2999ms"); that is the most
-  likely cause, under the disk load of the three other jobs (est., not verified).
-- **#601**: the preparation's `mix ecto.migrate --quiet` failed on that Postgres time-out, after 3.5 s.
+  same tasks' runs finished. `check` keeps no output of these runs (below), so after the check the gate's two
+  diagnostic runs were made again for them, one task at a time, with their output (`run/diag.exs`). For #599,
+  #521 and #523, on the unchanged project and on the reference alike, the run stops before any test, in the test
+  alias's `mix ecto.create`: "The database for Radiator.Repo couldn't be created: connection not available and
+  request was dropped from queue after 2000ms" (#599's reference: a `DBConnection.ConnectionError`), while the
+  Postgres beside it had logged "ready to accept connections". The disk was the bottleneck: the host's I/O pressure
+  (`/proc/pressure/io`, the share of time every running task waited on I/O) was 78.98 % over five minutes at
+  08:50 and 85.12 % at 08:53, with 7, 7, 6 and 8 processes blocked in four samples at 08:50, the last three with
+  25 % of the CPU time in I/O wait. So these are drops of the load, and these pull requests themselves were not
+  tested; they need a third try on a quiet disk. #525's diagnostic run stopped when Docker itself stalled on
+  removing a container ("removal of container … is already in progress"), and #603's was not reached.
+- **#601**: the preparation's `mix ecto.migrate --quiet` failed on the same Postgres time-out (its wording:
+  "dropped from queue after 2999ms"), after 3.5 s.
 - **#613**: the probe now leaves out `test/radiator_web/live/outline_live_test.exs` as `skipped_on_unchanged` (the
   mass run's fix of `settle/4`), and that was its only existing test file, so `no_existing_tests`. The fix also
   left that file out of #611's command. These are the fix's first effects on real tasks.
@@ -101,20 +121,24 @@ One new test in `test/eab/factory_test.exs`. `config/toolchain_images.json`: the
 with its comment in `toolchain_test.exs`. No file of README section 2 changed; the parity test is untouched.
 
 **Tests** (the tooling image `eab-tooling:dev`, as the trimming jobs ran them): the format check passes; without
-Docker 232 passed, 0 failed, 10 excluded (the mass run's count on `main` that morning: 231, 0, 10; the one more is the new
-test); after the last edit (one blank line the format check asked for) the three touched files again, 31 of 31
-(`toolchain_test`, `factory_test`, `bench_parity_test`). The tests with Docker were not run (below).
+Docker 232 passed, 0 failed, 10 excluded (the mass run's count on `main` that morning: 231, 0, 10; the one more is
+the new test); after the last edit (one blank line the format check asked for) the three touched files again, 31 of
+31 (`toolchain_test`, `factory_test`, `bench_parity_test`). **The tests with Docker gave no verdict:** they ran from
+08:38 to 09:03 on the choked disk, 131 of the 133 tests that ran passed, and the run broke off before the rest of
+the suite's 242; the two failures (`bundle_probe_docker_test`, `build_seed_docker_test`) are the engine's own
+"Command watchdog expired", in files this change does not touch, and `factory_docker_test` was not reached. They
+need a run on a quiet disk.
 
-## Not run: the job's disk floor was crossed
+## The order of the work, and the disk floor
 
-The job was to stop when free space on `/` fell under 572,835,543,040 bytes. It fell under it during the check
-(553,171,542,016 at its end), while three other jobs wrote to the same disk, and went on falling with this run's
-controller idle (536,106,573,824 at 08:30, 520,533,430,272 at 08:36). So these were written but not run:
-`run/diag.exs` (the two diagnostic runs, with their outputs, of #599, #521, #523, #525 and #603, which would say
-why their hidden-test command exited 1), `run/repro.sh` (the `git add -A` of #615's workspace image, timed, with and
-without `git update-index -q --refresh` first, which would test the mechanism above), and the factory's tests with
-Docker on the fix. `run/catch.sh` ran during the check; it fired on another job's containers, and #615's git was
-read by hand with the same commands.
+The job's brief set a floor of 572,835,543,040 free bytes on `/`. Free space fell under it during the check
+(553,171,542,016 at its end), with this run's own folders at 413 MB, so the run stopped there and the controller was
+taken down. The floor had in fact been lowered on the owner's word while the check ran, to 134,454,282,076 bytes with
+a disk allowance of 280 GB, because the owner was copying 258 GB onto the same disk; this run learnt of it at 08:37
+and then made the diagnostic runs, the reproduction and the tests with Docker, on a restarted controller. At 09:03:15
+the controller was stopped from outside this run (`SIGTERM`, as another job's controller at the same time), and the
+Docker tests ended in the same second. `run/catch.sh` ran during the check; it fired on another job's containers, so
+#615's git was read by hand with the same commands.
 
 ## Files
 
@@ -123,7 +147,7 @@ read by hand with the same commands.
 | `tasks.tsv` | two lines per pull request (`run`: `mass_run`, `retry`), in the columns of the mass run's task tables; the retry's columns are explained in `run/table.sh` |
 | `changes.tsv` | one line per pull request: the cause group, the verdict of each run, what changed |
 | `git_add.tsv` | every `git add -A` of this run's workspaces: task, start, seconds, exit code |
-| `run/` | `retry.sh` (stage, make, import, check, export), `events.sh` and `events_table.sh` (Docker's event record and its tables), `catch.sh` (what a running `git add -A` waits on), `diag.exs` and `repro.sh` (written for the diagnostic runs and the reproduction, not run: see "Not run"), `table.sh` and `side_by_side.sh` (the tables) |
+| `run/` | `retry.sh` (stage, make, import, check, export), `events.sh` and `events_table.sh` (Docker's event record and its tables), `catch.sh` (what a running `git add -A` waits on), `diag.exs` (the gate's two diagnostic runs, with their output, through the controller), `repro.sh` (the `git add -A` reproduction), `table.sh` and `side_by_side.sh` (the tables) |
 
 The checked task folder is kept on the build machine, not published.
 
@@ -147,6 +171,10 @@ NAME=factory-retry $FACTORY/bin/factoryctl check --concurrency 3 radiator-pr-607
 NAME=factory-retry $FACTORY/bin/factoryctl export /data/export/retry ex338-pr-1331
 run/table.sh $CTL/data <job> otp-radiator retry-ex338 retry-radiator refused-radiator > tasks_retry.tsv
 run/side_by_side.sh order.txt tasks_retry.tsv tasks_radiator.tsv tasks_ex338.tsv > tasks.tsv
+# after the check, with the controller up again on the same data folder: the diagnostic runs, through the release's rpc
+#   System.put_env(%{"DIAG_JOB" => "<job>", "DIAG_IDS" => "radiator-pr-599 radiator-pr-521 radiator-pr-523
+#   radiator-pr-525 radiator-pr-603", "DIAG_OUT" => "/data/diag"}); spawn(fn -> Code.eval_file("/data/diag.exs") end)
+IMAGE=<#615's workspace image> OUT=$JOB/out FILE=assets/vendor/phosphor/fill/behance-logo-fill.svg LIMIT=240 run/repro.sh
 ```
 
 The OTP 27.2.1 lines were looked up with `factory/scripts/toolchain_image.sh elixir 1.18.1 27.2.1` and `1.18.2 27.2.1`.
@@ -155,7 +183,8 @@ The OTP 27.2.1 lines were looked up with `factory/scripts/toolchain_image.sh eli
 
 - Free on `/`: 602,591,866,880 bytes at 07:56:24, 601,918,324,736 at the check's start (07:59:59), 594,012,368,896
   at 08:09:21 and 553,171,542,016 at its end (08:23:42), with the three other jobs writing at the same time; this
-  run's own folders hold 413 MB. The job's floor, 572,835,543,040 bytes, was crossed between 08:09 and 08:23.
+  run's own folders hold 413 MB. Later, with the owner's copy on the disk: 517,440,307,200 at 08:37:40,
+  482,335,428,608 at 08:53:10 and 453,843,324,928 at 09:05:38.
 - Built: `elixir-task-factory:retry` (191,523,808 bytes as `docker image inspect` reports it). Pulled:
   `hexpm/elixir:1.18.2-erlang-27.2.1-ubuntu-noble-20260509.1` (80,493,146 bytes). The engine built a toolchain,
   workspace and database image per period and commit as in the mass run, most from the build cache.
