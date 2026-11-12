@@ -5,11 +5,27 @@ A task passes when every file it touches (task_folder.py) has a verdict starting
 starting commit's tree (files the task does not add) and in the scan of the merge commit's tree (files the task does
 not delete). A file found in neither tree fails as `missing`.
 
+The project's root licence comes from a licence file at the root (LICENSE, LICENCE or COPYING, with or without .md or
+.txt). When the root has none, a licence stated in the root README counts (docs/dataset_rules.md, section 9; the
+owner, 2026-11-12: "Yes, accept it"): the statement must name one licence of the list in plain words and be the
+project's own, and the file, its sha256, the sentence and its line are recorded as the proof. A licence file, where
+there is one, still decides. `root` in tree-licence's line says which:
+  ok:licence-file           the root licence file's families are all in the list
+  ok:readme-statement       no licence file; the README states one licence of the list as the project's own
+  fail:licence-file         the root licence file's families are not all in the list (or none was recognised)
+  fail:no-licence           no licence file, and no statement in the README
+  fail:readme-outside       the README's own statement names a licence outside the list (or an unclear one)
+  fail:readme-several       the README's own statements name two or more licences of the list
+A README sentence is the project's own when it sits in a section headed License, Licence, Licensing or Copyright
+(not one about third-party code or credits), or elsewhere when its subject is the project ("this project",
+"this software", ...) followed by "licensed/released/distributed/available under". A sentence that speaks of other
+code (uses, includes, depends on, third-party, vendored, icons, fonts, ...) is a mention, not a statement.
+
 usage:
   python task_licence.py tree-licence TREE
-      the tree's root licence file: name, sha256, families (license_scan's signatures), and the holder regex taken
-      from its first copyright line; one JSON line. check_tasks.sh passes the families and the regex to
-      license_scan.py.
+      the tree's root licence: file (the licence file, or the README with the statement), sha256, families
+      (license_scan's family names), the holder regex taken from its first copyright line, source, root, statement,
+      line and mentions; one JSON line. check_tasks.sh passes the families and the regex to license_scan.py.
   python task_licence.py scan-trees --trees DIR COMMIT [...]
       for each DIR/<commit>/ not yet scanned: DIR/<commit>.licence.json (tree-licence's line), then
       upstream/license_scan.py on the tree with --license <its families, or NONE> --holders <its regex>, writing
@@ -17,7 +33,9 @@ usage:
   python task_licence.py join --trees DIR --out PREFIX TASK_DIR [...]
       DIR holds <commit>.scan.tsv (license_scan.py's table) and <commit>.licence.json (tree-licence's line) for
       every starting and merge commit. Writes PREFIX.files.tsv (task, path, sources, verdict at start, verdict at
-      merge, pass), PREFIX.tasks.tsv (one row per task) and PREFIX.commits.tsv (one row per commit).
+      merge, pass), PREFIX.tasks.tsv (one row per task; its last two columns, root_licence and root_proof, are the
+      starting commit's root result and, for a README statement, "<file>@<commit>:<line>: <sentence>") and
+      PREFIX.commits.tsv (one row per commit).
   python task_licence.py locks --trees DIR --out TSV TASK_DIR [...]
       the Hex and git dependencies in mix.lock of each starting commit (DIR/<commit>/mix.lock), one row per
       (package, version) with the tasks and commits that lock it.
@@ -56,13 +74,200 @@ def root_allowed(families):
     return bool(families) and set(families) <= ROOT_FAMILIES
 
 
+def root_code(lic):
+    """The root result of one commit's tree-licence line. A line written before the README rule has no `root`."""
+    if not lic:
+        return "not scanned"
+    if lic.get("root"):
+        return lic["root"]
+    if not lic.get("file"):
+        return "fail:no-licence"
+    return "ok:licence-file" if root_allowed(lic.get("families") or []) else "fail:licence-file"
+
+
+def root_ok(lic):
+    return root_code(lic).startswith("ok")
+
+
+def root_proof(lic, commit):
+    """For a README statement: <file>@<commit>:<line>: <sentence>, on one line; else the licence file's name."""
+    if not lic or not lic.get("file"):
+        return ""
+    if lic.get("source") == "readme-statement":
+        sent = re.sub(r"\s+", " ", lic.get("statement", "")).strip()
+        return f"{lic['file']}@{commit}:{lic.get('line', 0)}: {sent}"
+    return f"{lic['file']}@{commit}"
+
+
+# The licences of the list, named in plain words (license_scan's family names). BSD counts only with its clause
+# count or as the new/modified/revised/simplified BSD licence; a bare "BSD" is unclear.
+PLAIN_ALLOWED = [
+    ("Apache-2.0", re.compile(r"\bApache(?:[ -]Software)?(?:[ -]Licen[cs]e)?,?[ -]*(?:Version|v\.?)?[ -]*2(?:\.0)?\b"
+                              r"|apache\.org/licenses/LICENSE-2\.0", re.I)),
+    ("MIT", re.compile(r"\bMIT\b|\bExpat [Ll]icen[cs]e\b")),
+    ("BSD", re.compile(r"\bBSD[- ]?(?:2|3|[Tt]wo|[Tt]hree)[- ]?[Cc]lause\b|\b(?:2|3|[Tt]wo|[Tt]hree)[- ][Cc]lause BSD\b|"
+                       r"\b(?:[Nn]ew|[Mm]odified|[Rr]evised|[Ss]implified)\s+BSD\b")),
+    ("ISC", re.compile(r"\bISC\b")),
+]
+# Licences outside the list named in plain words, and unclear names; license_scan's own signatures are added.
+PLAIN_OUTSIDE = [
+    ("GPL", re.compile(r"\b(?:A|L)?GPL(?:v?\d(?:\.\d)?)?\b|General Public Licen[cs]e")),
+    ("MPL", re.compile(r"\bMPL\b|Mozilla Public Licen[cs]e", re.I)),
+    ("EPL", re.compile(r"\bEPL\b|Eclipse Public Licen[cs]e", re.I)),
+    ("EUPL", re.compile(r"\bEUPL\b|European Union Public Licen[cs]e", re.I)),
+    ("CC", re.compile(r"Creative Commons|\bCC[- ]?BY\b|\bCC0\b", re.I)),
+    ("SSPL-BUSL", re.compile(r"Server Side Public Licen[cs]e|Business Source Licen[cs]e|\bBUSL\b|\bSSPL\b|"
+                             r"Commons Clause|Elastic Licen[cs]e", re.I)),
+    ("Unlicense", re.compile(r"\bUnlicense\b", re.I)),
+    ("WTFPL", re.compile(r"\bWTFPL\b", re.I)),
+    ("Apache-1", re.compile(r"\bApache(?:[ -]Software)?(?:[ -]Licen[cs]e)?,?[ -]*(?:Version|v\.?)?[ -]*1(?:\.[01])?\b",
+                            re.I)),
+    ("BSD-4-Clause", re.compile(r"\bBSD[- ]?(?:4|[Ff]our)[- ]?[Cc]lause\b|\b(?:4|[Ff]our)[- ][Cc]lause BSD\b|"
+                                r"\b[Oo]riginal BSD\b")),
+    ("BSD-unclear", re.compile(r"\bBSD\b")),
+    ("public-domain", re.compile(r"\bpublic domain\b", re.I)),
+]
+README_NAME = re.compile(r"^README(?:\.(?:md|markdown|txt|rst))?$", re.I)
+LICENCE_HEADING = re.compile(r"\blicen[cs]e|\blicensing\b|\bcopyright\b", re.I)
+# a heading about other people's code, even when it says "licence"
+OTHERS_HEADING = re.compile(r"third[- ]?party|dependenc|credit|acknowledg|attribution|vendor|thanks|contribut", re.I)
+# a sentence that speaks of other code than the project's own (not "use", "including" or "derived from", which the
+# licence texts themselves say)
+OTHERS = re.compile(r"\b(?:uses|using|makes use of|depends on|depending on|dependenc(?:y|ies)|includes|bundles|"
+                    r"bundled|vendor(?:ed|s)?|third[- ]?party|icons?|fonts?|artwork|logos?|illustrations?|"
+                    r"based on|forked from|courtesy of|copied from|borrowed from|adapted from|ported from|"
+                    r"libraries|packages|plugins|gems|crates|built with|powered by)\b", re.I)
+SELF_SUBJECT = re.compile(r"\b(?:this|our|the present)\s+(?:project|software|code(?:base)?|source(?: code)?|"
+                          r"repository|repo|application|app|library|package|tool|work|program|site|website|server|"
+                          r"service)\b[^.]{0,80}?\b(?:licen[cs]ed|released|distributed|available|published|"
+                          r"provided|offered)\b[^.]{0,20}?\bunder\b", re.I)
+
+
+def plain_licences(sentence):
+    """(families of the list, families outside it or unclear) named in one sentence."""
+    allowed, rest = [], sentence
+    for fam, rx in PLAIN_ALLOWED:
+        if rx.search(rest):
+            allowed.append(fam)
+            rest = rx.sub(" ", rest)
+    outside = [fam for fam, rx in PLAIN_OUTSIDE if rx.search(rest)]
+    # a licence text pasted whole (license_scan's signatures, for example the MIT grant)
+    for f in license_scan.families_in(rest):
+        if f in ROOT_FAMILIES:
+            if f not in allowed:
+                allowed.append(f)
+        elif f not in outside:
+            outside.append(f)
+    return allowed, outside
+
+
+def readme_blocks(text):
+    """The README as paragraphs: (first line number, text, the licence-section flag). Markdown and reStructuredText
+    headings start sections; a section headed License/Licence/Licensing/Copyright (not about others' code) is the
+    licence section until the next heading of its level or higher."""
+    lines = text.splitlines()
+    blocks, cur, cur_line, in_lic, lic_level = [], [], 0, False, 0
+
+    def flush():
+        nonlocal cur
+        if cur:
+            blocks.append((cur_line, " ".join(cur), in_lic))
+        cur = []
+
+    i = 0
+    while i < len(lines):
+        raw = lines[i]
+        s = raw.strip()
+        title, level = None, 0
+        m = re.match(r"^(#{1,6})\s+(.*?)\s*#*\s*$", s)
+        nxt = lines[i + 1].strip() if i + 1 < len(lines) else ""
+        if m:
+            title, level = m[2], len(m[1])
+        elif s and not s.startswith(("```", "~~~")) and re.fullmatch(r"(=+|-+|~+|\^+|\*+)", nxt) and len(nxt) >= 3 \
+                and not re.fullmatch(r"[-=~^*]+", s):
+            title, level = s, (1 if nxt[0] == "=" else 2)
+            i += 1
+        if title is not None:
+            flush()
+            if in_lic and level > lic_level:
+                pass  # a subsection of the licence section
+            else:
+                in_lic = bool(LICENCE_HEADING.search(title)) and not OTHERS_HEADING.search(title)
+                lic_level = level
+            i += 1
+            continue
+        if not s or s.startswith(("```", "~~~")) or re.fullmatch(r"[-=*_]{3,}", s):
+            flush()
+            i += 1
+            continue
+        s = re.sub(r"^(?:>\s*)+|^(?:[-*+]|\d+[.)])\s+", "", s)  # quotes and list markers
+        s = re.sub(r"!?\[([^\]]*)\]\(([^)]*)\)", r"\1 (\2)", s)  # links keep their text and target
+        s = re.sub(r"[*_`]+", "", s)
+        if not cur:
+            cur_line = i + 1
+        cur.append(s)
+        i += 1
+    flush()
+    return blocks
+
+
+def readme_statement(tree):
+    """The root README's licence statement, or None when the root has no README."""
+    names = sorted(n for n in os.listdir(tree) if os.path.isfile(os.path.join(tree, n)) and README_NAME.match(n))
+    if not names:
+        return None
+    path = os.path.join(tree, names[0])
+    with open(path, "rb") as f:
+        data = f.read()
+    text = data.decode("utf-8", errors="replace")
+    own, mentions = [], 0
+    for line, para, in_lic in readme_blocks(text):
+        for sent in re.split(r"(?<=[.!?])\s+(?=[A-Z(\"'])", para):
+            allowed, outside = plain_licences(sent)
+            if not allowed and not outside:
+                continue
+            if OTHERS.search(sent) or not (in_lic or SELF_SUBJECT.search(sent)):
+                mentions += 1
+                continue
+            own.append((line, sent.strip(), allowed, outside))
+    holders = ""
+    lic_text = "\n".join(p for _l, p, in_lic in readme_blocks(text) if in_lic)
+    m = license_scan.COPYRIGHT.search(lic_text)
+    if m:
+        h = re.sub(r"^\s*(\(c\)|©)?\s*[\d\s,\-–]*", "", m[1]).strip().rstrip(".")
+        h = re.split(r"\s+(?:Licen[cs]ed|Released|Distributed)\b", h)[0].strip().rstrip(".")
+        holders = re.escape(h) if h else ""
+    allowed = sorted({f for _l, _s, a, _o in own for f in a})
+    outside = sorted({f for _l, _s, _a, o in own for f in o})
+    if not own:
+        root, families = "fail:no-licence", []
+    elif outside:
+        root, families = "fail:readme-outside", sorted(set(allowed) | set(outside))
+    elif len(allowed) > 1:
+        root, families = "fail:readme-several", allowed
+    else:
+        root, families = "ok:readme-statement", allowed
+    first = own[0] if own else None
+    if root.startswith("ok"):
+        first = next(o for o in own if o[2])
+    return {"file": names[0] if own else "", "sha256": hashlib.sha256(data).hexdigest() if own else "",
+            "families": families, "holders": holders if own else "", "source": "readme-statement" if own else "none",
+            "root": root, "statement": first[1] if first else "", "line": first[0] if first else 0,
+            "mentions": mentions}
+
+
 def tree_licence(tree):
     names = sorted(n for n in os.listdir(tree) if os.path.isfile(os.path.join(tree, n))
                    and re.match(r"^(LICEN[CS]E|COPYING)(\.md|\.txt)?$", n, re.I))
     if not names:
-        return {"file": "", "sha256": "", "families": [], "holders": ""}
+        found = readme_statement(tree)
+        if found is not None:
+            return found
+        return {"file": "", "sha256": "", "families": [], "holders": "", "source": "none", "root": "fail:no-licence",
+                "statement": "", "line": 0, "mentions": 0}
     path = os.path.join(tree, names[0])
-    data = open(path, "rb").read()
+    with open(path, "rb") as f:
+        data = f.read()
     text = data.decode("utf-8", errors="replace")
     fams = license_scan.families_in(text)
     holders = ""
@@ -70,7 +275,9 @@ def tree_licence(tree):
     if m:
         h = re.sub(r"^\s*(\(c\)|©)?\s*[\d\s,\-–]*", "", m[1]).strip().rstrip(".")
         holders = re.escape(h) if h else ""
-    return {"file": names[0], "sha256": hashlib.sha256(data).hexdigest(), "families": fams, "holders": holders}
+    return {"file": names[0], "sha256": hashlib.sha256(data).hexdigest(), "families": fams, "holders": holders,
+            "source": "licence-file", "root": "ok:licence-file" if root_allowed(fams) else "fail:licence-file",
+            "statement": "", "line": 0, "mentions": 0}
 
 
 def scan_trees(a):
@@ -130,20 +337,22 @@ def join(a):
                           "pass" if ok else "fail:" + why])
         l0 = lic[t["start"]] or {}
         fam = l0.get("families") or []
-        root_ok = root_allowed(fam)
-        verdict = "pass" if root_ok and not failing else "fail"
+        rok = root_ok(l0)
+        verdict = "pass" if rok and not failing else "fail"
         trows.append([t["id"], t["start"], l0.get("file", ""), "+".join(fam) or "none", t["provenance_licence"] or "",
                       str(len(t["files"])), str(len(t["files"]) - len(failing)), verdict,
-                      ("" if root_ok else "root licence not MIT, Apache-2.0, BSD or ISC; ") + "; ".join(failing)])
+                      ("" if rok else f"root licence not MIT, Apache-2.0, BSD or ISC ({root_code(l0)}); ")
+                      + "; ".join(failing), root_code(l0), root_proof(l0, t["start"])])
     with open(a.out + ".files.tsv", "w") as f:
         f.write("task\tpath\tsources\tverdict_start\tverdict_merge\tresult\n")
         f.writelines("\t".join(r) + "\n" for r in frows)
     with open(a.out + ".tasks.tsv", "w") as f:
         f.write("task\tstart\tlicence_file\tlicence_families\tprovenance_licence\tfiles_touched\tfiles_passing\t"
-                "licence_result\tfailing\n")
+                "licence_result\tfailing\troot_licence\troot_proof\n")
         f.writelines("\t".join(r) + "\n" for r in trows)
     with open(a.out + ".commits.tsv", "w") as f:
-        f.write("commit\tlicence_file\tlicence_sha256\tfamilies\tfiles\tok\tok_notice\treview\texclude\texclude_kinds\n")
+        f.write("commit\tlicence_file\tlicence_sha256\tfamilies\tfiles\tok\tok_notice\treview\texclude\texclude_kinds\t"
+                "root_licence\troot_proof\n")
         for c in sorted(scans):
             s, l_ = scans[c], lic[c] or {}
             if s is None:
@@ -157,7 +366,8 @@ def join(a):
                                str(len(vs)), str(sum(v == "ok" for v in vs)),
                                str(sum(v.startswith("ok:") for v in vs)), str(sum(v.startswith("review") for v in vs)),
                                str(sum(v.startswith("exclude") for v in vs)),
-                               ",".join(f"{k}={n}" for k, n in sorted(kinds.items()))]) + "\n")
+                               ",".join(f"{k}={n}" for k, n in sorted(kinds.items())), root_code(l_),
+                               root_proof(l_, c)]) + "\n")
     print(json.dumps({"tasks": len(trows), "pass": sum(r[7] == "pass" for r in trows),
                       "files": len(frows), "files_failing": sum(r[5] != "pass" for r in frows)}))
 
