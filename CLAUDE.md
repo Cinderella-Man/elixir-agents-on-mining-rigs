@@ -21,8 +21,9 @@ live in the sister repo `llms-on-crypto-mining-rigs`.
   get in, and the reason name for everything left out (licences, versions, the gate, what a session may quote). Read
   it before any job that selects, makes, checks, describes or keeps something for the dataset, and change it in the
   same commit as a rule.
-- **The dataset's projects are fixed:** the 21 applications in `docs/data/2026-11-12_dataset_projects/`, chosen by the
-  rules written there (an application, a permissive licence, pushed to in the last six months, `mix.exs` asks for
+- **The dataset's projects are fixed:** the 16 applications in `docs/data/2026-11-12_dataset_projects/`, chosen by the
+  rules written there (an application, a permissive licence, pushed to in the last six months, not archived, at least
+  10 merged pull requests in the last 12 months, `mix.exs` asks for
   Elixir 1.18 or newer). No task and no session comes from any other project; inside a project the newest merged pull
   requests come first.
 - **Every idea gets a row in `experiments.md` at once,** however small. Ideas the evidence argues against stay as

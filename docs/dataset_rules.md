@@ -10,8 +10,9 @@ task and checked, the teacher writes its statement, the teacher solves it, and t
 
 ## 1. Projects
 
-The dataset is limited to 21 applications (the owner, 2026-11-12: "limit our dataset to those 21 projects and SAVE
-THE RULES that lead to selecting them"). The list, the 32 approved applications left out and the script are in
+The dataset is limited to 16 applications. The owner, 2026-11-12: "limit our dataset to those 21 projects and SAVE
+THE RULES that lead to selecting them"; the same day a closer look took five of the 21 off (the last two rules below;
+the owner: "Yes, drop them"). The list, the applications left out and the script are in
 [data/2026-11-12_dataset_projects](data/2026-11-12_dataset_projects/README.md).
 
 | Rule | It passes when | Left out as | Why |
@@ -21,6 +22,8 @@ THE RULES that lead to selecting them"). The list, the 32 approved applications 
 | Alive | it was pushed to in the six months before the decision (on or after 2026-05-12) | `not_alive` | a project nobody works on shows how Elixir was written, not how it is written |
 | A new Elixir | its `mix.exs` asks for Elixir 1.18 or newer | `old_elixir`, `no_elixir_version` | the owner, 2026-11-12: "we should prioritize the newest elixir codebases as Elixir changed a bit - we need to use "alive" repositories" |
 | Not held out | it is none of the Elixir SWE Bench's 12 projects (absinthe, accent, ash, beacon, cachex, guardian, live_beats, livebook, operately, pinchflat, plausible-analytics, vutuv) | `held_out` | the model is judged on that bench; nothing that shapes it may come from there |
+| Not archived | the repository is not archived on GitHub | `archived` | nobody works on it any more |
+| Works through pull requests | it had at least 10 merged pull requests in the 12 months before the decision | `too_few_pull_requests` | a case is cut from a merged pull request; a project that is pushed to directly gives none |
 
 No task, statement, session or screening is made for a project outside the list.
 

@@ -1,0 +1,6 @@
+repo	reason	merged_pull_requests_12_months	note
+hexpm/preview	archived	113	archived on GitHub
+cr0t/lexin	too_few_pull_requests	0	the last commit on the default branch is of 2026-09-05
+asciinema/asciinema-server	too_few_pull_requests	1	526 commits in the 12 months, pushed without pull requests
+covalenthq/refiner	too_few_pull_requests	1	5 commits in the 12 months
+cesium/safira	too_few_pull_requests	4	19 commits in the 12 months

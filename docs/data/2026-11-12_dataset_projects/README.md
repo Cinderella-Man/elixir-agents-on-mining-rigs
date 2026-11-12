@@ -1,8 +1,9 @@
-# The dataset's projects: 21 applications (2026-11-12)
+# The dataset's projects: 16 applications (2026-11-12)
 
 Registry row [E82](../../../experiments.md). Decided by the owner on 2026-11-12: "limit our dataset to those 21
 projects and SAVE THE RULES that lead to selecting them". Training tasks and sessions come from these projects only;
-work on any other project stopped the same day.
+work on any other project stopped the same day. The list was 21 at first; a closer look the same day took five
+off (rules 6 and 7), also on the owner's word ("Yes, drop them").
 
 ## The rules
 
@@ -18,6 +19,9 @@ on 2026-11-09):
 4. **It is on a new Elixir:** its `mix.exs` asks for Elixir 1.18 or newer (`mix_elixir`). The owner: "we should
    prioritize the newest elixir codebases as Elixir changed a bit - we need to use "alive" repositories".
 5. **It is not held out:** none of the Elixir SWE Bench's 12 projects (the approved batch already leaves them out).
+6. **It is not archived** on GitHub.
+7. **It works through pull requests:** at least 10 merged pull requests in the 12 months before the decision. A case
+   is cut from a merged pull request, so a project without them gives none.
 
 Inside a project, candidates are taken from the newest merged pull request backwards.
 
@@ -38,18 +42,13 @@ an older Elixir, and 3 state no Elixir version in `mix.exs`.
 | ambry-app/ambry | MIT | ~> 1.18 | 1,083 | 2026-11-09 |
 | axelclark/ex338 | MIT | ~> 1.18 | 749 | 2026-09-10 |
 | source-academy/backend | Apache-2.0 | ~> 1.19 | 695 | 2026-11-09 |
-| cesium/safira | MIT | ~> 1.19 | 407 | 2026-10-29 |
 | bikebrigade/dispatch | Apache-2.0 | ~> 1.20 | 306 | 2026-11-07 |
 | blablatdinov/croniq | MIT | ~> 1.20 | 232 | 2026-10-28 |
-| covalenthq/refiner | Apache-2.0 | ~> 1.18.0 | 220 | 2026-05-22 |
 | joladev/jola.dev | MIT | ~> 1.18 | 175 | 2026-11-09 |
 | notesclub/notesclub | MIT | ~> 1.20.2 | 163 | 2026-11-05 |
 | zorn/flick | MIT | ~> 1.20.5 | 155 | 2026-11-08 |
-| hexpm/preview | Apache-2.0 | ~> 1.18 | 153 | 2026-07-16 |
-| cr0t/lexin | MIT | ~> 1.18 | 130 | 2026-09-05 |
 | zorn/local_cents | MIT | ~> 1.20 | 130 | 2026-11-01 |
 | youcongress/youcongress | MIT | ~> 1.18 | 121 | 2026-11-09 |
-| asciinema/asciinema-server | Apache-2.0 | ~> 1.19 | 106 | 2026-11-08 |
 
 ## What the rules read, and what they do not
 
@@ -58,16 +57,17 @@ an older Elixir, and 3 state no Elixir version in `mix.exs`.
   is left out by rule 4, although its newest checked tasks were built on Elixir 1.20.3.
 - hexpm/hexpm states Apache-2.0, and the pool table found no licence file at the root of the repository
   (`licence_file_reads_as`). The per-task licence scan decides for each of its tasks.
-- The stricter reading of each of the 21 (commits on the default branch, merged pull requests of the last 12 months,
-  the Elixir and OTP at the head, the main dependencies' versions) is the job of
-  `2026-11-12_alive_and_newest_screen`.
+- Rules 6 and 7 are not columns of the pool table. They were read for the 21 by the screening job
+  (`2026-11-12_alive_and_newest_screen`): the archived mark from GitHub, and the merged pull requests of the 12 months
+  from GitHub's own list (ex338: 24). The smallest count among the 16 is 22.
 
 ## Files
 
 | File | What it holds |
 |---|---|
-| `projects.tsv` | the 21, with the pool table's columns: mirror, licence, licence file, merged pull requests, share of Elixir, what it uses, the `mix.exs` requirement, service dependencies, last push |
+| `projects.tsv` | the 16, with the pool table's columns: mirror, licence, licence file, merged pull requests, share of Elixir, what it uses, the `mix.exs` requirement, service dependencies, last push |
 | `left_out.tsv` | the 32 other approved applications, each with the first rule it fails |
+| `dropped_after_closer_look.tsv` | the five that pass rules 1 to 5 and fail rule 6 or 7 |
 | `run/select.sh` | the selection, as it ran |
 
 ## Commands
