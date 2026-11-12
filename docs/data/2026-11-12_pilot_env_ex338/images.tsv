@@ -1,0 +1,7 @@
+image	how	id	size_docker_images	size_inspect_bytes	note
+hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble-20260509.1	pulled (10 s)	sha256:05d0223efb52	256MB	80516287	the recipe's runtime.image
+postgres:14.24-alpine	pulled (4 s)	sha256:928ce526d677	415MB	114660273	the recipe's services.postgres
+elixir-agent-benchmark:toolchain-ex338-pr-1460	built by the engine	sha256:72e4f4f9b04b	904MB	247381286	system packages, user agent, Hex and Rebar on the base; also tagged toolchain-<id>
+elixir-agent-benchmark:project-708248c2b6f2...	built by the engine	sha256:9c9b6982d3c9	1.06GB	287493910	the workspace image: source, deps fetched and compiled, one Git commit; also tagged seed-<id> (the build seed of later commits)
+elixir-agent-benchmark:layout-d3067e64c260...	built by the engine	sha256:3dde54bcef1c	414MB	114650211	Postgres with its state inside the image
+elixir-agent-benchmark:snapshot-d481eeba39f0...-postgres	committed by the engine	sha256:f98ede1101ca	476MB	121716474	the database after ecto.create and ecto.migrate, the copy each test run starts from

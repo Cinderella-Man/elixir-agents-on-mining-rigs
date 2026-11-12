@@ -1,0 +1,31 @@
+period	redis_in_app	number	start_commit	merged_at	tool_versions	mix_elixir	ci_files	ci_elixir	ci_otp	ci_postgres	ci_other
+6	no	1460	a502f92e38a4b6286e6db51d7771c10899cf635c	2026-08-02T17:03:49Z	elixir 1.18.3-otp-27;erlang 27.3;nodejs 22.14.0	~> 1.18	.github/workflows/main.yml	1.18.3	27.3	postgres:14	-
+6	no	1458	3be41e7bf8784691a2fc9e75f73f2f71ef76d634	2026-08-01T14:29:13Z	elixir 1.18.3-otp-27;erlang 27.3;nodejs 22.14.0	~> 1.18	.github/workflows/main.yml	1.18.3	27.3	postgres:14	-
+6	no	1457	bb4f6d4e0f2c7970ab64329c9ec5c7ec7a69e40f	2026-08-01T14:24:53Z	elixir 1.18.3-otp-27;erlang 27.3;nodejs 22.14.0	~> 1.18	.github/workflows/main.yml	1.18.3	27.3	postgres:14	-
+6	no	1452	5f24efd7d1c6f4ac81adecda3ebd38ac6bfc60c3	2026-07-25T22:14:09Z	elixir 1.18.3-otp-27;erlang 27.3;nodejs 22.14.0	~> 1.18	.github/workflows/main.yml	1.18.3	27.3	postgres:14	-
+6	no	1392	d54202c8590253cbe4779fe8f96530c04983e967	2025-07-24T03:28:57Z	elixir 1.18.3-otp-27;erlang 27.3;nodejs 22.14.0	~> 1.18	.github/workflows/main.yml	1.18.3	27.3	postgres:14	redis
+5	no	1350	045640d6895e84a789acb264fbc1e929503cc840	2024-10-06T23:20:40Z	elixir 1.17.2-otp-27;erlang 27.0.1	~> 1.17	.github/workflows/main.yml	1.17.2	27.0.1	postgres:14	redis
+4b	no	1331	4931156a0aab44ca9a6176e8de9f7c00883912f1	2024-07-13T04:39:15Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4b	no	1313	ff65dbd758829ca972d3e94baf8e262b7f22e01d	2024-04-14T21:57:37Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4b	no	1302	bcd87ee04b91264818fb764e681a2899194eaf3a	2024-04-07T22:42:26Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4b	no	1300	87623e00182b1a79d207c33fa91664a1025c0168	2024-04-06T05:52:06Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4b	no	1288	faffe6f17a6dd1fe93816906c54a52daf5caefdb	2024-03-27T02:48:01Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4b	no	1284	71e64990e20ceff9d06c5cc15ae598fcde926a75	2024-03-24T04:49:32Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+4a	yes	1252	5aa515be63836c59a2b8ed6029bd63b7706b33cd	2024-02-28T04:53:14Z	elixir 1.16.1-otp-26;erlang 26.2.1	~> 1.14	.github/workflows/main.yml	1.16.1	26.2.1	postgres:14	redis
+3	yes	1208	197c48729984a2864633bfdbe7e7b16c81186d64	2023-11-20T05:50:52Z	elixir 1.14.4-otp-25;erlang 25.3.2	~> 1.14	.github/workflows/main.yml	1.14.4	25.3.2	postgres:14	redis
+3	yes	1177	ec611f052c7e65c592816057d596e7c062faf0aa	2023-06-19T04:16:10Z	elixir 1.14.4-otp-25;erlang 25.3.2	~> 1.14	.github/workflows/main.yml .travis.yml	1.14.4	25.3.2	postgres:14 postgresql: 14.2	redis
+2	yes	1168	bde3055d64dcf78c3329d677fb624a3901be7b35	2023-05-03T04:36:19Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+2	yes	1129	025d740ce1a8e306693bb40e14d138bad6dd1c3b	2022-08-18T04:12:04Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+2	yes	1119	b1837ebf520067c235b5383ededf195531fd4ec4	2022-08-13T05:14:49Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+2	yes	1108	a7fd068d59605f1a62c182ef3438908dabd270e2	2022-07-31T21:15:49Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+2	yes	1093	7b4185d264eb25084b165a7e3305130c59245c7c	2022-07-24T21:45:02Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+2	yes	1086	9d4b380fbc9a3c49fb280e82b91988c13c8839fd	2022-07-23T04:46:31Z	elixir 1.13.4-otp-25;erlang 25.0	~> 1.13	.travis.yml	1.13.4	25.0	postgresql: 10	redis
+1	yes	981	b614d7be77a18010197e95b4ae56a3f1aa0933a4	2020-09-23T02:52:52Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	980	eb1d0d057e69e08ee42a4be8f8aaeb4597cfefc9	2020-09-22T04:28:50Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	976	cc42b0ceee58cdde7b63563a7a8ee0ccab458e4c	2020-09-22T03:04:55Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	959	db95d8dc281c66d53f1e576c8e601aabe37cc44b	2020-09-11T23:23:53Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	957	09e717c51d49d3c30f0a928d5ce34514204b0402	2020-09-10T22:27:56Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	933	139c0273487ae046833da048c3a998a818cbe8c9	2020-08-20T20:44:54Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	914	bd2945ee98e1b8938053cfe273455f5118fbb4e9	2020-08-17T23:16:25Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	911	cf4fab37203da2d36a019224f1183864b671ef00	2020-08-16T17:23:06Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis
+1	yes	841	5b294b2f9ac9507dbb4e307dd57de7588985df8d	2020-06-07T17:39:15Z	elixir 1.10.3-otp-22;erlang 22.3.4.1	~> 1.10	.travis.yml	1.10.3	22.3.4	postgresql: 10	redis

@@ -1,0 +1,1088 @@
+test	round1	round2
+Elixir.Ex338.AccountsTest::test apply_user_email/3 applies the email without persisting it	passed	passed
+Elixir.Ex338.AccountsTest::test apply_user_email/3 requires email to change	passed	passed
+Elixir.Ex338.AccountsTest::test apply_user_email/3 validates current password	passed	passed
+Elixir.Ex338.AccountsTest::test apply_user_email/3 validates email	passed	passed
+Elixir.Ex338.AccountsTest::test apply_user_email/3 validates email uniqueness	passed	passed
+Elixir.Ex338.AccountsTest::test apply_user_email/3 validates maximum value for email for security	passed	passed
+Elixir.Ex338.AccountsTest::test change_user_email/2 returns a user changeset	passed	passed
+Elixir.Ex338.AccountsTest::test change_user_password/2 allows fields to be set	passed	passed
+Elixir.Ex338.AccountsTest::test change_user_password/2 returns a user changeset	passed	passed
+Elixir.Ex338.AccountsTest::test change_user_registration/2 allows fields to be set	passed	passed
+Elixir.Ex338.AccountsTest::test change_user_registration/2 returns a changeset	passed	passed
+Elixir.Ex338.AccountsTest::test confirm_user/1 confirms the email with a valid token	passed	passed
+Elixir.Ex338.AccountsTest::test confirm_user/1 does not confirm email if token expired	passed	passed
+Elixir.Ex338.AccountsTest::test confirm_user/1 does not confirm with invalid token	passed	passed
+Elixir.Ex338.AccountsTest::test create_user_api_token/2 stores a hashed token with the api-token context and given name	passed	passed
+Elixir.Ex338.AccountsTest::test delete_user_api_token/2 does not delete another user's token	passed	passed
+Elixir.Ex338.AccountsTest::test delete_user_api_token/2 revokes the user's token by id	passed	passed
+Elixir.Ex338.AccountsTest::test delete_user_session_token/1 deletes the token	passed	passed
+Elixir.Ex338.AccountsTest::test deliver_user_confirmation_instructions/2 sends token through notification	passed	passed
+Elixir.Ex338.AccountsTest::test deliver_user_reset_password_instructions/2 sends token through notification	passed	passed
+Elixir.Ex338.AccountsTest::test deliver_user_update_email_instructions/3 sends token through notification	passed	passed
+Elixir.Ex338.AccountsTest::test generate_user_session_token/1 generates a token	passed	passed
+Elixir.Ex338.AccountsTest::test get_admin_emails/0 returns all admin emails	passed	passed
+Elixir.Ex338.AccountsTest::test get_league_and_admin_emails/1 returns all league and admin emails	passed	passed
+Elixir.Ex338.AccountsTest::test get_team_and_admin_emails/1 returns all team and admin emails	passed	passed
+Elixir.Ex338.AccountsTest::test get_user!/1 raises error if no user	passed	passed
+Elixir.Ex338.AccountsTest::test get_user!/1 returns a user when given an id	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_api_token/1 does not return a user for an expired token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_api_token/1 does not return a user for an invalid token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_api_token/1 returns the user for a valid token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_email/1 does not return the user if the email does not exist	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_email/1 returns the user if the email exists	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_email_and_password/2 does not return the user if the email does not exist	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_email_and_password/2 does not return the user if the password is not valid	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_email_and_password/2 returns the user if the email and password are valid	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_reset_password_token/1 does not return the user if token expired	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_reset_password_token/1 does not return the user with invalid token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_reset_password_token/1 returns the user with valid token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_session_token/1 does not return user for expired token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_session_token/1 does not return user for invalid token	passed	passed
+Elixir.Ex338.AccountsTest::test get_user_by_session_token/1 returns user by token	passed	passed
+Elixir.Ex338.AccountsTest::test inspect/2 for the User module does not include password	passed	passed
+Elixir.Ex338.AccountsTest::test list_user_api_tokens/1 excludes session tokens	passed	passed
+Elixir.Ex338.AccountsTest::test list_user_api_tokens/1 returns only the given user's api tokens, newest first	passed	passed
+Elixir.Ex338.AccountsTest::test preload_team_by_league/2 empty list when no fantasy team in league	passed	passed
+Elixir.Ex338.AccountsTest::test preload_team_by_league/2 preloads fantasy team matching fantasy league	passed	passed
+Elixir.Ex338.AccountsTest::test preload_user_teams/1 preloads fantasy teams for a user	passed	passed
+Elixir.Ex338.AccountsTest::test register_user/1 registers users with a hashed password	passed	passed
+Elixir.Ex338.AccountsTest::test register_user/1 requires email and password to be set	passed	passed
+Elixir.Ex338.AccountsTest::test register_user/1 validates email and password when given	passed	passed
+Elixir.Ex338.AccountsTest::test register_user/1 validates email uniqueness	passed	passed
+Elixir.Ex338.AccountsTest::test register_user/1 validates maximum values for email and password for security	passed	passed
+Elixir.Ex338.AccountsTest::test reset_user_password/2 deletes all tokens for the given user	passed	passed
+Elixir.Ex338.AccountsTest::test reset_user_password/2 updates the password	passed	passed
+Elixir.Ex338.AccountsTest::test reset_user_password/2 validates maximum values for password for security	passed	passed
+Elixir.Ex338.AccountsTest::test reset_user_password/2 validates password	passed	passed
+Elixir.Ex338.AccountsTest::test update_user/2 returns error with invalid info	passed	passed
+Elixir.Ex338.AccountsTest::test update_user/2 updates user info	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_email/2 does not update email if token expired	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_email/2 does not update email if user email changed	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_email/2 does not update email with invalid token	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_email/2 updates the email with a valid token	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_password/3 deletes all tokens for the given user	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_password/3 updates the password	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_password/3 validates current password	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_password/3 validates maximum values for password for security	passed	passed
+Elixir.Ex338.AccountsTest::test update_user_password/3 validates password	passed	passed
+Elixir.Ex338.AuditTest::test log/1 records a valid entry	passed	passed
+Elixir.Ex338.AuditTest::test log/1 rejects an invalid source or outcome	passed	passed
+Elixir.Ex338.AuditTest::test log/1 requires source, action, and outcome	passed	passed
+Elixir.Ex338.AuditTest::test outcome_for/1 maps result tuples to outcome strings	passed	passed
+Elixir.Ex338.AuditTest::test queries list_for_resource/2 filters by resource	passed	passed
+Elixir.Ex338.AuditTest::test queries list_for_user/2 returns only that user's entries, newest first	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 does NOT make first in season draft picks when draft has NOT started	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 handles autodraft settings during in season draft	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 makes first in season draft pick when draft has started and reorders queues	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 makes one in season draft pick when team over time limit is skipped	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 returns :picks_complete when draft has ended	passed	passed
+Elixir.Ex338.AutoDraftTest::test in_season_picks_from_queues/2 returns :queues_not_loaded when no queue to draft from	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 autodraft stops and emails owner if draft pick returns an error	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 doesn't make draft pick when it is the last pick	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 doesn't pick when autodraft setting is off	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 handles error (no drafted player in completed draft pick)	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 makes draft pick when team over time limit is skipped	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 makes next draft pick from draft queue	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 makes next two draft picks from draft queue	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 makes one draft pick when autodraft setting is single	passed	passed
+Elixir.Ex338.AutoDraftTest::test make_picks_from_queues/1 makes two draft picks when autodraft setting is on	passed	passed
+Elixir.Ex338.CalendarAssistantTest::test days_from_now/1 returns a date a specified number of days from now	passed	passed
+Elixir.Ex338.CalendarAssistantTest::test mins_from_now/1 returns a date a specified number of mins from now	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test before_date_in_year/2 returns all championships before a date in a year	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test from_range/3 returns all championships between two datetimes	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test only_overall/1 returns all championships	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test order_by_points/1 returns championship results in order by points then rank	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test overall_before_date_in_year/2 returns all overall championships for a year	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test overall_from_range/3 returns all overall championships from a range of datetimes	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test preload_assocs_by_league/2 preloads all assocs for a league	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test preload_assocs_by_league/2 preloads ordered positions owned during championship	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test preload_assocs_by_league/2 preloads results without positions	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test preload_assocs_by_league/2 preloads roster position when there are multiple results	passed	passed
+Elixir.Ex338.Championships.ChampionshipResultTest::test preload_ordered_assocs_by_league/2 returns championship results in order by points with assocs	passed	passed
+Elixir.Ex338.Championships.ChampionshipSlotTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipSlotTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipSlotTest::test preload_assocs_by_league/2 only includes assocs for a fantasy league	passed	passed
+Elixir.Ex338.Championships.ChampionshipSlotTest::test preload_assocs_by_league/2 only slots with roster positions owned during championship	passed	passed
+Elixir.Ex338.Championships.ChampionshipSlotTest::test preload_assocs_by_league/2 ordered, includes slots with & without results, only for championship	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test add_deadline_statuses/1 add boolean with status of deadlines	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test all_for_league/2 returns championships by league	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test all_with_overall_waivers_open/1 returns all overall championships with waiver deadline in future	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test all_with_overall_waivers_open/2 all overall champs in league with waiver deadline in future for league	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test changeset/2 error with invalid category	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test changeset/2 with invalid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test changeset/2 with valid attributes	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test earliest_first/1 return championships with earliest date first	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test future_championships/1 return championships in the future	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test future_championships/2 return championships in the future for a league	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test overall_championships/1 returns all overall championships	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test preload_assocs_by_league/2 preloads all assocs for a league	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test sum_slot_points/3 calculates points for each slot	passed	passed
+Elixir.Ex338.Championships.ChampionshipTest::test sum_slot_points/3 includes positions owned during championship	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test before_date_in_year/2 returns all championships before a date in a year	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test order_by_rank/1 returns championship results in order by rank	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test preload_assocs/1 preloads all assocs	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test preload_assocs_by_league/2 preloads all assocs for a league	passed	passed
+Elixir.Ex338.Championships.ChampWithEventsResultTest::test preload_ordered_assocs_by_league/2 preloads assocs for league in order	passed	passed
+Elixir.Ex338.Championships.CreateSlotTest::test create_slots_for_team/1 calculates the slot for a champioship based on roster position	passed	passed
+Elixir.Ex338.Championships.CreateSlotTest::test create_slots_from_positions/1 creates roster slots from positions	passed	passed
+Elixir.Ex338.ChampionshipsTest::test all_for_league/1 returns all championships by league and year	passed	passed
+Elixir.Ex338.ChampionshipsTest::test create_slots_for_league/2 admin creates roster slots for a championship	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_autodraft_starts_at/2 returns autodraft start time	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_championship_by_league/2 preloads all events with roster positions with assocs for a league	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_championship_by_league/2 preloads roster position with assocs for a league	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_championship_by_league/2 returns a championship with assocs by league	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_slot_standings/2 calculates points for each slot and team	passed	passed
+Elixir.Ex338.ChampionshipsTest::test get_slot_standings/2 return championship if it has no events	passed	passed
+Elixir.Ex338.ChampionshipsTest::test preload_events_by_league/2 preloads all events and roster positions with assocs for a league	passed	passed
+Elixir.Ex338.ChampionshipsTest::test preload_events_by_league/2 preloads all events with assocs for a league	passed	passed
+Elixir.Ex338.ChampionshipsTest::test update_next_in_season_pick/1 returns championship when no draft picks	passed	passed
+Elixir.Ex338.ChampionshipsTest::test update_next_in_season_pick/1 update in season draft picks with next pick 	passed	passed
+Elixir.Ex338.ChatsTest::test messages create_message/1 with invalid data returns error changeset	passed	passed
+Elixir.Ex338.ChatsTest::test messages create_message/1 with valid data creates a message	passed	passed
+Elixir.Ex338.CommishNotifierTest::test send_email_to_leagues/3 sends an email to owners of a list of leagues	passed	passed
+Elixir.Ex338.CommishNotifierTest::test unique_recipients/2 combines admins and owners	passed	passed
+Elixir.Ex338.CommishNotifierTest::test unique_recipients/2 combines admins and owners while removing duplicates	passed	passed
+Elixir.Ex338.DraftPicks.AdminTest::test draft_player/1 does not update next pick when it has no player assigned	passed	passed
+Elixir.Ex338.DraftPicks.AdminTest::test draft_player/1 does not update next pick when it is not a keeper	passed	passed
+Elixir.Ex338.DraftPicks.AdminTest::test draft_player/1 dry run draft_player ecto multi	passed	passed
+Elixir.Ex338.DraftPicks.AdminTest::test draft_player/1 updates next keeper pick drafted_at when next pick is a keeper with player	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test calculate_team_data/1 adjusts total_seconds_on_the_clock from for team	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test calculate_team_data/1 allows unlimited time for draft when max is 0	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test calculate_team_data/1 returns summary of draft data	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test update_seconds_on_the_clock/1 calculates and updates seconds on the clock for each pick	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test update_seconds_on_the_clock/1 calculates and updates seconds on the clock when picks are skipped	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test update_seconds_on_the_clock/1 calculates seconds on the clock when picks are skipped and haven't been made	passed	passed
+Elixir.Ex338.DraftPicks.ClockTest::test update_teams_in_picks/2 updates fantasy teams in the draft picks from fantasy team list	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test add_pick_numbers/1 Adds pick numbers for a list of draft picks	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test available_with_skipped_picks?/2 returns availability when skip pick is made	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test available_with_skipped_picks?/2 returns false when no pick is available to make	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test available_with_skipped_picks?/2 returns whether the pick is available to make when next pick	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test available_with_skipped_picks?/2 returns whether the pick is availble to make with skips	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test by_league/2 returns draft picks in a league	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test last_picks/2 returns last X picks in descending order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test next_picks/2 returns next X picks in descending order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test ordered_by_position/1 returns draft picks in descending order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 adds drafted_at when owner submits draft pick	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error if available draft pick players equal to teams needing to fill league rosters	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error if available draft pick players less than teams needing to fill league rosters	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error if available players equal to teams needing to fill league rosters	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error if available players less than teams needing to fill league rosters	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error if too many flex spots in use	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error when player already drafted in league	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 error when the player doesn't exist	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 invalid if pick has already been made	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 invalid if pick is early in order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 no error when league has must_draft_each_sport? as false	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 only allows update to fantasy player	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid if pick is available due to skips	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid if pick is in order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid if team needs draft pick player to fill sport position	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid if team needs player to fill sport position	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid when player drafted in other league	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 valid when under max flex slots	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 with invalid attributes	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test owner_changeset/2 with valid attributes	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test picks_available_with_skips/1 returns available picks to make with skips	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test picks_available_with_skips/1 returns available picks when skip pick is made	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test picks_available_with_skips/1 returns nil when no pick is available to make	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test preload_assocs/1 returns draft pick with assocs preloaded	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test reverse_ordered_by_position/1 returns draft picks in ascending order	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test update_available_to_pick?/2 returns false when no pick is available to make	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test update_available_to_pick?/2 returns whether picks are available to make when next pick	passed	passed
+Elixir.Ex338.DraftPicks.DraftPickTest::test update_available_to_pick?/2 returns whether picks are availble to make with skips	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 creates a message when a draft chat exists	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 does not update draft pick and returns error with invalid params	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 updates draft pick and inserts new roster position	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 updates multiple consecutive keeper picks drafted_at and stops at non-keeper	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 updates next keeper pick drafted_at when next pick is a keeper with player	passed	passed
+Elixir.Ex338.DraftPicksTest::test draft_player/2 updates pending draft queues to unavailable or drafted	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks change_future_pick/1 returns a future_pick changeset	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks create_future_pick/1 with invalid data returns error changeset	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks create_future_pick/1 with valid data creates a future_pick	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks create_future_picks/2 create future picks for teams	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks get_future_pick!/1 returns the future_pick with given id	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks get_future_pick_by/1 returns nil if doesn't exist	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks get_future_pick_by/1 returns the future_pick with given clause	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks list_future_picks_by_league/1 returns future picks for a league	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks update_future_pick/2 with invalid data returns error changeset	passed	passed
+Elixir.Ex338.DraftPicksTest::test future_picks update_future_pick/2 with valid data updates the future_pick	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_draft_pick!/1 returns the draft pick for a given id	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_last_picks/1 by default returns last 5 picks in descending order	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_last_picks/1 returns last X picks in descending order	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_next_picks/1 by default returns next 5 picks in descending order	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_next_picks/1 returns next X picks in descending order	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_picks_available_with_skips/1 returns available picks to make with skips	passed	passed
+Elixir.Ex338.DraftPicksTest::test get_picks_for_league/1 returns draft picks in descending order	passed	passed
+Elixir.Ex338.DraftPicksTest::test update_draft_pick/2 does not broadcast — the draft topic's events describe picks being made	passed	passed
+Elixir.Ex338.DraftPicksTest::test update_draft_pick/2 updates the pick's fields	passed	passed
+Elixir.Ex338.DraftQueues.AdminTest::test reorder_for_league/1 updates pending draft queues for a league	passed	passed
+Elixir.Ex338.DraftQueues.AdminTest::test update_drafted_from_pick/1 updates pending draft queues to drafted from a draft pick	passed	passed
+Elixir.Ex338.DraftQueues.AdminTest::test update_drafted_from_pick/1 updates pending draft queues to drafted from an inseason draft pick	passed	passed
+Elixir.Ex338.DraftQueues.AdminTest::test update_unavailable_from_pick/1 updates pending draft queues from a draft pick	passed	passed
+Elixir.Ex338.DraftQueues.AdminTest::test update_unavailable_from_pick/1 updates pending draft queues from an inseason draft pick	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test by_league/2 returns draft queues for a fantasy league	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test by_player/2 returns draft queues for a fantasy player	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test by_sport/2 returns draft queues for a sport	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test by_team/2 returns draft queues for a fantasy team	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 error if too many flex spots in use	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 invalid with invalid attributes	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 invalid with invalid status enum	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 no error if cancelled when too many flex spots in use	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 no error if for too many flex spots when in season draft is on	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 no error if unavailable when too many flex spots in use	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 valid when under max flex slots	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test changeset/2 valid with valid attributes	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test except_team/2 returns draft queues excluding those for a fantasy team	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test only_pending/2 returns only pending draft queues	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test ordered/1 returns only pending draft queues	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test preload_assocs/1 preloads assocs for DraftQueue struct	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test update_to_drafted/1 query to update status to drafted	passed	passed
+Elixir.Ex338.DraftQueues.DraftQueueTest::test update_to_unavailable/1 query to update status to unavailable	passed	passed
+Elixir.Ex338.DraftQueuesTest::test archive_pending_queues/1 archives all pending picks for a league	passed	passed
+Elixir.Ex338.DraftQueuesTest::test create_draft_queue creates a draft queue with valid attributes	passed	passed
+Elixir.Ex338.DraftQueuesTest::test create_draft_queue returns an error with invalid attributes	passed	passed
+Elixir.Ex338.DraftQueuesTest::test get_draft_queue!/1 returns a draft queue	passed	passed
+Elixir.Ex338.DraftQueuesTest::test get_league_queues/1 returns pending draft queues for a league	passed	passed
+Elixir.Ex338.DraftQueuesTest::test get_top_queue/1 returns pending draft queues for a team and sport	passed	passed
+Elixir.Ex338.DraftQueuesTest::test get_top_queue_by_sport/2 returns pending draft queues for a team and sport	passed	passed
+Elixir.Ex338.DraftQueuesTest::test reorder_for_league/1 updates pending draft queues for a league	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test all_time_records/1 only returns all time records	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test current_records/1 only returns current records	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test season_records/1 only returns single season records	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalRecordTest::test sorted_by_order/1 sorts records by order field	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalWinningTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalWinningTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyLeagues.HistoricalWinningTest::test order_by_amount/1 orders winnings by amount	passed	passed
+Elixir.Ex338.FantasyLeagues.LeagueSportTest::test changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyLeagues.LeagueSportTest::test changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test can_access_league?/2 admins can access a private league	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test can_access_league?/2 anyone can access a public league	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test can_access_league?/2 members can access a private league they own a team in	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test can_access_league?/2 non-members and anonymous users cannot access a private league	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test change_fantasy_league/1 returns a fantasy_league changeset	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_draft_chat_for_championship/2 creates fantasy league draft and draft chat	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_draft_chat_for_league/1 creates fantasy league draft and draft chat	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_fantasy_league_draft!/1 creates a fantasy league draft for another championship	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_fantasy_league_draft!/1 creates a fantasy league draft for another league	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_fantasy_league_draft!/1 creates a fantasy league draft	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_fantasy_league_draft!/1 doesn't create a duplicate for a chat	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_fantasy_league_draft!/1 doesn't create a duplicate for a league and championship	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test create_future_picks/2 create future picks for teams	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test filter_visible_leagues/2 hides private leagues from non-members but keeps public ones	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test filter_visible_leagues/2 keeps private leagues for members and admins	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test format_leagues_for_select/1 formats leagues for multiple select in form	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test get_archived_leagues/0 returns archived leagues with data for standings	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test get_draft_with_chat_by_league_and_championship/2 returns draft for championship and league when a chat exists	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test get_draft_with_chat_by_league_and_championship/2 returns nil for championship and league when a chat doesn't exist	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test get_fantasy_league! returns the fantasy_league with given id	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test get_league/1 returns league from id	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test list_all_winnings/0 returns all winnings	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test list_current_all_time_records/0 only returns current all time records	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test list_current_season_records/0 only returns current single season records	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test list_fantasy_leagues/0 returns league from id	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test list_leagues_by_status/1 returns fantasy leagues by status	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test load_team_standings_data/1 loads fantasy teams with league data	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test update_fantasy_league/2 update_fantasy_league/2 with invalid data returns error changeset	passed	passed
+Elixir.Ex338.FantasyLeaguesTest::test update_fantasy_league/2 update_fantasy_league/2 with valid data updates the fantasy_league	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test by_league/2 returns draft picks in a fantasy league	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test by_league/2 returns fantasy teams in a fantasy league	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test changeset/2 accepts a Slack channel id or #name and trims whitespace	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test changeset/2 rejects a Slack channel Slack could never resolve	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test changeset/2 treats a blank Slack channel as unset	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test leagues_by_status/2 returns fantasy leagues based on navbar_display	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test sort_by_division/1 returns fantasy leagues alphabetically by division	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test sort_by_draft_method/1 returns fantasy leagues alphabetically by draft method	passed	passed
+Elixir.Ex338.FantasyLeagueTest::test sort_most_recent/1 returns fantasy leagues with most recent first	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test abbrev_a_to_z/1 sorts abbrev a to z	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test alphabetical/1 returns sports leagues in alphabetical order	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test for_league/2 returns sports for a fantasy league	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test preload_league_overall_championships/2 return overall championships for a fantasy league	passed	passed
+Elixir.Ex338.FantasyPlayers.SportsLeagueTest::test select_abbrev/1 selects abbrev field	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test all_players_for_league/1 returns players grouped by sports league	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test available_for_ir_replacement/1 returns available players in league for a injured reserve replacement_player	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test available_players/1 returns available players in league	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test get_avail_draft_pick_players_for_sport/2 returns unowned draft pick players in a league for a championship	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test get_avail_players_for_sport/2 returns unowned players in a league for a championship	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test get_next_championship/3 ignores championships next year	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test get_next_championship/3 returns the next championship for a player	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test get_player!/1 get_user!/1 returns the user with given id	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test list_sport_options/0 returns all sports abbrevs in order as options	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test list_sports_abbrevs/0 returns all sports abbrevs in order	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test list_sports_abbrevs/1 returns sports abbrevs in order	passed	passed
+Elixir.Ex338.FantasyPlayersTest::test player_with_sport!/2 returns a player with the sports league preloaded	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test active_players/2 returns players only valid during the league year	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test alphabetical_by_league/2 returns players alphabetically sorted by league	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test available_players/2 returns players only from sports associated with the league	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test available_players/2 returns players only valid during the league year	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test available_players/2 returns unowned players in a league for select option	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test avail_players_for_sport/1 query for unowned players in a league for a championship	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test by_league/2 returns players only from sports associated with the league	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test by_sport/2 returns players only from a sport	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test is_draft_pick/1 returns players not draft picks	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test not_draft_pick/1 returns players not draft picks	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test order_by_name/1 returns players ordered by the name	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test order_by_sport_abbrev/1 returns players ordered by sport abbrev	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test order_by_sport_name/1 returns players ordered by sport name	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test preload_sport/1 returns players only from a sport	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test unowned_players/2 returns unowned players in a league for select option	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test with_teams_for_league/2 returns all players with rank and any owners in a league	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test with_teams_for_league/2 returns in order by sports league name then player name	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test with_teams_for_league/2 returns sports associated with a fantasy league	passed	passed
+Elixir.Ex338.FantasyPlayerTest::test with_waivers_open/2 returns players with overall waiver deadline in the future	passed	passed
+Elixir.Ex338.FantasyTeams.DeadlinesTest::test add_for_league/1 add boolean whether season has ended	passed	passed
+Elixir.Ex338.FantasyTeams.DeadlinesTest::test add_for_team/1 add boolean whether season has ended	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test by_league/2 return owners from a league	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test by_team/2 return owners from a team	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test changeset/2 invalid attributes	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test changeset/2 invalid if fantasy team does not exist	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test changeset/2 invalid if user does not exist	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test changeset/2 valid attributes	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test email_recipients_for_league/2 return email addresses for a league	passed	passed
+Elixir.Ex338.FantasyTeams.OwnerTest::test email_recipients_for_team/2 return email addresses for a team	passed	passed
+Elixir.Ex338.FantasyTeams.StandingsHistoryTest::test get_dates_for_league/1 returns list of dates with 1st of the month for a league	passed	passed
+Elixir.Ex338.FantasyTeams.StandingsHistoryTest::test group_by_team/1 returns list teams with points formatted	passed	passed
+Elixir.Ex338.FantasyTeams.StandingsHistoryTest::test list_dates_for_league/1 returns list of dates with 1st of the month for a league	passed	passed
+Elixir.Ex338.FantasyTeams.StandingsTest::test rank_points_winnings_for_teams/1 calculates points/winnings for teams & adds to FantasyTeam struct	passed	passed
+Elixir.Ex338.FantasyTeams.StandingsTest::test update_points_winnings/1 calculates points/winnings and adds to FantasyTeam struct	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test count_pending_draft_queues/1 returns number of pending draft queues for a team	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find/1 returns nil when team does not exist	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find/1 returns team with assocs and calculated fields	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_all_for_league/1 returns only fantasy teams in a league with open positions added	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_all_for_league_sport/2 returns teams in a league with active positions for a sport	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_all_for_standings/1 returns only fantasy teams in a league sorted by points	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_all_for_standings_by_date/2 returns only fantasy teams in a league with points as of a date	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_for_edit/1 gets a team for the edit form	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_for_edit/1 returns nil when team does not exist	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test find_owned_players/1 returns all owned players for a team	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test get_email_recipients_for_league/2 return email addresses for a league	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test get_email_recipients_for_team/2 return email addresses for a team	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test get_leagues_email_recipients/1 return email addresses for multiple leagues	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test get_team_with_active_positions/1 returns team with all active positions preloaded	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test list_standings_history/1 returns the total points for each team by month	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test list_teams_for_league/1 returns all teams for a league	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test list_teams_for_user/1 returns a list of teams for a user sorted by most recent and division	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test list_teams_for_user/1 returns an empty list for a user without a team	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test load_slot_results/1 returns slots for a team in a league with points summed	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test load_slot_results/1 returns slots for teams in league with points summed	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test owned_players_for_league/1 returns all owned players for a league	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test standings_history/1 returns the total points for each team by month	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test update_owner/2 updates owner with valid attributes	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test update_team/2 updates a fantasy team and its roster positions	passed	passed
+Elixir.Ex338.FantasyTeamsTest::test without_player_from_sport/2 returns teams from a league who don't own a player from a sport	passed	passed
+Elixir.Ex338.FantasyTeamTest::test add_current_slot_results adds current slot results to FantasyTeam struct	passed	passed
+Elixir.Ex338.FantasyTeamTest::test add_rankings_to_slot_results adds rankings for current slot results to FantasyTeam struct	passed	passed
+Elixir.Ex338.FantasyTeamTest::test alphabetical/1 returns fantasy teams in alphabetical order	passed	passed
+Elixir.Ex338.FantasyTeamTest::test by_league/2 returns fantasy teams in a fantasy league	passed	passed
+Elixir.Ex338.FantasyTeamTest::test changeset/1 invalid with long team_name	passed	passed
+Elixir.Ex338.FantasyTeamTest::test changeset/1 with invalid attributes	passed	passed
+Elixir.Ex338.FantasyTeamTest::test changeset/1 with valid attributes	passed	passed
+Elixir.Ex338.FantasyTeamTest::test count_pending_draft_queues/1 returns 0 if there are no pending draft queues for a team	passed	passed
+Elixir.Ex338.FantasyTeamTest::test count_pending_draft_queues/1 returns number of pending draft queues for a team	passed	passed
+Elixir.Ex338.FantasyTeamTest::test find_team/2 returns a fantasy team	passed	passed
+Elixir.Ex338.FantasyTeamTest::test order_by_waiver_position/1 orders teams by waiver position	passed	passed
+Elixir.Ex338.FantasyTeamTest::test owned_players/1 returns all active players on a team for select option	passed	passed
+Elixir.Ex338.FantasyTeamTest::test owner_changeset/1 doesn't allow waiver update	passed	passed
+Elixir.Ex338.FantasyTeamTest::test owner_changeset/1 invalid with long team_name	passed	passed
+Elixir.Ex338.FantasyTeamTest::test owner_changeset/1 with invalid attributes	passed	passed
+Elixir.Ex338.FantasyTeamTest::test owner_changeset/1 with valid attributes	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_active_positions_for_sport/2 returns all positions for a sports league	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_all_active_positions/1 preloads all active positions	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league/2 returns active and injured reserve roster positions	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league/2 returns correct championship results	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league/2 returns pending draft queues	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league/2 returns team with no results this year	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league_and_date/3 returns correct championship results	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league_and_date/3 returns correct championship with events results	passed	passed
+Elixir.Ex338.FantasyTeamTest::test preload_assocs_by_league_and_date/3 returns team with no results this year	passed	passed
+Elixir.Ex338.FantasyTeamTest::test sort_alphabetical/1 sorts teams alphabetically	passed	passed
+Elixir.Ex338.FantasyTeamTest::test sort_queues_by_order/1 returns team form struct with queues sorted by order	passed	passed
+Elixir.Ex338.FantasyTeamTest::test sum_slot_points/1 doesn't return slot if roster position not active for championship	passed	passed
+Elixir.Ex338.FantasyTeamTest::test sum_slot_points/1 returns slots by sport & championship	passed	passed
+Elixir.Ex338.FantasyTeamTest::test sum_slot_points/1 returns slots for teams with points summed	passed	passed
+Elixir.Ex338.FantasyTeamTest::test update_league_waiver_positions/2 moves up waiver position for teams in league with higher priority	passed	passed
+Elixir.Ex338.FantasyTeamTest::test with_league/1 returns a fantasy league associated with a team	passed	passed
+Elixir.Ex338.FantasyTeamTest::test without_player_from_sport/1 returns teams who don't own a player from a sport	passed	passed
+Elixir.Ex338.InjuredReserves.InjuredReserveTest::test by_league/2 returns injured reserve actions in a fantasy league	passed	passed
+Elixir.Ex338.InjuredReserves.InjuredReserveTest::test changeset/2 with invalid attributes	passed	passed
+Elixir.Ex338.InjuredReserves.InjuredReserveTest::test changeset/2 with invalid status	passed	passed
+Elixir.Ex338.InjuredReserves.InjuredReserveTest::test changeset/2 with valid attributes	passed	passed
+Elixir.Ex338.InjuredReserves.InjuredReserveTest::test preload_assocs/1 returns the user with assocs for a given id	passed	passed
+Elixir.Ex338.InjuredReservesTest::test change_injured_reserve/1 returns an injured reserve changeset	passed	passed
+Elixir.Ex338.InjuredReservesTest::test create_injured_reserve/2 creates an injured reserve from a team and attributes	passed	passed
+Elixir.Ex338.InjuredReservesTest::test create_injured_reserve/2 returns an error and changeset with invalid attrs	passed	passed
+Elixir.Ex338.InjuredReservesTest::test get_ir! returns the user with assocs for a given id	passed	passed
+Elixir.Ex338.InjuredReservesTest::test list_injured_reserves/0 returns all injured_reserves	passed	passed
+Elixir.Ex338.InjuredReservesTest::test list_injured_reserves/1 returns all injured_reserves by status	passed	passed
+Elixir.Ex338.InjuredReservesTest::test list_injured_reserves/1 returns all injured_reserves with assocs in a league from id	passed	passed
+Elixir.Ex338.InjuredReservesTest::test list_injured_reserves/1 returns all injured_reserves with assocs in a league	passed	passed
+Elixir.Ex338.InjuredReservesTest::test list_irs_for_league/1 returns all injured_reserves with assocs in a league	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 returns error when approving an IR, but no roster position found	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 updates injured reserve status to approved and updates roster_positions	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 updates injured reserve status to rejected	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 updates injured reserve status to returned and updates roster_positions	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 updates injured reserve status to returned when positions have been dropped	passed	passed
+Elixir.Ex338.InjuredReservesTest::test update_injured_reserve/2 updates injured reserve status to returned when positions is taken	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.AdminTest::test generate_picks/3 generates draft picks from KD roster positions	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.AdminTest::test generate_picks/3 generates draft picks from LLWS roster positions	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.AdminTest::test generate_picks/3 handles incorrect name	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.AdminTest::test update/2 with blank player, returns a multi with an invalid changeset	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.AdminTest::test update/2 with valid player, returns a multi with valid changeset	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test by_sport/2 returns draft picks for a sport	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test changeset with invalid attributes	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test changeset with valid attributes	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test draft_order/1 returns draft picks in descending order	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test no_player_drafted/1 returns draft picks without players drafted	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 error if player already drafted in fantasy league	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 invalid if not next pick	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 owner_changeset only allows update to fantasy player	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 owner_changeset with invalid attributes	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 owner_changeset with valid attributes and adds drafted_at	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 valid if next pick	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 valid if not next pick but previous pick is over time limit	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test owner_changeset/2 valid if player drafted in another fantasy league	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test player_drafted/1 returns draft picks with players drafted	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test preload assocs by league preloads all associations by fantasy league	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test preload assocs preloads all associations	passed	passed
+Elixir.Ex338.InSeasonDraftPicks.InSeasonDraftPickTest::test reverse_order/1 returns draft picks in descending order	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test available_players/1 returns available players to draft	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test by_league_and_sport/2 returns picks in descending order for a league and sport	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test create_picks_for_league/2 creates draft picks for roster positions in a league	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test create_picks_for_league/2 creates draft picks for roster positions in FKD sports league	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test create_picks_for_league/2 handles error in multi	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test draft_player/2 creates a message when a draft chat exists	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test draft_player/2 does not update and returns errors when invalid	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test draft_player/2 updates a in season draft pick with a fantasy player	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test last_picks/2 returns last specified number of picks in ascending order	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test next_picks/2 returns next specified number of picks in descending order	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test owner_changeset/1 returns changeset for owner update	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test pick_with_assocs/1 returns in season draft picks with associations	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test schedule_autodraft/2 immediately starts autodraft for a fantasy league	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test schedule_autodraft/2 schedules in season autodraft for a fantasy league	passed	passed
+Elixir.Ex338.InSeasonDraftPicksTest::test sort_by_drafted_at/2 sorts in season draft picks by drafted at	passed	passed
+Elixir.Ex338.InSeasonInSeasonDraftPicks.ClockTest::test update_in_season_draft_picks/2 1st pick available after draft starts	passed	passed
+Elixir.Ex338.InSeasonInSeasonDraftPicks.ClockTest::test update_in_season_draft_picks/2 1st pick not available before draft	passed	passed
+Elixir.Ex338.InSeasonInSeasonDraftPicks.ClockTest::test update_in_season_draft_picks/2 returns list of in season draft picks with data	passed	passed
+Elixir.Ex338.JobsTest::test get_autodraft_job_by/1 starts autodraft for a championship and a fantasy_league	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test flex_and_unassigned_positions/1 it returns only sports positions	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test order_by_position/1 sorts by primary positions then flex and unassigned	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test primary_positions/1 it returns only sports positions	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test unassigned_position?/1 returns false if Unassigned	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test unassigned_position?/1 returns true if Unassigned	passed	passed
+Elixir.Ex338.RosterPositions.AdminTest::test update_fantasy_team/2 adds roster positions to a fantasy team	passed	passed
+Elixir.Ex338.RosterPositions.IRPositionTest::test separate_from_active_for_team/1 puts all ir position under ir_positions key and renames position	passed	passed
+Elixir.Ex338.RosterPositions.IRPositionTest::test separate_from_active_for_team/1 returns fantasy team if no roster positions in map	passed	passed
+Elixir.Ex338.RosterPositions.IRPositionTest::test separate_from_active_for_teams/1 puts all ir position under ir_positions key and renames position	passed	passed
+Elixir.Ex338.RosterPositions.OpenPositionTest::test add_open_positions_to_team/1 adds position for any position without a player for a team	passed	passed
+Elixir.Ex338.RosterPositions.OpenPositionTest::test add_open_positions_to_teams/1 adds position for any position without a player in a collection	passed	passed
+Elixir.Ex338.RosterPositionsTest::test get_by/1 fetches a single RosterPosition from the query	passed	passed
+Elixir.Ex338.RosterPositionsTest::test get_by/1 returns nil if none found	passed	passed
+Elixir.Ex338.RosterPositionsTest::test list_all/0 returns all roster positions in order by id	passed	passed
+Elixir.Ex338.RosterPositionsTest::test list_all_active/0 returns all active roster positions in order by id	passed	passed
+Elixir.Ex338.RosterPositionsTest::test positions/1 returns all primary & flex positions for a league	passed	passed
+Elixir.Ex338.RosterPositionsTest::test positions/1 returns only flex positions for a league when league has that option	passed	passed
+Elixir.Ex338.RosterPositionsTest::test positions_for_draft/2 returns all positions for a championship in a league	passed	passed
+Elixir.Ex338.RosterPositionTest::test active_by_sports_league/2 only returns active roster positions from a sport	passed	passed
+Elixir.Ex338.RosterPositionTest::test all_active/1 only returns active roster positions	passed	passed
+Elixir.Ex338.RosterPositionTest::test all_draft_picks/1 returns all positions where draft pick is true	passed	passed
+Elixir.Ex338.RosterPositionTest::test all_owned/1 only returns owned roster positions	passed	passed
+Elixir.Ex338.RosterPositionTest::test all_owned_from_league/2 only returns owned roster positions from a league	passed	passed
+Elixir.Ex338.RosterPositionTest::test by_league/2 returns roster positions for a given league with teams preloaded	passed	passed
+Elixir.Ex338.RosterPositionTest::test by_sports_league/2 only returns active roster positions from a sport	passed	passed
+Elixir.Ex338.RosterPositionTest::test changeset/2 changeset must include fantasy_team_id	passed	passed
+Elixir.Ex338.RosterPositionTest::test changeset/2 changeset must use proper form of option	passed	passed
+Elixir.Ex338.RosterPositionTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.RosterPositionTest::test changeset/2 check constraint if position is null	passed	passed
+Elixir.Ex338.RosterPositionTest::test changeset/2 invalid if position is not unique for a fantasy team	passed	passed
+Elixir.Ex338.RosterPositionTest::test count_positions_for_team counts the active positions on a fantasy team	passed	passed
+Elixir.Ex338.RosterPositionTest::test flex_positions/1 generates double digit flex positions	passed	passed
+Elixir.Ex338.RosterPositionTest::test flex_positions/1 generates single digit flex positions	passed	passed
+Elixir.Ex338.RosterPositionTest::test from_league/2 returns roster positions for a given league with teams preloaded	passed	passed
+Elixir.Ex338.RosterPositionTest::test order_by_id/1 orders roster positions by id	passed	passed
+Elixir.Ex338.RosterPositionTest::test preload_assocs/1 preloads assocs for RosterPosition struct	passed	passed
+Elixir.Ex338.RosterPositionTest::test sport_from_champ/2 returns positions for a sport from a championship	passed	passed
+Elixir.Ex338.RosterPositionTest::test update_dropped_player/5 updates roster position by team and player ids	passed	passed
+Elixir.Ex338.RulebooksTest::test get_rulebook_for_fantasy_league!/2 crashes if it doesn't exist	passed	passed
+Elixir.Ex338.RulebooksTest::test get_rulebook_for_fantasy_league!/2 gets rulebook by year and draft method	passed	passed
+Elixir.Ex338.SlackTest::test escape/1 drops emphasis characters that would re-pair with the surrounding markup	passed	passed
+Elixir.Ex338.SlackTest::test escape/1 escapes the characters Slack treats as markup	passed	passed
+Elixir.Ex338.SlackTest::test notify_league/2 posts the message to the league's alerts channel	passed	passed
+Elixir.Ex338.SlackTest::test notify_league/2 skips leagues without an alerts channel	passed	passed
+Elixir.Ex338.SlackTest::test verify_channel/1 posts a confirmation to the channel	passed	passed
+Elixir.Ex338.SlackTest::test verify_channel/1 reports a league with no channel set	passed	passed
+Elixir.Ex338.SlackTest::test verify_channel/1 reports a transport failure as a readable reason	passed	passed
+Elixir.Ex338.SlackTest::test verify_channel/1 reports why Slack rejected the channel	passed	passed
+Elixir.Ex338.Trades.AdminTest::test process_approved_trade/3 with Approved status, returns a multi with valid changeset	passed	passed
+Elixir.Ex338.TradesTest::test all_for_league/2 returns only trades from a league with most recent first	passed	passed
+Elixir.Ex338.TradesTest::test build_new_changeset/0 creates a trade changeset with line items	passed	passed
+Elixir.Ex338.TradesTest::test create_trade/1 creates a trade with less than four line items	passed	passed
+Elixir.Ex338.TradesTest::test create_trade/1 creates a trade with line items	passed	passed
+Elixir.Ex338.TradesTest::test create_trade/1 creates a trade with trade vote from submitted team	passed	passed
+Elixir.Ex338.TradesTest::test create_vote/1 creates a new vote from params	passed	passed
+Elixir.Ex338.TradesTest::test find!/1 returns a Trade with assocs loaded	passed	passed
+Elixir.Ex338.TradesTest::test list_trades/1 list trades by league	passed	passed
+Elixir.Ex338.TradesTest::test list_trades/1 list trades by status	passed	passed
+Elixir.Ex338.TradesTest::test load_line_items/1 loads associations on a trade struct	passed	passed
+Elixir.Ex338.TradesTest::test maybe_update_for_league_vote/1 handles an early vote	passed	passed
+Elixir.Ex338.TradesTest::test maybe_update_for_league_vote/1 if any status except Proposed, return Trade unchanged	passed	passed
+Elixir.Ex338.TradesTest::test maybe_update_for_league_vote/1 if not ready for league vote returns unchanged trade struct	passed	passed
+Elixir.Ex338.TradesTest::test maybe_update_for_league_vote/1 if ready for league vote, updates to Pending status	passed	passed
+Elixir.Ex338.TradesTest::test maybe_update_for_league_vote/1 if team rejects, changes trade status to Rejected	passed	passed
+Elixir.Ex338.TradesTest::test update_trade/2 returns error if a position is not found	passed	passed
+Elixir.Ex338.TradesTest::test update_trade/2 returns error when status is incorrect	passed	passed
+Elixir.Ex338.TradesTest::test update_trade/2 updates repo with canceled trade without creating new positions	passed	passed
+Elixir.Ex338.TradesTest::test update_trade/2 updates repo with successful trade 	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 changeset invalid with both player and pick	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 invalid when future pick and player are both nil	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 invalid when future pick is not owned by team	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 invalid when player is not on losing teams' rosters	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test assoc_changeset/2 invalid when trade deadline has passed for a player	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.Trades.TradeLineItemTest::test changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.Trades.TradeVoteTest::test changeset/2 invalid if team already voted	passed	passed
+Elixir.Ex338.Trades.TradeVoteTest::test changeset/2 invalid without required attributes	passed	passed
+Elixir.Ex338.Trades.TradeVoteTest::test changeset/2 valid with required attributes	passed	passed
+Elixir.Ex338.TradeTest::test by_league/2 returns trades from a league	passed	passed
+Elixir.Ex338.TradeTest::test changeset/2 changeset invalid when incorrect status option provided	passed	passed
+Elixir.Ex338.TradeTest::test changeset/2 changeset requires no attributes and provides default status	passed	passed
+Elixir.Ex338.TradeTest::test count_votes/1 counts votes and updates a list of trades	passed	passed
+Elixir.Ex338.TradeTest::test count_votes/1 counts votes and updates trade	passed	passed
+Elixir.Ex338.TradeTest::test count_votes/1 counts votes and updates trade with 0 votes if none submitted	passed	passed
+Elixir.Ex338.TradeTest::test get_teams_emails/1 returns emails for all participating team owners	passed	passed
+Elixir.Ex338.TradeTest::test get_teams_from_trade/1 returns all participating teams	passed	passed
+Elixir.Ex338.TradeTest::test new_changeset/2 invalid when incorrect status option provided	passed	passed
+Elixir.Ex338.TradeTest::test new_changeset/2 invalid when player is not on losing teams' rosters	passed	passed
+Elixir.Ex338.TradeTest::test new_changeset/2 invalid without assoc to cast	passed	passed
+Elixir.Ex338.TradeTest::test new_changeset/2 valid when player is on losing teams' rosters	passed	passed
+Elixir.Ex338.TradeTest::test preload_assocs/1 returns trade with assocs	passed	passed
+Elixir.Ex338.UploaderTest::test build_multis_from_rows/2 builds a multi with rows from a CSV file	passed	passed
+Elixir.Ex338.UploaderTest::test build_multis_from_rows/2 error if changest is invalid	passed	passed
+Elixir.Ex338.UploaderTest::test insert_from_csv/2 converts TRUE and FALSE to format for upload	passed	passed
+Elixir.Ex338.UploaderTest::test insert_from_csv/2 inserts data from a csv into a fantasy team table	passed	passed
+Elixir.Ex338.UploaderTest::test insert_from_csv/2 returns error if changes are invalid	passed	passed
+Elixir.Ex338.UserTest::test admin_emails/0 returns all admin emails	passed	passed
+Elixir.Ex338.UserTest::test alphabetical/1 returns users in alphabetical order by name	passed	passed
+Elixir.Ex338.UserTest::test preload_assocs/1 preloads assocs for a user	passed	passed
+Elixir.Ex338.UserTest::test user_changeset/2 changeset with invalid attributes	passed	passed
+Elixir.Ex338.UserTest::test user_changeset/2 changeset with valid attributes	passed	passed
+Elixir.Ex338.UserTest::test user_changeset/2 doesn't allow updates to unauthorized fields	passed	passed
+Elixir.Ex338.ValidateHelpersTest::test slot_available/2 returns false if too many flex spots in use	passed	passed
+Elixir.Ex338.ValidateHelpersTest::test slot_available/2 returns true if flex slot is available	passed	passed
+Elixir.Ex338.Waiver.BatchTest::test group_and_sort/1 groups waivers by fantasy league and add player	passed	passed
+Elixir.Ex338.Waiver.BatchTest::test group_by_add_player/1 groups waivers by player to add	passed	passed
+Elixir.Ex338.Waiver.BatchTest::test group_by_league/1 groups waivers by fantasy league	passed	passed
+Elixir.Ex338.Waiver.BatchTest::test sort_by_process_at/1 sort waivers by earliest process at	passed	passed
+Elixir.Ex338.Waiver.BatchTest::test sort_by_waiver_positon/1 sort waivers by waiver position	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test drop_roster_position/2 waiver without a player to drop return a multi with no changes	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test drop_roster_position/2 with add and drop, returns roster position with changes to dropped	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test insert_new_position/2 add and drop waiver returns a multi with valid changeset	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test insert_new_position/2 without a drop, returns a multi with valid changeset	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test insert_new_position/2 without an add, returns a multi with no changes	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test update_league_waivers/2 with add and drop, returns a valid fantasy team changeset	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test update_league_waivers/2 with only a drop, returns a multi with no change	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test update_team_waiver_position/2 with add and drop, returns valid fantasy team changeset	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test update_team_waiver_position/2 with only a drop, returns a multi with no change	passed	passed
+Elixir.Ex338.Waivers.AdminTest::test update_waiver_status/3 builds an update Ecto.Multi struct	passed	passed
+Elixir.Ex338.WaiversTest::test batch_process_all/0 doesn't process if process_at in future	passed	passed
+Elixir.Ex338.WaiversTest::test batch_process_all/0 handles when dropped player is no longer owned	passed	passed
+Elixir.Ex338.WaiversTest::test batch_process_all/0 processes all pending waivers sorted by waiver position & league	passed	passed
+Elixir.Ex338.WaiversTest::test batch_process_all/0 processes pending waiver updating the waiver positions	passed	passed
+Elixir.Ex338.WaiversTest::test create_waiver creates a waiver	passed	passed
+Elixir.Ex338.WaiversTest::test create_waiver drop only waiver is processed immediately	passed	passed
+Elixir.Ex338.WaiversTest::test find/1 returns a waivers with assocs	passed	passed
+Elixir.Ex338.WaiversTest::test get_all_pending_waivers/0 returns all pending waivers with assocs	passed	passed
+Elixir.Ex338.WaiversTest::test get_all_waivers/1 returns all waivers with assocs in a league	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test build_new_changeset builds a new_changeset from a fantasy team struct	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test by_league/2 returns waivers in a fantasy league	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 error if too many flex spots in use	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 error with invalid attributes	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 invalid if roster position not active	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 invalid with incorrect status	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 valid with enough flex spots in use	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 valid with maj flex spots adjustment	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 valid with minimum attributes	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test changeset/2 valid with valid attributes	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error if add only waiver and no open position	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error if submitted after existing wait period ends	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on add if no sports league championship	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on add if sports league championship is in the past	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on add if sports league overall waiver deadline has passed	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on drop if no sports league championship	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on drop if sports league championship is in the past	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error on drop if sports league overall waiver deadline has passed	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 error without a fantasy team or an add or a drop	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 no error if roster is full and a player is dropped	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 process_at matches existing if already a pending waiver for a player	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 sets process_at 3 days from now if no waiver for player existing	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 sets process_at to now if just dropping a player	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 sets process_at waiver deadline if in blind waiver period	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 valid if submitted before existing wait period ends	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 valid with valid attributes	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test pending/1 returns pending waivers	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test pending_waivers_for_player/2 returns pending waivers for a player in a fantasy league	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test preload_assocs/1 preload all waiver assocs	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test ready_to_process/1 returns waivers with process date in past	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test update_changeset casts only a player to drop and status change	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test update_changeset does not allow owner to change status to successful	passed	passed
+Elixir.Ex338.Waivers.WaiverTest::test update_changeset invalid if submitted after wait period ends	passed	passed
+Elixir.Ex338Web.Api.V1.ChampionshipControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/championships/:id returns 404 for non-existent championship	passed	passed
+Elixir.Ex338Web.Api.V1.ChampionshipControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/championships/:id returns championship with results	passed	passed
+Elixir.Ex338Web.Api.V1.ChampionshipControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/championships returns championships for a league	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/draft_picks returns draft picks for a league	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id an admin can correct a pick's fields	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id an owner cannot update their own pick's fields	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id omits pick_number rather than reporting it as null	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id returns 422 for a team in another league	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id returns 422 for a team that doesn't exist	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id returns 422 when moving a pick that has already been used	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id returns 422 when the team is cleared	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id the drafted player cannot be changed or cleared	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test PATCH /api/v1/draft_picks/:id the league cannot be reassigned	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player an admin can draft with another team's pick	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player a non-owner is forbidden and the denial is logged	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player an owner can draft a player with their pick	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 404 for a missing pick	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 422 for a pick with no team assigned	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 422 for a player that doesn't exist	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 422 when the league's draft picks are locked	passed	passed
+Elixir.Ex338Web.Api.V1.DraftPickControllerTest::test POST /api/v1/draft_picks/:id/draft_player returns 422 without a player	passed	passed
+Elixir.Ex338Web.Api.V1.DraftQueueControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/draft_queues a non-owner is forbidden and the denial is logged	passed	passed
+Elixir.Ex338Web.Api.V1.DraftQueueControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/draft_queues an owner can queue a player	passed	passed
+Elixir.Ex338Web.Api.V1.DraftQueueControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/draft_queues ignores client-supplied status and order	passed	passed
+Elixir.Ex338Web.Api.V1.DraftQueueControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/draft_queues returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyLeagueControllerTest::test GET /api/v1/fantasy_leagues/:id returns 404 for non-existent league	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyLeagueControllerTest::test GET /api/v1/fantasy_leagues/:id returns league with standings	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyLeagueControllerTest::test GET /api/v1/fantasy_leagues returns list of primary leagues	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyPlayerControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/fantasy_players returns 404 for non-existent league	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyPlayerControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/fantasy_players returns players for a league	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyTeamControllerTest::test GET /api/v1/fantasy_teams/:id returns 404 for non-existent team	passed	passed
+Elixir.Ex338Web.Api.V1.FantasyTeamControllerTest::test GET /api/v1/fantasy_teams/:id returns team with roster and owners	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/injured_reserves returns injured reserves for a league	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/injured_reserves a non-owner is forbidden and the denial is logged	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/injured_reserves an owner can create an IR request	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/injured_reserves ignores a body fantasy_team_id and writes to the authorized team	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/injured_reserves ignores a client-supplied status so IRs start as submitted	passed	passed
+Elixir.Ex338Web.Api.V1.InjuredReserveControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/injured_reserves returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing accepts a lowercase bearer scheme	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing a notification (no id) gets 202 with no body	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing initialize returns protocol version and server info	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing returns 401 for an unrecognized auth scheme	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing returns 405 with an Allow header for non-POST methods	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test initialize / ping / method routing unknown method returns JSON-RPC method-not-found	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test league read tools respect private-league access a member can read a private league's waivers	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test league read tools respect private-league access a non-member cannot read a private league's waivers	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test league read tools respect private-league access a public league's waivers are readable by anyone	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_draft_queue an owner can queue a player	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_injured_reserve an owner can create an IR request	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver a non-integer id returns a clean tool error, not a 500	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver a non-integer team id on a write tool returns a clean tool error	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver a non-owner gets an isError tool result, not a crash	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver an owner can create a waiver	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver an unknown tool returns a JSON-RPC invalid-params error	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call create_waiver invalid params surface a validation tool result	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player a missing draft pick returns a not-found tool result	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player an admin can draft with another team's pick	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player a non-owner cannot draft with someone else's pick	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player an owner can draft a player with their pick	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player an unavailable player surfaces a validation tool result	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player a pick with no team assigned is refused, not a crash	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player a player that doesn't exist surfaces a validation result, not a crash	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player drafting is refused when the league's draft picks are locked	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call draft_player omitting the player surfaces a validation tool result, not a crash	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call list_league_draft_picks a non-member cannot read a private league's board	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call list_league_draft_picks returns the draft board with which picks are available	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call list_team_draft_queues scoping a non-owner cannot read another team's queue	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call list_team_draft_queues scoping an owner can read their team's queue	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick an admin can correct a pick's fields	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick an admin can update a pick in a locked league	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick an owner cannot update their own pick's fields	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick a team from another league is refused	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick a team that doesn't exist is refused, not a crash	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick clearing the team is refused	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick the drafted player cannot be changed	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_draft_pick the league cannot be reassigned	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call whoami returns an empty team list for a user who owns none	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call whoami returns each team the owner has with the league it plays in	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call whoami returns identity and admin scope	passed	passed
+Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/list advertises the available tools	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me reports admin scope for admins	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me returns 401 for an invalid token	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me returns 401 when the token is missing	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me returns an empty team list for a user who owns none	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me returns each team the owner has with the league it plays in	passed	passed
+Elixir.Ex338Web.Api.V1.MeControllerTest::test GET /api/v1/me returns the authenticated user for a valid token	passed	passed
+Elixir.Ex338Web.Api.V1.TradeControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/trades returns trades for a league	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test GET /api/v1/fantasy_leagues/:fantasy_league_id/waivers returns waivers for a league	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers an admin can create a waiver for any team	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers a non-owner is forbidden	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers an owner can create a waiver for their team	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers ignores a body fantasy_team_id and writes to the authorized team	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers returns 401 without a token	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers returns 404 for a non-existent team	passed	passed
+Elixir.Ex338Web.Api.V1.WaiverControllerTest::test POST /api/v1/fantasy_teams/:fantasy_team_id/waivers returns 422 with errors for invalid params	passed	passed
+Elixir.Ex338Web.ArchivedLeagueControllerTest::test show/2 lists all archived leagues	passed	passed
+Elixir.Ex338Web.CanonicalDomainTest::test redirects to root domain when host is platform domain	passed	passed
+Elixir.Ex338Web.ChampionshipLive.IndexTest::test index/2 lists all championships	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 shows championship event and all results	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 shows draft for overall championship and updates new pick	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 shows overall championship and all results	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 shows overall championship with event and all results	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with admin user allows admin to create in season draft chat	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with admin user allows admin to create in season draft picks when non exist	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with admin user handles error when creating draft picks	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with a logged in user redirects to show if user is not owner	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with a logged in user shows draft for overall championship with chat	passed	passed
+Elixir.Ex338Web.ChampionshipLive.ShowTest::test championship_live show/2 with a logged in user shows draft for overall championship with form to submit a pick	passed	passed
+Elixir.Ex338Web.ChampionshipSlotAdminControllerTest::test create/2 as admin admin creates roster slots for a championship	passed	passed
+Elixir.Ex338Web.ChampionshipSlotAdminControllerTest::test create/2 as user redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.CommishEmailControllerTest::test create/2 as admin send email with text to owners in multiple leagues	passed	passed
+Elixir.Ex338Web.CommishEmailControllerTest::test create/2 as user redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.CommishEmailControllerTest::test new/1 as admin renders a form to send an email	passed	passed
+Elixir.Ex338Web.CommishEmailControllerTest::test new/1 as user redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals allows commish to create future picks if none have been created	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals lists injured reserves and handles IR error	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals lists injured reserves and process approval	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals lists trades and processes a disapproved trade	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals lists trades and processes an approved trade	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals lists trades and returns error if position is missting	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test Approvals toggles showing league actions and all actions	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLive.ApprovalTest::test FantasyLeagueLive.Approvals as user redirects if not admin	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLiveTest::test Edit as admin updates fantasy_league and team names	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLiveTest::test Edit as admin updates fantasy_league	passed	passed
+Elixir.Ex338Web.Commish.FantasyLeagueLiveTest::test Edit as user redirects if not admin	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test edit/2 redirects if draft picks are locked	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test edit/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test edit/2 renders a form to submit a draft pick	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test update/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test update/2 redirects if draft picks are locked	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test update/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.DraftPickControllerTest::test update/2 updates a draft pick and redirects	passed	passed
+Elixir.Ex338Web.DraftPickHTMLTest::test current_picks/2 returns first picks if no picks completed	passed	passed
+Elixir.Ex338Web.DraftPickHTMLTest::test current_picks/2 returns last 5 and next 5 picks when amount 10 is provided	passed	passed
+Elixir.Ex338Web.DraftPickHTMLTest::test current_picks/2 returns last picks if no picks remaining	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 filters draft picks by sport without changing current picks	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 lists all draft picks in a league and updates new pick	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 shows keeper icon for non-admin users	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 with logged in admin allows admin to toggle keeper status	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 with logged in admin shows draft grades and analysis when all teams have grades	passed	passed
+Elixir.Ex338Web.DraftPickLive.IndexTest::test index/2 with logged in user allows owners to chat	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_error/1 emails the owner and admins without posting to the league channel	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_error/1 emails the owner even when the pick has been deleted	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_update/1 emails a skipped team's open pick under Next Up and the new pick under Latest Picks	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_update/1 posts the pick to the league's Slack alerts channel	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_update/1 says the draft is over when no picks remain	passed	passed
+Elixir.Ex338Web.DraftPickNotifierTest::test send_update/1 skips Slack when the league has no alerts channel	passed	passed
+Elixir.Ex338Web.ErrorHTMLTest::test render 500.html	passed	passed
+Elixir.Ex338Web.ErrorHTMLTest::test render any other	passed	passed
+Elixir.Ex338Web.ErrorHTMLTest::test renders 404.html	passed	passed
+Elixir.Ex338Web.FantasyLeague.CalendarDownloadTest::test get/2 allows a user to download the calendar of events for a fantasy league	passed	passed
+Elixir.Ex338Web.FantasyLeagueLive.ShowTest::test show/2 redirects a non-member away from a private league	passed	passed
+Elixir.Ex338Web.FantasyLeagueLive.ShowTest::test show/2 shows a private league to a member	passed	passed
+Elixir.Ex338Web.FantasyLeagueLive.ShowTest::test show/2 shows a private league to an admin	passed	passed
+Elixir.Ex338Web.FantasyLeagueLive.ShowTest::test show/2 shows league and lists all fantasy teams	passed	passed
+Elixir.Ex338Web.FantasyPlayerControllerTest::test index/2 lists all owned/unowned fantasy players in a league	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test abbrev_from_players/1 gets sport abbrev from players list	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test deadline_icon_for_sports_league/1 returns an empty string if no deadlines have passed	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test deadline_icon_for_sports_league/1 returns an icon if all deadlines passed	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test deadline_icon_for_sports_league/1 returns an icon if waiver deadline passed	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test display_championship_date/1 displays overall championship date in PST	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test format_sport_select/1 transforms list of players to select options for sport	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test get_result/1 gets championship_result from player	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test get_result/1 returns nil with no results	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test get_team/1 gets team from player	passed	passed
+Elixir.Ex338Web.FantasyPlayerHTMLTest::test get_team/1 returns nil with no results	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test deadline_icon_for_position/1 returns an empty string if no deadlines have passed	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test deadline_icon_for_position/1 returns an icon if all deadlines passed	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test deadline_icon_for_position/1 returns an icon if waiver deadline passed	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test display_points/1 returns an empty string if season_ended? is missing	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test display_points/1 returns an empty string if season hasn't ended	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test display_points/1 returns a zero if no points and season has ended	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test display_points/1 returns empty string if no fantasy player exists	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test display_points/1 returns pointsfor a position	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test order_range/1 returns empty list if no draft queues	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test order_range/1 returns number of draft queues as a range including existing draft queues	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test order_range/1 returns number of draft queues as a range	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test position_selections/1 returns only flex positions based on league settings	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test position_selections/1 returns sports league abbrev and flex positions	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test queue_status_options/0 returns draft queue status options for owner	passed	passed
+Elixir.Ex338Web.FantasyTeamComponentsTest::test sort_by_position/1 returns struct sorted alphabetically by position	passed	passed
+Elixir.Ex338Web.FantasyTeamControllerTest::test index/2 lists all fantasy teams in a fantasy league	passed	passed
+Elixir.Ex338Web.FantasyTeamControllerTest::test index/2 private league access allows a member to view a private league's pages	passed	passed
+Elixir.Ex338Web.FantasyTeamControllerTest::test index/2 private league access redirects a non-member away from a private league's pages	passed	passed
+Elixir.Ex338Web.FantasyTeamControllerTest::test index/2 shows fantasy team championship with events results	passed	passed
+Elixir.Ex338Web.FantasyTeamControllerTest::test index/2 shows fantasy team slot results	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test Edit Fantasy Team Draft Queues Form does not update and renders draft queue errors when invalid	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test Edit Fantasy Team Draft Queues Form redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test Edit Fantasy Team Draft Queues Form updates a fantasy team's draft queues and redirects	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test New Draft Queue Form does not update and renders draft queue errors when invalid	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test New Draft Queue Form renders a form to submit a new draft queue	passed	passed
+Elixir.Ex338Web.FantasyTeamDraftQueuesLive.EditTest::test New Draft Queue Form renders a form with only players from the fantasy league's sport draft	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.EditTest::test Edit redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.EditTest::test Edit updates a fantasy team's roster and redirects	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.EditTest::test Edit updates a team	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test fantasy team show/2 when user is the owner shows draft queue for team when user is owner	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show does not show draft queue when user not owner	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show shows fantasy team championship with events results	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show shows fantasy team info and players' table	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show shows fantasy team slot results	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show shows future picks including original team	passed	passed
+Elixir.Ex338Web.FantasyTeamLive.ShowTest::test Show shows only flex positions in roster when league has that option	passed	passed
+Elixir.Ex338Web.HealthControllerTest::test GET /health returns 200	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test admin?/1 returns false if no user	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test admin?/1 returns false if user is not admin	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test admin?/1 returns true if user is admin	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test display_future_pick/1 returns future pick round with team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test fantasy_team_link/2 returns a link to fantasty team page from team name	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test format_players_for_select/1 returns name, abbrev, and id in a keyword list	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test format_players_for_select/1 returns name, abbrev, id, fantasy team id in a keyword list	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test format_teams_for_select/1 returns name, abbrev, and id in a keyword list	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test format_whole_dollars/1 returns formats as currency	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test maybe_fetch_current_user_id/1 returns id if user exists	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test maybe_fetch_current_user_id/1 returns nil if no user	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns false for draft pick if user doesn't own the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns false for in season draft pick if user doesn't own the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns false for waiver if user doesn't own the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns false if no user	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns false if user is not the owner of a team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns true for draft pick if user owns the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns true for in season draft pick if user owns the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns true for waiver if user owns the team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test owner?/2 returns true if user is the owner of a team	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_date_pst/1 formats DateTime struct into short date	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_date_pst/1 formats Naive DateTime struct into short date	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_datetime_pst/1 formats DateTime struct into short datetime in PST	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_datetime_pst/1 formats Naive DateTime struct into short datetime in PST	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_time_pst/1 formats DateTime struct into short time in PST with space for tens digit	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_time_pst/1 formats Naive DateTime struct into short time in PST	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_time_secs_pst/1 formats DateTime struct into short time secs in PST with space for tens digit	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test short_time_secs_pst/1 formats Naive DateTime struct into short time in PST	passed	passed
+Elixir.Ex338Web.HTMLHelpersTest::test sports_abbrevs/1 returns list of unique sports abbrevs	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test create/2 creates an injured reserve and redirects	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test create/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test create/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test index/2 lists all injured reserve transactions in a league	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test new/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test new/2 renders a form to submit an injured reserve	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test update/2 as admin handles error	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test update/2 as admin processes an approved IR claim	passed	passed
+Elixir.Ex338Web.InjuredReserveControllerTest::test update/2 as user redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.InSeasonDraftPickNotifierTest::test send_update/1 posts the pick to the league's Slack alerts channel	passed	passed
+Elixir.Ex338Web.InSeasonDraftPickNotifierTest::test send_update/1 skips Slack when the league has no alerts channel	passed	passed
+Elixir.Ex338Web.LayoutsTest::test display/2 returns archived leagues for navbar display	passed	passed
+Elixir.Ex338Web.LayoutsTest::test display/2 returns primary leagues for navbar display	passed	passed
+Elixir.Ex338Web.LayoutsTest::test display/2 returns primary leagues for navbar display with default to redraft	passed	passed
+Elixir.Ex338Web.LayoutsTest::test main_navigation?/1 excludes archived private leagues	passed	passed
+Elixir.Ex338Web.LayoutsTest::test main_navigation?/1 excludes non-primary public leagues	passed	passed
+Elixir.Ex338Web.LayoutsTest::test main_navigation?/1 includes primary public leagues	passed	passed
+Elixir.Ex338Web.LayoutsTest::test main_navigation?/1 includes private leagues even when their navbar display is hidden	passed	passed
+Elixir.Ex338Web.LayoutsTest::test show_nav_components?/1 returns false for the login page	passed	passed
+Elixir.Ex338Web.LayoutsTest::test show_nav_components?/1 returns true if the navbar and sidebar should displayed	passed	passed
+Elixir.Ex338Web.LoadLeaguesTest::test hides private leagues from a non-member	passed	passed
+Elixir.Ex338Web.LoadLeaguesTest::test keeps private leagues for a member	passed	passed
+Elixir.Ex338Web.LoadLeaguesTest::test loads all Fantasy Leagues into assigns	passed	passed
+Elixir.Ex338Web.LoadUserTeamsTest::test handles no current user	passed	passed
+Elixir.Ex338Web.LoadUserTeamsTest::test preloads all current user teams into assigns	passed	passed
+Elixir.Ex338Web.MailerTest::test handle_delivery/1 logs an error email	passed	passed
+Elixir.Ex338Web.OwnerControllerTest::test index/2 lists all owners in a league	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / displays current standings	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / displays historical records & winnings	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / displays title	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / keeps a hidden private league hidden from a non-member	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / Loads leagues into assigns	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2022 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2023 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2024 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2025 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2026 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules from 2027 without user	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules redirects a non-member away from a private league	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules shows a private league's rules to a member	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /keeper_rules from 2020	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /keeper_rules from 2023	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /keeper_rules from 2024	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /keeper_rules from 2025	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /keeper_rules from 2026	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2017	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2018	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2019	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2020	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2025	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2026	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET /rules while logged in GET /rules from 2027	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / shows a hidden private league to an admin	passed	passed
+Elixir.Ex338Web.PageControllerTest::test GET / shows a hidden private league to an owner	passed	passed
+Elixir.Ex338Web.TableUploadControllerTest::test create/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.TableUploadControllerTest::test create/2 loads csv data into a database table	passed	passed
+Elixir.Ex338Web.TableUploadControllerTest::test new/2 renders a form to csv data	passed	passed
+Elixir.Ex338Web.TableUploadControllerTest::test /table_upload as user create redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.TableUploadControllerTest::test /table_upload as user new redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test create/2 creates a trade & trade vote and redirects	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test create/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test create/2 returns error if invalid	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test new/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test new/2 renders a form to submit a trade	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 as admin does not processes a canceled trade when already Approved	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 as admin processes a canceled trade	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 as admin processes an approved trade	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 as admin returns error if position is missing	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 does not processes a canceled trade when user not owner or admin	passed	passed
+Elixir.Ex338Web.TradeControllerTest::test update/2 redirects to root if user is not admin and status is Approved	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test allow_vote?/2 returns false if team has voted	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test allow_vote?/2 returns false if trade is no longer pending	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test allow_vote?/2 returns false if user doesn't own teams in the league	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test allow_vote?/2 returns true if team can still vote	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test get_team_for_league/2 raises if multiple fantasy teams from a fantasy league	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test get_team_for_league/2 returns a fantasy team from a fantasy league	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test get_team_for_league/2 returns :no_team if there are no teams	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test proposed_for_team?/2 returns false if Proposed and team is NOT involved	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test proposed_for_team?/2 returns true if Proposed and team is involved and own multiple teams	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test proposed_for_team?/2 returns true if Proposed and team is involved	passed	passed
+Elixir.Ex338Web.TradeHTMLTest::test proposed_for_team?/2 returns true if Proposed and user is admin	passed	passed
+Elixir.Ex338Web.TradeIndexControllerTest::test index/2 lists all trades in a league	passed	passed
+Elixir.Ex338Web.TradeVoteControllerTest::test create/2 changes Trade to Pending if all involved teams vote yes	passed	passed
+Elixir.Ex338Web.TradeVoteControllerTest::test create/2 changes Trade to Rejected if involved team votes no	passed	passed
+Elixir.Ex338Web.TradeVoteControllerTest::test create/2 create a trade vote and redirect	passed	passed
+Elixir.Ex338Web.TradeVoteControllerTest::test create/2 doesn't create if team already voted and redirects	passed	passed
+Elixir.Ex338Web.TradeVoteControllerTest::test create/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.UserAuthTest::test fetch_current_user/2 authenticates user from cookies	passed	passed
+Elixir.Ex338Web.UserAuthTest::test fetch_current_user/2 authenticates user from session	passed	passed
+Elixir.Ex338Web.UserAuthTest::test fetch_current_user/2 does not authenticate if data is missing	passed	passed
+Elixir.Ex338Web.UserAuthTest::test log_in_user/3 clears everything previously stored in the session	passed	passed
+Elixir.Ex338Web.UserAuthTest::test log_in_user/3 redirects to the configured path	passed	passed
+Elixir.Ex338Web.UserAuthTest::test log_in_user/3 stores the user token in the session	passed	passed
+Elixir.Ex338Web.UserAuthTest::test log_in_user/3 writes a cookie if remember_me is configured	passed	passed
+Elixir.Ex338Web.UserAuthTest::test logout_user/1 broadcasts to the given live_socket_id	passed	passed
+Elixir.Ex338Web.UserAuthTest::test logout_user/1 erases session and cookies	passed	passed
+Elixir.Ex338Web.UserAuthTest::test logout_user/1 works even if user is already logged out	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :ensure_authenticated authenticates current_user based on a valid user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :ensure_authenticated redirects to login page if there isn't a user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :ensure_authenticated redirects to login page if there isn't a valid user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :mount_current_user assigns current_user based on a valid user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :mount_current_user assigns nil to current_user assign if there isn't a user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :mount_current_user assigns nil to current_user assign if there isn't a valid user_token	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :redirect_if_user_is_authenticated doesn't redirect if there is no authenticated user	passed	passed
+Elixir.Ex338Web.UserAuthTest::test on_mount :redirect_if_user_is_authenticated redirects if there is an authenticated  user 	passed	passed
+Elixir.Ex338Web.UserAuthTest::test redirect_if_user_is_authenticated/2 does not redirect if user is not authenticated	passed	passed
+Elixir.Ex338Web.UserAuthTest::test redirect_if_user_is_authenticated/2 redirects if user is authenticated	passed	passed
+Elixir.Ex338Web.UserAuthTest::test require_authenticated_user/2 does not redirect if user is authenticated	passed	passed
+Elixir.Ex338Web.UserAuthTest::test require_authenticated_user/2 redirects if user is not authenticated	passed	passed
+Elixir.Ex338Web.UserAuthTest::test require_authenticated_user/2 stores the path to redirect to on GET	passed	passed
+Elixir.Ex338Web.UserConfirmationInstructionsLiveTest::test Resend confirmation does not send confirmation token if email is invalid	passed	passed
+Elixir.Ex338Web.UserConfirmationInstructionsLiveTest::test Resend confirmation does not send confirmation token if user is confirmed	passed	passed
+Elixir.Ex338Web.UserConfirmationInstructionsLiveTest::test Resend confirmation renders the resend confirmation page	passed	passed
+Elixir.Ex338Web.UserConfirmationInstructionsLiveTest::test Resend confirmation sends a new confirmation token	passed	passed
+Elixir.Ex338Web.UserConfirmationLiveTest::test Confirm user confirms the given token once	passed	passed
+Elixir.Ex338Web.UserConfirmationLiveTest::test Confirm user does not confirm email with invalid token	passed	passed
+Elixir.Ex338Web.UserConfirmationLiveTest::test Confirm user renders confirmation page	passed	passed
+Elixir.Ex338Web.UserControllerTest::test edit/2 redirects to root if user is not current user	passed	passed
+Elixir.Ex338Web.UserControllerTest::test edit/2 renders a form to update a user	passed	passed
+Elixir.Ex338Web.UserControllerTest::test show/2 shows user info	passed	passed
+Elixir.Ex338Web.UserControllerTest::test update/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.UserControllerTest::test update/2 redirects to root if user is not authorized	passed	passed
+Elixir.Ex338Web.UserControllerTest::test update/2 updates user info and redirects	passed	passed
+Elixir.Ex338Web.UserForgotPasswordLiveTest::test Forgot password page redirects if already logged in	passed	passed
+Elixir.Ex338Web.UserForgotPasswordLiveTest::test Forgot password page renders email page	passed	passed
+Elixir.Ex338Web.UserForgotPasswordLiveTest::test Reset link does not send reset password token if email is invalid	passed	passed
+Elixir.Ex338Web.UserForgotPasswordLiveTest::test Reset link sends a new reset password token	passed	passed
+Elixir.Ex338Web.UserInvitationLiveTest::test New Invitations as admin sends a new invitation email	passed	passed
+Elixir.Ex338Web.UserInvitationLiveTest::test New Invitations as user redirects a regular user	passed	passed
+Elixir.Ex338Web.UserLoginLiveTest::test login navigation redirects to forgot password page when the Forgot Password button is clicked	passed	passed
+Elixir.Ex338Web.UserLoginLiveTest::test Log in page redirects if already logged in	passed	passed
+Elixir.Ex338Web.UserLoginLiveTest::test Log in page renders log in page	passed	passed
+Elixir.Ex338Web.UserLoginLiveTest::test user login redirects if user login with valid credentials	passed	passed
+Elixir.Ex338Web.UserLoginLiveTest::test user login redirects to login page with a flash error if there are no valid credentials	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test register user creates account and logs the user in	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test register user renders errors for duplicated email	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test registration navigation redirects to login page when the Sign in button is clicked	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test Registration page redirects if already logged in	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test Registration page renders errors for invalid data	passed	passed
+Elixir.Ex338Web.UserRegistrationLiveTest::test Registration page renders registration page	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset Password does not reset password on invalid data	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset password navigation redirects to login page when the Log in button is clicked	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset password page does not render reset password with invalid token	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset password page renders errors for invalid data	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset password page renders reset password with valid token	passed	passed
+Elixir.Ex338Web.UserResetPasswordLiveTest::test Reset Password resets password once	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test DELETE /users/log_out logs the user out	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test DELETE /users/log_out succeeds even if the user is not logged in	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in login following password update	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in login following registration	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in logs the user in	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in logs the user in with remember me	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in logs the user in with return to	passed	passed
+Elixir.Ex338Web.UserSessionControllerTest::test POST /users/log_in redirects to login page with invalid credentials	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test API tokens generates a token and shows it once	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test API tokens lists existing tokens	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test API tokens only lists the current user's tokens	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test API tokens revokes a token	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test API tokens shows MCP setup instructions with the endpoint	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test confirm email does not update email with invalid token	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test confirm email redirects if user is not logged in	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test confirm email updates the user email once	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test Settings page redirects if user is not logged in	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test Settings page renders settings page	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update email form renders errors with invalid data (phx-change)	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update email form renders errors with invalid data (phx-submit)	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update email form updates the user email	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update password form renders errors with invalid data (phx-change)	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update password form renders errors with invalid data (phx-submit)	passed	passed
+Elixir.Ex338Web.UserSettingsLiveTest::test update password form updates the user password	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test edit/2 renders a form for admin to process a waiver	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test update/2 processes an invalid waiver	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test update/2 processes a successful waiver	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test update/2 processes a successful waiver with only a drop	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test update/2 processes a successful waiver with only an add	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test update/2 processes unsuccessful waiver	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test waiver_admin as a user edit redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.WaiverAdminControllerTest::test waiver_admin as a user update redirects to root if user is not admin	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test create/2 creates a waiver and redirects	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test create/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test create/2 drop only waiver is processed immediately	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test create/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test edit/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test edit/2 renders a form to update a waiver	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test new/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test new/2 renders a form to submit a waiver	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test update/2 does not update and renders errors when invalid	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test update/2 redirects to root if user is not owner	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test update/2 updates a player to drop	passed	passed
+Elixir.Ex338Web.WaiverControllerTest::test update/2 updates a waiver to cancelled	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test after_now?/1 returns false if date is before now	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test after_now?/1 returns true if date is after now	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test display_name/1 displays name if sport is not hiding waiver claims	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test display_name/1 hides name if sport is hiding waiver claims	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test sort_most_recent/1 returns struct sorted by most recent first	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test within_two_hours_of_submittal?/1 returns false if waiver submitted more than two hours	passed	passed
+Elixir.Ex338Web.WaiverHTMLTest::test within_two_hours_of_submittal?/1 returns true if waiver submitted within two hours	passed	passed
+Elixir.Ex338Web.WaiverIndexControllerTest::test index/2 lists all waivers in a league	passed	passed
+Elixir.Ex338Web.WaiverIndexControllerTest::test index/2 renders invalid waiver claims	passed	passed
+Elixir.Ex338.Workers.InSeasonAutodraftWorkerTest::test perform/1 makes in season draft pick and schedules another job	passed	passed
+Elixir.Ex338.Workers.InSeasonAutodraftWorkerTest::test perform/1 starts autodraft for a championship and a fantasy_league	passed	passed
+Elixir.Ex338.Workers.InSeasonAutodraftWorkerTest::test perform/1 stops scheduling next job after all picks complete	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 cancels on a Slack error that isn't a known transient one	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 cancels the job when no bot token is configured	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 cancels the job when retrying can't fix the error	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 posts the message to Slack	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 retries the job when Slack fails for a transient reason	passed	passed
+Elixir.Ex338.Workers.SlackMessageWorkerTest::test perform/1 retries when Slack rate limits the app	passed	passed
+Elixir.Ex338.Workers.WaiverProcessWorkerTest::test perform/1 processes pending waivers that are ready	passed	passed
+Elixir.Ex338.Workers.WaiverProcessWorkerTest::test perform/1 succeeds when there are no pending waivers	passed	passed
