@@ -11,8 +11,10 @@
 #                          the wall and engine times (controls: the engine's controls_ms alone), the load, the unique bytes of the
 #                          images the try added (OUT/images_df.tsv) and the try's start and end
 #   cases_table.sh merge   an earlier public table (BASE) and the `cases` output (NEW) into one table (see the step)
+#   cases_table.sh built   the images of OUT/images_df.tsv made since SINCE, in the columns of images.tsv
+#   cases_table.sh counts  the pull requests of the merged table TABLE, counted by their last try
 # Environment: OUT (all.sh's output folder), JOB_LABEL (images), NUMBERS, TASKDIR, SCREEN_TSV, NOTES, IDS, PREFIX
-# (screens); for merge BASE, NEW, WINDOW, NOT_RUN_REASON, NOT_RUN_WHY. Needs jq and curl.
+# (screens); for merge BASE, NEW, WINDOW, NOT_RUN_REASON, NOT_RUN_WHY; SINCE; TABLE. Needs jq and curl.
 set -euo pipefail
 : "${OUT:?}"
 PREFIX=${PREFIX:-screens}
@@ -96,6 +98,36 @@ merge)
     done < "$WINDOW"
   } | awk -F'\t' -v OFS='\t' '{r = ($7 == "A" || $7 == "S") ? 0 : ($7 == "-" ? 9 : $7); print $1 + 0, r, $0}' |
     sort -t$'\t' -k1,1n -k2,2n -s | cut -f3-
+  ;;
+built)
+  # the images of OUT/images_df.tsv created at or after SINCE (an ISO time), in the columns of images.tsv: the kind
+  # (by the tag), the try that built it (the try whose images_added.tsv lists it, as "<number>" or "<number> (<try>)"
+  # for a second try), the local creation time and Docker's bytes
+  : "${SINCE:?}"
+  since=$(date -d "$SINCE" +%s)
+  tail -n +2 "$OUT/images_df.tsv" | while IFS=$'\t' read -r iid created bytes shared unique names; do
+    [ "$(date -d "$created" +%s)" -ge "$since" ] || continue
+    case " $names" in
+      *" elixir-task-factory:project-"* | *" elixir-task-factory:seed-"*) kind="project and seed" ;;
+      *" elixir-task-factory:snapshot-"*) kind="database snapshot" ;;
+      *" elixir-task-factory:layout-"*) kind="database layout" ;;
+      *" elixir-task-factory:toolchain-"*) kind=toolchain ;;
+      *) kind=other ;;
+    esac
+    f=$(grep -l "^sha256:$iid" "$OUT"/*/*/images_added.tsv 2>/dev/null | head -1 || true)
+    if [ -n "$f" ]; then
+      t=$(basename "$(dirname "$f")"); n=$(basename "$(dirname "$(dirname "$f")")"); n=${n##*-}
+      if [ "$t" = 1 ]; then for_=$n; else for_="$n ($t)"; fi
+    else for_=-; fi
+    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t-\n' "$iid" "$kind" "$for_" "$(date -d "$created" -Is)" "$bytes" "$shared" "$unique"
+  done
+  ;;
+counts)
+  # TABLE (the merged public table): the pull requests counted by their last try's verdict, step, reason and whose
+  : "${TABLE:?}"
+  printf 'pull_requests\tverdict\tdropped_at\treason\twhose\n'
+  awk -F'\t' 'NR > 1 {last[$3] = $8 "\t" $9 "\t" $10 "\t" $11} END {for (i in last) print last[i]}' "$TABLE" |
+    sort | uniq -c | sort -k1,1rn -k2 | awk '{c = $1; sub(/^ *[0-9]+ /, ""); print c "\t" $0}'
   ;;
 *) echo "unknown table $what"; exit 2 ;;
 esac

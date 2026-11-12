@@ -3,3 +3,7 @@ screens-pr-3397	reference	2026-11-12T13:53:03+01:00	true	0	passed 8	7852	-
 screens-pr-3379	start	2026-11-12T13:53:03+01:00	false	1	-	3307	error: Screens.V2.WidgetInstance.Departures.NormalSection.HeadwayRow.__struct__/1 is undefined, cannot expand struct
 screens-pr-3375	start	2026-11-12T13:53:03+01:00	false	1	-	3490	== Compilation error in file test/support/mocks.ex == ** (ArgumentError) could not load module Screens.Assets.Cleanup due to reason :nofile
 screens-pr-3371	start	2026-11-12T13:53:03+01:00	false	1	-	2955	== Compilation error in file test/screens/v2/candidate_generator/dup/departures_test.exs == ** (KeyError) key :mode not found
+screens-pr-3359	start	2026-11-12T15:12:56+01:00	false	1	failed 3; passed 1	10354	** (ArgumentError) unknown function seconds_until_refresh/3 for mock Screens.V2.ScreenData.Parameters.Mock; then == Compilation error in file test/screens/v2/screen_data/cache_test.exs ==
+screens-pr-3294	start	2026-11-12T15:12:56+01:00	false	1	-	5359	error: undefined function serialize_for_departure/4 (expected Screens.V2.WidgetInstance.Serializer.RoutePillTest to define such a function or for it to be imported, but none are available)
+screens-pr-3298	start	2026-11-12T15:12:56+01:00	false	1	-	3715	== Compilation error in file test/screens/v2/candidate_generator/dup/departures_test.exs == ** (KeyError) key :mode not found
+screens-pr-3333	existing_reference	2026-11-12T15:12:56+01:00	false	1	-	8690	== Compilation error in file test/support/mocks.ex == ** (ArgumentError) could not load module Screens.Config.Cache due to reason :nofile

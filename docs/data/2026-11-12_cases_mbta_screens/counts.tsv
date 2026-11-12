@@ -1,6 +1,6 @@
 pull_requests	verdict	dropped_at	reason	whose
-3	checked	-	-	-
-3	dropped	probe	start_run_did_not_finish	pull_request
-2	dropped	probe	no_starting_failure	pull_request
-1	dropped	probe	no_existing_tests	pull_request
-3	not run	-	not_reached	-
+16	checked	-	-	-
+15	not run	-	not_reached	-
+6	dropped	probe	start_run_did_not_finish	pull_request
+5	dropped	probe	no_existing_tests	pull_request
+3	dropped	probe	no_starting_failure	pull_request

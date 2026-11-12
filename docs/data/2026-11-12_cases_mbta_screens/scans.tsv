@@ -2,3 +2,16 @@ id	licence_file	licence_families	files_touched	files_passing	licence_result	fail
 screens-pr-3388	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
 screens-pr-3387	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
 screens-pr-3363	LICENSE	MIT	5	5	pass	-	0	11	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3358	LICENSE	MIT	10	10	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3353	LICENSE	MIT	6	6	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3356	LICENSE	MIT	4	4	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3343	LICENSE	MIT	7	7	pass	-	0	12	1	3	0	review	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3341	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3319	LICENSE	MIT	27	27	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3307	LICENSE	MIT	17	16	fail	assets/package-lock.json (exclude:large)	0	13	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3306	LICENSE	MIT	21	21	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3310	LICENSE	MIT	10	10	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3281	LICENSE	MIT	12	12	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3293	LICENSE	MIT	10	10	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3284	LICENSE	MIT	5	5	pass	-	0	10	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3287	LICENSE	MIT	3	3	pass	-	0	10	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
