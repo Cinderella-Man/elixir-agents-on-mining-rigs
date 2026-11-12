@@ -4,8 +4,6 @@
 !.env.example
 /_build/
 /deps/
-/priv/static/assets/phoenix.mjs
-/priv/static/assets/phoenix_live_view.esm.js
 /erl_crash.dump
 **/node_modules/
 /tools/memory_collector/_build/

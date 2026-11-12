@@ -17,12 +17,17 @@ defmodule Eab.Runs do
 
   @terminal ~w(completed error cancelled interrupted corrupt)
   def start_link(opts), do: GenServer.start_link(__MODULE__, opts, name: __MODULE__)
-  def subscribe, do: Phoenix.PubSub.subscribe(Eab.PubSub, "runs")
+  @doc "Sends `:runs_changed` to the calling process whenever a run or preparation changes."
+  def subscribe do
+    {:ok, _} = Registry.register(Eab.PubSub, "runs", nil)
+    :ok
+  end
+
   def snapshot, do: GenServer.call(__MODULE__, :snapshot)
 
   @doc """
   Starts a full run. `validation: true` marks an unpublishable case-validation run
-  (ADR 0012); `series: id` contributes to a published run series and must match its setup.
+  (ADR 0012).
   `parallel_attempts: n` (1 to 8, default 1) runs up to n cases at once (ADR 0014).
   """
   def start(endpoint, key, settings, opts \\ []),
@@ -172,10 +177,6 @@ defmodule Eab.Runs do
 
         opts[:validation] ->
           Map.put(run, "validation", true)
-
-        opts[:series] ->
-          Eab.Series.contribution!(run, opts[:series])
-          Map.put(run, "series", opts[:series])
 
         true ->
           run
@@ -676,7 +677,11 @@ defmodule Eab.Runs do
       }
   end
 
-  defp broadcast, do: Phoenix.PubSub.broadcast(Eab.PubSub, "runs", :runs_changed)
+  defp broadcast do
+    Registry.dispatch(Eab.PubSub, "runs", fn subscribers ->
+      for {pid, _} <- subscribers, do: send(pid, :runs_changed)
+    end)
+  end
 
   defp case_progress(run, id, phase, message) do
     phases =

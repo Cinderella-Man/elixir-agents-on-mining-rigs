@@ -463,10 +463,6 @@ defmodule Eab.RunsTest do
     assert saved["harness"]["claude_code_version"] == "2.1.308"
     assert File.read!(Store.path("runs/#{id}/report.md")) =~ "never published or scored"
 
-    assert_raise ArgumentError, ~r/never published/, fn ->
-      Eab.Results.export!(Map.put(saved, "status", "completed"))
-    end
-
     assert {:ok, pi} = Runs.start(endpoint(), "", %{})
     assert_receive {:started, run}, 3000
     assert run["harness"]["name"] == "pi" and is_nil(run["validation"])

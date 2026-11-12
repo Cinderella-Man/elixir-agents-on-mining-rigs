@@ -22,7 +22,7 @@ COPY config config
 RUN mix deps.get --only prod && mix deps.compile
 COPY lib lib
 COPY priv priv
-RUN mix compile --warnings-as-errors && mix assets && mix release
+RUN mix compile --warnings-as-errors && mix release
 
 FROM ubuntu:24.04 AS app
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git openssh-client docker.io docker-buildx util-linux libstdc++6 libssl3t64 libncurses6 locales && rm -rf /var/lib/apt/lists/*
@@ -36,6 +36,5 @@ COPY mix.lock mix.lock
 COPY priv/fixtures priv/fixtures
 COPY priv/pi priv/pi
 COPY priv/claude_code priv/claude_code
-COPY priv/admitted_validation_runs.json priv/admitted_validation_runs.json
 VOLUME /data
 CMD ["bin/eab", "start"]
