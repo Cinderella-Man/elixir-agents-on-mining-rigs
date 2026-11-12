@@ -41,7 +41,10 @@ cp "$SCANS/scans.tsv" "$DEST/scans.tsv"
 } > "$DEST/licence_root.tsv"
 {
   printf 'task\tkind\thidden_failing_first\thidden_passing_after\texisting_files_kept\texisting_files_left_out\tleft_out_reasons\tpartial_fix\tsecond_round_same\n'
-  awk -F'\t' 'NR > 1 && $8 == "checked" {print $1 "\t" $3 "\t" $6}' "$DEST/tasks_hexpm.tsv" | while IFS=$'\t' read -r try id kind; do
+  # each task's last try, when it is checked (the exported folder is that try's)
+  awk -F'\t' 'NR > 1 && $1 != "-" {if (!($3 in v)) o[++n] = $3; v[$3] = $8; r[$3] = $1 "\t" $3 "\t" $6}
+    END {for (i = 1; i <= n; i++) if (v[o[i]] == "checked") print r[o[i]]}' "$DEST/tasks_hexpm.tsv" \
+    | while IFS=$'\t' read -r try id kind; do
     r=$OUT/$id/$try/result.json
     [ -f "$r" ] || r=$PREV_OUT/$id/$try/result.json
     jq -r --arg k "$kind" '[.id, $k, (.hidden_failing_first | tostring), (.hidden_passing_after | tostring),

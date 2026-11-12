@@ -4,7 +4,7 @@ Registry row [E68](../../../experiments.md) (the pilot of the task factory). `he
 applications ([rules](../../dataset_rules.md)). The first run wrote the project's recipe, ran the project's whole test
 suite once through the engine, and made and checked its newest candidates one at a time, newest merged first, until 3
 were checked, through a controller built from this repository's `main` at `e1d56cb`. The second run took the project
-toward 15 checked cases the same way, through the same controller built again from `main` at `6c3fc4e` (the service
+toward 20 checked cases the same way, through the same controller built again from `main` at `6c3fc4e` (the service
 image fix of `0d99a67` and the licence scan's README rule), after the licence scan learned the dataset's rule for a
 licence stated in the README (section 4). Everything ran on the data-mining machine (28 threads, 30 GiB, no GPU),
 while other task-making jobs and one job that uses the model shared the machine. Times are the data-mining machine's
@@ -18,15 +18,15 @@ while other task-making jobs and one job that uses the model shared the machine.
 - **The whole suite passes** at the starting commit of the newest candidate, pull request 2118, on Elixir 1.20.4 with
   OTP 29.1.2 and Postgres 18.6: ExUnit's summary **5,313 passed (32 properties, 5,281 tests), 0 failed, 0 excluded, in
   105.1 s**. The engine's record is complete: 5,313 records, all distinct.
-- **9 cases checked of 13 tried** (4 in the first run, 9 in the second; section 3): 8 features and 1 bug fix. Dropped:
-  2 at the probe as `no_existing_tests`, 1 at the probe as `start_run_did_not_finish`, and 1 refused by the maker as
-  `binary_file`, all the pull requests' own causes. Every check was settled: the highest 1-minute load during a check
-  was 11.38 on 28 threads.
-- **Both scans pass for all 9.** The licence scan passes on the project's README statement, as the dataset's rules
-  allow when a repository has no licence file at its root (rules, section 9): `README.md`, line 252, at every starting
-  commit, "Licensed under the Apache License, Version 2.0" (`licence_root.tsv` has the file's hash and the sentence for
-  each case). Every file the 9 cases touch (132 files) passes the per-file scan at both commits. The hold-out check
-  passes for all 9.
+- **15 cases checked of 23 tried** (4 in the first run, 19 in the second; section 3): 10 features and 5 bug fixes.
+  Dropped: 3 at the probe as `no_starting_failure`, 3 at the probe as `no_existing_tests`, 1 at the probe as
+  `start_run_did_not_finish`, and 1 refused by the maker as `binary_file`, all the pull requests' own causes. The last
+  check of every case was settled; one first check was not (2077, highest load 12.21) and was run again.
+- **Both scans pass for all 15.** The licence scan passes on the project's README statement, as the dataset's rules
+  allow when a repository has no licence file at its root (rules, section 9): the README's licence section, "Licensed
+  under the Apache License, Version 2.0", at line 252 or 192 of the starting commit's `README.md`
+  (`licence_root.tsv` has the file's hash, the line and the sentence for each case). Every file the 15 cases touch
+  (186 files) passes the per-file scan at both commits. The hold-out check passes for all 15.
 
 ## 1. The project's set-up
 
@@ -95,6 +95,17 @@ seconds. The second run took the 73 candidates that need nothing more and that t
 | 2 | 2097 | 2026-11-03 | 1.20.4/29.1 | feature | **checked** | - | - | - | 5 s | 1,202 s (117.7 / 493.1 / 586.0) | 7.30 → 5.70 (9.34) | 1,698,467,976 |
 | 2 | 2098 | 2026-11-03 | 1.20.4/29.1 | feature | **checked** | - | - | - | 10 s | 190 s (53.4 / 44.7 / 87.2) | 5.70 → 8.95 (9.03) | 1,698,423,373 |
 | 2 | 2096 | 2026-11-02 | 1.20.4/29.1 | bug fix | **checked** | - | - | - | 5 s | 270 s (52.6 / 96.5 / 113.5) | 8.95 → 6.48 (9.1) | 1,698,427,302 |
+| 2 | 2095 | 2026-11-02 | 1.20.4/29.1 | feature | **checked** | - | - | - | 15 s | 981 s (52.7 / 360.8 / 558.1) | 6.48 → 5.77 (8.46) | 1,698,375,587 |
+| 2 | 2094 | 2026-11-02 | 1.20.4/29.1 | bug fix | **checked** | - | - | - | 5 s | 360 s (56.2 / 125.3 / 176.5) | 6.64 → 6.98 (6.94) | 1,698,370,179 |
+| 2 | 2092 | 2026-11-01 | 1.20.4/29.1 | bug fix | dropped | probe | `no_starting_failure` | the pull request's | 10 s | 181 s (128.1 / 48.5 / -) | 8.10 → 9.51 (9.62) | 1,694,940,710 |
+| 2 | 2091 | 2026-10-31 | 1.20.4/29.1 | bug fix | **checked** | - | - | - | 10 s | 291 s (77.5 / 80.9 / 124.5) | 9.31 → 10.14 (10.14) | 1,694,907,513 |
+| 2 | 2085 | 2026-10-27 | 1.20.4/29.1 | bug fix | **checked** | - | - | - | 10 s | 251 s (72.8 / 39.0 / 132.5) | 10.05 → 9.30 (11.16) | 1,692,438,600 |
+| 2 | 2081 | 2026-10-24 | 1.20.4/29.1 | bug fix | dropped | probe | `no_existing_tests` | the pull request's | 6 s | 140 s (68.2 / 69.7 / -) | 9.30 → 12.54 (10.54) | 1,692,183,302 |
+| 2 | 2077 | 2026-10-23 | 1.20.4/29.1 | bug fix | checked, **not settled** | - | - | - | 10 s | 430 s (148.1 / 104.6 / 176.6) | 13.06 → 9.18 (12.21) | 1,682,980,523 |
+| 2 | 2077 (try 2) | 2026-10-23 | 1.20.4/29.1 | bug fix | **checked** | - | - | - | - | 261 s (0.1 / 101.8 / 157.5) | 7.08 → 6.88 (8.34) | 0 |
+| 2 | 2074 | 2026-10-22 | 1.20.4/29.1 | bug fix | dropped | probe | `no_starting_failure` | the pull request's | 6 s | 80 s (62.5 / 15.7 / -) | 9.89 → 9.26 (9.41) | 1,682,966,295 |
+| 2 | 2060 | 2026-10-17 | 1.20.4/29.1 | bug fix | dropped | probe | `no_starting_failure` | the pull request's | 6 s | 140 s (126.2 / 8.2 / -) | 9.26 → 7.50 (8.67) | 1,679,811,272 |
+| 2 | 2056 | 2026-10-17 | 1.20.4/29.1 | feature | **checked** | - | - | - | 5 s | 250 s (49.4 / 84.7 / 116.0) | 7.50 → 7.08 (8.51) | 1,679,811,418 |
 
 - **2118:** its only existing test file near the change is the test file the pull request changes, and that file's
   starting version fails on the reference fix (the pull request changes the behaviour the old tests asserted). The
@@ -102,8 +113,14 @@ seconds. The second run took the 73 candidates that need nothing more and that t
   of the run (section 5).
 - **2099:** the pull request adds an image (`priv/static/images/blog/028_key_permissions.png`, a blog post's), which a
   task folder's text patches cannot carry; the maker refuses it (`factory/README.md`, "What it refuses").
-- **2108:** dropped like 2118: no existing test file is left to protect once the ones that fail on the reference are
-  left out.
+- **2108, 2081:** dropped like 2118: no existing test file is left to protect once the ones that fail on the
+  reference are left out.
+- **2092, 2074, 2060:** `no_starting_failure`: no hidden test fails in its body on the unchanged project (the tests
+  the pull request adds or changes already pass before its fix).
+- **2077:** its first check was not settled (the load reached 12.21 during it, 13.06 at its start), so the run checked
+  it again at the end of its phase, settled (highest 8.34): checked both times. The first check left 2 existing test
+  files out as `fails_on_reference` and the second none; the case exported is the second's, with 3 existing test
+  files kept.
 - **2103:** the hidden tests did not complete on the unchanged project. The probe's two runs together took 31.1 s, far
   under the test limit, so this is not a time-out; the engine keeps no output of the probe's runs, so the error cannot
   be read (most likely the hidden tests do not compile without the fix). The rules count "cannot run at all" as the
@@ -121,19 +138,29 @@ seconds. The second run took the 73 candidates that need nothing more and that t
 | 2097 | feature | 44 | 431 | 7 | 13 | present | yes |
 | 2098 | feature | 1 | 6 | 1 | 0 | present | yes |
 | 2096 | bug fix | 9 | 17 | 1 | 1 | present | yes |
+| 2095 | feature | 34 | 171 | 4 | 5 | present | yes |
+| 2094 | bug fix | 1 | 130 | 2 | 0 | present | yes |
+| 2091 | bug fix | 1 | 42 | 1 | 0 | present | yes |
+| 2085 | bug fix | 7 | 45 | 2 | 1 | present | yes |
+| 2077 | bug fix | 7 | 259 | 3 | 0 | present | yes |
+| 2056 | feature | 7 | 94 | 4 | 0 | present | yes |
 
 - **Marks for reporting** (the screening's table): 2098 carries the screening's AI-tool mark (such pull requests are
-  used and marked, rules section 3) and changes assets; 2097 and 2110 add a database migration. The others carry none
-  of the three. The checked cases may edit `lib/` and `test/`, and also `priv/` (2098, 2110) and `config/` and
-  `priv/` (2097), as their reference fixes do.
+  used and marked, rules section 3) and changes assets; 2097, 2110 and 2095 add a database migration. The others carry
+  none of the three. The checked cases may edit `lib/` and `test/`, and also `priv/` (2098, 2110, 2095) and
+  `config/` and `priv/` (2097), as their reference fixes do.
 - **The kinds.** The maker gives a case its kind (a feature when the fix adds a file or a public function it does not
   also remove, else a bug fix). `kinds.tsv` reads the same rule ahead from the project's history for every candidate
   (`run/kinds.sh`), so that the run can prefer a kind that falls short: by that reading the 73 candidates are 30 bug
-  fixes and 43 features. The read-ahead agreed with the made folder for every case made so far.
+  fixes and 43 features. The read-ahead agreed with the made folder for 22 of the 23 cases made so far; for 2056 it
+  read a bug fix and the maker made a feature. The change rewrites the one-line public function `parse_search` as a
+  longer one: the read-ahead sees it removed and added again, so nothing new, while the maker counts it as added. Why
+  the maker's reading differs was not looked into.
 
-**Counts by reason** (`counts.tsv`, each pull request by its last try): checked 9; dropped at the probe,
-`no_existing_tests`, 2; dropped at the probe, `start_run_did_not_finish`, 1; refused by the maker, `binary_file`, 1.
-Drops by whose cause: the pull request's 4, the factory's 0, the machine's 0.
+**Counts by reason** (`counts.tsv`, each pull request by its last try): checked 15; dropped at the probe,
+`no_starting_failure`, 3; dropped at the probe, `no_existing_tests`, 3; dropped at the probe,
+`start_run_did_not_finish`, 1; refused by the maker, `binary_file`, 1. Drops by whose cause: the pull request's 8, the
+factory's 0, the machine's 0.
 
 **One more pull request was checked out of order, 2109** (merged 2026-11-06, the 7th newest): a stop of the run left
 its check running alone in the controller (section 5), and it was let finish. It was **dropped at the second round as
@@ -160,15 +187,22 @@ fetched for the dependency list. The first run's 3 tasks were scanned again with
 | 2097 | pass | `ok:readme-statement`, Apache-2.0 | 56 | 56 | pass | 0 | 8 (7 / 1) | 0 |
 | 2098 | pass | `ok:readme-statement`, Apache-2.0 | 4 | 4 | pass | 0 | 7 (7 / 0) | 0 |
 | 2096 | pass | `ok:readme-statement`, Apache-2.0 | 6 | 6 | pass | 0 | 7 (7 / 0) | 0 |
+| 2095 | pass | `ok:readme-statement`, Apache-2.0 | 23 | 23 | pass | 0 | 7 (7 / 0) | 0 |
+| 2094 | pass | `ok:readme-statement`, Apache-2.0 | 4 | 4 | pass | 0 | 7 (7 / 0) | 0 |
+| 2091 | pass | `ok:readme-statement`, Apache-2.0 | 2 | 2 | pass | 0 | 7 (7 / 0) | 0 |
+| 2085 | pass | `ok:readme-statement`, Apache-2.0 | 6 | 6 | pass | 0 | 8 (7 / 1) | 0 |
+| 2077 | pass | `ok:readme-statement`, Apache-2.0 | 11 | 11 | pass | 0 | 7 (7 / 0) | 0 |
+| 2056 | pass | `ok:readme-statement`, Apache-2.0 | 8 | 8 | pass | 0 | 7 (7 / 0) | 0 |
 
 - **The project's licence proof** (rules, section 9: a licence stated in the README counts when the repository has no
   licence file at its root). hexpm has no `LICENSE`, `LICENCE` or `COPYING` file at its root at any of these commits.
   Its `README.md` ends with a section headed "License" that holds the project's copyright line (Six Colors AB, 2015)
   and the Apache License's own notice. `task_licence.py` (`main` at `6c3fc4e`) reads that section and records for
-  every case, from the case's starting commit (`licence_root.tsv`): the file `README.md`, its SHA-256
-  (`2018150056342b9ae9d4928e3a7d68ea047847f731783cad186370520306f482`, the same at all 9 starting commits), line 252,
-  and the sentence "Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
-  in compliance with the License." It names one licence of the list in plain words and sits in the project's own
+  every case, from the case's starting commit (`licence_root.tsv`): the file `README.md`, its SHA-256, the line and
+  the sentence. The README has three versions across the 15 starting commits (SHA-256 `2018150056342b9a...` for 6
+  cases and `7cedbe3d417eeb7e...` for 5, the sentence at line 252; `f2d1551f552dcb60...` for 4, at line 192); the
+  sentence is the same in all: "Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+  file except in compliance with the License." It names one licence of the list in plain words and sits in the project's own
   licence section (the section's next paragraph, the licence's address on apache.org, names the same licence). The one
   other licence the README names is outside that section: line 98 says the IP-to-country database file the production
   site uses is under CC BY 4.0, and the tool counts it as a mention, not as the project's statement (`mentions` 1). So
@@ -217,8 +251,16 @@ changes:
    checked and its reason or detail shows a time-out, a lost database connection or a lost image (second try in
    `<id>/2`). None was needed so far.
 3. **Its own list and counts:** `numbers.txt` is the 73 candidates of section 3, and `TARGET` and `MAX_TRIED` count
-   this run's rows only (`TARGET=7`, so that the kinds could be looked at when the project had 10 checked cases, then
-   the rest; at most 60 tried). The stop line for free bytes is 50,000,000,000.
+   this run's rows only. The stop line for free bytes is 50,000,000,000.
+4. **Phases, for the two kinds.** The job asked for both kinds, and for the kind with fewer than 3 cases after 10 to
+   be preferred. Phase 1 (`TARGET=7`, 10 cases in all) gave 9 features and 1 bug fix, so phase 2 put the candidates
+   the read-ahead calls bug fixes first (`numbers_phase2.txt` order) until 15 cases. Then the target became 20 (the
+   owner: spares for cases the teacher model cannot solve), with bug fixes preferred until the project has 6, then
+   newest first again. Phase 3 (`run/next_phase.sh`, newest first, `TARGET=17`) started at once, but the project had
+   only 5 bug fixes, not 6 (2056, read as a bug fix, was made a feature): its first candidate, 2083, was let finish,
+   every later one was held (`out/hold.txt`, which `one.sh` skips), and `run/phases.sh` took over: rounds of
+   `all.sh`, bug fixes first and one more checked case per round while the project has fewer than 6 bug fixes, then
+   newest first until 17 checked in this run (20 in all).
 
 ## 6. Disk and load
 
@@ -309,9 +351,16 @@ CTL=$CTL NAME=factory-hexpm SOURCES=$JOB IMAGE=elixir-task-factory:hexpm-2026111
 CLASSES=$JOB/tables/classes_hexpm.tsv CENSUS=$JOB/tables/prs_hexpm__hexpm.tsv CLONE=$JOB/hexpm.git \
   run/kinds.sh > $T/kinds.tsv
 
-# the cases, newest first: first until 7 more are checked (10 in all), then the rest
-WORK=$WORK JOB=$T CTL=$CTL NAME=factory-hexpm JOB_LABEL=task-factory-job=hb-hexpm TASK_LABEL=task-factory=1 \
-  TARGET=7 MAX_TRIED=60 MAX_LOAD=26 MIN_FREE=50000000000 run/all.sh run
+# the cases. Phase 1, newest first, until 7 more are checked (10 in all)
+E="WORK=$WORK CTL=$CTL NAME=factory-hexpm JOB_LABEL=task-factory-job=hb-hexpm TASK_LABEL=task-factory=1 MAX_LOAD=26 \
+  MIN_FREE=50000000000"
+env $E JOB=$T TARGET=7 MAX_TRIED=60 run/all.sh run
+# phase 2: numbers.txt = the tried ones, then the untried bug fixes (read-ahead), then the features; to 15 in all
+env $E JOB=$T TARGET=12 MAX_TRIED=60 run/all.sh run
+# phase 3 (newest first, to 20), started when phase 2's driver (pid D) ended; held after its first candidate
+env $E T=$T AFTER=$T/logs/phase2.start DRIVER=$D PHASE=phase3 TARGET=17 MAX_TRIED=80 run/next_phase.sh
+# then the rounds: bug fixes first while the project has fewer than 6, then newest first, to 17 in this run
+env $E T=$T DEST=$WORK/tasks/hexpm__hexpm TARGET_FINAL=17 MIN_BUGFIX=6 MAX_TRIED=80 run/phases.sh
 
 # the scans, one task at a time (the first run's three again)
 JOB=$JOB T=$T WORK=$WORK BENCH_CASES=<the bench's cases/ folder> run/run_scans.sh hexpm-pr-2119 hexpm-pr-2113 ...
@@ -328,7 +377,7 @@ CTL=$CTL NAME=factory-hexpm run/controller.sh stop
 `build.sh`, `state.sh`, `make_one.exs`, `make_probe.sh`, `prepare.exs`, `tests.exs`, `env_tests.sh`, `suite.sh`,
 `suite_tables.sh` and `table.sh` from the nerves_hub_web job, with this project's names in `all.sh`, `env_tests.sh`
 and `table.sh`, a cap on the pull requests tried in `all.sh`, and `scans.sh`, new. The second run changed `all.sh`
-(section 5) and added `kinds.sh`, `run_scans.sh`, `tables.sh` and `pub.sh`.
+(section 5) and added `kinds.sh`, `next_phase.sh`, `phases.sh`, `run_scans.sh`, `tables.sh` and `pub.sh`.
 
 ## Licence
 

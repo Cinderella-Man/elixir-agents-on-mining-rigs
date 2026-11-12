@@ -1,4 +1,10 @@
 id	licence_result	licence_families	files_touched	files_passing	failing	holdout_result	name_hits	seconds
+hexpm-pr-2056	pass	Apache-2.0	8	8	-	pass	0	30
+hexpm-pr-2077	pass	Apache-2.0	11	11	-	pass	0	30
+hexpm-pr-2085	pass	Apache-2.0	6	6	-	pass	0	28
+hexpm-pr-2091	pass	Apache-2.0	2	2	-	pass	0	25
+hexpm-pr-2094	pass	Apache-2.0	4	4	-	pass	0	24
+hexpm-pr-2095	pass	Apache-2.0	23	23	-	pass	0	27
 hexpm-pr-2096	pass	Apache-2.0	6	6	-	pass	0	21
 hexpm-pr-2097	pass	Apache-2.0	56	56	-	pass	0	26
 hexpm-pr-2098	pass	Apache-2.0	4	4	-	pass	0	25

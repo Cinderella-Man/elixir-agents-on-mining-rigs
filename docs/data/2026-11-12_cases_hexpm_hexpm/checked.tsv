@@ -8,3 +8,9 @@ hexpm-pr-2104	feature	9	236	7	0	-	present	yes
 hexpm-pr-2097	feature	44	431	7	13	fails_on_reference	present	yes
 hexpm-pr-2098	feature	1	6	1	0	-	present	yes
 hexpm-pr-2096	bug_fix	9	17	1	1	fails_on_reference	present	yes
+hexpm-pr-2095	feature	34	171	4	5	fails_on_reference	present	yes
+hexpm-pr-2094	bug_fix	1	130	2	0	-	present	yes
+hexpm-pr-2091	bug_fix	1	42	1	0	-	present	yes
+hexpm-pr-2085	bug_fix	7	45	2	1	fails_on_reference	present	yes
+hexpm-pr-2077	bug_fix	7	259	3	0	-	present	yes
+hexpm-pr-2056	feature	7	94	4	0	-	present	yes

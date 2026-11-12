@@ -1,4 +1,10 @@
 task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+hexpm-pr-2056	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
+hexpm-pr-2077	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
+hexpm-pr-2085	https://github.com/hexpm/hexpm	pass	0	8	7	0	1	0	0	0	0	0	0	pass
+hexpm-pr-2091	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
+hexpm-pr-2094	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
+hexpm-pr-2095	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
 hexpm-pr-2096	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
 hexpm-pr-2097	https://github.com/hexpm/hexpm	pass	0	8	7	0	1	0	0	0	0	0	0	pass
 hexpm-pr-2098	https://github.com/hexpm/hexpm	pass	0	7	7	0	0	0	0	0	0	0	0	pass
