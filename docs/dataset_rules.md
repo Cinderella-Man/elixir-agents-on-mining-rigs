@@ -64,6 +64,7 @@ rules read paths, authors and titles, not the code.
 | `mix_files` | it changes `mix.exs` or `mix.lock` | the task's environment is built before the change, and a changed dependency set would need another environment after it |
 | `revert`, `reverted_later` | it is a revert, or a later pull request reverts it | the project itself took the change back |
 | `repaired_by` | a later pull request repairs it | the change had a bug. The follow-up is kept as its own task (the owner, 2026-11-12: "Yes, do that"); the pairs are counted |
+| `contains_other_candidates` | its change contains the changes of other candidates of the same project, for example the merge of a side branch whose pull requests were merged into that branch one by one | the parts are the tasks: each is checked on its own starting commit. The umbrella would hold the same change a second time and is far larger than one piece of work. It is recorded with the list of its parts, not made into a task. Read by hand until the screening marks it (registry E112). Decided by the manager on 2026-11-12, first seen in `zorn/flick` 223; the owner was told |
 
 Recorded on a candidate and never a reason to reject: written with an AI tool (the owner, 2026-11-12: "I don't see
 the point of avoiding "co-authored by Claude""), adds a migration, touches `assets/`.
