@@ -1,0 +1,4 @@
+pull_requests	verdict	dropped_at	reason
+386	not run	-	not reached
+10	checked	-	-
+7	dropped	probe	start_run_did_not_finish
