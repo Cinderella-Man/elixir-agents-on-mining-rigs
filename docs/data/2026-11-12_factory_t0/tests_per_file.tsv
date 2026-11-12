@@ -1,0 +1,51 @@
+file	verdict	unit_tests	unit_passed	unit_failed	unit_excluded	docker_tests	docker_passed	docker_failed	docker_excluded	outcome	cause
+test/eab/activity_test.exs	keep	6	6	0	0	6	6	0	0	passes
+test/eab/anthropic_test.exs	drop	6	6	0	0	6	6	0	0	passes
+test/eab/baseline_docker_test.exs	change	1	0	0	1	1	1	0	0	passes
+test/eab/baseline_test.exs	keep	3	3	0	0	3	3	0	0	passes
+test/eab/browser_docker_test.exs	drop	1	0	0	1	1	0	0	1	not run	excluded by this job: it builds from the Playwright image and installs Playwright from npm, downloads the brief did not allow
+test/eab/build_seed_docker_test.exs	keep	1	0	0	1	1	1	0	0	passes
+test/eab/build_seed_test.exs	keep	2	2	0	0	2	2	0	0	passes
+test/eab/cache_test.exs	keep	5	5	0	0	5	5	0	0	passes
+test/eab/candidates_test.exs	change	3	0	3	0	3	0	3	0	fails	needs the bench's cases (3)
+test/eab/chatgpt_auth_test.exs	drop	8	8	0	0	8	8	0	0	passes
+test/eab/checkpoints_test.exs	change	10	0	10	0	10	0	10	0	fails	needs the bench's cases (10)
+test/eab/claude_code_docker_test.exs	drop	1	0	0	1	1	1	0	0	passes
+test/eab/claude_code_hook_test.exs	drop	1	0	0	1	1	0	0	1	not run	excluded by the copy's own test helper: the tooling image has no python3
+test/eab/claude_code_test.exs	drop	21	19	2	0	21	19	2	0	fails	needs the bench's cases (1); its file was not copied: scripts/install-claude-code-kit.sh (1)
+test/eab/command_test.exs	keep	6	6	0	0	6	6	0	0	passes
+test/eab/comparison_test.exs	drop	1	1	0	0	1	1	0	0	passes
+test/eab/database_seed_test.exs	keep	6	6	0	0	6	6	0	0	passes
+test/eab/evidence_test.exs	keep	3	3	0	0	3	3	0	0	passes
+test/eab/fixtures_test.exs	change	10	5	5	0	10	5	5	0	fails	needs the bench's cases (5)
+test/eab/grader_test.exs	change	10	9	1	0	10	9	1	0	fails	needs the bench's cases (1)
+test/eab/image_presence_test.exs	keep	2	2	0	0	2	2	0	0	passes
+test/eab/inventory_test.exs	change	2	2	0	0	2	2	0	0	passes
+test/eab/log_sections_test.exs	drop	13	13	0	0	13	13	0	0	passes
+test/eab/measurement_test.exs	change	4	4	0	0	4	4	0	0	passes
+test/eab/memory_monitor_test.exs	drop	8	8	0	0	8	8	0	0	passes
+test/eab/model_speed_test.exs	keep	4	4	0	0	4	4	0	0	passes
+test/eab/model_test.exs	keep	15	15	0	0	15	15	0	0	passes
+test/eab/openai_test.exs	drop	7	7	0	0	7	7	0	0	passes
+test/eab/pi_docker_test.exs	keep	1	0	0	1	1	1	0	0	passes
+test/eab/pi_test.exs	change	10	10	0	0	10	10	0	0	passes
+test/eab/pipeline_test.exs	keep	11	11	0	0	11	11	0	0	passes
+test/eab/preparation_test.exs	keep	1	1	0	0	1	1	0	0	passes
+test/eab/readiness_test.exs	change	8	0	8	0	8	0	8	0	fails	needs the bench's cases (8)
+test/eab/report_test.exs	change	2	2	0	0	2	2	0	0	passes
+test/eab/results_test.exs	drop	16	10	6	0	16	10	6	0	fails	needs the bench's cases (2); its file was not copied: results-page/index.html (4)
+test/eab/retention_test.exs	keep	7	7	0	0	7	7	0	0	passes
+test/eab/runner_test.exs	change	2	1	1	0	2	1	1	0	fails	needs the bench's cases (1)
+test/eab/runs_test.exs	change	17	5	12	0	17	5	12	0	fails	needs the bench's cases (12)
+test/eab/series_test.exs	drop	9	0	9	0	9	0	9	0	fails	its file was not copied: results-page/index.html (9)
+test/eab/source_test.exs	change	3	3	0	0	3	3	0	0	passes
+test/eab/storage_test.exs	change	1	1	0	0	1	1	0	0	passes
+test/eab/store_test.exs	keep	3	3	0	0	3	3	0	0	passes
+test/eab/task_contract_test.exs	change	3	3	0	0	3	3	0	0	passes
+test/eab/task_grading_docker_test.exs	change	1	0	0	1	1	1	0	0	passes
+test/eab/test_adapter_test.exs	keep	2	2	0	0	2	2	0	0	passes
+test/eab/thinking_test.exs	keep	3	3	0	0	3	3	0	0	passes
+test/eab_web/chatgpt_test.exs	drop	5	5	0	0	5	5	0	0	passes
+test/eab_web/dashboard_test.exs	drop	19	11	8	0	19	11	8	0	fails	needs the bench's cases (5); its file was not copied: results-page/index.html (3)
+test/eab/bench_parity_test.exs	new	6	6	0	0	6	6	0	0	passes	written by this job; counts from the runs with the new tests
+test/eab/model_identity_test.exs	new	8	8	0	0	8	8	0	0	passes	written by this job; counts from the runs with the new tests
