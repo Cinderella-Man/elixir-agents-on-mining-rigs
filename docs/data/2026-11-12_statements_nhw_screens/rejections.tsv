@@ -1,0 +1,21 @@
+project	id	kind	answer	verdict	rule	item
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3254	bug_fix	1	leak	L1	{:error, %{error: "unauthorized"}}
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3235	feature	1	leak	L1	:ignore_deleted_product
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3159	feature	1	leak	L2	not_waiting
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3155	bug_fix	1	leak	L1	{:error, :already_exists}
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3146	feature	1	leak	L1	:missing_verification_san
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3146	feature	2	leak	L2	ownership_error_message
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3146	feature	3	leak	L1	verification certificate.
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3138	feature	1	leak	L2	fast_forward
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3138	feature	2	leak	L2	not_an_approval_step
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3108	feature	1	leak	L1	Copy the secret now. It is only shown once, and cannot be retrieved again.
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3108	feature	1	leak	L2	deactivated_by_id
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3108	feature	1	leak	L3	device shared secrets
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3108	feature	2	leak	L1	"deactivated_at" => nil,
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3111	feature	1	leak	L1	{:error, {:fwup_too_old, required, installed}}
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3100	feature	1	leak	L2	anti_replay
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3100	feature	1	leak	L2	early_data
+nerves-hub/nerves_hub_web	nerves-hub-web-pr-3100	feature	2	leak	L3	tls 1.3 session tickets
+mbta/screens	screens-pr-3363	feature	1	leak	L1	Delete inactive evergreen and wayfinding content which ended before the
+mbta/screens	screens-pr-3343	feature	1	leak	L1	Delete evergreen content tied to alerts that are no longer present in
+mbta/screens	screens-pr-3343	feature	1	leak	L2	alerts?

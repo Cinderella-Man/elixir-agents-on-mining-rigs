@@ -1,0 +1,15 @@
+{
+  "leak_check": "statements-leak-v1: pass",
+  "ticket_sha256": "9405da61435e17e5bb6b1a5ced11f886de00516c338f38dd457c59b50acbe500",
+  "try": 1,
+  "writer": {
+    "file": "unsloth/DeepSeek-V4.1-Flash-1017-GGUF, UD-IQ1_M, revision 2688c0c3",
+    "instruction_sha256": "5e7fc3d671db87c050f88d28fcbbf67e4708bc293d4da0142d0047a3b2ff67d3",
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "preset": "the preset deepseek-v41-flash on Strata v0.2.13: temperature 1.0, top_p 1.0, no generation limit, reasoning effort high (the server's defaults), context 262144, one slot",
+    "served_as": "deepseek-v41-flash",
+    "tool": "factory/tools/statements"
+  },
+  "written": "2026-11-12"
+}
+
