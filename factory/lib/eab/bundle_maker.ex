@@ -85,6 +85,22 @@ defmodule Eab.BundleMaker do
 
     if names == [], do: refuse!(:no_test_names, "no test is added or changed in a test's body")
 
+    present =
+      MapSet.new(
+        git!(git, ["ls-tree", "-r", "--name-only", start, "--" | protected], 8_000_000)
+        |> String.split("\n", trim: true)
+      )
+
+    existing =
+      existing_tests(split.tests, split.reference, protected, &MapSet.member?(present, &1))
+
+    if existing == [],
+      do:
+        refuse!(
+          :no_existing_tests,
+          "no existing test file is changed or matches a changed code file"
+        )
+
     prefixes = edit_prefixes(split.reference, protected)
     reference = join(split.reference)
     variant = List.first(Eab.BundleProbe.variants(reference))
@@ -99,6 +115,7 @@ defmodule Eab.BundleMaker do
         prefixes,
         acceptance,
         names,
+        existing,
         split.reference,
         variant
       )
@@ -504,6 +521,38 @@ defmodule Eab.BundleMaker do
     |> Enum.sort()
   end
 
+  @doc """
+  The existing test files a task's command names, before the probe settles them (README section 3.5): the test files
+  present at the starting commit that the pull request's tests change or delete, and those that match a code file
+  the pull request changes by path (`lib/<path>/<name>.ex` gives `<test folder><path>/<name>_test.exs`). `present?`
+  says whether a path exists at the starting commit. Sorted, without repeats.
+  """
+  def existing_tests(tests, reference, protected, present?) do
+    contract = %{"protected_paths" => protected, "test_suffixes" => @test_suffixes}
+
+    changed =
+      for block <- tests,
+          block.status != :added,
+          Eab.TaskContract.test_file?(contract, block.path),
+          do: block.path
+
+    matched =
+      for block <- reference,
+          path <- [test_path(block.path, protected)],
+          path != nil and present?.(path),
+          do: path
+
+    (changed ++ matched) |> Enum.uniq() |> Enum.sort()
+  end
+
+  @doc "The test file that matches a code file by path, or nil: `lib/a/b.ex` gives `test/a/b_test.exs`."
+  def test_path("lib/" <> rest, [folder | _]) do
+    if String.ends_with?(rest, ".ex"),
+      do: folder <> String.replace_suffix(rest, ".ex", "_test.exs")
+  end
+
+  def test_path(_path, _protected), do: nil
+
   # The early-exit control: one new file that stops the VM, in `lib/` when the task may edit it, else in the first
   # folder it may edit outside the tests.
   defp integrity!(prefixes, protected) do
@@ -605,7 +654,19 @@ defmodule Eab.BundleMaker do
 
   ## The manifest
 
-  defp manifest(id, name, url, start, recipe, prefixes, acceptance, names, reference, variant) do
+  defp manifest(
+         id,
+         name,
+         url,
+         start,
+         recipe,
+         prefixes,
+         acceptance,
+         names,
+         existing,
+         reference,
+         variant
+       ) do
     grading = recipe["grading"]
 
     optional =
@@ -630,7 +691,7 @@ defmodule Eab.BundleMaker do
            Ordered.new([
              {"adapter", "exunit"},
              {"acceptance", Enum.join(["mix", "test" | acceptance], " ")},
-             {"preservation", grading["preservation"]},
+             {"preservation", Enum.join(["mix", "test" | existing], " ")},
              {"protected_paths", grading["protected_paths"]},
              {"test_suffixes", @test_suffixes},
              {"required", names},
@@ -675,8 +736,9 @@ defmodule Eab.BundleMaker do
   @doc """
   Reads a project's recipe (`factory/recipes/<owner>__<repo>.json`): exactly the per-project fields of `case.json`
   (`runtime`, `services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
-  `grading.preservation`; `grading.test_suffixes` may be there, and then is the fixed `["_test.exs"]`). A recipe
-  that is not final yet carries one more field, `provisional`, a note that the maker never copies.
+  `grading.preservation`, the project's whole-suite command for its own check, which a task never carries;
+  `grading.test_suffixes` may be there, and then is the fixed `["_test.exs"]`). A recipe that is not final yet
+  carries one more field, `provisional`, a note that the maker never copies.
   """
   def read_recipe!(nil), do: refuse!(:recipe, "no recipe given")
 

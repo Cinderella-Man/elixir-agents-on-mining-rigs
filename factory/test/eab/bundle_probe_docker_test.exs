@@ -19,6 +19,18 @@ defmodule Eab.BundleProbeDockerTest do
 
     source = Eab.MadeUpTasks.write_source!(Path.join(root, "context/source"))
 
+    # An existing test whose assertion the reference of ledgerette-pr-1 changes: it passes on the unchanged project
+    # and fails on that reference, so settling the existing tests leaves it out there.
+    File.write!(Path.join(source, "test/old_debits_test.exs"), """
+    defmodule OldDebitsTest do
+      use ExUnit.Case
+
+      test "debits are added" do
+        assert Ledgerette.balance([{:debit, 5}]) == 5
+      end
+    end
+    """)
+
     for args <- [
           ["init", "--quiet"],
           ["config", "user.name", "Synthetic"],
@@ -71,6 +83,10 @@ defmodule Eab.BundleProbeDockerTest do
         original
         |> put_in(["grading", "required"], Enum.take(original["grading"]["required"], 1))
         |> put_in(["grading", "starting_failures"], Enum.take(original["grading"]["required"], 1))
+        |> put_in(
+          ["grading", "preservation"],
+          "mix test test/ledgerette_test.exs test/old_debits_test.exs"
+        )
         |> Map.put("partial_control", %{"present" => false, "reason" => "single_hunk"})
 
       File.write!(Path.join(dir, "case.json"), Jason.encode!(draft))
@@ -84,6 +100,22 @@ defmodule Eab.BundleProbeDockerTest do
                Enum.sort(original["grading"]["starting_failures"])
 
       assert names["partial_control"] == spec["partial_control"]
+
+      case id do
+        "ledgerette-pr-1" ->
+          assert spec["grading"]["preservation"] == "mix test test/ledgerette_test.exs"
+
+          assert spec["grading"]["preservation_left_out"] == [
+                   %{"file" => "test/old_debits_test.exs", "reason" => "fails_on_reference"}
+                 ]
+
+        "ledgerette-pr-2" ->
+          # Its reference only adds a function, so both existing files stay.
+          assert spec["grading"]["preservation"] ==
+                   "mix test test/ledgerette_test.exs test/old_debits_test.exs"
+
+          assert spec["grading"]["preservation_left_out"] == []
+      end
 
       case id do
         "ledgerette-pr-1" ->

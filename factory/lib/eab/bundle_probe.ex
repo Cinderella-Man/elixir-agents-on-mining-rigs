@@ -5,12 +5,16 @@ defmodule Eab.BundleProbe do
   - observing the test names: the hidden tests are run on the unchanged project and on the reference, and the
     manifest's `required` (the hidden tests that pass on the reference) and `starting_failures` (those that fail in
     their body on the unchanged project) are written from what the runs show;
+  - settling the existing tests: the existing test files the maker named for `grading.preservation` run in their
+    starting-commit version, twice on the unchanged project and twice on the reference; a file with a test that
+    fails or ends differently in two runs is left out and recorded in `grading.preservation_left_out`;
   - the search for a partial fix: the reference with one file, then one hunk, left out, in order; the first variant
     whose hidden run finishes and fails a starting failure in its body becomes `incomplete.patch`, or the reason none
     was found is recorded.
 
-  Both run only the hidden tests (`grading.acceptance`), as the grader's hidden step does, in fresh containers of
-  the task's prepared runtime.
+  The first and the last run only the hidden tests (`grading.acceptance`), as the grader's hidden step does; the
+  second runs the existing tests, as its regression step does; all in fresh containers of the task's prepared
+  runtime.
   """
   alias Eab.{Grader, Inventory, Sandbox, TestAdapter}
   alias Jason.OrderedObject, as: Ordered
@@ -35,15 +39,20 @@ defmodule Eab.BundleProbe do
 
       emit.("Observing the hidden tests of #{id}")
 
-      case observe(reference, run) do
-        {:ok, names} ->
-          emit.("Searching a partial fix for #{id}")
-          partial = search(reference, names["starting_failures"], run)
-          write!(dir, names, partial)
-          {:ok, Map.put(names, "partial_control", partial_control(partial))}
+      with {:ok, names} <- observe(reference, run),
+           _ = emit.("Settling the existing tests of #{id}"),
+           {:ok, kept, left_out} <- settle_task(id, run_id, reference) do
+        emit.("Searching a partial fix for #{id}")
+        partial = search(reference, names["starting_failures"], run)
+        existing = %{"preservation" => kept, "preservation_left_out" => left_out}
+        write!(dir, names, existing, partial)
 
-        {:error, reason, detail} ->
-          {:refused, reason, detail}
+        {:ok,
+         names
+         |> Map.merge(existing)
+         |> Map.put("partial_control", partial_control(partial))}
+      else
+        {:error, reason, detail} -> {:refused, reason, detail}
       end
     end)
   after
@@ -88,6 +97,156 @@ defmodule Eab.BundleProbe do
       true ->
         {:ok, %{"required" => Enum.sort(required), "starting_failures" => Enum.sort(starting)}}
     end
+  end
+
+  @doc """
+  Settles the existing test files of a task's command (README section 3.5): `files` are the maker's first reading,
+  `run.(patch, files)` runs `mix test <files>` in their starting-commit version on the unchanged project (`patch`
+  "") or on the reference code, and returns the parsed result. Each side runs twice. A file is left out when one of
+  its tests fails on the unchanged project or on the reference, or ends differently in the two runs of the same
+  code; its tests are found by the modules it defines (`modules`, file => module names). When a run of all the files
+  does not finish, or a failing test belongs to no file, each file is run alone on that side.
+
+  Returns `{:ok, kept, left_out}` with `left_out` a list of `%{"file" => ..., "reason" => ...}` (`unstable`,
+  `fails_on_unchanged`, `fails_on_reference`, `does_not_finish_on_unchanged`, `does_not_finish_on_reference`), or
+  `{:error, "no_existing_tests", detail}` when no file is left.
+  """
+  def settle(files, reference, modules, run) do
+    owner =
+      for {file, names} <- modules, name <- names, into: %{}, do: {"Elixir." <> name, file}
+
+    file_of = fn test -> owner[test |> String.split("::", parts: 2) |> hd()] end
+
+    reasons =
+      for {side, patch} <- [{"unchanged", ""}, {"reference", reference}], reduce: %{} do
+        acc ->
+          verdicts = side_verdicts(files, patch, file_of, run)
+
+          Enum.reduce(verdicts, acc, fn {file, verdict}, acc ->
+            if verdict == :ok or Map.has_key?(acc, file),
+              do: acc,
+              else: Map.put(acc, file, reason(verdict, side))
+          end)
+      end
+
+    kept = Enum.reject(files, &Map.has_key?(reasons, &1))
+
+    left_out =
+      for file <- files,
+          Map.has_key?(reasons, file),
+          do: %{"file" => file, "reason" => reasons[file]}
+
+    if kept == [],
+      do:
+        {:error, "no_existing_tests",
+         Enum.map_join(left_out, "; ", &"#{&1["file"]}: #{&1["reason"]}")},
+      else: {:ok, kept, left_out}
+  end
+
+  defp reason(:unstable, _side), do: "unstable"
+  defp reason(:fails, side), do: "fails_on_" <> side
+  defp reason(:does_not_finish, side), do: "does_not_finish_on_" <> side
+
+  # One side's verdict per file: :ok, :fails, :unstable or :does_not_finish.
+  defp side_verdicts(files, patch, file_of, run) do
+    runs = [run.(patch, files), run.(patch, files)]
+
+    attributable =
+      Enum.all?(runs, &(&1["completed"] == true)) and
+        Enum.all?(runs, fn result ->
+          Enum.all?(result["test_results"] || %{}, fn {test, state} ->
+            good?(state) or file_of.(test) != nil
+          end)
+        end)
+
+    if attributable do
+      Map.new(files, fn file -> {file, verdict(runs, &(file_of.(&1) == file))} end)
+    else
+      Map.new(files, fn file ->
+        alone = [run.(patch, [file]), run.(patch, [file])]
+
+        if Enum.all?(alone, &(&1["completed"] == true)),
+          do: {file, verdict(alone, fn _ -> true end)},
+          else: {file, :does_not_finish}
+      end)
+    end
+  end
+
+  defp verdict([first, second], mine?) do
+    a =
+      for {test, state} <- first["test_results"] || %{},
+          mine?.(test),
+          into: %{},
+          do: {test, state}
+
+    b =
+      for {test, state} <- second["test_results"] || %{},
+          mine?.(test),
+          into: %{},
+          do: {test, state}
+
+    cond do
+      a != b -> :unstable
+      Enum.any?(a, fn {_, state} -> not good?(state) end) -> :fails
+      true -> :ok
+    end
+  end
+
+  defp good?(state), do: state in ~w(passed excluded skipped)
+
+  # The maker's first reading of the existing test files, settled by runs in the task's prepared runtime.
+  defp settle_task(id, run_id, reference) do
+    contract = Eab.TaskContract.read(Inventory.spec(id))
+
+    files =
+      contract["preservation"]
+      |> OptionParser.split()
+      |> Enum.drop(2)
+      |> Enum.filter(&Eab.TaskContract.test_file?(contract, &1))
+
+    if files == [] do
+      {:error, "no_existing_tests", "the command names no existing test file"}
+    else
+      modules = modules(id, run_id, files)
+
+      run = fn patch, selected ->
+        try do
+          preservation_run(id, run_id, patch, selected)
+        rescue
+          error ->
+            %{"completed" => false, "error" => Exception.message(error), "test_results" => %{}}
+        end
+      end
+
+      settle(files, reference, modules, run)
+    end
+  end
+
+  # The modules each file defines at the starting commit, read in a fresh container.
+  defp modules(id, run_id, files) do
+    Sandbox.with_box(id, run_id, fn box ->
+      Map.new(files, fn file ->
+        output = Sandbox.command!(box, "cat -- #{Eab.Command.quote(file)}", limit: 4_194_304)
+
+        names =
+          Regex.scan(~r/^\s*defmodule\s+([A-Z][A-Za-z0-9_.]*)/m, output, capture: :all_but_first)
+          |> List.flatten()
+
+        {file, names}
+      end)
+    end)
+  end
+
+  @doc """
+  Runs `mix test <files>` in a fresh container of the prepared runtime, after `patch` (code only), with the test
+  files of the starting commit, as the grader's regression step does.
+  """
+  def preservation_run(id, run_id, patch, files) do
+    Sandbox.with_box(id, run_id, fn box ->
+      Sandbox.apply_patch(box, patch)
+      TestAdapter.install(box)
+      Grader.run_tests(box, Enum.join(["mix", "test" | files], " "))
+    end)
   end
 
   @doc """
@@ -189,7 +348,7 @@ defmodule Eab.BundleProbe do
   defp partial_control({:present, _}), do: %{"present" => true}
   defp partial_control({:absent, reason}), do: %{"present" => false, "reason" => reason}
 
-  defp write!(dir, names, partial) do
+  defp write!(dir, names, existing, partial) do
     path = Path.join(dir, "case.json")
     spec = path |> File.read!() |> Jason.decode!(objects: :ordered_objects)
 
@@ -199,8 +358,19 @@ defmodule Eab.BundleProbe do
         {:absent, reason} -> Ordered.new([{"present", false}, {"reason", reason}])
       end
 
+    left_out =
+      Enum.map(
+        existing["preservation_left_out"],
+        &Ordered.new([{"file", &1["file"]}, {"reason", &1["reason"]}])
+      )
+
     spec =
       spec
+      |> put_in(
+        ["grading", "preservation"],
+        Enum.join(["mix", "test" | existing["preservation"]], " ")
+      )
+      |> put_in(["grading", "preservation_left_out"], left_out)
       |> put_in(["grading", "required"], names["required"])
       |> put_in(["grading", "starting_failures"], names["starting_failures"])
       |> put_in(["partial_control"], control)

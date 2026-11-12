@@ -224,7 +224,9 @@ defmodule Eab.BundleMakerTest do
     assert spec["test_timeout"] == 120
     assert spec["allowed_edit_prefixes"] == [".github/", "lib/", "priv/", "test/"]
     assert spec["grading"]["acceptance"] == "mix test test/shopette_test.exs"
-    assert spec["grading"]["preservation"] == "mix test"
+
+    # The existing test file the pull request changes; lib/shopette/price.ex has no test file at the start.
+    assert spec["grading"]["preservation"] == "mix test test/shopette_test.exs"
 
     # Only the tests whose body the pull request changes; the unchanged one is not a hidden test's name.
     assert spec["grading"]["required"] == [
@@ -342,6 +344,139 @@ defmodule Eab.BundleMakerTest do
     assert length(lines) == length(cases)
     assert Enum.all?(lines, &(&1 =~ "\trefused\t"))
     assert File.ls(opts[:out]) in [{:ok, []}, {:error, :enoent}]
+  end
+
+  test "the existing tests' command names changed test files and test files that match changed code files",
+       %{upstream: upstream, opts: opts} do
+    # A code file whose test file exists at the start, and a new test file: the command names the matching file.
+    commit(upstream, "Price", %{
+      "lib/shopette/price.ex" => "defmodule Shopette.Price do\n  def cents(x), do: x\nend\n",
+      "test/shopette/price_test.exs" =>
+        "defmodule Shopette.PriceTest do\n  use ExUnit.Case\n  test \"cents\", do: assert(Shopette.Price.cents(1) == 1)\nend\n"
+    })
+
+    merge =
+      commit(upstream, "Price in cents (#30)", %{
+        "lib/shopette/price.ex" =>
+          "defmodule Shopette.Price do\n  def cents(x), do: x * 100\nend\n",
+        "test/shopette/cents_test.exs" =>
+          "defmodule Shopette.CentsTest do\n  use ExUnit.Case\n  test \"cents\", do: assert(Shopette.Price.cents(1) == 100)\nend\n"
+      })
+
+    summary = BundleMaker.make(request(merge, nil, 30), opts)
+    spec = Inventory.read_json(Path.join(summary["dir"], "case.json"))
+    assert spec["grading"]["preservation"] == "mix test test/shopette/price_test.exs"
+    assert spec["grading"]["acceptance"] == "mix test test/shopette/cents_test.exs"
+
+    # A new code file and a new test file only: no existing test file, so no task.
+    merge =
+      commit(upstream, "Tax (#31)", %{
+        "lib/shopette/tax.ex" => "defmodule Shopette.Tax do\n  def rate, do: 0\nend\n",
+        "test/shopette/tax_test.exs" =>
+          "defmodule Shopette.TaxTest do\n  use ExUnit.Case\n  test \"rate\", do: assert(Shopette.Tax.rate() == 0)\nend\n"
+      })
+
+    assert %{"result" => "refused", "reason" => "no_existing_tests"} =
+             BundleMaker.make_one(request(merge, nil, 31), opts)
+
+    block = fn path, status -> %{path: path, status: status, text: ""} end
+
+    assert BundleMaker.existing_tests(
+             [
+               block.("test/a_test.exs", :modified),
+               block.("test/b_test.exs", :deleted),
+               block.("test/c_test.exs", :added),
+               block.("test/support/helper.ex", :modified)
+             ],
+             [
+               block.("lib/x/y.ex", :modified),
+               block.("lib/z.ex", :deleted),
+               block.("lib/none.ex", :modified),
+               block.("config/config.exs", :modified)
+             ],
+             ["test/"],
+             &(&1 in ~w(test/x/y_test.exs test/z_test.exs test/a_test.exs))
+           ) == ~w(test/a_test.exs test/b_test.exs test/x/y_test.exs test/z_test.exs)
+
+    assert BundleMaker.test_path("lib/a/b.ex", ["test/"]) == "test/a/b_test.exs"
+    assert BundleMaker.test_path("lib/a/b.exs", ["test/"]) == nil
+    assert BundleMaker.test_path("priv/a.ex", ["test/"]) == nil
+  end
+
+  test "settling the existing tests leaves out files that fail or change between runs" do
+    result = fn states ->
+      %{"completed" => true, "test_results" => states, "failure_phases" => %{}}
+    end
+
+    files = ~w(test/a_test.exs test/b_test.exs test/c_test.exs test/d_test.exs)
+    modules = Map.new(files, fn f -> {f, [Macro.camelize(Path.basename(f, ".exs"))]} end)
+    pass = Map.new(~w(A B C D), &{"Elixir.#{&1}Test::test t", "passed"})
+
+    # B changes between the two runs of the unchanged project, D fails there, A fails on the reference.
+    {:ok, counter} = Agent.start_link(fn -> 0 end)
+
+    run = fn
+      "", _files ->
+        n = Agent.get_and_update(counter, &{&1, &1 + 1})
+
+        result.(
+          pass
+          |> Map.put("Elixir.DTest::test t", "failed")
+          |> Map.put("Elixir.BTest::test t", if(n == 0, do: "failed", else: "passed"))
+        )
+
+      "REF", _files ->
+        result.(Map.put(pass, "Elixir.ATest::test t", "failed"))
+    end
+
+    assert BundleProbe.settle(files, "REF", modules, run) ==
+             {:ok, ["test/c_test.exs"],
+              [
+                %{"file" => "test/a_test.exs", "reason" => "fails_on_reference"},
+                %{"file" => "test/b_test.exs", "reason" => "unstable"},
+                %{"file" => "test/d_test.exs", "reason" => "fails_on_unchanged"}
+              ]}
+
+    # When the run of all files does not finish on a side, each file runs alone there.
+    run = fn
+      "", _files ->
+        result.(pass)
+
+      "REF", [_, _ | _] ->
+        %{"completed" => false, "test_results" => %{}}
+
+      "REF", ["test/b_test.exs"] ->
+        %{"completed" => false, "test_results" => %{}}
+
+      "REF", [file] ->
+        name = Macro.camelize(Path.basename(file, ".exs"))
+        result.(%{"Elixir.#{name}::test t" => "passed"})
+    end
+
+    assert BundleProbe.settle(files, "REF", modules, run) ==
+             {:ok, ~w(test/a_test.exs test/c_test.exs test/d_test.exs),
+              [%{"file" => "test/b_test.exs", "reason" => "does_not_finish_on_reference"}]}
+
+    # A failing test that belongs to no file also sends each file to run alone.
+    run = fn
+      "", [_, _ | _] ->
+        result.(Map.put(pass, "Elixir.Elsewhere::test t", "failed"))
+
+      _, files ->
+        result.(
+          Map.take(
+            pass,
+            Enum.map(files, &"Elixir.#{Macro.camelize(Path.basename(&1, ".exs"))}::test t")
+          )
+        )
+    end
+
+    assert {:ok, ^files, []} = BundleProbe.settle(files, "REF", modules, run)
+
+    assert {:error, "no_existing_tests", "test/a_test.exs: fails_on_unchanged"} =
+             BundleProbe.settle(["test/a_test.exs"], "REF", modules, fn _, _ ->
+               result.(%{"Elixir.ATest::test t" => "failed"})
+             end)
   end
 
   test "test names follow the reporter's form and the changed lines" do

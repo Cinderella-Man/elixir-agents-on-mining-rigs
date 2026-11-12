@@ -229,7 +229,8 @@ early exit must stay in the allowed folders, and the hidden tests in the test fo
 | `acceptance_patch` | `reference-tests.patch`. The field stays because the grading code reads it. | fixed |
 | `grading.adapter` | `exunit` | fixed |
 | `grading.acceptance` | `mix test` with the test files the pull request adds or changes | the pull request's diff |
-| `grading.preservation` | `mix test` with existing test files. It is the "Test command" the model is told. | the bundle maker: files that pass on the unchanged project in the first run |
+| `grading.preservation` | `mix test` with a sorted list of existing test files near the change, as each of the bench's 20 cases names a few. It is the "Test command" the model is told. | the bundle maker's first reading, settled by the probe (3.5) |
+| `grading.preservation_left_out` | the existing test files the probe left out of `grading.preservation`, each `{"file": ..., "reason": ...}`; empty when none | the probe (3.5) |
 | `grading.protected_paths` | the test folders, `["test/"]` for a plain project | the project's recipe |
 | `grading.test_suffixes` | `["_test.exs"]` | fixed |
 | `grading.required` | the names of the hidden tests that pass on the reference | observed in the first run, then fixed |
@@ -288,8 +289,8 @@ project. Neither writes a statement.
 paths (the census), its verdict and marks (the screen), and the project's recipe,
 `recipes/<owner>__<repo>.json`. A recipe holds exactly the per-project fields of `case.json`: `runtime`,
 `services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
-`grading.preservation` (the command for the existing tests); `grading.test_suffixes` may be there and is then the
-fixed `["_test.exs"]`. A recipe that is not final carries one more field, `provisional`, a note the maker never
+`grading.preservation` (the project's whole-suite command, for the project's own check of job P3; a task never
+carries it); `grading.test_suffixes` may be there and is then the fixed `["_test.exs"]`. A recipe that is not final carries one more field, `provisional`, a note the maker never
 copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is job P3's.
 
 **What it does,** in order:
@@ -304,9 +305,13 @@ copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is j
    the starting tree must give the merged tree; the maker checks this on its local copy before it writes anything.
 3. **The manifest and the provenance record** (3.2, 3.3). `allowed_edit_prefixes` are the top folders (or root
    files) the code part touches, and the test folders. `grading.acceptance` is `mix test` with the test files the
-   pull request adds or changes; `grading.preservation` is the recipe's command. `task_kind` follows a provisional
-   rule (section 8): `feature` when the reference adds a file or a public function it does not also remove, else
-   `bug_fix`. `licence` is a first reading of the licence file at the starting commit; the licence scan (E51) has
+   pull request adds or changes. `grading.preservation` is `mix test` with a sorted list of existing test files: the
+   test files present at the starting commit that the pull request's tests change or delete, and those present there
+   that match a code file the pull request changes by path (`lib/<path>/<name>.ex` gives
+   `test/<path>/<name>_test.exs`). When there is none, the pull request is refused (`no_existing_tests`). The
+   probe settles the list (below). The rule was decided by the manager of the night chain on 2026-11-12, for the
+   owner to review (E74). `task_kind` follows a provisional rule (section 8): `feature` when the reference adds a
+   file or a public function it does not also remove, else `bug_fix`. `licence` is a first reading of the licence file at the starting commit; the licence scan (E51) has
    the last word. `marks` are the screen's `adds_migration`, `touches_assets` and `ai_written` (the screen does not
    record the tool's name). `integrity.patch` adds `lib/eab_halt.ex`, or the same file in the first folder the task
    may edit when `lib/` is not one.
@@ -316,12 +321,19 @@ copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is j
    variant of the search below, or `partial_control` is `single_hunk` when there is none.
 5. **The import check** (`Eab.Candidates.validate!/1`) on the written folder; a folder that fails it is not kept.
 
-**The two steps that need a prepared project,** `Eab.BundleProbe.finish/4`, for a task whose runtime the gate has
+**The three steps that need a prepared project,** `Eab.BundleProbe.finish/4`, for a task whose runtime the gate has
 prepared:
 - **Observing the test names:** only the hidden tests run, on the unchanged project and on the reference.
   `required` becomes the hidden tests that pass on the reference, and `starting_failures` those that fail in their
   body on the unchanged project. It refuses, and leaves the folder as it was, when a run does not finish, a hidden
   test fails on the reference, or nothing fails in its body on the unchanged project.
+- **Settling the existing tests:** the files of `grading.preservation` run in their starting-commit version, as the
+  grader's regression step runs them, twice on the unchanged project and twice on the reference code. A file is
+  left out when one of its tests fails on either side or ends differently in the two runs of the same code; its
+  tests are found by the modules the file defines, and each file runs alone on a side where the run of all of them
+  does not finish. The files left out are written to `grading.preservation_left_out` with the reason
+  (`fails_on_unchanged`, `fails_on_reference`, `unstable`, `does_not_finish_on_unchanged`,
+  `does_not_finish_on_reference`). When no file is left, it refuses with `no_existing_tests`.
 - **The search for a partial fix:** the reference with one file left out, each in turn when there are two or more,
   then with one hunk left out of each file that has two or more. The first variant whose hidden run finishes and
   fails a starting failure in its body becomes `incomplete.patch`. Otherwise `partial_control` records
@@ -333,7 +345,8 @@ organisations, the bench's copies of them, and any repository with one of their 
 `not_in_census`, `paths_never_match`, `fetch_failed`, `submodule` (in the pull request or anywhere in either
 tree), `symbolic_link`, `binary_file`, `unsupported_path` (a path with a space, a quote or another character the
 engine's patch check cannot read), `patch_over_1_mib`, `no_code_part`, `no_test_part` (no added or changed
-`_test.exs` file), `no_test_names` (no test with a literal name and a changed body), `does_not_apply`,
+`_test.exs` file), `no_test_names` (no test with a literal name and a changed body), `no_existing_tests`
+(no existing test file is changed or matches a changed code file), `does_not_apply`,
 `does_not_rebuild`, `import_check`, `no_folder_for_early_exit`, `exists` (the task folder is already there), and
 `error` with the message for anything else. One refusal never stops a list.
 
@@ -632,11 +645,13 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 **Not decided:**
 - the licence line for this folder (section 1);
 - the rule by which the bundle maker names a task `bug_fix` or `feature`. Job P4 uses a provisional one (3.5);
-- which existing test files the bundle maker puts into `grading.preservation`. Job P4 uses the recipe's command
-  for the existing tests (3.5);
 - whether a task whose every partial variant passes the hidden tests (`no_variant_fails`) stays in the pool or is
   dropped. This page keeps it and counts it apart;
 - whether a fix spread over two pull requests is ever combined. The pilot does not combine.
+
+Decided on 2026-11-12 by the manager of the night chain, for the owner to review: which existing test files the
+bundle maker puts into `grading.preservation` (until then the recipe's whole `mix test`). It is the rule of 3.5:
+the changed and the matching test files, settled by the probe (E74).
 
 **Not verified:**
 - The cut list comes from reading the source and from searching it for the names of the dropped modules. Job T1
