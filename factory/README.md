@@ -7,10 +7,10 @@ under the bench's own harness, and keep the sessions that pass. It serves the pi
 [A task factory on the bench's engine](../docs/research/notes/task_factory_on_the_bench_engine.md), called "the design
 note" below.
 
-**State on 2026-11-12: this folder holds the engine as copied, with no change to it. Job T0 built the tooling image,
-ran the copy's checks and added two tests (section 7). Sections 2 to 7 describe the factory after the trimming, and
-the trimming of the engine has not started.** Section 7 lists the trimming jobs; each one that lands adds its line to
-the table there.
+**State on 2026-11-12: job T0 built the tooling image, ran the copy's checks and added two tests; job T1 removed the
+web page, the results page, the run series and the comparison, and with them Phoenix, LiveView and the web server
+(section 7). Sections 2 to 7 describe the factory after the trimming; jobs T2 to T10 have not started.** Section 7
+lists the trimming jobs; each one that lands adds its line to the table there.
 
 Words used here are the design note's: a *bundle* is the folder of files that defines one task, *hidden tests* are
 the tests the model never sees, a *control* is a patch whose outcome is known in advance, and the *statement* is the
@@ -321,7 +321,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `agent.ex` | change | The Claude Code branch and the browser sentence go; attempts start with `measure: false`. `instructions/2` must give the same text (section 2). |
 | `agent_image.ex` | change | The image tag's prefix. The recipe stays. |
 | `anthropic.ex` | drop | The Claude API back end. |
-| `application.ex` | change | The children for the web page, ChatGPT, the Claude Code broker and the memory monitors go. |
+| `application.ex` | change | The children for the web page, ChatGPT, the Claude Code broker and the memory monitors go. Phoenix's PubSub becomes an Elixir `Registry` under the same name, `Eab.PubSub` (T1). |
 | `baseline.ex` | change | The default for one bench project's profile (`plausible_ce`) goes. The rest stays. |
 | `browser.ex` | drop | Browser support. |
 | `build_cache.ex` | change | The image tag's prefix. |
@@ -358,7 +358,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `results.ex`, `results/preview.ex`, `results/resources.ex`, `results/schema.ex` | drop | The results page. |
 | `retention.ex` | change | The image tag's prefix in the removal guard. |
 | `runner.ex` | keep | Runs one run through the scheduler. |
-| `runs.ex` | change | `start/4` takes the list of tasks; preparation takes a list; the series, the memory monitor, the Claude Code version, the harness checks and the page's notifications go. |
+| `runs.ex` | change | `start/4` takes the list of tasks; preparation takes a list; the series, the memory monitor, the Claude Code version and the harness checks go. The change notifications stay: `runs_test` waits on them, and so can the `status` entry point. Since T1 `subscribe/0` and the broadcast use the `Registry` `Eab.PubSub` in place of Phoenix's PubSub, with the same `:runs_changed` message. |
 | `sandbox.ex` | change | Labels and a CPU share from the environment; the container name's prefix and the label keys. The limits stay (section 2). |
 | `series.ex` | drop | Run series. |
 | `service_images.ex` | change | The image tag's prefix, in two places. |
@@ -397,14 +397,14 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | File | Verdict | Reason |
 |---|---|---|
 | `config/benchmark.json` | change | Renamed `config/factory.json`: an id of its own, no case list, no scoring text. The `defaults` block stays (section 2). |
-| `config/config.exs` | change | The web endpoint's settings go. |
-| `config/runtime.exs` | change | The session secret, the memory collection and the endpoint go; the task folder, the labels, the CPU share and the mirror list come from the environment. |
-| `mix.exs` | change | `phoenix`, `phoenix_live_view`, `phoenix_html`, `bandit`, `jose` and `lazy_html` leave the dependencies; `jason` and `req` stay; the release gets its own name; the `assets` alias goes. |
+| `config/config.exs` | change | The web endpoint's settings go (done in T1, with Phoenix's own settings). |
+| `config/runtime.exs` | change | The session secret, the memory collection and the endpoint go; the task folder, the labels, the CPU share and the mirror list come from the environment. The secret and the endpoint went in T1. `lib/eab/claude_code.ex` still reads the endpoint's port from the removed setting and falls back to 4000, until it goes in T2. |
+| `mix.exs` | change | `phoenix`, `phoenix_live_view`, `phoenix_html`, `bandit`, `jose` and `lazy_html` leave the dependencies; `jason` and `req` stay; the release gets its own name; the `assets` alias goes. T1 removed all of them but `jose`, and named `plug_crypto` (2.2.0, already in `mix.lock` through Plug) as a direct dependency, because `chatgpt_auth.ex` calls `Plug.Crypto.secure_compare/2`; both leave with that file in T2. |
 | `mix.lock` | change | Written again by Mix after the dependencies change, never by hand. |
-| `Dockerfile` | change | No `COPY cases`, no Claude Code kit, no SSH client; the release's name. The stage that installs Pi stays. |
-| `compose.yaml` | change | Names of its own; the task folder mounted; the memory settings and the results-page mount go; the label and CPU share on the controller itself; Erlang's distribution bound to the loopback. |
-| `.dockerignore`, `.gitignore`, `.gitattributes` | change | The lines for dropped files go. |
-| `.formatter.exs` | change | The LiveView plug-in and the path of the uncopied memory-collector project go. |
+| `Dockerfile` | change | No `COPY cases`, no Claude Code kit, no SSH client; the release's name. The stage that installs Pi stays. T1 removed `mix assets` and the copy of `priv/admitted_validation_runs.json`. |
+| `compose.yaml` | change | Names of its own; the task folder mounted; the memory settings and the results-page mount go; the label and CPU share on the controller itself; Erlang's distribution bound to the loopback. T1 removed the results-page mount and the web port (`PORT`). |
+| `.dockerignore`, `.gitignore`, `.gitattributes` | change | The lines for dropped files go. T1 removed the two lines for the page's copied script files. |
+| `.formatter.exs` | change | The LiveView plug-in and the path of the uncopied memory-collector project go. The plug-in went in T1. |
 
 ### 5.6 `test/`
 
@@ -430,7 +430,7 @@ project.
 | `eab/activity_test.exs`, `eab/baseline_test.exs`, `eab/build_seed_test.exs`, `eab/build_seed_docker_test.exs`, `eab/cache_test.exs`, `eab/command_test.exs`, `eab/database_seed_test.exs`, `eab/evidence_test.exs`, `eab/image_presence_test.exs`, `eab/model_speed_test.exs`, `eab/model_test.exs`, `eab/pi_docker_test.exs`, `eab/pipeline_test.exs`, `eab/preparation_test.exs`, `eab/retention_test.exs`, `eab/store_test.exs`, `eab/test_adapter_test.exs`, `eab/thinking_test.exs` | keep | They test files that stay, and name nothing that is dropped or renamed. |
 | `eab/baseline_docker_test.exs`, `eab/storage_test.exs`, `eab/task_grading_docker_test.exs` | change | They name the image tag's prefix; the last also the task format. |
 | `eab/candidates_test.exs` | change | The import check without review and admission; a made-up task. |
-| `eab/checkpoints_test.exs`, `eab/inventory_test.exs`, `eab/runs_test.exs` | change | Made-up tasks in a mounted task folder, a run over a chosen list, the release of one run; the series and Claude Code cases go. |
+| `eab/checkpoints_test.exs`, `eab/inventory_test.exs`, `eab/runs_test.exs` | change | Made-up tasks in a mounted task folder, a run over a chosen list, the release of one run; the series and Claude Code cases go. T1 removed one assertion from `runs_test` ("Claude Code validation runs record their harness and are never publishable"): that `Eab.Results.export!/1` refuses a validation run. |
 | `eab/fixtures_test.exs` | change | A made-up task; extra packages; the older-format and browser cases go. |
 | `eab/grader_test.exs` | change | The optional partial control; a made-up task. |
 | `eab/readiness_test.exs`, `eab/runner_test.exs` | change | A made-up task in place of a bench case. |
@@ -438,8 +438,8 @@ project.
 | `eab/source_test.exs` | change | The fetch from a mirror. |
 | `eab/pi_test.exs` | change | One case for the ChatGPT back end goes. The cases with made-up llama.cpp and Strata replies stay. |
 | `eab/measurement_test.exs`, `eab/report_test.exs` | change | The changed sentence and report lines. |
-| `eab/anthropic_test.exs`, `eab/openai_test.exs`, `eab/chatgpt_auth_test.exs`, `support/chatgpt_fixture_helper.exs`, `eab_web/chatgpt_test.exs` | drop | The cloud back ends. |
-| `eab/claude_code_test.exs`, `eab/claude_code_docker_test.exs`, `eab/claude_code_hook_test.exs`, `claude_code/hook_test.py` | drop | The Claude Code harness. |
+| `eab/anthropic_test.exs`, `eab/openai_test.exs`, `eab/chatgpt_auth_test.exs`, `support/chatgpt_fixture_helper.exs`, `eab_web/chatgpt_test.exs` | drop | The cloud back ends. `eab_web/chatgpt_test.exs` went in T1: all 5 of its tests drive the web page. |
+| `eab/claude_code_test.exs`, `eab/claude_code_docker_test.exs`, `eab/claude_code_hook_test.exs`, `claude_code/hook_test.py` | drop | The Claude Code harness. T1 removed the 10 tests of `claude_code_test` that post to the harness's endpoints in `lib/eab_web/claude_code_controller.ex` through Phoenix's test connection; the other 11 stay until T2. |
 | `eab/memory_monitor_test.exs`, `support/memory_collector.mjs` | drop | The memory collector. |
 | `eab/browser_docker_test.exs` | drop | Browser support. |
 | `eab/results_test.exs`, `eab/series_test.exs`, `eab/comparison_test.exs`, `eab/log_sections_test.exs`, `eab_web/dashboard_test.exs` | drop | The results page, the run series, the comparison and the web page. |
@@ -504,6 +504,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 |---|---|---|---|
 | 2026-11-12 | The copy, unchanged, from the bench's commit `28c064ca` | `470301e` | not run |
 | 2026-11-12 | T0: the tooling image built; the unchanged copy's format check and tests run; `test/eab/bench_parity_test.exs` and `test/eab/model_identity_test.exs` added ([data](../docs/data/2026-11-12_factory_t0/README.md)) | `dd8a86b` | format check passes; unchanged copy 212 of 284 passed without Docker and 217 with it, 65 failed in both (48 need the bench's cases, 17 read a bench file that was not copied), 2 not run; the two new tests 6 of 6 and 8 of 8 |
+| 2026-11-12 | T1: `lib/eab_web/`, the results page (`results.ex`, `results/`), the run series, the comparison, the log sections, the Mix task, `priv/static/`, `priv/admitted_validation_runs.json` and their 6 test files removed; Phoenix, LiveView, Bandit and LazyHTML out of the dependencies (14 packages leave `mix.lock`); the edits in `runs.ex`, `application.ex`, `config/`, `mix.exs` and the root files ([data](../docs/data/2026-11-12_factory_t1/README.md)) | `fb64f08` | format check passes; compiles with warnings as errors; 176 of 218 passed without Docker and 181 of 223 with it, 42 failed in both (41 need the bench's cases, 1 reads an uncopied bench file), 7 and 2 excluded; all 225 remaining tests end as in T0, 73 are gone (63 with their files, 10 removed from `claude_code_test`); the parity test 6 of 6, untouched |
 
 ## 8. What is not decided, and what is not verified
 
@@ -516,9 +517,10 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 - whether a fix spread over two pull requests is ever combined. The pilot does not combine.
 
 **Not verified:**
-- The cut list comes from reading the source and from searching it for the names of the dropped modules. Job T0
-  compiled and tested the unchanged copy; a call made through a variable, or a test that leans on a dropped part in
-  a way the search does not show, will come out in job T1.
+- The cut list comes from reading the source and from searching it for the names of the dropped modules. Job T1
+  compiled the rest with warnings as errors after removing the page's parts; what it found that the list had not
+  said is in the rows of `application.ex`, `runs.ex`, `mix.exs`, `config/runtime.exs` and the three test rows that
+  name T1. The other dropped parts (T2 to T4) have not been removed yet, so the same can still happen there.
 - The controller's image does not build: its `Dockerfile` copies `cases/`, which is not here, until that line goes
   (T6). The tests use only the tooling image, which builds from the copy (T0).
 - Two tests of the copy have not run: `eab/browser_docker_test` (it builds from the Playwright image, a download job
