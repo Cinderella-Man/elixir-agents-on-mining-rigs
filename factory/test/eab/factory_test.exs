@@ -412,4 +412,37 @@ defmodule Eab.FactoryTest do
     await(fn -> Factory.status()["jobs"] == [] end)
     assert Factory.status()["run"] == nil
   end
+
+  # Job T10: in the controller's image the VM that runs `rpc` printed an ESOCK warning to standard output before the
+  # answer, so the wrapper's output was not JSON. A stand-in for `docker` prints the same warning, then the answer.
+  test "bin/factoryctl prints only the JSON answer after a warning, or all when no answer", %{
+    root: root
+  } do
+    fake = Path.join(root, "docker")
+
+    File.write!(fake, """
+    #!/bin/sh
+    IFS= read -r code
+    echo "=ESOCK WARNING MSG==== 12-Nov-2026::04:08:17.011411 ==="
+    echo "[UNIX-ESSIO] Failed open sctp dynamic library: libsctp.so.1"
+    case "$code" in
+      *'Eab.Factory.cli([Base.decode64!("c3RhdHVz")])'*) printf '{\\n  "ok": "status"\\n}\\n' ;;
+      *) echo "rpc failed: $code"; exit 1 ;;
+    esac
+    """)
+
+    File.chmod!(fake, 0o755)
+    wrapper = Inventory.path("bin/factoryctl")
+    env = [{"DOCKER", fake}, {"NAME", "made-up-controller"}]
+
+    {output, 0} = System.cmd("bash", [wrapper, "status"], env: env)
+    assert Jason.decode!(output) == %{"ok" => "status"}
+
+    {output, status} = System.cmd("bash", [wrapper, "kept", "x"], env: env)
+    assert status != 0
+    assert output =~ "ESOCK WARNING"
+
+    assert output =~
+             ~s|rpc failed: Eab.Factory.cli([Base.decode64!("a2VwdA=="), Base.decode64!("eA==")])|
+  end
 end

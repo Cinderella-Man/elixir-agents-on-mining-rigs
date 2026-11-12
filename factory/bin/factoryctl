@@ -21,4 +21,8 @@ for a in "$@"; do
   args="$args${args:+, }Base.decode64!(\"$b\")"
 done
 code="Eab.Factory.cli([$args])"
-printf '%s\n' "$code" | "$DOCKER" exec -i "$NAME" sh -c 'IFS= read -r code; exec bin/factory rpc "$code"'
+# The VM that runs rpc may print a warning to standard output before the answer (job T10: Erlang's socket module, in
+# an image without libsctp). So the answer is printed from its first line that opens a JSON object; when no line
+# does (the rpc call itself failed), everything is printed, so that the error stays visible.
+printf '%s\n' "$code" | "$DOCKER" exec -i "$NAME" sh -c 'IFS= read -r code; exec bin/factory rpc "$code"' |
+  awk '{ line[NR] = $0; if (!start && /^\{/) start = NR } END { for (i = start ? start : 1; i <= NR; i++) print line[i] }'

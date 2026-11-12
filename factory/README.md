@@ -14,9 +14,10 @@ tasks from a mounted folder; job T2 removed the Claude Code harness and the two 
 or Strata server can serve a run; job T3 removed the memory collector; job T4 removed the browser support and
 switched measuring off; job T7 gave the factory its own name and made the engine set the machine's labels and CPU
 share; job T8 added extra packages and release files per task and the mirror; job T9 added the entry points for
-scripts and the second round of controls (section 7). Sections 2 to 7 describe the factory after the trimming; job
-T10 has not started.** Section 7
-lists the trimming jobs; each one that lands adds its line to the table there.
+scripts and the second round of controls; job T10 took one made-up task from end to end through a controller built
+from this code, against a stand-in model server, and fixed the wrapper's output (section 7). The trimming is done:
+sections 2 to 7 describe the factory as it is, and it can be installed for the pilot.** Section 7 lists the trimming
+jobs; each one that landed added its line to the table there.
 
 Words used here are the design note's: a *bundle* is the folder of files that defines one task, *hidden tests* are
 the tests the model never sees, a *control* is a patch whose outcome is known in advance, and the *statement* is the
@@ -726,6 +727,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | T8: extra packages and release files per task, and the mirror (changes 3 and 4): `runtime.packages` and `runtime.release_files` (a `.deb` by URL and SHA-256, from hosts in `EAB_RELEASE_FILE_HOSTS`, empty by default) checked in `task_contract.ex` and installed by one line each in the recipe's toolchain stage (`fixtures.ex`), fetched and checked by the new `release_files.ex`; the source from the mirror in `EAB_MIRRORS` when upstream fails (`source.ex`); `config/runtime.exs`, `compose.yaml`; one new test each in `task_contract_test`, `fixtures_test` and `source_test`, and two new test files ([data](../docs/data/2026-11-12_factory_t8/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 198 without Docker and 206 with it (T7 193 and 199), 8 and 0 excluded; 199 tests end as in T7, 7 are new and pass; a made-up task's added lines build with one distribution package and one self-made `.deb`, and a wrong checksum fails the build; the parity test 6 of 6, untouched |
 | 2026-11-12 | T9: the entry points for scripts (change 5), `lib/eab/factory.ex` with `import`, `check`, `export`, `start_run`, `kept_sessions`, `status` and `job`, called through the release's `rpc` by `bin/factoryctl` (section 9); the second round of controls (change 8) in `Eab.Grader.qualify/3` with the new `second_round/4`; `candidates.ex` gives its limits on a folder's files to `files!/1`; the controller's image copies `config/holdout.json` ([data](../docs/data/2026-11-12_factory_t9/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 205 without Docker and 214 with it (T8 198 and 206), 9 and 0 excluded; 206 tests end as in T8 and the 8 new ones pass (6 in `factory_test`, 1 in `factory_docker_test`, 1 in `grader_test`); the same on the trees of P5 r2 and T7 (196 and 202, 200 and 207); the parity test 6 of 6, not edited |
 | 2026-11-12 | E72: the toolchain resolver (3.5): `lib/eab/toolchain.ex`, the image table `config/toolchain_images.json` (14 pairs), `scripts/toolchain_image.sh`, the two recipes as templates (`toolchain` blocks), and in `bundle_maker.ex` the resolved `runtime`, `services` and `baseline`, the `toolchain` record in `provenance.json` and the `resolve` mode. Six ex338 and radiator pull requests from five other periods made, prepared and gated through a controller built from it: five checked tasks, one dropped by the probe for its own reason ([data](../docs/data/2026-11-12_maker_toolchain/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 207 passed, 0 failed, 5 excluded without Docker and 212, 0, 0 with it (`origin/main` run the same hour: 189, 0, 5 and 193, 1, 0, the failure a race with another job's Docker tests that passes alone); 193 tests end as in the reference and the 18 new ones pass (17 in `toolchain_test`, 1 in `bundle_maker_test`); after the rebase onto T9: 223, 0, 9 and 232, 0, 0 (T9 run the same hour: 205, 0, 9 and 213, 1, 0, the failure T7's `docker_settings_docker_test` with "No such image", which passes alone), 213 as in T9 and the same 18 new; the parity test 6 of 6, untouched |
+| 2026-11-12 | T10: the made-up task `ledgerette-pr-1`, with real commits from a local mirror and a made-up statement, through a controller built from this code (`elixir-task-factory:t10`) by `bin/factoryctl` only: imported, checked (42.6 s), exported, run against a stand-in model server that plays back a fixed conversation (7 calls through Pi 1.2.0), and listed by `kept` as one kept session with the files of the design note's section 7; a second attempt with a wrong change ended as not passed and was not listed. Labels, CPU share and `etf-` names seen on every container the engine started. `bin/factoryctl` now prints only the JSON answer (the VM printed a warning first), with a new test in `factory_test` ([data](../docs/data/2026-11-12_factory_t10/README.md)) | see the data folder | format check passes; compiles with warnings as errors; on the tree after E72 224 passed, 0 failed, 9 excluded without Docker and 233 passed, 0 failed with it (E72 223 and 232); before the rebase 206 and 215 (T9 205 and 214), 213 tests as in T9 and the new one passing; the parity test 6 of 6, not edited |
 
 ## 8. What is not decided, and what is not verified
 
@@ -748,14 +750,14 @@ the changed and the matching test files, settled by the probe (E74).
 `release.ex`, `report.ex`, `checkpoints.ex` and `test_helper.exs`). Jobs T3 and T4 did the same for the memory collector and the browser support; what
 they found is in the rows that name them (`application.ex`, `baseline_test.exs`).
 - The controller's image was built by job P2 and again by T6, with no task in it
-  ([data](../docs/data/2026-11-12_factory_t6/README.md)). No controller has yet been started with a task folder
-  mounted; the tests use the tooling image (T0).
+  ([data](../docs/data/2026-11-12_factory_t6/README.md)). Job T10 started one with a task folder mounted; the tests
+  use the tooling image (T0).
 - Two tests of the copy never ran here: `eab/browser_docker_test` (it builds from the Playwright image, a download job
   T0 was not allowed) and `eab/claude_code_hook_test` (the tooling image has no `python3`). Both are dropped: the
   second went in T2, the first in T4.
 - That each trimming job fits three hours.
 - The made-up tasks are graded in an image built from the tooling image, not through the workspace recipe of
-  section 2.1; the recipe is built for a made-up task first in T10. Since T6, `fixtures_test` "recipes reconcile seeds
+  section 2.1 (in T10 a controller built the recipe for a made-up task, on a real `hexpm/elixir` image). Since T6, `fixtures_test` "recipes reconcile seeds
   before compilation and export an independent fixture" checks the three made-up tasks (in T5 the inventory was
   empty, so it checked none).
 - That many hundred tasks in one folder are fast enough. Since T6 a lookup checks one task's folder without listing
@@ -764,16 +766,14 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
 - That a CPU share on the containers is enough for a shared machine during image builds (section 6).
 - Since T7, the labels on the workspace's two images (`fixtures.ex`, `build/3`) and on the agent image
   (`agent_image.ex`) were read from the code, not seen: the Docker tests build neither through the engine. They are
-  seen on the database images and on a committed snapshot. No controller has yet run with `EAB_DOCKER_LABELS` and
-  `EAB_CPU_SHARES` in place of the wrapper.
+  seen on the database images and on a committed snapshot. In T10 a controller ran with `EAB_DOCKER_LABELS` and
+  `EAB_CPU_SHARES` and no wrapper: the label was seen on the project image and the agent image it built, and the
+  label and the share on every container it started.
 - Since T8, the extra packages and release files were built on the tooling image as the base, as the lines the
   recipe adds, not through a whole toolchain stage: the rest of that stage downloads the bench's build tools and Hex.
   The release file was a `.deb` the test made itself; no real one (fwup's) has been fetched or installed, and the
   engine's fetch was tested with a stand-in for the HTTP client, not over the network. The mirror was tested with
   local repositories only.
-- The entry points of section 9 through a controller: `bin/factoryctl` and the controller's image with
-  `config/holdout.json` have not been run yet (job T10). `Eab.Factory.check/2` has run on made-up tasks only, with
-  the source check and the preparation replaced; on real tasks the same sequence ran as the pilot's gate script.
 - The toolchain resolver (3.5) reads YAML and TOML by line patterns, not with a parser. It was checked on the CI
   files, `.tool-versions`, `mise.toml` and Dockerfiles of ex338's and radiator's 410 screened candidates and on the
   made-up files of `toolchain_test`; a CI file written in another style (anchors, a version only in a matrix
@@ -781,13 +781,30 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
   proof used (`docs/data/2026-11-12_maker_toolchain/pairs.tsv`) are looked up, not built. The controller's image does not
   carry `config/toolchain_images.json` (T9 copies `config/holdout.json`); the scripts stage the table and the
   template into the controller's data and pass them as options.
+- The entry points of section 9 through a controller ran in job T10 on one made-up task, with its source from a
+  local mirror and a stand-in model server; not yet on a real task, a task with a database service, or a real
+  model. On real tasks the sequence of `check` ran as the pilot's gate script.
+- Since T10, a run reuses the controls that `check` saved when nothing they depend on changed; that a run runs them
+  again after a change was not exercised through a controller.
 
 ## 9. Calling the factory
 
 The entry points are the functions of `Eab.Factory` (`lib/eab/factory.ex`, job T9). `bin/factoryctl` calls one of
 them in a running controller through the release's `rpc` command (`docker exec <controller> bin/factory rpc`) and prints
-the answer as JSON: `{"ok": ...}` or `{"error": "..."}`. Paths are the controller's own: the task folder is
-`EAB_TASKS_DIR` (`/tasks`), the data folder `/data`. `NAME` names the controller's container (default `factory`).
+the answer as JSON: `{"ok": ...}` or `{"error": "..."}`. It runs on the machine whose Docker runs the controller.
+Paths are the controller's own: the task folder is `EAB_TASKS_DIR` (`/tasks`), the data folder `/data`, so a folder
+to import must be inside one of the controller's mounts (job T10 used `/data/incoming`). `NAME` names the
+controller's container (default `factory`). The VM that runs `rpc` may print a warning before the answer (in the
+controller's image: Erlang's socket module finds no `libsctp`); the wrapper prints the answer from its first line
+that opens a JSON object, and everything when the call failed before an answer (job T10). Job ids are
+`check-<UTC date>-<UTC time>-<6 hex digits>`, run ids `<UTC date>-<UTC time>-<8 hex digits>`.
+
+A controller for these calls, as job T10 started it
+([`controller.sh`](../docs/data/2026-11-12_factory_t10/run/controller.sh)), on a machine without Compose: a new data
+folder at `/data`, the task folder mounted writable at `/tasks`, `EAB_DOCKER_LABELS` and `EAB_CPU_SHARES` for the
+labels and the share the engine adds (no wrapper in front of `docker`), `EAB_MIRRORS` when a mirror is used, the
+Docker socket, the host network (so a model server on the host's loopback is reachable), and Erlang's distribution
+bound to the loopback.
 
 ```sh
 bin/factoryctl import /data/incoming                      # each folder: imported, unchanged, or refused with its reason
@@ -816,6 +833,11 @@ bin/factoryctl status                                     # the active run, a pr
   (`changed_since_check`; a statement added later does not count), and a folder the destination holds with other
   bytes.
 - **`start_run`** refuses a task without a statement (`ticket.md` and `statement.json`) and takes the server's key
-  from `EAB_MODEL_KEY` when it needs one. The run's own preparation runs the controls again before the first attempt.
+  from `EAB_MODEL_KEY` when it needs one. The URL is called from the controller. The run's own preparation checks
+  the controls before the first attempt: it reuses the controls `check` saved when the task, the grading code and the
+  images are unchanged (job T10: "Reusing checked fixture"), and runs them again otherwise. The call returns at once;
+  `status` shows `"run": null` when the run has ended.
 - **`kept`** lists the attempts that ended as `completed` with a passing patch (2.2), read through their sealed
-  receipts; an attempt whose receipt does not verify is listed apart as `unverified`.
+  receipts; an attempt whose receipt does not verify is listed apart as `unverified`. Each kept session has its
+  folder (`/data/runs/<run>/<task>`, a controller path) and the names of its files; the run's sealed receipt is
+  `/data/runs/<run>/checkpoints/<task>.json`, one level above the session's folder.
