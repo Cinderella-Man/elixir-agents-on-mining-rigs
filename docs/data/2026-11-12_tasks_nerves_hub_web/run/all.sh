@@ -10,8 +10,10 @@
 #                  SETTLE_LOAD during it). A pull request whose row exists is not run again. OUT/rows.tsv holds every
 #                  try's row, the try first. The watcher (watch.sh) runs for the whole run; a stop it writes ends the
 #                  run at once.
+#                  AGAIN (numbers, space separated): tried a second time, into OUT/<id>/2, before anything else; for a
+#                  first try dropped by a cause of the factory's or the machine's that has since been settled.
 # Environment: WORK (the factory's work folder: tasks/), JOB (this job's folder: run/, src/, tables/, numbers.txt),
-# SRC (default JOB/src), CTL, NAME, OUT (default JOB/out), JOB_LABEL, TASK_LABEL, TARGET (60); for stage CACHE and
+# SRC (default JOB/src), CTL, NAME, OUT (default JOB/out), JOB_LABEL, TASK_LABEL, TARGET (60), AGAIN; for stage CACHE and
 # COPY. Writes OUT/rows.tsv (again after each try), OUT/watch.tsv, OUT/all.done at the end, and one line per start
 # and end to standard output.
 set -euo pipefail
@@ -86,6 +88,9 @@ run)
     fi
   }
   rows
+  for n in ${AGAIN:-}; do
+    [ -e "$OUT/$PREFIX-pr-$n/1/row.tsv" ] && one "$n" 2
+  done
   for n in $(cat "$JOB/numbers.txt"); do
     [ "$(checked)" -lt "$TARGET" ] || { echo "$(date -Is) $TARGET checked: no further pull request is started"; break; }
     one "$n" 1

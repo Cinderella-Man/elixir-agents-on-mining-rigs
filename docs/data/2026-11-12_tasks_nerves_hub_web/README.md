@@ -2,7 +2,7 @@
 
 Registry rows [E86](../../../experiments.md) (a hidden test the project skips), [E88](../../../experiments.md)
 (nerves_hub_web's two gaps), [E84](../../../experiments.md) (missing Elixir/OTP pairs) and
-[E68](../../../experiments.md) (the pilot of the task factory). `nerves-hub/nerves_hub_web` is one of the dataset's 21
+[E68](../../../experiments.md) (the pilot of the task factory). `nerves-hub/nerves_hub_web` is one of the dataset's 16
 applications ([rules](../../dataset_rules.md)). The pilot job
 ([2026-11-12_pilot_tasks_nerves_hub_web](../2026-11-12_pilot_tasks_nerves_hub_web/README.md)) put `fwup`, `xdelta3` and
 `mtools` into the project's template and made 29 candidates, but no check finished, and three gaps stood in the way of
@@ -35,6 +35,21 @@ settled (the highest 1-minute load during any check was 5.89 on 28 threads).
 | **One module runs twice under `parameterize:`** (E88) | `test/nerves_hub_web/channels/websocket_test.exs` uses `use NervesHubWeb.ChannelCase, parameterize: [%{serializer: :json}, %{serializer: :msgpack}]`, so ExUnit runs each of its tests twice under one name. The reporter wrote one name twice, and `Eab.Grader.parse/2` called every run that held the file unfinished. | The reporter (`priv/fixtures/grade_formatter.exs`) adds a test's parameters to its name when its module runs once per parameter set: `Elixir.M::test a %{serializer: :json}`. Every other test's record is the bench's, byte for byte; `parse/2` is unchanged; the model never sees the file (it is copied into grading containers only). The parity test pins the new blob id (`75eed312`) with the bench's (`ea8dec71`) in a comment. | the reporter on made-up test structs (with and without parameters, and an older struct with no such field); a real ExUnit run of a parameterized module in a temporary project, parsed by `parse/2` |
 | **The licence tool's list** | `task_licence.py` did not hold ISC, which the owner added on 2026-11-12. | ISC in `ALLOWED_SPDX`, in the loose spellings (`isc`, `ISC License`) and in the root licence families. | `factory/tools/test_task_licence.py`, 4 tests |
 | **The newest candidates' pair** (E84) | The project's 44 newest candidates (merged 2026-10-19 to 2026-11-10) name Elixir 1.20.4 with OTP 29.1.2, which the image table lacked (`no_image:1.20.4/29.1.2`). | One line in `factory/config/toolchain_images.json`, printed by `scripts/toolchain_image.sh elixir 1.20.4 29.1.2`: `hexpm/elixir:1.20.4-erlang-29.1.2-ubuntu-noble-20261024.1`, pinned by digest. | `toolchain_test` reads the table |
+
+**A fourth gap, found during the run: the service images' shared tag.** The engine builds each database's "layout"
+image (`FROM postgres…` with the data folder the snapshots capture) under `elixir-task-factory:layout-<key of the
+recipe>`, the same tag in every installation. From 13:15 six controllers shared the machine's Docker (five project
+sessions beside this job, on the owner's word), each with its own labels, so each built its own image under that one
+tag. On this Docker (the containerd image store) an image whose last tag moves to another image is removed at once,
+and the engine's cache then named an image that was gone: `docker failed: … content digest sha256:3a7666a0…: not
+found`, at the step that starts a new database family. It dropped 3108's first try and 3097 at `prepare`
+(`environment`), the factory's cause, and it would drop every task that needs a new database on any controller
+there. The change (`Eab.ServiceImages.build/2`): each service image (layouts, checkpoints, sealed ClickHouse
+snapshots) is built under a second tag of the installation's own (`elixir-task-factory:<identity>-<installation>`,
+`own_tag/1`), which no other controller moves, and its id is read from that tag. A Docker test moves the shared tag
+to another image and checks that the layout image stays and the cache still finds it. The run was held after 3101,
+the controller was rebuilt (`elixir-task-factory:nhw-20261112-b`; the first container is kept, stopped, as
+`factory-nhw-a`), and 3097 was tried again first (`run/all.sh`, `AGAIN`).
 
 **The factory's tests** on the data-mining machine, in the tooling image (`run/test.sh`):
 

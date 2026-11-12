@@ -134,7 +134,19 @@ defmodule Eab.DockerSettingsDockerTest do
       assert info["RepoTags"] != []
       assert Enum.all?(info["RepoTags"], &String.starts_with?(&1, "elixir-task-factory:"))
     end
+
+    # Another controller on the same Docker builds the same layout recipe with its own labels and moves the shared
+    # tag. The image stays under this installation's own tag, and the cache still finds it.
+    identity = "layout-" <> Eab.Cache.key(ServiceImages.recipe("postgres", "postgres:16-alpine"))
+    docker(["image", "tag", workspace, "elixir-task-factory:" <> identity])
+    kept = docker(["image", "inspect", postgres, "--format", "{{.Id}}"]) |> String.trim()
+    assert kept == postgres
+    assert ServiceImages.own_tag(identity) in image_tags(postgres)
+    assert ServiceImages.ensure("postgres", "postgres:16-alpine") == postgres
   end
+
+  defp image_tags(image),
+    do: docker(["image", "inspect", image, "--format", "{{json .RepoTags}}"]) |> Jason.decode!()
 
   defp tags,
     do: docker(["image", "ls", "--format", "{{.Repository}}:{{.Tag}}"]) |> String.split()

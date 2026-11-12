@@ -226,21 +226,34 @@ defmodule Eab.ServiceImages do
     |> String.trim()
   end
 
+  # The tag `elixir-task-factory:<identity>` is the same in every installation that builds the same recipe. On a Docker
+  # that several controllers share, another controller's build of the recipe (with its own labels, so another image)
+  # moves that tag; with the containerd image store the image it named is then removed at once, and a cached artifact
+  # names an image that is gone (seen 2026-11-12: a layout image, "content digest ... not found"). So each image is
+  # also built under a tag of this installation (`own_tag/1`), which no other controller moves, and its id is read
+  # from that tag.
   defp build(recipe, identity) do
     dest = Store.path("build/services/#{identity}")
     File.mkdir_p!(dest)
     File.write!(Path.join(dest, "Dockerfile"), recipe)
     tag = "elixir-task-factory:#{identity}"
+    own = own_tag(identity)
 
     Command.run!(
       "docker",
       ["buildx", "build", "--load", "--provenance=false", "--progress=plain"] ++
-        Eab.DockerSettings.build_args() ++ ["-t", tag, dest],
+        Eab.DockerSettings.build_args() ++ ["-t", tag, "-t", own, dest],
       timeout: 600,
       limit: 1_000_000
     )
 
-    Command.run!("docker", ["image", "inspect", tag, "--format", "{{.Id}}"])
+    Command.run!("docker", ["image", "inspect", own, "--format", "{{.Id}}"])
     |> String.trim()
   end
+
+  @doc """
+  The tag under which this installation keeps a service image it built for `identity` (`layout-<key>`,
+  `checkpoint-<key>`, `sealed-<identity>-<name>`): the shared tag with the installation's id after it.
+  """
+  def own_tag(identity), do: "elixir-task-factory:#{identity}-#{Eab.Sandbox.installation()}"
 end

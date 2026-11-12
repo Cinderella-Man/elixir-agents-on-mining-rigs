@@ -29,11 +29,15 @@ ctl() { NAME=$NAME "$SRC/bin/factoryctl" "$@"; }
 rpc() { printf '%s\n' "$1" | docker exec -i "$NAME" sh -c 'IFS= read -r c; exec bin/factory rpc "$c"'; }
 api() { curl -s --unix-socket /var/run/docker.sock "http://localhost$1"; }
 free_b() { df --output=avail -B1 / | tail -1 | tr -d ' '; }
-snap() {
+snap() { # the image list goes through a file: as one argument it passes Linux's 128 KiB limit on a machine with many images
+  local tmp
+  tmp=$(mktemp -d)
+  api /images/json | jq '[.[] | {id: .Id, names: (.RepoTags // []), digests: (.RepoDigests // []), bytes: .Size}]' > "$tmp/images.json"
+  api '/system/df?type=build-cache' | jq '{entries: (.BuildCache | length), bytes: ([.BuildCache[].Size] | add)}' > "$tmp/cache.json"
   jq -n --arg t "$(date -Is)" --arg load "$(cut -d' ' -f1-3 /proc/loadavg)" --arg free "$(free_b)" \
-    --argjson images "$(api /images/json | jq '[.[] | {id: .Id, names: (.RepoTags // []), digests: (.RepoDigests // []), bytes: .Size}]')" \
-    --argjson cache "$(api '/system/df?type=build-cache' | jq '{entries: (.BuildCache | length), bytes: ([.BuildCache[].Size] | add)}')" \
-    '{time: $t, load: $load, free_bytes: ($free | tonumber), images: $images, build_cache: $cache}'
+    --slurpfile images "$tmp/images.json" --slurpfile cache "$tmp/cache.json" \
+    '{time: $t, load: $load, free_bytes: ($free | tonumber), images: $images[0], build_cache: $cache[0]}'
+  rm -rf "$tmp"
 }
 mkdir -p "$OUT"
 printf 'step\tstart\tend\tseconds\n' > "$OUT/times.tsv"

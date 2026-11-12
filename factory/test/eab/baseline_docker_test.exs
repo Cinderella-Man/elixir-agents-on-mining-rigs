@@ -146,12 +146,14 @@ defmodule Eab.BaselineDockerTest do
 
   defp rebase(root, name, seed, engine) do
     cleanup = Path.join(root, "cleanup-tags")
-    layout = "elixir-task-factory:layout-" <> Cache.key(ServiceImages.recipe(name, engine))
-    File.write!(cleanup, layout <> "\n", [:append])
+    identity = "layout-" <> Cache.key(ServiceImages.recipe(name, engine))
+    layout = "elixir-task-factory:" <> identity
+    File.write!(cleanup, layout <> "\n" <> ServiceImages.own_tag(identity) <> "\n", [:append])
     base = ServiceImages.ensure(name, engine)
 
     tags = [
       "elixir-task-factory:checkpoint-" <> Cache.key([name, seed, base]),
+      ServiceImages.own_tag("checkpoint-" <> Cache.key([name, seed, base])),
       "elixir-task-factory:database-parent-" <> String.replace_prefix(seed, "sha256:", ""),
       "elixir-task-factory:database-layout-" <> String.replace_prefix(base, "sha256:", "")
     ]
