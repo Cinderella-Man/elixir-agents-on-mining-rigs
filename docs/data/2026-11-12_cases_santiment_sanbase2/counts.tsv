@@ -1,7 +1,7 @@
 pull_requests	verdict	dropped_at	reason
-47	not run	-	not reached
-15	checked	-	-
-7	dropped	probe	start_run_did_not_finish
+40	not run	-	not reached
+20	checked	-	-
+9	dropped	probe	start_run_did_not_finish
 6	refused	maker	no_existing_tests
 4	dropped	probe	no_existing_tests
 1	dropped	controls	reference_existing_tests_fail

@@ -1,4 +1,4 @@
-# santiment/sanbase2 in the task factory: the project's set-up and its first checked cases (2026-11-12)
+# santiment/sanbase2 in the task factory: the project's set-up and its first 20 good cases (2026-11-12)
 
 Registry rows [E68](../../../experiments.md) (the task factory's pilot) and E82 (the 16 dataset projects); queue
 row HB16 (five project jobs, one project each). `santiment/sanbase2` is one of the 16 applications of the dataset
@@ -10,38 +10,43 @@ controller of its own, built from the factory's `main`, while other task jobs us
 
 ## Result
 
-**Milestone 3 of the job (2026-11-12 17:58): 15 good cases of 33 pull requests tried.** A case is good when the gate
-checked it and it passes both scans. The job goes on, newest merged first, to 20 good cases or 80 tried (the owner,
-2026-11-12: "Yes, 15 each", then "I would do 20 each because there could be more issues / unsolved"); this page is
-brought up to date at each milestone.
+**The job's end (2026-11-12 19:11): 20 good cases of 40 pull requests tried.** A case is good when the gate checked it
+and it passes both scans. The target was 20 good cases or 80 tried, newest merged first (the owner, 2026-11-12: "Yes,
+15 each", then "I would do 20 each because there could be more issues / unsolved").
 
 - **The project runs in the engine.** Its own suite passes whole at the newest candidate's starting commit: 5,431
   passed, 0 failed, in 325.8 s. Beyond the factory's defaults it needs a Postgres image with the `vector` extension
   (`pgvector/pgvector:pg17`, the image the project's CI uses), `psql` and ImageMagick in the image, `libsctp1` so that
   Erlang prints no warning into a dependency's build, and, since 16:04, an empty database at the start of every test
   run, which the project's test alias fills from the dump in the code under test, as its CI does (section 1).
-- **Good (15): 5425, 5427, 5422, 5423, 5414, 5407, 5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386 and 5385** (merged
-  2026-10-16 to 2026-11-12). Eleven are features, four bug fixes. Thirteen pass the licence scan outright (MIT, every
-  touched file). Two (5405, 5394) pass it under the owner's rule for long files (rules page, section 9: "if they are
-  rejected only because they are long - count them"): their one failing file is `priv/repo/structure.sql`, the
-  project's own schema dump, which the scan sets aside as too long (over 262,144 bytes), and the part their change adds
-  (12 lines added and 1 removed in 5405, 1 line added in 5394) was read: the pull request's own columns, index and
-  migration rows, with no licence notice, copyright line or outside code ([`licence_large.tsv`](licence_large.tsv)).
-  Thirteen pass the hold-out check outright and two (5422, 5382) after their shared phrases were read: standard test
-  assertions, and a common Elixir idiom.
-- **Left out (18), all for the pull request's own reason:** 10 have no existing test left to protect (6 refused by the
-  maker, 4 at the probe because their one nearby test file is the file they rewrite), 7 are features whose hidden tests
+- **Good (20): 5425, 5427, 5422, 5423, 5414, 5407, 5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386, 5385, 5378, 5377,
+  5375, 5374 and 5373** (merged 2026-10-07 to 2026-11-12). Fourteen are features, six bug fixes (30 %, the rules'
+  floor). Eighteen pass the licence scan outright (MIT, every touched file). Two (5405, 5394) pass it under the owner's
+  rule for long files (rules page, section 9: "if they are rejected only because they are long - count them"): their
+  one failing file is `priv/repo/structure.sql`, the project's own schema dump, which the scan sets aside as too long
+  (over 262,144 bytes), and the part their change adds (12 lines added and 1 removed in 5405, 1 line added in 5394) was
+  read: the pull request's own columns, index and migration rows, with no licence notice, copyright line or outside
+  code ([`licence_large.tsv`](licence_large.tsv)). Seventeen pass the hold-out check outright and three (5422, 5382,
+  5373) after their shared phrases were read: standard test assertions, and two common Elixir idioms.
+- **Left out (20), all for the pull request's own reason:** 10 have no existing test left to protect (6 refused by the
+  maker, 4 at the probe because their one nearby test file is the file they rewrite), 9 are features whose hidden tests
   cannot run before the change (`no_starting_failure`), and 1 has an unstable test of its own (5409: a test that waits
   on a background task passed once and failed once on the merged code). None was the machine's. The factory's side
   caused 5405's first two tries (its migration was never applied; fixed, section 1).
 - **Time per checked case** (the engine's own count, in [`cases.tsv`](cases.tsv)): 525.9, 894.1, 626.5, 528.0, 674.0,
-  626.0, 574.9, 499.2, 1,432.1, 707.9, 600.2, 545.7, 365.9, 398.1 and 457.5 s for 5425, 5427, 5422, 5423, 5414, 5407,
-  5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386 and 5385. 5382 ran while the machine's 1-minute load reached 13.06.
-  The maker's step per pull request is the column `make_s`.
-- **Disk per checked case:** a project image of about 1.45 GB and a database snapshot of about 0.69 GB by Docker's sizes,
-  which overlap; the layers only that case uses are about 475 MB and 66 MB (Docker's rounded unique sizes in
-  [`own_images.tsv`](own_images.tsv)). The first case also built the shared layers once: the toolchain image
-  (974,739,987 bytes) and the database layout on the pgvector image (627,219,456 bytes).
+  626.0, 574.9, 499.2, 1,432.1, 707.9, 600.2, 545.7, 365.9, 398.1, 457.5, 552.2, 999.1, 637.6, 687.1 and 698.2 s for
+  5425, 5427, 5422, 5423, 5414, 5407, 5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386, 5385, 5378, 5377, 5375, 5374 and
+  5373. Five checks ran while the machine's 1-minute load passed 12 (5382 13.06, 5377 17.05, 5375 15.38, 5374 14.38,
+  5373 14.3, with other jobs' work); each passed all the same. The maker's step per pull request is the column
+  `make_s`.
+- **Disk:** a checked case adds a project image of about 1.45 GB and a database snapshot of about 0.69 GB by Docker's
+  sizes, which overlap; the layers only that case uses are about 475 MB and 66 MB (Docker's rounded unique sizes in
+  [`own_images.tsv`](own_images.tsv)). The job's 74 images hold about 19.21 GB that no other image shares (36 project
+  images, 35 database images, and the shared toolchain image, 974,739,987 bytes); the controller's data folder
+  3,407,360,113 bytes; the 20 checked case folders 1,377,444 bytes.
+- **Left for later:** 40 more of the job's list (merged 2026-09-10 to 2026-10-07) were not reached, and 28 older
+  candidates on Elixir 1.20.2 with no other need are not on the list; 42 older ones also need Rust.
+
 
 
 
@@ -122,8 +127,8 @@ task, then the licence scan and the hold-out check ([`run/scans.sh`](run/scans.s
 [`cases.tsv`](cases.tsv) has one line per try: the merge date, the resolved Elixir/OTP, the kind, the verdict, the step
 and reason of a drop, the wall time of each step, the engine's own step times, the 1-minute load at the start and the
 end and its highest value during the check, the bytes of this job's own images the try added, the two scans and whose
-cause a drop is ([`causes.tsv`](causes.tsv) holds the reading). Every check but one stayed under a 1-minute load of 12 on the machine's 28 threads; 5382's reached 13.06 (it passed
-all the same).
+cause a drop is ([`causes.tsv`](causes.tsv) holds the reading). Fifteen checks stayed under a 1-minute load of 12 on the machine's 28 threads; five passed it (5382, 5377, 5375, 5374,
+5373, up to 17.05) and passed all the same.
 
 | Pull request | Merged | Kind | Verdict | Step, reason | Hidden tests failing first / passing after | Licence | Hold-out |
 |---|---|---|---|---|---|---|---|
@@ -162,8 +167,15 @@ all the same).
 | 5388 | 2026-10-19 | bug_fix | checked | - | 6 / 19 | pass | pass |
 | 5386 | 2026-10-19 | feature | checked | - | 6 / 15 | pass | pass |
 | 5385 | 2026-10-16 | feature | checked | - | 1 / 27 | pass | pass |
+| 5380 | 2026-10-14 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 5378 | 2026-10-12 | bug_fix | checked | - | 1 / 14 | pass | pass |
+| 5377 | 2026-10-12 | feature | checked | - | 9 / 73 | pass | pass |
+| 5375 | 2026-10-12 | feature | checked | - | 13 / 13 | pass | pass |
+| 5376 | 2026-10-09 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 5374 | 2026-10-08 | bug_fix | checked | - | 1 / 9 | pass | pass |
+| 5373 | 2026-10-07 | feature | checked | - | 9 / 9 | pass | review |
 
-Counts by the last try ([`counts.tsv`](counts.tsv)): 15 checked, all good; 6 refused by the maker and 4 dropped at the probe, all `no_existing_tests`; 7 dropped at the probe because the hidden tests do not finish on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`); 1 dropped at the controls (`reference_existing_tests_fail`, an unstable test); 47 not reached yet.
+Counts by the last try ([`counts.tsv`](counts.tsv)): 20 checked, all good; 6 refused by the maker and 4 dropped at the probe, all `no_existing_tests`; 9 dropped at the probe because the hidden tests do not finish on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`); 1 dropped at the controls (`reference_existing_tests_fail`, an unstable test); 40 of the list not reached.
 
 **The balance of kinds** (rules page, section 7): the driver prefers the short kind once 12 cases are good and one
 kind has fewer than 4 (until the target was raised to 20: 10 and 3); a candidate of the other kind is then made but deferred, not counted as tried, and run at the
@@ -171,8 +183,8 @@ end if the target is not reached.
 
 **The code the cases ran on:** 5425, 5427, 5422, 5423 and 5421 ran on a controller built from the factory's `main` at
 `772f3bd`; from 5420 on, on one built from `0d99a67`, which keeps each installation's service images under a tag of
-its own (another job's controller had been able to remove them). No case of this job was hit by that fault: this
-project's database layout is built on the pgvector image, which no other job uses.
+its own (another job's controller had been able to remove them). No case of this job was hit by that fault. From 18:15 another job built its database layout on the same pgvector image
+and took that shared name; this job's older layout image went with it, but no later case of this job needed it.
 
 **The scans** ([`scans.tsv`](scans.tsv), [`good.tsv`](good.tsv), [`holdout_reviews.tsv`](holdout_reviews.tsv),
 [`deps.tsv`](deps.tsv)): the licence file is `LICENSE.md` (MIT) at every starting commit, and every file a case touches
@@ -181,9 +193,10 @@ passes, except the schema dump of 5405 and 5394, set aside as too long and passe
 lines the change adds and removes, what they hold, the notice lines found and the verdict). The reading used
 [`run/read_large_file_hunks.py`](run/read_large_file_hunks.py) (the mbta/screens job's helper, unchanged) and the
 changed lines themselves, read in full. The hold-out check found no held-out name and no shared 12-word run; the shared 8-word runs are common to
-several held-out projects, syntax, or already in sanbase2, except two in 5422 and six in 5382 (span ids in
-[`holdout_reviews.tsv`](holdout_reviews.tsv)), read as boilerplate: two standard test assertions, and the common idiom
-that counts a process's messages (`after 0 -> count`). The scans read a full clone of the project: a
+several held-out projects, syntax, or already in sanbase2, except two in 5422, six in 5382 and two in 5373 (span ids in
+[`holdout_reviews.tsv`](holdout_reviews.tsv)), read as boilerplate: two standard test assertions, the common idiom
+that counts a process's messages (`after 0 -> count`), the usual `rescue error -> {:error, error}`, and the end of a
+test. The temporary copy of the bench's cases and the shared spans' text were deleted at the end. The scans read a full clone of the project: a
 partial clone fetched every file of a commit one request at a time.
 
 **Dependencies, for the later scan of sessions** ([`deps.tsv`](deps.tsv)): of the 177 locked packages, 4 Hex packages
@@ -240,6 +253,9 @@ WORK=$WORK JOB=$JOB CTL=$CTL NAME=factory-sanbase2 JOB_LABEL=task-factory-job=hb
   $JOB/run/all.sh retry 5405 3
 # the tables
 JOB=$JOB WORK=$WORK CTL=$CTL PUB=<this folder> JOB_LABEL=task-factory-job=hb-sanbase2 $JOB/run/collect.sh
+# at the end: the bench's case copy, the scans' trees and the shared spans' text deleted; the controller stopped (kept)
+BENCH=$JOB/bench_cases OUT=$JOB/scans $JOB/run/scans.sh clean
+CTL=$CTL NAME=factory-sanbase2 $JOB/run/controller.sh stop
 ```
 
 The watcher stops the job when a bench run starts, when free space on `/` falls under 50,000,000,000 bytes (the

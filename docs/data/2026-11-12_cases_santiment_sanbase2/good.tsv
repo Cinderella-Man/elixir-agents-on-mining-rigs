@@ -1,4 +1,9 @@
 id	licence	holdout	kind	good	long_file_read
+sanbase2-pr-5373	pass	review	feature	yes	-
+sanbase2-pr-5374	pass	pass	bug_fix	yes	-
+sanbase2-pr-5375	pass	pass	feature	yes	-
+sanbase2-pr-5377	pass	pass	feature	yes	-
+sanbase2-pr-5378	pass	pass	bug_fix	yes	-
 sanbase2-pr-5382	pass	review	feature	yes	-
 sanbase2-pr-5385	pass	pass	feature	yes	-
 sanbase2-pr-5386	pass	pass	feature	yes	-
