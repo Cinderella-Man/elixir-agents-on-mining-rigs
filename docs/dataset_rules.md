@@ -159,4 +159,6 @@ is not legal advice.
   the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
 - The licence tool's own list does not hold ISC yet.
+- Balance (registry E89), proposed and not decided: no project above 15 % of the cases, neither bug fixes nor features
+  under 30 %, and at most 3 kept sessions per case.
 - `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.
