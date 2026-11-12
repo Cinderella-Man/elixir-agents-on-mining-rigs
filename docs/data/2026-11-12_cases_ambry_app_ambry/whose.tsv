@@ -26,3 +26,9 @@ ambry-pr-1280	2	not_settled	again a test that waits with render_async (100 ms) f
 ambry-pr-1277	2	pull_request_probably	the same test failed on the reference fix in both tries: reading chapter markers from two audio files never finished within render_async's 100 ms on this machine; a limit too tight for the test, though a quiet machine might meet it; not run a third time
 ambry-pr-1276	2	not_settled	again one hidden test ended differently on the unchanged project between the probe (31 failing) and the controls (32), this time another test, of the inbox form that waits for a search; two tries, a different test each time: the shared machine's load or tests too tight for a busy machine; not run a third time
 ambry-pr-1013	2	not_settled	a run that did not finish again, this time on the unchanged project (try 1: on the reference fix); the probe keeps no output (registry E80), so the cause cannot be read; two tries that end in different runs point to an unreliable test run at this commit, not to the pull request's change; not run a third time
+ambry-pr-1263	1	pull_request	a hidden test file of the pull request holds the test the project marks @tag :skip (test/ambry/people_test.exs), and the grader passes no skipped test
+ambry-pr-1261	1	-	checked
+ambry-pr-1260	1	pull_request	the maker found no test added or changed in a test's body, so there is no hidden test to name
+ambry-pr-1259	1	pull_request	the maker found no added or changed test file in the pull request
+ambry-pr-1250	1	pull_request	the hidden tests pass on the unchanged project: no hidden test fails in its body
+ambry-pr-1243	1	-	checked
