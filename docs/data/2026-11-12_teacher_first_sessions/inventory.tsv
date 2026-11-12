@@ -1,0 +1,17 @@
+id	ticket_md	statement_json	writer	ticket_sha256_matches	kind	description_bytes
+ex338-pr-1350	true	true	DeepSeek-V4.1-Flash-1017	true	feature	2063
+ex338-pr-1390	true	true	DeepSeek-V4.1-Flash-1017	true	feature	2764
+ex338-pr-1392	true	true	DeepSeek-V4.1-Flash-1017	true	feature	2421
+ex338-pr-1394	true	true	DeepSeek-V4.1-Flash-1017	true	feature	1855
+ex338-pr-1395	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	613
+ex338-pr-1398	true	true	DeepSeek-V4.1-Flash-1017	true	feature	3387
+ex338-pr-1411	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	340
+ex338-pr-1446	true	true	DeepSeek-V4.1-Flash-1017	true	feature	2831
+ex338-pr-1450	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	323
+ex338-pr-1451	true	true	DeepSeek-V4.1-Flash-1017	true	feature	6237
+ex338-pr-1452	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	743
+ex338-pr-1457	true	true	DeepSeek-V4.1-Flash-1017	true	feature	1347
+ex338-pr-1458	true	true	DeepSeek-V4.1-Flash-1017	true	feature	2598
+ex338-pr-1460	true	true	DeepSeek-V4.1-Flash-1017	true	feature	4069
+ex338-pr-1461	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	553
+ex338-pr-1463	true	true	DeepSeek-V4.1-Flash-1017	true	bug_fix	507

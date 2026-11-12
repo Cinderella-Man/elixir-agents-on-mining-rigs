@@ -1,0 +1,17 @@
+id	first_check	second_check	reason
+ex338-pr-1350	qualified		
+ex338-pr-1390	qualified		
+ex338-pr-1392	qualified		
+ex338-pr-1394	qualified		
+ex338-pr-1395	qualified		
+ex338-pr-1398	error	error	with the reference change, the existing test Ex338.FantasyTeamTest "owned_players/1 returns all active players on a team for select option" fails in its body, both times
+ex338-pr-1411	qualified		
+ex338-pr-1446	qualified		
+ex338-pr-1450	qualified		
+ex338-pr-1451	qualified		
+ex338-pr-1452	qualified		
+ex338-pr-1457	qualified		
+ex338-pr-1458	qualified		
+ex338-pr-1460	error	qualified	second round: the same test passed, then failed with the reference change ("2 named outcomes changed"); passed on the second check
+ex338-pr-1461	qualified		
+ex338-pr-1463	qualified		

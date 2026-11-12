@@ -1,0 +1,40 @@
+{
+ "bug_fix": {
+  "calls": 116,
+  "generated_tokens": 61721,
+  "kept": 6,
+  "session_s": 2494.1,
+  "sessions": 6
+ },
+ "calls": 586,
+ "calls_read_in_full": 0,
+ "completed": 16,
+ "feature": {
+  "calls": 470,
+  "generated_tokens": 312690,
+  "kept": 7,
+  "session_s": 10837.2,
+  "sessions": 10
+ },
+ "foreign_requests": 0,
+ "generated_tokens": 374411,
+ "generating_s": 7526.7,
+ "grading_s": 464.8,
+ "job_wall_s": 13856.0,
+ "kept": 13,
+ "kept_per_hour": 3.378,
+ "model_wait_s": 12814.0,
+ "other_model_s": 82.5,
+ "passed": 13,
+ "preparation_s": 54.8,
+ "prompt_tokens": 41196099,
+ "reading_s": 5204.5,
+ "run_s": 13851.0,
+ "server_new_prompt_tokens": 850571,
+ "server_reused_tokens": 40345528,
+ "session_s": 13331.3,
+ "sessions": 16,
+ "tool_calls": 736,
+ "tools_and_rest_s": 517.3,
+ "unmatched_calls": 0
+}

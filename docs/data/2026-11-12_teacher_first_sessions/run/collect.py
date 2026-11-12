@@ -10,7 +10,7 @@ Reads, for each task in DRIVE_OUT/cases.tsv:
                                      engine counts its prompt) and when its answer had arrived; the answer's stop
                                      reason and tool calls
   RUNS/<run>/<task>/pi-events.jsonl  Pi's tool calls
-  DRIVE_OUT/cases/<task>/kept.json   the factory's kept list for the run
+  DRIVE_OUT/cases/<task>*/kept.json  the factory's kept list, the one of this run
   DRIVE_OUT/metrics/requests.jsonl   the server's own record of each request (metrics_log.py): prompt tokens, the
                                      part reused from the previous request, prompt and generation milliseconds
   TASKS/<task>/case.json, ticket.md  the task's kind and the description's length
@@ -115,7 +115,9 @@ for case in cases:
     grade = read_json(os.path.join(adir, "grade.json"), {})
     spec = read_json(os.path.join(TASKS, cid, "case.json"), {})
     ticket = os.path.join(TASKS, cid, "ticket.md")
-    kept = read_json(os.path.join(DRIVE, "cases", cid, "kept.json"), {})
+    # the factory's kept list of this run (a task run twice keeps each run's list in its own folder)
+    kept = next((k for k in (read_json(p, {}) for p in glob.glob(os.path.join(DRIVE, "cases", cid + "*", "kept.json")))
+                 if (k.get("ok") or {}).get("run") == run), {})
     kept_ids = [k.get("case") for k in ((kept.get("ok") or {}).get("kept") or [])]
 
     # phases from the run's events
