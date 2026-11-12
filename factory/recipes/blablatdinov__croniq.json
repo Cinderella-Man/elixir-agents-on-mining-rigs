@@ -1,0 +1,26 @@
+{
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.18.4-erlang-26.2.5.21-ubuntu-noble-20260810@sha256:18ca0c7f44510ade0c7812d8e882e515872f0c01d159a3057de0168e243f710e",
+    "environment": {"MIX_ENV": "test"},
+    "setup_commands": ["mix compile"],
+    "before_test_commands": [],
+    "packages": ["postgresql-client"]
+  },
+  "services": {
+    "postgres": {"image": "postgres:18.6-alpine@sha256:9ba53c7d41ea093baf5c1ba635ba5434c4f979880527d49bb7d9237d3193085b"},
+    "redis": {"image": "redis:7.2-alpine@sha256:2f66de68111e64c3927859f158f8e666066dae2b97d9f82770a6f37a5aa1c335"}
+  },
+  "baseline": {"mode": "prepared", "commands": [
+    "PGPASSWORD=postgres psql -h 127.0.0.1 -U postgres -tAc \"SELECT 1 FROM pg_roles WHERE rolname = 'almazilaletdinov'\" | grep -qx 1 || PGPASSWORD=postgres psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 -c 'CREATE ROLE almazilaletdinov LOGIN SUPERUSER'",
+    "mix ecto.create --quiet",
+    "mix ecto.migrate --quiet"
+  ]},
+  "test_timeout": 240,
+  "permitted_exclusion_tags": [],
+  "grading": {
+    "preservation": "mix test",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"]
+  }
+}
