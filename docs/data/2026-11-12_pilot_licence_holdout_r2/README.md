@@ -34,9 +34,14 @@ By the licences each package declares for its locked version (`deps.tsv`; per pr
 
 - **Per project:** ex338 locks 71 packages (86 versions: 72 plus 6 allowed, 5 outside plus 2 several, 1 git); radiator
   locks 149 (328 versions: 306 plus 9 allowed, 8 outside plus 1 several, 4 git locks).
+- **ISC, since 2026-11-12:** the guide's table now allows ISC (E51, decided while this batch ran); the tool's list is
+  still the three licences, so the tables mark `cowboy`, `cowlib` and `ranch` as `outside`. With ISC allowed they
+  pass, and what stays outside is `file_system` (WTFPL), `open_api_spex` (MPL-2.0), `bcrypt_elixir` (its list names
+  `BSD-4-Clause` as well as ISC), `poolboy` (its list names `Unlicense`) and the git dependency `web_inspector`.
 - **Outside the three, by task:** every one of the 34 tasks locks at least one of `cowboy`, `cowlib`, `ranch`
-  (the web server of any Phoenix application), so this class does not tell tasks apart. Only radiator's tasks lock
-  `file_system` (500, 510 and 541), `open_api_spex` (645) and `web_inspector` (593 and 594). The rows are in
+  (the web server of any Phoenix application), so that part of the class does not tell tasks apart. The others:
+  `bcrypt_elixir` is locked by 11 tasks (7 of ex338, 4 of radiator), `poolboy` by 7 (ex338), `file_system` by
+  radiator's 500, 510 and 541, `open_api_spex` by 645 and `web_inspector` by 593 and 594. The rows are in
   `deps.outside.tsv`.
 - **Beyond the first batch:** its five packages outside the three (`cowboy`, `cowlib`, `ranch`, `bcrypt_elixir`,
   `poolboy`) recur; this batch adds `file_system`, `open_api_spex` and `web_inspector`. The first batch's open item,
@@ -46,8 +51,9 @@ By the licences each package declares for its locked version (`deps.tsv`; per pr
   `heroicons` at `0435d4c` and at `88ab3a0`, MIT, with the same standard text and a different copyright line each.
   `web_inspector` at `5648328` has 40 tree entries and none is a licence file, and neither its `mix.exs` nor its
   `README.md` mentions a licence or a copyright, so the commit states no licence.
-- **A rule from the guide, not applied here:** ISC sits in the "not for now" row (E51), WTFPL needs a read and MPL-2.0
-  is a "no" (guide section 8). Whether a dependency's licence decides a task is for the manager and the owner.
+- **The guide's rows for the rest (section 8):** WTFPL needs a read, MPL-2.0 is a "no", Unlicense is "not for now", a
+  repository with no licence is "no permission". Whether a dependency's licence decides a task is for the manager and
+  the owner.
 
 ### Dependencies that belong to a held-out project
 
