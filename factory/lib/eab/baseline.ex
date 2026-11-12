@@ -3,13 +3,7 @@ defmodule Eab.Baseline do
   alias Eab.{Cache, DatabaseSeed, Inventory, Sandbox, ServiceImages}
 
   def policy(spec) do
-    policy =
-      spec["baseline"] ||
-        if spec["runtime"]["profile"] == "plausible_ce" do
-          %{"mode" => "prepared", "commands" => ["mix ecto.create --quiet", "mix ecto.migrate"]}
-        else
-          %{"mode" => "prepared", "commands" => []}
-        end
+    policy = spec["baseline"] || %{"mode" => "prepared", "commands" => []}
 
     unless policy["mode"] in ["prepared", "fresh"] and
              is_list(policy["commands"] || []) and

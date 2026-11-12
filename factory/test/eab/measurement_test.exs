@@ -21,7 +21,7 @@ defmodule Eab.MeasurementTest do
            ] == result
   end
 
-  test "a run with several parallel attempts records no elapsed time" do
+  test "an attempt started with measuring off records no elapsed time" do
     counter = :counters.new(1, [])
     Application.put_env(:eab, :measurement_clock, fn -> :counters.get(counter, 1) end)
     model = %{"backend" => "llama_cpp", "context" => 32768}
@@ -35,7 +35,7 @@ defmodule Eab.MeasurementTest do
     :counters.put(counter, 1, 9000)
     result = Eab.Pi.finish(%{"state" => state, "returncode" => 0})
     refute Map.has_key?(result["measurement"], "attempt_ms")
-    assert Measurement.label(result["measurement"]) =~ "several attempts at once"
+    assert Measurement.label(result["measurement"]) =~ "the factory records no elapsed time"
     refute Eab.Store.read("#{prefix}/agent-progress.json")["measurement"]["attempt_ms"]
   end
 

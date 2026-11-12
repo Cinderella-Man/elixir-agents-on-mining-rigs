@@ -1,10 +1,11 @@
 defmodule Eab.Measurement do
   @moduledoc """
   Elapsed case time from Pi startup through completion, before independent grading.
-  Recorded only when a run works on one attempt at a time (ADR 0014).
+  The factory starts every attempt with measuring off, so it records no time; the
+  module stays because Pi calls it.
   """
 
-  @parallel "Not measured: the run worked on several attempts at once"
+  @off "Not measured: the factory records no elapsed time"
 
   def start(measure? \\ true)
 
@@ -13,9 +14,9 @@ defmodule Eab.Measurement do
     %{clock: clock, started: clock.()}
   end
 
-  def start(false), do: :parallel
+  def start(false), do: :off
 
-  def finish(:parallel), do: %{"not_measured" => @parallel}
+  def finish(:off), do: %{"not_measured" => @off}
 
   def finish(measurement) do
     %{"attempt_ms" => measurement.clock.() - measurement.started}

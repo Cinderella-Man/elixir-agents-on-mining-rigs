@@ -78,7 +78,7 @@ defmodule Eab.ReportTest do
     assert report =~ "- Parallel attempts: 3 (no elapsed times recorded)"
 
     assert report =~
-             "| a | Passed | 0 | Not measured: the run worked on several attempts at once |"
+             "| a | Passed | 0 | Not measured: the factory records no elapsed time |"
 
     Report.write(Map.delete(run, "parallel_attempts"))
     assert File.read!(Store.path("runs/#{id}/report.md")) =~ "- Parallel attempts: 1\n"

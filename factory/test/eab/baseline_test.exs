@@ -29,7 +29,14 @@ defmodule Eab.BaselineTest do
     runtime: runtime,
     opts: opts
   } do
-    spec = %{"runtime" => %{"profile" => "plausible_ce"}}
+    spec = %{
+      "runtime" => %{},
+      "baseline" => %{
+        "mode" => "prepared",
+        "commands" => ["mix ecto.create --quiet", "mix ecto.migrate"]
+      }
+    }
+
     inputs = Baseline.inputs(runtime, Baseline.policy(spec))
     services = %{"postgres" => "pg-snapshot", "clickhouse" => "ch-snapshot"}
 

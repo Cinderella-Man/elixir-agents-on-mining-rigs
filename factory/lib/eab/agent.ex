@@ -46,14 +46,10 @@ defmodule Eab.Agent do
 
     {record, patch} =
       try do
-        run = Store.read("runs/#{run_id}/run.json") || %{}
-
-        # Concurrent attempts share the host and any local model server, so their
-        # elapsed times are not comparable and are not recorded (ADR 0014).
+        # The factory records no elapsed time or speed: every attempt starts with
+        # measuring off. Pi still calls the measuring modules, so they stay.
         result =
-          Pi.run(box, endpoint, key, settings, prefix, prompt, instructions, emit,
-            measure: (run["parallel_attempts"] || 1) == 1
-          )
+          Pi.run(box, endpoint, key, settings, prefix, prompt, instructions, emit, measure: false)
 
         {Map.merge(base, result), Sandbox.patch(box)}
       after
@@ -72,7 +68,7 @@ defmodule Eab.Agent do
     """
     #{TaskContract.instructions(spec)}
     Dependencies are prepared. The workspace is offline. Preserve existing behavior and do not weaken tests.
-    #{if Eab.Browser.enabled?(spec), do: "Chromium and Playwright are preinstalled. Node tests can import process.env.EAB_BROWSER_MODULE. Bind any test web server to loopback and close browsers/servers after each suite.", else: ""}
+
     Allowed edit prefixes: #{Enum.join(spec["allowed_edit_prefixes"], ", ")}.
     When finished, give a short summary. Your current patch is then checked in a fresh workspace.
     #{budget_instructions(settings)}

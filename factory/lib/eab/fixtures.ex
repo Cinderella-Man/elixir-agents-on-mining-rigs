@@ -1,7 +1,6 @@
 defmodule Eab.Fixtures do
   alias Eab.{
     Baseline,
-    Browser,
     BuildCache,
     Cache,
     Command,
@@ -183,7 +182,6 @@ defmodule Eab.Fixtures do
     File.mkdir_p!(source)
 
     File.cp!(BuildCache.script(), Path.join(dest, "build_seed.exs"))
-    Browser.copy_bundle(spec, dest)
 
     repo = spec["repository"]
 
@@ -351,7 +349,6 @@ defmodule Eab.Fixtures do
 
     lines =
       if(node, do: ["FROM #{node} AS nodejs"], else: []) ++
-        Browser.stages(spec) ++
         [
           "FROM #{base} AS toolchain",
           "USER root",
@@ -372,7 +369,6 @@ defmodule Eab.Fixtures do
 
     lines =
       lines ++
-        Browser.install(spec) ++
         [
           "WORKDIR /workspace",
           "RUN mkdir -p /opt/mix /opt/hex /opt/eab-seed && chown agent:agent /workspace /opt/mix /opt/hex /opt/eab-seed",
@@ -409,13 +405,7 @@ defmodule Eab.Fixtures do
           "RUN --mount=type=cache,id=eab-hex-packages-v1,target=/opt/hex/packages,sharing=locked,uid=1000,gid=1000 " <>
             "mix deps.get --only #{env["MIX_ENV"]} && mix deps.clean --unused",
           "RUN mix deps.loadpaths"
-        ] ++
-        if(runtime["profile"] == "plausible_ce",
-          do: [
-            "RUN --mount=type=cache,id=eab-npm-packages-v1,target=/opt/npm-cache,sharing=locked,uid=1000,gid=1000 npm ci --prefix tracker --cache /opt/npm-cache --no-audit --no-fund"
-          ],
-          else: []
-        )
+        ]
 
     Enum.join(
       lines ++
