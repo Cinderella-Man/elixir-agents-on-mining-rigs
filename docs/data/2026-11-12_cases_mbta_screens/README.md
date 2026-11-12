@@ -1,13 +1,21 @@
-# mbta/screens in the task factory: the project's set-up and its 15 cases (2026-11-12)
+# mbta/screens in the task factory: the project's set-up and its 19 cases (2026-11-12)
 
 One of five jobs that each take one of the dataset's 16 applications ([dataset rules](../../dataset_rules.md)) into
-the task factory ([`factory/`](../../../factory/README.md)). This folder covers two jobs on `mbta/screens` (MIT), one
+the task factory ([`factory/`](../../../factory/README.md)). This folder covers three jobs on `mbta/screens` (MIT), one
 after the other, on the same controller. The first (13:15 to 14:05) set the project up and checked its newest usable
 merged pull requests as cases, one at a time, until 3 were checked (sections 1 to 8). The second (14:07 to 15:25) went
-on down the same list, one at a time, until 15 checked cases passed both scans (section 9). Everything ran on the
-data-mining machine, beside six other jobs.
+on down the same list, one at a time, until 15 checked cases passed both scans (section 9). The third (16:15 to 16:56)
+went on to the end of the list, aiming at 20, five of them spare cases for those the teacher model cannot solve
+(section 10). Everything ran on the data-mining machine, beside other jobs.
 
-**Result: 15 checked cases that pass the licence scan and the hold-out check.** They are 8 bug fixes and 7 features:
+**Result of all three jobs: 19 checked cases that pass the licence scan and the hold-out check, and no candidate on
+Elixir 1.18 or newer is left.** They are 9 bug fixes and 10 features: the 15 below, and 3286 (a bug fix), 3265, 3255
+and 3250 (features) from the third job, all on Elixir 1.20.2 with OTP 29.0.2. All 45 candidates on Elixir 1.18 or newer
+were tried: 20 were checked (3307 among them, which fails the licence scan), 25 were dropped or refused, every one for
+the pull request's own cause. The 105 older candidates of the screening are on Elixir 1.17 (`elixir_before_1.18`), so
+the project stops at 19, one short of 20.
+
+**Result of the first two jobs: 15 checked cases that pass the licence scan and the hold-out check.** They are 8 bug fixes and 7 features:
 3388, 3387 (Elixir 1.20.4 with OTP 29.1.2), 3363, 3358, 3353, 3356, 3343, 3341, 3319, 3306, 3310, 3281, 3293, 3284 and
 3287 (Elixir 1.20.2 with OTP 29.0.2). A 16th checked case, 3307 (a feature), fails the licence scan: it changes the
 front end's npm lock file, which the scan leaves out as too large to read (`exclude:large`). The 16 came from the 30
@@ -16,8 +24,8 @@ cause (6 whose new tests cannot run on the unchanged project, 5 with no existing
 pass without the fix). The 15 checks took 98.2, 109.9, 149.0, 178.0, 159.1, 118.9, 328.2, 109.7, 143.4, 245.7, 163.1,
 192.6, 237.7, 377.7 and 173.1 s of the engine's time, in the order of the list above (section 9.5 says why some took
 longer). The project's own suite passes at the newest candidate's commit: 1,087 of 1,092 tests, 0 failed, 5 skipped by
-the project. 15 candidates on Elixir 1.20 are left untried (`not_reached`); the 105 older candidates of the screening
-are on Elixir 1.17 (`elixir_before_1.18`).
+the project. 15 candidates on Elixir 1.20 were left untried after them (the third job tried them, section 10); the 105
+older candidates of the screening are on Elixir 1.17 (`elixir_before_1.18`).
 
 **Result of the first job: 3 checked cases, and all 3 pass the licence scan and the hold-out check.** They are pull
 requests 3388 and 3387 (bug fixes) and 3363 (a feature). They came from the 9 newest candidates; the other 6 were
@@ -30,12 +38,12 @@ engine's total) for the three. A fourth case, 3356, was checked out of order by 
 |---|---|
 | [`project_tests.tsv`](project_tests.tsv) | the project's own suite: the engine's record and ExUnit's summary |
 | [`project_tests_skipped.tsv`](project_tests_skipped.tsv) | the 5 tests the project marks as skipped |
-| [`cases_mbta_screens.tsv`](cases_mbta_screens.tsv) | one line per check of both jobs, and one per candidate not reached: verdict, step, reason, whose cause and why, Elixir/OTP, merge date, kind, the time of each step, the load, the bytes |
+| [`cases_mbta_screens.tsv`](cases_mbta_screens.tsv) | one line per check of the three jobs: verdict, step, reason, whose cause and why, Elixir/OTP, merge date, kind, the time of each step, the load, the bytes |
 | [`counts.tsv`](counts.tsv) | the 45 candidates on Elixir 1.18 or newer, by their last check's reason |
-| [`diagnostics.tsv`](diagnostics.tsv) | the runs repeated to tell whose cause a "did not finish" drop was (both jobs) |
-| [`scans.tsv`](scans.tsv) | the licence scan and the hold-out check of the 16 checked cases |
-| [`images.tsv`](images.tsv) | every image the two jobs built, with Docker's own, shared and unique bytes |
-| [`run/`](run/) | the scripts that ran (sections 7 and 9.7) |
+| [`diagnostics.tsv`](diagnostics.tsv) | the runs repeated to tell whose cause a "did not finish" drop was (all three jobs) |
+| [`scans.tsv`](scans.tsv) | the licence scan and the hold-out check of the 20 checked cases |
+| [`images.tsv`](images.tsv) | every image the three jobs built, with Docker's own, shared and unique bytes |
+| [`run/`](run/) | the scripts that ran (sections 7, 9.7 and 10.6) |
 
 ## 1. The project's set-up
 
@@ -320,8 +328,9 @@ or the factory's.
   holds each run's first error.
 - **3322, `no_starting_failure`:** its hidden tests pass on the unchanged project.
 
-[`counts.tsv`](counts.tsv), by each candidate's last check, both jobs: checked 16; `start_run_did_not_finish` 6,
+By each candidate's last check after the first two jobs: checked 16; `start_run_did_not_finish` 6,
 `no_existing_tests` 5, `no_starting_failure` 3 (all the pull request's); not reached 15 (3286 and the 14 older ones).
+[`counts.tsv`](counts.tsv) holds the counts after the third job (section 10.2).
 
 ### 9.4 The licence scan and the hold-out check
 
@@ -433,3 +442,145 @@ CTL=$C NAME=factory-screens $J/run/controller.sh stop
 The notes on 3307 and 3343 in the table's last text column were added by hand from the scans. Changed in `run/` by
 this job: `watch.sh` (the owner's free-space line as its default), `diag.exs` (the `existing_start` and
 `existing_reference` sides), and `cases_table.sh` (new).
+
+## 10. The third job: from 15 to 19 checked cases (16:15 to 16:56)
+
+Each project of the dataset gets 20 cases: 15 count toward the first 100 cases and 5 stand in for cases the teacher
+model cannot solve. This job took the 15 candidates the second job had not reached, newest first, from 3286 on, one at
+a time, on the same controller (the one built from `0d99a67`), data folder, job folder and driver. Nothing the first two
+jobs tried was made or checked again. One case at a time (`--concurrency 1`), one preparation worker, every container
+with the job's labels and a CPU share of 256; the engine has no switch for build jobs, and its workspace containers run
+Erlang with 2 schedulers. The driver's target was 21 checked, because the 20 checked rows would include 3307, which
+fails the licence scan; the list ran out first. No script in `run/` was changed by this job.
+
+### 10.1 The tries
+
+| # | Pull request | Merged | Kind | Verdict | Reason | Whose | Check (s) | Engine (s) | Load start / end / highest |
+|---:|---:|---|---|---|---|---|---:|---:|---|
+| 31 | 3286 | 2026-09-15 | bug fix | **checked** |  |  | 180 | 177.6 | 9.32 / 7.58 / 10.1 |
+| 32 | 3253 | 2026-09-14 | feature | dropped | `start_run_did_not_finish` | the pull request's | 60 | 51.8 | 7.61 / 7.32 / 8.42 |
+| 33 | 3280 | 2026-09-14 | feature | dropped | `start_run_did_not_finish` | the pull request's | 50 | 49.4 | 7.32 / 9.07 / 7.85 |
+| 34 | 3282 | 2026-09-11 | bug fix | dropped | `no_existing_tests` | the pull request's | 301 | 298.9 | 9.07 / 9.30 / 11.16 |
+| 35 | 3276 | 2026-09-11 | bug fix | dropped | `no_starting_failure` | the pull request's | 50 | 48.8 | 9.30 / 9.33 / 9.27 |
+| 36 | 3183 | 2026-09-11 | feature | dropped | `start_run_did_not_finish` | the pull request's | 50 | 45.1 | 9.33 / 9.78 / 10.54 |
+| 37 | 3273 | 2026-09-10 | – | refused by the maker | `no_existing_tests` | the pull request's | – | – | 9.78 / 9.80 / – |
+| 38 | 3265 | 2026-09-01 | feature | **checked** |  |  | 351 | 346.7 | 12.54 / 8.39 / 12.34 |
+| 39 | 3255 | 2026-09-01 | feature | **checked** |  |  | 160 | 159.2 | 8.20 / 9.26 / 11.13 |
+| 40 | 3261 | 2026-08-28 | feature | dropped | `start_run_did_not_finish` | the pull request's | 240 | 235.7 | 9.72 / 7.78 / 9.26 |
+| 41 | 3150 | 2026-08-27 | feature | dropped | `start_run_did_not_finish` | the pull request's | 41 | 37.3 | 7.72 / 8.22 / 8.36 |
+| 42 | 3250 | 2026-08-26 | feature | **checked** |  |  | 181 | 177.2 | 8.12 / 7.99 / 8.35 |
+| 43 | 3257 | 2026-08-25 | feature | dropped | `no_existing_tests` | the pull request's | 80 | 73.1 | 7.75 / 7.68 / 8.05 |
+| 44 | 3245 | 2026-08-24 | feature | dropped | `no_existing_tests` | the pull request's | 281 | 272.0 | 7.68 / 7.16 / 7.92 |
+| 45 | 3231 | 2026-08-21 | – | refused by the maker | `no_existing_tests` | the pull request's | – | – | 7.16 / 8.28 / – |
+
+All 13 made cases are on Elixir 1.20.2 with OTP 29.0.2. "Check" is the wall time of `factoryctl check`; "Engine" is
+the engine's total. The two refusals took 6 s in the maker each. 3265's check reached a 1-minute load of 12.34, above
+the driver's settle line of 12; the driver gives a second try only to a check that was not settled and did not pass, so
+3265's pass stands. Every other check stayed under 12.
+
+**The checked cases.**
+- **3286** (bug fix): 1 hidden test fails first and 3 pass after the fix; one existing test file is kept; it has a
+  partial-fix control.
+- **3265** (feature): 3 fail first, 10 pass after; one existing test file; a partial-fix control.
+- **3255** (feature): 3 fail first, 21 pass after; three existing test files, one of them left out
+  (`test/screens/screens_by_alert/self_refresh_runner_test.exs`, `fails_on_reference`); a partial-fix control.
+- **3250** (feature): 4 fail first, 11 pass after; two existing test files; a partial-fix control.
+
+By kind: of the 15 tries, 3 bug fixes (1 checked), 10 features (3 checked), and the 2 refused by the maker, whose kind
+was never read. Of the 45 tries of the three jobs, 17 bug fixes (9 checked), 26 features (11 checked, 3307 among them)
+and the 2 refusals.
+
+### 10.2 The drops, and how their cause was told
+
+All 11 are the pull request's own; none was the machine's (no time-out, no lost database connection, no "content
+digest … not found") or the factory's.
+- **3253, 3280, 3183, 3261, 3150, `start_run_did_not_finish`:** run again by hand (`run/diag.exs`, side `start`, at
+  16:53, about 3 s each), the hidden tests do not compile on the unchanged project. Their test support file mocks a
+  module that only the pull request makes a behaviour (3253), or a module the pull request adds (3261); the others
+  set a struct key the pull request adds (3280, 3183, 3150). [`diagnostics.tsv`](diagnostics.tsv) holds each run's
+  first error.
+- **3282, `no_existing_tests`:** its only existing test file fails on the fixed code (`fails_on_reference`).
+- **3257 and 3245, `no_existing_tests`:** both their existing test files fail on the fixed code (the same two files).
+- **3276, `no_starting_failure`:** its hidden tests pass on the unchanged project.
+- **3273 and 3231, `no_existing_tests` at the maker:** no existing test file is changed by the pull request or
+  matches a code file it changes, so the bundle maker made no task folder. These are the project's first refusals by
+  the maker.
+
+[`counts.tsv`](counts.tsv), by each candidate's last check, all three jobs: checked 20 (3307 among them);
+`start_run_did_not_finish` 11, `no_existing_tests` 8, `no_starting_failure` 4 at the probe, and `no_existing_tests` 2
+at the maker (all the pull request's). No candidate on Elixir 1.18 or newer is left.
+
+### 10.3 The licence scan and the hold-out check
+
+Run on each checked case of this job, one at a time, as in section 9.4 (`run/scans.sh`, the factory at `0d99a67`, a
+temporary copy of the bench's cases, removed afterwards with the scans' shared-span texts). [`scans.tsv`](scans.tsv):
+
+| Case | Files touched | Passing | Licence | Name hits | Shared runs of 8 / 12 words (to read) | Hold-out |
+|---|---:|---:|---|---:|---|---|
+| 3286 | 2 | 2 | pass | 0 | 10 / 3 (0 / 0) | pass |
+| 3265 | 5 | 5 | pass | 0 | 11 / 3 (0 / 0) | pass |
+| 3255 | 8 | 8 | pass | 0 | 13 / 3 (0 / 0) | pass |
+| 3250 | 5 | 5 | pass | 0 | 12 / 3 (0 / 0) | pass |
+
+The 10 runs of 8 words and 3 of 12 that every case shares are the boilerplate of the case files (`common`); the extra
+runs of 3265, 3255 and 3250 are plain syntax in the patches (`syntax`). Nothing was left to read. The locked
+dependencies at these commits: 88 (83 under a listed licence, 2 under "Apache 2.0" without the SPDX id, 3 Git
+dependencies whose licence the scan does not read), as in section 4.
+
+### 10.4 Time, load and disk
+
+- **One case.** The 4 checked cases took 177.6, 346.7, 159.2 and 177.2 s of engine time (3286, 3265, 3255, 3250). Four
+  tries spent over 220 s in the preparation, building the project's image the long way as in section 9.5: 3282 (240.2
+  s), 3265 (225.5 s), 3261 (222.2 s) and 3245 (244.4 s); every other try spent 67.7 s or less there. The drops took
+  51.8, 49.4, 298.9, 48.8, 45.1, 235.7, 37.3, 73.1 and 272.0 s (3253 to 3245, in the table's order).
+- **The whole job.** The 15 tries ran from 16:16:14 to 16:52:41 (the machine's clock); the repeated runs at 16:53:17;
+  the scans from 16:53:55 to 16:55:17.
+- **Load.** 8.33 when the job started; the highest 1-minute load the watcher saw was 13.06 (16:29:10, while 3265's
+  folder was being made). No stop rule fired; no bench run started.
+- **Disk.** The job built 18 images with 3,110,378,332 unique bytes ([`images.tsv`](images.tsv)): one project image of
+  about 217 MB for each made try (13; 229 MB for 3245) and 5 database snapshots of about 56 MB. That is 777,594,583
+  bytes est. per checked case of this job, the drops' images included. The controller's folder grew from 1,846,108,568
+  to 2,567,523,900 bytes and the job's folder from 1,038,976,730 to 1,250,979,685 (201,260,006 of them this job's scan
+  folders, mostly checked-out trees); the 20 exported case folders hold 781,508 bytes. Free space on `/` went from
+  695,751,626,752 (16:16) to 671,772,684,288 bytes (16:56), for all jobs together.
+
+### 10.5 What went wrong
+
+None of these changed a verdict.
+1. The remote call that started the scans waited for them and was cut by the caller's own time limit after 30 s; the
+   scans ran in a session of their own and finished. Nothing was lost.
+2. `run/cases_table.sh` takes a drop's left-out existing file from the engine's detail only when the detail names one
+   file. For 3257 and 3245, whose detail names two, the column `existing_left_out` was filled by hand from the detail.
+
+### 10.6 Exact commands
+
+On the data-mining machine, as in sections 7 and 9.7 (`J=$WORK/jobs/hb-screens`, `C=$WORK/ctl-hb-screens`,
+`T=$J/out/tables_to20`).
+
+```sh
+# the controller again (built from 0d99a67), then the driver, as root, detached
+CTL=$C NAME=factory-screens $J/run/controller.sh start
+WORK=$WORK JOB=$J CTL=$C NAME=factory-screens OUT=$J/out/cases JOB_LABEL=task-factory-job=hb-screens \
+  TASK_LABEL=task-factory=1 TARGET=21 MAX_TRIES=45 SETTLE_LOAD=12 $J/run/all.sh run
+
+# the repeated runs of the five "did not finish" drops
+mkdir -p $C/data/diag3 && cp $J/run/diag.exs $C/data/diag3/
+CTL=$C NAME=factory-screens $J/run/controller.sh rpc 'System.put_env(%{"DIAG_DIR" => "/data/diag3", "DIAG_SPECS" => "screens-pr-3253:start,screens-pr-3280:start,screens-pr-3183:start,screens-pr-3261:start,screens-pr-3150:start"}); spawn(fn -> Code.eval_file("/data/diag3/diag.exs") end)'
+
+# the two scans, one case at a time, as the machine's ordinary user (ids.txt: 3286, 3265, 3255, 3250), then the table
+SRC=$J/src_0d99a67 DEST=$WORK/tasks/mbta__screens IDS=$J/out/scans_to20/ids.txt OUT=$J/out/scans_to20 \
+  CLONES=$J/screens.git BENCH_CASES=<a temporary copy of the bench's cases/, without admission.json> \
+  LABELS=task-factory=1,task-factory-job=hb-screens $J/run/scans.sh run
+SRC=$J/src_0d99a67 DEST=$WORK/tasks/mbta__screens IDS=$J/out/scans_to20/ids.txt OUT=$J/out/scans_to20 $J/run/scans.sh table
+
+# the tables (notes_to20.tsv: id, try, whose cause and why, for each try of this job; ids_final.txt: its 15 ids)
+OUT=$J/out/cases JOB_LABEL=task-factory-job=hb-screens $J/run/cases_table.sh images
+OUT=$J/out/cases NUMBERS=$J/numbers.txt TASKDIR=$C/tasks SCREEN_TSV=$J/tables/screen_mbta__screens.tsv \
+  NOTES=$T/notes_to20.tsv IDS=$T/ids_final.txt $J/run/cases_table.sh cases > $T/cases_final_new.tsv
+OUT=$J/out/cases BASE=<this table at the previous commit> NEW=$T/cases_final_new.tsv WINDOW=$J/numbers.txt \
+  NUMBERS=$J/numbers.txt TASKDIR=$C/tasks SCREEN_TSV=$J/tables/screen_mbta__screens.tsv NOT_RUN_REASON=not_reached \
+  NOT_RUN_WHY=- $J/run/cases_table.sh merge > cases_mbta_screens.tsv
+OUT=$J/out/cases TABLE=cases_mbta_screens.tsv $J/run/cases_table.sh counts > counts.tsv
+OUT=$J/out/cases SINCE=2026-11-12T16:16:00+01:00 $J/run/cases_table.sh built   # the new rows of images.tsv
+CTL=$C NAME=factory-screens $J/run/controller.sh stop
+```

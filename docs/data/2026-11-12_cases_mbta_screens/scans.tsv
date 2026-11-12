@@ -15,3 +15,7 @@ screens-pr-3281	LICENSE	MIT	12	12	pass	-	0	10	0	3	0	pass	allowed=84; allowed, no
 screens-pr-3293	LICENSE	MIT	10	10	pass	-	0	10	0	3	0	pass	allowed=84; allowed, not an SPDX id=2; git dependency: licence not read=3	0
 screens-pr-3284	LICENSE	MIT	5	5	pass	-	0	10	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
 screens-pr-3287	LICENSE	MIT	3	3	pass	-	0	10	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3286	LICENSE	MIT	2	2	pass	-	0	10	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3265	LICENSE	MIT	5	5	pass	-	0	11	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3255	LICENSE	MIT	8	8	pass	-	0	13	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
+screens-pr-3250	LICENSE	MIT	5	5	pass	-	0	12	0	3	0	pass	allowed=83; allowed, not an SPDX id=2; git dependency: licence not read=3	0
