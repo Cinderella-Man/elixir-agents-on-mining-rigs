@@ -27,7 +27,7 @@ defmodule Eab.Runs do
 
   @doc """
   Starts a run over the tasks `cases: ids` of the task folder; its release freezes those
-  tasks and no other (factory/README.md, section 5.1). A harness check (`check: {kind, id}`)
+  tasks and no other (factory/README.md, section 5.1). A dry attempt (`check: {"dry_attempt", id}`)
   runs the one task it names instead. `validation: true` marks an unpublishable
   case-validation run (ADR 0012).
   `parallel_attempts: n` (1 to 8, default 1) runs up to n cases at once (ADR 0014).
@@ -502,13 +502,10 @@ defmodule Eab.Runs do
     {"case_repeat", Enum.filter(source["cases"], &(&1 in cases))}
   end
 
-  # Dry attempts and escape tests run one case, are unscored and never published.
+  # A dry attempt runs one case, is unscored and never published.
   defp check(run, endpoint, settings, release, {kind, id}) do
-    unless kind in ["dry_attempt", "escape_test"] and id in run["cases"],
+    unless kind == "dry_attempt" and id in run["cases"],
       do: raise("Choose a case for the harness check")
-
-    if kind == "escape_test" and not Eab.ClaudeCode.harness?(endpoint),
-      do: raise("Escape tests are for the Claude Code harness")
 
     selection = %{"kind" => kind, "cases" => [id]}
 
@@ -633,22 +630,11 @@ defmodule Eab.Runs do
 
   defp persist(run) do
     run = if run["status"] in @terminal, do: finalize_attempts(run), else: run
-    run = claude_code_version(run)
     run = Map.put(run, "score", Runner.score(run))
     Store.write("runs/#{run["id"]}/run.json", run)
     Store.index_run(run)
     if run["status"] in @terminal, do: Eab.Report.write(run)
   end
-
-  # The first Claude Code attempt fixes the run's Claude Code version.
-  defp claude_code_version(%{"harness" => %{"name" => "claude_code"} = harness} = run) do
-    case Eab.ClaudeCode.Attempt.recorded_version(run["id"]) do
-      nil -> run
-      version -> Map.put(run, "harness", Map.put(harness, "claude_code_version", version))
-    end
-  end
-
-  defp claude_code_version(run), do: run
 
   defp finalize_attempts(run) do
     attempts =

@@ -9,8 +9,10 @@ note" below.
 
 **State on 2026-11-12: job T0 built the tooling image, ran the copy's checks and added two tests; job T1 removed the
 web page, the results page, the run series and the comparison, and with them Phoenix, LiveView and the web server;
-job T5 put in the one task format and made-up tasks in place of the bench's cases (section 7). Sections 2 to 7
-describe the factory after the trimming; jobs T2 to T4 and T6 to T10 have not started.** Section 7
+job T5 put in the one task format and made-up tasks in place of the bench's cases; job T6 made the factory read its
+tasks from a mounted folder; job T2 removed the Claude Code harness and the two cloud back ends, so only a llama.cpp
+or Strata server can serve a run (section 7). Sections 2 to 7 describe the factory after the trimming; jobs T3, T4
+and T7 to T10 have not started.** Section 7
 lists the trimming jobs; each one that lands adds its line to the table there.
 
 Words used here are the design note's: a *bundle* is the folder of files that defines one task, *hidden tests* are
@@ -382,12 +384,12 @@ section 6. The reading rule for a drop: a file goes only when nothing that stays
 
 | | Keep | Change | Drop |
 |---|---:|---:|---:|
-| `lib/` (70) | 17 | 24 | 29 |
+| `lib/` (70) | 16 | 25 | 29 |
 | `priv/` (24) | 8 | 0 | 16 |
 | `config/` (3) | 0 | 3 | 0 |
 | root files (8) | 0 | 8 | 0 |
 | `test/` (52) | 18 | 17 | 17 |
-| **All (157)** | **43** | **52** | **62** |
+| **All (157)** | **42** | **53** | **62** |
 
 ### 5.1 The parts that go, and why
 
@@ -421,47 +423,47 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | File | Verdict | Reason |
 |---|---|---|
 | `activity.ex` | keep | Writes each task's `activity.log`: commands, model output and Pi's tool calls. |
-| `agent.ex` | change | The Claude Code branch and the browser sentence go; attempts start with `measure: false`. `instructions/2` must give the same text (section 2). |
+| `agent.ex` | change | The Claude Code branch and the browser sentence go; attempts start with `measure: false`. `instructions/2` must give the same text (section 2). T2 removed the Claude Code branch and the clause of `budget_instructions/1` for the cloud back ends' soft limit (only their settings set `budget_policy`); every attempt runs Pi. The local budget sentence is unchanged. |
 | `agent_image.ex` | change | The image tag's prefix. The recipe stays. |
 | `anthropic.ex` | drop | The Claude API back end. |
-| `application.ex` | change | The children for the web page, ChatGPT, the Claude Code broker and the memory monitors go. Phoenix's PubSub becomes an Elixir `Registry` under the same name, `Eab.PubSub` (T1). |
+| `application.ex` | change | The children for the web page, ChatGPT, the Claude Code broker and the memory monitors go. Phoenix's PubSub becomes an Elixir `Registry` under the same name, `Eab.PubSub` (T1). T2 removed the children for ChatGPT's sign-in and the Claude Code broker. |
 | `baseline.ex` | change | The default for one bench project's profile (`plausible_ce`) goes. The rest stays. |
 | `browser.ex` | drop | Browser support. |
 | `build_cache.ex` | change | The image tag's prefix. |
 | `cache.ex` | keep | The store of prepared parts, keyed by their inputs. |
 | `candidates.ex` | change | Becomes the import check: `import/1`'s limits and `validate!/1` stay, without the partial fix as a must. The draft store, `review/2`, `export/2`'s review and admission, `verify_admission!/1` and `qualify/3` go: checks run through `Eab.Qualification`, so that many tasks share the preparation scheduler. T5 removed `review/2`, `export/2` and `verify_admission!/1` and wrote `validate!/1` for the one format (public now, for the entry points); the draft store (`import/1`, `read!/1`) and `qualify/3` stay until T6 and T9 give the check its place. T6 replaced its two lookups of the whole inventory by `Inventory.member?/1`. |
 | `chatgpt_auth.ex` | drop | The ChatGPT subscription's sign-in. |
-| `checkpoints.ex` | change | `validate_cases!/2`: a run's tasks are a chosen list; the two harness-check kinds go. The sealed receipts stay. T6 did the first part: a run's tasks are exactly its release's tasks, in the same order, whatever chose them. The two harness-check kinds stay until T2: they run only on the Claude Code harness, and `runs_test` checks them with its endpoint. |
+| `checkpoints.ex` | change | `validate_cases!/2`: a run's tasks are a chosen list; the two harness-check kinds go. The sealed receipts stay. T6 did the first part: a run's tasks are exactly its release's tasks, in the same order, whatever chose them. Of the two harness-check kinds, only the escape test is Claude Code's, and it went in T2. The dry attempt (one task, unscored, never published) runs under Pi with any server and stays. |
 | `claude_code.ex`, `claude_code/attempt.ex`, `claude_code/broker.ex`, `claude_code/mcp.ex`, `claude_code/transcript.ex` | drop | The Claude Code harness. |
 | `command.ex` | keep | Runs subprocesses with output limits and watchdogs. |
 | `comparison.ex` | drop | Run comparison; only the web page calls it. |
 | `database_seed.ex` | keep | Decides when a saved database can be reused for a later commit. |
-| `evidence.ex` | keep | Saves `grade.json` and the short verdict. |
+| `evidence.ex` | change | Saves `grade.json` and the short verdict. T2 removed the links to files only the dropped parts wrote (the Claude Code transcript, its tool calls, its prompt, and the cloud back ends' `provider-error.json`) and the summary fields `claude_code` and `escape_test`. |
 | `fixtures.ex` | change | Extra system packages; the image tag's prefix; the browser calls and the `plausible_ce` line go. The recipe for a task without packages must not change (section 2). |
 | `grader.ex` | change | The partial control becomes optional per task; the older format's built-in controls go. Grading itself is not touched (section 2.2). Done in T5: only `qualify/5`, `partial_patch/1` and `valid_controls?/5` changed; the early exit is read from the task's `integrity.patch`; the saved controls record `partial_control`, and `partial_repair` is null without a partial fix. |
-| `harness.ex` | change | Pi only. |
+| `harness.ex` | change | Pi only. Done in T2. |
 | `image_presence.ex` | keep | Asks Docker which images exist, in batches. |
 | `inventory.ex` | change | Tasks come from a mounted folder; no case list in the configuration; `statement.json` joins the files that do not void a receipt. T5 did the last part, and `admission.json` and `upstream-tests.patch` left that list: they are not files of the format, so a task that has one is refused at import. T6 did the rest: `all/0` lists the folder in the order of the ids, `member?/1` answers a lookup without listing it, and `protocol/1` binds only the tasks it is given. |
 | `log_sections.ex` | drop | Splits a log into stages for the web page; nothing else calls it. |
 | `measurement.ex` | change | One sentence: the reason given when nothing is measured. |
 | `memory_collector/cli.ex`, `memory_collector/sampler.ex`, `memory_collector/weights.ex`, `memory_monitor.ex` | drop | The memory collector. |
-| `model.ex` | change | The three branches for the cloud back ends and Claude Code go from `settings/2` and `unchanged!/2`. Discovery of llama.cpp and Strata servers stays. |
+| `model.ex` | change | The three branches for the cloud back ends and Claude Code go from `settings/2` and `unchanged!/2`. Discovery of llama.cpp and Strata servers stays. Done in T2, which also made `settings/2` refuse any other named back end (otherwise an endpoint naming one would fall through to the local branch), and removed `request/4`, the retry policy only the hosted transports called. What is sent to a server is unchanged. |
 | `model_identity.ex` | keep | Names the served model file in a run's record. |
 | `model_speed.ex` | keep | Called by `pi.ex`; it records nothing when measuring is off. |
 | `openai.ex` | drop | The ChatGPT subscription back end. |
-| `pi.ex` | keep | Same bytes (section 2). |
-| `pi_gateway.ex` | change | The two cloud clauses of `exchange/2` and their routes go. The local clause stays as it is (section 2). |
+| `pi.ex` | keep | Same bytes (section 2). Its `config/4` still has branches for the two cloud back ends; they stay with its bytes and cannot be reached since T2: `Model.settings/2` refuses such an endpoint before a run starts, and the gateway accepts only the two local routes. |
+| `pi_gateway.ex` | change | The two cloud clauses of `exchange/2` and their routes go. The local clause stays as it is (section 2). Done in T2. |
 | `pipeline.ex` | keep | The scheduler: preparation ahead, attempts in order, grading apart. |
 | `preparation.ex` | keep | Orders a project's commits so that a later one builds from an earlier one. |
 | `provenance.ex` | keep | The source check. It already takes the pull request's own tests when no separate upstream copy exists. |
 | `qualification.ex` | change | Prepares and checks a given list of tasks, not the whole inventory; the second round. T6 did the first part: `run/3` takes the list and freezes only it. |
 | `readiness.ex` | keep | Says which tasks can run with no internet. |
-| `release.ex` | change | Freezes the tasks of one run; the admission check goes (5.1). T5 removed the admission check; every task's contract is read when a release is frozen. T6: `freeze/1` takes the list, refuses a task the folder does not hold or whose folder is not named by its id, and puts the tasks in the order of their ids; `verify!/2` checks only the release's own tasks, so other tasks may change or arrive while a run waits to resume. |
-| `report.ex` | change | The report's title and its lines about memory, speed and score. |
+| `release.ex` | change | Freezes the tasks of one run; the admission check goes (5.1). T5 removed the admission check; every task's contract is read when a release is frozen. T6: `freeze/1` takes the list, refuses a task the folder does not hold or whose folder is not named by its id, and puts the tasks in the order of their ids; `verify!/2` checks only the release's own tasks, so other tasks may change or arrive while a run waits to resume. T2 removed `account_id` (the ChatGPT subscription's) from the endpoint fields an experiment id is made of; a local endpoint has none, so no id changes. |
+| `report.ex` | change | The report's title and its lines about memory, speed and score. T2 removed the escape test's scope line and the words about the cloud back ends and Claude Code transcripts. |
 | `results.ex`, `results/preview.ex`, `results/resources.ex`, `results/schema.ex` | drop | The results page. |
 | `retention.ex` | change | The image tag's prefix in the removal guard. |
 | `runner.ex` | keep | Runs one run through the scheduler. |
-| `runs.ex` | change | `start/4` takes the list of tasks; preparation takes a list; T6 did both: `start/4` takes `cases: ids` (or `check: {kind, id}`, which freezes that one task), `prepare_all/0` became `prepare/1`, and a retry or repeat freezes only the tasks it selects, after checking that they are unchanged since the source run; the series, the memory monitor, the Claude Code version and the harness checks go. The change notifications stay: `runs_test` waits on them, and so can the `status` entry point. Since T1 `subscribe/0` and the broadcast use the `Registry` `Eab.PubSub` in place of Phoenix's PubSub, with the same `:runs_changed` message. |
+| `runs.ex` | change | `start/4` takes the list of tasks; preparation takes a list; T6 did both: `start/4` takes `cases: ids` (or `check: {kind, id}`, which freezes that one task), `prepare_all/0` became `prepare/1`, and a retry or repeat freezes only the tasks it selects, after checking that they are unchanged since the source run; the series, the memory monitor, the Claude Code version and the harness checks go. T2 removed the Claude Code version and the escape test; the dry attempt stays (see `checkpoints.ex`). The change notifications stay: `runs_test` waits on them, and so can the `status` entry point. Since T1 `subscribe/0` and the broadcast use the `Registry` `Eab.PubSub` in place of Phoenix's PubSub, with the same `:runs_changed` message. |
 | `sandbox.ex` | change | Labels and a CPU share from the environment; the container name's prefix and the label keys. The limits stay (section 2). |
 | `series.ex` | drop | Run series. |
 | `service_images.ex` | change | The image tag's prefix, in two places. |
@@ -501,10 +503,10 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 |---|---|---|
 | `config/benchmark.json` | change | Renamed `config/factory.json`: an id of its own, no case list, no scoring text. The `defaults` block stays (section 2). T6 removed the case list (the bench's 20 names); the name, the id and the scoring text wait for T7. |
 | `config/config.exs` | change | The web endpoint's settings go (done in T1, with Phoenix's own settings). |
-| `config/runtime.exs` | change | The session secret, the memory collection and the endpoint go; the task folder, the labels, the CPU share and the mirror list come from the environment. T6 added the task folder (`EAB_TASKS_DIR`, default `/tasks`, also in `config/config.exs`; the tests point it at an empty temporary folder unless a test mounts one). The secret and the endpoint went in T1. `lib/eab/claude_code.ex` still reads the endpoint's port from the removed setting and falls back to 4000, until it goes in T2. |
-| `mix.exs` | change | `phoenix`, `phoenix_live_view`, `phoenix_html`, `bandit`, `jose` and `lazy_html` leave the dependencies; `jason` and `req` stay; the release gets its own name; the `assets` alias goes. T1 removed all of them but `jose`, and named `plug_crypto` (2.2.0, already in `mix.lock` through Plug) as a direct dependency, because `chatgpt_auth.ex` calls `Plug.Crypto.secure_compare/2`; both leave with that file in T2. |
+| `config/runtime.exs` | change | The session secret, the memory collection and the endpoint go; the task folder, the labels, the CPU share and the mirror list come from the environment. T6 added the task folder (`EAB_TASKS_DIR`, default `/tasks`, also in `config/config.exs`; the tests point it at an empty temporary folder unless a test mounts one). The secret and the endpoint went in T1. `lib/eab/claude_code.ex` read the endpoint's port from the removed setting until it went in T2; nothing reads that setting now. |
+| `mix.exs` | change | `phoenix`, `phoenix_live_view`, `phoenix_html`, `bandit`, `jose` and `lazy_html` leave the dependencies; `jason` and `req` stay; the release gets its own name; the `assets` alias goes. T1 removed all of them but `jose`, and named `plug_crypto` (2.2.0, already in `mix.lock` through Plug) as a direct dependency, because `chatgpt_auth.ex` calls `Plug.Crypto.secure_compare/2`; both left with that file in T2 (2 packages leave `mix.lock`). The dependencies are now `jason` and `req`. T2 also set `test_ignore_filters` to `test/support/`: since T5 the loader warned that `test/support/made_up_tasks.exs` holds no test, and with `--warnings-as-errors` that warning alone fails a suite whose tests all pass. |
 | `mix.lock` | change | Written again by Mix after the dependencies change, never by hand. |
-| `Dockerfile` | change | No `COPY cases`, no Claude Code kit, no SSH client; the release's name. The stage that installs Pi stays. T1 removed `mix assets` and the copy of `priv/admitted_validation_runs.json`. P2 removed `COPY cases cases`; T6 set `EAB_TASKS_DIR=/tasks` in the image and added `tasks` to `.dockerignore`, and built the image with no task in it. |
+| `Dockerfile` | change | No `COPY cases`, no Claude Code kit, no SSH client; the release's name. The stage that installs Pi stays. T1 removed `mix assets` and the copy of `priv/admitted_validation_runs.json`. P2 removed `COPY cases cases`; T6 set `EAB_TASKS_DIR=/tasks` in the image and added `tasks` to `.dockerignore`, and built the image with no task in it. T2 removed the copy of `priv/claude_code`; the SSH client serves the memory collector and waits for T3. |
 | `compose.yaml` | change | Names of its own; the task folder mounted; the memory settings and the results-page mount go; the label and CPU share on the controller itself; Erlang's distribution bound to the loopback. T1 removed the results-page mount and the web port (`PORT`). T6 mounted the task folder: `${EAB_TASKS_HOST_DIR:-./tasks}` at `/tasks`, with `EAB_TASKS_DIR=/tasks`. |
 | `.dockerignore`, `.gitignore`, `.gitattributes` | change | The lines for dropped files go. T1 removed the two lines for the page's copied script files. |
 | `.formatter.exs` | change | The LiveView plug-in and the path of the uncopied memory-collector project go. The plug-in went in T1. |
@@ -531,25 +533,25 @@ fix and one without; a third, of an invented application with Postgres and a Nod
 prepare nothing for real. T5 moved `candidates_test`, `fixtures_test`, `grader_test`, `readiness_test`,
 `runner_test`, `task_contract_test` and `task_grading_docker_test` to them. T6 moved `runs_test`, `checkpoints_test`
 and `inventory_test` to a temporary task folder holding copies of them (`Eab.MadeUpTasks.mount!/1`); the two tests
-that need a fourth task add a copy under a new id (`copy!/2`). The one test of `claude_code_test` that needs a task in
-the inventory goes with that file in T2.
+that need a fourth task add a copy under a new id (`copy!/2`). The one test of `claude_code_test` that needed a task
+in the inventory went with that file in T2.
 
 | File | Verdict | Reason |
 |---|---|---|
-| `test_helper.exs` | change | The line that loads the ChatGPT helper goes. |
+| `test_helper.exs` | change | The line that loads the ChatGPT helper goes. Done in T2, with the exclusion of the `python` tag when no `python3` is found: only `claude_code_hook_test` carried that tag. |
 | `eab/activity_test.exs`, `eab/baseline_test.exs`, `eab/build_seed_test.exs`, `eab/build_seed_docker_test.exs`, `eab/cache_test.exs`, `eab/command_test.exs`, `eab/database_seed_test.exs`, `eab/evidence_test.exs`, `eab/image_presence_test.exs`, `eab/model_speed_test.exs`, `eab/model_test.exs`, `eab/pi_docker_test.exs`, `eab/pipeline_test.exs`, `eab/preparation_test.exs`, `eab/retention_test.exs`, `eab/store_test.exs`, `eab/test_adapter_test.exs`, `eab/thinking_test.exs` | keep | They test files that stay, and name nothing that is dropped or renamed. |
 | `eab/baseline_docker_test.exs`, `eab/storage_test.exs`, `eab/task_grading_docker_test.exs` | change | They name the image tag's prefix; the last also the task format. |
 | `eab/candidates_test.exs` | change | The import check without review and admission; a made-up task. |
-| `eab/checkpoints_test.exs`, `eab/inventory_test.exs`, `eab/runs_test.exs` | change | Made-up tasks in a mounted task folder, a run over a chosen list, the release of one run; the series and Claude Code cases go. T1 removed one assertion from `runs_test` ("Claude Code validation runs record their harness and are never publishable"): that `Eab.Results.export!/1` refuses a validation run. T6 did the first three; each of the three files has one new test for them. The Claude Code cases stay until T2. |
+| `eab/checkpoints_test.exs`, `eab/inventory_test.exs`, `eab/runs_test.exs` | change | Made-up tasks in a mounted task folder, a run over a chosen list, the release of one run; the series and Claude Code cases go. T1 removed one assertion from `runs_test` ("Claude Code validation runs record their harness and are never publishable"): that `Eab.Results.export!/1` refuses a validation run. T6 did the first three; each of the three files has one new test for them. T2 rewrote the two Claude Code cases of `runs_test` for Pi: "validation runs record their harness and are never publishable" (it also checks that an endpoint naming a cloud back end or Claude Code is refused) and "dry attempts run one case, unscored and unpublishable" (an escape test is refused). |
 | `eab/fixtures_test.exs` | change | A made-up task; extra packages; the older-format and browser cases go. T6: two of its tests read the made-up tasks as a task folder. |
 | `eab/grader_test.exs` | change | The optional partial control; a made-up task. |
 | `eab/readiness_test.exs`, `eab/runner_test.exs` | change | A made-up task in place of a bench case. |
 | `eab/task_contract_test.exs` | change | The one format. |
 | `eab/source_test.exs` | change | The fetch from a mirror. |
-| `eab/pi_test.exs` | change | One case for the ChatGPT back end goes. The cases with made-up llama.cpp and Strata replies stay. |
+| `eab/pi_test.exs` | change | One case for the ChatGPT back end goes. The cases with made-up llama.cpp and Strata replies stay. Done in T2: "fresh Pi sessions send identical initial prompts and tools" went. |
 | `eab/measurement_test.exs`, `eab/report_test.exs` | change | The changed sentence and report lines. |
-| `eab/anthropic_test.exs`, `eab/openai_test.exs`, `eab/chatgpt_auth_test.exs`, `support/chatgpt_fixture_helper.exs`, `eab_web/chatgpt_test.exs` | drop | The cloud back ends. `eab_web/chatgpt_test.exs` went in T1: all 5 of its tests drive the web page. |
-| `eab/claude_code_test.exs`, `eab/claude_code_docker_test.exs`, `eab/claude_code_hook_test.exs`, `claude_code/hook_test.py` | drop | The Claude Code harness. T1 removed the 10 tests of `claude_code_test` that post to the harness's endpoints in `lib/eab_web/claude_code_controller.ex` through Phoenix's test connection; the other 11 stay until T2. |
+| `eab/anthropic_test.exs`, `eab/openai_test.exs`, `eab/chatgpt_auth_test.exs`, `support/chatgpt_fixture_helper.exs`, `eab_web/chatgpt_test.exs` | drop | The cloud back ends. `eab_web/chatgpt_test.exs` went in T1: all 5 of its tests drive the web page; the others went in T2. |
+| `eab/claude_code_test.exs`, `eab/claude_code_docker_test.exs`, `eab/claude_code_hook_test.exs`, `claude_code/hook_test.py` | drop | The Claude Code harness. T1 removed the 10 tests of `claude_code_test` that post to the harness's endpoints in `lib/eab_web/claude_code_controller.ex` through Phoenix's test connection; the other 11 went with the files in T2. |
 | `eab/memory_monitor_test.exs`, `support/memory_collector.mjs` | drop | The memory collector. |
 | `eab/browser_docker_test.exs` | drop | Browser support. |
 | `eab/results_test.exs`, `eab/series_test.exs`, `eab/comparison_test.exs`, `eab/log_sections_test.exs`, `eab_web/dashboard_test.exs` | drop | The results page, the run series, the comparison and the web page. |
@@ -619,6 +621,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | P2 (pilot): the controller built as `elixir-task-factory:pilot` (the line `COPY cases cases` removed from the `Dockerfile`, no other edit) and started once on the build machine with no task ([data](../docs/data/2026-11-12_pilot_controller/README.md)) | see the data folder | no tests run; the controller answers `rpc` with an empty inventory, `docker` inside it is the wrapper, and `Eab.Candidates.import/1` takes a made-up task |
 | 2026-11-12 | P4: the bundle maker (section 3.5), `lib/eab/bundle_maker.ex` and `lib/eab/bundle_probe.ex`, with `config/holdout.json`; three ex338 pull requests made into task folders with job P3's recipe, each passing the source check and the import check ([data](../docs/data/2026-11-12_pilot_bundle_maker/README.md)) | `b28f5d0`, `0b6195e` | format check passes; compiles with warnings as errors; 201 of 225 passed without Docker and 207 of 231 with it (T5 194 and 199), 24 failed in both, 8 and 2 excluded; every T5 test ends as in T5, and the 8 new tests (7 in `bundle_maker_test`, 1 in `bundle_probe_docker_test`) pass; the parity test 6 of 6, untouched |
 | 2026-11-12 | T6: tasks read from a mounted task folder (change 2): `EAB_TASKS_DIR` (default `/tasks`) in `inventory.ex`, `config/`, `Dockerfile` and `compose.yaml`; a run, a retry, a repeat and a check freeze only their own tasks (`release.ex`, `runs.ex`, `qualification.ex`, `checkpoints.ex`); the case list left `config/benchmark.json`; `runs_test`, `checkpoints_test` and `inventory_test` on a temporary folder of made-up tasks ([data](../docs/data/2026-11-12_factory_t6/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 226 of 228 passed without Docker and 232 of 234 with it (P4 201 and 207), 2 failed in both (`claude_code_test`, T2), 8 and 2 excluded; the 22 tests T5 left for T6 pass, 3 new tests pass (a run over two of three made-up tasks touches only those two), no test that passed in P4 fails; the parity test 6 of 6, untouched; the controller's image builds with no task in it (`elixir-task-factory:t6`, not started) |
+| 2026-11-12 | T2: the Claude Code harness (`claude_code.ex`, `claude_code/`, `priv/claude_code/`), the Claude API back end (`anthropic.ex`) and the ChatGPT subscription back end (`openai.ex`, `chatgpt_auth.ex`) and their 8 test files removed; `jose` and `plug_crypto` out of the dependencies; the edits in `agent.ex`, `harness.ex`, `model.ex` (it refuses any back end but llama.cpp and Strata), `pi_gateway.ex` (the two cloud clauses), `runs.ex`, `checkpoints.ex`, `evidence.ex`, `release.ex`, `report.ex`, `application.ex`, `mix.exs`, `Dockerfile`, `test_helper.exs`, `pi_test` and `runs_test` ([data](../docs/data/2026-11-12_factory_t2/README.md)) | see the data folder | format check passes; compiles with warnings as errors; every test passes: 195 without Docker and 200 with it (T6 226 and 232, 2 failed), 6 and 1 excluded; the 199 remaining tests end as in T6, 35 are gone with the dropped parts (34 with their files, 1 ChatGPT case of `pi_test`), 2 Claude Code cases of `runs_test` written again for Pi; the parity test 6 of 6, untouched; `pi.ex` has its bytes |
 
 ## 8. What is not decided, and what is not verified
 
@@ -635,12 +638,15 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 - The cut list comes from reading the source and from searching it for the names of the dropped modules. Job T1
   compiled the rest with warnings as errors after removing the page's parts; what it found that the list had not
   said is in the rows of `application.ex`, `runs.ex`, `mix.exs`, `config/runtime.exs` and the three test rows that
-  name T1. The other dropped parts (T2 to T4) have not been removed yet, so the same can still happen there.
+  name T1. Job T2 did the same for its parts; what it found is in the rows that name T2 (above all `evidence.ex`,
+`release.ex`, `report.ex`, `checkpoints.ex` and `test_helper.exs`). The memory collector and the browser support (T3,
+T4) have not been removed yet, so the same can still happen there.
 - The controller's image was built by job P2 and again by T6, with no task in it
   ([data](../docs/data/2026-11-12_factory_t6/README.md)). No controller has yet been started with a task folder
   mounted; the tests use the tooling image (T0).
 - Two tests of the copy have not run: `eab/browser_docker_test` (it builds from the Playwright image, a download job
-  T0 was not allowed) and `eab/claude_code_hook_test` (the tooling image has no `python3`). Both are dropped.
+  T0 was not allowed) and `eab/claude_code_hook_test` (the tooling image has no `python3`). Both are dropped; the
+  second went in T2.
 - That each trimming job fits three hours.
 - The made-up tasks are graded in an image built from the tooling image, not through the workspace recipe of
   section 2.1; the recipe is built for a made-up task first in T10. Since T6, `fixtures_test` "recipes reconcile seeds

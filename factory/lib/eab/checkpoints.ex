@@ -129,8 +129,8 @@ defmodule Eab.Checkpoints do
           when kind in ["error_retry", "case_repeat"] ->
             Store.valid_id?(source)
 
-          # Unscored single-case harness checks (ADR 0010).
-          %{"kind" => kind, "cases" => [_] = ^cases} when kind in ["dry_attempt", "escape_test"] ->
+          # An unscored single-case dry attempt (ADR 0010).
+          %{"kind" => "dry_attempt", "cases" => [_] = ^cases} ->
             true
 
           _ ->

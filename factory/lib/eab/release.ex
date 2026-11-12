@@ -99,7 +99,7 @@ defmodule Eab.Release do
   end
 
   def model_identity(endpoint),
-    do: Map.take(endpoint, ~w(url backend model context profile account_id))
+    do: Map.take(endpoint, ~w(url backend model context profile))
 
   def case_metadata(release) do
     Map.new(release["protocol"]["inventory"]["cases"], fn id ->

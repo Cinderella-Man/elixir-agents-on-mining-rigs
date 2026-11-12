@@ -503,41 +503,40 @@ defmodule Eab.RunsTest do
     refute File.exists?(Store.path("runs/orphan/run.json"))
   end
 
-  test "Claude Code validation runs record their harness and are never publishable" do
+  test "validation runs record their harness and are never publishable" do
     parent = self()
     Runs.subscribe()
 
     Application.put_env(:eab, :runner, fn run, _, _ ->
       send(parent, {:started, run})
-
-      # The first attempt's Claude Code version becomes the run's.
-      if run["harness"]["name"] == "claude_code",
-        do: File.write!(Store.path("runs/#{run["id"]}/claude-code-version.txt"), "2.1.308")
-
       :ok
     end)
 
-    endpoint = Eab.ClaudeCode.endpoint("claude-opus-5-5")
-    assert {:ok, id} = Runs.start(endpoint, "", %{}, cases: tasks(), validation: true)
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: tasks(), validation: true)
     assert_receive {:started, run}, 3000
     assert run["validation"] == true
-    assert run["harness"]["name"] == "claude_code"
-    assert run["harness"]["agent"] == "eab-opus-5-5-xhigh"
-    assert run["settings"]["budget_policy"] == "declared_not_enforced"
+    assert run["harness"]["name"] == "pi"
     assert run["code_versions"] == [run["protocol"]["implementation"]]
     await_terminal(id)
     await_cleanup()
-    saved = Store.run(id)
-    assert saved["harness"]["claude_code_version"] == "2.1.308"
     assert File.read!(Store.path("runs/#{id}/report.md")) =~ "never published or scored"
 
     assert {:ok, pi} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive {:started, run}, 3000
     assert run["harness"]["name"] == "pi" and is_nil(run["validation"])
     await_terminal(pi)
+    await_cleanup()
+
+    # Only a llama.cpp or Strata server can be given a run; no cloud back end is left.
+    for backend <- ["claude_code", "anthropic", "openai_subscription"] do
+      assert {:error, message} =
+               Runs.start(Map.put(endpoint(), "backend", backend), "", %{}, cases: tasks())
+
+      assert message =~ "Only llama.cpp and Strata servers are supported"
+    end
   end
 
-  test "dry attempts and escape tests run one case, unscored and unpublishable" do
+  test "dry attempts run one case, unscored and unpublishable" do
     parent = self()
     Runs.subscribe()
 
@@ -546,14 +545,14 @@ defmodule Eab.RunsTest do
       :ok
     end)
 
-    endpoint = Eab.ClaudeCode.endpoint("claude-opus-5-5")
+    endpoint = endpoint()
     [first, second | _] = Eab.Inventory.all()
 
-    for {kind, id} <- [{"escape_test", first}, {"dry_attempt", second}] do
-      assert {:ok, run_id} = Runs.start(endpoint, "", %{}, check: {kind, id})
+    for id <- [first, second] do
+      assert {:ok, run_id} = Runs.start(endpoint, "", %{}, check: {"dry_attempt", id})
       assert_receive {:started, run}, 3000
       assert run["cases"] == [id] and run["validation"] == true
-      assert run["selection"] == %{"kind" => kind, "cases" => [id]}
+      assert run["selection"] == %{"kind" => "dry_attempt", "cases" => [id]}
       assert :ok = Eab.Checkpoints.validate_run!(run, endpoint, run["settings"])
       await_terminal(run_id)
       await_cleanup()
@@ -561,8 +560,9 @@ defmodule Eab.RunsTest do
       assert File.read!(Store.path("runs/#{run_id}/report.md")) =~ "Unscored"
     end
 
-    assert {:error, message} = Runs.start(endpoint(), "", %{}, check: {"escape_test", first})
-    assert message =~ "Claude Code"
+    # The escape test was the Claude Code harness's check; it left with that harness.
+    assert {:error, message} = Runs.start(endpoint, "", %{}, check: {"escape_test", first})
+    assert message =~ "Choose a case for the harness check"
     assert {:error, _} = Runs.start(endpoint, "", %{}, check: {"dry_attempt", "unknown-case"})
   end
 

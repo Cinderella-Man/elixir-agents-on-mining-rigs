@@ -9,8 +9,6 @@ defmodule Eab.Application do
       {Registry, keys: :duplicate, name: Eab.Commands},
       {Task.Supervisor, name: Eab.Tasks},
       {DynamicSupervisor, strategy: :one_for_one, name: Eab.MemoryMonitors},
-      Eab.ChatGPTAuth,
-      Eab.ClaudeCode.Broker,
       Eab.Runs
     ]
 

@@ -8,7 +8,9 @@ defmodule Eab.MixProject do
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      elixirc_paths: ["lib"]
+      elixirc_paths: ["lib"],
+      # test_helper.exs loads the helpers in test/support/; they hold no tests.
+      test_ignore_filters: [&String.starts_with?(&1, "test/support/")]
     ]
   end
 
@@ -19,9 +21,7 @@ defmodule Eab.MixProject do
   defp deps do
     [
       {:jason, "~> 1.4"},
-      {:req, "~> 0.5"},
-      {:jose, "~> 1.11"},
-      {:plug_crypto, "~> 2.1"}
+      {:req, "~> 0.5"}
     ]
   end
 end

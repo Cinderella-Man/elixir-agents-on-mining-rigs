@@ -24,55 +24,6 @@ defmodule Eab.PiTest do
       "context" => 32768
     }
 
-  test "fresh Pi sessions send identical initial prompts and tools", %{prefix: prefix} do
-    workspace = Store.path("#{prefix}/workspace")
-    File.mkdir_p!(workspace)
-    model = %{"backend" => "openai_subscription", "model" => "frozen-model"}
-    settings = Eab.OpenAI.settings(%{})
-
-    inputs =
-      for attempt <- 1..2 do
-        config = Pi.config(model, settings, "Repair the reported defect.", "Preserve behavior.")
-        path = "#{prefix}/fresh-#{attempt}.json"
-        Store.write(path, config)
-
-        handler = fn
-          %{"type" => "request"} = frame, [] ->
-            reply = %{
-              "id" => frame["id"],
-              "status" => 400,
-              "content_type" => "application/json",
-              "body" => Jason.encode!(%{"error" => %{"message" => "Input captured"}})
-            }
-
-            {reply, [Map.take(frame["body"], ~w(model input instructions tools))]}
-
-          %{"type" => "request"}, _ ->
-            flunk("Input capture must not retry")
-
-          _, state ->
-            {nil, state}
-        end
-
-        result =
-          Command.exchange(
-            "/opt/pi/node",
-            ["/opt/pi/bridge.mjs", Store.path(path)],
-            [],
-            handler,
-            cd: workspace,
-            timeout: 45
-          )
-
-        [input] = result["state"]
-        assert Jason.encode!(input) =~ "Repair the reported defect."
-        assert input["tools"] != []
-        input
-      end
-
-    assert Enum.at(inputs, 0) == Enum.at(inputs, 1)
-  end
-
   test "real Pi reconnects during token counting and finishes using both native adapters",
        %{prefix: prefix} do
     parent = self()

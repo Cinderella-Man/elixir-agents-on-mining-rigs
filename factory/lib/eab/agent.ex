@@ -2,7 +2,6 @@ defmodule Eab.Agent do
   @moduledoc "Harness submission and independent grading, with durable handoff between them."
   alias Eab.{
     Checkpoints,
-    ClaudeCode,
     Evidence,
     Grader,
     Inventory,
@@ -29,12 +28,11 @@ defmodule Eab.Agent do
     spec = Inventory.spec(id)
     prompt = Inventory.file(id, "ticket.md")
     instructions = instructions(spec, settings)
-    claude_code = ClaudeCode.harness?(endpoint)
 
     base = %{
       "case" => id,
       "settings" => settings,
-      "agent" => if(claude_code, do: ClaudeCode.identity(endpoint), else: Pi.identity()),
+      "agent" => Pi.identity(),
       "agent_image" => box.runtime["image"],
       "calls" => 0,
       "generated_tokens" => 0,
@@ -50,30 +48,12 @@ defmodule Eab.Agent do
       try do
         run = Store.read("runs/#{run_id}/run.json") || %{}
 
+        # Concurrent attempts share the host and any local model server, so their
+        # elapsed times are not comparable and are not recorded (ADR 0014).
         result =
-          if claude_code do
-            # An escape test swaps the task for the frozen probe; nothing else changes.
-            escape = get_in(run, ["selection", "kind"]) == "escape_test"
-
-            ClaudeCode.Attempt.run(
-              box,
-              endpoint,
-              key,
-              prefix,
-              if(escape,
-                do: ClaudeCode.escape_prompt(),
-                else: ClaudeCode.prompt(instructions, prompt)
-              ),
-              emit,
-              escape_test: escape
-            )
-          else
-            # Concurrent attempts share the host and any local model server, so their
-            # elapsed times are not comparable and are not recorded (ADR 0014).
-            Pi.run(box, endpoint, key, settings, prefix, prompt, instructions, emit,
-              measure: (run["parallel_attempts"] || 1) == 1
-            )
-          end
+          Pi.run(box, endpoint, key, settings, prefix, prompt, instructions, emit,
+            measure: (run["parallel_attempts"] || 1) == 1
+          )
 
         {Map.merge(base, result), Sandbox.patch(box)}
       after
@@ -87,7 +67,7 @@ defmodule Eab.Agent do
     Checkpoints.submit(run_id, id, record, patch, key)
   end
 
-  @doc "Pi's exact task instructions; the Claude Code harness sends the same text."
+  @doc "Pi's exact task instructions."
   def instructions(spec, settings) do
     """
     #{TaskContract.instructions(spec)}
@@ -127,12 +107,6 @@ defmodule Eab.Agent do
     Store.write("#{prefix}/attempt.json", record, key)
     Eab.Activity.note("ERROR: " <> record["error"])
     record
-  end
-
-  # The Claude Code harness declares the same subscription sentence without enforcing it.
-  defp budget_instructions(%{"budget_policy" => policy} = settings)
-       when policy in ["response_boundary_soft_limit", "declared_not_enforced"] do
-    "Model and tool calls are unlimited. Stop after #{settings["max_tokens"]} generated tokens total, checked between complete responses. A response can exceed the remaining threshold. Context and per-response limits are enforced by the provider."
   end
 
   defp budget_instructions(settings) do

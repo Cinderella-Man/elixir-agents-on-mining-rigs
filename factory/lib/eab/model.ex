@@ -95,13 +95,10 @@ defmodule Eab.Model do
   end
 
   def settings(endpoint, input \\ %{})
-  def settings(%{"backend" => "openai_subscription"}, input), do: Eab.OpenAI.settings(input)
 
-  def settings(%{"backend" => "anthropic"} = endpoint, input),
-    do: Eab.Anthropic.settings(endpoint, input)
-
-  def settings(%{"backend" => "claude_code"} = endpoint, input),
-    do: Eab.ClaudeCode.settings(endpoint, input)
+  # Pi is served by a llama.cpp or Strata server only (factory/README.md, section 5.1).
+  def settings(%{"backend" => backend}, _input) when backend not in ["llama_cpp", "strata"],
+    do: raise(ArgumentError, "Only llama.cpp and Strata servers are supported")
 
   def settings(endpoint, input) do
     defaults = Eab.Inventory.definition()["defaults"]
@@ -225,15 +222,6 @@ defmodule Eab.Model do
     %{"input_tokens" => input, "output_tokens" => output}
   end
 
-  def unchanged!(%{"backend" => "openai_subscription"} = endpoint, _key),
-    do: Eab.OpenAI.unchanged!(endpoint)
-
-  def unchanged!(%{"backend" => "anthropic"} = endpoint, key),
-    do: Eab.Anthropic.unchanged!(endpoint, key)
-
-  def unchanged!(%{"backend" => "claude_code"} = endpoint, _key),
-    do: Eab.ClaudeCode.unchanged!(endpoint)
-
   def unchanged!(endpoint, key) do
     current = discover(endpoint["url"], key)
 
@@ -352,11 +340,6 @@ defmodule Eab.Model do
         raise "Cannot reach endpoint #{route}; check its address, readiness and credentials"
     end
   end
-
-  @doc false
-  # Shared connection-retry policy for hosted transports with their own status handling.
-  def request(request, opts, route, key),
-    do: request_with_retry(request, opts, route, key, @retry_delays)
 
   defp request_with_retry(request, opts, route, key, delays) do
     {result, phase} = request_once(request, opts)

@@ -55,7 +55,7 @@ defmodule Eab.Report do
     - Parallel attempts: #{parallel(run)}
     - Model speed: #{ModelSpeed.label(ModelSpeed.of_run(run))}
     - Thinking: #{escape(Eab.Thinking.label(run["settings"]))}
-    - Thinking source: #{get_in(run, ["settings", "reasoning_effort_source"]) || if(model["backend"] in ["openai_subscription", "anthropic"], do: "provider request", else: "not recorded")}
+    - Thinking source: #{get_in(run, ["settings", "reasoning_effort_source"]) || "not recorded"}
     - Release: #{run["release_id"] || "Historical protocol only"}
     - Experiment: #{run["experiment_id"] || "Not sealed"}
     - Resumptions: #{run["resume_count"] || 0}
@@ -70,13 +70,13 @@ defmodule Eab.Report do
 
     #{memory(run)}
 
-    Effective settings (subscription thresholds and local strict caps are distinct policies):
+    Effective settings:
 
     ```json
     #{Jason.encode!(run["settings"] || %{}, pretty: true)}
     ```
 
-    Case time covers Pi startup, model calls and tools through completion, excluding fixture preparation and independent grading. Model speed is tokens per second while the server processed prompts and generated output, summed over a case's model calls: llama.cpp reports its own timings, and the controller times Strata's streamed tokens, network included. Claude Code attempts and runs with more than one parallel attempt store no timing. Missing timings are not reconstructed from logs.
+    Case time covers Pi startup, model calls and tools through completion, excluding fixture preparation and independent grading. Model speed is tokens per second while the server processed prompts and generated output, summed over a case's model calls: llama.cpp reports its own timings, and the controller times Strata's streamed tokens, network included. Runs with more than one parallel attempt store no timing. Missing timings are not reconstructed from logs.
 
     | Case | Result | Model calls | Case time | Model speed | Explanation |
     | --- | --- | ---: | ---: | --- | --- |
@@ -86,7 +86,7 @@ defmodule Eab.Report do
     | --- | --- | ---: | ---: | ---: |
     #{breakdowns}
 
-    Case directories contain command output, Pi or Claude Code transcripts, patches and grading evidence. Infrastructure errors are not scored as failed repairs.
+    Case directories contain command output, Pi transcripts, patches and grading evidence. Infrastructure errors are not scored as failed repairs.
 
     #{evidence}
     """)
@@ -100,9 +100,6 @@ defmodule Eab.Report do
 
   defp scope(%{"selection" => %{"kind" => "dry_attempt", "cases" => [id]}}),
     do: "Unscored dry attempt on " <> id
-
-  defp scope(%{"selection" => %{"kind" => "escape_test", "cases" => [id]}}),
-    do: "Unscored escape test in the workspace of " <> id
 
   defp scope(_), do: "Full inventory"
 
