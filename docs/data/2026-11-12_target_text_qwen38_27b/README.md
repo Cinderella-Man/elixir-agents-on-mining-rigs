@@ -198,8 +198,8 @@ Files: [`frames/bench_first_request.frame.json`](frames/bench_first_request.fram
   `stream_options`, and encodes that value twice with one JSON library: once for the record, once for the
   server. The record has every object's keys in alphabetical order: `function` before `type`; `description`,
   `name`, `parameters`; each schema's properties (`limit`, `offset`, `path`). The server's JSON type keeps the
-  order it receives (`common/json.h`), so that would be the order of each tool's JSON line in the prompt. Pi's own
-  order (`path` first) does not reach the server.
+  order it receives (`common/json.h`), so that would be the order of each tool's JSON line in the prompt. The order
+  in which Pi itself wrote the keys does not reach the server, and is not in the records.
 - **The top level,** the same seven keys in all 74 requests: `max_tokens` (8,192 in 70; the rest of the
   65,536-token budget in 4), `messages`, `model`, `seed` (101), `stream` (true), `stream_options`
   (`{"include_usage": true}`), `tools`. No temperature, no reasoning effort, no template settings: the server's
