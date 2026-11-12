@@ -144,6 +144,48 @@ defmodule Eab.TaskContractTest do
     end
   end
 
+  test "a Redis service loads with an image pinned by digest; without a digest, or in another form, it does not" do
+    digest = "sha256:" <> String.duplicate("2f", 32)
+    redis = %{"image" => "redis:7.2-alpine@" <> digest}
+    postgres = %{"image" => "postgres:14.24-alpine@sha256:" <> String.duplicate("0", 64)}
+    with_services = fn services -> Map.put(spec(), "services", services) end
+
+    for services <- [
+          %{"redis" => redis},
+          %{"redis" => %{"image" => "redis@" <> digest}},
+          %{"redis" => %{"image" => "registry.example.test/library/redis:7.2@" <> digest}},
+          %{"postgres" => postgres, "redis" => redis}
+        ],
+        do: assert(TaskContract.read(with_services.(services))["kind"] == "feature")
+
+    # A task without Redis loads as before, its database entries untouched by this check.
+    for services <- [
+          nil,
+          %{},
+          %{"postgres" => postgres},
+          %{"postgres" => %{"image" => "postgres:16"}}
+        ],
+        do: assert(TaskContract.read(with_services.(services))["kind"] == "feature")
+
+    assert TaskContract.services!(nil) == %{}
+
+    for services <- [
+          %{"redis" => %{"image" => "redis:7.2-alpine"}},
+          %{"redis" => %{"image" => "redis:7.2-alpine@sha256:abc"}},
+          %{"redis" => %{"image" => "redis@sha256:" <> String.duplicate("2F", 32)}},
+          %{"redis" => %{"image" => "redis:7.2-alpine@" <> digest <> " --save 60 1"}},
+          %{"redis" => %{"image" => "-redis@" <> digest}},
+          %{"redis" => Map.put(redis, "command", "redis-server --save 60 1")},
+          %{"redis" => %{}},
+          %{"redis" => "redis:7.2-alpine@" <> digest},
+          ["redis"]
+        ] do
+      assert_raise RuntimeError, ~r/Invalid services/, fn ->
+        TaskContract.read(with_services.(services))
+      end
+    end
+  end
+
   test "qualification rejects missing capabilities only as named completed test failures" do
     contract = TaskContract.read(spec())
     without_partial = TaskContract.read(spec("feature", false))

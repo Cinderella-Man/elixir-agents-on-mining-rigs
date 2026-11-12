@@ -27,9 +27,15 @@ defmodule Eab.Sandbox do
       start(box, opts)
       fun.(box)
     after
-      for suffix <- ["", "-ch", "-db"],
+      for suffix <- container_suffixes(runtime["services"] || %{}),
           do: Command.run("docker", ["rm", "-f", "-v", name <> suffix], timeout: 30)
     end
+  end
+
+  # The bench's three removals, in its order; Redis (section 6, change 9) only for a task that asks for it, before the
+  # container whose network it joins.
+  defp container_suffixes(services) do
+    if services["redis"], do: ["", "-ch", "-redis", "-db"], else: ["", "-ch", "-db"]
   end
 
   defp start(box, opts) do
@@ -40,7 +46,12 @@ defmodule Eab.Sandbox do
       ["--label", "etf.installation=#{installation()}", "--label", "etf.run=#{box.run_id}"] ++
         DockerSettings.run_args()
 
-    network = if services["postgres"], do: "container:#{box.name}-db", else: "none"
+    network =
+      cond do
+        services["postgres"] -> "container:#{box.name}-db"
+        services["redis"] -> "container:#{box.name}-redis"
+        true -> "none"
+      end
 
     if services["postgres"] do
       # 512 MB let the kernel kill PostgreSQL backends during vutuv's full suite.
@@ -92,6 +103,39 @@ defmodule Eab.Sandbox do
           "for i in $(seq 1 90); do clickhouse-client --query 'SELECT 1' && exit 0; sleep 1; done; exit 1"
         ],
         timeout: 120
+      )
+    end
+
+    if services["redis"] do
+      # Joins Postgres's network when there is one, else holds the private one itself. Saving is off and `/data` is
+      # a tmpfs (in place of the image's volume), so every container of a task starts with an empty Redis.
+      redis_network = if services["postgres"], do: network, else: "none"
+
+      Command.run!(
+        "docker",
+        [
+          "run",
+          "-d",
+          "--name",
+          box.name <> "-redis",
+          "--network=#{redis_network}",
+          "--memory=1g",
+          "--cpus=1",
+          "--tmpfs=/data:rw,nosuid,size=64m"
+        ] ++
+          labels ++ [services["redis"], "redis-server", "--save", "", "--appendonly", "no"]
+      )
+
+      Command.run!(
+        "docker",
+        [
+          "exec",
+          box.name <> "-redis",
+          "sh",
+          "-c",
+          "for i in $(seq 1 60); do test \"$(redis-cli -h 127.0.0.1 ping)\" = PONG && exit 0; sleep 1; done; exit 1"
+        ],
+        timeout: 90
       )
     end
 

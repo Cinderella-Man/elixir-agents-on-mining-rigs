@@ -17,7 +17,8 @@ defmodule Eab.Baseline do
     policy = policy(spec)
     engines = runtime["services"]
 
-    if policy["mode"] == "fresh" or map_size(engines) == 0 do
+    # Only the databases are prepared and captured; Redis starts empty in every container (section 6, change 9).
+    if policy["mode"] == "fresh" or map_size(ServiceImages.databases(engines)) == 0 do
       if policy["commands"] != [],
         do: raise("Service-free/fresh cases cannot cache bootstrap commands")
 
@@ -43,7 +44,7 @@ defmodule Eab.Baseline do
         do: emit.("Reusing pristine database baseline for #{id}; no migrations to apply")
 
       runtime
-      |> Map.put("services", artifact["services"])
+      |> Map.put("services", Map.merge(ServiceImages.ephemeral(engines), artifact["services"]))
       |> Map.put("service_engines", engines)
       |> Map.put("baseline", %{
         "mode" => "prepared",
@@ -56,7 +57,7 @@ defmodule Eab.Baseline do
   def inputs(runtime, policy) do
     %{
       "version" => 1,
-      "engines" => runtime["services"],
+      "engines" => ServiceImages.databases(runtime["services"]),
       "layout" => ServiceImages.layout_identity(),
       "capture" => Inventory.hash_file(Inventory.path("lib/eab/service_images.ex")),
       "toolchain" => runtime["toolchain_image"],
@@ -105,7 +106,9 @@ defmodule Eab.Baseline do
          end), 1}
       end
 
-    runtime = Map.put(runtime, "services", services)
+    # Redis runs beside the databases during the bootstrap commands, which may boot an application that needs it.
+    redis = ServiceImages.ephemeral(runtime["services"])
+    runtime = Map.put(runtime, "services", Map.merge(redis, services))
 
     Sandbox.with_runtime(
       id,

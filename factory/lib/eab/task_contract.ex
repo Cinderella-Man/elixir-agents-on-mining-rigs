@@ -48,6 +48,7 @@ defmodule Eab.TaskContract do
     ids = Enum.map(requirements, & &1["id"])
     unless length(Enum.uniq(ids)) == length(ids), do: raise("Requirement ids must be unique")
 
+    services!(spec["services"])
     %{"release_files" => release_files} = runtime_extras!(spec["runtime"] || %{})
 
     for %{"url" => url} <- release_files,
@@ -116,6 +117,31 @@ defmodule Eab.TaskContract do
 
     %{"packages" => packages, "release_files" => release_files}
   end
+
+  @doc """
+  The `services` a task asks for, checked for the Redis entry (factory/README.md, section 6, change 9): `redis` must be
+  `{"image": ...}` with nothing else, the image pinned by digest (`<name>[:<tag>]@sha256:<64 hex digits>`). The
+  entries for `postgres` and `clickhouse` are checked as before, when the engine resolves them. Absent, `services` is
+  `%{}`.
+  """
+  def services!(services) do
+    services = services || %{}
+    unless is_map(services), do: raise("Invalid services")
+
+    case Map.fetch(services, "redis") do
+      :error -> :ok
+      {:ok, entry} -> unless pinned_image?(entry), do: raise("Invalid services.redis")
+    end
+
+    services
+  end
+
+  defp pinned_image?(%{"image" => image} = entry),
+    do:
+      map_size(entry) == 1 and is_binary(image) and
+        Regex.match?(~r/\A[a-z0-9][a-z0-9._\/:-]*@sha256:[0-9a-f]{64}\z/, image)
+
+  defp pinned_image?(_), do: false
 
   @release_file_kinds ~w(deb)
   def release_file_kinds, do: @release_file_kinds

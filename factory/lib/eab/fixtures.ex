@@ -61,7 +61,9 @@ defmodule Eab.Fixtures do
          {:ok, engines} <- Cache.lookup("engines", Cache.key(engines), opts) do
       policy = Baseline.policy(spec)
 
-      if policy["mode"] == "fresh" or map_size(engines["services"]) == 0 do
+      databases = ServiceImages.databases(engines["services"])
+
+      if policy["mode"] == "fresh" or map_size(databases) == 0 do
         {:ok, Enum.uniq(project["images"] ++ engines["images"])}
       else
         baseline_inputs =

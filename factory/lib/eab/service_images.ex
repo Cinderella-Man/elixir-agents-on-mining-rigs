@@ -1,6 +1,18 @@
 defmodule Eab.ServiceImages do
-  @moduledoc "Pinned database engines with all persistent state outside Docker volumes."
+  @moduledoc """
+  Pinned service engines. The databases (Postgres, ClickHouse) keep all persistent state outside Docker volumes and
+  are captured as prepared baselines; Redis (section 6, change 9) holds no data and is never captured.
+  """
   alias Eab.{BuildCache, Cache, Command, Store}
+
+  @databases ["postgres", "clickhouse"]
+  @services @databases ++ ["redis"]
+
+  @doc "The services whose state is prepared once and captured: Postgres and ClickHouse."
+  def databases(services), do: Map.take(services, @databases)
+
+  @doc "The services that start empty in every container and are never captured: Redis."
+  def ephemeral(services), do: Map.drop(services, @databases)
 
   def resolve(services, opts \\ []) do
     inputs = %{"services" => services}
@@ -15,7 +27,7 @@ defmodule Eab.ServiceImages do
 
           pinned =
             Map.new(services, fn {name, config} ->
-              unless name in ["postgres", "clickhouse"], do: raise("Unsupported service #{name}")
+              unless name in @services, do: raise("Unsupported service #{name}")
               reference = saved[name] || config["image"]
               Command.run!("docker", ["pull", "--quiet", reference], timeout: 1200)
               [info] = Command.run!("docker", ["image", "inspect", reference]) |> Jason.decode!()
