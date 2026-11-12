@@ -34,8 +34,9 @@ No task, statement, session or screening is made for a project outside the list.
 - **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 (its ssl rejects
   the package server's certificate).
 - **The order inside a project:** from the newest merged pull request backwards.
-- **Not decided:** whether a task of a chosen project that was built on an Elixir older than 1.18 is left out. Until
-  it is, such tasks are taken last.
+- **The task's floor:** a task is left out as `elixir_before_1.18` when the Elixir it is built and checked on is
+  older than 1.18, also inside a chosen project (the owner, 2026-11-12: "Yes, 1.18+ only"). A candidate on such a
+  commit is not made into a task.
 
 ## 3. Pull requests
 
@@ -154,7 +155,8 @@ is not legal advice.
 
 ## 10. Open points
 
-- Whether a task on an Elixir older than 1.18 is left out inside a chosen project (section 2).
+- Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
+  the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
 - The licence tool's own list does not hold ISC yet.
 - `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.
