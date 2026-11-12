@@ -1,0 +1,304 @@
+test	round1	round2
+Elixir.Radiator.Accounts.FindOrCreateInvitedUserTest::test creates a user for an unknown address	passed	passed
+Elixir.Radiator.Accounts.FindOrCreateInvitedUserTest::test returns the existing user, whatever the case of the address	passed	passed
+Elixir.Radiator.Accounts.MagicLinkSignInTest::test a confirmed user keeps password and api keys	passed	passed
+Elixir.Radiator.Accounts.MagicLinkSignInTest::test a new address registers through the magic link	passed	passed
+Elixir.Radiator.Accounts.MagicLinkSignInTest::test an unconfirmed user invited to a podcast can sign in and is confirmed	passed	passed
+Elixir.Radiator.Accounts.MagicLinkSignInTest::test claiming an unconfirmed account drops the password and api keys set before	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test encoding does not ask for a compressed body	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses passes 304 through without a body	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses reads the body and the validators	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses rejects a non-xml content type	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses reports a 503 without a usable Retry-After as nil	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses reports a plain status without Retry-After	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test plain responses reports Retry-After on 429, whitespace included	passed	passed
+Elixir.Radiator.Feeds.Client.ReqClientTest::test size limit refuses a body larger than max_bytes	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test boolean/1 recognises every falsy spelling	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test boolean/1 recognises every truthy spelling	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test boolean/1 returns nil for unknown values and for nil	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 converts a zone offset to UTC	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 expands an obsolete two-digit year the way RFC 5322 prescribes	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 falls back to UTC for an unknown alphabetic zone rather than dropping the date	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 handles a missing day of the week	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 handles a negative zone offset	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 reads RFC 2822 with a numeric zone	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 reads the central european zone abbreviations	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 reads the north american zone abbreviations	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 reads the zone abbreviations GMT and UT as UTC	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test datetime/1 returns nil for nonsense and for nil	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 reads HH:MM:SS with a leading zero	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 reads H:MM:SS	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 reads MM:SS	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 reads plain seconds	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 returns nil for nonsense and for nil	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test duration_seconds/1 truncates fractional seconds	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test integer/1 reads a number and ignores surrounding whitespace	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test integer/1 returns nil for nonsense and for nil	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test npt_ms/1 handles a missing fraction	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test npt_ms/1 handles a two-digit fraction	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test npt_ms/1 reads milliseconds from an NPT time	passed	passed
+Elixir.Radiator.Feeds.Parser.CoercionTest::test npt_ms/1 returns nil for nonsense and for nil	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test chapters leaves items without chapters at an empty list	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test chapters reads them in document order with milliseconds	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test persons leaves items without persons at an empty list	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test persons merges podcast:person and atom:contributor per item	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test persons merges them at channel level too	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerChildrenTest::test transcripts reads the attributes	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test does not confuse channel fields with item fields	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test keeps title and itunes:title apart	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test leaves absent fields at nil	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads all five items in document order	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads content:encoded including the markup inside it	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads duration in every notation	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads itunes:summary and itunes:author	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads pubDate as a DateTime in UTC	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads the enclosure as a struct	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads the itunes fields of the first item	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads the podcast:chapters reference	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test reads the unprefixed fields of the first item	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerItemsTest::test skips an unknown subtree inside an item	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level collects categories in document order, with their subcategory	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads CDATA content including the markup inside it	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads funding and license from the podcast namespace	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads itunes:summary	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads podcast:guid	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads the itunes fields	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test channel level reads the unprefixed fields	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test namespace resolution recognises a prefix that is bound partway through the document	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test namespace resolution resolves on the URI, not on the prefix	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test namespace resolution rolls an overridden binding back once the subtree ends	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test namespace resolution skips unknown subtrees without losing the feed	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test text buffering does not let a child's text leak into a container element	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test text buffering joins text delivered in chunks	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test text buffering keeps the character data around inline markup in an item	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test text buffering keeps the character data around inline markup	passed	passed
+Elixir.Radiator.Feeds.Parser.HandlerTest::test text buffering returns nil when an element is absent entirely	passed	passed
+Elixir.Radiator.Feeds.ParserTest::test accepts a feed without items	passed	passed
+Elixir.Radiator.Feeds.ParserTest::test reads the fixture	passed	passed
+Elixir.Radiator.Feeds.ParserTest::test reports an empty body	passed	passed
+Elixir.Radiator.Feeds.ParserTest::test reports malformed XML	passed	passed
+Elixir.Radiator.Feeds.ParserTest::test reports well-formed XML that is not a feed	passed	passed
+Elixir.Radiator.FeedsTest::test load/2 forwards a transport error	passed	passed
+Elixir.Radiator.FeedsTest::test load/2 forwards the parse error	passed	passed
+Elixir.Radiator.FeedsTest::test load/2 returns feed and response on 200	passed	passed
+Elixir.Radiator.FeedsTest::test load/2 sends the validators and passes a 304 through without parsing	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test channel data marks the sync as succeeded and stamps both timestamps	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test channel data writes the podcast attributes	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test episodes creates one episode per item	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test episodes keeps episodes that vanished from the feed	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test episodes upserts on a second run instead of duplicating	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test episodes writes chapters and transcripts as embedded values	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test items the feed cannot identify a feed with duplicate guids imports instead of failing	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test items the feed cannot identify stays quiet when nothing was dropped	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test items the feed cannot identify warns about the items it dropped	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test last_seen_in_feed_at a second unchanged sync marks no episode as missing	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test last_seen_in_feed_at matches last_imported_at exactly, so nothing looks missing	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test not modified with a nil feed only the check timestamp moves	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test persons creates one person per distinct name under the owner	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test persons does not duplicate links on a second run	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test persons keeps what another podcast's feed contributed to the same person	passed	passed
+Elixir.Radiator.Podcasts.ApplyFeedTest::test persons links contributors with their role	passed	passed
+Elixir.Radiator.Podcasts.BackoffTest::test caps an absurd Retry-After	passed	passed
+Elixir.Radiator.Podcasts.BackoffTest::test grows exponentially for everything else	passed	passed
+Elixir.Radiator.Podcasts.BackoffTest::test honours Retry-After on 429	passed	passed
+Elixir.Radiator.Podcasts.BackoffTest::test honours Retry-After on 503	passed	passed
+Elixir.Radiator.Podcasts.BackoffTest::test survives a job without an error	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test a failed save creates no user and sends nothing	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test a new account gets the activation mail with a link to the edit page	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test a new episode mails its contributors	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test an existing account gets the added mail	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test persons without account and contributors already there get no mail	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test picking a person with an account mails them too	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test the same address in two rows gets one mail	passed	passed
+Elixir.Radiator.Podcasts.ContributorNotificationTest::test whoever saves gets no mail about adding themselves	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test a known email reuses the user and their person	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test an unknown email creates a user and a person filed under the owner	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test a person named like the address gets the account linked	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test a podcast without owner gives an error instead of crashing	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test needs exactly one of person and email	passed	passed
+Elixir.Radiator.Podcasts.EpisodeContributorTest::test rejects something that is not an email address	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen a closed scheduling takes no votes, proposals or second choice	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen an open scheduling cannot be reopened	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen an unknown proposal cannot be chosen	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen finalizing closes on the chosen date and schedules the episode	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen reopening clears the choice, keeps the votes and reschedules the episode	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test finalize and reopen when the episode cannot be scheduled, the scheduling stays open	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test participants are the episode's contributors who can sign in, by name	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals a contributor cannot remove someone else's proposal	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals a contributor proposes a date	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals a date cannot be proposed twice	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals a member can remove any proposal	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals an unknown proposal cannot be removed	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test proposals whoever proposed a date can remove it	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test start a date given twice becomes one proposal	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test start an episode has at most one scheduling	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test start needs at least one date	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test start only an episode that is still looking for a date	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test start opens a scheduling with one proposal per date by the actor	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote a comment is kept with the vote	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote a contributor votes yes, maybe or no as their own person	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote an unknown proposal cannot be voted on	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote a second vote replaces the first and leaves other proposals alone	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote a voter takes back only their own vote	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote scores other than -1, 0 and 1 are rejected	passed	passed
+Elixir.Radiator.Podcasts.Episode.SchedulingTest::test vote somebody who is not a contributor cannot vote	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test a feed sync publishes a hand-created episode it matches	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test a hand-created episode starts in scheduling	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test an episode from the feed is published	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test a published episode cannot go back to scheduling	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test choosing a date schedules the episode and giving it up goes back	passed	passed
+Elixir.Radiator.Podcasts.EpisodeStateTest::test only a scheduling episode can be scheduled	passed	passed
+Elixir.Radiator.Podcasts.EpisodeTest::test allows hand-created episodes without a guid	passed	passed
+Elixir.Radiator.Podcasts.EpisodeTest::test allows the same guid across different podcasts	passed	passed
+Elixir.Radiator.Podcasts.EpisodeTest::test creates an episode with every feed field	passed	passed
+Elixir.Radiator.Podcasts.EpisodeTest::test refuses last_seen_in_feed_at as input, the way the http cache is refused	passed	passed
+Elixir.Radiator.Podcasts.EpisodeTest::test rejects the same guid twice within one podcast	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test episode attributes flattens chapters and transcripts into embeddable maps	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test episode attributes maps author and the chapters reference	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test episode attributes maps every item that carries an identity	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test episode attributes maps the full first episode	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test episode attributes prefers itunes:summary for the summary and falls back to description	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test identity drops items without any identity and counts them	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test identity falls back to link, then to the enclosure url	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test identity keeps the first of two items sharing an identity and counts the rest	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test identity records one contribution per person and episode even across duplicates	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test persons and contributions carries image and uri onto the deduplicated person	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test persons and contributions deduplicates persons across channel and items	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test persons and contributions records no contribution for channel-level persons	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test persons and contributions records one contribution per person and episode, with the role	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test podcast attributes leaves an unknown itunes:type at nil	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test podcast attributes maps categories	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test podcast attributes maps summary, funding and license	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test podcast attributes maps the channel onto podcast attributes	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test podcast attributes turns itunes:type into the PodcastType enum value	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test title fallback chain falls back to itunes:title when title is missing	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test title fallback chain falls back to the episode number when both titles are missing	passed	passed
+Elixir.Radiator.Podcasts.FeedSync.TranslatorTest::test title fallback chain falls back to the guid when there is no number either	passed	passed
+Elixir.Radiator.Podcasts.MarkSyncFailedTest::test records the status, the message and the check timestamp	passed	passed
+Elixir.Radiator.Podcasts.MarkSyncFailedTest::test renders an Ash error without blowing up	passed	passed
+Elixir.Radiator.Podcasts.MarkSyncFailedTest::test renders a wrapped feed error as one readable line	passed	passed
+Elixir.Radiator.Podcasts.MarkSyncFailedTest::test stamps last_checked_at so a broken scheduled feed is not hammered	passed	passed
+Elixir.Radiator.Podcasts.MarkSyncFailedTest::test truncates a very long message	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test account a feed upsert keeps the linked account	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test account an account is linked to at most one person per owner	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test account a person can be linked to an account	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test allows the same name under different owners	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test contributed_to_podcast lists each contributor of the podcast once, sorted by name	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test derives the normalized name and refuses to take one from the caller	passed	passed
+Elixir.Radiator.Podcasts.PersonTest::test rejects the same normalized name twice per owner	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test a different user may not destroy	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test a different user may not request a sync	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test a different user may not update	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test anyone may read the public fields, signed in or not	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test only the owner may read through the primary action	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test the Oban worker bypasses the owner check	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test the Oban worker sees every field	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test the owner may destroy	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test the owner may update	passed	passed
+Elixir.Radiator.Podcasts.PodcastPoliciesTest::test without an actor nobody may update	passed	passed
+Elixir.Radiator.Podcasts.PodcastTest::test does not let sync_status be set from outside	passed	passed
+Elixir.Radiator.Podcasts.PodcastTest::test holds the HTTP cache values but does not accept them from outside	passed	passed
+Elixir.Radiator.Podcasts.PodcastTest::test lists episodes newest first by publication date, undated ones last	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test adding an existing user grants access and sends a magic link	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test adding an unknown email creates the user and sends a magic link	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test an import makes the actor owner as well	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test an invited user can sign in with the magic link	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test another member can be removed	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test an update without memberships leaves them alone	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test creating a podcast with members a creator listing their own address is still a single owner	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test creating a podcast with members adds them next to the creator and invites only them	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test creating a podcast with members the same address twice is refused	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test existing members are not invited again	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test nobody can remove themselves	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test nobody may change the role of their own membership	passed	passed
+Elixir.Radiator.Podcasts.PodcastUserRoleTest::test the creator becomes the owner	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test create leaves a hand-created podcast at idle so no cron picks it up	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test import marks the podcast as pending and enqueues the job	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test import takes the sync strategy	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test request_sync moves the podcast back to pending and enqueues the job	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test request_sync refuses a podcast without a feed url instead of parking it on pending	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test request_sync works from a failed state	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test update accepts a change of sync strategy	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test update clears the http validators when the feed url changes	passed	passed
+Elixir.Radiator.Podcasts.RequestSyncTest::test update keeps the validators when the feed url stays put	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test not modified a requested sync drops the validators so the server cannot answer 304	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test not modified the second run sends the validators, gets a 304 and leaves the episodes alone	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test permanent failures 404 is recorded as the outcome of the sync, not as an error	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test permanent failures a document that is well-formed but not a feed is permanent	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test permanent failures an HTML page instead of a feed is permanent	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test permanent failures leaves the previous import untouched	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test successful sync fetches, parses and writes	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test successful sync stores the http validators for the next run	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test transient failures a 429 carries its Retry-After along	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test transient failures a timeout surfaces as an error and leaves the status alone	passed	passed
+Elixir.Radiator.Podcasts.SyncTest::test transient failures malformed xml is transient, because that is what a truncated body looks like	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a manual podcast never becomes due on its own	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a manual sync cancels a waiting retry and runs right away	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test an idle podcast is left alone	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a pending podcast is picked up and imported	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a permanent failure completes the job instead of retrying it	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a permanently failed podcast is not picked up again	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a podcast without a feed url is left alone	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a rate limited feed is rescheduled for the delay the server asked for	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a scheduled podcast becomes due again once its check ages	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a succeeded podcast is not picked up again	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test a transient failure without a Retry-After backs off exponentially	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test request_sync makes it eligible again	passed	passed
+Elixir.Radiator.Podcasts.SyncTriggerTest::test the cron does not enqueue a second job for a podcast already queued	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test a chapter can be removed	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test chapters can be added	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors a contributor can be removed	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors a name that was not picked is rejected	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors an email adds a new account and mails it	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors a picked suggestion is saved	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors the edit form lists the episode's contributors	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test contributors typing suggests only this podcast's contributors	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test creates an episode under the podcast	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test editing stores the fields	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test saving returns to the podcast page	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test the edit form offers every field	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test the podcast page links to a new episode	passed	passed
+Elixir.RadiatorWeb.EpisodeFormTest::test transcripts can be added	passed	passed
+Elixir.RadiatorWeb.ErrorHTMLTest::test renders 404.html	passed	passed
+Elixir.RadiatorWeb.ErrorHTMLTest::test renders 500.html	passed	passed
+Elixir.RadiatorWeb.ErrorJSONTest::test renders 404	passed	passed
+Elixir.RadiatorWeb.ErrorJSONTest::test renders 500	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test duration/1 hours, minutes and seconds	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test duration/1 nil stays nil	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test duration/1 under an hour	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test relative_time/2 days	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test relative_time/2 hours	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test relative_time/2 just now	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test relative_time/2 minutes	passed	passed
+Elixir.RadiatorWeb.FormattingTest::test relative_time/2 older than a week falls back to the date	passed	passed
+Elixir.RadiatorWeb.PageControllerTest::test can render imprint page	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test an existing category can be removed	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test a podcast with a feed warns that a sync overwrites the fields	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test a podcast without a feed does not warn	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test categories can be added and are stored with their subcategory	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test editing can switch the strategy	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test editing stores the descriptive fields	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test importing stores url and strategy and reports that the feed is queued	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test members a member can be added by email and is invited	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test members another member can be removed	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test members members can be added while creating a podcast	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test members the own membership is listed without a remove button or role select	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test the edit form offers the descriptive fields	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test the import form offers the sync strategy	passed	passed
+Elixir.RadiatorWeb.PodcastFormTest::test the new form does not offer it	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test a return_to of "//evil.example" is ignored	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test a return_to of "/\\\\\\\\evil.example" is ignored	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test a return_to of "https://evil.example" is ignored	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test a return_to of "show" is ignored	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test following the link signs in and lands on the podcast's edit page	passed	passed
+Elixir.RadiatorWeb.PodcastInvitationTest::test the invitation links to the edit page through the magic link	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test a background sync updates the open page	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test a podcast without episodes says so	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test each episode links to its edit form	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test lists the episodes and marks the ones missing from the feed	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test pressing sync puts the podcast back to pending	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test shows the error after a failure	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test shows the imported identity and episode details	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test shows the sync status	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test the sync button warns that local edits are overwritten	passed	passed
+Elixir.RadiatorWeb.PodcastShowTest::test while a sync is pending the button is disabled	passed	passed
