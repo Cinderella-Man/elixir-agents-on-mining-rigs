@@ -41,8 +41,8 @@ one machine can never touch each other's images or containers. With the two sett
 ## Commands (on the build machine, in the work folder with `src/` and `run/`)
 
 ```
-WORK=$PWD LABEL=pascal-quants=1 run/checks.sh t7b    # format, unit tests, Docker tests (wrapper kept), proof.sh
-WORK=$PWD run/compare.sh t4b_unit t4b_docker t7b_unit t7b_docker > tests_compared.tsv
+WORK=$PWD LABEL=pascal-quants=1 run/checks.sh t7c    # format, unit tests, Docker tests (wrapper kept), proof.sh
+WORK=$PWD run/compare.sh t4b_unit t4b_docker t7c_unit t7c_docker > tests_compared.tsv
 WORK=$PWD LABEL=pascal-quants=1 run/release.sh       # build the controller's image, ask bin/factory, remove it
 ```
 
@@ -51,19 +51,22 @@ step, `run/proof.sh`. `run/proof.sh` runs only `docker_settings_docker_test.exs`
 `docker`, with `EAB_DOCKER_LABELS=pascal-quants=1` and `EAB_CPU_SHARES=256`. `run/release.sh` is new. `test.sh`,
 `docker_shim.sh`, `t0_formatter.exs` and `compare.sh` are the earlier jobs' (`docs/data/2026-11-12_factory_t0/run/`,
 `docs/data/2026-11-12_factory_t4/`). Every step runs with `mix test --warnings-as-errors`. A first run (`t7`) gave
-the same counts; `t7b` is the run after the test-made names `eab-seed-check-` and `eab-pi-check-` were renamed.
+the same counts; `t7b` is the run after the test-made names `eab-seed-check-` and `eab-pi-check-` were renamed (191
+and 197 passed); `t7c` is the run after the rebase onto job P5 r2's change to the bundle maker (E74), which brought
+2 new tests, and is the one reported here.
 
 ## Counts
 
 | | T4 | T7 |
 |---|---|---|
 | format check | passes | passes |
-| without Docker | 187 passed, 0 failed, 5 excluded | 191 passed, 0 failed, 6 excluded |
-| with `EAB_DOCKER_TESTS=1` | 192 passed, 0 failed, 0 excluded | 197 passed, 0 failed, 0 excluded |
+| without Docker | 187 passed, 0 failed, 5 excluded | 193 passed, 0 failed, 6 excluded |
+| with `EAB_DOCKER_TESTS=1` | 192 passed, 0 failed, 0 excluded | 199 passed, 0 failed, 0 excluded |
 | `proof.sh` (no wrapper) | | 1 passed |
 
-`tests_compared.tsv` (198 lines, the first is the header): 192 tests end as in T4, none differs, none is gone; 5 are
-new and pass (4 in `docker_settings_test`, and the Docker test, excluded without Docker). `bench_parity_test` passes 6
+`tests_compared.tsv` (200 lines, the first is the header): 192 tests end as in T4, none differs, none is gone; 7 are
+new and pass: 4 in `docker_settings_test`, the Docker test (excluded without Docker), and the 2 of `bundle_maker_test`
+that P5 r2 added (on T4's tree it counted 189 and 194). `bench_parity_test` passes 6
 of 6 in both runs.
 
 ## Proof: the labels and the share on the engine's own containers
@@ -73,9 +76,9 @@ One workspace with Postgres and ClickHouse, started by `Eab.Sandbox`:
 
 | Container | Labels (besides the image's own) | CPU share | CPU limit |
 |---|---|---:|---:|
-| `etf-3311c193e8b21063` (workspace) | `etf.installation`, `etf.run`, `etf.check`, `pascal-quants=1` | 256 | 2 CPUs |
-| `etf-3311c193e8b21063-db` (Postgres) | the same | 256 | 1 CPU |
-| `etf-3311c193e8b21063-ch` (ClickHouse) | the same | 256 | 2 CPUs |
+| `etf-eb20be51ae2ee08e` (workspace) | `etf.installation`, `etf.run`, `etf.check`, `pascal-quants=1` | 256 | 2 CPUs |
+| `etf-eb20be51ae2ee08e-db` (Postgres) | the same | 256 | 1 CPU |
+| `etf-eb20be51ae2ee08e-ch` (ClickHouse) | the same | 256 | 2 CPUs |
 
 The two database images the engine built (`elixir-task-factory:layout-…`) and the Postgres snapshot it committed
 (`elixir-task-factory:snapshot-…`) carry `etf.check` and `pascal-quants=1`, and every one of their tags starts with
@@ -83,12 +86,14 @@ The two database images the engine built (`elixir-task-factory:layout-…`) and 
 the share 300 and reads 300 on all three containers: the engine's flag comes after the wrapper's, and Docker keeps
 the last.
 
-Docker's events during the `t7b` Docker tests and `proof.sh`: every container created on the machine carried
-`pascal-quants=1`. The containers this run's code started are named `etf-…` and carry `etf.installation`; no
-container named `eab-…` carried an `etf.*` label, and every image tag the run made starts with `elixir-task-factory:`
-or with a test's own `etf-…` name. In the same minutes another job's tests and controller, on the code before T7,
-made `eab-…` containers and `elixir-agent-benchmark:` tags with test ids this code no longer has. No container and no
-`elixir-task-factory:` or `etf-` image of this run was left afterwards.
+Docker's events during the Docker tests and `proof.sh` of `t7b` and `t7c`: every container created on the machine
+carried `pascal-quants=1`. The containers the engine started are named `etf-…` and carry `etf.installation` (the
+one `etf-…` container without it is `pi_docker_test`'s own); no container named `eab-…` carried an `etf.*` label,
+and every image tag the runs made starts with `elixir-task-factory:` or with a test's own `etf-…` name. During `t7b`
+another job's tests and controller, on the code before T7, made `eab-…` containers and `elixir-agent-benchmark:` tags
+with test ids this code no longer has; during `t7c` (70 containers created) no tag `elixir-agent-benchmark:` or
+`eab-…` was made at all. No container and no `elixir-task-factory:` or `etf-` image of these runs was left
+afterwards.
 
 ## The controller's image
 
@@ -100,5 +105,5 @@ at …/rel/factory"), then ran `bin/factory eval` once, with no controller start
 The image was removed afterwards. Its build installs the Ubuntu packages of the `Dockerfile`'s `app` stage, as the
 earlier builds did.
 
-Free space on `/` of the build machine: 647,626,375,168 bytes before (04:10:49), 646,170,730,496 after (04:28:03);
+Free space on `/` of the build machine: 647,626,375,168 bytes before (04:10:49), 645,954,576,384 after (04:33:38);
 other jobs ran at the same time.

@@ -23,7 +23,9 @@ test/eab/bundle_maker_test.exs	test a squash-merged pull request becomes a task 
 test/eab/bundle_maker_test.exs	test observing and searching decide from the hidden runs	passed	passed	passed	passed	same	
 test/eab/bundle_maker_test.exs	test partial-fix variants leave out one file, then one hunk, with later hunks renumbered	passed	passed	passed	passed	same	
 test/eab/bundle_maker_test.exs	test refusals: the hold-out list, the screen, links, binary files, and no code or no test part	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test settling the existing tests leaves out files that fail or change between runs	-	-	passed	passed	new	
 test/eab/bundle_maker_test.exs	test test names follow the reporter's form and the changed lines	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test the existing tests' command names changed test files and test files that match changed code files	-	-	passed	passed	new	
 test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and recipes hold exactly the per-project fields	passed	passed	passed	passed	same	
 test/eab/bundle_probe_docker_test.exs	test the test names are observed and a partial fix is searched on made-up tasks, which then pass the controls	excluded	passed	excluded	passed	same	
 test/eab/cache_test.exs	test artifact mutation is detected and keys survive persistence	passed	passed	passed	passed	same	
