@@ -1,0 +1,5 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+backend-pr-1247	bug_fix	bug_fix	0	0	-
+backend-pr-1330	feature	feature	0	2	chat get_or_create_conversation
+backend-pr-1385	bug_fix	bug_fix	0	0	-
+backend-pr-1386	bug_fix	bug_fix	0	0	-

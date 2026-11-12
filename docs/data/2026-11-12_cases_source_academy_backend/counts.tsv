@@ -1,0 +1,10 @@
+pull_requests	verdict	dropped_at	reason
+4	checked	-	-
+2	dropped	probe	start_run_did_not_finish
+2	dropped	probe	no_starting_failure
+1	refused	maker	unsupported_path
+1	refused	maker	no_test_names
+1	refused	maker	binary_file
+1	not run	-	elixir_before_1.18
+1	dropped	probe	no_existing_tests
+1	dropped	controls	reference_regression_fails

@@ -1,0 +1,16 @@
+kind	package	version	licences	class	tasks
+hex	arc	0.11.0	Apache 2.0	allowed, not an SPDX id	4
+hex	arc_ecto	0.11.3	Apache 2.0	allowed, not an SPDX id	4
+hex	artificery	0.4.3	Apache 2.0	allowed, not an SPDX id	4
+hex	configparser_ex	4.0.0	bsd	allowed, not an SPDX id	4
+hex	connection	1.1.0	Apache 2.0	allowed, not an SPDX id	4
+hex	cowboy_telemetry	0.4.0	Apache 2.0	allowed, not an SPDX id	4
+hex	eiconv	1.0.0	Apache 2.0	allowed, not an SPDX id	4
+hex	esaml	4.6.0	BSD	allowed, not an SPDX id	4
+hex	ex_rated	2.1.0	Apache 2.0	allowed, not an SPDX id	4
+hex	meck	0.9.2	Apache 2.0	allowed, not an SPDX id	4
+hex	metrics	1.0.1	BSD	allowed, not an SPDX id	4
+hex	parse_trans	3.4.1	Apache 2.0	allowed, not an SPDX id	4
+hex	phoenix_swagger	0.8.3	MPL 2.0	outside	1
+hex	phoenix_swagger	0.8.5	MPL-2.0	outside	3
+hex	unicode_util_compat	0.7.1	Apache 2.0	allowed, not an SPDX id	4

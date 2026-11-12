@@ -1,0 +1,29 @@
+{
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.19.5-erlang-28.5-ubuntu-noble-20260509.1@sha256:e0acecfc412d7bcdd28e08723fa2eaefaae006c453147f5297fced545535a253",
+    "environment": {
+      "MIX_ENV": "test",
+      "ERL_AFLAGS": "-eval application:set_env(git_hooks,auto_install,false,[{persistent,true}])"
+    },
+    "setup_commands": ["mix compile"],
+    "before_test_commands": [],
+    "packages": []
+  },
+  "services": {
+    "postgres": {"image": "postgres:18.6-alpine@sha256:9ba53c7d41ea093baf5c1ba635ba5434c4f979880527d49bb7d9237d3193085b"}
+  },
+  "baseline": {"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]},
+  "test_timeout": 240,
+  "permitted_exclusion_tags": [],
+  "grading": {
+    "preservation": "mix test",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": [
+      {"commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+    ]
+  }
+}

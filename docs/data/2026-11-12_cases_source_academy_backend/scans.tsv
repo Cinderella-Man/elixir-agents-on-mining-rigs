@@ -1,0 +1,5 @@
+id	licence_result	licence_families	files_touched	files_passing	failing	holdout_result	name_hits	seconds
+backend-pr-1247	pass	Apache-2.0	7	7	-	pass	0	13
+backend-pr-1330	pass	Apache-2.0	6	6	-	pass	0	12
+backend-pr-1385	pass	Apache-2.0	12	12	-	pass	0	12
+backend-pr-1386	pass	Apache-2.0	10	10	-	pass	0	13

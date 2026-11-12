@@ -1,0 +1,5 @@
+task	start	root_licence	licence_file	licence_file_sha256	families	holders	line	statement	mentions
+backend-pr-1247	40cd12aaa61ad4fb71224dec56b2505f14f46211	ok:licence-file	LICENSE	c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4	Apache-2.0	notice\\ that\\ is\\ included\\ in\\ or\\ attached\\ to\\ the\\ work	0		0
+backend-pr-1330	90d69319a741570d47f7b7646eb09c879c224ac0	ok:licence-file	LICENSE	c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4	Apache-2.0	notice\\ that\\ is\\ included\\ in\\ or\\ attached\\ to\\ the\\ work	0		0
+backend-pr-1385	0dc48bf854301d0f32365b45dc330016257c6b0a	ok:licence-file	LICENSE	c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4	Apache-2.0	notice\\ that\\ is\\ included\\ in\\ or\\ attached\\ to\\ the\\ work	0		0
+backend-pr-1386	cba61db6b5df3d57ba0f145379c09c8c8e4e55db	ok:licence-file	LICENSE	c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4	Apache-2.0	notice\\ that\\ is\\ included\\ in\\ or\\ attached\\ to\\ the\\ work	0		0

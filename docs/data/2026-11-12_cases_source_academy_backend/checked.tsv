@@ -1,0 +1,5 @@
+task	kind	hidden_failing_first	hidden_passing_after	existing_files_kept	existing_files_left_out	left_out_reasons	partial_fix	second_round_same
+backend-pr-1386	bug_fix	2	17	5	0	-	present	yes
+backend-pr-1385	bug_fix	10	86	2	2	fails_on_reference	present	yes
+backend-pr-1330	feature	7	9	1	0	-	present	yes
+backend-pr-1247	bug_fix	8	64	1	0	-	present	yes

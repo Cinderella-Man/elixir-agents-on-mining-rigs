@@ -1,0 +1,15 @@
+number	start	tool_versions	ci_elixir_otp	ci_postgres	elixir_otp_used	postgres_used	recipe
+1386	cba61db6b5df3d57ba0f145379c09c8c8e4e55db	elixir 1.19.5-otp-28; erlang 28.5	1.19.5/28.3.1	postgres:18.4	1.19.5/28.5	postgres:18.6-alpine	template
+1385	0dc48bf854301d0f32365b45dc330016257c6b0a	elixir 1.19.5-otp-28; erlang 28.5	1.19.5/28.3.1	postgres:18.4	1.19.5/28.5	postgres:18.6-alpine	template
+1382	2abe8f4136ad7567061d7d4aee607b8c5ab3f858	elixir 1.19.5-otp-28; erlang 28.5	1.19.5/28.3.1	postgres:18.4	1.19.5/28.5	postgres:18.6-alpine	template
+1361	177a80efd5197c4a294167f5793cee5f8c145700	elixir 1.19.5-otp-28; erlang 28.5	1.19.5/28.3.1	postgres:18.4	-	-	-
+1349	ffce8c51d07ea8109328501b23982d8a9f99e693	elixir 1.19.5-otp-28; erlang 28.3.1	1.19.5/28.3.1	postgres:18.3	-	-	-
+1346	432dcb624914d12bff2e0180ed91570158c38e3c	elixir 1.19.5-otp-28; erlang 28.3.1	1.19.5/28.3.1	postgres:18.3	1.19.5/28.3.1	postgres:18.6-alpine	template
+1330	90d69319a741570d47f7b7646eb09c879c224ac0	-	1.19.5/28.3.1	postgres:18.1	1.19.5/28.3.1	postgres:18.6-alpine	template
+1247	40cd12aaa61ad4fb71224dec56b2505f14f46211	-	1.18.3/27.3.3	postgres:17.4	1.18.3/27.3.3	postgres:18.6-alpine	fixed
+1288	93b07bbfd42e856418582de7b42ef19efd994ec7	-	1.18.3/27.3.3	postgres:17.4	1.18.3/27.3.3	postgres:18.6-alpine	fixed
+1284	d57d4552866678e9486650dd4c248ae0b6e998aa	-	1.18.3/27.3.3	postgres:17.4	-	-	-
+1281	471a938be82d675a8d17d33d42825bb7524a9446	-	1.18.3/27.3.3	postgres:17.4	1.18.3/27.3.3	postgres:18.6-alpine	fixed
+1270	41026f5d0967abfbf2365919751a80ba038bf3db	-	1.18.3/27.3.3	postgres:17.4	1.18.3/27.3.3	postgres:18.6-alpine	fixed
+1268	84661082696847639d5fe396bd30b493100a041a	-	1.18.3/27.3.3	postgres:17.4	1.18.3/27.3.3	postgres:18.6-alpine	fixed
+1151	f5f88902ec7396b99560d593d7cd1f8ced56f048	-	1.13.4/25.3.2	postgres:14.2	-	-	-
