@@ -7,7 +7,19 @@ through a controller built from this repository's `main` at `60b1a65`, on the da
 no GPU), while other task-making jobs and one job that uses the model share the machine. Times are the data-mining
 machine's (UTC+1).
 
-## Result so far (milestone 1, 18:35)
+## Result so far (milestone 2, 18:45)
+
+- **7 cases count so far** (90, 88, 86, 75, 65, 53, 52), of 12 candidates tried: each is checked by the engine and
+  passes the hold-out check, and every file each one touches passes the licence scan's per-file check. 90 passes the
+  scan on the project's licence file and 88 and 86 on its README statement. 75, 65, 53 and 52 start before the
+  project stated any licence, so the scan fails them for "no licence" at that commit only; they count under the
+  rules' section 9 ("A case older than the project's licence"): the project's README states MIT from 2025-07-13
+  (`README.md` line 162, commit `e3fa91e17ef5`), its licence file exists from 2025-07-28 (commit `11b9133be517`,
+  "Copyright (c) 2025 Almaz Ilaletdinov"), both still at its newest commit (copyright line "2025-2026"), and every
+  commit that touched any of their files up to each merge is the licence holder's own (`licence_proof.tsv`,
+  `licence_authors.tsv`).
+
+## Milestone 1 (18:35)
 
 - **The project has 23 candidates on Elixir 1.18 or newer, and no more.** Its whole history holds 24 candidates, all
   merged between 2025-06-14 and 2025-07-28 (the screening's list,
@@ -71,6 +83,8 @@ token". A case whose hidden tests include one of them is dropped at the probe as
 | `versions.tsv` | per candidate: the Elixir and OTP named and the image used; the Postgres and Redis its CI file starts, its Redis client, and the versions used |
 | `kinds.tsv` | the screening's 24 candidates in order: merge date, starting and merge commits, the screening's marks, and the kind read ahead by the maker's rule, with the files and public functions the fix adds |
 | `project_tests.tsv` | the whole-suite run: the engine's verdict and counts, ExUnit's summary, the output's size |
+| `licence_proof.tsv` | per candidate: its starting commit and date, whether the project's README states its licence there and whether its licence file exists there, the README sentence's and the licence file's commit and date and the copyright line, and the files the change touches: how many, how many were written only by the licence holder, and the others with their authors |
+| `licence_authors.tsv` | per candidate and touched file (fix and tests): added or changed, the commits that touched the file up to the merge, their authors by name with their counts, and whether the licence holder wrote all of them (`run/licence_proof.sh`) |
 | `run/` | the scripts that ran |
 
 ## Licence

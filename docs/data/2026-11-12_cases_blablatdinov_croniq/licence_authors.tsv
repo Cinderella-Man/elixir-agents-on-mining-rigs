@@ -1,0 +1,141 @@
+number	file	change	commits	authors	holder_only
+90	lib/croniq_web/controllers/tasks_controller.ex	M	18	Ilaletdinov Almaz (18)	yes
+90	lib/croniq_web/pagination.ex	M	2	Ilaletdinov Almaz (2)	yes
+90	test/croniq_web/controllers/tasks_controller_test.exs	M	17	Ilaletdinov Almaz (17)	yes
+90	test/croniq_web/pagination_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+88	lib/croniq_web/controllers/tasks_controller.ex	M	16	Ilaletdinov Almaz (16)	yes
+88	lib/croniq_web/pagination.ex	A	1	Ilaletdinov Almaz (1)	yes
+88	test/croniq_web/controllers/tasks_controller_test.exs	M	15	Ilaletdinov Almaz (15)	yes
+86	lib/croniq/task.ex	M	15	Ilaletdinov Almaz (13); Almaz Ilaletdinov (2)	yes
+86	lib/croniq_web/controllers/tasks_controller.ex	M	15	Ilaletdinov Almaz (15)	yes
+86	test/croniq_web/controllers/tasks_controller_test.exs	M	14	Ilaletdinov Almaz (14)	yes
+58	lib/croniq_web/controllers/tasks_controller.ex	M	13	Ilaletdinov Almaz (13)	yes
+58	lib/croniq_web/controllers/tasks_html/tasks.html.heex	M	6	Ilaletdinov Almaz (6)	yes
+58	test/croniq_web/controllers/tasks_controller_test.exs	M	12	Ilaletdinov Almaz (12)	yes
+83	lib/croniq_web/controllers/tasks_api_controller.ex	M	9	Ilaletdinov Almaz (9)	yes
+83	test/croniq_web/controllers/tasks_api_controller_test.exs	M	8	Ilaletdinov Almaz (8)	yes
+75	lib/croniq/task.ex	M	14	Ilaletdinov Almaz (12); Almaz Ilaletdinov (2)	yes
+75	lib/croniq_web/controllers/tasks_html/edit.html.heex	M	5	Ilaletdinov Almaz (5)	yes
+75	test/croniq_web/controllers/tasks_controller_test.exs	M	11	Ilaletdinov Almaz (11)	yes
+74	lib/croniq/requests.ex	M	15	Ilaletdinov Almaz (13); Almaz Ilaletdinov (2)	yes
+74	lib/croniq_web/controllers/tasks_controller.ex	M	12	Ilaletdinov Almaz (12)	yes
+74	lib/croniq_web/controllers/tasks_html/edit.html.heex	M	4	Ilaletdinov Almaz (4)	yes
+74	lib/croniq_web/controllers/tasks_html/new_task.html.heex	M	6	Ilaletdinov Almaz (6)	yes
+74	test/croniq/requests_test.exs	M	8	Ilaletdinov Almaz (8)	yes
+74	test/croniq_web/controllers/tasks_controller_test.exs	M	10	Ilaletdinov Almaz (10)	yes
+72	lib/croniq/application.ex	M	9	Ilaletdinov Almaz (7); Almaz Ilaletdinov (2)	yes
+72	lib/croniq/scheduler.ex	M	7	Ilaletdinov Almaz (7)	yes
+72	lib/croniq/task.ex	M	13	Ilaletdinov Almaz (11); Almaz Ilaletdinov (2)	yes
+72	lib/croniq_web/controllers/page_controller.ex	M	11	Ilaletdinov Almaz (8); Almaz Ilaletdinov (3)	yes
+72	lib/croniq_web/controllers/page_html/docs.html.heex	M	3	Ilaletdinov Almaz (3)	yes
+72	lib/croniq_web/controllers/tasks_api_controller.ex	M	8	Ilaletdinov Almaz (8)	yes
+72	lib/croniq_web/controllers/tasks_controller.ex	M	11	Ilaletdinov Almaz (11)	yes
+72	lib/croniq_web/controllers/tasks_html/new_task.html.heex	M	5	Ilaletdinov Almaz (5)	yes
+72	lib/croniq_web/router.ex	M	15	Ilaletdinov Almaz (13); Almaz Ilaletdinov (2)	yes
+72	priv/repo/migrations/20250701120000_add_delayed_task_fields.exs	A	1	Ilaletdinov Almaz (1)	yes
+72	test/croniq/task_test.exs	M	3	Ilaletdinov Almaz (3)	yes
+72	test/croniq_web/controllers/tasks_api_controller_test.exs	M	7	Ilaletdinov Almaz (7)	yes
+72	test/croniq_web/controllers/tasks_controller_test.exs	M	9	Ilaletdinov Almaz (9)	yes
+66	config/config.exs	M	2	Almaz Ilaletdinov (1); Ilaletdinov Almaz (1)	yes
+66	lib/croniq/accounts/user_notifier.ex	M	5	Ilaletdinov Almaz (5)	yes
+66	lib/croniq/limit_notification.ex	A	1	Ilaletdinov Almaz (1)	yes
+66	lib/croniq/requests.ex	M	13	Ilaletdinov Almaz (11); Almaz Ilaletdinov (2)	yes
+66	test/croniq/requests_test.exs	M	5	Ilaletdinov Almaz (5)	yes
+65	lib/croniq/accounts/user_notifier.ex	M	4	Ilaletdinov Almaz (4)	yes
+65	lib/croniq/request_log.ex	M	4	Ilaletdinov Almaz (4)	yes
+65	lib/croniq/requests.ex	M	12	Ilaletdinov Almaz (10); Almaz Ilaletdinov (2)	yes
+65	lib/croniq_web/controllers/tasks_controller.ex	M	10	Ilaletdinov Almaz (10)	yes
+65	test/croniq/requests_test.exs	M	4	Ilaletdinov Almaz (4)	yes
+53	lib/croniq_web/controllers/tasks_html/new_task.html.heex	M	4	Ilaletdinov Almaz (4)	yes
+53	test/croniq_web/controllers/tasks_controller_test.exs	M	6	Ilaletdinov Almaz (6)	yes
+52	lib/croniq/requests.ex	M	11	Ilaletdinov Almaz (9); Almaz Ilaletdinov (2)	yes
+52	test/croniq/requests_test.exs	M	3	Ilaletdinov Almaz (3)	yes
+49	config/dev.exs	M	3	Ilaletdinov Almaz (2); Almaz Ilaletdinov (1)	yes
+49	config/prod.exs	M	2	Almaz Ilaletdinov (1); Ilaletdinov Almaz (1)	yes
+49	config/runtime.exs	M	3	Ilaletdinov Almaz (2); Almaz Ilaletdinov (1)	yes
+49	lib/croniq/feature_flags.ex	A	1	Ilaletdinov Almaz (1)	yes
+49	lib/croniq_web/components/layouts/app.html.heex	M	9	Ilaletdinov Almaz (8); Almaz Ilaletdinov (1)	yes
+49	lib/croniq_web/controllers/accounts_controller.ex	M	3	Ilaletdinov Almaz (3)	yes
+49	lib/croniq_web/controllers/accounts_html/confirmation_instructions_form.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+49	lib/croniq_web/controllers/accounts_html/forgot_password.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+49	lib/croniq_web/controllers/accounts_html/log_in.html.heex	M	3	Ilaletdinov Almaz (3)	yes
+49	test/croniq/feature_flags_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+49	test/croniq_web/controllers/accounts_controller_test.exs	M	3	Ilaletdinov Almaz (3)	yes
+50	lib/croniq/accounts.ex	M	4	Ilaletdinov Almaz (4)	yes
+50	lib/croniq/accounts/user.ex	M	3	Ilaletdinov Almaz (3)	yes
+50	lib/croniq_web/components/layouts/app.html.heex	M	8	Ilaletdinov Almaz (7); Almaz Ilaletdinov (1)	yes
+50	lib/croniq_web/controllers/admin_controller.ex	A	1	Ilaletdinov Almaz (1)	yes
+50	lib/croniq_web/controllers/admin_html.ex	A	1	Ilaletdinov Almaz (1)	yes
+50	lib/croniq_web/controllers/admin_html/new_user_form.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+50	lib/croniq_web/controllers/admin_html/users_list.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+50	lib/croniq_web/plugs/require_admin.ex	A	1	Ilaletdinov Almaz (1)	yes
+50	lib/croniq_web/router.ex	M	14	Ilaletdinov Almaz (12); Almaz Ilaletdinov (2)	yes
+50	priv/repo/migrations/20250629131847_add_is_admin_to_users.exs	A	1	Ilaletdinov Almaz (1)	yes
+50	test/croniq_web/controllers/admin_controller_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+50	test/support/fixtures/accounts_fixtures.ex	M	3	Ilaletdinov Almaz (3)	yes
+48	lib/croniq/scheduler.ex	M	6	Ilaletdinov Almaz (6)	yes
+48	lib/croniq/task.ex	M	12	Ilaletdinov Almaz (10); Almaz Ilaletdinov (2)	yes
+48	test/croniq/task_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+48	test/croniq_web/controllers/tasks_controller_test.exs	M	5	Ilaletdinov Almaz (5)	yes
+47	lib/croniq/task.ex	M	11	Ilaletdinov Almaz (9); Almaz Ilaletdinov (2)	yes
+47	lib/croniq_web/controllers/tasks_controller.ex	M	9	Ilaletdinov Almaz (9)	yes
+47	lib/croniq_web/controllers/tasks_html/edit.html.heex	M	3	Ilaletdinov Almaz (3)	yes
+47	test/croniq_web/controllers/tasks_controller_test.exs	M	4	Ilaletdinov Almaz (4)	yes
+46	lib/croniq/accounts/user_token.ex	M	4	Ilaletdinov Almaz (4)	yes
+46	lib/croniq_web/components/layouts/app.html.heex	M	7	Ilaletdinov Almaz (6); Almaz Ilaletdinov (1)	yes
+46	lib/croniq_web/controllers/api_key_controller.ex	A	1	Ilaletdinov Almaz (1)	yes
+46	lib/croniq_web/controllers/api_key_html.ex	A	1	Ilaletdinov Almaz (1)	yes
+46	lib/croniq_web/controllers/api_key_html/index.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+46	lib/croniq_web/router.ex	M	13	Ilaletdinov Almaz (11); Almaz Ilaletdinov (2)	yes
+46	priv/repo/migrations/20250627221331_add_plaintext_token_to_users_tokens.exs	A	1	Ilaletdinov Almaz (1)	yes
+46	test/croniq_web/controllers/api_key_controller_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+46	test/croniq_web/controllers/tasks_api_controller_test.exs	M	5	Ilaletdinov Almaz (5)	yes
+45	lib/croniq_web/controllers/tasks_api_controller.ex	M	7	Ilaletdinov Almaz (7)	yes
+45	test/croniq_web/controllers/tasks_api_controller_test.exs	M	4	Ilaletdinov Almaz (4)	yes
+44	lib/croniq_web/controllers/page_controller.ex	M	10	Ilaletdinov Almaz (7); Almaz Ilaletdinov (3)	yes
+44	lib/croniq_web/controllers/page_html/docs.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+44	lib/croniq_web/controllers/tasks_html/edit.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+44	lib/croniq_web/controllers/tasks_html/new_task.html.heex	M	3	Ilaletdinov Almaz (3)	yes
+44	test/croniq/requests_test.exs	M	2	Ilaletdinov Almaz (2)	yes
+43	config/runtime.exs	M	2	Almaz Ilaletdinov (1); Ilaletdinov Almaz (1)	yes
+43	infra/docker-compose.prod.yml	M	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq/accounts/user_notifier.ex	M	3	Ilaletdinov Almaz (3)	yes
+43	lib/croniq_web/controllers/accounts_controller.ex	M	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/controllers/accounts_html/confirmation_instructions_form.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+43	lib/croniq_web/controllers/accounts_html/log_in.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/controllers/accounts_html/registration_form.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/controllers/accounts_html/reset_password_form.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+43	lib/croniq_web/controllers/tasks_controller.ex	M	8	Ilaletdinov Almaz (8)	yes
+43	lib/croniq_web/controllers/tasks_html/new_task.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/controllers/tasks_html/tasks.html.heex	M	4	Ilaletdinov Almaz (4)	yes
+43	lib/croniq_web/live/user_confirmation_instructions_live.ex	D	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/live/user_confirmation_live.ex	D	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/live/user_forgot_password_live.ex	D	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/live/user_reset_password_live.ex	D	2	Ilaletdinov Almaz (2)	yes
+43	lib/croniq_web/router.ex	M	12	Ilaletdinov Almaz (10); Almaz Ilaletdinov (2)	yes
+43	test/croniq_web/controllers/accounts_controller_test.exs	M	2	Ilaletdinov Almaz (2)	yes
+43	test/croniq_web/controllers/tasks_controller_test.exs	M	3	Ilaletdinov Almaz (3)	yes
+43	test/croniq_web/controllers/user_session_controller_test.exs	M	4	Ilaletdinov Almaz (4)	yes
+43	test/support/fixtures/accounts_fixtures.ex	M	2	Ilaletdinov Almaz (2)	yes
+41	config/test.exs	M	4	Ilaletdinov Almaz (3); Almaz Ilaletdinov (1)	yes
+41	lib/croniq/http_client.ex	A	1	Ilaletdinov Almaz (1)	yes
+41	lib/croniq/http_client_httpoison.ex	A	1	Ilaletdinov Almaz (1)	yes
+41	lib/croniq/requests.ex	M	9	Ilaletdinov Almaz (8); Almaz Ilaletdinov (1)	yes
+41	priv/repo/migrations/20250626160124_fix_request_log_error_type.exs	A	1	Ilaletdinov Almaz (1)	yes
+41	test/croniq/requests_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+41	test/test_helper.exs	M	3	Ilaletdinov Almaz (2); Almaz Ilaletdinov (1)	yes
+31	lib/croniq_web/controllers/tasks_controller.ex	M	7	Ilaletdinov Almaz (7)	yes
+31	lib/croniq_web/controllers/tasks_html/tasks.html.heex	M	3	Ilaletdinov Almaz (3)	yes
+31	lib/croniq_web/router.ex	M	10	Ilaletdinov Almaz (8); Almaz Ilaletdinov (2)	yes
+31	test/croniq_web/controllers/tasks_controller_test.exs	M	2	Ilaletdinov Almaz (2)	yes
+28	Taskfile.yml	M	6	Ilaletdinov Almaz (5); Almaz Ilaletdinov (1)	yes
+28	lib/croniq/request_log.ex	M	3	Ilaletdinov Almaz (3)	yes
+28	lib/croniq_web/controllers/error_html.ex	M	2	Almaz Ilaletdinov (1); Ilaletdinov Almaz (1)	yes
+28	lib/croniq_web/controllers/error_html/404.html.heex	A	1	Ilaletdinov Almaz (1)	yes
+28	lib/croniq_web/controllers/tasks_controller.ex	M	6	Ilaletdinov Almaz (6)	yes
+28	lib/croniq_web/controllers/tasks_html/request_log_detail.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+28	lib/croniq_web/controllers/tasks_html/requests_logs.html.heex	M	2	Ilaletdinov Almaz (2)	yes
+28	test/croniq_web/controllers/error_html_test.exs	M	2	Almaz Ilaletdinov (1); Ilaletdinov Almaz (1)	yes
+28	test/croniq_web/controllers/tasks_api_controller_test.exs	M	3	Ilaletdinov Almaz (3)	yes
+28	test/croniq_web/controllers/tasks_controller_test.exs	A	1	Ilaletdinov Almaz (1)	yes
+28	test/support/fixtures/task_fixtures.ex	M	3	Ilaletdinov Almaz (3)	yes
