@@ -18,7 +18,7 @@ free() { df -B1 --output=avail / | tail -n 1 | tr -d ' '; }
 finished() { jq -e 'has("finished_at")' "$DATA/factory/jobs/$1/job.json" > /dev/null 2>&1; }
 printf 'id\tjob\tstarted\tfree_at_start\n' > "$POOL/jobs.tsv"
 printf 'id\tverdict\tdropped_at\treason\n' > "$POOL/verdicts.tsv"
-declare -A running # job id -> task id
+declare -A running=() # job id -> task id
 
 reap() {
   local job id v

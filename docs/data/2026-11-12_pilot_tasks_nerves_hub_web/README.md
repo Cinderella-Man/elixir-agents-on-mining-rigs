@@ -7,26 +7,34 @@ on `fwup`'s release page. Since then the engine installs distribution packages a
 ([factory job T8](../2026-11-12_factory_t8/README.md)), and the bundle maker resolves each commit's toolchain itself
 ([E72](../2026-11-12_maker_toolchain/README.md)). This job put `fwup` 1.17.1, `xdelta3` and `mtools` into the
 project's template, ran the project's own suite twice through the engine, and made 30 candidates of the template's
-period. Everything ran on the CPU of the 7-GPU machine on 2026-11-12 between 07:58 and 08:38 (UTC+1), through a
-controller of its own built from the factory's `main`, while two other task-making jobs used the same Docker daemon.
+period. Everything ran on the CPU of the 7-GPU machine on 2026-11-12 between 07:58 and 09:02 (UTC+1), through a
+controller of its own built from the factory's `main`, while two other task-making jobs used the same Docker daemon
+and a 258 GB model file was being copied onto the same disk.
+
+**The counts below were measured on a loaded machine and are not settled:** they are to be run again on a machine
+that does nothing else. What does not depend on the load: the release file and its checksum, the 13 tests that call
+`zip` (the program is not in the image), the module that runs twice under ExUnit's `parameterize:`, and the 29 made
+task folders. At 09:02 the owner moved all task work off this machine, and the job's checks were stopped before any
+had finished.
 
 ## Result
 
 - **The project's tests run.** At the starting commit of pull request 3155, prepared cold in 330.3 s, the whole
   suite ran twice. ExUnit's own summary: **run 1: 4,033 of 4,046 passed, 13 failed, 4 excluded, in 282.7 s; run 2:
-  4,025 passed, 21 failed, 4 excluded, in 764.6 s.** The 13 failures of run 1 fail in run 2 too, and all 13 call
-  the program `zip`, which the image lacks (GitHub's runner image has it; the CI does not install it). The 8 extra
-  failures of run 2 are database errors (cancelled queries, closed connections) while the machine's load average was
-  12 to 15. The 4 excluded tests are the ESP-IDF delta tests that need `detools`.
+  4,025 passed, 21 failed, 4 excluded, in 764.6 s** (not settled: both under load). The 13 failures of run 1 fail
+  in run 2 too, and all 13 call the program `zip`, which the image lacks (GitHub's runner image has it; the CI does
+  not install it). The 8 extra failures of run 2 are database errors (cancelled queries, closed connections) while
+  the machine's load average was 12 to 15 and its system disk was saturated by the model copy. The 4 excluded tests
+  are the ESP-IDF delta tests that need `detools`.
 - **The engine's per-test record calls both runs unfinished,** because one module, `NervesHubWeb.WebsocketTest`,
   runs twice under ExUnit's `parameterize:` (a JSON and a msgpack serializer) with the same test names: the
   reporter printed 4,050 rows for 4,013 distinct names, 37 names twice. The 2 MiB limit on a test command's output is
   no longer reached: 730,465 and 770,106 bytes.
 - **The first tasks: 29 of 30 made, none checked.** The maker made 29 task folders from the 30 newest candidates of
   period P02 (pull requests 3155 back to 3082) and refused 1 (3118, `no_existing_tests`). All 29 resolved to the same
-  environment, passed the source check and the import check, and were imported. **No check started:** during the
-  project's second test run the free space on the machine's system disk fell under this job's floor
-  (572,835,543,040 bytes), so all 29 are listed as not tried. 29 of the 30 carry the screen's AI-tool mark.
+  environment, passed the source check and the import check, and were imported. **No check finished:** the checks
+  started at 08:47, two at once; at 09:02, when the owner moved task work off the machine, 3155 and 3159 were still
+  building their workspace images and the other 27 had not started. 29 of the 30 carry the screen's AI-tool mark.
 
 ## 1. The release file and the packages
 
@@ -126,16 +134,18 @@ before each start.
 | the maker | made; the toolchain resolved to Elixir 1.20.3 / OTP 29.0.5 from `.tool-versions`, Postgres 18.6 and ClickHouse 25.4.2.31 from `ci.yml` | 29 | |
 | source check and import check | passed | 29 | |
 | `factoryctl import` | imported | 29 | |
-| `factoryctl check` | **not tried**: free space under the floor | 29 | the machine (below) |
+| `factoryctl check` | **stopped** while building the workspace image (3155, 3159), **not started** (the other 27) | 29 | the run was stopped (below) |
 
-**Drops by whose they are:** ours 0, the project's 0, the pull request's 1 (3118); 29 not tried.
+**Drops by whose they are:** ours 0, the project's 0, the pull request's 1 (3118); 29 with no verdict.
 
-**Why none was checked.** This job's floor was 572,835,543,040 bytes free on the system disk. Free space was
-602,128,957,440 bytes when the job started (07:58), 596,967,063,552 when the project's test runs started (08:06),
-543,813,103,616 at 08:27 and 519,051,497,472 at 08:37. This job's own files and images are about 1 GB of that (est.,
-below); the rest went to the other two jobs' images and Docker's build cache (92.91 GB of images and 44.07 GB of
-build cache on the machine at 08:28). By the brief's rule no check starts under the floor, so the 29 imported tasks
-were not tried.
+**Why none was checked.** The checks first waited on a disk floor: free space on the system disk fell from
+602,128,957,440 bytes when the job started (07:58) to 519,051,497,472 at 08:37, under the job's first floor of
+572,835,543,040 bytes. This job's own files and images are about 1 GB of that (est., section 4); the rest was the
+other jobs' images and build cache and the model copy. With the larger allowance the owner had set at 08:22, the
+checks started at 08:47, two at once. At 09:02 the owner moved all task work off this machine and the run was
+stopped: 3155 and 3159 were still building their workspace images (seeded from the probe's build, 13 minutes in,
+under a disk saturated by the model copy), and the other 27 had not started. The 29 imported task folders are kept;
+checking them is a new job on another machine.
 
 **The AI-tool mark** of the screening (`ai_tool`): 29 of the 30 carry it, every one but 3124. It is a column for
 reporting, not a reason to drop.
@@ -144,8 +154,8 @@ reporting, not a reason to drop.
 
 - **Making:** the 29 folders and the refusal in 36 s (about 1.2 s per pull request, the source pairs cached after the
   first), then the source check and the import check of all 29 in about 100 s.
-- **Per checked task:** not measured, since no check ran. The cold preparation of one commit with this template took
-  330.3 s, against 259.9 s for job P3's without `fwup` and the packages.
+- **Per checked task:** not measured, since no check finished. The cold preparation of one commit with this template
+  took 330.3 s, against 259.9 s for job P3's without `fwup` and the packages (not settled: under load).
 - **Disk of this job:** the controller's data folder 685,453,312 bytes and the job folder 38,518,784 bytes; new image
   layers about 0.3 GB by `docker history` (the workspace's 240 MB source and build layer, the Postgres snapshot's
   53 MB, the two packages' and the release file's 2.8 MB; the ClickHouse snapshots 2.5 MB; the system-package layer is
@@ -193,8 +203,10 @@ D=$DATA/nhw SCREEN=$JOB/tables/screen_nerves-hub__nerves_hub_web.tsv $JOB/run/ta
 LOG=<log file> $JOB/run/controller.sh down
 ```
 
-This job ran `env_tests.sh` and the `stage`, `make` and `import` steps; `check` and `export` did not run (section 3),
-and the 29 lines of `tasks_nerves_hub_web.tsv` say `not_tried` / `disk_floor` from a pool record written by hand.
+This job ran `env_tests.sh` and the `stage`, `make` and `import` steps, and started `check` (`MIN_FREE` 134,454,282,076
+bytes), which was stopped at 09:02 with no result (section 3); `export` did not run. The 29 lines of
+`tasks_nerves_hub_web.tsv` were written by `table.sh` from a pool record written by hand: `stopped` / `prepare` for
+the two checks that had started (with their job ids), `not_tried` / `run_stopped` for the other 27.
 `numbers.txt` is the 30 numbers of period P02 in [job P3's `periods.tsv`](../2026-11-12_pilot_env_nerves_hub_web/periods.tsv)
 sorted by merge time, newest first. The controller's image was built from the factory's `main` at `8b8bb99`.
 
