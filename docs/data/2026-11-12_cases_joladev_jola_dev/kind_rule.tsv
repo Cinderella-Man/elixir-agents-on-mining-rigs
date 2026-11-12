@@ -1,0 +1,7 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+jola-dev-pr-10	bug_fix	bug_fix	0	0	-
+jola-dev-pr-13	bug_fix	bug_fix	0	0	-
+jola-dev-pr-37	bug_fix	bug_fix	0	0	-
+jola-dev-pr-40	feature	feature	2	4	call call image_for init
+jola-dev-pr-42	feature	feature	1	5	default_image url_for url_for url_for url_for
+jola-dev-pr-54	feature	feature	0	1	canonical_url

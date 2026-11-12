@@ -1,0 +1,22 @@
+{
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1@sha256:f471c6685a52164370586ebc6f4c595ffb6d9d14f234d4e069dcdf60954699ba",
+    "environment": {"MIX_ENV": "test"},
+    "setup_commands": ["mix compile"],
+    "before_test_commands": [],
+    "packages": ["fontconfig", "fonts-inter"]
+  },
+  "services": {},
+  "baseline": {"mode": "prepared", "commands": []},
+  "test_timeout": 240,
+  "permitted_exclusion_tags": [],
+  "grading": {
+    "preservation": "mix test",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": []
+  }
+}

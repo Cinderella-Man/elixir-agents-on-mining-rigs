@@ -1,0 +1,4 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+jola-dev-pr-54	https://github.com/joladev/jola.dev	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+jola-dev-pr-42	https://github.com/joladev/jola.dev	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+jola-dev-pr-40	https://github.com/joladev/jola.dev	pass	0	14	3	3	1	7	4	0	0	0	4	review

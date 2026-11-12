@@ -1,0 +1,8 @@
+number	start	elixir_named	otp_named	image_resolved	recipe	image_used	postgres_ci	postgres_used	database_client	resolver	case_image
+54	3cae138f673db3cd2e30f5165ebea4f9f7c0c569	1.19.5	28.3.2	1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1	template	1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1	-	-	none	resolved:-	1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1
+47	9e2bded965d113c6dc2fcf97357b50f8b76dadbf	1.19.5	28.3.2	1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1	template	1.19.5-erlang-28.3.2-ubuntu-noble-20260509.1	-	-	none	resolved:-	-
+42	5db161e10c936ff30ae8873d39aff0fad893b185	1.18.4	28.0.2	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	template	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	-	-	none	resolved:-	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1
+40	d8bf09782365574fac8afc3426d99ae54c96ea78	1.18.4	28.0.2	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	template	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	-	-	none	resolved:-	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1
+37	035a6e284747805df470676292e0fb74a6456944	1.18.4	28.0.2	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	template	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	-	-	none	resolved:-	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1
+13	aa7646ead8cb998625d6af647cfd40314e553af6	1.18.4	28.0.2	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	fixed	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	postgres:12	postgres:18.6-alpine	none	refused:no_service_image:postgres/12	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1
+10	6a3ab31347dcff4060ec4180e607cb8fb4780d3c	1.18.4	28.0.2	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	fixed	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1	postgres:12	postgres:18.6-alpine	none	refused:no_service_image:postgres/12	1.18.4-erlang-28.0.2-ubuntu-noble-20260509.1

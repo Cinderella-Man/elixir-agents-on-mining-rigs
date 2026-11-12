@@ -1,0 +1,4 @@
+id	licence_file	licence_families	files_touched	files_passing	licence_result	failing	name_hits	spans8	spans8_to_read	spans12	spans12_to_read	holdout_result	deps_classes	scan_rc
+jola-dev-pr-54	LICENSE	MIT	21	21	pass	-	0	3	0	0	0	pass	allowed=52; git dependency: licence not read=2	0
+jola-dev-pr-42	LICENSE	MIT	12	12	pass	-	0	3	0	0	0	pass	allowed=49; git dependency: licence not read=2	0
+jola-dev-pr-40	LICENSE	MIT	12	12	pass	-	0	14	7	4	4	review	allowed=49; git dependency: licence not read=2	0

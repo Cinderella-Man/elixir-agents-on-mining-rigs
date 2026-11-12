@@ -1,0 +1,4 @@
+task	kind	try	hidden_failing_first	hidden_passing_after	existing_files_kept	existing_files_left_out	left_out_reasons	partial_fix	second_round_same	licence_result	root_licence	files_touched	files_passing	holder_wrote_all	licence_route	holdout_result	holdout_after_reading	counts
+jola-dev-pr-54	feature	1	6	36	4	2	fails_on_reference	present	yes	pass	ok:licence-file	21	21	-	licence-file	pass	pass	yes
+jola-dev-pr-42	feature	1	10	18	2	3	fails_on_reference	present	yes	pass	ok:licence-file	12	12	-	licence-file	pass	pass	yes
+jola-dev-pr-40	feature	1	18	20	1	2	fails_on_reference	present	yes	pass	ok:licence-file	12	12	-	licence-file	review	pass-after-reading	yes

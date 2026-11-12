@@ -1,0 +1,4 @@
+task	start	licence_file	licence_families	provenance_licence	files_touched	files_passing	licence_result	failing	root_licence	root_proof
+jola-dev-pr-54	3cae138f673db3cd2e30f5165ebea4f9f7c0c569	LICENSE	MIT	MIT	21	21	pass		ok:licence-file	LICENSE@3cae138f673db3cd2e30f5165ebea4f9f7c0c569
+jola-dev-pr-42	5db161e10c936ff30ae8873d39aff0fad893b185	LICENSE	MIT	MIT	12	12	pass		ok:licence-file	LICENSE@5db161e10c936ff30ae8873d39aff0fad893b185
+jola-dev-pr-40	d8bf09782365574fac8afc3426d99ae54c96ea78	LICENSE	MIT	MIT	12	12	pass		ok:licence-file	LICENSE@d8bf09782365574fac8afc3426d99ae54c96ea78

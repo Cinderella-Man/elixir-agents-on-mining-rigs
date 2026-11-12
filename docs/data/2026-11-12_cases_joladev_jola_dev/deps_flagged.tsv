@@ -1,0 +1,4 @@
+kind	package	version	licences	class	cases
+git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read	3
+git	lucide	https://github.com/lucide-icons/lucide.git#56e49f12166312f04af4cfd862621c93cf583979		git dependency: licence not read	2
+git	lucide	https://github.com/lucide-icons/lucide.git#2214caa407f4147449c81ac27e30d36edfb7b40f		git dependency: licence not read	1
