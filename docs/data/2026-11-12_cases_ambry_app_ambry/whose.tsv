@@ -17,3 +17,10 @@ ambry-pr-1274	1	-	checked
 ambry-pr-1275	1	-	checked
 ambry-pr-1272	1	-	checked
 ambry-pr-1269	1	pull_request	all three existing-test files fail on the reference fix (books_test, inbox_test, query_test: fails_on_reference), so no existing test is left to protect
+ambry-pr-1268	1	pull_request	a hidden test file of the pull request holds the test the project marks @tag :skip (test/ambry/people_test.exs), and the grader passes no skipped test
+ambry-pr-1267	1	pull_request	a hidden test file of the pull request holds the test the project marks @tag :skip (test/ambry/people_test.exs), and the grader passes no skipped test
+ambry-pr-1266	1	pull_request	a feature: its hidden tests call functions the fix adds (three of them), so they cannot compile before it
+ambry-pr-1265	1	pull_request	the maker found no existing test to protect: no existing test file is changed or matches a changed code file
+ambry-pr-1013	1	unknown	the hidden tests failed on the unchanged project (21) but their run did not finish on the reference fix, 21 s into the probe (no time-out); the fix adds a migration; the probe keeps no output (registry E80), so the cause cannot be read; run once more to see whether it repeats
+ambry-pr-1280	2	not_settled	again a test that waits with render_async (100 ms) failed on the reference fix, this time two other tests (media_live/new_person_test.exs) and in the probe; two tries, a different timed-out test each time: the shared machine's load or tests too tight for a busy machine, which a quiet machine would settle; not run a third time
+ambry-pr-1277	2	pull_request_probably	the same test failed on the reference fix in both tries: reading chapter markers from two audio files never finished within render_async's 100 ms on this machine; a limit too tight for the test, though a quiet machine might meet it; not run a third time
