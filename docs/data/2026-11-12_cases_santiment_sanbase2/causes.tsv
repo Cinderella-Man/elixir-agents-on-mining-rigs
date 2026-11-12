@@ -1,0 +1,8 @@
+id	cause	note
+sanbase2-pr-5421	pull_request	its one nearby existing test file is the file it changes; that file in its starting version fails on the merged code (fails_on_reference), so no existing test is left
+sanbase2-pr-5420	pull_request	its one nearby existing test file is the file it changes; that file in its starting version fails on the merged code (fails_on_reference), so no existing test is left
+sanbase2-pr-5419	pull_request	the hidden tests do not finish on the unchanged project (rules: no_starting_failure, cannot run at all): the probe ended after 28 s, and the pull request adds the modules its tests use
+sanbase2-pr-5406	pull_request	refused by the maker: no existing test file is changed by it or matches a code file it changes
+sanbase2-pr-5403	pull_request	its one nearby existing test file is the file it changes; that file in its starting version fails on the merged code (fails_on_reference), so no existing test is left
+sanbase2-pr-5416	pull_request	refused by the maker: no existing test file is changed by it or matches a code file it changes (its tests are new files)
+sanbase2-pr-5411	pull_request	refused by the maker: no existing test file is changed by it or matches a code file it changes

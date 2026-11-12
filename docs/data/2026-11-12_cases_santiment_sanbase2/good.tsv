@@ -1,0 +1,6 @@
+id	licence	holdout	kind	good
+sanbase2-pr-5414	pass	pass	bug_fix	yes
+sanbase2-pr-5422	pass	review	feature	yes
+sanbase2-pr-5423	pass	pass	feature	yes
+sanbase2-pr-5425	pass	pass	feature	yes
+sanbase2-pr-5427	pass	pass	feature	yes
