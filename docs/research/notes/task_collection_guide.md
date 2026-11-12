@@ -174,7 +174,7 @@ output. Publishing sessions is publishing parts of that code, so the code's lice
 | Licence | Among the 1,182 repositories | Use | Why |
 |---|---:|---|---|
 | MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause | 826 by GitHub's reading | yes | copying and changing are allowed if the notices are kept; the sister repo's pipeline already works under this rule |
-| ISC, 0BSD, Unlicense, CC0-1.0, MIT-0 | 18 | not for now (decided 2026-11-09, E51) | the same kind of terms, or fewer; they can be added later |
+| ISC, 0BSD, Unlicense, CC0-1.0, MIT-0 | 18 | ISC is allowed since 2026-11-12; the others not for now (E51) | the same kind of terms, or fewer; they can be added later |
 | No licence GitHub can name | 285 | only after a read: 125 are permissive by their Hex package or licence file, 141 have no licence file under the usual names, 17 have custom or unclear terms, 2 are copyleft | no licence means no permission |
 | MPL-2.0, LGPL | 10 | no | changed files must stay under the same licence: workable, but it splits the dataset's terms |
 | GPL, AGPL | 42 | no | the rows quoting them would have to carry that licence |
