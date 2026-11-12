@@ -11,20 +11,7 @@ defmodule Eab.Candidates do
   @optional ~w(upstream-docs.patch incomplete.patch ticket.md statement.json)
 
   def import(directory) do
-    files = File.ls!(directory) |> Enum.sort()
-
-    unless files != [] and length(files) <= 64 and
-             Enum.all?(files, fn file ->
-               Path.basename(file) == file and Path.extname(file) in ~w(.json .md .patch) and
-                 File.lstat!(Path.join(directory, file)).type == :regular and
-                 File.stat!(Path.join(directory, file)).size <= 4_194_304
-             end),
-           do: raise("Candidates require bounded, flat regular fixture files")
-
-    unless Enum.all?(@required, &(&1 in files)) and
-             Enum.all?(files, &(&1 in (@required ++ @optional))),
-           do: raise("A task holds exactly the files of the one format")
-
+    files = files!(directory)
     spec = Inventory.read_json(Path.join(directory, "case.json"))
     id = spec["id"]
 
@@ -47,6 +34,28 @@ defmodule Eab.Candidates do
       Store.write("#{prefix(ref)}/manifest.json", record)
       ref
     end)
+  end
+
+  @doc """
+  The files of a task folder, sorted, after the limits of check 1: at most 64 flat regular files of at most 4 MiB,
+  each a `.json`, `.md` or `.patch` file of the one format, with every required one present. Raises otherwise.
+  """
+  def files!(directory) do
+    files = File.ls!(directory) |> Enum.sort()
+
+    unless files != [] and length(files) <= 64 and
+             Enum.all?(files, fn file ->
+               Path.basename(file) == file and Path.extname(file) in ~w(.json .md .patch) and
+                 File.lstat!(Path.join(directory, file)).type == :regular and
+                 File.stat!(Path.join(directory, file)).size <= 4_194_304
+             end),
+           do: raise("Candidates require bounded, flat regular fixture files")
+
+    unless Enum.all?(@required, &(&1 in files)) and
+             Enum.all?(files, &(&1 in (@required ++ @optional))),
+           do: raise("A task holds exactly the files of the one format")
+
+    files
   end
 
   def read!(ref) do

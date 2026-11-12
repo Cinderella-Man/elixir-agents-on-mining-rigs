@@ -208,4 +208,55 @@ defmodule Eab.GraderTest do
     assert {:ok, ["repro.exs"]} =
              Grader.validate_patch(String.replace(added, "mix.exs", "repro.exs"), spec)
   end
+
+  test "the second round of controls names every test that ends otherwise than in the first round" do
+    tests = &%{"completed" => true, "test_results" => &1}
+    existing = tests.(%{"Elixir.OldTest::test kept" => "passed"})
+
+    empty = %{
+      "passed" => false,
+      "submission" => existing,
+      "hidden" =>
+        tests.(%{
+          "Elixir.NewTest::test the fix" => "failed",
+          "Elixir.NewTest::test flaky" => "failed"
+        }),
+      "regression" => existing
+    }
+
+    gold = %{
+      "passed" => true,
+      "submission" => existing,
+      "hidden" =>
+        tests.(%{
+          "Elixir.NewTest::test the fix" => "passed",
+          "Elixir.NewTest::test flaky" => "passed"
+        }),
+      "regression" => existing
+    }
+
+    assert Grader.second_round(empty, gold, empty, gold) == %{
+             "same" => true,
+             "changed" => [],
+             "empty_passed" => false,
+             "reference_passed" => true
+           }
+
+    # A made-up unstable test: it passes on the unchanged project when graded again.
+    flaky = put_in(empty, ["hidden", "test_results", "Elixir.NewTest::test flaky"], "passed")
+    again = Grader.second_round(empty, gold, flaky, gold)
+    refute again["same"]
+    assert again["changed"] == ["empty/hidden: Elixir.NewTest::test flaky: failed -> passed"]
+
+    # An existing test that is gone in the second round, and the reference's verdict with it.
+    gone =
+      gold
+      |> update_in(["regression", "test_results"], &Map.delete(&1, "Elixir.OldTest::test kept"))
+      |> Map.put("passed", false)
+
+    assert Grader.second_round(empty, gold, empty, gone)["changed"] == [
+             "reference: passed true -> false",
+             "reference/regression: Elixir.OldTest::test kept: passed -> -"
+           ]
+  end
 end

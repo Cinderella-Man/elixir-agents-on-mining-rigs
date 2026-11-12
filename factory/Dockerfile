@@ -30,6 +30,7 @@ ENV LANG=C.UTF-8 EAB_ROOT=/app EAB_DATA_DIR=/data EAB_TASKS_DIR=/tasks ERL_FLAGS
 WORKDIR /app
 COPY --from=build /app/.local/docker-build/prod/rel/factory ./
 COPY config/factory.json config/factory.json
+COPY config/holdout.json config/holdout.json
 COPY lib lib
 COPY mix.lock mix.lock
 COPY priv/fixtures priv/fixtures

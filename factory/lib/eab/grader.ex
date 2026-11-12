@@ -392,9 +392,21 @@ defmodule Eab.Grader do
           grade(id, partial_patch(id), run_id, expected: gold, coverage: false)
         end
 
+      first = valid_controls?(contract, empty, gold, bypass, partial)
+
+      # The second round (README section 4, check 9; section 6, change 8): after the first round holds, the
+      # unchanged project and the reference are graded again in fresh containers, and every named test must end as
+      # in the first round. Grading itself is not changed: these are two more calls of `grade/4`.
+      second =
+        if first do
+          emit.("Second round for #{id}: the unchanged project and the reference again")
+          again_empty = grade(id, "", run_id, coverage: false)
+          again_gold = grade(id, reference, run_id)
+          second_round(empty, gold, again_empty, again_gold)
+        end
+
       valid =
-        valid_controls?(contract, empty, gold, bypass, partial) and
-          identity["grader"] == Inventory.qualification_hash()
+        first and second["same"] == true and identity["grader"] == Inventory.qualification_hash()
 
       control = %{
         "valid" => valid,
@@ -403,17 +415,63 @@ defmodule Eab.Grader do
         "reference_patch" => gold,
         "early_exit" => bypass,
         "partial_repair" => partial,
-        "partial_control" => spec["partial_control"]
+        "partial_control" => spec["partial_control"],
+        "second_round" => second
       }
 
       Store.write("controls/#{id}.json", control)
       Store.write(path, control)
 
-      unless valid,
-        do: raise("Fixture qualification failed for #{id}; see its saved control evidence")
+      cond do
+        valid ->
+          control
 
-      control
+        first and second["same"] != true ->
+          raise "Fixture qualification failed for #{id} in the second round: " <>
+                  "#{length(second["changed"])} named outcomes changed; see its saved control evidence"
+
+        true ->
+          raise "Fixture qualification failed for #{id}; see its saved control evidence"
+      end
     end
+  end
+
+  @doc """
+  The second round's verdict (README section 4, check 9). `first_empty` and `first_gold` are the first round's grades
+  of the unchanged project and of the reference, `empty` and `gold` the same grades run again. Every named test of the
+  existing tests, the hidden tests and the regression step must end as in the first round, and each control must
+  keep its verdict. `changed` lists what moved, as `<control>/<step>: <test>: <before> -> <after>` (`-` for a test
+  one run does not name) or `<control>: passed <before> -> <after>`.
+  """
+  def second_round(first_empty, first_gold, empty, gold) do
+    changed =
+      for {label, before, now} <- [{"empty", first_empty, empty}, {"reference", first_gold, gold}],
+          change <- round_changes(label, before || %{}, now || %{}),
+          do: change
+
+    %{
+      "same" => changed == [],
+      "changed" => changed,
+      "empty_passed" => empty["passed"],
+      "reference_passed" => gold["passed"]
+    }
+  end
+
+  defp round_changes(label, before, now) do
+    verdict =
+      if before["passed"] == now["passed"],
+        do: [],
+        else: ["#{label}: passed #{inspect(before["passed"])} -> #{inspect(now["passed"])}"]
+
+    tests =
+      for part <- ~w(submission hidden regression),
+          a = get_in(before, [part, "test_results"]) || %{},
+          b = get_in(now, [part, "test_results"]) || %{},
+          name <- Enum.sort(Enum.uniq(Map.keys(a) ++ Map.keys(b))),
+          a[name] != b[name],
+          do: "#{label}/#{part}: #{name}: #{a[name] || "-"} -> #{b[name] || "-"}"
+
+    verdict ++ tests
   end
 
   @doc "The task's partial fix, or nil when its `partial_control` records none."

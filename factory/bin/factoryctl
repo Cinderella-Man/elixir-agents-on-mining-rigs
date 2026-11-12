@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# factoryctl: calls the task factory's entry points (lib/eab/factory.ex, Eab.Factory.cli/1) in a running controller,
+# through its release's rpc command, and prints the answer as JSON ({"ok": ...} or {"error": ...}).
+#   factoryctl import DIR                                  copy the valid task folders under DIR into the task folder
+#   factoryctl check [--concurrency N] ID...               check tasks in a background job; prints the job id
+#   factoryctl export DEST ID...                           copy checked tasks and results.tsv to DEST
+#   factoryctl start-run [--settings JSON] [--parallel N] URL ID...   start a teacher run; prints the run id
+#   factoryctl kept RUN                                    the attempts of RUN that completed and passed
+#   factoryctl status                                      what is running
+#   factoryctl job JOB                                     one job's record and its results so far
+# Paths (DIR, DEST) are paths inside the controller's container.
+# Environment: NAME (the controller's container, default factory), DOCKER (default docker).
+set -euo pipefail
+NAME=${NAME:-factory}
+DOCKER=${DOCKER:-docker}
+[ $# -ge 1 ] || { sed -n '2,12p' "$0"; exit 2; }
+# Each argument travels base64-encoded, so no quoting of the Elixir line can break.
+args=""
+for a in "$@"; do
+  b=$(printf '%s' "$a" | base64 | tr -d '\n')
+  args="$args${args:+, }Base.decode64!(\"$b\")"
+done
+code="Eab.Factory.cli([$args])"
+printf '%s\n' "$code" | "$DOCKER" exec -i "$NAME" sh -c 'IFS= read -r code; exec bin/factory rpc "$code"'
