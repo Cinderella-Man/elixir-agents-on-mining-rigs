@@ -1,4 +1,9 @@
 id	licence_result	licence_families	files_touched	files_passing	failing	holdout_result	name_hits	seconds
+oli-torus-pr-6593	pass	MIT	5	5	-	pass	0	39
+oli-torus-pr-6596	pass	MIT	25	25	-	pass	0	35
+oli-torus-pr-6601	pass	MIT	31	31	-	pass	0	37
+oli-torus-pr-6611	pass	MIT	3	3	-	pass	0	39
+oli-torus-pr-6615	pass	MIT	4	4	-	pass	0	34
 oli-torus-pr-6623	pass	MIT	4	4	-	pass	0	45
 oli-torus-pr-6629	pass	MIT	3	3	-	pass	0	50
 oli-torus-pr-6639	pass	MIT	16	16	-	pass	0	51

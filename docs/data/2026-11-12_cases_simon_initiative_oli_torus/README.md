@@ -8,7 +8,7 @@ a controller built from this repository's `main` at `686862f`. Everything ran on
 30 GiB, no GPU) while seven other task-making jobs and one job that uses the model shared it. Times are the data-mining
 machine's (UTC+1).
 
-**State: milestone 1, 5 good cases** (3 features, 2 bug fixes) of 8 pull requests tried; the run goes on.
+**State: milestone 2, 10 good cases** (5 features, 5 bug fixes) of 16 pull requests tried; the run goes on.
 
 ## Result
 
@@ -23,16 +23,16 @@ machine's (UTC+1).
 - **The whole suite runs** at the starting commit of the newest candidate that can be made, pull request 6722, on
   Elixir 1.19.2 with OTP 28.1.1: ExUnit's summary **26 doctests, 7,541 tests, 1 failure, 74 skipped (1 excluded), in
   800.2 s**. The one failure is a timing assertion (section 2).
-- **5 cases are checked and pass both scans** of 8 pull requests tried (section 3): 3 features, 2 bug fixes. 3 were
-  dropped at the probe, all for the pull requests' own causes (2 `skipped_test`, 1 `no_existing_tests`); none was the
-  machine's or the factory's.
-- **A check took 661 s at the median** of the 5 checked (531 s to 1,511 s; the long ones ran under a 1-minute load of
-  10 to 15 from the other jobs). Every test command of this project rebuilds its database first (its `test` alias
+- **10 cases are checked and pass both scans** of 16 pull requests tried (section 3): 5 features, 5 bug fixes. 6 were
+  dropped at the probe, all for the pull requests' own causes (2 `skipped_test`, 2 `no_existing_tests`, 2
+  `start_run_did_not_finish`); none was the machine's or the factory's.
+- **A check took 561 s at the median** of the 10 checked (411 s to 1,511 s; the two longest ran under a 1-minute load
+  of 10 to 15 from the other jobs). Every test command of this project rebuilds its database first (its `test` alias
   drops, creates, migrates and seeds it), about 40 s each.
 - **Most of the project's newest history cannot be made yet** (section 4): of 535 candidates merged since 2025-07-01,
   175 (merged from 2026-06-08 on, and every one after 2026-07-09) need the Gleam compiler, which the factory cannot install
   (`needs_program:gleam`, the factory's cause, registry E111), 53 need OTP 28.3.1, which the image table lacks, and 37
-  are on Elixir 1.17. 257 can be made; 249 of them are not reached yet.
+  are on Elixir 1.17. 257 can be made; 241 of them are not reached yet.
 
 ## 1. The project's set-up
 
@@ -95,10 +95,22 @@ are in seconds.
 | 6629 | 2026-06-04 | 1.19.2/28.1.1 | bug fix | **checked** | - | - | - | 531 s (84.5 / 122.0 / 317.6) | 3.72 → 5.72 (6.45) | pg18 → pg17 |
 | 6625 | 2026-06-03 | 1.19.2/28.1.1 | feature | dropped | probe | `skipped_test` | the pull request's | 141 s (82.2 / 53.0 / -) | 6.78 → 6.34 (7.54) | pg18 → pg17 |
 | 6623 | 2026-06-03 | 1.19.2/28.1.1 | feature | **checked** | - | - | - | 591 s (78.4 / 147.2 / 357.1) | 6.34 → 6.57 (6.89) | pg18 → pg17 |
+| 6608 | 2026-06-03 | 1.19.2/28.1.1 | feature | dropped | probe | `start_run_did_not_finish` | the pull request's | 130 s (84.9 / 36.7 / -) | 6.57 → 4.96 (6) | pg18 → pg17 |
+| 6599 | 2026-05-29 | 1.19.2/28.1.1 | feature | dropped | probe | `start_run_did_not_finish` | the pull request's | 120 s (79.3 / 36.5 / -) | 4.96 → 3.62 (4.4) | pg18 → pg17 |
+| 6615 | 2026-05-29 | 1.19.2/28.1.1 | bug fix | **checked** | - | - | - | 481 s (81.1 / 120.9 / 269.4) | 3.62 → 1.96 (5.05) | pg18 → pg17 |
+| 6609 | 2026-05-29 | 1.19.2/28.1.1 | feature | dropped | probe | `no_existing_tests` | the pull request's | 170 s (77.6 / 89.4 / -) | 2.68 → 1.84 (3.09) | pg18 → pg17 |
+| 6611 | 2026-05-29 | 1.19.2/28.1.1 | bug fix | **checked** | - | - | - | 411 s (60.0 / 113.2 / 237.1) | 1.84 → 2.02 (3.69) | pg18 → pg17 |
+| 6596 | 2026-05-28 | 1.19.2/28.1.1 | feature | **checked** | - | - | - | 491 s (78.4 / 129.5 / 278.5) | 2.02 → 1.33 (4.23) | pg18 → pg17 |
+| 6601 | 2026-05-28 | 1.19.2/28.1.1 | bug fix | **checked** | - | - | - | 901 s (63.7 / 575.4 / 255.7) | 2.91 → 2.96 (2.71) | pg18 → pg17 |
+| 6593 | 2026-05-19 | 1.19.2/28.1.1 | feature | **checked** | - | - | - | 440 s (62.7 / 125.2 / 248.8) | 2.81 → 1.72 (9.29) | pg18 → pg17 |
 
+- **6608, 6599:** `start_run_did_not_finish`: the hidden tests do not finish on the unchanged project. Both probes took
+  under 37 s, far under the 600-second limit for a test command, so this is not a time-out; the engine keeps no output
+  of the probe's runs, so the error is not readable (most likely the hidden tests do not compile without the fix, which
+  the rules count as the pull request's own cause).
 - **6706, 6625:** `skipped_test`: hidden tests the pull request adds or changes are marked skipped by the project, so no
   fix could pass them (the grader passes no skipped test).
-- **6626:** `no_existing_tests`: no existing test file is left to protect once the ones that fail on the reference are
+- **6626, 6609:** `no_existing_tests`: no existing test file is left to protect once the ones that fail on the reference are
   left out.
 - **6722, 6664:** checked while the load was above 12 ("not settled"). The checks passed, the engine's second round
   included; a passed case is not checked again for a load reading alone (`all.sh`'s closing loop runs again only a
@@ -112,6 +124,11 @@ are in seconds.
 | 6639 | bug fix | 1 | 5 | 1 | 1 (`skipped_on_unchanged`) | present | yes |
 | 6629 | bug fix | 2 | 46 | 2 | 0 | none | yes |
 | 6623 | feature | 5 | 22 | 2 | 0 | present | yes |
+| 6615 | bug fix | 5 | 18 | 2 | 0 | present | yes |
+| 6611 | bug fix | 1 | 21 | 1 | 0 | present | yes |
+| 6596 | feature | 34 | 95 | 6 | 0 | present | yes |
+| 6601 | bug fix | 2 | 18 | 2 | 0 | present | yes |
+| 6593 | feature | 1 | 34 | 2 | 0 | present | yes |
 
 ## 4. The candidates and why most are left out
 
@@ -130,17 +147,17 @@ did with it; `left_out.tsv` counts them:
 | 37 | `elixir_before_1.18` (Elixir 1.17.2) | the dataset's floor |
 | 8 | no merge commit in the census | the census |
 | 5 | `paths_never_match`: no first parent within 30 commits changes the census's paths (6719, 6440, 6145, 5849, 5848) | the factory's (the maker) |
-| 257 | can be made: 176 on 1.19.2/28.1.1, 81 on 1.18.4/28.0.2; 8 tried, 249 not reached | - |
+| 257 | can be made: 176 on 1.19.2/28.1.1, 81 on 1.18.4/28.0.2; 16 tried, 241 not reached | - |
 
 Kinds read ahead by the maker's rule (`run/kinds.sh`) among the 257: 150 features, 107 bug fixes.
 
 ## 5. The scans
 
 The licence scan and the hold-out check (`factory/tools/check_tasks.sh` through `run/scans.sh`, one task at a time,
-Hex metadata fetched) pass for all 5 checked cases (`scans.tsv`):
+Hex metadata fetched) pass for all 10 checked cases (`scans.tsv`):
 
 - **Licence:** the root licence is `LICENSE.md` (MIT, sha256 `696205ce…`) at every starting commit (`licence_root.tsv`);
-  every file the 5 cases touch (42 files) passes at both commits (`licence_files.tsv`).
+  every file the 10 cases touch (110 files) passes at both commits (`licence_files.tsv`).
 - **Hold-out:** 0 name hits; the shared runs of 8 and 12 words with the bench's cases are all `common`
   (`holdout_tasks.tsv`).
 - **Dependencies that matter for sessions** (`deps_flagged.tsv`, rules section 6): `anubis_mcp` 0.13.1 (LGPL-3.0),
@@ -189,7 +206,8 @@ JOB=$JOB DATA=$CTL/data GIT_DIR=$JOB/oli-torus.git NAME=factory-olitorus NUMBER=
   MERGE=cc96d5e71f64ec31db36441795fb77f03262ceb6 ROUNDS=1 TEST_TIMEOUT=3600 SUB=env OUT=$JOB/out/suite CTL=$CTL \
   JOB_LABEL=task-factory-job=hb-olitorus TASK_LABEL=task-factory=1 MAX_LOAD=26 MIN_FREE=50000000000 run/suite.sh
 D=$CTL/data/env OUT=$JOB/out/suite_tables ROUNDS=1 run/suite_tables.sh
-# the cases (numbers.txt: the 257 that can be made, newest merged first), and beside them the scans
+# the cases (numbers.txt: the 257 that can be made, newest merged first), and beside them the scans; phase 1 with
+# TARGET=10, then (both kinds had 5 of the 10) phase 2 with TARGET=20 in the same OUT, where a tried number is not run again
 WORK=$WORK JOB=$JOB CTL=$CTL NAME=factory-olitorus JOB_LABEL=task-factory-job=hb-olitorus TASK_LABEL=task-factory=1 \
   TARGET=10 MAX_TRIED=80 MAX_LOAD=26 MIN_FREE=50000000000 run/all.sh run
 JOB=$JOB T=$JOB WORK=$WORK BENCH_CASES=$BENCH_CASES run/follow.sh

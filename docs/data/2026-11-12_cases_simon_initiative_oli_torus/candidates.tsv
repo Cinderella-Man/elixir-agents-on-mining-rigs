@@ -191,14 +191,14 @@ number	merged	start	elixir	otp	gleam	ci_database	resolver	resolver_reason	kind_r
 6629	2026-06-04T11:02:53Z	61894ecfd0a92242f2aceb7020c5fe6eeeeae691	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
 6625	2026-06-03T13:28:45Z	a6058d25a7a7f2f96fc2ab7825527426bf1eb466	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: dropped probe skipped_test
 6623	2026-06-03T09:25:53Z	46b7ac45fbc8c2e63b31ffdaa5d747248480e390	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
-6608	2026-06-03T01:57:04Z	34386782ad19f414584c7a6330e33c125dc660b7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
-6599	2026-05-29T20:06:55Z	3301fd3d467cde318914d85796a02f9254e69ea2	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
-6615	2026-05-29T19:54:31Z	c1a1770e8fb49af270676e5f8ba3d337611fb372	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
-6609	2026-05-29T14:11:08Z	3d5ed6627cf48e56cb2e02d4c52872b82c4ea7e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
-6611	2026-05-29T01:05:09Z	5bee042195eb06b41129a3994f9f5437d60121e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
-6596	2026-05-28T19:58:33Z	5b59ea22a016e1b738029825d09f600a2c87f305	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
-6601	2026-05-28T19:48:57Z	4500e1d8d887ab9c83e2184c7f2deb97a58fe183	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
-6593	2026-05-19T17:01:31Z	61704b39dc6ca1c0a2f22db49b51a17c09d2df56	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6608	2026-06-03T01:57:04Z	34386782ad19f414584c7a6330e33c125dc660b7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: dropped probe start_run_did_not_finish
+6599	2026-05-29T20:06:55Z	3301fd3d467cde318914d85796a02f9254e69ea2	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: dropped probe start_run_did_not_finish
+6615	2026-05-29T19:54:31Z	c1a1770e8fb49af270676e5f8ba3d337611fb372	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
+6609	2026-05-29T14:11:08Z	3d5ed6627cf48e56cb2e02d4c52872b82c4ea7e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: dropped probe no_existing_tests
+6611	2026-05-29T01:05:09Z	5bee042195eb06b41129a3994f9f5437d60121e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
+6596	2026-05-28T19:58:33Z	5b59ea22a016e1b738029825d09f600a2c87f305	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
+6601	2026-05-28T19:48:57Z	4500e1d8d887ab9c83e2184c7f2deb97a58fe183	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
+6593	2026-05-19T17:01:31Z	61704b39dc6ca1c0a2f22db49b51a17c09d2df56	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
 6592	2026-05-19T17:01:23Z	09fdf332bc340a08f6f6855709adbdd530464c6a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
 6556	2026-05-14T15:23:28Z	7d6594f1c3f91e90905ba4a1467bc0d5ea20b8ae	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
 6574	2026-05-13T14:24:41Z	bdfede6399850a21e0f6a13701a2ad435307a6d6	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
