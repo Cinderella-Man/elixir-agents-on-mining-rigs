@@ -7,9 +7,10 @@ under the bench's own harness, and keep the sessions that pass. It serves the pi
 [A task factory on the bench's engine](../docs/research/notes/task_factory_on_the_bench_engine.md), called "the design
 note" below.
 
-**State on 2026-11-12: this folder holds the engine as copied, with no change. Nothing here was compiled, built or
-run. Sections 2 to 7 describe the factory after the trimming, and the trimming has not started.** Section 7 lists the
-trimming jobs; each one that lands adds its line to the table there.
+**State on 2026-11-12: this folder holds the engine as copied, with no change to it. Job T0 built the tooling image,
+ran the copy's checks and added two tests (section 7). Sections 2 to 7 describe the factory after the trimming, and
+the trimming of the engine has not started.** Section 7 lists the trimming jobs; each one that lands adds its line to
+the table there.
 
 Words used here are the design note's: a *bundle* is the folder of files that defines one task, *hidden tests* are
 the tests the model never sees, a *control* is a patch whose outcome is known in advance, and the *statement* is the
@@ -407,12 +408,18 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 
 ### 5.6 `test/`
 
-At least seven test files of the copy need the bench's own cases, which are not here, so they cannot pass on the
-unchanged copy:
+Ten test files of the copy have tests that need the bench's own cases, which are not here, so those tests cannot pass
+on the unchanged copy (48 tests when job T0 ran them):
 - five read a case by its name (`plausible-pr-5939`, `livebook-pr-2219` or `livebook-pr-2800`): `eab/candidates_test`,
   `eab/fixtures_test`, `eab/readiness_test`, `eab/runner_test` and `eab_web/dashboard_test`;
 - two build their runs from the whole inventory and need at least four cases in it: `eab/runs_test` and
-  `eab/checkpoints_test`.
+  `eab/checkpoints_test`;
+- three have one or two such tests each and were found by job T0: `eab/grader_test` (one test needs a non-empty case
+  inventory), and the dropped `eab/claude_code_test` and `eab/results_test`.
+
+17 more tests fail on the unchanged copy because they read a file of the bench that was not copied
+(`results-page/index.html` or `scripts/install-claude-code-kit.sh`); all of them are in dropped files. Job T0's tables
+list every test with its state and cause ([`docs/data/2026-11-12_factory_t0/`](../docs/data/2026-11-12_factory_t0/README.md)).
 
 Each of them that stays is changed to use made-up tasks under `test/support/`, never a bench case and never a real
 project.
@@ -466,9 +473,13 @@ built from this folder's `Dockerfile` (`--target tooling`). The checks are the b
 (`docs/runbook.md`, "Bounded correctness checks"): `mix format --check-formatted`, then
 `MIX_ENV=test mix test --warnings-as-errors`, and the same with `EAB_DOCKER_TESTS=1` and the Docker socket for the
 tests that start containers. The first build downloads the Elixir, Node and Ubuntu base images, the Hex packages and
-Pi's npm packages; the Docker tests also pull Postgres and ClickHouse images. The maintainer's laptop cannot do any of
-this: it only edits files and runs Git. So every job runs on the 7-GPU machine's CPU, and needs that machine free and
-the downloads allowed.
+Pi's npm packages. The Docker tests do not pull their database images: their container has no network, so
+`postgres:16-alpine`, `postgres:18-alpine`, `clickhouse/clickhouse-server:24.12.2.29-alpine` and
+`clickhouse/clickhouse-server:25.11.5.8-alpine` are pulled before they run (job T0). The maintainer's laptop cannot
+do any of this: it only edits files and runs Git. So every job runs on the 7-GPU machine's CPU, and needs that machine
+free and the downloads allowed. Job T0's scripts do each step there:
+[`docs/data/2026-11-12_factory_t0/run/`](../docs/data/2026-11-12_factory_t0/README.md), including a build through a
+Docker client image that carries Buildx, for a machine whose `docker` has none.
 
 The jobs run in this order, one at a time. Several edit the same files (`runs.ex`, `agent.ex`, `fixtures.ex`,
 `mix.exs`), and all of them share one machine.
@@ -492,6 +503,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | Date | Job | Commit | Tests |
 |---|---|---|---|
 | 2026-11-12 | The copy, unchanged, from the bench's commit `28c064ca` | `470301e` | not run |
+| 2026-11-12 | T0: the tooling image built; the unchanged copy's format check and tests run; `test/eab/bench_parity_test.exs` and `test/eab/model_identity_test.exs` added ([data](../docs/data/2026-11-12_factory_t0/README.md)) | `dd8a86b` | format check passes; unchanged copy 212 of 284 passed without Docker and 217 with it, 65 failed in both (48 need the bench's cases, 17 read a bench file that was not copied), 2 not run; the two new tests 6 of 6 and 8 of 8 |
 
 ## 8. What is not decided, and what is not verified
 
@@ -504,12 +516,13 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 - whether a fix spread over two pull requests is ever combined. The pilot does not combine.
 
 **Not verified:**
-- Nothing here was compiled or run. The cut list comes from reading the source and from searching it for the names
-  of the dropped modules. A call made through a variable, or a test that leans on a dropped part in a way the search
-  does not show, will come out in job T0 and T1.
-- That the tooling image builds from the copy. The controller's image does not: its `Dockerfile` copies `cases/`,
-  which is not here, until that line goes (T6). The tests use only the tooling image, which does not copy it.
-- Which tests of the unchanged copy pass. At least seven test files need the bench's cases (5.6).
+- The cut list comes from reading the source and from searching it for the names of the dropped modules. Job T0
+  compiled and tested the unchanged copy; a call made through a variable, or a test that leans on a dropped part in
+  a way the search does not show, will come out in job T1.
+- The controller's image does not build: its `Dockerfile` copies `cases/`, which is not here, until that line goes
+  (T6). The tests use only the tooling image, which builds from the copy (T0).
+- Two tests of the copy have not run: `eab/browser_docker_test` (it builds from the Playwright image, a download job
+  T0 was not allowed) and `eab/claude_code_hook_test` (the tooling image has no `python3`). Both are dropped.
 - That each trimming job fits three hours.
 - That many hundred tasks in one folder are fast enough. The engine lists the folder on every lookup and hashes every
   task's files when a run starts. Change 2 makes a run work on its own list; the cost that remains is measured in
