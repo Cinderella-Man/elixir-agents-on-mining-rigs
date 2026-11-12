@@ -23,6 +23,10 @@ operately, pinchflat, plausible-analytics and vutuv. **Nothing that shapes a mod
 not training tasks, not calibration text for pruning, and not the statistics that choose experts or layers. E12
 checks every task, text and session against them before use.
 
+**An application that depends on one of the 12 as a library** (an application built on Ash, or using Absinthe, Guardian
+or Cachex) may be a source of tasks: its own code is not held out. A session that quotes a file of that library's own
+package is not kept (decided 2026-11-12).
+
 ## Track A: shrink Qwen3.8-Flash-Next for Elixir (no training)
 
 Why it can work:
