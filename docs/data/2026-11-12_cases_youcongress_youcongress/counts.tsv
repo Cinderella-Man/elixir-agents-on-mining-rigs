@@ -1,0 +1,6 @@
+pull_requests	verdict	dropped_at	reason
+49	not run	-	elixir_before_1.18
+5	checked	-	-
+1	refused	maker	no_existing_tests
+1	dropped	probe	reference_fails_hidden
+1	dropped	controls	reference_regression_fails

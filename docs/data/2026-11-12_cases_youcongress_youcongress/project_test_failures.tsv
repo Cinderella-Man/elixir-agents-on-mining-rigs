@@ -1,0 +1,3 @@
+test	file	round_1	error
+Elixir.YouCongress.HallsTest::test all_stats/0 counts sourced quotes that are not attached to a statement	test/you_congress/halls_test.exs:129	failed	Assertion with == failed
+Elixir.YouCongressWeb.StatementLiveTest::test Index defaults to an unrestricted feed and shows aggregate stats	test/you_congress_web/live/statement_live_test.exs:73	failed	

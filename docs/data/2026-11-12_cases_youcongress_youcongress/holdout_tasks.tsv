@@ -1,0 +1,6 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+youcongress-pr-178	https://github.com/youcongress/youcongress	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+youcongress-pr-185	https://github.com/youcongress/youcongress	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+youcongress-pr-192	https://github.com/youcongress/youcongress	pass	0	16	10	5	0	1	3	3	0	0	0	review
+youcongress-pr-193	https://github.com/youcongress/youcongress	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+youcongress-pr-194	https://github.com/youcongress/youcongress	pass	0	11	10	1	0	0	3	3	0	0	0	pass

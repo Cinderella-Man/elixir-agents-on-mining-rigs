@@ -1,0 +1,9 @@
+number	start	tool_versions	ci_elixir_otp	ci_postgres	elixir_otp_used	postgres_used	redis_used	recipe
+194	d0ef8f9e00cf263d5285c746209834206b88d783	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	redis:7.2-alpine	template
+193	a7adc07776b34fed3c08ec71539193d7e5fc72b6	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	redis:7.2-alpine	template
+192	c26fb0590d0652c2536dac064833b0dbd54a65b3	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	redis:7.2-alpine	template
+185	624980bf053bc1ffc565aa07269c7c9ed563176f	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	-	template
+181	c160c692b6e28289d23ae9e18ff3a495c28111ef	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	-	template
+180	454a9483809d2ee4ac8a686b1328a593e4bb887d	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	-	template
+179	7db015196ff300f1fc4e0da4d17097f4d1fa2cb7	elixir 1.19.4; erlang 28.3	-/-	-	-	-	-	-
+178	37fd27c4d9ed224a2f87e6326c93f9ae6159f403	elixir 1.19.4; erlang 28.3	-/-	-	1.19.4/28.3	pgvector/pgvector:pg17	-	template

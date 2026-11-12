@@ -1,0 +1,6 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+youcongress-pr-178	feature	feature	1	0	-
+youcongress-pr-185	bug_fix	bug_fix	0	0	-
+youcongress-pr-192	feature	feature	2	10	author_votes get_newest_opinion_cards handle_event handle_info handle_info handle_params list_recent_votes_by_author_ids list_recent_votes_by_author_ids list_recent_votes_by_author_ids mount
+youcongress-pr-193	bug_fix	bug_fix	0	0	-
+youcongress-pr-194	feature	feature	1	17	bucket bucket bucket bucket bucket bucket date_groups group label label label label label label label label label

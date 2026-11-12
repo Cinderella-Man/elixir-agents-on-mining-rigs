@@ -1,0 +1,6 @@
+task	kind	hidden_failing_first	hidden_passing_after	existing_files_kept	existing_files_left_out	left_out_reasons	partial_fix	second_round_same
+youcongress-pr-194	feature	14	20	1	0	-	present	yes
+youcongress-pr-193	bug_fix	1	6	1	0	-	present	yes
+youcongress-pr-192	feature	11	46	2	0	-	present	yes
+youcongress-pr-185	bug_fix	2	13	1	0	-	present	yes
+youcongress-pr-178	feature	1	6	1	0	-	present	yes

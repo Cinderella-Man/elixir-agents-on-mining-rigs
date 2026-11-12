@@ -1,0 +1,58 @@
+try	number	id	merged	elixir_otp	task_kind	folder	verdict	dropped_at	reason	make_s	import_s	check_s	export_s	engine_import_check_s	engine_source_s	engine_prepare_s	engine_probe_s	engine_controls_s	engine_total_s	load_start	load_end	load_max_check	settled	images_bytes	build_cache_change_bytes	disk_used_bytes	start	end	own_images	own_images_docker_bytes
+1	194	youcongress-pr-194	2026-08-29	1.19.4/28.3	feature	made	checked	-	-	5	0	221	0	0.0	0.0	94.7	37.2	84.0	215.9	5.97	6.35	6.89	settled	5558887385	1621683497	2371211264	2026-11-12T19:49:46+01:00	2026-11-12T19:53:34+01:00	1	1068777663
+1	193	youcongress-pr-193	2026-08-29	1.19.4/28.3	bug_fix	made	checked	-	-	5	1	170	1	0.0	0.0	27.7	40.6	98.8	167.2	6.35	4.95	5.99	settled	2828541127	329841915	744042496	2026-11-12T19:53:36+01:00	2026-11-12T19:56:34+01:00	2	1752955698
+1	192	youcongress-pr-192	2026-08-29	1.19.4/28.3	feature	made	checked	-	-	5	1	210	0	0.0	0.0	32.1	60.7	115.8	208.6	4.95	5.55	6.25	settled	5303643527	1024717201	1732550656	2026-11-12T19:56:36+01:00	2026-11-12T20:00:14+01:00	2	1752797466
+1	185	youcongress-pr-185	2026-03-14	1.19.4/28.3	bug_fix	made	checked	-	-	6	0	250	0	0.0	0.0	93.9	65.0	83.6	242.4	5.55	3.29	5.47	settled	6223744373	1872395351	3485732864	2026-11-12T20:00:16+01:00	2026-11-12T20:04:36+01:00	2	1734564824
+1	181	youcongress-pr-181	2026-03-07	1.19.4/28.3	bug_fix	made	dropped	controls	reference_regression_fails	5	0	151	-	0.0	0.0	86.8	25.8	31.5	144.1	3.99	3.84	5.05	settled	3977705143	933316157	1604050944	2026-11-12T20:04:39+01:00	2026-11-12T20:07:17+01:00	2	1734271237
+1	180	youcongress-pr-180	2026-03-07	1.19.4/28.3	bug_fix	made	dropped	probe	reference_fails_hidden	5	0	51	-	0.0	0.0	27.7	17.8	-	45.6	4.81	3.76	4.69	settled	1734225380	175355585	417214464	2026-11-12T20:07:18+01:00	2026-11-12T20:08:17+01:00	2	1734225380
+1	179	youcongress-pr-179	2026-03-07	-	-	not_made	refused	maker	no_existing_tests	5	-	-	-	-	-	-	-	-	-	4.66	4.44	-	settled	0	0	-8814592	2026-11-12T20:08:19+01:00	2026-11-12T20:08:26+01:00	0	0
+1	178	youcongress-pr-178	2026-03-07	1.19.4/28.3	feature	made	checked	-	-	6	0	140	0	0.0	0.0	30.4	23.3	76.6	130.4	4.49	3.22	4.57	settled	1734104253	175058436	252522496	2026-11-12T20:08:27+01:00	2026-11-12T20:10:56+01:00	2	1734104253
+-	165	youcongress-pr-165	2025-12-21	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	164	youcongress-pr-164	2025-12-14	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	163	youcongress-pr-163	2025-12-07	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	162	youcongress-pr-162	2025-12-05	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	161	youcongress-pr-161	2025-10-11	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	160	youcongress-pr-160	2025-09-28	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	159	youcongress-pr-159	2025-09-27	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	157	youcongress-pr-157	2025-09-14	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	156	youcongress-pr-156	2025-09-13	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	155	youcongress-pr-155	2025-08-31	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	153	youcongress-pr-153	2025-08-10	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	152	youcongress-pr-152	2025-05-10	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	149	youcongress-pr-149	2025-02-21	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	148	youcongress-pr-148	2025-02-15	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	143	youcongress-pr-143	2024-12-29	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	136	youcongress-pr-136	2024-11-17	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	134	youcongress-pr-134	2024-11-16	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	131	youcongress-pr-131	2024-11-01	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	129	youcongress-pr-129	2024-10-26	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	127	youcongress-pr-127	2024-10-19	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	125	youcongress-pr-125	2024-10-18	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	121	youcongress-pr-121	2024-10-13	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	117	youcongress-pr-117	2024-10-06	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	99	youcongress-pr-99	2024-09-15	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	95	youcongress-pr-95	2024-09-13	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	92	youcongress-pr-92	2024-09-07	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	91	youcongress-pr-91	2024-08-28	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	88	youcongress-pr-88	2024-08-16	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	86	youcongress-pr-86	2024-08-15	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	80	youcongress-pr-80	2024-07-23	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	76	youcongress-pr-76	2024-07-20	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	74	youcongress-pr-74	2024-07-20	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	59	youcongress-pr-59	2024-07-06	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	57	youcongress-pr-57	2024-05-18	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	54	youcongress-pr-54	2024-04-27	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	50	youcongress-pr-50	2024-04-26	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	48	youcongress-pr-48	2024-04-13	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	47	youcongress-pr-47	2024-04-04	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	40	youcongress-pr-40	2024-03-26	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	36	youcongress-pr-36	2024-03-25	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	23	youcongress-pr-23	2024-03-18	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	21	youcongress-pr-21	2024-03-17	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	15	youcongress-pr-15	2024-03-16	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	14	youcongress-pr-14	2024-03-16	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	12	youcongress-pr-12	2024-03-16	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	11	youcongress-pr-11	2024-03-09	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	9	youcongress-pr-9	2024-02-24	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	8	youcongress-pr-8	2024-01-20	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5	youcongress-pr-5	2024-01-06	-	-	-	not run	-	elixir_before_1.18	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-

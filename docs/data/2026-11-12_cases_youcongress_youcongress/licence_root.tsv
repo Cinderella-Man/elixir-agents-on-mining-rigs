@@ -1,0 +1,6 @@
+task	start	root_licence	licence_file	licence_file_sha256	families	holders	line	statement	mentions
+youcongress-pr-178	37fd27c4d9ed224a2f87e6326c93f9ae6159f403	ok:licence-file	LICENSE	414b1c799663a5fd381b4a73ff31a943bed7ecaa7ad8fc06c3bb1b7082d392c1	MIT		0		0
+youcongress-pr-185	624980bf053bc1ffc565aa07269c7c9ed563176f	ok:licence-file	LICENSE	414b1c799663a5fd381b4a73ff31a943bed7ecaa7ad8fc06c3bb1b7082d392c1	MIT		0		0
+youcongress-pr-192	c26fb0590d0652c2536dac064833b0dbd54a65b3	ok:licence-file	LICENSE	414b1c799663a5fd381b4a73ff31a943bed7ecaa7ad8fc06c3bb1b7082d392c1	MIT		0		0
+youcongress-pr-193	a7adc07776b34fed3c08ec71539193d7e5fc72b6	ok:licence-file	LICENSE	414b1c799663a5fd381b4a73ff31a943bed7ecaa7ad8fc06c3bb1b7082d392c1	MIT		0		0
+youcongress-pr-194	d0ef8f9e00cf263d5285c746209834206b88d783	ok:licence-file	LICENSE	414b1c799663a5fd381b4a73ff31a943bed7ecaa7ad8fc06c3bb1b7082d392c1	MIT		0		0
