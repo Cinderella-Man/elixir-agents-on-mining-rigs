@@ -1,0 +1,54 @@
+repo	archived	pushed_at	merged_prs_now	elixir_share_now	languages
+firezone/firezone	false	2026-11-12T07:15:45Z	11063	63.6	Elixir 12014112;Rust 4940298;Swift 649777;Kotlin 504831;Shell 287220;HTML 184451;TypeScript 83184;JavaScript 67462;Nix 43209;PowerShell 30268
+Simon-Initiative/oli-torus	false	2026-11-11T21:55:28Z	5122	68.3	Elixir 24470594;TypeScript 9474876;Gleam 736557;SCSS 505987;HTML 317777;Python 169726;CSS 64242;JavaScript 62551;MDX 20325;Shell 15307
+santiment/sanbase2	false	2026-11-12T07:20:06Z	5115	63.4	Elixir 11982111;HTML 3304053;TypeScript 2884800;PLpgSQL 381282;JavaScript 301307;CSS 23946;Shell 21062;Erlang 5853;Dockerfile 3647;Euphoria 119
+Logflare/logflare	false	2026-11-11T07:56:47Z	3412	89.9	Elixir 7643118;HTML 259365;Rust 186587;JavaScript 167342;SCSS 93938;Shell 52177;Python 46608;TypeScript 26956;Makefile 17502;Go Template 6864
+mbta/dotcom	false	2026-11-11T23:44:49Z	3171	70.6	Elixir 4040744;TypeScript 649471;HTML 464461;SCSS 299630;JavaScript 258461;Python 6606;Dockerfile 3260;Shell 2832;CSS 226
+mbta/screens	false	2026-11-10T22:58:18Z	2468	77.5	Elixir 1919158;TypeScript 404918;SCSS 133292;JavaScript 9723;Shell 4304;HTML 2848;Dockerfile 1520
+nerves-hub/nerves_hub_web	false	2026-11-12T04:53:28Z	2474	92.3	Elixir 6387162;HTML 363680;JavaScript 133297;CSS 23639;Dockerfile 7495;Makefile 628;Shell 614
+supabase/realtime	false	2026-11-12T07:20:49Z	1712	89.4	Elixir 5103426;PLpgSQL 196550;TypeScript 148981;TLA 142420;HTML 52567;JavaScript 28500;Shell 14242;CSS 10744;Dockerfile 10149;Nix 2467
+sequinstream/sequin	false	2026-02-23T23:39:01Z	1507	70.9	Elixir 3313506;Svelte 853447;Go 179185;HCL 118374;Shell 69370;HTML 52678;TypeScript 42680;JavaScript 16409;CSS 12589;Makefile 8087
+hexpm/hexpm	false	2026-11-11T16:46:25Z	1404	93.8	Elixir 6673606;HTML 316311;JavaScript 99350;CSS 18398;Dockerfile 3468;Shell 1204
+edgehog-device-manager/edgehog	false	2026-11-11T22:50:31Z	1380	63.2	Elixir 4092656;TypeScript 2288944;SCSS 27184;JavaScript 26198;Just 21526;CSS 6440;Dockerfile 3595;HTML 3498;Shell 3300;Nix 2821
+FarmBot/farmbot_os	false	2026-11-04T21:59:18Z	1204	71	Elixir 997166;Python 302283;Lua 65191;HTML 27390;CSS 8166;JavaScript 2807;Shell 708
+ambry-app/ambry	false	2026-11-09T04:42:48Z	1083	92.9	Elixir 3318615;HTML 198067;JavaScript 37345;PLpgSQL 12491;CSS 2261;Dockerfile 1495;Shell 1049
+ckruse/cforum_ex	false	2025-03-13T04:45:02Z	1058	64.4	Elixir 1176269;HTML 253619;JavaScript 210212;PLpgSQL 101140;SCSS 80709;Shell 3607;Dockerfile 1669
+Flo0807/share-a-secret	false	2026-11-12T02:57:49Z	987	88.6	Elixir 105828;JavaScript 5596;HTML 3735;Dockerfile 2641;CSS 875;Shell 628;Batchfile 168
+supabase/supavisor	false	2026-11-10T22:52:14Z	963	92.5	Elixir 1545246;JavaScript 78207;Shell 16830;Rust 11913;Python 6437;Nix 5383;Dockerfile 5270;Ruby 865;Batchfile 103
+bors-ng/bors-ng	true	2024-04-04T12:24:44Z	939	92	Elixir 675889;HTML 22379;JavaScript 14985;CSS 8272;HCL 6948;Dockerfile 2657;Shell 1982;Smarty 1782;Procfile 21
+axelclark/ex338	false	2026-09-10T04:23:06Z	749	96.8	Elixir 1576517;HTML 31734;JavaScript 18322;CSS 1819;Shell 461
+source-academy/backend	false	2026-11-12T00:02:19Z	696	98.7	Elixir 1709155;HCL 20424;Shell 1468;HTML 651;Erlang 629
+hashrocket/tilex	false	2025-11-07T20:33:31Z	525	73.5	Elixir 260123;HTML 53712;CSS 23265;JavaScript 15644;Makefile 872;Procfile 172
+papercups-io/papercups	false	2024-02-15T05:21:47Z	501	59.3	Elixir 1410667;TypeScript 955733;CSS 3948;Shell 3206;Dockerfile 2749;JavaScript 1998;HTML 1955;Procfile 85
+adoptoposs/adoptoposs	true	2026-02-01T11:03:21Z	468	71.2	Elixir 270014;HTML 84583;JavaScript 9525;SCSS 9144;Dockerfile 3139;Makefile 2369;Shell 349;Batchfile 107
+erlef/website	false	2026-09-17T16:38:36Z	444	63.1	Elixir 551280;HTML 301369;JavaScript 13228;SCSS 8114
+tomasz-tomczyk/crit-web	false	2026-11-11T11:43:24Z	446	50.2	Elixir 1447058;JavaScript 530452;HTML 425488;TypeScript 308493;CSS 152934;Shell 12487;Dockerfile 3749;Batchfile 88
+cesium/safira	false	2026-11-11T23:55:45Z	408	84.4	Elixir 1085252;HTML 143240;JavaScript 23058;CSS 20334;Shell 11565;Dockerfile 2800;Batchfile 94
+cesium/atomic	false	2025-07-20T22:03:57Z	369	70.6	Elixir 569113;HTML 172190;CSS 33161;Shell 17788;JavaScript 13629
+bikebrigade/dispatch	false	2026-11-11T17:12:56Z	306	73.4	Elixir 972249;HTML 314808;JavaScript 14375;Nix 8726;CSS 6312;Shell 4949;Dockerfile 2445;Euphoria 134
+jaxernst/lasso-rpc	false	2026-11-06T23:49:24Z	306	95.9	Elixir 5592683;JavaScript 144845;Python 64478;CSS 12241;Shell 10522;HTML 2597;Dockerfile 2500;Batchfile 45
+wanderer-industries/wanderer	false	2026-11-11T17:14:57Z	303	66.1	Elixir 3136990;TypeScript 966247;SCSS 318441;HTML 168426;Shell 93097;CSS 23186;JavaScript 18658;Nix 12193;Dockerfile 5644;Makefile 3214
+midarrlabs/midarr-server	false	2026-03-03T23:39:40Z	296	46.9	Elixir 181237;CSS 105680;HTML 92288;JavaScript 4672;Shell 1726;Dockerfile 1039
+lambdaclass/stark_compass_explorer	true	2024-10-04T21:34:01Z	282	85.5	Elixir 358506;HTML 36331;JavaScript 15266;CSS 6620;Jinja 1260;Dockerfile 613;Makefile 489;Shell 243
+podlove/radiator	false	2026-11-10T20:24:45Z	253	90.3	Elixir 514229;HTML 43027;CSS 4550;JavaScript 3732;Dockerfile 2776;Shell 835;Batchfile 100
+blablatdinov/croniq	false	2026-10-28T21:07:43Z	232	81.3	Elixir 284857;HTML 59092;JavaScript 5392;Dockerfile 877;CSS 280
+jeffdc/gallformers	false	2026-11-08T17:39:49Z	227	86.9	Elixir 3055068;JavaScript 164425;PLpgSQL 77961;HTML 51335;Python 49030;HCL 32276;Shell 31791;CSS 24825;Makefile 16581;Dockerfile 3918
+covalenthq/refiner	false	2026-05-22T19:50:06Z	220	99	Elixir 172614;Dockerfile 1615;Shell 142
+coderdojobraga/bokken	true	2024-03-08T19:32:46Z	192	72.1	Elixir 325043;HTML 100148;Shell 24311;Dockerfile 1019
+stride-nyc/remote_retro	false	2026-10-19T00:16:49Z	190	44.1	Elixir 212616;JavaScript 186128;CSS 42711;HTML 32265;Shell 8292;Procfile 59
+Clivern/Lynx	false	2026-09-11T21:24:41Z	184	95.7	Elixir 282180;HTML 5604;Dockerfile 2466;Makefile 1749;JavaScript 1741;HCL 805;Shell 152;Batchfile 88
+jehrhardt/cozyauth	true	2025-08-18T10:16:38Z	181	95.5	Elixir 38697;Dockerfile 1521;Shell 182;Batchfile 100
+revelrylabs/slax	false	2026-11-05T23:45:33Z	178	84.5	Elixir 227191;JavaScript 38310;Shell 2057;Dockerfile 1209
+joladev/jola.dev	false	2026-11-12T06:49:03Z	176	82.1	Elixir 195266;HTML 22161;JavaScript 10269;CSS 6764;Dockerfile 3099;Shell 340;Batchfile 48
+notesclub/notesclub	false	2026-11-11T19:27:13Z	167	91	Elixir 438793;HTML 28358;CSS 5685;JavaScript 5214;Dockerfile 3583;Shell 256;Batchfile 103
+elementary/appcenter-dashboard	false	2026-11-02T11:00:17Z	161	65.4	Elixir 72442;HTML 19144;SCSS 13781;JavaScript 4287;Dockerfile 1028;Shell 140
+zorn/flick	false	2026-11-08T20:08:52Z	155	95.9	Elixir 343855;JavaScript 6619;Shell 4123;Dockerfile 1544;CSS 1374;HTML 980
+hexpm/preview	true	2026-07-16T14:07:48Z	153	85.2	Elixir 143145;CSS 9361;HTML 9323;JavaScript 4277;Dockerfile 1269;Shell 695
+mercadona/postoffice	true	2024-03-07T14:39:36Z	140	65.4	Elixir 142961;JavaScript 35337;HTML 16823;CSS 16005;Shell 4070;Makefile 2611;Dockerfile 701
+brunojppb/turbo-racer	true	2026-04-22T08:36:52Z	138	82.9	Elixir 190620;HTML 20874;CSS 12134;Dockerfile 2725;JavaScript 2509;Shell 1061;Batchfile 91
+astarte-platform/astarte_flow	false	2026-07-17T20:06:41Z	130	98.7	Elixir 436600;Erlang 2958;HTML 1589;Dockerfile 1236
+cr0t/lexin	false	2026-09-05T20:27:56Z	130	80.3	Elixir 119328;HTML 16608;CSS 7808;Shell 2537;JavaScript 2312
+zorn/local_cents	false	2026-11-01T00:21:43Z	130	92.9	Elixir 857757;Rust 38966;CSS 10370;Shell 9117;JavaScript 5085;HTML 1616
+youcongress/youcongress	false	2026-11-09T12:50:10Z	121	84.7	Elixir 2647648;HTML 358975;JavaScript 45765;CSS 38542;PLpgSQL 30434;Dockerfile 2891;Shell 1056;Euphoria 123;Batchfile 111
+texttile-blog/texttile	false	2026-11-09T21:38:12Z	119	83.7	Elixir 1848208;JavaScript 156728;CSS 134400;HTML 30316;Python 17461;Shell 14458;Dockerfile 3978;Makefile 3578;Batchfile 100
+asciinema/asciinema-server	false	2026-11-08T18:17:15Z	106	76.9	Elixir 1165880;HTML 177132;CSS 90202;Rust 28044;Nix 26190;JavaScript 24899;Shell 2726;Just 423

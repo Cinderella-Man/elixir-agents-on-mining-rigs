@@ -1,0 +1,8 @@
+ok   hashrocket/tilex: same pull-request numbers in the same order as the census
+ok   hashrocket/tilex: 73 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   hashrocket/tilex: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   source-academy/backend: same pull-request numbers in the same order as the census
+FAIL source-academy/backend: 211 counted from the census, 210 in the screen
+ok   source-academy/backend: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   hashrocket/tilex: 73 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   source-academy/backend: 211 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 1), counted two ways

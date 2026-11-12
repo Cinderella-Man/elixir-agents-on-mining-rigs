@@ -1,0 +1,3 @@
+repo	candidates	no_lack_found	resolver_reads_it	with_redis	missing	lack_elixir_older_than_1_12	lack_pair_missing	lack_db_version	lack_service	lack_release_file	lack_toolchain	resolver_gap
+hashrocket/tilex	72	0	0	0	0	59	13	0	0	13	0	0
+source-academy/backend	204	0	0	0	0	142	62	121	0	0	0	0
