@@ -137,7 +137,7 @@ container. Inside it the model can meet these, and they stay: `/workspace`, `/op
 Job T7 found more such names that the list had left out, and kept them: `/opt/eab-attempt` and `/opt/eab-grade`
 (above), Pi's package name `eab-pi-runtime` in `/opt/pi/package.json` (same bytes), the database folder
 `/opt/eab-state` in the Postgres and ClickHouse containers, the reporter's module `ElixirAgentBenchmark.TrustedFormatter`
-(same bytes) and, in the workspace recipe's build stage only, `/opt/eab-build-seed.exs`, `/opt/eab-force-add.txt`,
+(its name unchanged) and, in the workspace recipe's build stage only, `/opt/eab-build-seed.exs`, `/opt/eab-force-add.txt`,
 `mix eab.seed` and the Hex cache id `eab-hex-packages-v1`. The container's own name (`etf-…`) and its labels are
 not visible inside it: its host name is the container's id.
 
@@ -146,7 +146,7 @@ not visible inside it: its host name is the container's id.
 | What | File | What must stay |
 |---|---|---|
 | Grading one patch | `lib/eab/grader.ex`: `grade/4`, `do_grade/5`, `coverage/4`, `validate_patch/2`, `parse/2`, `test_command/2`, `run_tests/3`, `restore_tests/1` | All of it. The controls change (section 6, change 7); these functions do not. |
-| The test reporter | `priv/fixtures/grade_formatter.exs` | Same bytes (`ea8dec71`). It reports every test as passed, failed, skipped or excluded, and says whether a failure was in the test's body or in its set-up. |
+| The test reporter | `priv/fixtures/grade_formatter.exs` | It reports every test as passed, failed, skipped or excluded, and says whether a failure was in the test's body or in its set-up. The bench's bytes (`ea8dec71`) with one change (`75eed312`, registry E88): a test of a module that ExUnit runs once per parameter set (`parameterize:`, Elixir 1.18 and later) gets its parameters after its name (`Elixir.M::test a %{serializer: :json}`), so the two runs of one test are two records; before, `parse/2` saw one name twice and called the run unfinished. Every other test's record is the bench's, byte for byte. The model never sees the file: it is copied into grading containers only (`Eab.TestAdapter.install/1`). |
 | How a test command is run | `lib/eab/test_adapter.ex`, `priv/fixtures/node_runner.mjs` | Kept as they are. |
 | The time limit of one test command | `lib/eab/grader.ex`, `run_tests/3` | 240 seconds unless the task sets `test_timeout`. |
 
@@ -383,7 +383,10 @@ prepared:
 - **Observing the test names:** only the hidden tests run, on the unchanged project and on the reference.
   `required` becomes the hidden tests that pass on the reference, and `starting_failures` those that fail in their
   body on the unchanged project. It refuses, and leaves the folder as it was, when a run does not finish, a hidden
-  test fails on the reference, or nothing fails in its body on the unchanged project.
+  test fails on the reference, a hidden test is one the project marks as skipped (`skipped_test`: not a failure of
+  the reference, but the grader passes no skipped test, 2.2, so no fix could pass; registry E86), or nothing fails
+  in its body on the unchanged project. The controls name a reference that fails only on a skipped test the same
+  way (`Eab.Factory.first_failure/2`), not `reference_existing_tests_fail`.
 - **Settling the existing tests:** the files of `grading.preservation` run in their starting-commit version, as the
   grader's regression step runs them, twice on the unchanged project and twice on the reference code. A file is
   left out when one of its tests fails or is skipped on either side (the grader passes a run only when every test
@@ -569,7 +572,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | File | Verdict | Reason |
 |---|---|---|
 | `pi/package.json`, `pi/package-lock.json`, `pi/runtime.json`, `pi/bridge.mjs`, `pi/bash-watchdog.mjs` | keep | Same bytes (section 2). |
-| `fixtures/grade_formatter.exs`, `fixtures/build_seed.exs` | keep | Same bytes (section 2). |
+| `fixtures/grade_formatter.exs`, `fixtures/build_seed.exs` | keep | Same bytes (section 2), but for the reporter's one change for `parameterize:` (2.2). |
 | `fixtures/node_runner.mjs` | keep | With the Node test adapter (5.1). |
 | `fixtures/browser/package.json`, `fixtures/browser/package-lock.json` | drop | Browser support. Gone in T4. |
 | `claude_code/` (11 files) | drop | The Claude Code harness's kit, prompts and tools. |
@@ -795,10 +798,10 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
   release file has gone through the whole path in a real toolchain stage: fwup 1.17.1's `.deb`, fetched over the
   network through one redirect, checked, installed with its dependencies from Ubuntu, and used by the project's
   tests ([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)).
-- A test module under ExUnit's `parameterize:` runs each test once per parameter set under the same name, and
-  `Eab.Grader.parse/2` (2.2, must stay) then calls the run unfinished (nerves_hub_web's `websocket_test.exs`, 37 names
-  twice). A task whose test command names such a file cannot have a finished run; what the bench does with one is not
-  checked.
+- A test module under ExUnit's `parameterize:` runs each test once per parameter set under the same name. Since
+  registry E88 the reporter adds the parameters to such a test's name (2.2), so each run is its own record and the run
+  finishes (nerves_hub_web's `websocket_test.exs`, 37 tests run twice). The bench's own reporter still gives both runs
+  one name; what the bench does with such a file is not checked.
 - The toolchain resolver (3.5) reads YAML and TOML by line patterns, not with a parser. It was checked on the CI
   files, `.tool-versions`, `mise.toml` and Dockerfiles of ex338's and radiator's 410 screened candidates and on the
   made-up files of `toolchain_test`; a CI file written in another style (anchors, a version only in a matrix

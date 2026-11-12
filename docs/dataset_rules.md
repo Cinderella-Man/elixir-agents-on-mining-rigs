@@ -29,7 +29,7 @@ No task, statement, session or screening is made for a project outside the list.
 - **The project:** `mix.exs` asks for Elixir 1.18 or newer (section 1).
 - **The task:** it is built on the Elixir and OTP of its own starting commit, read from the commit's files
   (`.tool-versions`, the CI workflow, `mix.exs`). That pair must be in the factory's image table
-  (`factory/config/toolchain_images.json`, 12 pairs on 2026-11-12, the newest 1.20.3 with OTP 29.0.5). A commit on a
+  (`factory/config/toolchain_images.json`, 13 pairs on 2026-11-12, the newest 1.20.4 with OTP 29.1.2). A commit on a
   pair the table lacks is left out as `no_image:<elixir>/<otp>` until the pair is added; pairs are added newest first.
 - **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 (its ssl rejects
   the package server's certificate).
@@ -70,6 +70,7 @@ factory's, or the machine's. Only the first is a verdict on the pull request; th
 | The unchanged project fails a hidden test in the test's own body | `no_starting_failure`: the hidden tests pass before the fix, or cannot run at all | the pull request's |
 | The failing tests are the same in every run | the set of failures changes between runs | the pull request's (an unstable test) |
 | The reference fix passes | the hidden or the existing tests fail on the merged tree: they need the network, the clock or a service, or `no_existing_tests` is left to protect | the pull request's |
+| No hidden test is skipped | `skipped_test`: a hidden test is one the project marks as skipped (`@tag :skip`). It is not a failure of the reference fix, but the grader passes no skipped test (`factory/README.md` section 2.2), so no fix could pass the task; the probe drops it before the controls (registry E86) | the pull request's (its changed test file holds the skipped test) |
 | An early exit is rejected | the project's test command can report success without running the tests | the project's |
 | A partial fix is rejected, where the task has one | a half-done fix passes the hidden tests | the pull request's (weak tests); the task stays without the control |
 | A second round agrees | a named test ends differently in a fresh container | the pull request's |
@@ -171,5 +172,4 @@ is not legal advice.
 - Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
   the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
-- The licence tool's own list does not hold ISC yet.
 - `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.

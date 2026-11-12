@@ -25,7 +25,10 @@ defmodule Eab.BenchParityTest do
     "lib/eab/pi.ex" => "c087a89c6b57bb1998a7cd0799611f4851a8488b",
     "lib/eab/thinking.ex" => "db329d80205f25ae57cefe7c4fe3cc16cd291eb2",
     "priv/fixtures/build_seed.exs" => "caafd335f6539ddd30f5d6905270c659dd04945e",
-    "priv/fixtures/grade_formatter.exs" => "ea8dec71fe1becbc6e4a34698d3693e7d93051c7",
+    # The bench's bytes were ea8dec71fe1becbc6e4a34698d3693e7d93051c7. The one change (registry E88) adds the
+    # parameters to the name of a test run under `parameterize:`; every other test's record is the bench's, byte for
+    # byte (test/eab/grader_test.exs), and the model never sees this file (it is copied into grading containers only).
+    "priv/fixtures/grade_formatter.exs" => "75eed3126e2338224dd8b9ec934822f15b0138ca",
     "priv/pi/bash-watchdog.mjs" => "a424def5963621c0f6e450a46c153117e9173c43",
     "priv/pi/bridge.mjs" => "7c26c2f0b5ae9de37f0c516e1536d5a8c1ef5d6d",
     "priv/pi/package-lock.json" => "1835860d59a282f9d57c52fd6af70fad9ab6bbdd",

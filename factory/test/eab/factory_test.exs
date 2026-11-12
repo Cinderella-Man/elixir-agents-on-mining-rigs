@@ -237,6 +237,36 @@ defmodule Eab.FactoryTest do
     assert {:error, _} = Factory.check(["ledgerette-pr-1", "ledgerette-pr-1"])
   end
 
+  test "a reference that fails only on a test the project skips is skipped_test, not a failure of the reference" do
+    contract = %{"starting_failures" => ["M::test a"]}
+
+    empty = %{
+      "passed" => false,
+      "hidden" => result(%{"M::test a" => "failed"}, %{"M::test a" => "test"})
+    }
+
+    run = fn states, code ->
+      Map.merge(result(states), %{"returncode" => code, "passed" => false})
+    end
+
+    skipped = run.(%{"M::test a" => "passed", "M::test s" => "skipped"}, 0)
+    passing = Map.put(run.(%{"M::test a" => "passed"}, 0), "passed", true)
+
+    failing =
+      run.(%{"M::test a" => "passed", "M::test s" => "skipped", "M::test f" => "failed"}, 2)
+
+    for {submission, hidden, reason} <- [
+          {skipped, skipped, "skipped_test"},
+          {passing, skipped, "skipped_test"},
+          {failing, skipped, "reference_existing_tests_fail"},
+          {passing, failing, "reference_hidden_tests_fail"}
+        ] do
+      gold = %{"passed" => false, "submission" => submission, "hidden" => hidden}
+      control = %{"empty_patch" => empty, "reference_patch" => gold}
+      assert Factory.first_failure(contract, control) == reason
+    end
+  end
+
   test "check times every step, a failing one too, and keeps the tail of a long failure, where a build says why" do
     assert {:ok, job} = Factory.check(["ledgerette-pr-1"], steps: steps())
     assert await_job(job)["counts"] == %{"checked" => 1}

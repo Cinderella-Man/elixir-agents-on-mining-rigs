@@ -24,7 +24,7 @@ usage:
   python task_licence.py deps --locks TSV --hex DIR --out PREFIX
       DIR holds <name>-<version>.head: the first bytes of each package's tarball from the Hex repository, enough to
       hold its metadata.config. Writes PREFIX.tsv: package, version, the licences the package declares for that
-      version, and whether they are all MIT, Apache-2.0 or BSD.
+      version, and whether they are all MIT, Apache-2.0, BSD or ISC (ISC added by the owner on 2026-11-12).
 Standard library only.
 """
 import argparse
@@ -40,12 +40,20 @@ sys.path.insert(0, os.path.join(HERE, "upstream"))
 import license_scan  # noqa: E402  (upstream, unchanged)
 import task_folder  # noqa: E402
 
-ALLOWED_SPDX = {"MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause"}
-# spellings packages use for the same three licences; reported as "allowed, not an SPDX id"
+ALLOWED_SPDX = {"MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"}
+# license_scan.py's families a project's root licence may have
+ROOT_FAMILIES = {"MIT", "Apache-2.0", "BSD", "ISC"}
+# spellings packages use for the same licences; reported as "allowed, not an SPDX id"
 LOOSE = [(re.compile(r"^mit( license)?$", re.I), "MIT"),
          (re.compile(r"^apache(\s|-)?(license)?[\s,-]*(v(ersion)?\s*)?2(\.0)?( license)?$", re.I), "Apache-2.0"),
          (re.compile(r"^apache$", re.I), "Apache-2.0?"),
-         (re.compile(r"^(new |modified |simplified )?bsd([\s-]?[23][\s-]?clause)?( license)?$", re.I), "BSD")]
+         (re.compile(r"^(new |modified |simplified )?bsd([\s-]?[23][\s-]?clause)?( license)?$", re.I), "BSD"),
+         (re.compile(r"^isc( license)?$", re.I), "ISC")]
+
+
+def root_allowed(families):
+    """True when the root licence file has at least one family and every family is in the list."""
+    return bool(families) and set(families) <= ROOT_FAMILIES
 
 
 def tree_licence(tree):
@@ -122,11 +130,11 @@ def join(a):
                           "pass" if ok else "fail:" + why])
         l0 = lic[t["start"]] or {}
         fam = l0.get("families") or []
-        root_ok = bool(fam) and set(fam) <= {"MIT", "Apache-2.0", "BSD"}
+        root_ok = root_allowed(fam)
         verdict = "pass" if root_ok and not failing else "fail"
         trows.append([t["id"], t["start"], l0.get("file", ""), "+".join(fam) or "none", t["provenance_licence"] or "",
                       str(len(t["files"])), str(len(t["files"]) - len(failing)), verdict,
-                      ("" if root_ok else "root licence not MIT, Apache-2.0 or BSD; ") + "; ".join(failing)])
+                      ("" if root_ok else "root licence not MIT, Apache-2.0, BSD or ISC; ") + "; ".join(failing)])
     with open(a.out + ".files.tsv", "w") as f:
         f.write("task\tpath\tsources\tverdict_start\tverdict_merge\tresult\n")
         f.writelines("\t".join(r) + "\n" for r in frows)

@@ -12,7 +12,8 @@
     {"elixir": "1.18.3", "otp": "27.3", "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble-20260509.1@sha256:05d0223efb52293e146b2b20fee462fd1372264fdd9491d9ea222dbf527c703f"},
     {"elixir": "1.19.2", "otp": "28.1", "image": "hexpm/elixir:1.19.2-erlang-28.1-ubuntu-noble-20260509.1@sha256:110251dc74530bb9773e271fea7afe4eae59e21052931d65ec669bf94cbc476d"},
     {"elixir": "1.19.5", "otp": "28.4.1", "image": "hexpm/elixir:1.19.5-erlang-28.4.1-ubuntu-noble-20260509.1@sha256:454a42ec00439749f20a82875422a1185a9887549d4fd92908ec97dba442806f"},
-    {"elixir": "1.20.3", "otp": "29.0.5", "image": "hexpm/elixir:1.20.3-erlang-29.0.5-ubuntu-noble-20260810@sha256:f1ee5c316e7716d3c4f5b482cf60d465473d1eb9aef3254a39d6bd9502c80258"}
+    {"elixir": "1.20.3", "otp": "29.0.5", "image": "hexpm/elixir:1.20.3-erlang-29.0.5-ubuntu-noble-20260810@sha256:f1ee5c316e7716d3c4f5b482cf60d465473d1eb9aef3254a39d6bd9502c80258"},
+    {"elixir": "1.20.4", "otp": "29.1.2", "image": "hexpm/elixir:1.20.4-erlang-29.1.2-ubuntu-noble-20261024.1@sha256:39408df27e2813176bf7a53a0f883961707f1e5db3fcae073b2c0c99259d88bc"}
   ],
   "postgres": [
     {"version": "10", "image": "postgres:10.23-alpine@sha256:63cfb6eac6b362c7c994f22c3804c61b31898cf0cb52f8e7e86bd99a244f4366"},

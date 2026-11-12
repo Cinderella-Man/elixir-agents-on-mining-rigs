@@ -502,7 +502,8 @@ defmodule Eab.Factory do
   @doc """
   Which check of README section 4 a failed first round of controls fails first: 4 and 5 the unchanged project, 6 the
   reference, 7 the early exit, 8 the partial fix; `grader_identity` when the controls hold but the grading code
-  changed while they ran.
+  changed while they ran. A reference whose first failing step fails only because the project marks a test as
+  skipped is `skipped_test`, not a failure of the reference: the grader passes no skipped test (section 2.2).
   """
   def first_failure(contract, control) do
     empty = control["empty_patch"] || %{}
@@ -524,7 +525,7 @@ defmodule Eab.Factory do
         "starting_failures_differ"
 
       gold["passed"] != true ->
-        "reference_" <> reference_part(gold)
+        reference_reason(gold)
 
       bypass["passed"] == true ->
         "early_exit_accepted"
@@ -540,15 +541,28 @@ defmodule Eab.Factory do
     end
   end
 
+  defp reference_reason(gold) do
+    {part, step} = reference_part(gold)
+    if skipped_only?(gold[step]), do: "skipped_test", else: "reference_" <> part
+  end
+
   defp reference_part(gold) do
     cond do
-      get_in(gold, ["submission", "passed"]) != true -> "existing_tests_fail"
-      get_in(gold, ["hidden", "passed"]) != true -> "hidden_tests_fail"
-      get_in(gold, ["regression", "passed"]) != true -> "regression_fails"
-      get_in(gold, ["regression_coverage", "passed"]) != true -> "no_test_fails_first"
-      true -> gold["reason"] || "fails"
+      get_in(gold, ["submission", "passed"]) != true -> {"existing_tests_fail", "submission"}
+      get_in(gold, ["hidden", "passed"]) != true -> {"hidden_tests_fail", "hidden"}
+      get_in(gold, ["regression", "passed"]) != true -> {"regression_fails", "regression"}
+      get_in(gold, ["regression_coverage", "passed"]) != true -> {"no_test_fails_first", nil}
+      true -> {gold["reason"] || "fails", nil}
     end
   end
+
+  # A run that finished and exited 0 with a skipped test and no failed one: a skipped test alone fails it.
+  defp skipped_only?(%{"completed" => true, "returncode" => 0} = run) do
+    states = Map.values(run["test_results"] || %{})
+    "skipped" in states and Enum.all?(states, &(&1 in ~w(passed skipped excluded)))
+  end
+
+  defp skipped_only?(_), do: false
 
   # A checked task's folder becomes the probed copy: written beside it, then swapped in by two renames.
   defp install!(id, work) do

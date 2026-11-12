@@ -815,6 +815,12 @@ defmodule Eab.BundleMakerTest do
     assert {:error, "reference_fails_hidden", "M::test a"} =
              BundleProbe.observe("REF", &Map.put(runs, "REF", broken)[&1])
 
+    # A hidden test the project marks as skipped: not a failure of the reference, but no fix can pass it (E86).
+    skipped = result.(%{"M::test a" => "passed", "M::test c" => "skipped"}, %{})
+
+    assert BundleProbe.observe("REF", &Map.put(runs, "REF", skipped)[&1]) ==
+             {:error, "skipped_test", "the project marks hidden tests as skipped: M::test c"}
+
     setup_only = result.(%{"M::test a" => "failed"}, %{"M::test a" => "setup"})
 
     assert {:error, "no_starting_failure", _} =

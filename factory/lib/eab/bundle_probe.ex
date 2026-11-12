@@ -62,6 +62,10 @@ defmodule Eab.BundleProbe do
   @doc """
   The test names from a run of the hidden tests on the unchanged project and on the reference. `run` takes a patch
   and returns the hidden run's parsed result (`Eab.Grader.parse/2`).
+
+  A hidden test the project itself marks as skipped (`@tag :skip`) is not a failure of the reference, but the grader
+  passes no skipped test (README section 2.2), so no fix could ever pass such a task: it is refused as
+  `skipped_test`, naming the skipped tests, before any control runs.
   """
   def observe(reference, run) do
     start = run.("")
@@ -69,6 +73,7 @@ defmodule Eab.BundleProbe do
     states = fixed["test_results"] || %{}
     required = for {name, "passed"} <- states, do: name
     failing = for {name, state} <- states, state not in ~w(passed excluded skipped), do: name
+    skipped = for {name, "skipped"} <- states, do: name
     starting = Grader.behavioral_failures(start)
 
     cond do
@@ -82,6 +87,10 @@ defmodule Eab.BundleProbe do
 
       failing != [] ->
         {:error, "reference_fails_hidden", Enum.join(Enum.sort(failing), "; ")}
+
+      skipped != [] ->
+        {:error, "skipped_test",
+         "the project marks hidden tests as skipped: " <> Enum.join(Enum.sort(skipped), "; ")}
 
       required == [] ->
         {:error, "no_passing_test", "no hidden test passes on the reference"}

@@ -13,7 +13,7 @@ defmodule ElixirAgentBenchmark.TrustedFormatter do
         _ -> "unknown"
       end
 
-    identity = Atom.to_string(test.module) <> "::" <> Atom.to_string(test.name)
+    identity = Atom.to_string(test.module) <> "::" <> Atom.to_string(test.name) <> parameters(test)
     # Every record starts on a fresh line: ExUnit's own formatter can print
     # progress dots between any two writes.
     IO.puts("\nEAB_TEST:" <> state <> ":" <> Base.encode64(identity))
@@ -47,6 +47,18 @@ defmodule ElixirAgentBenchmark.TrustedFormatter do
   end
 
   def handle_cast(_event, count), do: {:noreply, count}
+
+  # A module that ExUnit runs once per parameter set (`use ExUnit.Case, parameterize: [...]`, Elixir 1.18 and later)
+  # gives every run the same test names; the parameters tell the runs apart. Every other test keeps its plain name.
+  defp parameters(test) do
+    case Map.get(test, :parameters) do
+      parameters when is_map(parameters) and map_size(parameters) > 0 ->
+        " " <> inspect(parameters, limit: :infinity, printable_limit: :infinity, width: :infinity)
+
+      _ ->
+        ""
+    end
+  end
 
   defp failure_type({_kind, %{__struct__: module}, _stack}), do: Atom.to_string(module)
   defp failure_type({_kind, {%{__struct__: module}, _nested_stack}, _stack}), do: Atom.to_string(module)

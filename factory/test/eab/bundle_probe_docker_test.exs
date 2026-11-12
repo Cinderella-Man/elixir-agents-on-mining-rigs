@@ -138,5 +138,43 @@ defmodule Eab.BundleProbeDockerTest do
         assert control["valid"], inspect(control)
       end)
     end
+
+    # ledgerette-pr-2 with a second hidden test that the project marks as skipped (E86): its reference passes every
+    # other hidden test, yet no fix can pass the grader's hidden step, so the probe refuses it as skipped_test before
+    # any control runs, and leaves the folder as it was.
+    id = "ledgerette-pr-2"
+    dir = Path.join(root, "skipped/#{id}")
+    File.mkdir_p!(Path.dirname(dir))
+    File.cp_r!(Eab.MadeUpTasks.dir(id), dir)
+
+    File.write!(Path.join(dir, "reference-tests.patch"), """
+    diff --git a/test/debits_test.exs b/test/debits_test.exs
+    new file mode 100644
+    --- /dev/null
+    +++ b/test/debits_test.exs
+    @@ -0,0 +1,12 @@
+    +defmodule Ledgerette.DebitsTest do
+    +  use ExUnit.Case
+    +
+    +  test "debits sum only the debit entries" do
+    +    assert Ledgerette.debits([{:credit, 10}, {:debit, 4}, {:debit, 3}]) == 7
+    +  end
+    +
+    +  @tag :skip
+    +  test "debits of an empty ledger are zero" do
+    +    assert Ledgerette.debits([]) == 0
+    +  end
+    +end
+    """)
+
+    before = File.read!(Path.join(dir, "case.json"))
+    prepare.(id, dir)
+
+    assert BundleProbe.finish(id, dir, "bundle-probe") ==
+             {:refused, "skipped_test",
+              "the project marks hidden tests as skipped: " <>
+                "Elixir.Ledgerette.DebitsTest::test debits of an empty ledger are zero"}
+
+    assert File.read!(Path.join(dir, "case.json")) == before
   end
 end

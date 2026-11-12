@@ -5,8 +5,8 @@ Two checks every task must pass before it, or a session on it, is used for train
 `docs/research/notes/task_collection_guide.md`, section 8):
 
 1. **Licence (E51):** every project file the task touches has a passing verdict from the per-file licence scan, read
-   on the project's tree at the task's commits; the project's root licence is MIT, Apache-2.0 or BSD. The licences
-   of the locked Hex dependencies are listed beside it.
+   on the project's tree at the task's commits; the project's root licence is MIT, Apache-2.0, BSD or ISC (ISC
+   added by the owner on 2026-11-12). The licences of the locked Hex dependencies are listed beside it.
 2. **Hold-out (E12):** the task's repository is not one of the bench's 12 projects or their organisations
    (`config/holdout.json`), and no text of the task shares a run of 8 or 12 words with the bench's 20 cases, except
    text that several held-out projects share or that the task's own project already held.
@@ -20,6 +20,7 @@ The checks drop nothing: they write tables, and whoever runs the factory decides
 | `check_tasks.sh` | the wrapper: checks out each commit's tree from a clone (through a temporary index, so the clone is only read), runs the steps below in a Python container with no network, and fetches the Hex metadata with `curl` on the host when `HEX_FETCH=1` |
 | `task_folder.py` | the reader of a task folder in the one format (`factory/README.md`, section 3): the project files a task touches (its four patches and its three test-file lists) and its texts |
 | `task_licence.py` | `scan-trees` (the root licence file, then `upstream/license_scan.py` on each tree), `join` (a verdict per touched file and per task), `locks` (the packages in each starting commit's `mix.lock`), `deps` (each package's own licences for the locked version, from the `metadata.config` in its Hex tarball) |
+| `test_task_licence.py` | the tests of the licence list (`python3 -I factory/tools/test_task_licence.py`, standard library only) |
 | `task_holdout.py` | the repository and name check, and the 8- and 12-word spans against the bench's case files, with each hit classed `common`, `own-tree` or `to-read` |
 | `upstream/license_scan.py`, `upstream/heldout_check.py` | the sister repository's two tools, copied unchanged (origin below) |
 

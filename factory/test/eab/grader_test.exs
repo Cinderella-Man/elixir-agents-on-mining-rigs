@@ -115,6 +115,101 @@ defmodule Eab.GraderTest do
     assert parsed["exclusion_tags"] == %{"Elixir.Example::test b" => ["ee_only"]}
   end
 
+  test "a test run once per parameter set is one record per set; a plain test keeps the bench's record" do
+    Code.require_file(Eab.Inventory.path("priv/fixtures/grade_formatter.exs"))
+    formatter = Module.concat(ElixirAgentBenchmark, TrustedFormatter)
+    plain = %ExUnit.Test{module: Example, name: :"test a", state: nil, tags: %{}}
+
+    # `parameters` is a field of ExUnit.Test from Elixir 1.18 on; an older struct has no such key.
+    sets =
+      for serializer <- [:json, :msgpack],
+          do: Map.put(plain, :parameters, %{serializer: serializer})
+
+    writes =
+      writes(fn ->
+        for test <- [Map.delete(plain, :parameters), Map.put(plain, :parameters, %{}) | sets],
+            do: formatter.handle_cast({:test_finished, test}, 0)
+      end)
+
+    names =
+      for "\nEAB_TEST:passed:" <> id <- Enum.map(writes, &String.trim_trailing(&1, "\n")),
+          do: Base.decode64!(id)
+
+    assert names == [
+             "Elixir.Example::test a",
+             "Elixir.Example::test a",
+             "Elixir.Example::test a %{serializer: :json}",
+             "Elixir.Example::test a %{serializer: :msgpack}"
+           ]
+  end
+
+  test "ExUnit's parameterize: runs give a finished run with one record per parameter set" do
+    project =
+      Path.join(System.tmp_dir!(), "eab-parameterize-#{System.unique_integer([:positive])}")
+
+    on_exit(fn -> File.rm_rf!(project) end)
+
+    files = %{
+      "mix.exs" => """
+      defmodule Parameterized.MixProject do
+        use Mix.Project
+        def project, do: [app: :parameterized, version: "0.1.0", deps: []]
+      end
+      """,
+      "test/test_helper.exs" => "ExUnit.start()\n",
+      "test/serializer_test.exs" => """
+      defmodule SerializerTest do
+        use ExUnit.Case, async: true, parameterize: [%{serializer: :json}, %{serializer: :msgpack}]
+
+        test "encodes", %{serializer: serializer}, do: assert(serializer in [:json, :msgpack])
+        test "speaks json", %{serializer: serializer}, do: assert(serializer == :json)
+      end
+
+      defmodule PlainTest do
+        use ExUnit.Case
+        test "plain", do: assert(true)
+      end
+      """
+    }
+
+    for {file, body} <- files do
+      File.mkdir_p!(Path.dirname(Path.join(project, file)))
+      File.write!(Path.join(project, file), body)
+    end
+
+    # The grader's own command (`Eab.Grader.test_command/2`), with the reporter read from this checkout.
+    reporter = Eab.Inventory.path("priv/fixtures/grade_formatter.exs")
+
+    args =
+      ["-r", reporter, "-S", "mix", "test", "--seed", "0", "--formatter", "ExUnit.CLIFormatter"] ++
+        ["--formatter", "ElixirAgentBenchmark.TrustedFormatter"]
+
+    env = [
+      {"MIX_ENV", "test"},
+      {"MIX_BUILD_ROOT", Path.join(project, "_build")},
+      {"MIX_DEPS_PATH", Path.join(project, "deps")}
+    ]
+
+    {output, code} = System.cmd("elixir", args, cd: project, env: env, stderr_to_stdout: true)
+
+    parsed =
+      Grader.parse(%{"returncode" => code, "output" => output, "output_truncated" => false})
+
+    assert parsed["completed"], output
+
+    assert parsed["test_results"] == %{
+             "Elixir.PlainTest::test plain" => "passed",
+             "Elixir.SerializerTest::test encodes %{serializer: :json}" => "passed",
+             "Elixir.SerializerTest::test encodes %{serializer: :msgpack}" => "passed",
+             "Elixir.SerializerTest::test speaks json %{serializer: :json}" => "passed",
+             "Elixir.SerializerTest::test speaks json %{serializer: :msgpack}" => "failed"
+           }
+
+    assert Grader.behavioral_failures(parsed) == [
+             "Elixir.SerializerTest::test speaks json %{serializer: :msgpack}"
+           ]
+  end
+
   defp writes(fun) do
     leader = spawn_link(fn -> collect_writes([]) end)
     previous = Process.group_leader()

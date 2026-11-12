@@ -5,7 +5,7 @@
     "environment": {"MIX_ENV": "test"},
     "setup_commands": ["mix compile"],
     "before_test_commands": [],
-    "packages": ["xdelta3", "mtools"],
+    "packages": ["xdelta3", "mtools", "zip"],
     "release_files": [
       {
         "url": "https://github.com/fwup-home/fwup/releases/download/v1.17.1/fwup_1.17.1_amd64.deb",
