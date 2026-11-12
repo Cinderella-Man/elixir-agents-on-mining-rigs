@@ -83,7 +83,8 @@ Then two scans, on every checked task:
 - **Licence, per file** (`factory/tools/task_licence.py`): every file the fix or the tests touch must be under the
   project's own permissive licence. `fail` when a touched file carries another licence notice or is a third-party
   file kept in the repository (`exclude:vendored`, for example a minified JavaScript library under `assets/vendor/`);
-  binary files are left out of the task.
+  binary files are left out of the task. A file the scan leaves out only for its length (`exclude:large`) does not
+  fail the task once its changed part is read and recorded (section 9).
 - **Hold-out** (`factory/tools/task_holdout.py`): the repository and the names in the task are not a held-out
   project's, and the task shares no run of 8 or 12 words with the bench's 20 cases other than boilerplate. A shared
   run that is not boilerplate is `review` and is read before the task is used.
@@ -173,6 +174,22 @@ table keeps its id and the reason name of this page, and the counts per reason a
 name a licence of the list in plain words and be the maintainers' own; the file, the commit and the sentence are
 recorded with every case of that project as the proof. A licence file, where there is one, still decides.
 
+**A file left out of the scan only for its length does not fail a case** (the owner, 2026-11-12: "if they are
+rejected only because they are long - count them"). The scan does not read a file over 262,144 bytes and marks it
+`exclude:large`; until this rule that mark failed the case. Such a case counts when all three hold:
+
+- the length is the only finding: every other file the case touches passes, and the long file has no other mark;
+- the part of the long file that the case's own change adds or removes is read, and it holds no licence notice, no
+  copyright line of another holder and no code taken from another project;
+- the file, its size in bytes before and after the change, what the file is and what the changed part holds are
+  recorded with the case (a `licence_large.tsv` or `large_file_reviews.tsv` in the project's data folder).
+
+A long file that turns out to carry third-party code or another licence notice is judged by the list like any other
+file. A package lock file names the licence of each package it lists: that is information about a dependency, not
+licensed text in the file, and a dependency is judged where a session quotes its files (section 6). First cases:
+`santiment/sanbase2` 5405 and 5394 (`priv/repo/structure.sql`, the database layout written by the project's own
+tools) and `mbta/screens` 3307 (`assets/package-lock.json`).
+
 The list is applied three times: to the repository (section 1), to every file a task touches (section 4) and to every
 dependency file a session quotes (section 6). The dataset's own licence: third-party code keeps its licence, named
 per row with the notices shipped; the licence of the owner's own part is not final (the owner leans to MIT). This page
@@ -196,5 +213,5 @@ is not legal advice.
 - Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
   the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
-- The licence tool reads only a root licence file: it does not yet accept a README statement (section 9), so
-  `hexpm/hexpm`'s cases fail it until that is added.
+- The licence tool still marks a case `fail` when a file is left out only for its length; the rule of section 9 is
+  applied by a recorded reading until the tool reads such files itself (registry E110).

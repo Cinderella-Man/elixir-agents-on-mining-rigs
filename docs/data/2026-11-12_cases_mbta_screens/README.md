@@ -359,6 +359,12 @@ two scan tools are those of the first job's; a temporary copy of the bench's cas
 - **3307** changes the front end's npm lock file. The licence scan leaves a file that large out as unread and fails the
   case, so 3307 is checked but not counted; one more candidate, 3287, was taken in its place. The rules read
   `mix_files` for Elixir's lock file only (dataset rules, section 3).
+  **Since 2026-11-12, 17:40, 3307 counts** (dataset rules, section 9: a file left out only for its length does not
+  fail a case once its changed part is read and recorded). The reading is in `large_file_reviews.tsv`: the change
+  adds 494 lines and removes 37 in `assets/package-lock.json` (526,930 bytes before, 546,492 after), all of them
+  lock-file entries for 46 packages, with no licence notice, no copyright line and no code. With it the project has
+  20 good cases: 9 bug fixes and 11 features. The statements above that say 19, or that 3307 is not counted,
+  describe the state before this rule.
 - The other shared runs are boilerplate that several of the bench's projects share, or code already in the project's
   own tree, as in section 4. The 89 locked dependencies (88 at 3284's and 3287's commits) read as in section 4.
 
