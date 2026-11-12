@@ -1,0 +1,7 @@
+candidates	reason	whose
+175	needs_program:gleam	the factory's
+53	no_image:1.19.2/28.3.1	the factory's
+37	elixir_before_1.18	the dataset's floor
+8	no_merge_commit	the census (no merge commit on the default branch)
+5	paths_never_match	the factory's
+249	not reached	-

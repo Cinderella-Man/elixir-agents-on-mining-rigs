@@ -1,0 +1,6 @@
+task	start	root_licence	licence_file	licence_file_sha256	families	holders	line	statement	mentions
+oli-torus-pr-6623	46b7ac45fbc8c2e63b31ffdaa5d747248480e390	ok:licence-file	LICENSE.md	696205cef189d5a5830c25952f95f7109b57f92936d6f7639fd7ca9a64b5ac65	MIT	Carnegie\\ Mellon\\ University	0		0
+oli-torus-pr-6629	61894ecfd0a92242f2aceb7020c5fe6eeeeae691	ok:licence-file	LICENSE.md	696205cef189d5a5830c25952f95f7109b57f92936d6f7639fd7ca9a64b5ac65	MIT	Carnegie\\ Mellon\\ University	0		0
+oli-torus-pr-6639	30ef607e87f5dbf3ea7af30875ba02da4c88e8b2	ok:licence-file	LICENSE.md	696205cef189d5a5830c25952f95f7109b57f92936d6f7639fd7ca9a64b5ac65	MIT	Carnegie\\ Mellon\\ University	0		0
+oli-torus-pr-6664	c7a7c7622e8ba6666ad7ed10b63d15c90f1ad691	ok:licence-file	LICENSE.md	696205cef189d5a5830c25952f95f7109b57f92936d6f7639fd7ca9a64b5ac65	MIT	Carnegie\\ Mellon\\ University	0		0
+oli-torus-pr-6722	36ae03ba4fb63bb4fa20d6d2fb8e27e83fb22d52	ok:licence-file	LICENSE.md	696205cef189d5a5830c25952f95f7109b57f92936d6f7639fd7ca9a64b5ac65	MIT	Carnegie\\ Mellon\\ University	0		0

@@ -1,0 +1,15 @@
+kind	package	version	licences	class	tasks
+hex	anubis_mcp	0.13.1	LGPL-3.0	outside	5
+hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside	5
+hex	cowboy_telemetry	0.4.0	Apache 2.0	allowed, not an SPDX id	5
+hex	eflame	1.0.1	LISENSE.md	outside	5
+hex	libcluster_ec2	0.8.2	MIT License	allowed, not an SPDX id	5
+hex	metrics	1.0.1	BSD	allowed, not an SPDX id	5
+hex	open_api_spex	3.22.0	MPL-2.0	outside	5
+hex	parse_trans	3.4.1	Apache 2.0	allowed, not an SPDX id	5
+hex	poison	5.0.0	0BSD	outside	5
+hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside	5
+hex	telemetry_poller	0.4.0	Apache 2.0	allowed, not an SPDX id	5
+hex	unicode_util_compat	0.7.1	Apache 2.0	allowed, not an SPDX id	5
+hex	uuid	1.1.8	Apache 2.0	allowed, not an SPDX id	5
+hex	yamerl	0.10.0	BSD 2-Clause	allowed, not an SPDX id	5

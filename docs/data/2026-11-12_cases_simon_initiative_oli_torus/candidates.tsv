@@ -1,0 +1,536 @@
+number	merged	start	elixir	otp	gleam	ci_database	resolver	resolver_reason	kind_read_ahead	this_job
+7011	2026-11-11T17:20:48Z	832806b25f7a827f444f4bb5e8724840f4753d18	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7038	2026-11-10T18:22:10Z	48331fc4f2df6082737525228f2001b1d0213242	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+7035	2026-11-10T16:27:56Z	1e2f36434fd4654edc12d18423b08f21f6083e70	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6980	2026-11-10T15:52:46Z	edb286cffd99a9c881f6a56fd82582e9d4fd4026	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7031	2026-11-10T13:43:23Z	748507e933900b1645c88082d15744378f96eea8	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7014	2026-11-09T19:45:09Z	dcc1063c0146ce72ad3e9ab903c7008c7320d922	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+7033	2026-11-09T18:53:18Z	4339977f2f09f7ede809a95997cb96c762f472e3	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7023	2026-11-09T18:04:53Z	ee9749f3a2bfac32688d3e2a9f96524b20eaa786	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7005	2026-11-09T17:39:08Z	b7d92dd23cefe30758bc2d5dd5b6baa70269284c	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7024	2026-11-09T12:31:42Z	2af1ca3649a38e18138376799084097f8a58b4b7	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+7000	2026-11-08T00:23:32Z	0ed9347046092713b03ac148a73e581f8ea6af36	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6936	2026-11-04T16:30:42Z	e2effab6939d26b3748a54c3457caf97a9f165a3	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6962	2026-11-03T19:44:16Z	26bcb97f7c9759f19c6cf8b0d7dbaef6f9305fc2	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7017	2026-11-03T18:23:02Z	d84cff446461023f91606788fbe0fe05b4a863f1	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6963	2026-11-02T16:25:04Z	487455f65089034d3161879218c04d8a6d066bd4	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7013	2026-10-30T17:48:13Z	004dc74a980d0bdccc6a0f4e945ba2bdd7e3fabd	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+7012	2026-10-30T16:17:13Z	39089b8d7383a6bbbe08171dbfcfb21685b8588b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7006	2026-10-29T19:29:05Z	68d94c040bb3d0524a1fcd2c238fda5c66f7cff5	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+7010	2026-10-29T18:02:55Z	bf71c4769971d8bfb48f2561c46aa6661814e9bd	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6999	2026-10-27T20:21:34Z	237980b77c0b97ad1995b4f51df50a6dfc56a7be	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6994	2026-10-27T15:23:58Z	6d77e9a7244bd128eb5b9b18be0773190031212d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6992	2026-10-27T15:08:51Z	9ab43b2102bc30bb9bd6e5415ba795380265b20f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6993	2026-10-27T12:56:44Z	27fe3b4e74cc19ad53c830a76c5cfac3846b2da9	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6991	2026-10-27T11:49:31Z	9ab43b2102bc30bb9bd6e5415ba795380265b20f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6985	2026-10-26T21:27:15Z	f48108d054618d9521c6608c82d7da84e0ddba74	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6920	2026-10-26T21:20:45Z	dca76ec94bb918f91a16c376c340f25a0fbfcf48	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6954	2026-10-26T19:54:07Z	054c83a41e23593d0a502854f6481196126a8298	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6946	2026-10-26T19:39:49Z	f5169ec2ff2e18837626dc64960580dfe2bce7b3	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6950	2026-10-26T15:11:40Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6929	2026-10-26T12:36:00Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6913	2026-10-26T12:35:57Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6932	2026-10-23T22:42:01Z	84c74c1dbe3d686e64daba1455d620309eedb922	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6947	2026-10-23T22:16:42Z	732409302f3a25de61bef1b4e7727fe75cb63a46	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6952	2026-10-23T20:26:04Z	95381f85924e20e7e00391887df351369661bb91	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6977	2026-10-23T18:36:45Z	1bb22a3f500d345a6fa4b05b979d41464319d66b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6971	2026-10-22T22:06:16Z	a30ee97c754f47abd5cef1f9144744e62b24bf3d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6965	2026-10-22T14:48:16Z	9c8120fbda4c309cca15ed94dd0ac968a96e364d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6951	2026-10-21T22:19:54Z	a660c3661f5bf65139b2650e79d99abb5eee9603	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6927	2026-10-21T19:50:45Z	16a4f9eb3e540d17325b80fd447ed7664f62e308	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6906	2026-10-21T17:52:17Z	d9b119ff872ad5726bf5c21d2d29e999ed0f2935	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6949	2026-10-21T15:20:20Z	81aeffb86d9a8aa35c56ddc91137eda238dd468f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6953	2026-10-21T15:01:22Z	532490aefc5db242f7fe98f0888a1eb11c159a37	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6955	2026-10-21T00:38:36Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6931	2026-10-19T23:33:29Z	7c840056001a541a946d245cdc47e83881c87e49	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6918	2026-10-19T23:31:42Z	8731d673cddd6da6b18599c883bfdebe5398b0a3	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6933	2026-10-16T12:28:09Z	24ee5a78414bb59916b5f368db55384e1900d3f2	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6939	2026-10-15T18:58:45Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6935	2026-10-14T21:25:38Z	791b797d77f055db47374aae9772404e942662e2	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6925	2026-10-14T15:14:18Z	0b3c6d89eb9f743eabc273e1d4c7ef33ccdc64fb	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6934	2026-10-14T12:04:16Z	b4dbb9caae931edbe90d5b58f9e902c754202fe0	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6911	2026-10-13T21:20:54Z	3d218921765b90728cac14618b42293a18aac4d0	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6875	2026-10-09T18:01:47Z	5eaa3b52f9c12de14a67c9d36a634d0f08c75100	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6915	2026-10-09T11:53:38Z	4953f04618ed47024e9ef753d89481cc6fac2849	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6910	2026-10-09T11:50:32Z	d2b3fa433ce8cc0cad25fa5f9dfdd79a3a795d6d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6905	2026-10-09T11:33:25Z	47458dcff6a6a7b0116c34914f9b478ba5707147	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6908	2026-10-07T14:07:10Z	20fd4b65d76fbba6aa363db918d573338cf7cda6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6903	2026-10-07T13:34:04Z	da82388b94885192b1906715086a10987e959015	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6894	2026-10-07T12:17:02Z	5c94243fededdeb65a3e5487ba995c0d35f810b2	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6880	2026-10-05T18:55:31Z	beeb3ac104bc47729fea8aefbc7558f8fd4337b2	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6893	2026-10-05T13:25:10Z	8c9a609e9738ed62b0fffbf706e6d72a254aef94	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6902	2026-10-05T13:23:40Z	b3f2e2dee0d1ecf9a838ed48de89d3d560df3f2d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6887	2026-10-02T14:55:21Z	852481c901363b9f41e6926f9363e213549909c5	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6899	2026-10-02T13:51:08Z	ca020c002caa002bb3d388643015e5f496113ae7	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6892	2026-10-02T13:45:21Z	6ec49c2aa65b4719109a5d55a09cdb209578dabb	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6872	2026-10-01T21:58:56Z	01693a1e7935d9090207d8d6a0e9f1db7b7f7309	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6898	2026-10-01T21:26:51Z	897aa16e7caeacce607fd23f53f9cc07a7f445a7	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6890	2026-10-01T21:24:59Z	4f5f36be799cdd7d1476aafacc0608e30a58eaac	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6889	2026-10-01T20:45:37Z	09bd1c46b26808211a3066041c048b61b61c18c1	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6897	2026-10-01T17:36:18Z	6dc2617a468eead8582850b82f1a1a91a3e97743	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6896	2026-10-01T15:47:26Z	bb68ee9e7a4a205b75424c703bbc34e9b3b971c8	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6895	2026-10-01T15:03:50Z	4bdcb0f66c39b790a5ea362ac074eda5e2eeb904	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6883	2026-09-30T18:55:28Z	fbaef832c0c9ae06d5f9a4baa8e437edc1476678	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6886	2026-09-29T19:06:01Z	ada00f3db5047fa11fa61b7e1bf7a9b48420ec86	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6882	2026-09-29T15:59:39Z	695d0eb0708b9a01ec7b3ce3c322209390074f02	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6843	2026-09-28T20:22:46Z	c4b2cc7a6c718369da102b5e44aee7efcdbcf71e	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6881	2026-09-25T13:26:47Z	ab957b1c6b83b53a55fa9d5ccf92526fb6cff33f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6870	2026-09-24T19:21:36Z	bf434bbd79f4247891427732ab161479a0475d02	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6865	2026-09-23T19:24:05Z	4d3fbeb30ad449a84826983728e9a57258d81f0a	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6861	2026-09-21T22:21:44Z	055eff1133e4ff096034d47ff9aebe04a6b59bad	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6860	2026-09-21T16:42:06Z	2dd99fa501935c514ea2fea28abc7ae742c35e1b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6855	2026-09-18T16:41:05Z	f692b0ff8cf009c736a132f426a936eca1f5498b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6854	2026-09-17T18:06:53Z	6df47a6e5beb24d7b41d239002bf75b72ba4bc8a	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6806	2026-09-17T13:51:11Z	11f7624cab4ec3d3e46d01420358c2401c537e67	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6853	2026-09-17T11:30:28Z	f870cf63f5b1449770a1a74d02f149eee7ebf817	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6856	2026-09-16T20:14:17Z	27f0bf0ebb6239cdcbaf44bb20e1d6c7c93f5aa9	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6849	2026-09-16T19:25:30Z	0a83b067facae3f834b9e28b4399ca0ed7c4e6e5	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6852	2026-09-16T16:57:44Z	fca7b4f2871ec9ea72763253b11aa3b664f87da6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6837	2026-09-14T19:54:45Z	fd0bbbc57539cc747066cb2e4aa33f35bb497b43	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6835	2026-09-11T18:37:52Z	a9557db439ac88d152408117321727e7fe557bcb	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6834	2026-09-10T17:49:52Z	417fa074faadfe2d2392ac11a8e88cd5024831eb	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6827	2026-09-10T16:29:55Z	a452b517389eca7c1d251990efb55b3c78fff426	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6842	2026-09-10T02:03:14Z	eb14cb38e5765f9f9e52b4c0612ccd1e0d40516b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6838	2026-09-09T01:06:37Z	3f36758eb3d49f1b1e818da40187417e3cd56db1	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6815	2026-09-08T15:08:38Z	0fd5a7007a5e9fdb4e8ee30dd0915195dc16b88b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6820	2026-09-07T14:29:52Z	190611618bbb1bf5018f45f6269c6d6a249ab982	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6828	2026-09-07T12:18:09Z	ef6c8490f1ace6575c602d1e4647d81c116b8ab1	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6825	2026-09-04T23:03:45Z	f1867b3549c6a42d16337fcda87525ada022c338	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6824	2026-09-04T20:25:29Z	b9bdfa45256b06af0fe03586c3d60e99d3a758fe	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6811	2026-09-04T01:44:41Z	fed6fb6cd78e6f0ea2a7d69388f9301915d26e68	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6817	2026-09-03T17:25:49Z	6a23160233d8e7c5bf82bad741522f7c271e7e9d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6821	2026-09-03T00:37:22Z	b9a8ad1e273954246f59ae9b5fcb452fd73c9be3	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6823	2026-09-02T20:27:56Z	234584f4b141e398194669e4686680a13dcf2861	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6800	2026-09-02T13:33:25Z	7ee91a8a131cc8c8973a551e51c506235ab86eac	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6813	2026-09-01T17:08:09Z	afc5c4c392bd8ebcf41e7a0a968b265c85bf1146	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6794	2026-09-01T11:23:01Z	851266b7d227cd86f5a0cf83bc4b8fbe4987217f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6809	2026-08-31T18:36:56Z	5edbafd35512451c6209289d52f07d4129e0e989	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6808	2026-08-31T15:55:55Z	2ce64ebd7dc6f6956bee3f918a33a9d5fccfa55f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6793	2026-08-28T16:36:22Z	e43aa3b3a6f3f67809dd84d852526e4aa77dc61b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6801	2026-08-28T13:21:25Z	1709913042c4a3d9eeedf1664b61de566f8d1946	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6795	2026-08-28T11:57:44Z	39ba1e0f2ac53b06083706b88aa5eb52dd2c3647	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6796	2026-08-28T11:57:02Z	e73cf1f18b45e2fa3f4d9d7e1f664fd96bf00fe7	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6802	2026-08-28T11:20:47Z	88fd245c1a6da5611bcdce42f006d6a2ce091dae	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6803	2026-08-28T11:16:55Z	c34470a1b5211c75a3c6339cd0786bb07226eb31	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6773	2026-08-25T16:20:47Z	3fa0d9253054e12560842f7477f676e17606c7ba	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6775	2026-08-25T16:18:15Z	42b0ba1b1691847118409388e98df3d8ef51edaf	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6789	2026-08-24T20:06:17Z	2bbe5da2d087e99519b6356ca7caa27636dfa15a	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6785	2026-08-24T14:52:18Z	387fb3202658acad20f6dd786d9d0b1bf9902998	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6791	2026-08-20T20:21:52Z	5e76fb50839bbcd4930c2f50e997f89573d0fdf8	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6765	2026-08-20T19:19:19Z	d1ff6a7fd07f7a2a2f783cada8067474130db05c	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6790	2026-08-20T16:55:05Z	2e83fa418551f13ced785f289f7a2d78817ee7e0	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6762	2026-08-18T17:08:12Z	310c1b1321fa298e68cf7d24133598aa479a3838	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6782	2026-08-18T16:17:49Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6770	2026-08-18T11:57:11Z	cf238da96d92043540ee19fb5db01ed70ff97076	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6778	2026-08-18T11:26:23Z	91b163c6d37ffa255042a1c4d5350a6a9790b64c	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6777	2026-08-17T19:43:46Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6771	2026-08-14T19:17:38Z	-	-	-	-	-	-	-	-	left out: no_merge_commit
+6767	2026-08-10T22:38:23Z	b5757200c19beca57c82be6b25ac29299376e017	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6751	2026-08-07T23:46:18Z	18e723dcedc3ade16a13f353829f04e21685808f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6763	2026-08-07T02:58:58Z	9762fc9101a4741417e402276e4b833072b7fa09	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6725	2026-08-07T02:58:46Z	c2b891d3073e7e26cc5cc1f42f88e0623920787a	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6740	2026-08-05T17:30:44Z	b9846d8e6e68075bf46852e28af708dbb9db8b53	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6758	2026-08-05T17:29:13Z	c702b779297fee87928a9e6c3e6e79a4fb3b6954	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6750	2026-08-04T19:48:18Z	f8a1b5c6bf85470553761dbdbed4fa4e4595c441	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6742	2026-08-04T19:18:12Z	558e467d333615a0b8aadb1f279c009e60f3f894	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6745	2026-08-03T15:11:21Z	1784b3ea123fc1b955a20afe061d2cde2294f41d	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6743	2026-07-23T16:14:04Z	56b95f21eae104b109bcd1db5d0a9db01c6de270	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6739	2026-07-22T15:37:36Z	56b95f21eae104b109bcd1db5d0a9db01c6de270	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6737	2026-07-19T15:13:08Z	8ac36a8158643d9066f38920b214b7e6fe52cfa4	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6732	2026-07-19T15:10:33Z	6a221d4644b6b5bba4b21b7fd61be2d291061052	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6729	2026-07-19T15:09:44Z	bf33610d4db0c336cd4184729efe27ced57b2fd1	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6731	2026-07-17T20:08:22Z	f302e878918a0c93648fe4804739a79e2370a6be	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6728	2026-07-15T18:07:35Z	51cb055b9a5f81861c0395334703dc43ee7e0e63	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6727	2026-07-15T11:20:44Z	addb54c77cb27682ca7de25ffa86ba65b2b373e7	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6726	2026-07-14T18:56:10Z	e0a54e45445185baae8cc15a98fd81d226ed0631	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6721	2026-07-14T17:49:28Z	0a05e432b1b65e0d0b73b8c40af57b1f68787d07	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6712	2026-07-14T12:26:16Z	0c3c88e50643d7e0c7bcfebdd172a4aa1690768f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6663	2026-07-14T12:22:35Z	8301ac530d235f34a3f3c143c44b733756726e8f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6715	2026-07-10T14:45:21Z	2f85e5b9028663453eb033e8b92a3c0de370a8d0	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6702	2026-07-10T11:45:17Z	a396e4a159958f1240d160f9ffc5ce0e472fab20	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6713	2026-07-09T19:04:41Z	9979ba2cdb0906c8c99b7296b0091646ada3af24	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6719	2026-07-09T17:58:25Z	cc96d5e71f64ec31db36441795fb77f03262ceb6	1.19.2	28.1.1	no	pgvector/pgvector:pg18	error	paths_never_match	bug_fix	left out: paths_never_match
+6722	2026-07-09T17:29:30Z	36ae03ba4fb63bb4fa20d6d2fb8e27e83fb22d52	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
+6714	2026-07-08T16:02:21Z	bdae16e719c607c941048cc5bcc354ba816b52fe	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6704	2026-07-08T12:55:37Z	f11fc0344c4cb4f422b4feb0793c26d29e7d832a	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6705	2026-07-07T21:11:01Z	ed85b86f5875083a27f114d4ae6c5697c10c45c6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6699	2026-07-03T16:14:31Z	0bd5ca071a4f2379f74d43c436d2cabe5f9bf819	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6706	2026-07-01T20:15:58Z	0b40862e89e1410a2e5f8f210bd9174bd557acd1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: dropped probe skipped_test
+6676	2026-07-01T20:06:21Z	d465099b8246cb90577606fd5f61a65c16065b08	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6700	2026-07-01T18:24:30Z	a0f3538b463372df2de9baf3cc5864872849ab65	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6684	2026-07-01T15:50:05Z	8839fb63fe8d56c59913fc667c680aa061a54336	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6695	2026-07-01T15:16:20Z	95e9d744bb83f51c98d50cd6852b5c988a226f41	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6692	2026-07-01T14:41:27Z	048d043ae8c49fa3df0112acffe2d768ed7208fd	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6691	2026-06-30T13:51:43Z	da771713a1cd01b97f49668d9049d858a9f9ce98	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6606	2026-06-29T21:12:14Z	14551fe066c84bdadaa6fc03277ed327a5c3a89b	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6672	2026-06-29T13:41:01Z	02bd7c1f5d38d607d51c5a3d24dd5f290be60719	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6678	2026-06-24T13:56:22Z	c90a2867947349067d30c4a9b5f95567bbb7a4ca	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6670	2026-06-24T13:27:43Z	9b07fb41e85a22e820b55a17d984ebfcb24f87f5	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6660	2026-06-24T12:57:30Z	a1e6d5c4e5687c21778adc0291ba09f743c4f824	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6673	2026-06-23T13:58:01Z	9976c86794960cf3ea5edd50c6446f3c29efb5d6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6675	2026-06-23T13:29:07Z	7f306b36c14267e29891b3300907c2c8fdd6d632	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6661	2026-06-22T14:11:09Z	7e74b1f0c7c408aa757d4a660ecdd1ec4a5fe30e	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6671	2026-06-20T10:15:41Z	a6850f68892b06a3f8716e41a36d885ce3562aab	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6662	2026-06-19T20:43:37Z	db3c23fee6dffee2bd0a432051ff2984915e6d2f	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6664	2026-06-18T20:41:47Z	c7a7c7622e8ba6666ad7ed10b63d15c90f1ad691	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
+6657	2026-06-18T13:50:03Z	dd094fd9b6a2c7cce5605e8983a18bda7f952b2e	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6655	2026-06-15T14:34:26Z	e28879d532d2fa629951ac3a75f0bc8f938279bf	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6650	2026-06-15T14:25:23Z	9857ee18fef9af1d37552e37f25c2c612703e730	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6654	2026-06-12T21:04:49Z	28f49809e7b09dfa337d5077538a022e64879a34	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6648	2026-06-12T19:44:51Z	489f2092321342c05735bc93cdd6d1e72202a871	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6659	2026-06-12T18:17:22Z	f50af205f398fdbb2e82cb3fdaf9a910ed26ef68	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6658	2026-06-11T17:16:21Z	8624981ae992e1378894c72493d16dd9de023e59	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6653	2026-06-10T15:52:54Z	0367ba05855169243ae6212ae0a00ba0d2b96cb8	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6620	2026-06-10T09:34:15Z	467f955f006f10ef651dd76fbc934ec1070a1bae	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6651	2026-06-10T09:32:25Z	3dd658910d4f51e690fcbfc1aa4577d8c1d7f449	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6635	2026-06-09T11:18:55Z	cd0171aa8383a3cd1c1ae09cbad1438c2616a0d6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6645	2026-06-08T19:50:16Z	4da4a4cbc1845221a86ff0fb5a359f03ddaac3c6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	bug_fix	left out: needs_program:gleam
+6644	2026-06-08T13:40:39Z	9a5e916c567cf79f8e00af311094c624d1a48ec6	1.19.2	28.1.1	yes	pgvector/pgvector:pg18	-	-	feature	left out: needs_program:gleam
+6639	2026-06-05T16:22:34Z	30ef607e87f5dbf3ea7af30875ba02da4c88e8b2	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
+6626	2026-06-04T11:10:38Z	3f05ea8087ef43fb7b4f4a93deeb4e3437a3baf1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: dropped probe no_existing_tests
+6629	2026-06-04T11:02:53Z	61894ecfd0a92242f2aceb7020c5fe6eeeeae691	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: checked
+6625	2026-06-03T13:28:45Z	a6058d25a7a7f2f96fc2ab7825527426bf1eb466	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	tried: dropped probe skipped_test
+6623	2026-06-03T09:25:53Z	46b7ac45fbc8c2e63b31ffdaa5d747248480e390	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	tried: checked
+6608	2026-06-03T01:57:04Z	34386782ad19f414584c7a6330e33c125dc660b7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6599	2026-05-29T20:06:55Z	3301fd3d467cde318914d85796a02f9254e69ea2	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6615	2026-05-29T19:54:31Z	c1a1770e8fb49af270676e5f8ba3d337611fb372	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6609	2026-05-29T14:11:08Z	3d5ed6627cf48e56cb2e02d4c52872b82c4ea7e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6611	2026-05-29T01:05:09Z	5bee042195eb06b41129a3994f9f5437d60121e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6596	2026-05-28T19:58:33Z	5b59ea22a016e1b738029825d09f600a2c87f305	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6601	2026-05-28T19:48:57Z	4500e1d8d887ab9c83e2184c7f2deb97a58fe183	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6593	2026-05-19T17:01:31Z	61704b39dc6ca1c0a2f22db49b51a17c09d2df56	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6592	2026-05-19T17:01:23Z	09fdf332bc340a08f6f6855709adbdd530464c6a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6556	2026-05-14T15:23:28Z	7d6594f1c3f91e90905ba4a1467bc0d5ea20b8ae	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6574	2026-05-13T14:24:41Z	bdfede6399850a21e0f6a13701a2ad435307a6d6	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6582	2026-05-12T19:59:04Z	9f0b10d1090a856a4e8236ec41143a9c034f3e3f	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6576	2026-05-12T17:14:17Z	47754de1020c221a8ab69193e5175fa58200aa32	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6573	2026-05-11T12:19:21Z	5069f685f07493bb4bf7efa6a6e2c0322ccf1aa0	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6563	2026-05-08T19:47:41Z	ca2d22fa048f7d29f9adf54453761051fa58e00f	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6570	2026-05-08T15:10:27Z	e1aaeab5b96c487c23cde6f0e24cd48fad0d5272	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6562	2026-05-08T11:56:17Z	32d4000d3c1592071ba409664036ea015b75e9e4	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6559	2026-05-08T11:55:26Z	95f1f7896a3e25a74bec2125320e0c1d128ae928	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6568	2026-05-08T10:56:20Z	346b69fdfff77b5fe20ca80943e76dba5f1b524d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6569	2026-05-08T10:53:13Z	796913cfe1bbd3b2d21a4f13e6d11ff2141a9587	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6566	2026-05-07T17:24:55Z	1fb60ff4891f66d4f905da3e5d76e7f4afd623aa	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6565	2026-05-07T15:02:19Z	33e34924b0c7d786be2d06f4f794e77095fc497c	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6564	2026-05-07T12:21:33Z	f11546fe2b8e5c91364dc78c655ad3781b4aedec	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6560	2026-05-07T11:16:51Z	ffa107ff209ec95b055d0fb7bc7bad1009770a17	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6561	2026-05-06T17:04:20Z	8b185d7f2f1953c37764ea8caa7e55d9a8feaa4a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6555	2026-05-06T17:02:30Z	3ff0c487e24a8e1f23319c56fc96065fec845738	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6553	2026-05-06T10:48:27Z	b0533e2f75588c7812e6567c767075fbed9dc7b7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6554	2026-05-05T20:56:40Z	60841d98fc1f9cf57fea6cae8ba1f1753882dd5a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6522	2026-05-05T16:46:20Z	8c623157d1d57f1138fb12c2d65fd34a92190618	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6552	2026-05-05T14:41:03Z	071089449a805841de588c1d7eeea138309259e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6549	2026-05-04T14:51:24Z	72365fe10681e5fdea8107c96822cdfc941950f7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6547	2026-05-01T16:04:01Z	c569154d5dc441539e4ea1d34d0ec283c13d5ff9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6545	2026-05-01T13:34:19Z	43cec786d532e5210af338e268fd75fa55e17b8d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6540	2026-05-01T13:32:33Z	e34a622784281600ec158c7a9afa7a7ff0457a24	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6541	2026-05-01T11:59:37Z	14f7697d652d264a444b2ba64d67decd4f832d90	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6544	2026-05-01T11:58:23Z	b759e8cf8f6f5cd783b0669808a6da7187b54ed0	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6538	2026-05-01T11:57:15Z	b1150c7c25de0718d16b420f5068512d054e024e	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6537	2026-05-01T11:56:37Z	40dddc338e961c5d4d4fed5bfa9d96f95765cdb7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6543	2026-05-01T11:56:00Z	cd94fd5344e6790d95f9bb7474b8d2366c243583	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6532	2026-05-01T11:55:04Z	87fa2e22b7f0fb92ebba77dcaa6f8d3dacb69d6e	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6542	2026-05-01T11:52:35Z	3ff888f162d77baa26956a903d853ed29c0c0e4c	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6539	2026-04-30T14:01:14Z	5ead390b48c53543ae8e03eb8de9a7141129eb9b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6530	2026-04-30T11:08:03Z	35cb592d47a642b289212df6378aa00620847f5d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6535	2026-04-29T20:49:09Z	107ad4663cf461188a18a378ae7c088ae380db86	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6533	2026-04-29T20:22:35Z	84fe2297544e3fe5a6daaa36edcd6b6e7490cd9b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6525	2026-04-29T15:43:18Z	7f3ecd65f00f9d055a426fb24ac431036851b97b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6523	2026-04-29T15:38:47Z	2fad1796bd74092f20fbec0c5574400283ee3313	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6488	2026-04-29T12:02:48Z	64385ec22a4fed91167aaa9c32660f46642cf449	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6515	2026-04-29T12:00:49Z	400847a266b6886c8b67d62446ca7d5638267abc	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6491	2026-04-28T22:47:41Z	717a7a1fe471a27cc5c50d57d7c1f72958fd4a85	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6509	2026-04-28T16:22:33Z	f0fd2cc95503ba44f3bd27b1c34ecf736a08c27d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6506	2026-04-28T13:13:45Z	2eb334ab79ad846b55dafcdc356133989864c713	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6476	2026-04-27T18:15:33Z	2ebda2e444d21b9a87c5322fea6adafc555d1921	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6494	2026-04-27T16:12:41Z	ca6a5b3b7935e936500a1f0eaefaac1700fedac8	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6495	2026-04-24T19:15:45Z	786bc743665356a4933bf00ec16063a8f0b6c790	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6492	2026-04-24T14:00:16Z	9964c5906ae26c5494dbbd7b6314bbf31efd9b75	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6482	2026-04-22T12:07:04Z	5854992c92ac2d5487d5ae5618370e150a9ebeda	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6479	2026-04-22T11:46:28Z	18db7638f9d004fe4685eee461d603e3a8cc0fc4	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6478	2026-04-22T11:45:32Z	7537375d500640eadecfcb6139626fe480bf5e10	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6401	2026-04-22T02:01:52Z	97258535dd640de788d3fd24f70a0c275064a070	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6471	2026-04-20T20:30:25Z	bef3b1abc07c4b826fff1cbc582e00816d422872	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6466	2026-04-20T15:32:46Z	09ba743adfd1288fe81318a0f2b0779ef0565e53	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6460	2026-04-20T11:19:18Z	bc8c93ddcaa46494f373c61817bccbbe77c0f43e	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6465	2026-04-20T02:42:57Z	cab924bcb14722fa733c4f2b2f81f463bb74d7ad	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6430	2026-04-17T13:28:16Z	b2edc0901a2248a62b2accdfbcbde469cbd3457a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6448	2026-04-17T12:23:46Z	2525a12fefd83dbe4824e28f69a5b9136d496f59	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6445	2026-04-17T01:46:16Z	5f3dc8d85bc2bb881bf79d95d699faa61c9d57bc	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6428	2026-04-16T16:49:34Z	79715b72858f84a772c9ba1206830cef5a170de1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6453	2026-04-16T14:19:14Z	977c321ac0f5627dec286e7f043e010b516d65db	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6452	2026-04-15T20:04:10Z	ef639e8a8f682871a4d3dfafae586debbce7d1e9	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6454	2026-04-15T20:03:27Z	e1992a22f4511c45bc12d81075c36dea9d7d89e6	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6392	2026-04-15T20:02:04Z	a733e6c9600c9d7abca8ab3f58651f02f72b3c7b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6433	2026-04-14T21:03:10Z	98810203750313a142ee16fdee5909b169c64d5c	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6440	2026-04-14T19:36:57Z	9e3cfc2b9fae3028f39f56f3c32a4a08e5906f7a	1.19.2	28.1.1	no	pgvector/pgvector:pg18	error	paths_never_match	feature	left out: paths_never_match
+6442	2026-04-14T18:27:53Z	256a2715c0efd95e51460b823ee609730a2cbbd5	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6437	2026-04-14T14:45:37Z	d11502fc706d8cedb94580fdfa60d6c95feb206d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6443	2026-04-13T19:56:56Z	8ed64a9acc4cb8f76ba4cdbc9254c673e9d88010	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6438	2026-04-10T20:24:04Z	6e37bdd5ac4ec06384eeb9a467e0c78fe94edb65	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6436	2026-04-10T17:07:11Z	4db04344fb629b7edeb4c1d0b60e03dcabde03d1	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6434	2026-04-10T15:04:54Z	c08adb6e9913c71fc840c152e8a2c23cd380e2e5	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6435	2026-04-10T14:47:22Z	eb2d50873fac39eb96adc424b32a7f29dcbcebfa	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6432	2026-04-09T19:01:27Z	6aad02c0729932d6029bd44b50fd89007f6c2612	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6417	2026-04-09T00:06:51Z	55aa7dd9caad2a5e4ad1e85c8de31d09fe5323b0	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6411	2026-04-08T14:43:01Z	87e480b3ef54cd7ec7f4c703481d8ec43c20e073	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6413	2026-04-07T23:03:48Z	7d6326963d8ff7b461eebe0d46f619da74419ad0	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6420	2026-04-07T19:31:58Z	ee4d5dea2596f7395bf70b15ec973565c8f53daf	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6418	2026-04-07T17:07:57Z	c591e5b05c11d370534f51a6e55ace0ebd7d43df	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6404	2026-04-03T22:11:01Z	791e8bf5e51cb599223d32f6df0507c1b4ed6a35	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6386	2026-04-03T19:45:01Z	d81cc85180889378f644f7018b72a9a78bc9cfa1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6377	2026-04-03T00:42:29Z	0fc1fcefbe1270e256027688dcc5baf811105c61	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6389	2026-04-01T21:43:37Z	36ed58670d38567489f6560fb8b924b5370fea57	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6390	2026-04-01T21:27:47Z	85073aa378ec681890134b22f185d68c8e366883	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6395	2026-04-01T19:35:04Z	1377e69ea4708d25530d9aa7a4d0a24a53f91f3e	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6369	2026-04-01T19:34:01Z	01c819541bda299117e8c622950ce02c85d7cf07	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6387	2026-04-01T13:38:56Z	58c009b7205c11ad67acb72c38412288a003090f	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6388	2026-03-31T17:36:37Z	31b43c51ff71596b0bba24a4553634de5f17ad98	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6373	2026-03-30T13:22:35Z	ef5a32d8bb50873a68781e8d2834facaad8857b5	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6380	2026-03-27T19:50:42Z	85058a446ac3c59636c068f067e58d343c054107	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6370	2026-03-27T15:15:04Z	ad544fe97af0a82a0cf7930062d65c385e842b64	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6368	2026-03-27T13:31:48Z	ff8633e8cdff55dd1f615a5f46981707c7e8a983	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6362	2026-03-26T12:50:59Z	db350bfa51d1f003f9c13091a2c1dd2507172dc6	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6358	2026-03-25T23:55:44Z	5388c35599d258c71cad3d2c3a49d9ea18d4649e	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6338	2026-03-25T20:57:37Z	c06c6f9cebe67949545d811c482cc0d22a3d7b6b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6352	2026-03-25T18:53:21Z	d4183ec8a544fb30c482c22cba0380bffb0daa92	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6341	2026-03-25T16:08:10Z	b84a90021c30e9db3962eac7dd9c9e571472e59b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6336	2026-03-24T12:45:21Z	e72c811c830a1452baa8a40b36856b6a96f91a8b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6332	2026-03-23T15:02:34Z	696691b18d5366faaf97539bacfe7c2b96dd67ba	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6325	2026-03-20T13:49:54Z	63fe36975e23494c9fc1c8168f676423acbcfdf1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6312	2026-03-20T12:17:59Z	71d58dce2e940fe0050385a46a5f1593667ee827	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6302	2026-03-20T11:23:43Z	9d9f02fd7fb3ace6fabead9f59a8f33896d2a40b	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6286	2026-03-19T14:53:11Z	da13b52254555c1efc221db7fdfade3f9ce84ebe	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6300	2026-03-19T14:19:44Z	6d1f50b779241f06d731d88e4e8c02037cad6c5f	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6317	2026-03-19T14:18:17Z	fee8a23a0cbe8e1d3d6c6f9a2e0551b3ad0691b5	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6308	2026-03-18T12:12:28Z	982bbe11df8dda4715c0f8ee5e17232c3efb1b0d	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6295	2026-03-17T14:40:33Z	56b19fbf5fc83446eed5fdd7f7fad8251a7ce727	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6280	2026-03-17T14:38:03Z	27fe4e60e96d698b625f08c924c85d9fe007369f	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6294	2026-03-17T14:35:42Z	3932683d4e26dbd363b06724a8e2df86675d97b7	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6289	2026-03-17T14:33:51Z	2045d78d546e76ef11d6bb5582d124bcff12a5f1	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6293	2026-03-16T15:38:11Z	1067a4be37d9dc00c46dd269f8b81f4fcd17e582	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6296	2026-03-13T23:51:27Z	2b8569b915568fa12eea0d1d0bfc0ffcb8af0475	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6283	2026-03-13T18:12:24Z	1c945dbbd49755d2b899b1bd6170a7912b6cbd74	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6260	2026-03-13T18:02:50Z	890eee4f5ae755acbeee5b635fdb29ba9edd6355	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6287	2026-03-11T19:53:58Z	e0320561d7191a56c2f48ab8cc05e3a3067cd9ba	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	feature	not reached
+6278	2026-03-10T21:05:25Z	cb8a2e1555fe08e7ec17a42ad40f7fa4f08cd8ad	1.19.2	28.1.1	no	pgvector/pgvector:pg18	resolved	-	bug_fix	not reached
+6269	2026-03-06T12:49:44Z	d511d2bc2ecb66da809fe3f1941fb2545b4c421b	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6270	2026-03-06T12:48:38Z	9b64bd90759072175560d51206838349da171a81	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6266	2026-03-06T12:47:07Z	18f85682a7b406c93e61e96220c108f83b4660fa	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6257	2026-03-05T15:12:17Z	b2c6522dc0b8c100bb81917022325221888d99ba	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6264	2026-03-04T17:59:37Z	ab00dde150b0f2e4d933d6f3c571a75505352c5b	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6268	2026-03-04T17:11:01Z	9ea7db800abfc1a91cb603b65b5db3ebc66cf801	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6259	2026-03-03T18:21:38Z	4d406549c4ec370dd00d571ee2e0a8c9faf49dad	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6263	2026-03-03T18:11:26Z	992f798cf81717649db086f5d4baccdbbdc9c297	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6262	2026-03-03T18:09:43Z	5bd92ed33381adebc6fbbfe8db0ad8695242d17d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6255	2026-03-02T14:42:42Z	8b69cb1a34f4c97bad6ea38df85ada3ad2a7aed0	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6245	2026-02-27T19:23:44Z	9eb59998754597abb70dc486cbfa102b3020536d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6250	2026-02-27T12:32:19Z	26720622217ab491abd29f2d836de10916b2da5e	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6254	2026-02-26T21:40:52Z	e9d51cdda97862ba59839b152f81409268eac427	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6244	2026-02-26T14:49:41Z	c5f51c64487195fe283642f11a8522a8f4c1048d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6251	2026-02-26T14:32:53Z	b749e885dfd73d45c29c4dc06bd71221fddf51bf	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6243	2026-02-26T14:32:33Z	509f5c4de9d8efd2f343c61186c013e373d36eeb	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6242	2026-02-25T15:36:50Z	bd1eb9cf513d1d61a0cb56316159dcf8327df14f	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6241	2026-02-24T19:15:58Z	503170bd8a369b4bc4148ab9f0db5ea5eda54269	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6227	2026-02-12T18:49:45Z	d67e4b83c175002725809c4e343020ac335086c5	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6218	2026-02-12T17:51:45Z	b5e4e49cbe37b242459153a0b88c1639f5f8ef1e	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6223	2026-02-12T12:50:33Z	c36c5ef77264f35aae2e3b438bbdc6184e345d10	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6217	2026-02-09T18:35:17Z	45d01a0784a206a49b172bb2d295e1a7b268f94c	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6214	2026-02-06T17:21:24Z	e9422a17580c0640376f93442533a770647cbdf0	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6213	2026-02-06T12:49:25Z	e72da0e1bd64e50b5910c95aeea51aaf83dd9432	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6212	2026-02-06T12:46:07Z	d1a60336d21705ccb41b031068116c296629d451	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6203	2026-02-05T23:38:48Z	3c8a1975f635461f7e723bdd738c51f39a2cefdc	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6210	2026-02-05T20:03:28Z	c6c5589de817e205a055c10988a38f1097e502d6	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6206	2026-02-05T19:10:28Z	28c754b69a12296a15cc30f3fc7c1288b9593812	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6198	2026-02-05T16:21:36Z	d0cb95eb68434aa4e356796ba2852c60e32037fa	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6204	2026-02-04T21:45:17Z	2c06831cd72b5bbb1d9bf0ce9c08be1922561fd0	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6199	2026-02-04T21:34:16Z	02127d993c4286c2943f79b067f59a0c5cde8df7	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6178	2026-02-04T16:28:34Z	74151a987318621f7b50d7fa5a4f18aca23efaea	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6201	2026-02-04T15:22:36Z	da6cfaaadfbb5dcb8f9316229429f63f4ad7f26d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6202	2026-02-03T21:31:10Z	cedbaada934fd1d535398ec238d82cb89c7dd39d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6196	2026-02-03T16:01:19Z	3e63c9934f845b03e2e554154583db37f7e32dda	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6200	2026-02-03T15:55:17Z	1ca6c3f50fec77c57148765d75daeffcb6691590	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6169	2026-02-03T12:54:58Z	c8510d8e3c72e4366f19a5dd77e68924ea96919b	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6172	2026-02-02T15:35:31Z	a49dc2426d48ca06f476f2da4d4cc4f3eac09729	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6187	2026-02-02T15:18:14Z	74aad839fc08399f54270023aed0a015d1f086e5	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6194	2026-01-30T18:55:26Z	6b7411cc8ea5dc9a7f0235bf789b3055de2a0963	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6191	2026-01-30T18:08:03Z	ed53ce93d123c08227c687073bee73313dad34a0	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	bug_fix	left out: no_image:1.19.2/28.3.1
+6183	2026-01-29T19:50:37Z	5b271be6517482421ef78231cedc01a5e085587d	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6192	2026-01-29T17:41:13Z	909be405370d0e9cbe2963ab740810393c03fbdc	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6186	2026-01-29T17:15:34Z	a2a8d507ee92726fdd42ac1982f98287cda945ff	1.19.2	28.3.1	no	ankane/pgvector	refused	no_image:1.19.2/28.3.1	feature	left out: no_image:1.19.2/28.3.1
+6158	2026-01-29T14:25:40Z	6c35376f6bee9498a90e4bfdcae54e3eb40424e8	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6174	2026-01-28T17:35:11Z	a766aa8c5c198b651bd75ef9e896f4c3b51a713e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6184	2026-01-28T15:26:42Z	fc8428e1fe42a7d3da7b26443b590042e496346c	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6182	2026-01-27T21:16:27Z	569c11ae69fe0d5cc892c1cd792424bfb70fe864	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6140	2026-01-26T17:06:00Z	b22d54aa59a237fec96227ede84d18aba6d4114b	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6171	2026-01-23T14:27:27Z	8daeb4a06f79eafbffc9ddd995d73a972ab69453	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6155	2026-01-22T21:17:38Z	880ca1238fae8b025528a2f62f73b4a1b74593d9	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6164	2026-01-21T22:07:00Z	ea1341a36e8b4332c8522ae275c5507fd8b40e29	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6159	2026-01-21T21:28:55Z	22d516f03b50a7a98684a867bc252e3ae02da84b	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6165	2026-01-21T18:12:50Z	c1f0e4cbaf8b8c464568faf43433aa1399b209e0	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6156	2026-01-20T18:23:54Z	e4367199870a28283e70fb573d989b2bf5bf7409	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6151	2026-01-20T16:48:12Z	1cc89969ccd89fc3ff4691a2a80ecc71d91b41b7	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6143	2026-01-16T15:48:32Z	201c8a09044f2c50f029749477db058f5b2c90aa	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6145	2026-01-14T19:26:14Z	5a3156387fc547f0131771a99e269800c94008e5	1.19.2	28.1.1	no	compose:ankane/pgvector	error	paths_never_match	bug_fix	left out: paths_never_match
+6146	2026-01-13T17:43:01Z	5f16681a728a492f20a60273f79958afc187ce1e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6129	2026-01-13T16:28:13Z	6d747e78ec67d1bd3af84f3e9dfb19f586d8aafb	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6149	2026-01-12T22:11:11Z	f15cc8d57b49a3ec1664c783ad5f90537df186e4	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6147	2026-01-12T16:30:43Z	e78cc662a4390755938f05844b3ac8d9131803c9	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6132	2026-01-12T15:58:22Z	9a86e612c94980a696913ab1863b4d7cd250a1ec	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6142	2026-01-08T18:46:42Z	52bec626d59e7a29679d5cc36e80f8b9b8b53476	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6137	2026-01-07T18:47:40Z	2d135d42f50a7fc886cda1c27b0cba5166b46377	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6117	2025-12-30T21:14:33Z	eea8d2f8df4bb798cb44f17219e2a755f49f6d35	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6128	2025-12-23T18:11:26Z	3068cc1074abab609c756d5419c8a528084e4fd7	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6110	2025-12-23T15:38:55Z	3266809f0ef2ffb8969fbcc6576598a761746db2	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6124	2025-12-23T15:07:59Z	3021ad7481f4b1acab767815244712c49b9dc417	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6119	2025-12-23T15:01:28Z	907e017613b98311f8e65b0345db557379d4c215	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6118	2025-12-23T14:54:43Z	a37ebabf9d7626c853176a048691d350009fb145	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6114	2025-12-19T15:15:03Z	21bbdab45438ea3301d1f2323abf3ffff1aebe0a	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6109	2025-12-17T21:28:28Z	8746c0c250eaede9919dc1ee5ddcc1bfe7b81fe3	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6116	2025-12-17T13:59:44Z	f4fa4fca67ef5901f0897f20469acf29b77d850c	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6112	2025-12-17T13:58:42Z	459a181dbf4f40e3825a05df95d6e2d6c239d941	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6106	2025-12-15T17:03:13Z	25f65f06eeb705db2de7c08d7fc14702856be260	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6098	2025-12-15T02:40:11Z	bccda71b2531112afe8c1aaecdf8909b3c20155a	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6089	2025-12-15T02:29:06Z	9814af520fd710f2a08da07b12a2511d9c0f2c09	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6093	2025-12-12T18:23:58Z	1521f1a7cb4ab7de583f8e7f29a99c9c738d646e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6101	2025-12-12T13:15:53Z	d6dc4c5148a625a41b8e0bf3bf268352b4451aa1	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6088	2025-12-08T13:41:19Z	51991ae333c946f5553429a1728aea67435f39b0	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6079	2025-12-05T17:51:48Z	034bc36bce535e2da1a645c4fd3733c6d8ac8d66	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6084	2025-12-04T21:43:40Z	8364dfec3018463aa90213a1959582f06a20373f	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6080	2025-12-04T16:25:03Z	94821c31fc01056f9f17bf063573885cca320d83	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6077	2025-12-01T17:36:38Z	d8aa39843f23f650551c2aebc0e28a907b45fc6c	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6075	2025-11-30T23:13:35Z	29394e18fb935234542c38422a1f049f6715102b	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6076	2025-11-30T23:10:47Z	86300e2e0ffdc0dd41364de516de6665878df544	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6062	2025-11-20T14:46:45Z	f38cc1392daef0230afd80a0087e924d08347a75	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6057	2025-11-19T23:58:42Z	1632c5968d5c55d8d41ff6f831316b32ef11cf3d	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6030	2025-11-18T13:50:13Z	744a6642c1f68c77ac2d8efb957406eb20c8746e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6053	2025-11-17T17:51:18Z	f26167c9f2979b97998d17612a07f4bb3e56cc25	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6040	2025-11-17T17:47:06Z	0bfc6f6f2795aa798b938edfd8bba8bc0d91f839	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6052	2025-11-17T17:23:50Z	194bd4b20dd295a645bc729b56ecb1c83595f68a	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6051	2025-11-17T14:48:39Z	818f1a34807c4830d54a94719578a230c3a2765d	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6039	2025-11-17T12:35:28Z	6ceb3674942c522f0595a7f24c5c508b8bf11239	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6005	2025-11-14T18:40:39Z	3eab8cc34a4ea37d78f391ecb9ff50e3e9b8c08e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6042	2025-11-14T16:29:18Z	f9c6cc40e74747a1cb773d5544d3f8ef3adbf483	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6038	2025-11-14T15:05:50Z	592e927e4b76171213df55c1acace0cf7e50435b	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6035	2025-11-14T14:34:31Z	b4dd30ca0f007d524336ef179233657865baf12e	1.19.2	28.1.1	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6029	2025-11-12T18:41:28Z	34b0e06cce6da47643561c843c1234bacfcea7b1	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6034	2025-11-12T17:44:26Z	3f899f6959d0b603eda1999352faaa2d75c4e19b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6028	2025-11-11T19:12:15Z	4b7048b740d724a6c4a1f1545ffbb385cf3fa7d3	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6021	2025-11-11T14:03:22Z	ad7346ca6c365e337b1d58974aa8a13ec4fdcd19	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6023	2025-11-11T13:54:53Z	4fe8d1c58e3162f8ebaea5189b05dc8fb55c39f8	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6027	2025-11-11T13:12:08Z	bf43b932b4a77fdbd74ab1ebc3bae6b6f2fdcece	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6025	2025-11-10T17:22:13Z	136f9221f7b52b50d16d5c6210ff8d4e71ceea84	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6017	2025-11-07T16:56:25Z	b2349476d83155bda8d5cbdab6d82923a248dc8d	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6015	2025-11-07T10:23:14Z	20ce5daeb4b9b6225416601cd85116c65e386633	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6019	2025-11-06T23:46:59Z	8a73d29b0c246c61a9ba62f0d1a775e2cc628ac2	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6007	2025-11-06T20:00:26Z	e5275a7c1a97e9c3110fd4d5637b4305b4a3c73b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+6018	2025-11-06T18:04:12Z	3fbe9fd411b456476e996e0c68ef73029cebc806	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6010	2025-11-05T12:59:20Z	343a2c9285775fea94d241cabef320a6f870ea06	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6001	2025-11-04T19:19:31Z	bb51c4104c11408b33f6985013d0c484585ef136	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+6009	2025-11-04T19:08:49Z	727e5dc48c3e7d882b0dc64157bc6e1cb2905c58	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5995	2025-11-04T14:48:37Z	2d34dc6325646ffd4083c45e9bcf3fe9e8397347	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5978	2025-11-03T14:41:24Z	c1b5ac2d58c5825a886064011f424cca1deea8f8	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5997	2025-10-31T18:50:18Z	41d0c33a063ed8ba13b580778a70e5ca9e069a55	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5999	2025-10-31T17:48:07Z	3a3c2e616f7e7f81c052e54e85bd4cc63d8878db	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5994	2025-10-30T22:48:12Z	c987a17a139a0f3c2c64e4a40557370b1f7a6043	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5984	2025-10-29T20:11:50Z	66354dd93e2411f90eb07d42281c695c81bb848e	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5988	2025-10-29T11:58:23Z	5044c71e14affc9c5184798e6e75e19760c9e51b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5990	2025-10-28T18:44:25Z	48d5d1b18d178894bbfd18f3639434e9c865ef41	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5974	2025-10-27T14:22:30Z	da047e19081e10845085b796945a7f701cea201a	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5975	2025-10-27T14:19:55Z	cec04b120561213a7551b3490024161475cce39c	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5982	2025-10-24T13:23:46Z	b890ac1070e6a9c0a737067ccb42e70a867debe3	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5980	2025-10-23T18:44:50Z	a9e009570b879544e6cf97da3873cd0d69d43637	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5976	2025-10-23T13:57:01Z	7b090600c201f623860eed6d4d7e8b4f5296e8d9	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5965	2025-10-22T18:44:19Z	1eb63436af139105fcecabeaff5c8ebae5420a8b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5963	2025-10-22T17:26:49Z	7120af7ce3f1c12eebb18d1af26ab47b02531479	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5966	2025-10-22T14:20:14Z	0b189654d683a0eaa830a57fef535aefff4c14f0	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5972	2025-10-22T12:37:08Z	527a09064fdc90afe86a870e08c81d9d7ea0ecdf	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5950	2025-10-22T12:26:57Z	5dbf9b1e22e055334cac03a5b625c56af47d4bc7	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5969	2025-10-22T12:23:43Z	e862be199e891ffe031331b9066de61034e56d19	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5959	2025-10-21T14:17:01Z	6baa85d0aa92c2bb3d73778a8e27e9c7252b6c3f	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5964	2025-10-21T14:04:19Z	c75c1254384f7f3fc15a9690c8c0ffdd9125c63d	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5952	2025-10-17T17:06:35Z	d44e5a265403bf9fa1891836c0eaa143c6481394	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5939	2025-10-16T17:01:21Z	7cc73e4a0ace9f1601f42f25964cd03c1d5c651a	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5953	2025-10-16T14:45:43Z	35e56db506908e6e94f44a421852b5f0b67f29d3	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5951	2025-10-10T13:45:29Z	b46dce71090579276a10644f060c3c2cc462954f	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5943	2025-10-08T15:15:12Z	2ffedfdedb52577e907dc09b88d083abefa774ae	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5904	2025-10-08T15:13:12Z	31df5418dde0a52148047b500daac1a3ccdbbbac	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5941	2025-10-08T13:35:21Z	fa8fcfba2d9a69245d0b7064e2e82a1f0ea7cfc4	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5938	2025-10-03T12:08:05Z	2d225630060570c81a7fff99da41cc0e0e9bb6a8	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5937	2025-10-03T11:57:00Z	f55f84226ddb0b87d31618cb872179ecc79ab90c	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5900	2025-10-02T18:56:54Z	82a242ff670c44c730c798852844d73c86260a88	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5934	2025-10-02T14:32:12Z	f45bca9a9039d0989b36951b66be46923a6967dd	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5926	2025-10-02T13:51:57Z	96b5b05b85731b00db509556558fe0f07eb209d4	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5928	2025-09-29T15:42:20Z	652f86925289d805eaadacafd5a12ddda6ba8d98	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5923	2025-09-24T12:48:02Z	f8f20a9ee096091bf832718bdc8d41c9aca31b26	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5841	2025-09-24T12:25:14Z	5fd6e6ec0f741674d8d59218a3a992572e8db1ea	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5924	2025-09-23T20:27:14Z	0ac76cad0b29c163a37ec5026840bb1a8d9316af	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5905	2025-09-23T16:31:24Z	1d951e5ff295fdd42eef97be50e5630bac073928	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5899	2025-09-22T21:11:53Z	5e1b6fc2de32306d1ae50c9db4177469e454e571	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5887	2025-09-18T00:33:55Z	bd9c7210f59ceeb04a9963e84ad430b642320d98	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5890	2025-09-17T18:46:52Z	34c3c15b4a4044652c46bc81957cabf8b316c781	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5897	2025-09-17T16:40:06Z	983497f89d54a60235a9036b88ed99f48035beb9	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5888	2025-09-15T16:01:41Z	b857a83affb80aa7c7dd151f48a13f97b07abe77	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5883	2025-09-12T20:02:45Z	665df5299399d8bde59f763c6ee7cc640400d6aa	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5880	2025-09-11T23:42:40Z	866778346a986be24aecf8e5db5220e3b9815a85	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5879	2025-09-11T18:06:30Z	81c4ab659cb512c8bbdb2a28686641ec61bde90f	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5873	2025-09-09T13:42:45Z	e64285c1ef373aff48211dc1d67487d466308521	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5869	2025-09-09T13:41:00Z	27391c66e906952ad2c7f113111db9efa05c9e31	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5871	2025-09-08T18:54:31Z	780ed39bb45e3c9e00b6dd14c94613a7dd7ba75f	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5867	2025-09-08T17:54:58Z	92797a395fede2ec6b8ffdb11b2dd4583b76be79	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5865	2025-09-05T17:32:10Z	60d3d19652fdcfc69f8dd6db6de1f1d3def5f263	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5826	2025-09-04T02:04:56Z	a82f58c8684709ccad7779c441aad9c4f9f70ea9	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5862	2025-09-03T20:50:55Z	ba963dcf47eff82d23aa899c9ec7b2bdaa802ecc	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5858	2025-09-02T12:46:19Z	85aa8e8cfac509c47f8a6e1065feacc724565b66	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5849	2025-09-02T12:32:06Z	fff9e8a3f400c674ea43ff8b90192d5f9b1374a0	1.18.4	28.0.2	no	compose:ankane/pgvector	error	paths_never_match	feature	left out: paths_never_match
+5852	2025-09-02T12:26:15Z	8eb6bb7fadd066c61ad9cfe880acd9ba6c2ba5e6	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5848	2025-09-02T12:24:07Z	82901f9f2c863089107b7e76127158c1b1ed5935	1.18.4	28.0.2	no	compose:ankane/pgvector	error	paths_never_match	bug_fix	left out: paths_never_match
+5845	2025-09-01T23:25:53Z	ba570c53087bd3e7f999af3f6b2814dd4a509012	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5851	2025-09-01T23:24:07Z	c7cd4e5ceeb9436ef2d1a1a2f3d830d07220342f	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5850	2025-09-01T23:21:44Z	0f25c0b5066928d3eb9f87ea378dc15ded93181d	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5842	2025-08-29T14:09:08Z	a89ddbfe7f6350851ef7ea382ddc08f79e7408d3	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5839	2025-08-28T16:26:48Z	5af23efeb0843b86cc4e5a9ea7db7aa06f599ebe	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5824	2025-08-28T14:09:35Z	d29d72697af69a0b07ff83c5c41a4b09fe95ae49	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5823	2025-08-28T14:03:13Z	2f12bc73756cd980af582f1de91ebabb120a1578	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5830	2025-08-28T13:12:10Z	3cb045db052517129ac234707bdf662adb50994b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5828	2025-08-27T16:42:15Z	938635122f09095d1260b4ee3f03555e09942feb	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5829	2025-08-27T16:22:25Z	0773cc6de677854f5764d0ea859a8dbe86d8d6cf	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5811	2025-08-22T16:21:22Z	8fbd06117c97a34f2b30a4320ddb5fdcfde2c1a3	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5809	2025-08-22T16:20:41Z	7a03a0ad5fc6d28bfc9d95e5b92b8c73a2f315ea	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5818	2025-08-21T19:25:02Z	3904ce58c4b070e8761c37d52db4b4bca59b7044	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5792	2025-08-21T17:13:38Z	988167213c377efc41a4f20916d0f256509fb20b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5797	2025-08-21T01:44:17Z	c0da58803d7e0495e97ec5cd025dd30e50db5c29	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5804	2025-08-20T15:38:57Z	cf6d5e221209b937d86f588c7df11b18b79fa5ea	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5763	2025-08-18T20:50:51Z	02fd40e9f52ca8dd35e66b5c2d8b3df20b44d3a2	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5758	2025-08-12T21:16:17Z	7ac16463e1649aab472d4b1fe1bf98c6b61d17a6	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	bug_fix	not reached
+5787	2025-08-08T21:06:15Z	85ddcfe27d420063fc6e2e897bc1ac07c7b47d8b	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5786	2025-08-08T18:59:38Z	6e9a649c0bd74bfeaca5d7d1dee7fa3738fda0e9	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5777	2025-08-06T13:55:11Z	ba813b2cd38bc76006268ee29b5eef1f62b4902a	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5754	2025-08-04T18:57:56Z	033fd7fc6ca9ebb8f04a95a809abbee5b29b13ac	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5747	2025-08-01T17:32:01Z	9d729d5c1493c145d76f74786cf4698d7100c057	1.18.4	28.0.2	no	compose:ankane/pgvector	resolved	-	feature	not reached
+5749	2025-07-31T17:04:35Z	b621a53e1fcc03b678e73a0652b4943798a4d1ea	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5751	2025-07-30T23:10:21Z	0aff0710d3e60ee4f6cab960131adc5ea7ef7076	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5759	2025-07-29T18:06:29Z	589d748ccc67fef23545062e0c4d73d00c908981	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5760	2025-07-29T18:02:05Z	69380cdd8ce74a6d7d103323469555a8e6879716	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5757	2025-07-29T15:43:21Z	6fbe992d13057f3568da7e7f15a51dfc85c4e0b9	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5755	2025-07-29T14:08:51Z	55f25d6f2a25846b9c9c076d749d5521c388041f	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5756	2025-07-28T15:55:01Z	06cf23b9797730f02d9dfc7c91a31a95ee02c631	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5750	2025-07-24T13:37:38Z	379cccf3c41e1edfb997a0e8bbc8970a88f7b16d	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5745	2025-07-23T17:19:11Z	03350fa9f01b2832d125a341c0e3cec3215ee967	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5729	2025-07-23T14:56:40Z	c7d6c5a2e2290a5fc29d7c8b2a2e54a73c436a34	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5741	2025-07-22T22:02:35Z	d9ba2147e1230fa11eafbc613dfc35278de19d08	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5734	2025-07-21T16:58:33Z	53349561042f655144e3425651c32c2725fbae59	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5736	2025-07-17T12:58:18Z	2fd67ba6a822e79f9c5ca1ac84fea4fc8a714678	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5725	2025-07-16T16:44:21Z	54ec257456e11623475e1c18684b6bf44c2bd154	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5723	2025-07-16T14:38:33Z	2d2e1c6648a853d88970a550c1cce2ad1a223e32	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5724	2025-07-16T13:56:12Z	97e15cdbb23b8a6a027e9be47b15c96421014c24	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5731	2025-07-16T13:51:52Z	e84acad2fad244d13aa41a389002b1154df12211	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5728	2025-07-15T17:17:55Z	7fab6f921e39d97d20d72ebac98c55d853d116a4	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5727	2025-07-14T21:34:41Z	ce4d89fcc8ca277d11fda7d6fd0766ef55166bbf	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5722	2025-07-10T17:49:48Z	3ddd1afa151f927d0aa5f374168b8884b7792794	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5721	2025-07-10T14:09:55Z	9753b9bfb1373dd7d28d9e99c482fdb150400c8c	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5703	2025-07-07T14:06:51Z	8e0b15e46842fd63c0a72ca11d12ef0436cab14c	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5714	2025-07-07T12:57:00Z	55a490bf467576896c8f527a754c02b7b1b2b571	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18
+5718	2025-07-03T19:53:22Z	c42bbbd84594f88c5c647d0df59d5deccc2d3b73	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	feature	left out: elixir_before_1.18
+5712	2025-07-02T15:32:39Z	9fa31fff4edc9fd7697930d0e9b911bdf339b9a7	1.17.2	27.0.1	no	compose:ankane/pgvector	-	-	bug_fix	left out: elixir_before_1.18

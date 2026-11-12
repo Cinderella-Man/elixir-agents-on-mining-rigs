@@ -1,0 +1,2 @@
+run	command	returncode	engine_completed	engine_passed	engine_ms	reporter_rows	reporter_distinct	duplicated_identities	exunit_summary	exunit_tests	exunit_passed	exunit_failed	exunit_skipped	exunit_excluded	exunit_seconds	output_bytes	under_2_mib
+1	mix test	2	true	false	840880	7568	7568	0	26 doctests, 7541 tests, 1 failure, 74 skipped (1 excluded)	7567	7492	1	74	1	800.2	1634689	yes

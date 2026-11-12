@@ -1,0 +1,29 @@
+{
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.19.2-erlang-28.1.1-ubuntu-noble-20260509.1@sha256:bedf531f3f1ff4c2876fc99f3fad91706837f849a461abd2f8adfa2c1626f052",
+    "environment": {"MIX_ENV": "test"},
+    "setup_commands": ["mix compile"],
+    "before_test_commands": [],
+    "packages": ["nodejs"]
+  },
+  "services": {
+    "postgres": {"image": "pgvector/pgvector:pg17@sha256:7d0a41464797aeb9862dfdc0bbf1526b82cfd324cdd8036df19e3545f4a9ccb8"}
+  },
+  "baseline": {"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]},
+  "test_timeout": 600,
+  "permitted_exclusion_tags": ["nightly", "skip_if_no_python"],
+  "grading": {
+    "preservation": "mix test",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": [
+      {"commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}
+    ],
+    "ci_services_not_needed": {
+      "pgvector": "the CI's pgvector/pgvector image is the project's own Postgres with the vector extension; it is served as the recipe's services.postgres"
+    }
+  }
+}

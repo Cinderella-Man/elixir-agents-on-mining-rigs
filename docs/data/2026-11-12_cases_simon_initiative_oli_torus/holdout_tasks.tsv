@@ -1,0 +1,6 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+oli-torus-pr-6623	https://github.com/Simon-Initiative/oli-torus	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+oli-torus-pr-6629	https://github.com/Simon-Initiative/oli-torus	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+oli-torus-pr-6639	https://github.com/Simon-Initiative/oli-torus	pass	0	10	10	0	0	0	3	3	0	0	0	pass
+oli-torus-pr-6664	https://github.com/Simon-Initiative/oli-torus	pass	0	18	10	6	2	0	3	3	0	0	0	pass
+oli-torus-pr-6722	https://github.com/Simon-Initiative/oli-torus	pass	0	12	10	2	0	0	3	3	0	0	0	pass
