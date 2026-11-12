@@ -1,4 +1,21 @@
-task	start	licence_file	licence_families	provenance_licence	files_touched	files_passing	licence_result	failing
-ambry-pr-1283	fe8a5fb03a95bfce3400d4f5ef072a17453bf5ae	LICENSE	MIT	MIT	8	8	pass	
-ambry-pr-1282	014c1be1b212f26a23accc55330874f8b50666de	LICENSE	MIT	MIT	10	10	pass	
-ambry-pr-1281	bbc7edcbf1e8ab6c29d084d943098b0ffe922845	LICENSE	MIT	MIT	14	14	pass	
+task	start	licence_file	licence_families	provenance_licence	files_touched	files_passing	licence_result	failing	root_licence	root_proof
+ambry-pr-1284	750fef8d40c02a990a1cc6d98d1bdeef475e48f8	LICENSE	MIT	MIT	9	9	pass		-	-
+ambry-pr-1283	fe8a5fb03a95bfce3400d4f5ef072a17453bf5ae	LICENSE	MIT	MIT	8	8	pass		-	-
+ambry-pr-1282	014c1be1b212f26a23accc55330874f8b50666de	LICENSE	MIT	MIT	10	10	pass		-	-
+ambry-pr-1281	bbc7edcbf1e8ab6c29d084d943098b0ffe922845	LICENSE	MIT	MIT	14	14	pass		-	-
+ambry-pr-1279	dd24be860118ac4f84dc5db5d5a4a1e61f625418	LICENSE	MIT	MIT	17	17	pass		-	-
+ambry-pr-1274	e1c32a5f1e41d4ed1541c3d4836ace4f26f2c3f3	LICENSE	MIT	MIT	11	11	pass		-	-
+ambry-pr-1275	2fbcd19b92b7ea1a983ebc8b79652f6375e72a03	LICENSE	MIT	MIT	13	13	pass		-	-
+ambry-pr-1272	893c403ba7ac1f21fbde8ddb1beec730b1956f21	LICENSE	MIT	MIT	20	20	pass		-	-
+ambry-pr-1261	282c50fbe0d80256ae51e00d937d1b5858a11cbe	LICENSE	MIT	MIT	27	27	pass		ok:licence-file	LICENSE@282c50fbe0d80256ae51e00d937d1b5858a11cbe
+ambry-pr-1243	bcf0f473fb52c517af53bc4253bdd609d5acf0d7	LICENSE	MIT	MIT	6	6	pass		ok:licence-file	LICENSE@bcf0f473fb52c517af53bc4253bdd609d5acf0d7
+ambry-pr-1237	945924b91763966b92ac916a0f4139fbe89763d8	LICENSE	MIT	MIT	50	50	pass		ok:licence-file	LICENSE@945924b91763966b92ac916a0f4139fbe89763d8
+ambry-pr-1235	b82ddcf096002dc571d42f8d249c1372a4468af7	LICENSE	MIT	MIT	33	33	pass		ok:licence-file	LICENSE@b82ddcf096002dc571d42f8d249c1372a4468af7
+ambry-pr-1234	23afeb43b0b0fb402c70371889a6388e0130788f	LICENSE	MIT	MIT	30	30	pass		ok:licence-file	LICENSE@23afeb43b0b0fb402c70371889a6388e0130788f
+ambry-pr-1233	b87cbcdab0f099d2654f1d138292971009f29909	LICENSE	MIT	MIT	44	44	pass		ok:licence-file	LICENSE@b87cbcdab0f099d2654f1d138292971009f29909
+ambry-pr-1232	7e42903015660d8e01892d76a44abefcc6bf2100	LICENSE	MIT	MIT	42	42	pass		ok:licence-file	LICENSE@7e42903015660d8e01892d76a44abefcc6bf2100
+ambry-pr-1231	c248b456a7a852c4339fc2f9f70f8c890eb65a54	LICENSE	MIT	MIT	16	16	pass		ok:licence-file	LICENSE@c248b456a7a852c4339fc2f9f70f8c890eb65a54
+ambry-pr-1227	b9ca9bcf14b23f71406eda8a7121e2d63c83388c	LICENSE	MIT	MIT	14	14	pass		ok:licence-file	LICENSE@b9ca9bcf14b23f71406eda8a7121e2d63c83388c
+ambry-pr-1226	327188e6d390bed889260014e2da871ad87528a3	LICENSE	MIT	MIT	13	13	pass		ok:licence-file	LICENSE@327188e6d390bed889260014e2da871ad87528a3
+ambry-pr-1225	e6b7e9ffe9f610f54089dc9bc1d196d148b807ae	LICENSE	MIT	MIT	79	79	pass		ok:licence-file	LICENSE@e6b7e9ffe9f610f54089dc9bc1d196d148b807ae
+ambry-pr-1224	97af9ca70cdbe0a6c944738d2193d652c2ff52bd	LICENSE	MIT	MIT	10	10	pass		ok:licence-file	LICENSE@97af9ca70cdbe0a6c944738d2193d652c2ff52bd

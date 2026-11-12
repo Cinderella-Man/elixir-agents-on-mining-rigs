@@ -7,7 +7,8 @@
 #   ready     every screened candidate of the project (CLASSES, the screening's classes table): its Elixir/OTP as the
 #             resolver reads it after the newer pairs (RESOLVE: resolve_after.tsv), what else it needs, and where it
 #             stands after this job (TASKS: the cases table)
-# Environment: TASKS (table.sh tasks), OWN, WHOSE, CLASSES, RESOLVE, REPO (ambry-app/ambry).
+# Environment: TASKS (table.sh tasks), OWN, WHOSE, CLASSES, RESOLVE, REPO (ambry-app/ambry), RELEASE_IN_RECIPE (1 when the
+# recipe carries the release file the screening asked for: such a candidate is ready, not waiting; default 0).
 set -euo pipefail
 what=${1:?cases|ready}
 REPO=${REPO:-ambry-app/ambry}
@@ -27,7 +28,7 @@ cases)
   ;;
 ready)
   : "${CLASSES:?}" "${RESOLVE:?}" "${TASKS:?}"
-  awk -F'\t' -v OFS='\t' -v repo="$REPO" '
+  awk -F'\t' -v OFS='\t' -v repo="$REPO" -v RELEASE_IN_RECIPE="${RELEASE_IN_RECIPE:-0}" '
     FILENAME == ARGV[1] {if ($1 == repo) img[$2] = $8; next}
     FILENAME == ARGV[2] {if (FNR > 1) done[$2] = $8 (($8 == "checked") ? "" : ": " $10); next}
     FNR == 1 {print "number", "merged", "elixir_otp", "image_now", "needs_else", "status"; next}
@@ -37,6 +38,7 @@ ready)
       else if ($14 == "yes" || ($5 != "" && $5 !~ /^1\.(1[89]|[2-9][0-9])/)) st = "left out: elixir_before_1.18"
       else if (im ~ /\/27\.2(\.|$)/) st = "left out: " im " (OTP 27.2 is never built)"
       else if (im !~ /^ok:/) st = "waits: " im
+      else if (other == "release_file" && RELEASE_IN_RECIPE == 1) st = "ready, not tried (release_file: in the recipe)"
       else if (other != "-") st = "waits for the owner: " other
       else st = "ready, not tried"
       print n, substr($3, 1, 10), $5 "/" $6, im, other, st
