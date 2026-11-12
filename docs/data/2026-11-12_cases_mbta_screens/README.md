@@ -5,11 +5,15 @@ the task factory ([`factory/`](../../../factory/README.md)). This one sets up `m
 newest usable merged pull requests as cases, one at a time, until 3 are checked or 12 have been tried. Everything ran
 on the data-mining machine, beside six other jobs.
 
-**A second job, toward 15 checked cases, is running (from 14:09).** At this commit 5 cases are checked (3 bug fixes,
-2 features): 3358 and 3353 were added from 3 more candidates, and 3359 was dropped at the probe (its cause is read at
-the end of the job). [`cases_mbta_screens.tsv`](cases_mbta_screens.tsv) holds every try so far, written by
-[`run/cases_table.sh`](run/cases_table.sh). The free-space stop of `run/watch.sh` is now 50,000,000,000 bytes (the
-owner's line since 14:20). The rest of this page describes the first job until the second one ends.
+**A second job, toward 15 checked cases, is running (from 14:09).** At this commit 10 cases are checked (6 bug fixes,
+4 features): 3358, 3353, 3356, 3343, 3341, 3319 and 3307 were added from 11 more candidates; 3336 and 3322 were dropped
+for the pull request's own cause, and 3359 and 3333 at the probe with a run that did not finish (their cause is read
+by a diagnostic run at the end of the job). [`cases_mbta_screens.tsv`](cases_mbta_screens.tsv) holds every try so
+far, written by [`run/cases_table.sh`](run/cases_table.sh). The free-space stop of `run/watch.sh` is now
+50,000,000,000 bytes (the owner's line since 14:20). From 3307 on, the controller runs the factory of this repository
+at `0d99a67`, which keeps each database image under a tag of its own installation (the shared tag could be moved by
+another controller on the same Docker, and the image it named removed). The rest of this page describes the first job
+until the second one ends.
 
 **Result of the first job: 3 checked cases, and all 3 pass the licence scan and the hold-out check.** They are pull requests 3388 and
 3387 (bug fixes, Elixir 1.20.4 with OTP 29.1.2) and 3363 (a feature, Elixir 1.20.2 with OTP 29.0.2). They came from
