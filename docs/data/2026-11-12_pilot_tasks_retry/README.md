@@ -55,7 +55,7 @@ disk other jobs keep busy that crosses 120 s. Refreshing the index's stat data f
 object, and the add after it has nothing to do. The fix cannot be in the grader or the workspace recipe (README
 section 2); two places outside it would do: the task's `runtime.before_test_commands` with
 `git update-index -q --refresh`, or the maker refusing workspaces above a number of tracked files. Neither is done
-here (registry row E78). The same `git add -A` runs, with a limit of 60 s, after every tool call of a teacher's
+here (registry row E79). The same `git add -A` runs, with a limit of 60 s, after every tool call of a teacher's
 session (`Eab.Sandbox.patch/1`), so these workspaces would break sessions too.
 
 ### The other drops
@@ -136,8 +136,8 @@ The job's brief set a floor of 572,835,543,040 free bytes on `/`. Free space fel
 taken down. The floor had in fact been lowered on the owner's word while the check ran, to 134,454,282,076 bytes with
 a disk allowance of 280 GB, because the owner was copying 258 GB onto the same disk; this run learnt of it at 08:37
 and then made the diagnostic runs, the reproduction and the tests with Docker, on a restarted controller. At 09:03:15
-the controller was stopped from outside this run (`SIGTERM`, as another job's controller at the same time), and the
-Docker tests ended in the same second. `run/catch.sh` ran during the check; it fired on another job's containers, so
+the task work on this machine was stopped, on the owner's decision that it moves to a machine of its own (E76): this
+run's controller got a `SIGTERM`, as another job's did, and the Docker tests ended in the same second. `run/catch.sh` ran during the check; it fired on another job's containers, so
 #615's git was read by hand with the same commands.
 
 ## Files
