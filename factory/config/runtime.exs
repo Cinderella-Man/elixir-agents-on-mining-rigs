@@ -26,6 +26,9 @@ if config_env() != :test do
       |> String.split([",", " ", "\t", "\n"], trim: true),
     # A JSON file from a repository's URL to its mirror's URL (section 6, change 4; lib/eab/source.ex). Unset: no mirror.
     mirrors_file: System.get_env("EAB_MIRRORS"),
+    # The BuildKit cache id for Hex packages in the workspace recipe (section 6, change 10; lib/eab/docker_settings.ex).
+    # Unset: the bench's id. A machine whose Docker also builds the bench's images sets one of its own.
+    hex_cache_id: System.get_env("EAB_HEX_CACHE_ID"),
     cpu_shares:
       (case String.trim(System.get_env("EAB_CPU_SHARES", "")) do
          "" -> nil

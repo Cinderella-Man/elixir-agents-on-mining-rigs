@@ -52,7 +52,7 @@ defmodule Eab.DockerSettingsDockerTest do
 
     File.write!(
       Path.join(root, "Dockerfile"),
-      "FROM eab-tooling:dev\nCMD [\"sleep\", \"infinity\"]\n"
+      "FROM #{Eab.TestTooling.image()}\nCMD [\"sleep\", \"infinity\"]\n"
     )
 
     docker(

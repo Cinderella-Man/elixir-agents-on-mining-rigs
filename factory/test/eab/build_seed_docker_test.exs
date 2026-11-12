@@ -14,7 +14,13 @@ defmodule Eab.BuildSeedDockerTest do
     File.mkdir_p!(Path.join(context, "source/lib"))
     File.mkdir_p!(Path.join(context, "pi"))
 
+    # The recipe's Hex cache id: EAB_HEX_CACHE_ID on a machine whose Docker also builds the bench's images, else the
+    # bench's own (section 6, change 10).
+    Application.put_env(:eab, :hex_cache_id, System.get_env("EAB_HEX_CACHE_ID"))
+
     on_exit(fn ->
+      Application.delete_env(:eab, :hex_cache_id)
+
       if seed = Store.read("build-seeds/#{key}.json") do
         Command.run("docker", ["image", "rm", seed["tag"]])
       end
@@ -25,7 +31,7 @@ defmodule Eab.BuildSeedDockerTest do
     end)
 
     File.write!(Path.join(context, "Dockerfile"), """
-    FROM eab-tooling:dev
+    FROM #{Eab.TestTooling.image()}
     USER root
     RUN groupadd -f agent && useradd -o -u 1000 -g agent -m agent && mkdir -p /workspace /opt/eab-seed && chown agent:agent /workspace /opt/eab-seed
     ENV MIX_ENV=test MIX_BUILD_ROOT=/workspace/_build MIX_DEPS_PATH=/workspace/deps HOME=/home/agent HEX_HOME=/opt/hex
@@ -67,7 +73,7 @@ defmodule Eab.BuildSeedDockerTest do
     spec = %{
       "runtime" => %{
         "profile" => "livebook",
-        "image" => "eab-tooling:dev",
+        "image" => Eab.TestTooling.image(),
         "setup_commands" => ["mix compile"]
       }
     }

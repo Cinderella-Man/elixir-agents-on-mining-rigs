@@ -94,7 +94,7 @@ defmodule Eab.RedisServiceDockerTest do
     bundle = write_bundle!(Path.join(root, "tasks"), reference, reference_tests)
 
     File.write!(Path.join(root, "context/Dockerfile"), """
-    FROM eab-tooling:dev
+    FROM #{Eab.TestTooling.image()}
     ENV PATH=/opt/pi:$PATH HOME=/tmp MIX_ENV=test MIX_BUILD_ROOT=/workspace/_build MIX_DEPS_PATH=/workspace/deps
     WORKDIR /workspace
     COPY --chown=65534:65534 source/ /workspace/

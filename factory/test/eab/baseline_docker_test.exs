@@ -43,7 +43,7 @@ defmodule Eab.BaselineDockerTest do
     build(
       root,
       project,
-      "FROM eab-tooling:dev\nWORKDIR /workspace\nCMD [\"sleep\", \"infinity\"]\n"
+      "FROM #{Eab.TestTooling.image()}\nWORKDIR /workspace\nCMD [\"sleep\", \"infinity\"]\n"
     )
 
     for {pg, ch, family} <- [

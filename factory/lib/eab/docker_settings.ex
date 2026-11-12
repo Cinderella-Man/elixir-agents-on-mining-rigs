@@ -51,4 +51,31 @@ defmodule Eab.DockerSettings do
 
   @doc "The arguments added to each image build: the labels."
   def build_args, do: Enum.flat_map(labels(), &["--label", &1])
+
+  @bench_hex_cache_id "eab-hex-packages-v1"
+
+  @doc """
+  The id of the BuildKit cache that keeps Hex packages between workspace builds (`EAB_HEX_CACHE_ID`, section 6,
+  change 10). Unset or empty, the bench's own id, so the workspace recipe is the bench's byte for byte. A machine whose
+  Docker also builds the bench's images sets an id of its own, so the two installations never share that cache.
+  """
+  def hex_cache_id do
+    case Application.get_env(:eab, :hex_cache_id) do
+      blank when blank in [nil, ""] ->
+        @bench_hex_cache_id
+
+      id when is_binary(id) ->
+        unless Regex.match?(~r/\A[A-Za-z0-9][A-Za-z0-9._-]{0,127}\z/, id),
+          do:
+            raise(
+              ArgumentError,
+              "EAB_HEX_CACHE_ID must be letters, digits, '.', '_' or '-' (at most 128): #{inspect(id)}"
+            )
+
+        id
+
+      other ->
+        raise ArgumentError, "EAB_HEX_CACHE_ID must be a text: #{inspect(other)}"
+    end
+  end
 end

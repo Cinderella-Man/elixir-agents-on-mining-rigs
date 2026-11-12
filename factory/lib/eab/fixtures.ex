@@ -407,10 +407,10 @@ defmodule Eab.Fixtures do
           "COPY --chown=agent:agent build_seed.exs /opt/eab-build-seed.exs",
           "COPY --chown=agent:agent source/ /incoming/",
           ~s|RUN elixir -r /opt/eab-build-seed.exs -e 'Eab.FixtureSeed.sync("/incoming", "/workspace")'|,
-          "RUN --mount=type=cache,id=eab-hex-packages-v1,target=/opt/hex/packages,sharing=locked,uid=1000,gid=1000 " <>
+          "RUN --mount=type=cache,id=#{Eab.DockerSettings.hex_cache_id()},target=/opt/hex/packages,sharing=locked,uid=1000,gid=1000 " <>
             "mix deps.get --only #{env["MIX_ENV"]}",
           "RUN elixir -r /opt/eab-build-seed.exs -S mix eab.seed",
-          "RUN --mount=type=cache,id=eab-hex-packages-v1,target=/opt/hex/packages,sharing=locked,uid=1000,gid=1000 " <>
+          "RUN --mount=type=cache,id=#{Eab.DockerSettings.hex_cache_id()},target=/opt/hex/packages,sharing=locked,uid=1000,gid=1000 " <>
             "mix deps.get --only #{env["MIX_ENV"]} && mix deps.clean --unused",
           "RUN mix deps.loadpaths"
         ]

@@ -10,6 +10,7 @@ defmodule Eab.DockerSettingsTest do
     on_exit(fn ->
       Application.delete_env(:eab, :docker_labels)
       Application.delete_env(:eab, :cpu_shares)
+      Application.delete_env(:eab, :hex_cache_id)
     end)
   end
 
@@ -98,6 +99,38 @@ defmodule Eab.DockerSettingsTest do
     for shares <- [0, 1, "256"] do
       Application.put_env(:eab, :cpu_shares, shares)
       assert_raise ArgumentError, ~r/EAB_CPU_SHARES/, fn -> DockerSettings.run_args() end
+    end
+  end
+
+  # Section 6, change 10: the Hex cache id of the workspace recipe.
+  test "unset or empty, the Hex cache id is the bench's, and the recipe carries it" do
+    for unset <- [nil, ""] do
+      Application.put_env(:eab, :hex_cache_id, unset)
+      assert DockerSettings.hex_cache_id() == "eab-hex-packages-v1"
+    end
+
+    Application.delete_env(:eab, :hex_cache_id)
+    recipe = Eab.Fixtures.dockerfile(%{"runtime" => %{"image" => "base"}}, "base")
+    mounts = Regex.scan(~r/--mount=type=cache,id=([^,]+),/, recipe, capture: :all_but_first)
+    assert mounts == [["eab-hex-packages-v1"], ["eab-hex-packages-v1"]]
+  end
+
+  test "set, the Hex cache id is the installation's in both lines of the recipe, and changes the recipe's hash" do
+    Application.delete_env(:eab, :hex_cache_id)
+    spec = %{"runtime" => %{"image" => "base"}}
+    bench = Eab.Fixtures.dockerfile(spec, "base")
+    Application.put_env(:eab, :hex_cache_id, "etf-hex-packages-v1")
+    own = Eab.Fixtures.dockerfile(spec, "base")
+    mounts = Regex.scan(~r/--mount=type=cache,id=([^,]+),/, own, capture: :all_but_first)
+    assert mounts == [["etf-hex-packages-v1"], ["etf-hex-packages-v1"]]
+    assert String.replace(own, "etf-hex-packages-v1", "eab-hex-packages-v1") == bench
+    refute Eab.Inventory.hash(own) == Eab.Inventory.hash(bench)
+  end
+
+  test "a Hex cache id with other characters is refused" do
+    for id <- ["-x", "a b", "a,target=/", "x" <> String.duplicate("y", 128), :atom] do
+      Application.put_env(:eab, :hex_cache_id, id)
+      assert_raise ArgumentError, ~r/EAB_HEX_CACHE_ID/, fn -> DockerSettings.hex_cache_id() end
     end
   end
 

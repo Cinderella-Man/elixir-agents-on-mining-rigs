@@ -1,0 +1,91 @@
+item	earlier	now	same
+verdict	checked	checked	yes
+probe	ok	ok	yes
+hidden tests failing on the unchanged project (count)	1	1	yes
+hidden tests passing with the reference (count)	10	10	yes
+existing tests command	mix test test/radiator/outline_test.exs	mix test test/radiator/outline_test.exs	yes
+existing test files left out	[]	[]	yes
+partial control	{"present":true}	{"present":true}	yes
+second round: same	true	true	yes
+second round: changed	[]	[]	yes
+second round: empty_passed	false	false	yes
+second round: reference_passed	true	true	yes
+case.json grading.required	names, sha256:ee69a642e2b16b88	names, sha256:ee69a642e2b16b88	yes
+case.json grading.starting_failures	names, sha256:0bfbe7255d1c4cff	names, sha256:0bfbe7255d1c4cff	yes
+case.json grading.preservation	"mix test test/radiator/outline_test.exs"	"mix test test/radiator/outline_test.exs"	yes
+case.json grading.preservation_left_out	[]	[]	yes
+case.json partial_control	{"present":true}	{"present":true}	yes
+task file case.json (sha256)	a6b17b8aee3125b7	a6b17b8aee3125b7	yes
+task file incomplete.patch (sha256)	4f7eb1d186356060	4f7eb1d186356060	yes
+task file integrity.patch (sha256)	9345cf52f8dccb1c	9345cf52f8dccb1c	yes
+task file provenance.json (sha256)	114517b8696383f4	114517b8696383f4	yes
+task file reference.patch (sha256)	d1a7ccd73e95692c	d1a7ccd73e95692c	yes
+task file reference-tests.patch (sha256)	4fc9fe7e9265ce8a	4fc9fe7e9265ce8a	yes
+saved controls: valid	true	true	yes
+control reference_patch: passed	true	true	yes
+control reference_patch: hidden.completed	true	true	yes
+control reference_patch: hidden.passed	true	true	yes
+control reference_patch: hidden.returncode	0	0	yes
+control reference_patch: hidden test states by name	names, sha256:ed59e025677742c1	names, sha256:ed59e025677742c1	yes
+control reference_patch: hidden failing tests and phase	{}	{}	yes
+control reference_patch: regression.completed	true	true	yes
+control reference_patch: regression.passed	true	true	yes
+control reference_patch: regression.returncode	0	0	yes
+control reference_patch: regression test states by name	names, sha256:85aba2308e8e983b	names, sha256:85aba2308e8e983b	yes
+control reference_patch: regression failing tests and phase	{}	{}	yes
+control reference_patch: submission.completed	true	true	yes
+control reference_patch: submission.passed	true	true	yes
+control reference_patch: submission.returncode	0	0	yes
+control reference_patch: submission test states by name	names, sha256:ed59e025677742c1	names, sha256:ed59e025677742c1	yes
+control reference_patch: submission failing tests and phase	{}	{}	yes
+control empty_patch: passed	false	false	yes
+control empty_patch: hidden.completed	true	true	yes
+control empty_patch: hidden.passed	false	false	yes
+control empty_patch: hidden.returncode	2	2	yes
+control empty_patch: hidden test states by name	names, sha256:f4525b5e7c0f7630	names, sha256:f4525b5e7c0f7630	yes
+control empty_patch: hidden failing tests and phase	names, sha256:f1b7ebb9aca1ad78	names, sha256:f1b7ebb9aca1ad78	yes
+control empty_patch: regression.completed	true	true	yes
+control empty_patch: regression.passed	true	true	yes
+control empty_patch: regression.returncode	0	0	yes
+control empty_patch: regression test states by name	names, sha256:85aba2308e8e983b	names, sha256:85aba2308e8e983b	yes
+control empty_patch: regression failing tests and phase	{}	{}	yes
+control empty_patch: submission.completed	true	true	yes
+control empty_patch: submission.passed	true	true	yes
+control empty_patch: submission.returncode	0	0	yes
+control empty_patch: submission test states by name	names, sha256:85aba2308e8e983b	names, sha256:85aba2308e8e983b	yes
+control empty_patch: submission failing tests and phase	{}	{}	yes
+control partial_repair: passed	false	false	yes
+control partial_repair: hidden.completed	true	true	yes
+control partial_repair: hidden.passed	false	false	yes
+control partial_repair: hidden.returncode	2	2	yes
+control partial_repair: hidden test states by name	names, sha256:f4525b5e7c0f7630	names, sha256:f4525b5e7c0f7630	yes
+control partial_repair: hidden failing tests and phase	names, sha256:f1b7ebb9aca1ad78	names, sha256:f1b7ebb9aca1ad78	yes
+control partial_repair: regression.completed	true	true	yes
+control partial_repair: regression.passed	true	true	yes
+control partial_repair: regression.returncode	0	0	yes
+control partial_repair: regression test states by name	names, sha256:85aba2308e8e983b	names, sha256:85aba2308e8e983b	yes
+control partial_repair: regression failing tests and phase	{}	{}	yes
+control partial_repair: submission.completed	true	true	yes
+control partial_repair: submission.passed	true	true	yes
+control partial_repair: submission.returncode	0	0	yes
+control partial_repair: submission test states by name	names, sha256:85aba2308e8e983b	names, sha256:85aba2308e8e983b	yes
+control partial_repair: submission failing tests and phase	{}	{}	yes
+control early_exit: passed	false	false	yes
+control early_exit: hidden.completed	false	false	yes
+control early_exit: hidden.passed	false	false	yes
+control early_exit: hidden.returncode	0	0	yes
+control early_exit: hidden test states by name	{}	{}	yes
+control early_exit: hidden failing tests and phase	{}	{}	yes
+control early_exit: regression.completed	false	false	yes
+control early_exit: regression.passed	false	false	yes
+control early_exit: regression.returncode	0	0	yes
+control early_exit: regression test states by name	{}	{}	yes
+control early_exit: regression failing tests and phase	{}	{}	yes
+control early_exit: submission.completed	false	false	yes
+control early_exit: submission.passed	false	false	yes
+control early_exit: submission.returncode	0	0	yes
+control early_exit: submission test states by name	{}	{}	yes
+control early_exit: submission failing tests and phase	{}	{}	yes
+controls identity.case	{"before_test_commands":[],"contract":{"acceptance_patch":"r… sha256:a7983872dc16dd0b	{"before_test_commands":[],"contract":{"acceptance_patch":"r… sha256:a7983872dc16dd0b	yes
+controls identity.grader	"04266e87f5a66a783d1cb0f37f8e53e8e918cd2abb0be7335a70a6852f1… sha256:43194a685140803c	"5dbdbce5dcada26db158c0bbb5c0e4e2b59159520ce007ecdecf580eb42… sha256:cf9f53eb26c1173f	no
+controls identity.runtime	{"baseline":{"database":"75cbe2222058e27d02323142c1f4bfaac98… sha256:3925009fa71261e9	{"baseline":{"database":"92ca65cff53ecb13a0e8709c55c93260028… sha256:2d879a1472e51750	no

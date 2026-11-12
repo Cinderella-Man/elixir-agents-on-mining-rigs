@@ -40,7 +40,7 @@ defmodule Eab.PiDockerTest do
       "HOME=/tmp",
       "-w",
       "/workspace",
-      "eab-tooling:dev",
+      Eab.TestTooling.image(),
       "sleep",
       "infinity"
     ])

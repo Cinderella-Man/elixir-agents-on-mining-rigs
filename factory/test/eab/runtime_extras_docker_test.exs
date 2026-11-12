@@ -10,7 +10,7 @@ defmodule Eab.RuntimeExtrasDockerTest do
   @moduletag :docker
   alias Eab.{Command, Fixtures, ReleaseFiles}
 
-  @base "eab-tooling:dev"
+  @base Eab.TestTooling.image()
 
   setup do
     old =
