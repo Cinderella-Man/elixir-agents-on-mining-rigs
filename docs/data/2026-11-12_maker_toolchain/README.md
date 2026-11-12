@@ -101,6 +101,14 @@ in the reference run with "No such image" while another job's Docker tests ran o
 reference tree it passed (1 of 1). The parity test passed 6 of 6 and was not edited; no file of README section 2
 changed.
 
+**After the rebase onto jobs T7, T8 and T9** (they landed while this job ran; none touched the maker's files), the
+checks ran again on the rebased tree and on the new reference, `origin/main` at T9 (`tests_compared_rebased.tsv`):
+format check passes; without Docker 223 passed, 0 failed, 9 excluded (reference 205, 0, 9); with Docker 232 passed,
+0 failed (reference 213 passed, 1 failed). 213 tests end as in the reference and the same 18 are new and pass. The
+one that differs is T7's `docker_settings_docker_test`, which failed in the reference run and once more alone with
+"No such image" while another job's tooling container ran, then passed alone on both trees. The proofs ran on the
+tree before the rebase.
+
 ## Disk
 
 Free on `/`: 646,170,750,976 bytes at 04:26 (before), 635,947,851,776 at 05:02 (after), with other jobs running.
@@ -119,6 +127,7 @@ images and the controller.
 | `pairs.tsv` | every pair seen, whether the engine can build it, whether it is in the table, and which proof used it |
 | `images.tsv` | the images pulled and built |
 | `tests_compared.tsv` | each test of the reference and of this change, with and without Docker |
+| `tests_compared_rebased.tsv` | the same after the rebase onto T7, T8 and T9 |
 | `run/` | the scripts that ran (below) |
 
 ## Exact commands
