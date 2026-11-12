@@ -446,7 +446,8 @@ defmodule Eab.Fixtures do
   change 3): one line for `runtime.packages`, one for `runtime.release_files`, each only when its list is not empty,
   so a task that asks for nothing extra gets the bench's recipe. A release file comes from the build folder's
   `release-files/` (put there by `Eab.ReleaseFiles.stage!/3`) through a bind mount, so it leaves no layer behind; its
-  SHA-256 is checked before it is installed, and a mismatch fails the build.
+  SHA-256 is checked before it is installed, and a mismatch fails the build. A `deb` is installed with `apt-get`, a
+  `bin` is copied to `/usr/local/bin/<name>` and made executable.
   """
   def extra_lines(runtime) do
     %{"packages" => packages, "release_files" => files} =
@@ -472,11 +473,27 @@ defmodule Eab.Fixtures do
             "echo '#{file["sha256"]}  #{path}' | sha256sum -c - && "
           end)
 
+        {debs, bins} =
+          Enum.zip(files, paths) |> Enum.split_with(fn {file, _} -> file["kind"] == "deb" end)
+
+        deb_install =
+          if debs != [] do
+            [
+              "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends " <>
+                Enum.map_join(debs, " ", &elem(&1, 1)) <> " && rm -rf /var/lib/apt/lists/*"
+            ]
+          else
+            []
+          end
+
+        bin_install =
+          Enum.map(bins, fn {file, path} ->
+            "install -m 0755 #{path} /usr/local/bin/#{file["name"]}"
+          end)
+
         [
           "RUN --mount=type=bind,source=release-files,target=/tmp/eab-release-files " <>
-            Enum.join(checks) <>
-            "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends " <>
-            Enum.join(paths, " ") <> " && rm -rf /var/lib/apt/lists/*"
+            Enum.join(checks) <> Enum.join(deb_install ++ bin_install, " && ")
         ]
       else
         []

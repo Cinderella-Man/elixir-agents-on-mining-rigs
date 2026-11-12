@@ -244,8 +244,36 @@ defmodule Eab.FixturesTest do
     assert lines.(recipe.(%{"packages" => ["xdelta3", "mtools"], "release_files" => [file]})) ==
              insert.([package_line, release_line])
 
+    # A bare program is checked the same way and copied onto the path under its name, executable; with a package
+    # beside it, both checks come first, then the package, then the program.
+    bin_sha = String.duplicate("ef", 32)
+
+    program = %{
+      "url" => "https://releases.example.test/tool-linux-x64",
+      "sha256" => bin_sha,
+      "kind" => "bin",
+      "name" => "tool-cli"
+    }
+
+    mount = "RUN --mount=type=bind,source=release-files,target=/tmp/eab-release-files "
+    deb_check = "echo '#{sha}  /tmp/eab-release-files/#{sha}.deb' | sha256sum -c - && "
+    bin_check = "echo '#{bin_sha}  /tmp/eab-release-files/#{bin_sha}.bin' | sha256sum -c - && "
+    bin_install = "install -m 0755 /tmp/eab-release-files/#{bin_sha}.bin /usr/local/bin/tool-cli"
+
+    deb_install =
+      "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends /tmp/eab-release-files/#{sha}.deb && rm -rf /var/lib/apt/lists/*"
+
+    assert release_line == mount <> deb_check <> deb_install
+
+    assert lines.(recipe.(%{"release_files" => [program]})) ==
+             insert.([mount <> bin_check <> bin_install])
+
+    assert lines.(recipe.(%{"release_files" => [program, file]})) ==
+             insert.([mount <> bin_check <> deb_check <> deb_install <> " && " <> bin_install])
+
     # The release file's URL never enters the recipe; only its SHA-256 does.
     refute recipe.(%{"release_files" => [file]}) =~ "releases.example.test"
+    refute recipe.(%{"release_files" => [program]}) =~ "releases.example.test"
 
     # A seeded build starts from the built toolchain image, so the lines are not repeated after it.
     seeded =

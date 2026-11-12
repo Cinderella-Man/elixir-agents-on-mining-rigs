@@ -85,6 +85,28 @@ defmodule Eab.ReleaseFilesTest do
     refute File.exists?(other)
   end
 
+  test "a bare program is fetched, checked, kept and staged under its SHA-256 as a .bin", %{
+    root: root,
+    entry: entry,
+    sha: sha
+  } do
+    program = %{entry | "url" => "https://releases.example.test/tool-linux-x64", "kind" => "bin"}
+    program = Map.put(program, "name", "tool-cli")
+    assert ReleaseFiles.file_name(program) == "#{sha}.bin"
+
+    serve(self(), %{
+      program["url"] => {:redirect, "https://assets.example.test/blob/2"},
+      "https://assets.example.test/blob/2" => @body
+    })
+
+    dest = Path.join(root, "build")
+    assert ReleaseFiles.stage!([program], dest, fn _ -> :ok end) == :ok
+    assert File.read!(Path.join(dest, "release-files/#{sha}.bin")) == @body
+    assert File.read!(Store.path("release-files/#{sha}.bin")) == @body
+    assert_received {:fetched, "https://releases.example.test/tool-linux-x64"}
+    assert_received {:fetched, "https://assets.example.test/blob/2"}
+  end
+
   test "a wrong checksum, a host that is not allowed and a redirect off the list fail before anything is kept",
        %{
          root: root,

@@ -2,7 +2,7 @@ defmodule Eab.ReleaseFiles do
   @moduledoc """
   Release files a task's workspace image installs (factory/README.md, section 6, change 3): a file named by its URL,
   its SHA-256 and its kind, such as a program's own `.deb` that a project's CI installs instead of a distribution
-  package.
+  package (`deb`), or a bare program that CI downloads onto its path (`bin`, with the `name` it is installed under).
 
   Only `https` URLs on the installation's list of allowed hosts (`EAB_RELEASE_FILE_HOSTS`, empty by default) are
   fetched, and every redirect must stay on that list, so a task cannot make the engine fetch from anywhere. The engine
@@ -32,6 +32,7 @@ defmodule Eab.ReleaseFiles do
 
   @doc "The file name a release file has in the build folder and in the recipe."
   def file_name(%{"sha256" => sha, "kind" => "deb"}), do: "#{sha}.deb"
+  def file_name(%{"sha256" => sha, "kind" => "bin"}), do: "#{sha}.bin"
 
   @doc """
   Fetches (or reuses) each release file, checks its SHA-256 and copies it to `dest/release-files/`. Does nothing for

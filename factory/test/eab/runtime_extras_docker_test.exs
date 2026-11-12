@@ -1,6 +1,7 @@
 defmodule Eab.RuntimeExtrasDockerTest do
   @moduledoc """
-  A made-up task's extra system package and self-made release file (factory/README.md, section 6, change 3), built
+  A made-up task's extra system package and self-made release files, a `.deb` and a bare program (factory/README.md,
+  section 6, change 3), built
   into an image. The lines built are the ones the task's workspace recipe carries between the bench's own system
   packages and the user line, on the tooling image as the base: the rest of the toolchain stage would download the
   bench's build tools and Hex, which this test does not. The one download is the package from the base image's own
@@ -44,17 +45,32 @@ defmodule Eab.RuntimeExtrasDockerTest do
     sha = :crypto.hash(:sha256, body) |> Base.encode16(case: :lower)
     url = "https://releases.example.test/etf-release-probe_1.0_all.deb"
 
+    # A bare program, as a project's CI downloads onto its path: a script this test makes, kept non-executable here.
+    program = "#!/bin/sh\necho etf program probe ran \"$@\"\n"
+    program_sha = :crypto.hash(:sha256, program) |> Base.encode16(case: :lower)
+    program_url = "https://releases.example.test/etf-program-probe-linux-x64"
+
     runtime = %{
       "image" => @base,
       "packages" => ["xdelta3"],
-      "release_files" => [%{"url" => url, "sha256" => sha, "kind" => "deb"}]
+      "release_files" => [
+        %{"url" => url, "sha256" => sha, "kind" => "deb"},
+        %{
+          "url" => program_url,
+          "sha256" => program_sha,
+          "kind" => "bin",
+          "name" => "etf-program-probe"
+        }
+      ]
     }
 
-    # The engine fetches the file through its own request function; here it is served from memory.
+    # The engine fetches the files through its own request function; here they are served from memory.
     Application.put_env(:eab, :release_file_request, fn opts ->
-      if opts[:url] == url,
-        do: {:ok, Req.Response.new(status: 200, body: body)},
-        else: {:ok, Req.Response.new(status: 404, body: "")}
+      case opts[:url] do
+        ^url -> {:ok, Req.Response.new(status: 200, body: body)}
+        ^program_url -> {:ok, Req.Response.new(status: 200, body: program)}
+        _ -> {:ok, Req.Response.new(status: 404, body: "")}
+      end
     end)
 
     context = Path.join(root, "good")
@@ -71,8 +87,15 @@ defmodule Eab.RuntimeExtrasDockerTest do
     assert out =~ ~r/\Ainstall ok installed\ninstall ok installed\n/
     assert out =~ ~r/Xdelta version 3/i
     assert out =~ "etf release probe installed"
-    # The bind mount leaves no copy of the file in the image.
-    refute run!("#{id}:good", "ls /tmp/eab-release-files 2>/dev/null || true") =~ "deb"
+
+    # The bare program is on the path under its name, executable by anyone, and runs.
+    assert run!(
+             "#{id}:good",
+             "command -v etf-program-probe && stat -c %a /usr/local/bin/etf-program-probe && etf-program-probe --version"
+           ) == "/usr/local/bin/etf-program-probe\n755\netf program probe ran --version\n"
+
+    # The bind mount leaves no copy of the files in the image.
+    refute run!("#{id}:good", "ls /tmp/eab-release-files 2>/dev/null || true") =~ ~r/deb|bin/
   end
 
   @tag timeout: 600_000

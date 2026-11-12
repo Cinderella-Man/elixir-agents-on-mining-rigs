@@ -94,13 +94,25 @@ defmodule Eab.TaskContractTest do
 
     with_runtime = fn runtime -> Map.put(spec(), "runtime", Map.put(runtime, "image", "base")) end
 
+    # A bare program: its own checksum, and the name it is installed under.
+    program = %{
+      "url" => "https://releases.example.test/tool-linux-x64",
+      "sha256" => String.duplicate("cd", 32),
+      "kind" => "bin",
+      "name" => "tool-cli"
+    }
+
+    other_program = %{program | "sha256" => String.duplicate("ef", 32), "name" => "Tool_2.x+y"}
+
     for runtime <- [
           %{},
           %{"packages" => []},
           %{"release_files" => []},
           %{"packages" => ["xdelta3", "mtools", "libconfuse2", "g++", "py3-pip", "libc6.1"]},
           %{"release_files" => [file]},
-          %{"packages" => ["xdelta3"], "release_files" => [file]}
+          %{"packages" => ["xdelta3"], "release_files" => [file]},
+          %{"release_files" => [program]},
+          %{"release_files" => [file, program, other_program]}
         ],
         do: assert(TaskContract.read(with_runtime.(runtime))["kind"] == "feature")
 
@@ -130,7 +142,22 @@ defmodule Eab.TaskContractTest do
       %{"release_files" => [Map.put(file, "url", "file:///etc/passwd")]},
       # A host the installation does not allow, and one that only ends like an allowed one.
       %{"release_files" => [Map.put(file, "url", "https://github.com/fwup-home/fwup/fwup.deb")]},
-      %{"release_files" => [Map.put(file, "url", "https://evilreleases.example.test/tool.deb")]}
+      %{"release_files" => [Map.put(file, "url", "https://evilreleases.example.test/tool.deb")]},
+      # A bare program needs a name, a name with no path or shell in it, and no name twice; a package has none.
+      %{"release_files" => [Map.delete(program, "name")]},
+      %{"release_files" => [Map.put(file, "name", "tool-cli")]},
+      %{"release_files" => [%{program | "name" => "../bin/sh"}]},
+      %{"release_files" => [%{program | "name" => "bin/tool"}]},
+      %{"release_files" => [%{program | "name" => "tool cli"}]},
+      %{"release_files" => [%{program | "name" => "-tool"}]},
+      %{"release_files" => [%{program | "name" => ".tool"}]},
+      %{"release_files" => [%{program | "name" => "tool;id"}]},
+      %{"release_files" => [%{program | "name" => "$(id)"}]},
+      %{"release_files" => [%{program | "name" => ""}]},
+      %{"release_files" => [%{program | "name" => 7}]},
+      %{"release_files" => [program, %{other_program | "name" => "tool-cli"}]},
+      %{"release_files" => [Map.put(program, "mode", "0755")]},
+      %{"release_files" => [%{program | "url" => "https://github.com/x/tool-linux-x64"}]}
     ]
 
     for runtime <- refused,

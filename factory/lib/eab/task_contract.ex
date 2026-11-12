@@ -100,8 +100,10 @@ defmodule Eab.TaskContract do
   The extra system packages and release files a task asks for (factory/README.md, section 6, change 3), checked for
   their form: `runtime.packages` is a list of package names, each matching a strict pattern, so no name can carry a
   shell command; `runtime.release_files` is a list of `{"url", "sha256", "kind"}` with an `https` URL, a lower-case
-  SHA-256 and a known kind. Absent or empty, both are `[]` and the workspace recipe is the bench's. Whether a release
-  file's host is allowed is the installation's setting, checked by `validate!/1` and again when the file is fetched.
+  SHA-256 and a known kind: `deb`, a Debian package, or `bin`, a bare program, which also carries the `name` it is
+  installed under in `/usr/local/bin` (a strict pattern, no path; no name twice). Absent or empty, both are `[]` and
+  the workspace recipe is the bench's. Whether a release file's host is allowed is the installation's setting, checked
+  by `validate!/1` and again when the file is fetched.
   """
   def runtime_extras!(runtime) do
     packages = Map.get(runtime, "packages") || []
@@ -112,7 +114,8 @@ defmodule Eab.TaskContract do
            do: raise("Invalid runtime.packages")
 
     unless is_list(release_files) and Enum.all?(release_files, &release_file?/1) and
-             length(Enum.uniq_by(release_files, & &1["sha256"])) == length(release_files),
+             length(Enum.uniq_by(release_files, & &1["sha256"])) == length(release_files) and
+             unique_program_names?(release_files),
            do: raise("Invalid runtime.release_files")
 
     %{"packages" => packages, "release_files" => release_files}
@@ -143,19 +146,35 @@ defmodule Eab.TaskContract do
 
   defp pinned_image?(_), do: false
 
-  @release_file_kinds ~w(deb)
+  @release_file_kinds ~w(deb bin)
   def release_file_kinds, do: @release_file_kinds
 
   # Debian and Alpine package names: lower-case letters, digits and `+ . -`, starting with a letter or digit.
   defp package_name?(name),
     do: is_binary(name) and Regex.match?(~r/\A[a-z0-9][a-z0-9+.\-]{0,99}\z/, name)
 
+  # The name a bare program is installed under: letters, digits and `+ . _ -`, starting with a letter or digit, so it
+  # can carry neither a path nor a shell command.
+  defp program_name?(name),
+    do: is_binary(name) and Regex.match?(~r/\A[A-Za-z0-9][A-Za-z0-9+._\-]{0,99}\z/, name)
+
   defp release_file?(%{"url" => url, "sha256" => sha, "kind" => kind} = entry) do
-    map_size(entry) == 3 and kind in @release_file_kinds and is_binary(sha) and
+    fields? =
+      case kind do
+        "bin" -> map_size(entry) == 4 and program_name?(entry["name"])
+        _ -> map_size(entry) == 3
+      end
+
+    fields? and kind in @release_file_kinds and is_binary(sha) and
       Regex.match?(~r/\A[0-9a-f]{64}\z/, sha) and Eab.ReleaseFiles.https_url?(url)
   end
 
   defp release_file?(_), do: false
+
+  defp unique_program_names?(release_files) do
+    names = for %{"kind" => "bin", "name" => name} <- release_files, do: name
+    length(Enum.uniq(names)) == length(names)
+  end
 
   defp safe_directory?(path),
     do:
