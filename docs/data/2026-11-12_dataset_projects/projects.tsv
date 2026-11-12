@@ -1,0 +1,22 @@
+repo	mirror	licence	licence_file_reads_as	merged_prs	elixir_share	uses	mix_elixir	service_deps	last_pushed
+Simon-Initiative/oli-torus	Cinderella-Man/oli-torus	MIT	MIT	5116	68.1	phoenix,live_view,ecto,oban,broadway	~> 1.19	ecto_sql,postgrex	2026-11-09
+santiment/sanbase2	Cinderella-Man/sanbase2	MIT	MIT	5112	63.3	phoenix,live_view,ecto,oban,absinthe	~> 1.19	brod,ch,ecto_sql,postgrex	2026-11-09
+mbta/screens	Cinderella-Man/mbta-screens	MIT	MIT	2468	77.5	phoenix,ecto	~> 1.20	ecto_sql,postgrex	2026-11-09
+nerves-hub/nerves_hub_web	Cinderella-Man/nerves_hub_web	Apache-2.0	Apache-2.0	2455	92.2	phoenix,live_view,ecto,oban	~> 1.20.0	ecto_sql,postgrex	2026-11-09
+supabase/realtime	Cinderella-Man/realtime	Apache-2.0	Apache-2.0	1687	88.9	phoenix,live_view,ecto	~> 1.19	ecto_sql,postgrex	2026-11-09
+hexpm/hexpm	Cinderella-Man/hexpm	Apache-2.0	no licence file at the root	1402	93.8	phoenix,live_view,ecto,oban,broadway	~> 1.20	ecto_sql,postgrex	2026-11-08
+ambry-app/ambry	Cinderella-Man/ambry	MIT	MIT	1083	92.9	phoenix,live_view,ecto,oban,absinthe	~> 1.18	ecto_sql,postgrex	2026-11-09
+axelclark/ex338	Cinderella-Man/ex338	MIT	MIT	749	96.8	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex	2026-09-10
+source-academy/backend	Cinderella-Man/source-academy-backend	Apache-2.0	Apache-2.0	695	98.7	phoenix,oban	~> 1.19	postgrex	2026-11-09
+cesium/safira	Cinderella-Man/safira	MIT	MIT	407	84.4	phoenix,live_view,ecto,oban	~> 1.19	ecto_sql,postgrex	2026-10-29
+bikebrigade/dispatch	Cinderella-Man/bikebrigade-dispatch	Apache-2.0	Apache-2.0	306	73.4	phoenix,live_view,ecto	~> 1.20	ecto_sql,postgrex	2026-11-07
+blablatdinov/croniq	Cinderella-Man/croniq	MIT	MIT	232	81.3	phoenix,live_view,ecto	~> 1.20	ecto_sql,postgrex,redix	2026-10-28
+covalenthq/refiner	Cinderella-Man/refiner	Apache-2.0	Apache-2.0	220	99	phoenix,broadway	~> 1.18.0		2026-05-22
+joladev/jola.dev	Cinderella-Man/jola.dev	MIT	MIT	175	82.1	phoenix,live_view	~> 1.18		2026-11-09
+notesclub/notesclub	Cinderella-Man/notesclub	MIT	MIT	163	91	phoenix,live_view,ecto,oban	~> 1.20.2	ecto_sql,postgrex	2026-11-05
+zorn/flick	Cinderella-Man/flick	MIT	MIT	155	95.9	phoenix,live_view,ecto	~> 1.20.5	ecto_sql,postgrex	2026-11-08
+hexpm/preview	Cinderella-Man/hexpm-preview	Apache-2.0	Apache-2.0	153	85.2	phoenix,live_view,broadway	~> 1.18		2026-07-16
+cr0t/lexin	Cinderella-Man/lexin	MIT	MIT	130	80.3	phoenix,live_view	~> 1.18	exqlite	2026-09-05
+zorn/local_cents	Cinderella-Man/local_cents	MIT	MIT	130	92.9	phoenix,live_view,ecto	~> 1.20		2026-11-01
+youcongress/youcongress	Cinderella-Man/youcongress	MIT	MIT	121	84.7	phoenix,live_view,ecto,oban	~> 1.18	ecto_sql,postgrex,redix	2026-11-09
+asciinema/asciinema-server	Cinderella-Man/asciinema-server	Apache-2.0	Apache-2.0	106	76.9	phoenix,live_view,ecto,oban	~> 1.19	ecto_sql,postgrex	2026-11-08

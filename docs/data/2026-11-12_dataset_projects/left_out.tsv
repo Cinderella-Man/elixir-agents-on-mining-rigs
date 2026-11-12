@@ -1,0 +1,33 @@
+repo	licence	merged_prs	mix_elixir	last_pushed	first_rule_failed
+firezone/firezone	Apache-2.0	10976	-	2026-11-09	mix.exs states no Elixir version
+Logflare/logflare	Apache-2.0	3401	~> 1.4	2026-11-09	mix.exs asks for Elixir ~> 1.4
+mbta/dotcom	MIT	3171	~> 1.17	2026-11-09	mix.exs asks for Elixir ~> 1.17
+sequinstream/sequin	MIT	1507	~> 1.19	2026-02-23	not pushed to since 2026-05-12 (last push 2026-02-23)
+edgehog-device-manager/edgehog	Apache-2.0	1374	-	2026-11-09	mix.exs states no Elixir version
+FarmBot/farmbot_os	MIT	1204	-	2026-11-04	mix.exs states no Elixir version
+ckruse/cforum_ex	MIT	1058	~> 1.12	2025-03-13	not pushed to since 2026-05-12 (last push 2025-03-13)
+Flo0807/share-a-secret	Apache-2.0	985	~> 1.16	2026-11-09	mix.exs asks for Elixir ~> 1.16
+supabase/supavisor	Apache-2.0	963	~> 1.14	2026-11-07	mix.exs asks for Elixir ~> 1.14
+bors-ng/bors-ng	Apache-2.0	939	-	2024-04-04	not pushed to since 2026-05-12 (last push 2024-04-04)
+hashrocket/tilex	MIT	525	~> 1.14	2025-11-07	not pushed to since 2026-05-12 (last push 2025-11-07)
+papercups-io/papercups	MIT	501	~> 1.10	2024-02-15	not pushed to since 2026-05-12 (last push 2024-02-15)
+adoptoposs/adoptoposs	MIT	468	~> 1.14	2026-02-01	not pushed to since 2026-05-12 (last push 2026-02-01)
+erlef/website	Apache-2.0	444	~> 1.13	2026-09-17	mix.exs asks for Elixir ~> 1.13
+tomasz-tomczyk/crit-web	MIT	444	~> 1.15	2026-11-07	mix.exs asks for Elixir ~> 1.15
+cesium/atomic	MIT	369	~> 1.14	2025-07-20	not pushed to since 2026-05-12 (last push 2025-07-20)
+jaxernst/lasso-rpc	Apache-2.0	306	~> 1.17	2026-11-06	mix.exs asks for Elixir ~> 1.17
+wanderer-industries/wanderer	MIT	303	~> 1.16	2026-11-08	mix.exs asks for Elixir ~> 1.16
+midarrlabs/midarr-server	MIT	296	~> 1.17	2026-03-03	not pushed to since 2026-05-12 (last push 2026-03-03)
+lambdaclass/stark_compass_explorer	Apache-2.0	282	~> 1.14	2024-10-04	not pushed to since 2026-05-12 (last push 2024-10-04)
+podlove/radiator	MIT	252	~> 1.17	2026-10-27	mix.exs asks for Elixir ~> 1.17
+jeffdc/gallformers	Apache-2.0	227	~> 1.15	2026-11-08	mix.exs asks for Elixir ~> 1.15
+coderdojobraga/bokken	MIT	192	~> 1.14	2024-03-08	not pushed to since 2026-05-12 (last push 2024-03-08)
+stride-nyc/remote_retro	MIT	190	1.11.4	2026-10-19	mix.exs asks for Elixir 1.11.4
+Clivern/Lynx	MIT	184	~> 1.16	2026-09-11	mix.exs asks for Elixir ~> 1.16
+jehrhardt/cozyauth	Apache-2.0	181	~> 1.18	2025-08-18	not pushed to since 2026-05-12 (last push 2025-08-18)
+revelrylabs/slax	MIT	178	~> 1.6	2026-11-05	mix.exs asks for Elixir ~> 1.6
+elementary/appcenter-dashboard	MIT	161	~> 1.7	2026-11-02	mix.exs asks for Elixir ~> 1.7
+mercadona/postoffice	Apache-2.0	140	~> 1.11	2024-03-07	not pushed to since 2026-05-12 (last push 2024-03-07)
+brunojppb/turbo-racer	MIT	138	~> 1.18	2026-04-22	not pushed to since 2026-05-12 (last push 2026-04-22)
+astarte-platform/astarte_flow	Apache-2.0	130	~> 1.7	2026-07-17	mix.exs asks for Elixir ~> 1.7
+texttile-blog/texttile	MIT	119	~> 1.15	2026-11-09	mix.exs asks for Elixir ~> 1.15

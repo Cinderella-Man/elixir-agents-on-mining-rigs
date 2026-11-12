@@ -17,6 +17,10 @@ live in the sister repo `llms-on-crypto-mining-rigs`.
   sessions run on a separate data-mining machine with no GPU: one job that uses the model and at most one task-making
   job that does not, each one task at a time. Beside the model server they fought it for processor, memory and disk,
   and their tests timed out, which reads as a failed task (2026-11-12, E76).
+- **The dataset's projects are fixed:** the 21 applications in `docs/data/2026-11-12_dataset_projects/`, chosen by the
+  rules written there (an application, a permissive licence, pushed to in the last six months, `mix.exs` asks for
+  Elixir 1.18 or newer). No task and no session comes from any other project; inside a project the newest merged pull
+  requests come first.
 - **Every idea gets a row in `experiments.md` at once,** however small. Ideas the evidence argues against stay as
   parked rows with the reason and what would reopen them.
 - **Search both registries before adding an idea:** this `experiments.md`, and the sister repo's
