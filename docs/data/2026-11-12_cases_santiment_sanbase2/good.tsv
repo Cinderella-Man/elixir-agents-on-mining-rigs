@@ -1,4 +1,11 @@
 id	licence	holdout	kind	good
+sanbase2-pr-5382	pass	review	feature	yes
+sanbase2-pr-5393	pass	pass	bug_fix	yes
+sanbase2-pr-5394	fail	pass	feature	no
+sanbase2-pr-5395	pass	pass	feature	yes
+sanbase2-pr-5401	pass	pass	bug_fix	yes
+sanbase2-pr-5405	fail	pass	feature	no
+sanbase2-pr-5407	pass	pass	feature	yes
 sanbase2-pr-5414	pass	pass	bug_fix	yes
 sanbase2-pr-5422	pass	review	feature	yes
 sanbase2-pr-5423	pass	pass	feature	yes

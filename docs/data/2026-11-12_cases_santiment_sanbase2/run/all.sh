@@ -14,7 +14,7 @@
 #                  order, when the target is not reached. A pull request whose row exists is not run again; checked
 #                  tasks without scans (from an earlier run) are scanned first. The watcher (watch.sh) runs for the
 #                  whole run; a stop it writes ends the run at once.
-#   all.sh retry N the pull request N once more, into OUT/<id>/2: for a try whose failure was the machine's (a time-out
+#   all.sh retry N [TRY]  the pull request N once more, into OUT/<id>/TRY (2 by default; 3 for a third try): for a try whose failure was the machine's (a time-out
 #                  or a lost database connection), run when the load is lower
 # OUT/rows.tsv holds every try's row, the try first (1, 2, or k for a deferral), written again after each try.
 # Environment: WORK (the factory's work folder: tasks/), JOB (this job's folder: run/, src/, tables/, numbers.txt,
@@ -67,7 +67,7 @@ run|retry)
     {
       printf 'try\trepository\tnumber\tid\tfolder\tmake_s\timport_s\tcheck_s\texport_s\tverdict\tdropped_at\treason\tsteps_ms\tload_start\tload_end\tload_max_check\tsettled\timages_added\timages_bytes\tcache_bytes_before\tcache_bytes_after\tfree_before\tfree_after\tjob\tstart\tend\tdetail\n'
       for m in $(cat "$JOB/numbers.txt"); do
-        for t in k 1 2; do
+        for t in k 1 2 3; do
           r=$OUT/$PREFIX-pr-$m/$t/row.tsv
           [ ! -e "$r" ] || { printf '%s\t' "$t"; cat "$r"; }
         done
@@ -145,9 +145,10 @@ run|retry)
       one "$n" 1
     done
   else
-    n=${2:?retry N}
-    rm -rf "$OUT/$PREFIX-pr-$n/2"
-    one "$n" 2
+    n=${2:?retry N [TRY]}
+    t=${3:-2}
+    rm -rf "$OUT/$PREFIX-pr-$n/$t"
+    one "$n" "$t"
   fi
   touch "$END"
   wait "$watcher" || true

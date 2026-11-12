@@ -12,22 +12,24 @@ try	number	id	merged	elixir_otp	task_kind	folder	verdict	dropped_at	reason	make_
 1	5414	sanbase2-pr-5414	2026-11-03	1.20.2/29.0.4	bug_fix	made	checked	-	-	10	1	681	0	0.0	0.0	253.0	111.7	309.3	674.0	10.37	8.81	10.93	settled	2143243383	4379943586	7490568192	pass	pass	-	20	32	present	3	2026-11-12T14:52:05+01:00	2026-11-12T15:03:38+01:00
 1	5411	sanbase2-pr-5411	2026-11-03	-	-	not_made	refused	maker	no_existing_tests	5	-	-	-	-	-	-	-	-	-	8.46	8.18	-	settled	0	56115200	71348224	-	-	pull_request	-	-	-	-	2026-11-12T15:04:04+01:00	2026-11-12T15:04:10+01:00
 1	5412	sanbase2-pr-5412	2026-11-03	-	-	not_made	refused	maker	no_existing_tests	6	-	-	-	-	-	-	-	-	-	8.18	7.85	-	settled	0	174174191	435867648	-	-	pull_request	-	-	-	-	2026-11-12T15:04:11+01:00	2026-11-12T15:04:18+01:00
--	5409	sanbase2-pr-5409	2026-11-02	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5410	sanbase2-pr-5410	2026-11-02	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5408	sanbase2-pr-5408	2026-11-02	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5407	sanbase2-pr-5407	2026-10-30	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5405	sanbase2-pr-5405	2026-10-28	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5198	sanbase2-pr-5198	2026-10-28	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5402	sanbase2-pr-5402	2026-10-28	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5401	sanbase2-pr-5401	2026-10-28	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5399	sanbase2-pr-5399	2026-10-27	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5382	sanbase2-pr-5382	2026-10-27	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5397	sanbase2-pr-5397	2026-10-26	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5396	sanbase2-pr-5396	2026-10-23	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5395	sanbase2-pr-5395	2026-10-22	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5391	sanbase2-pr-5391	2026-10-22	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5394	sanbase2-pr-5394	2026-10-22	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5393	sanbase2-pr-5393	2026-10-22	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+1	5409	sanbase2-pr-5409	2026-11-02	1.20.2/29.0.4	feature	made	dropped	controls	reference_existing_tests_fail	16	0	761	-	0.0	0.0	281.2	178.1	298.8	758.2	9.06	7.15	11.48	settled	2142011559	4303551613	7836336128	-	-	pull_request	16	72	present	1	2026-11-12T15:04:19+01:00	2026-11-12T15:17:17+01:00
+1	5410	sanbase2-pr-5410	2026-11-02	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	6	0	290	-	0.0	0.0	252.7	31.0	-	283.7	7.15	7.30	9.33	settled	2141896276	1546543711	2766839808	-	-	pull_request	19	19	present	3	2026-11-12T15:17:18+01:00	2026-11-12T15:22:15+01:00
+1	5408	sanbase2-pr-5408	2026-11-02	1.20.2/29.0.4	feature	made	dropped	probe	no_existing_tests	5	0	311	-	0.0	0.0	235.5	71.2	-	306.7	7.30	6.35	8.28	settled	2142764371	2340222510	3732389888	-	-	pull_request	11	11	present	1	2026-11-12T15:22:17+01:00	2026-11-12T15:27:35+01:00
+1	5407	sanbase2-pr-5407	2026-10-30	1.20.2/29.0.4	feature	made	checked	-	-	15	1	630	1	0.0	0.0	222.2	115.4	288.4	626.0	6.35	7.70	9.34	settled	2142783999	1876740552	3190919168	pass	pass	-	16	53	present	5	2026-11-12T15:27:37+01:00	2026-11-12T15:38:25+01:00
+1	5405	sanbase2-pr-5405	2026-10-28	1.20.2/29.0.4	feature	made	dropped	probe	reference_fails_hidden	20	0	241	-	0.0	0.0	209.8	23.0	-	232.8	7.34	8.60	6.92	settled	2142341522	1764270732	2805440512	fail	pass	factory	18	18	present	4	2026-11-12T15:38:43+01:00	2026-11-12T15:43:08+01:00
+2	5405	sanbase2-pr-5405	2026-10-28	1.20.2/29.0.4	feature	made	dropped	probe	reference_fails_hidden	6	0	30	-	0.0	0.0	0.1	21.7	-	21.9	3.53	4.06	4.25	settled	0	-10940416	54550528	fail	pass	factory	18	18	present	4	2026-11-12T16:00:02+01:00	2026-11-12T16:00:40+01:00
+3	5405	sanbase2-pr-5405	2026-10-28	1.20.2/29.0.4	feature	made	checked	-	-	5	0	581	0	0.0	0.0	215.6	74.1	285.2	574.9	5.93	8.42	10.11	settled	2129918465	2299147650	4073861120	fail	pass	factory	18	20	present	4	2026-11-12T16:10:19+01:00	2026-11-12T16:20:08+01:00
+1	5198	sanbase2-pr-5198	2026-10-28	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	26	0	270	-	0.0	0.0	245.7	16.6	-	262.3	8.32	7.13	8.95	settled	2141380670	2205035715	4036112384	-	-	pull_request	3	3	present	2	2026-11-12T15:43:09+01:00	2026-11-12T15:48:07+01:00
+1	5402	sanbase2-pr-5402	2026-10-28	-	-	not_made	refused	maker	no_existing_tests	6	-	-	-	-	-	-	-	-	-	4.06	6.63	-	settled	0	184549376	99672064	-	-	pull_request	-	-	-	-	2026-11-12T16:00:43+01:00	2026-11-12T16:00:50+01:00
+1	5401	sanbase2-pr-5401	2026-10-28	1.20.2/29.0.4	bug_fix	made	checked	-	-	10	0	501	1	0.0	0.0	231.3	87.9	179.9	499.2	6.63	6.64	8.46	settled	2142285072	3826073200	6541844480	pass	pass	-	1	26	single_hunk	1	2026-11-12T16:00:51+01:00	2026-11-12T16:09:24+01:00
+1	5399	sanbase2-pr-5399	2026-10-27	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	10	1	300	-	0.0	0.0	268.9	22.3	-	291.3	8.02	9.45	11.26	settled	2130156907	2073754957	3558977536	-	-	pull_request	25	25	present	4	2026-11-12T16:20:32+01:00	2026-11-12T16:25:45+01:00
+1	5382	sanbase2-pr-5382	2026-10-27	1.20.2/29.0.4	feature	made	checked	-	-	16	0	1441	1	0.0	0.0	266.3	376.9	788.9	1432.1	9.45	6.82	13.06	not settled	2130135729	7680284470	14070345728	pass	review	-	59	438	present	23	2026-11-12T16:25:49+01:00	2026-11-12T16:50:08+01:00
+1	5397	sanbase2-pr-5397	2026-10-26	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	10	0	281	-	0.0	0.0	228.2	49.3	-	277.5	6.95	6.95	8.02	settled	2130084337	2264622171	3846504448	-	-	pull_request	8	8	present	5	2026-11-12T16:50:29+01:00	2026-11-12T16:55:21+01:00
+1	5396	sanbase2-pr-5396	2026-10-23	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	10	0	230	-	0.0	0.0	209.8	19.1	-	228.9	6.95	6.45	8.89	settled	2129551046	1373870988	2237218816	-	-	pull_request	78	78	present	11	2026-11-12T16:55:23+01:00	2026-11-12T16:59:25+01:00
+1	5395	sanbase2-pr-5395	2026-10-22	1.20.2/29.0.4	feature	made	checked	-	-	10	1	710	1	0.0	0.0	213.4	162.6	331.8	707.9	6.45	5.54	6.32	settled	2129274274	2831734481	4638691328	pass	pass	-	41	97	present	1	2026-11-12T16:59:27+01:00	2026-11-12T17:11:30+01:00
+1	5391	sanbase2-pr-5391	2026-10-22	-	-	not_made	refused	maker	no_existing_tests	5	-	-	-	-	-	-	-	-	-	5.20	5.97	-	settled	0	0	22634496	-	-	pull_request	-	-	-	-	2026-11-12T17:11:49+01:00	2026-11-12T17:11:56+01:00
+1	5394	sanbase2-pr-5394	2026-10-22	1.20.2/29.0.4	feature	made	checked	-	-	10	1	600	0	0.0	0.0	220.0	116.0	264.2	600.2	5.97	4.53	9.23	settled	2128310063	2176614324	776351744	fail	pass	factory	4	81	present	1	2026-11-12T17:11:57+01:00	2026-11-12T17:22:10+01:00
+1	5393	sanbase2-pr-5393	2026-10-22	1.20.2/29.0.4	bug_fix	made	checked	-	-	5	1	550	1	0.0	0.0	192.7	110.6	242.3	545.7	4.22	4.05	9.49	settled	2129305454	1654738696	3125342208	pass	pass	-	1	45	single_hunk	2	2026-11-12T17:22:29+01:00	2026-11-12T17:31:48+01:00
 -	5392	sanbase2-pr-5392	2026-10-21	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5388	sanbase2-pr-5388	2026-10-19	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5386	sanbase2-pr-5386	2026-10-19	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
@@ -59,3 +61,23 @@ try	number	id	merged	elixir_otp	task_kind	folder	verdict	dropped_at	reason	make_
 -	5349	sanbase2-pr-5349	2026-09-10	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5348	sanbase2-pr-5348	2026-09-10	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5346	sanbase2-pr-5346	2026-09-10	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5347	sanbase2-pr-5347	2026-09-09	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5340	sanbase2-pr-5340	2026-09-09	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5345	sanbase2-pr-5345	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5344	sanbase2-pr-5344	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5343	sanbase2-pr-5343	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5342	sanbase2-pr-5342	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5311	sanbase2-pr-5311	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5341	sanbase2-pr-5341	2026-09-08	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5338	sanbase2-pr-5338	2026-09-01	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5337	sanbase2-pr-5337	2026-08-31	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5336	sanbase2-pr-5336	2026-08-27	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5335	sanbase2-pr-5335	2026-08-26	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5332	sanbase2-pr-5332	2026-08-19	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5328	sanbase2-pr-5328	2026-08-18	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5329	sanbase2-pr-5329	2026-08-18	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5331	sanbase2-pr-5331	2026-08-18	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5326	sanbase2-pr-5326	2026-08-13	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5323	sanbase2-pr-5323	2026-08-12	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5321	sanbase2-pr-5321	2026-08-12	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	5320	sanbase2-pr-5320	2026-08-12	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-

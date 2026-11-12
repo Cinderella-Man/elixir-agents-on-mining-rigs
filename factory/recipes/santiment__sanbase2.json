@@ -4,13 +4,13 @@
     "image": "hexpm/elixir:1.20.2-erlang-29.0.4-ubuntu-noble-20260730.1@sha256:e9301bad4a5e7238674db45a8cc00cb3a80310a037294fc6f8616d1ed9c0b796",
     "environment": {"MIX_ENV": "test"},
     "setup_commands": ["mix compile"],
-    "before_test_commands": ["mix run --no-start -e 'Ecto.Migrator.with_repo(Sanbase.Repo, &Ecto.Migrator.run(&1, :up, all: true))'"],
+    "before_test_commands": [],
     "packages": ["postgresql-client", "imagemagick", "libsctp1"]
   },
   "services": {
     "postgres": {"image": "pgvector/pgvector:pg17@sha256:7d0a41464797aeb9862dfdc0bbf1526b82cfd324cdd8036df19e3545f4a9ccb8"}
   },
-  "baseline": {"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.load --skip-if-loaded --quiet"]},
+  "baseline": {"mode": "prepared", "commands": ["mix ecto.create --quiet"]},
   "test_timeout": 240,
   "permitted_exclusion_tags": ["skip_suite"],
   "grading": {
@@ -20,7 +20,7 @@
   },
   "toolchain": {
     "baseline": [
-      {"commands": ["mix ecto.create --quiet", "mix ecto.load --skip-if-loaded --quiet"]}
+      {"commands": ["mix ecto.create --quiet"]}
     ]
   }
 }

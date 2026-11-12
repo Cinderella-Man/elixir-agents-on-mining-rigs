@@ -8,6 +8,8 @@
 #   scans.tsv            the two scans per checked task: licence file and family, files touched and passing, the
 #                        hold-out's repository check, name hits and span counts (no span text)
 #   holdout_reviews.tsv  the `review` hits read by a person: span id, the bench case, what was read, the verdict
+#   licence_large.tsv    the checked tasks whose licence result fails only on files the scan set aside as too large:
+#                        the file, its bytes at both commits, and the number of other failing files
 #   deps.tsv             the locked packages over all checked tasks, with their declared licences, class and the
 #                        number of tasks that lock them
 #   own_images.tsv       every image that carries this job's label: id, names, Docker's size and its unique size
@@ -40,6 +42,25 @@ cp "$OUT/good.tsv" "$PUB/good.tsv"
   done
 } > "$PUB/scans.tsv"
 [ ! -e "$SCANS/reviews.tsv" ] || cp "$SCANS/reviews.tsv" "$PUB/holdout_reviews.tsv"
+# the checked tasks whose licence result fails only on files the scan set aside as too large (exclude:large): each
+# such file with its size in bytes at the starting and the merge commit (from the full clone), and the other findings
+{
+  printf 'task\tpath\tbytes_start\tbytes_merge\tverdict_start\tverdict_merge\tother_failing_files\n'
+  for d in "$SCANS"/*/; do
+    id=$(basename "$d"); [ "$id" != work ] || continue
+    f=$d/licence.files.tsv; [ -s "$f" ] || continue
+    awk -F'\t' 'NR > 1 && $6 != "pass"' "$f" > "$JOB/fails.tmp"
+    [ -s "$JOB/fails.tmp" ] || continue
+    others=$(awk -F'\t' '$6 != "fail:exclude:large"' "$JOB/fails.tmp" | wc -l)
+    start=$(awk -F'\t' 'NR == 2 {print $3}' "$d/revisions.tsv"); fixed=$(awk -F'\t' 'NR == 2 {print $4}' "$d/revisions.tsv")
+    awk -F'\t' '$6 == "fail:exclude:large" {print $2 "\t" $4 "\t" $5}' "$JOB/fails.tmp" | while IFS=$'\t' read -r path vs vm; do
+      bs=$(git --git-dir "$JOB/sanbase2-full.git" cat-file -s "$start:$path" 2>/dev/null || echo -)
+      bm=$(git --git-dir "$JOB/sanbase2-full.git" cat-file -s "$fixed:$path" 2>/dev/null || echo -)
+      printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$id" "$path" "$bs" "$bm" "$vs" "$vm" "$others"
+    done
+  done
+  rm -f "$JOB/fails.tmp"
+} > "$PUB/licence_large.tsv"
 {
   printf 'kind\tpackage\tversion\tlicences\tclass\ttasks\n'
   for d in "$SCANS"/*/; do [ "$(basename "$d")" != work ] && [ -s "$d/deps.tsv" ] && tail -n +2 "$d/deps.tsv" || true; done |

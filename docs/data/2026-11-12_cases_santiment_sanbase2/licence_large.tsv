@@ -1,0 +1,3 @@
+task	path	bytes_start	bytes_merge	verdict_start	verdict_merge	other_failing_files
+sanbase2-pr-5394	priv/repo/structure.sql	369778	369852	exclude:large	exclude:large	0
+sanbase2-pr-5405	priv/repo/structure.sql	373423	373821	exclude:large	exclude:large	0
