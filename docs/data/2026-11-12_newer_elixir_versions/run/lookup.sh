@@ -9,9 +9,8 @@
 #                                        <prefix>, e.g. "27."), oldest first
 #   lookup.sh elixirs <otp>              the Elixir versions with an image for that OTP, oldest first
 # Only the bases toolchain_image.sh tries are counted (ubuntu-noble, ubuntu-jammy, ubuntu-focal, debian-bookworm,
-# debian-bullseye, debian-buster). Docker Hub answers a listing of more than 10,000 tags with 403 on the page past
-# that; the listing is then cut, and the script says so on stderr. Environment: SRC (the factory folder). Needs curl
-# and jq.
+# debian-bullseye, debian-buster). Docker Hub answered 403 to the later pages of some long listings;
+# the listing is then cut, and the script says so on stderr. Environment: SRC (the factory folder). Needs curl and jq.
 set -euo pipefail
 : "${SRC:?SRC=<the factory folder>}"
 hub=https://hub.docker.com/v2/namespaces/hexpm/repositories/elixir/tags
