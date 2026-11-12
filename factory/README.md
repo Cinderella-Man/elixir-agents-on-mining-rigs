@@ -820,7 +820,8 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
 
 ## 9. Calling the factory
 
-**Where it runs:** on the data-mining machine, never on the machine that serves the model, and one task at a time
+**Where it runs:** on the data-mining machine, never on the machine that serves the model. One job that uses
+the model and at most one task-making job that does not may run there at once, each one task at a time
 (decided 2026-11-12, registry row E76). Beside the model server, task jobs made database steps and tests time out.
 
 The entry points are the functions of `Eab.Factory` (`lib/eab/factory.ex`, job T9). `bin/factoryctl` calls one of
