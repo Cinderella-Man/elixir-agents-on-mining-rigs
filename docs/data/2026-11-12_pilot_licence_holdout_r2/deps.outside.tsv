@@ -1,0 +1,112 @@
+task	kind	package	version	licences	class
+ex338-pr-1282	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1282	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1282	hex	cowboy	2.10.0	ISC	outside
+ex338-pr-1282	hex	cowlib	2.12.1	ISC	outside
+ex338-pr-1282	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1282	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1283	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1283	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1283	hex	cowboy	2.10.0	ISC	outside
+ex338-pr-1283	hex	cowlib	2.12.1	ISC	outside
+ex338-pr-1283	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1283	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1288	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1288	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1288	hex	cowboy	2.10.0	ISC	outside
+ex338-pr-1288	hex	cowlib	2.12.1	ISC	outside
+ex338-pr-1288	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1288	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1300	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1300	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1300	hex	cowboy	2.10.0	ISC	outside
+ex338-pr-1300	hex	cowlib	2.12.1	ISC	outside
+ex338-pr-1300	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1300	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1302	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1302	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1302	hex	cowboy	2.10.0	ISC	outside
+ex338-pr-1302	hex	cowlib	2.12.1	ISC	outside
+ex338-pr-1302	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1302	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1310	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1310	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1310	hex	cowboy	2.12.0	ISC	outside
+ex338-pr-1310	hex	cowlib	2.13.0	ISC	outside
+ex338-pr-1310	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1310	hex	ranch	1.8.0	ISC	outside
+ex338-pr-1313	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+ex338-pr-1313	hex	bcrypt_elixir	3.1.0	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+ex338-pr-1313	hex	cowboy	2.12.0	ISC	outside
+ex338-pr-1313	hex	cowlib	2.13.0	ISC	outside
+ex338-pr-1313	hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside
+ex338-pr-1313	hex	ranch	1.8.0	ISC	outside
+radiator-pr-500	hex	cowboy	2.10.0	ISC	outside
+radiator-pr-500	hex	cowlib	2.12.1	ISC	outside
+radiator-pr-500	hex	file_system	0.2.10	WTFPL	outside
+radiator-pr-500	hex	ranch	1.8.0	ISC	outside
+radiator-pr-510	hex	cowboy	2.10.0	ISC	outside
+radiator-pr-510	hex	cowlib	2.12.1	ISC	outside
+radiator-pr-510	hex	file_system	0.2.10	WTFPL	outside
+radiator-pr-510	hex	ranch	1.8.0	ISC	outside
+radiator-pr-541	hex	cowboy	2.10.0	ISC	outside
+radiator-pr-541	hex	cowlib	2.12.1	ISC	outside
+radiator-pr-541	hex	file_system	0.2.10	WTFPL	outside
+radiator-pr-541	hex	ranch	1.8.0	ISC	outside
+radiator-pr-542	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-542	hex	ranch	2.1.0	ISC	outside
+radiator-pr-546	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-546	hex	ranch	2.1.0	ISC	outside
+radiator-pr-550	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-550	hex	ranch	2.1.0	ISC	outside
+radiator-pr-552	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-552	hex	ranch	2.1.0	ISC	outside
+radiator-pr-554	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-554	hex	ranch	2.1.0	ISC	outside
+radiator-pr-556	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-556	hex	ranch	2.1.0	ISC	outside
+radiator-pr-558	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-558	hex	ranch	2.1.0	ISC	outside
+radiator-pr-560	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-560	hex	ranch	2.1.0	ISC	outside
+radiator-pr-561	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-561	hex	ranch	2.1.0	ISC	outside
+radiator-pr-562	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-562	hex	ranch	2.1.0	ISC	outside
+radiator-pr-563	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-563	hex	ranch	2.1.0	ISC	outside
+radiator-pr-568	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-568	hex	ranch	2.1.0	ISC	outside
+radiator-pr-571	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-571	hex	ranch	2.1.0	ISC	outside
+radiator-pr-572	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-572	hex	ranch	2.1.0	ISC	outside
+radiator-pr-576	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-576	hex	ranch	2.1.0	ISC	outside
+radiator-pr-578	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-578	hex	ranch	2.1.0	ISC	outside
+radiator-pr-582	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-582	hex	ranch	2.1.0	ISC	outside
+radiator-pr-583	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-583	hex	ranch	2.1.0	ISC	outside
+radiator-pr-593	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-593	git	web_inspector	https://github.com/eteubert/web_inspector.git#5648328151e9d37bd8f1dd191e95c5a33f071101		git dependency: licence not read
+radiator-pr-593	hex	ranch	2.1.0	ISC	outside
+radiator-pr-594	git	heroicons	https://github.com/tailwindlabs/heroicons.git#88ab3a0d790e6a47404cba02800a6b25d2afae50		git dependency: licence not read
+radiator-pr-594	git	web_inspector	https://github.com/eteubert/web_inspector.git#5648328151e9d37bd8f1dd191e95c5a33f071101		git dependency: licence not read
+radiator-pr-594	hex	ranch	2.1.0	ISC	outside
+radiator-pr-639	git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read
+radiator-pr-639	hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+radiator-pr-639	hex	ranch	2.2.0	ISC	outside
+radiator-pr-641	git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read
+radiator-pr-641	hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+radiator-pr-641	hex	ranch	2.2.0	ISC	outside
+radiator-pr-643	git	daisyui	https://github.com/saadeghi/daisyui.git#22ecff57f2c391b80a75617325748cf4d13fdf47		git dependency: licence not read
+radiator-pr-643	git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read
+radiator-pr-643	hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+radiator-pr-643	hex	ranch	2.3.0	ISC	outside
+radiator-pr-645	git	daisyui	https://github.com/saadeghi/daisyui.git#22ecff57f2c391b80a75617325748cf4d13fdf47		git dependency: licence not read
+radiator-pr-645	git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read
+radiator-pr-645	hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside
+radiator-pr-645	hex	open_api_spex	3.22.4	MPL-2.0	outside
+radiator-pr-645	hex	ranch	2.3.0	ISC	outside

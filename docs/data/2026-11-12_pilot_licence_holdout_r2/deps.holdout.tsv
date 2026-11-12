@@ -1,0 +1,34 @@
+package	version	github	held_out_by	tasks
+ash	3.27.6	ash-project/ash	package name+organisation+repository	2
+ash	3.33.10	ash-project/ash	package name+organisation+repository	1
+ash	3.34.6	ash-project/ash	package name+organisation+repository	1
+ash_admin	1.1.0	ash-project/ash_admin	organisation	2
+ash_admin	1.3.2	ash-project/ash_admin	organisation	2
+ash_json_api	1.7.1	ash-project/ash_json_api	organisation	1
+ash_oban	0.8.14	ash-project/ash_oban	organisation	1
+ash_oban	0.9.0	ash-project/ash_oban	organisation	1
+ash_phoenix	2.3.22	ash-project/ash_phoenix	organisation	2
+ash_phoenix	2.3.25	ash-project/ash_phoenix	organisation	2
+ash_postgres	2.13.1	ash-project/ash_postgres	organisation	1
+ash_postgres	2.14.5	ash-project/ash_postgres	organisation	1
+ash_postgres	2.9.1	ash-project/ash_postgres	organisation	2
+ash_sql	0.6.3	ash-project/ash_sql	organisation	2
+ash_sql	0.7.6	ash-project/ash_sql	organisation	1
+ash_sql	0.8.1	ash-project/ash_sql	organisation	1
+ash_state_machine	0.2.13	ash-project/ash_state_machine	organisation	4
+crux	0.1.3	ash-project/crux	organisation	2
+crux	0.1.4	ash-project/crux	organisation	2
+igniter	0.8.0	ash-project/igniter	organisation	2
+igniter	0.8.4	ash-project/igniter	organisation	2
+igniter_js	0.5.0	ash-project/igniter_js	organisation	1
+igniter_js	0.5.1	ash-project/igniter_js	organisation	1
+iterex	0.1.2	ash-project/iterex,sponsors/jimsynz	organisation	4
+reactor	1.0.2	ash-project/reactor	organisation	2
+reactor	1.0.7	ash-project/reactor	organisation	2
+spark	2.7.0	ash-project/spark	organisation	2
+spark	2.7.3	ash-project/spark	organisation	1
+spark	2.7.6	ash-project/spark	organisation	1
+splode	0.3.1	ash-project/splode	organisation	2
+splode	0.3.2	ash-project/splode	organisation	2
+usage_rules	1.2.6	ash-project/usage_rules	organisation	2
+usage_rules	1.2.8	ash-project/usage_rules	organisation	2

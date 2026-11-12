@@ -1,0 +1,18 @@
+verdict	path	trees
+exclude:binary	*.ico (binary files)	61
+exclude:binary	*.jpg (binary files)	44
+exclude:binary	*.png (binary files)	17
+exclude:binary	*.webp (binary files)	44
+exclude:CC-NC	priv/repo/seeds/license.exs	4
+exclude:vendored	assets/vendor/daisyui.js	4
+exclude:vendored	assets/vendor/daisyui-theme.js	4
+exclude:vendored	assets/vendor/heroicons/ (all files in the folder)	6
+exclude:vendored	assets/vendor/heroicons.js	8
+exclude:vendored	assets/vendor/luxon.js	2
+exclude:vendored	assets/vendor/quill.js	4
+exclude:vendored	assets/vendor/quill.snow.css	4
+exclude:vendored	assets/vendor/sortable.js	28
+exclude:vendored	assets/vendor/topbar.js	52
+review:CC	test/radiator/feeds/parser/handler_test.exs	4
+review:CC	test/radiator/podcasts/feed_sync/translator_test.exs	4
+review:CC	test/support/fixtures/feeds/minimal.xml	4

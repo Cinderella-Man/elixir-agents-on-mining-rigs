@@ -1,0 +1,35 @@
+task	held_out_packages	packages
+ex338-pr-1282	0	
+ex338-pr-1283	0	
+ex338-pr-1288	0	
+ex338-pr-1300	0	
+ex338-pr-1302	0	
+ex338-pr-1310	0	
+ex338-pr-1313	0	
+radiator-pr-500	0	
+radiator-pr-510	0	
+radiator-pr-541	0	
+radiator-pr-542	0	
+radiator-pr-546	0	
+radiator-pr-550	0	
+radiator-pr-552	0	
+radiator-pr-554	0	
+radiator-pr-556	0	
+radiator-pr-558	0	
+radiator-pr-560	0	
+radiator-pr-561	0	
+radiator-pr-562	0	
+radiator-pr-563	0	
+radiator-pr-568	0	
+radiator-pr-571	0	
+radiator-pr-572	0	
+radiator-pr-576	0	
+radiator-pr-578	0	
+radiator-pr-582	0	
+radiator-pr-583	0	
+radiator-pr-593	0	
+radiator-pr-594	0	
+radiator-pr-639	13	ash,ash_admin,ash_phoenix,ash_postgres,ash_sql,ash_state_machine,crux,igniter,iterex,reactor,spark,splode,usage_rules
+radiator-pr-641	13	ash,ash_admin,ash_phoenix,ash_postgres,ash_sql,ash_state_machine,crux,igniter,iterex,reactor,spark,splode,usage_rules
+radiator-pr-643	15	ash,ash_admin,ash_oban,ash_phoenix,ash_postgres,ash_sql,ash_state_machine,crux,igniter,igniter_js,iterex,reactor,spark,splode,usage_rules
+radiator-pr-645	16	ash,ash_admin,ash_json_api,ash_oban,ash_phoenix,ash_postgres,ash_sql,ash_state_machine,crux,igniter,igniter_js,iterex,reactor,spark,splode,usage_rules

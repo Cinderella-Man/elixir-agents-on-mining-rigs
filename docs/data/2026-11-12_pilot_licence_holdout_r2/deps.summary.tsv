@@ -1,0 +1,13 @@
+project	class	package_versions	distinct_packages
+ex338	allowed	72	59
+ex338	allowed, not an SPDX id	6	6
+ex338	git dependency: licence not read	1	1
+ex338	outside	5	3
+ex338	several, some outside	2	2
+ex338	(all)	86	71
+radiator	allowed	306	135
+radiator	allowed, not an SPDX id	9	8
+radiator	git dependency: licence not read	4	3
+radiator	outside	8	5
+radiator	several, some outside	1	1
+radiator	(all)	328	149

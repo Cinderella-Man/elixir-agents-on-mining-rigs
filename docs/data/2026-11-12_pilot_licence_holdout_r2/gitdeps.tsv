@@ -1,0 +1,5 @@
+package	repository	commit	licence_file	bytes	sha256	read_by_hand	tasks
+daisyui	saadeghi/daisyui	22ecff57f2c391b80a75617325748cf4d13fdf47	LICENSE	1071	8709e3ac65c84637c422dc8082b893d9997fce093751c77b2f1983bf29dbf9ea	MIT, standard text, "Copyright (c) 2020 Pouya Saadeghi"	2
+heroicons	tailwindlabs/heroicons	0435d4ca364a608cc75e2f8683d374e55abbae26	LICENSE	1071	60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985	MIT, standard text, "Copyright (c) Tailwind Labs, Inc."	4
+heroicons	tailwindlabs/heroicons	88ab3a0d790e6a47404cba02800a6b25d2afae50	LICENSE	1076	75523ddd65d9620bea09f84e89d0c373b4205a3708b8a1e9f9598a5438a3e641	MIT, standard text, "Copyright (c) 2020 Refactoring UI Inc."	27
+web_inspector	eteubert/web_inspector	5648328151e9d37bd8f1dd191e95c5a33f071101	-	0	-	no licence file at the pinned commit (the commit's tree has 40 entries, files and folders: no LICENSE, LICENCE or COPYING), and neither mix.exs nor README.md names a licence or a copyright	2
