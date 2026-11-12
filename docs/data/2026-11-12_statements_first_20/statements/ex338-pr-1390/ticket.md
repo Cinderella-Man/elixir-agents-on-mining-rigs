@@ -1,0 +1,13 @@
+We need to track whether a draft pick is a keeper and let admins change that from the league draft-picks index.
+
+Add a boolean `is_keeper` to draft picks. It must be persisted, default to false, and be non-null, so all existing picks start as non-keepers. The existing draft-pick changeset should accept `is_keeper` updates, and after a successful toggle the value loaded with `DraftPicks.get_draft_pick!/1` must reflect the new status.
+
+On the existing league draft-picks index (the `/fantasy_leagues/:id/draft_picks` page), keep all current layout, row IDs (`#draft-pick-<id>`), filters, and edit/available-to-pick behaviour. For any row that has a fantasy player, put the keeper status next to the player name.
+
+Only admins may change keeper status. For an admin viewing a pick with a player, render a form inside that draft-pick row with `phx-change="toggle_keeper"`. The form needs a hidden input named `draft_pick_id` containing the draft pick id and a checkbox named `is_keeper` with value `"true"`, plus the visible label `Keeper`. The checkbox is checked exactly when `is_keeper` is true and not checked when false. The change should apply as the checkbox changes, not only on submit. A checked checkbox sends `%{"draft_pick_id" => "<id>", "is_keeper" => "true"}`; if the box is unchecked the `is_keeper` key is absent and that means false. Toggling either way must persist the new boolean and the row must rerender with the checkbox in the matching checked/unchecked state without a page reload.
+
+For non-admin users, including logged-out visitors, do not render the form, the checkbox, or the `Keeper` label. If the pick is a keeper, show a small marker next to the player name using the existing icon helper with the name `hero-arrow-path`; the rendered element must be a `span` whose class list includes `hero-arrow-path` so it is selectable as `span.hero-arrow-path`. Do not show that marker when `is_keeper` is false. Do not show the control or marker for picks that do not yet have a fantasy player; those rows keep their existing placeholder/available-to-pick UI.
+
+The server must enforce the admin rule too: ignore any keeper-toggle event from a non-admin rather than trusting only the hidden UI. On a successful toggle, broadcast the updated pick so other open draft-pick index views for the same league refresh with their current filters; views for other leagues must not be affected. The acting view should also end up showing the new checkbox state.
+
+If the update fails, leave the stored pick unchanged and show an error flash; do not crash the LiveView. Nothing else about draft picks should change: no new route/page, no keeper option in the create/edit draft-pick forms, and no change to draft order, filters, or available-to-pick logic.

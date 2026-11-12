@@ -1,0 +1,1 @@
+The fantasy league waivers page shows an "Invalid Claims" heading, but no invalid waiver claims under it. If a waiver exists for a team with status "invalid", the player name should appear on that page at /fantasy_leagues/:id/waivers, just like the other waiver sections. Right now I only see the heading and the invalid player is missing.

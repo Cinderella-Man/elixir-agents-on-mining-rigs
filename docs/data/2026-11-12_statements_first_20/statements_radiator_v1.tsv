@@ -1,0 +1,9 @@
+id	kind	outcome	answers	server_errors	verdicts	statement	ticket_sha256
+radiator-pr-510	feature	ok	1	0	pass	1756, removed: project outside the dataset	
+radiator-pr-541	bug_fix	ok	1	0	pass	923, removed: project outside the dataset	
+radiator-pr-542	bug_fix	ok	1	0	pass	1622, removed: project outside the dataset	
+radiator-pr-550	bug_fix	ok	1	0	pass	1289, removed: project outside the dataset	
+radiator-pr-552	feature	ok	1	0	pass	1292, removed: project outside the dataset	
+radiator-pr-554	feature	ok	2	0	leak, pass	1606, removed: project outside the dataset	
+radiator-pr-556	feature	ok	1	0	pass	2023, removed: project outside the dataset	
+radiator-pr-558	feature	stopped	0	1		none: stopped when the list changed	

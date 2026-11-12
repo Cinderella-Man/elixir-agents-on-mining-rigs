@@ -1,0 +1,1 @@
+The user settings page currently has no MCP setup guidance. On /users/settings, add a short "Connect an MCP client" section that shows the endpoint /api/v1/mcp, an example claude mcp add command, and explains that the Authorization header must be Bearer followed by a space and the user's token—a bare token is rejected.

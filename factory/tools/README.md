@@ -13,6 +13,8 @@ Two checks every task must pass before it, or a session on it, is used for train
 
 The checks drop nothing: they write tables, and whoever runs the factory decides.
 
+The statement writer and its leak check (job P7) are in [`statements/`](statements/README.md).
+
 ## Files
 
 | File | What it does |
