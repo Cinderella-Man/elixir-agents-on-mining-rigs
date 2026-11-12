@@ -26,8 +26,10 @@ defmodule Eab.Runs do
   def snapshot, do: GenServer.call(__MODULE__, :snapshot)
 
   @doc """
-  Starts a full run. `validation: true` marks an unpublishable case-validation run
-  (ADR 0012).
+  Starts a run over the tasks `cases: ids` of the task folder; its release freezes those
+  tasks and no other (factory/README.md, section 5.1). A harness check (`check: {kind, id}`)
+  runs the one task it names instead. `validation: true` marks an unpublishable
+  case-validation run (ADR 0012).
   `parallel_attempts: n` (1 to 8, default 1) runs up to n cases at once (ADR 0014).
   """
   def start(endpoint, key, settings, opts \\ []),
@@ -45,8 +47,8 @@ defmodule Eab.Runs do
   def stop, do: GenServer.call(__MODULE__, :stop, 10_000)
   def retry_cleanup, do: GenServer.call(__MODULE__, :retry_cleanup)
 
-  @doc "Prepares and checks every case with no model, so a later run needs no internet."
-  def prepare_all, do: GenServer.call(__MODULE__, :prepare_all, 30_000)
+  @doc "Prepares and checks the tasks `ids` with no model, so a later run of them needs no internet."
+  def prepare(ids), do: GenServer.call(__MODULE__, {:prepare, ids}, 30_000)
   def stop_preparation, do: GenServer.call(__MODULE__, :stop_preparation, 10_000)
 
   @impl true
@@ -106,20 +108,23 @@ defmodule Eab.Runs do
              elem(request, 0) in [:start, :partial, :resume],
       do: {:reply, {:error, "Preparation is running; wait for it to finish or stop it"}, state}
 
-  def handle_call(:prepare_all, _from, state)
+  def handle_call({:prepare, _}, _from, state)
       when not is_nil(state.active) or not is_nil(state.preparing) or not is_nil(state.cleanup) or
              not is_nil(state.cleanup_error),
       do: {:reply, {:error, "Wait for the active work and container cleanup to finish"}, state}
 
-  def handle_call(:prepare_all, _from, state) do
+  def handle_call({:prepare, ids}, _from, state) when not is_list(ids) or ids == [],
+    do: {:reply, {:error, "Choose the tasks to prepare"}, state}
+
+  def handle_call({:prepare, ids}, _from, state) do
     id = "preparation-#{System.system_time(:second)}"
     parent = self()
-    qualification = Application.get_env(:eab, :qualification, &Qualification.run/2)
+    qualification = Application.get_env(:eab, :qualification, &Qualification.run/3)
 
     task =
       Task.Supervisor.async_nolink(Eab.Tasks, fn ->
         try do
-          qualification.(&send(parent, {:preparation, id, &1}),
+          qualification.(ids, &send(parent, {:preparation, id, &1}),
             id: id,
             on_result: &send(parent, {:preparation_result, id, &1, &2})
           )
@@ -132,7 +137,7 @@ defmodule Eab.Runs do
       "id" => id,
       "status" => "running",
       "message" => "Starting preparation",
-      "total" => length(Inventory.all()),
+      "total" => length(ids),
       "finished" => 0,
       "errors" => %{}
     }
@@ -162,7 +167,12 @@ defmodule Eab.Runs do
       do: {:reply, {:error, "Container cleanup needs attention: #{error}"}, state}
 
   def handle_call({:start, endpoint, key, settings, opts}, _from, state) do
-    release = Release.freeze()
+    release =
+      case opts[:check] do
+        {_, id} -> Release.freeze([id])
+        _ -> Release.freeze(opts[:cases] || raise("Choose the tasks for the run"))
+      end
+
     settings = Model.settings(endpoint, settings)
 
     run =
@@ -218,13 +228,19 @@ defmodule Eab.Runs do
                ),
            do: raise("Source run identity changed")
 
-    release = Release.freeze()
-
-    unless Map.drop(previous["protocol"], ["implementation"]) ==
-             Map.drop(release["protocol"], ["implementation"]),
-           do: raise("Case inputs or agent changed; start a new full run")
-
     {kind, cases} = partial_cases(source, mode)
+    release = Release.freeze(cases)
+
+    # The source release narrowed to the selected tasks must be what is frozen now.
+    narrowed =
+      previous["protocol"]
+      |> Map.drop(["implementation"])
+      |> put_in(["inventory", "cases"], cases)
+      |> Map.update!("fixtures", &Map.take(&1, cases))
+
+    unless narrowed == Map.drop(release["protocol"], ["implementation"]),
+      do: raise("Case inputs or agent changed; start a new full run")
+
     Readiness.enforce!(cases)
     endpoint = source["model"]
     settings = source["settings"]

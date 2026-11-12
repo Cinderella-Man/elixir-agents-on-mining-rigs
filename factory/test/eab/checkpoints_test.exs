@@ -10,7 +10,11 @@ defmodule Eab.CheckpointsTest do
     on_exit(fn ->
       Application.put_env(:eab, :data_dir, old)
       File.rm_rf!(dir)
+      File.rm_rf!(dir <> "-tasks")
     end)
+
+    # The inventory is a task folder of made-up tasks (factory/README.md, section 6, change 2).
+    Eab.MadeUpTasks.mount!(dir <> "-tasks")
 
     endpoint = %{
       "url" => "http://fixture",
@@ -20,7 +24,7 @@ defmodule Eab.CheckpointsTest do
       "profile" => %{"model_path" => "fixture.gguf"}
     }
 
-    release = Release.freeze()
+    release = Release.freeze(Inventory.all())
     settings = Model.settings(endpoint)
 
     run = %{
@@ -50,9 +54,9 @@ defmodule Eab.CheckpointsTest do
     run: run,
     id: id
   } do
-    assert Release.freeze()["id"] == run["release_id"]
-    path = Store.path("releases/#{run["release_id"]}/cases/#{id}/ticket.md")
-    assert File.read!(path) == Inventory.file(id, "ticket.md")
+    assert Release.freeze(run["cases"])["id"] == run["release_id"]
+    path = Store.path("releases/#{run["release_id"]}/cases/#{id}/case.json")
+    assert File.read!(path) == Inventory.file(id, "case.json")
     File.write!(path, "corrupt")
 
     assert_raise RuntimeError, ~r/Frozen release fixture is corrupt/, fn ->
@@ -314,5 +318,55 @@ defmodule Eab.CheckpointsTest do
     send(pi_c, :go)
     assert Task.await(runner, 10_000) == :ok
     assert Enum.all?(run["cases"], &Checkpoints.completed(run, &1)["grade"]["passed"])
+  end
+
+  test "a release freezes only the tasks it is given, and resume checks only those", %{run: run} do
+    [a, b, c] = run["cases"]
+    model = run["model"]
+    settings = run["settings"]
+    release = Release.freeze([b, a])
+    assert release["protocol"]["inventory"]["cases"] == [a, b]
+    assert Map.keys(release["protocol"]["fixtures"]) == [a, b]
+    refute release["id"] == run["release_id"]
+    assert File.ls!(Store.path("releases/#{release["id"]}/cases")) |> Enum.sort() == [a, b]
+
+    two =
+      Map.merge(run, %{
+        "cases" => [a, b],
+        "protocol" => release["protocol"],
+        "release_id" => release["id"],
+        "experiment_id" => Release.experiment(release["id"], model, settings)
+      })
+
+    assert :ok = Checkpoints.validate_run!(two, model, settings)
+
+    assert_raise RuntimeError, ~r/Run cases differ/, fn ->
+      Checkpoints.validate_run!(Map.put(two, "cases", [a, b, c]), model, settings)
+    end
+
+    # Another task changes and a new one arrives: the two-task release is untouched.
+    File.write!(Inventory.case_path(c, "reference.patch"), "changed outside the release\n")
+    Eab.MadeUpTasks.copy!("ledgerette-pr-3", "ledgerette-pr-2")
+    assert :ok = Checkpoints.validate_run!(two, model, settings)
+
+    assert_raise RuntimeError, ~r/Benchmark case changed: #{c}/, fn ->
+      Checkpoints.validate_run!(run, model, settings)
+    end
+
+    # A task of the release leaves the folder.
+    File.rename!(Path.join(Inventory.tasks_dir(), b), Path.join(Inventory.tasks_dir(), ".parked"))
+
+    assert_raise RuntimeError, ~r/cases or agent changed/, fn ->
+      Checkpoints.validate_run!(two, model, settings)
+    end
+
+    assert_raise RuntimeError, ~r/Unknown task: #{b}/, fn -> Release.freeze([a, b]) end
+
+    # A folder whose name is not its task's id is refused.
+    File.cp_r!(Eab.MadeUpTasks.dir(a), Path.join(Inventory.tasks_dir(), "renamed-task"))
+
+    assert_raise RuntimeError, ~r/Task folder and task id differ: renamed-task/, fn ->
+      Release.freeze(["renamed-task"])
+    end
   end
 end

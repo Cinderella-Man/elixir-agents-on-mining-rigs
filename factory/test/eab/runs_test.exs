@@ -9,6 +9,8 @@ defmodule Eab.RunsTest do
     root = Path.join(System.tmp_dir!(), "eab-run-test-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
     Application.put_env(:eab, :cleanup, fn _ -> :ok end)
+    # The inventory is a task folder of made-up tasks (factory/README.md, section 6, change 2).
+    Eab.MadeUpTasks.mount!(root <> "-tasks")
     Supervisor.restart_child(Eab.Supervisor, Runs)
 
     on_exit(fn ->
@@ -23,6 +25,7 @@ defmodule Eab.RunsTest do
 
       Supervisor.restart_child(Eab.Supervisor, Runs)
       File.rm_rf!(root)
+      File.rm_rf!(root <> "-tasks")
     end)
 
     :ok
@@ -62,7 +65,7 @@ defmodule Eab.RunsTest do
           {"error", {:error, "fixture error"}},
           {"cancelled", :stop}
         ] do
-      {:ok, id} = Runs.start(endpoint, "", %{})
+      {:ok, id} = Runs.start(endpoint, "", %{}, cases: tasks())
       assert_receive {:started, worker, run}, 3000
       assert run["memory"]["sample_count"] == 1
       if result == :stop, do: Runs.stop(), else: send(worker, {:finish, result})
@@ -83,20 +86,21 @@ defmodule Eab.RunsTest do
       Keyword.put(config, :args, ["test/support/memory_collector.mjs", "startup_error"])
     )
 
-    assert {:error, message} = Runs.start(endpoint, "", %{})
+    assert {:error, message} = Runs.start(endpoint, "", %{}, cases: tasks())
     assert message =~ "Memory collection could not start"
     refute_receive {:started, _, _}
     assert Runs.snapshot().active == nil
   end
 
   defp endpoint, do: %{"model" => "fixture", "context" => 32768}
+  defp tasks, do: Eab.Inventory.all()
 
   defp stub_preparation do
     parent = self()
     on_exit(fn -> Application.delete_env(:eab, :qualification) end)
 
-    Application.put_env(:eab, :qualification, fn emit, opts ->
-      send(parent, {:preparing, self(), emit, opts})
+    Application.put_env(:eab, :qualification, fn ids, emit, opts ->
+      send(parent, {:preparing, self(), emit, Keyword.put(opts, :cases, ids)})
 
       receive do
         {:finish, result} -> result
@@ -122,12 +126,13 @@ defmodule Eab.RunsTest do
 
   test "preparing every case excludes runs and reports each finished case" do
     stub_preparation()
-    assert :ok = Runs.prepare_all()
+    assert :ok = Runs.prepare(tasks())
     assert_receive {:preparing, worker, emit, opts}, 3000
     assert String.starts_with?(opts[:id], "preparation-")
-    assert {:error, message} = Runs.prepare_all()
+    assert opts[:cases] == tasks()
+    assert {:error, message} = Runs.prepare(tasks())
     assert message =~ "Wait for the active work"
-    assert {:error, message} = Runs.start(endpoint(), "", %{})
+    assert {:error, message} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert message =~ "Preparation is running"
     assert {:error, message} = Runs.resume("any", endpoint(), "", %{})
     assert message =~ "Preparation is running"
@@ -145,7 +150,7 @@ defmodule Eab.RunsTest do
     send(worker, {:finish, %{"status" => "error"}})
     finished = await_preparation(&(&1["status"] == "error"))
     assert finished["message"] =~ "could not be prepared"
-    assert :ok = Runs.prepare_all()
+    assert :ok = Runs.prepare(tasks())
     assert_receive {:preparing, worker, _, _}, 3000
     send(worker, {:finish, %{"status" => "qualified"}})
     assert await_preparation(&(&1["status"] == "qualified"))["errors"] == %{}
@@ -153,11 +158,11 @@ defmodule Eab.RunsTest do
 
   test "a failed preparation job reports its error and allows another attempt" do
     on_exit(fn -> Application.delete_env(:eab, :qualification) end)
-    Application.put_env(:eab, :qualification, fn _, _ -> raise "Cache removal is active" end)
-    assert :ok = Runs.prepare_all()
+    Application.put_env(:eab, :qualification, fn _, _, _ -> raise "Cache removal is active" end)
+    assert :ok = Runs.prepare(tasks())
     finished = await_preparation(&(&1["status"] == "error"))
     assert finished["message"] == "Cache removal is active"
-    assert :ok = Runs.prepare_all()
+    assert :ok = Runs.prepare(tasks())
     await_preparation(&(&1["status"] == "error"))
   end
 
@@ -165,7 +170,7 @@ defmodule Eab.RunsTest do
     parent = self()
     Runs.subscribe()
     stub_preparation()
-    assert :ok = Runs.prepare_all()
+    assert :ok = Runs.prepare(tasks())
     assert_receive {:preparing, worker, _, opts}, 3000
     assert Eab.Retention.lease(opts[:id])
     monitor = Process.monitor(worker)
@@ -182,7 +187,7 @@ defmodule Eab.RunsTest do
       :ok
     end)
 
-    assert {:ok, id} = Runs.start(endpoint(), "", %{})
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive :run_started, 3000
     await_terminal(id)
     await_cleanup()
@@ -192,7 +197,7 @@ defmodule Eab.RunsTest do
     on_exit(fn -> Application.delete_env(:eab, :offline) end)
     Application.put_env(:eab, :offline, true)
     Application.put_env(:eab, :runner, fn _, _, _ -> flunk("offline run started") end)
-    assert {:error, message} = Runs.start(endpoint(), "", %{})
+    assert {:error, message} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert message =~ "Offline mode:"
     assert message =~ "Prepare all cases"
     assert Runs.snapshot().active == nil
@@ -236,7 +241,7 @@ defmodule Eab.RunsTest do
     end
 
     assert {:error, _} = Runs.retry_errors("source", "")
-    assert {:error, _} = Runs.start(endpoint(), "", %{})
+    assert {:error, _} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert source_files() == original
 
     complete =
@@ -309,8 +314,69 @@ defmodule Eab.RunsTest do
     assert source_files() == original
   end
 
+  test "a run over two of three made-up tasks touches only those two" do
+    parent = self()
+    Runs.subscribe()
+    assert [a, b, c] = tasks()
+    folder = Eab.Inventory.tasks_dir()
+
+    Application.put_env(:eab, :runner, fn run, _, _ ->
+      for id <- run["cases"],
+          do: Store.write("runs/#{run["id"]}/#{id}/attempt.json", %{"status" => "running"})
+
+      send(parent, {:started, run})
+
+      receive do
+        :finish -> :ok
+      end
+    end)
+
+    assert {:error, message} = Runs.start(endpoint(), "", %{})
+    assert message =~ "Choose the tasks"
+    assert {:error, message} = Runs.start(endpoint(), "", %{}, cases: [a, "not-in-the-folder"])
+    assert message =~ "Unknown task: not-in-the-folder"
+    assert {:error, _} = Runs.start(endpoint(), "", %{}, cases: [a, a])
+    assert Store.runs() == []
+
+    # Given in any order, the tasks run in the order of their ids.
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: [b, a])
+    assert_receive {:started, run}, 3000
+    assert run["cases"] == [a, b]
+    assert run["protocol"]["inventory"]["cases"] == [a, b]
+    assert Map.keys(run["protocol"]["fixtures"]) == [a, b]
+    assert Map.keys(run["case_metadata"]) == [a, b]
+    assert File.ls!(Store.path("releases/#{run["release_id"]}/cases")) |> Enum.sort() == [a, b]
+
+    # The third task changes and a fourth arrives while the run is active; neither is part of it.
+    File.write!(Path.join([folder, c, "reference.patch"]), "changed outside the run\n")
+    Eab.MadeUpTasks.copy!("ledgerette-pr-3", "ledgerette-pr-2")
+    assert :ok = Eab.Release.verify!(Eab.Release.read!(run["release_id"]))
+    Runs.stop()
+    await_cleanup()
+
+    saved = Store.run(id)
+    assert saved["cases"] == [a, b]
+    assert saved["attempts"] |> Map.keys() |> Enum.sort() == [a, b]
+    refute File.exists?(Store.path("runs/#{id}/#{c}"))
+    refute File.exists?(Store.path("runs/#{id}/ledgerette-pr-3"))
+
+    # Resume checks the run's own release: it resumes over the changed folder, the same two tasks.
+    assert {:ok, ^id} = Runs.resume(id, endpoint(), "", %{})
+    assert_receive {:started, resumed}, 3000
+    assert resumed["cases"] == [a, b] and resumed["release_id"] == run["release_id"]
+    Runs.stop()
+    await_cleanup()
+
+    # A change to one of its own tasks stops the resume.
+    File.write!(Path.join([folder, a, "reference.patch"]), "changed inside the run\n")
+    assert {:error, message} = Runs.resume(id, endpoint(), "", %{})
+    assert message =~ "Benchmark case changed: #{a}"
+  end
+
   defp partial_source do
-    release = Eab.Release.freeze()
+    # A fourth task, added to the mounted folder with no rebuild.
+    Eab.MadeUpTasks.copy!("ledgerette-pr-3", "ledgerette-pr-2")
+    release = Eab.Release.freeze(tasks())
     cases = release["protocol"]["inventory"]["cases"]
     [passed, failed, error_a, error_b | _] = cases
     settings = Eab.Model.settings(endpoint())
@@ -378,7 +444,9 @@ defmodule Eab.RunsTest do
       end
     end)
 
-    replies = for _ <- 1..2, do: Task.async(fn -> Runs.start(endpoint(), "", %{}) end)
+    replies =
+      for _ <- 1..2, do: Task.async(fn -> Runs.start(endpoint(), "", %{}, cases: tasks()) end)
+
     replies = Enum.map(replies, &Task.await/1)
     assert Enum.count(replies, &match?({:ok, _}, &1)) == 1
     assert Enum.count(replies, &match?({:error, _}, &1)) == 1
@@ -450,7 +518,7 @@ defmodule Eab.RunsTest do
     end)
 
     endpoint = Eab.ClaudeCode.endpoint("claude-opus-5-5")
-    assert {:ok, id} = Runs.start(endpoint, "", %{}, validation: true)
+    assert {:ok, id} = Runs.start(endpoint, "", %{}, cases: tasks(), validation: true)
     assert_receive {:started, run}, 3000
     assert run["validation"] == true
     assert run["harness"]["name"] == "claude_code"
@@ -463,7 +531,7 @@ defmodule Eab.RunsTest do
     assert saved["harness"]["claude_code_version"] == "2.1.308"
     assert File.read!(Store.path("runs/#{id}/report.md")) =~ "never published or scored"
 
-    assert {:ok, pi} = Runs.start(endpoint(), "", %{})
+    assert {:ok, pi} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive {:started, run}, 3000
     assert run["harness"]["name"] == "pi" and is_nil(run["validation"])
     await_terminal(pi)
@@ -501,7 +569,7 @@ defmodule Eab.RunsTest do
   test "worker errors are saved without the API credential" do
     Application.put_env(:eab, :runner, fn _, _, _ -> raise "echoed secret-key" end)
     Runs.subscribe()
-    assert {:ok, id} = Runs.start(endpoint(), "secret-key", %{})
+    assert {:ok, id} = Runs.start(endpoint(), "secret-key", %{}, cases: tasks())
     await_terminal(id)
     run = Store.read("runs/#{id}/run.json")
     assert run["status"] == "error"
@@ -521,7 +589,7 @@ defmodule Eab.RunsTest do
       end
     end)
 
-    assert {:ok, id} = Runs.start(endpoint(), "", %{})
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive {:worker, _}
     [a, b, c | _] = Runs.snapshot().active["cases"]
 
@@ -614,7 +682,7 @@ defmodule Eab.RunsTest do
     end)
 
     Application.put_env(:eab, :cleanup, fn id -> send(parent, {:cleanup, id}) end)
-    assert {:ok, id} = Runs.start(endpoint(), "", %{})
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive {:pi, pi}, 3000
     assert_receive {:preparing, preparing}, 3000
     Runs.stop()
@@ -695,7 +763,7 @@ defmodule Eab.RunsTest do
       end
     end)
 
-    assert {:ok, id} = Runs.start(endpoint(), "", %{})
+    assert {:ok, id} = Runs.start(endpoint(), "", %{}, cases: tasks())
     assert_receive {:ready, done, saved, partial}, 3000
     Runs.stop()
     await_cleanup()

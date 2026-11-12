@@ -26,7 +26,7 @@ RUN mix compile --warnings-as-errors && mix release
 
 FROM ubuntu:24.04 AS app
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git openssh-client docker.io docker-buildx util-linux libstdc++6 libssl3t64 libncurses6 locales && rm -rf /var/lib/apt/lists/*
-ENV LANG=C.UTF-8 EAB_ROOT=/app EAB_DATA_DIR=/data ERL_FLAGS="+S 2:2"
+ENV LANG=C.UTF-8 EAB_ROOT=/app EAB_DATA_DIR=/data EAB_TASKS_DIR=/tasks ERL_FLAGS="+S 2:2"
 WORKDIR /app
 COPY --from=build /app/.local/docker-build/prod/rel/eab ./
 COPY config/benchmark.json config/benchmark.json

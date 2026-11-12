@@ -8,3 +8,4 @@
 **/node_modules/
 /tools/memory_collector/_build/
 __pycache__/
+/tasks/

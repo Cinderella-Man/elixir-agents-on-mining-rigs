@@ -2,15 +2,26 @@ defmodule Eab.Release do
   @moduledoc "Immutable, checksummed inputs for an experiment, separate from mutable cache pointers."
   alias Eab.{Cache, Inventory, Store}
 
-  def freeze do
-    protocol = Inventory.protocol()
+  @doc """
+  Freezes the tasks `ids` of one run or check, and only those (factory/README.md, section 5.1): the release holds
+  their files, in the order of their ids, and other tasks in the task folder may change or arrive without touching it.
+  """
+  def freeze(ids) do
+    unless is_list(ids) and ids != [] and ids == Enum.uniq(ids) and
+             Enum.all?(ids, &Store.valid_id?/1),
+           do: raise("Invalid release case inventory")
+
+    for id <- ids do
+      unless Inventory.member?(id), do: raise("Unknown task: #{id}")
+
+      # Every task is in the one format (README section 3); there is no admission record to check.
+      spec = Inventory.spec(id)
+      unless spec["id"] == id, do: raise("Task folder and task id differ: #{id}")
+      Eab.TaskContract.read(spec)
+    end
+
+    protocol = Inventory.protocol(Enum.sort(ids))
     cases = protocol["inventory"]["cases"]
-
-    unless cases != [] and cases == Enum.uniq(cases) and Enum.all?(cases, &Store.valid_id?/1),
-      do: raise("Invalid release case inventory")
-
-    # Every task is in the one format (README section 3); there is no admission record to check.
-    for id <- cases, do: Eab.TaskContract.read(Inventory.spec(id))
 
     id = Cache.key(protocol)
 
@@ -56,17 +67,17 @@ defmodule Eab.Release do
   # Boundaries check the relevant case, rather than rereading all fixtures for
   # every preparation/attempt/grading event. Start/end checks cover the corpus.
   # Benchmark code may change between a run's start and its resumption (ADR 0011);
-  # its cases, fixtures and agent may not.
+  # its cases, fixtures and agent may not. Only the release's own tasks are checked:
+  # the rest of the task folder is not part of it.
   def verify!(release, case_id \\ nil) do
     protocol = release["protocol"]
+    cases = if case_id, do: [case_id], else: protocol["inventory"]["cases"]
 
     unless Cache.key(protocol) == release["id"] and
-             Map.take(protocol["inventory"], ~w(id cases)) ==
-               Map.take(Inventory.definition(), ~w(id cases)) and
+             protocol["inventory"]["id"] == Inventory.config()["id"] and
+             Enum.all?(cases, &Inventory.member?/1) and
              protocol["agent"] == Eab.Pi.identity(),
            do: raise("Benchmark cases or agent changed; start a new run")
-
-    cases = if case_id, do: [case_id], else: protocol["inventory"]["cases"]
 
     for id <- cases do
       unless protocol["fixtures"][id] == Inventory.fixture_hashes(id),

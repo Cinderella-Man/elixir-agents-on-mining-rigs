@@ -11,7 +11,8 @@ defmodule Eab.MadeUpTasks do
   - `shelfwise-pr-7`, a bug fix in a made-up stock-keeping application with Postgres and a Node build step. Its
     source is not here; the tests that use it prepare nothing for real.
 
-  The bundles are in `test/support/tasks/<id>/`.
+  The bundles are in `test/support/tasks/<id>/`. Tests reach them in one process through `use!/1`, or as the whole
+  inventory, a task folder, through `mount!/1`.
   """
 
   @root Path.expand("tasks", __DIR__)
@@ -30,6 +31,45 @@ defmodule Eab.MadeUpTasks do
   length of a function. Meant for an ExUnit `setup` block, which runs in the test's own process.
   """
   def use!(id), do: Process.put({Eab.Inventory, id}, dir(id))
+
+  @doc """
+  Makes the made-up tasks the inventory, as a mounted task folder is (`EAB_TASKS_DIR`), for the calling test, and
+  puts the setting back when the test ends. With a directory, the tasks are copied into it first, so that the test
+  may change them; without one, the inventory reads `test/support/tasks/` itself, for tests that only read. Returns
+  the task ids, in order.
+  """
+  def mount!(directory \\ nil) do
+    folder =
+      if directory do
+        File.mkdir_p!(directory)
+        for id <- ids(), do: File.cp_r!(dir(id), Path.join(directory, id))
+        directory
+      else
+        @root
+      end
+
+    previous = Application.fetch_env(:eab, :tasks_dir)
+    Application.put_env(:eab, :tasks_dir, folder)
+
+    ExUnit.Callbacks.on_exit(fn ->
+      case previous do
+        {:ok, value} -> Application.put_env(:eab, :tasks_dir, value)
+        :error -> Application.delete_env(:eab, :tasks_dir)
+      end
+    end)
+
+    Eab.Inventory.all()
+  end
+
+  @doc "Adds a copy of the made-up task `from` to a mounted task folder, under the id `id`."
+  def copy!(id, from) do
+    target = Path.join(Eab.Inventory.tasks_dir(), id)
+    File.cp_r!(dir(from), target)
+    manifest = Path.join(target, "case.json")
+    spec = manifest |> File.read!() |> Jason.decode!() |> Map.put("id", id)
+    File.write!(manifest, Jason.encode!(spec))
+    id
+  end
 
   @doc "Writes the starting source of `ledgerette` into `dir`."
   def write_source!(dir) do

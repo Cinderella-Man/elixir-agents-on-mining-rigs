@@ -28,7 +28,7 @@ defmodule Eab.Candidates do
     spec = Inventory.read_json(Path.join(directory, "case.json"))
     id = spec["id"]
 
-    unless Store.valid_id?(id) and id not in Inventory.all() and spec["schema_version"] == 3,
+    unless Store.valid_id?(id) and not Inventory.member?(id) and spec["schema_version"] == 3,
       do: raise("Import needs a new task ID and schema version 3; checked tasks are immutable")
 
     Inventory.with_case(id, directory, fn -> validate!(id) end)
@@ -69,7 +69,7 @@ defmodule Eab.Candidates do
     read!(ref)
     id = ref["id"]
 
-    if id in Inventory.all(),
+    if Inventory.member?(id),
       do: raise("Admitted cases cannot be prepared through a candidate override")
 
     run_id = "candidate-#{id}"

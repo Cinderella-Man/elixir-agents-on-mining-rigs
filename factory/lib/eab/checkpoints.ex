@@ -113,27 +113,29 @@ defmodule Eab.Checkpoints do
     :ok
   end
 
+  # A release freezes exactly the tasks of its run (factory/README.md, section 5.1), so a
+  # run's tasks are its release's tasks, in the same order, whatever chose them.
   def validate_cases!(run, release) do
     inventory = release["protocol"]["inventory"]["cases"]
     cases = run["cases"]
 
     valid =
-      case run["selection"] do
-        nil ->
-          cases == inventory
+      is_list(cases) and cases != [] and cases == inventory and
+        case run["selection"] do
+          nil ->
+            true
 
-        %{"kind" => kind, "cases" => ^cases, "source_run" => source}
-        when kind in ["error_retry", "case_repeat"] ->
-          Store.valid_id?(source) and is_list(cases) and cases != [] and
-            Enum.filter(inventory, &(&1 in cases)) == cases
+          %{"kind" => kind, "cases" => ^cases, "source_run" => source}
+          when kind in ["error_retry", "case_repeat"] ->
+            Store.valid_id?(source)
 
-        # Unscored single-case harness checks (ADR 0010).
-        %{"kind" => kind, "cases" => [id] = ^cases} when kind in ["dry_attempt", "escape_test"] ->
-          id in inventory
+          # Unscored single-case harness checks (ADR 0010).
+          %{"kind" => kind, "cases" => [_] = ^cases} when kind in ["dry_attempt", "escape_test"] ->
+            true
 
-        _ ->
-          false
-      end
+          _ ->
+            false
+        end
 
     unless valid, do: raise("Run cases differ from the frozen selection")
     :ok

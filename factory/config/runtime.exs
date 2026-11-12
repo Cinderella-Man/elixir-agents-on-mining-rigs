@@ -11,7 +11,9 @@ if config_env() != :test do
     cache_reserve_bytes:
       String.to_integer(System.get_env("EAB_CACHE_MIN_FREE_GB", "5")) * 1024 * 1024 * 1024,
     docker_storage_path: System.get_env("EAB_DOCKER_STORAGE_PATH"),
-    root: System.get_env("EAB_ROOT", File.cwd!())
+    root: System.get_env("EAB_ROOT", File.cwd!()),
+    # The task folder, mounted into the controller (factory/README.md, section 6, change 2).
+    tasks_dir: System.get_env("EAB_TASKS_DIR", "/tasks") |> Path.expand()
 
   present = fn name -> System.get_env(name) |> then(&if(&1 not in [nil, ""], do: &1)) end
 

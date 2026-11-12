@@ -7,3 +7,4 @@ _build
 **/node_modules
 docs
 erl_crash.dump
+tasks

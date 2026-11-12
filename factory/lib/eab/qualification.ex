@@ -1,5 +1,5 @@
 defmodule Eab.Qualification do
-  @moduledoc "Prepare and qualify the frozen inventory without a model or Pi calls."
+  @moduledoc "Prepare and qualify a given list of tasks, frozen as one release, without a model or Pi calls."
   alias Eab.{
     Activity,
     AgentImage,
@@ -15,8 +15,8 @@ defmodule Eab.Qualification do
     Store
   }
 
-  def run(emit \\ fn _ -> :ok end, opts \\ []) do
-    release = Release.freeze()
+  def run(ids, emit \\ fn _ -> :ok end, opts \\ []) do
+    release = Release.freeze(ids)
     ids = release["protocol"]["inventory"]["cases"]
     id = Keyword.get(opts, :id, "qualification-#{System.system_time(:second)}")
     on_result = Keyword.get(opts, :on_result, fn _, _ -> :ok end)

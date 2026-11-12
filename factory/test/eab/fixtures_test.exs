@@ -198,6 +198,9 @@ defmodule Eab.FixturesTest do
   end
 
   test "recipes reconcile seeds before compilation and export an independent fixture" do
+    # The made-up tasks as the task folder, read only.
+    assert Eab.MadeUpTasks.mount!() != []
+
     for id <- Inventory.all() do
       spec = Inventory.spec(id)
       recipe = Fixtures.dockerfile(spec, "base", "node")
@@ -269,9 +272,8 @@ defmodule Eab.FixturesTest do
       Path.join(fixture_root, "config/benchmark.json")
     )
 
-    # A copy of the made-up task, so that the test's writes never reach test/support.
-    File.mkdir_p!(Path.join(fixture_root, "cases"))
-    File.cp_r!(Eab.MadeUpTasks.dir(id), Path.join(fixture_root, "cases/#{id}"))
+    # A copy of the made-up tasks as the task folder, so that the test's writes never reach test/support.
+    Eab.MadeUpTasks.mount!(Path.join(fixture_root, "tasks"))
     Application.put_env(:eab, :root, fixture_root)
     on_exit(fn -> Application.put_env(:eab, :root, original_root) end)
     spec = Inventory.spec(id)

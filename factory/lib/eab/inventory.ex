@@ -3,32 +3,40 @@ defmodule Eab.Inventory do
   def path(relative), do: Path.join(root(), relative)
   def read_json(path), do: path |> File.read!() |> Jason.decode!()
 
-  def definition do
-    config = read_json(path("config/benchmark.json"))
+  @doc """
+  The task folder: one folder per task under `EAB_TASKS_DIR` (default `/tasks`), mounted into the controller, so
+  that nothing about tasks is built into its image and a new batch needs no rebuild (factory/README.md, section 6,
+  change 2).
+  """
+  def tasks_dir, do: Application.get_env(:eab, :tasks_dir, "/tasks") |> Path.expand()
 
-    present =
-      path("cases/*/case.json")
-      |> Path.wildcard()
-      |> Enum.filter(&File.regular?/1)
-      |> Enum.map(&(Path.dirname(&1) |> Path.basename()))
+  @doc "The inventory's settings (its id and the budgets), without any list of tasks."
+  def config, do: read_json(path("config/benchmark.json")) |> Map.delete("cases")
 
-    # The configured list preserves historical ordering; folders determine
-    # membership, including new cases that have never appeared in that list.
-    ordered = Enum.filter(config["cases"] || [], &(&1 in present))
-    Map.put(config, "cases", ordered ++ Enum.sort(present -- ordered))
+  def definition, do: Map.put(config(), "cases", all())
+
+  @doc "Every task in the task folder, in the order of their ids: the direct folders that hold a `case.json`."
+  def all do
+    Path.join(tasks_dir(), "*/case.json")
+    |> Path.wildcard()
+    |> Enum.filter(&File.regular?/1)
+    |> Enum.map(&(Path.dirname(&1) |> Path.basename()))
+    |> Enum.sort()
   end
 
-  def all, do: definition()["cases"]
+  @doc "Whether the task folder holds the task `id`, without listing the folder."
+  def member?(id),
+    do: Eab.Store.valid_id?(id) and File.regular?(Path.join([tasks_dir(), id, "case.json"]))
 
   def spec(id) do
-    unless Process.get({__MODULE__, id}) || id in all(),
+    unless Process.get({__MODULE__, id}) || member?(id),
       do: raise(ArgumentError, "Unknown benchmark case")
 
     read_json(case_path(id, "case.json"))
   end
 
   def case_path(id, file),
-    do: Path.join(Process.get({__MODULE__, id}) || path("cases/#{id}"), file)
+    do: Path.join(Process.get({__MODULE__, id}) || Path.join(tasks_dir(), id), file)
 
   # Candidate qualification uses the same evaluator without adding the case to
   # the published inventory. Overrides are scoped to this process and restored
@@ -123,12 +131,13 @@ defmodule Eab.Inventory do
     }
   end
 
-  def protocol do
+  @doc "What a release of the tasks `ids` binds: the inventory's settings, those tasks and their files, and Pi."
+  def protocol(ids) do
     %{
-      "inventory" => definition(),
+      "inventory" => Map.put(config(), "cases", ids),
       "agent" => Eab.Pi.identity(),
       "implementation" => implementation_hash(),
-      "fixtures" => Map.new(all(), &{&1, fixture_hashes(&1)})
+      "fixtures" => Map.new(ids, &{&1, fixture_hashes(&1)})
     }
   end
 end
