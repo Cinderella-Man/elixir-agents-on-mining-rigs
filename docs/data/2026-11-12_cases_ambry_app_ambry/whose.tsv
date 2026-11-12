@@ -32,3 +32,13 @@ ambry-pr-1260	1	pull_request	the maker found no test added or changed in a test'
 ambry-pr-1259	1	pull_request	the maker found no added or changed test file in the pull request
 ambry-pr-1250	1	pull_request	the hidden tests pass on the unchanged project: no hidden test fails in its body
 ambry-pr-1243	1	-	checked
+ambry-pr-1242	1	pull_request	a feature: its hidden tests call modules and functions the fix adds (it adds 7 files), so they cannot compile before it
+ambry-pr-1241	1	machine_probably	in the second round one hidden test of the inbox form that waits for a person search to run failed on the reference fix after passing in the first round; the same family of timed tests as 1286, 1280 and 1276; to be run again
+ambry-pr-1240	1	pull_request	a feature: its hidden tests call a module and functions the fix adds (it adds 4 files), so they cannot compile before it
+ambry-pr-1238	1	machine_probably	in the second round one test of the inbox form that waits for a search to run ended differently on the unchanged project; the same family of timed tests as 1241, 1286, 1280 and 1276; to be run again
+ambry-pr-1237	1	-	checked
+ambry-pr-1235	1	-	checked
+ambry-pr-1234	1	-	checked
+ambry-pr-1233	1	-	checked
+ambry-pr-1236	1	machine_probably	one hidden test of the inbox form failed on the reference fix in the probe; the same family of timed tests (the file waits with render_async, 100 ms) as 1241, 1238, 1286, 1280 and 1276; the probe keeps no output (E80); to be run again
+ambry-pr-1232	1	-	checked
