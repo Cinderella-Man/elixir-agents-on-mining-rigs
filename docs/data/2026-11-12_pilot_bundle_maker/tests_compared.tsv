@@ -31,7 +31,7 @@ unit	test/eab/bundle_maker_test.exs	test observing and searching decide from the
 unit	test/eab/bundle_maker_test.exs	test partial-fix variants leave out one file, then one hunk, with later hunks renumbered	absent	passed
 unit	test/eab/bundle_maker_test.exs	test refusals: the hold-out list, the screen, links, binary files, and no code or no test part	absent	passed
 unit	test/eab/bundle_maker_test.exs	test test names follow the reporter's form and the changed lines	absent	passed
-unit	test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and the ex338 recipe is read as provisional	absent	passed
+unit	test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and recipes hold exactly the per-project fields	absent	passed
 unit	test/eab/bundle_probe_docker_test.exs	test the test names are observed and a partial fix is searched on made-up tasks, which then pass the controls	absent	excluded
 unit	test/eab/cache_test.exs	test a warm artifact skips building and a missing component invalidates only its entry	passed	passed
 unit	test/eab/cache_test.exs	test artifact mutation is detected and keys survive persistence	passed	passed
@@ -264,7 +264,7 @@ docker	test/eab/bundle_maker_test.exs	test observing and searching decide from t
 docker	test/eab/bundle_maker_test.exs	test partial-fix variants leave out one file, then one hunk, with later hunks renumbered	absent	passed
 docker	test/eab/bundle_maker_test.exs	test refusals: the hold-out list, the screen, links, binary files, and no code or no test part	absent	passed
 docker	test/eab/bundle_maker_test.exs	test test names follow the reporter's form and the changed lines	absent	passed
-docker	test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and the ex338 recipe is read as provisional	absent	passed
+docker	test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and recipes hold exactly the per-project fields	absent	passed
 docker	test/eab/bundle_probe_docker_test.exs	test the test names are observed and a partial fix is searched on made-up tasks, which then pass the controls	absent	passed
 docker	test/eab/cache_test.exs	test a warm artifact skips building and a missing component invalidates only its entry	passed	passed
 docker	test/eab/cache_test.exs	test artifact mutation is detected and keys survive persistence	passed	passed

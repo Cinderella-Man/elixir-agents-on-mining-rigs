@@ -19,7 +19,7 @@ defmodule Eab.BundleMaker do
 
   @pair_selection "first parent of the merge commit, and the merge commit"
   @recipe_fields ~w(runtime services baseline test_timeout permitted_exclusion_tags grading)
-  @recipe_grading ~w(protected_paths preservation)
+  @recipe_grading ~w(protected_paths preservation test_suffixes)
   @test_suffixes ["_test.exs"]
   @max_walk 30
   @patch_limit 1_048_576
@@ -675,8 +675,8 @@ defmodule Eab.BundleMaker do
   @doc """
   Reads a project's recipe (`factory/recipes/<owner>__<repo>.json`): exactly the per-project fields of `case.json`
   (`runtime`, `services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
-  `grading.preservation`). A recipe that is not final yet carries one more field, `provisional`, a note that the
-  maker never copies.
+  `grading.preservation`; `grading.test_suffixes` may be there, and then is the fixed `["_test.exs"]`). A recipe
+  that is not final yet carries one more field, `provisional`, a note that the maker never copies.
   """
   def read_recipe!(nil), do: refuse!(:recipe, "no recipe given")
 
@@ -699,7 +699,8 @@ defmodule Eab.BundleMaker do
                grading["protected_paths"],
                &(is_binary(&1) and String.ends_with?(&1, "/"))
              ) and
-             Enum.take(OptionParser.split(grading["preservation"] || ""), 2) == ["mix", "test"],
+             Enum.take(OptionParser.split(grading["preservation"] || ""), 2) == ["mix", "test"] and
+             (grading["test_suffixes"] || @test_suffixes) == @test_suffixes,
            do: refuse!(:recipe, "#{path} does not hold exactly the per-project fields")
 
     recipe

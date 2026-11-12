@@ -4,7 +4,7 @@ Job P4 of the [task factory](../../research/notes/task_factory_on_the_bench_engi
 [E68](../../../experiments.md). The bundle maker turns one screened pull request into one task folder in the one
 format (`schema_version: 3`), or refuses it with a reason. How it works and what it refuses is in the
 [factory's README](../../../factory/README.md), section 3.5. Everything ran on the CPU of the 7-GPU machine, in the
-tooling image `eab-tooling:dev` that job T0 built, on 2026-11-12 between 02:36 and 02:45 (UTC+1). The project was not
+tooling image `eab-tooling:dev` that job T0 built, on 2026-11-12 between 02:36 and 02:53 (UTC+1). The project was not
 prepared and its tests were not run: that is the next job.
 
 ## Result
@@ -24,9 +24,13 @@ prepared and its tests were not run: that is the next job.
   any run: the tests whose body the pull request adds or changes, and the reference with its first file (or, for
   #1463, its first hunk) left out. `Eab.BundleProbe.finish/4` replaces both with what runs observe once the project
   is prepared. It was tested on the made-up tasks, not on these three.
-- **The recipe is provisional** (`factory/recipes/axelclark__ex338.json`): written from the project's
-  `.tool-versions`, `mix.exs`, `config/test.exs`, `test/test_helper.exs` and CI file at commit `4a4825e`, with image
-  tags that are not pinned by digest. Job P3 replaces it.
+- **The recipe is job P3's** (`factory/recipes/axelclark__ex338.json`,
+  [2026-11-12_pilot_env_ex338](../2026-11-12_pilot_env_ex338/README.md)), with both images pinned by digest. All
+  three starting commits name Elixir 1.18.3 and Erlang 27.3 in `.tool-versions`, the period that recipe was proved
+  on. A first round (02:37) ran with a provisional recipe this job wrote from the project's files, before P3's
+  landed; it made the same three folders, which passed both checks too. When P3's recipe landed, the maker was
+  changed to accept its `grading.test_suffixes` (the fixed `["_test.exs"]`), the provisional recipe was dropped, and
+  the three folders were made and checked again (02:53). The tables here are from that second round.
 - **The factory's checks:** the format check passes, and the project compiles with warnings as errors. Every test
   ends as in job T5's runs, and the 8 new tests pass:
 
@@ -38,11 +42,12 @@ prepared and its tests were not run: that is the next job.
   The 24 failures are T5's, unchanged (22 need tasks in the inventory, job T6; 2 are in `claude_code_test`, which
   goes in T2). The new tests: 7 in `test/eab/bundle_maker_test.exs` (a squash merge made, checked by the engine's
   source check on a local repository and imported; a rebase merge walked back two first parents; the refusals; the
-  test names; the variants; observing and searching on made-up runs; the hold-out list and the ex338 recipe), and 1
+  test names; the variants; observing and searching on made-up runs; the hold-out list and the recipe's fields), and 1
   in `test/eab/bundle_probe_docker_test.exs` (the names observed and the partial fix searched on the two made-up
   ledger tasks in containers, after which both pass the engine's controls). The parity test passes 6 of 6, untouched.
-- **Disk:** free on `/` 665,987,051,520 bytes before the job (02:31) and 662,054,838,272 after (02:45); the
-  machine was serving another job at the same time, and this job's work folder holds 46 MiB.
+- **Disk:** free on `/` 665,987,051,520 bytes before the job (02:31) and 660,172,935,168 after (02:53); other jobs
+  ran on the machine at the same time, and this job's work folder holds 66,314,240 bytes (its copy of the factory
+  with Mix's files, the fetched commits, the task folders of both rounds and the logs).
 
 ## The result lines
 
@@ -50,17 +55,17 @@ prepared and its tests were not run: that is the next job.
 
 ```text
 repository	number	id	result	reason	start_revision	walked	code_files	test_files	docs_files	hidden_tests	task_kind	partial	licence	recipe	detail
-https://github.com/axelclark/ex338	1460	ex338-pr-1460	made	-	a502f92e38a4b6286e6db51d7771c10899cf635c	0	5	1	0	16	feature	first_variant	MIT	provisional	-
-https://github.com/axelclark/ex338	1463	ex338-pr-1463	made	-	345e0c7e015b8e93c0cc23277152a35db35e675e	0	1	1	0	1	bug_fix	first_variant	MIT	provisional	-
-https://github.com/axelclark/ex338	1394	ex338-pr-1394	made	-	f846028ad8b2641da1814ff519cefc65482656a1	0	5	1	0	2	feature	first_variant	MIT	provisional	-
+https://github.com/axelclark/ex338	1460	ex338-pr-1460	made	-	a502f92e38a4b6286e6db51d7771c10899cf635c	0	5	1	0	16	feature	first_variant	MIT	final	-
+https://github.com/axelclark/ex338	1463	ex338-pr-1463	made	-	345e0c7e015b8e93c0cc23277152a35db35e675e	0	1	1	0	1	bug_fix	first_variant	MIT	final	-
+https://github.com/axelclark/ex338	1394	ex338-pr-1394	made	-	f846028ad8b2641da1814ff519cefc65482656a1	0	5	1	0	2	feature	first_variant	MIT	final	-
 ```
 
 [verify.tsv](verify.tsv), as `verify` wrote it (task, source check, import with the stored version):
 
 ```text
-ex338-pr-1394	passed	accepted 5ac065da2da2d21d2b6260b4f6147c64a44c8e534837d11fb7532159d18058e4
-ex338-pr-1460	passed	accepted 987d2100141091ca8cbb89487587850339f1b64cbd3055fa8f73771e628b05a1
-ex338-pr-1463	passed	accepted 11cc48d40ee91c296b0bfc4f1f5d017542b91c44c836ae09867d322915a6de7f
+ex338-pr-1394	passed	accepted 947e9d8767019e85da4fac307abaab0b9fe2b5f18223bfab892ca5fd86785b0b
+ex338-pr-1460	passed	accepted f2abac5eb646d929251dde70c0c8e124df948dde4abbdfc13ce63a84c156e40c
+ex338-pr-1463	passed	accepted 91a2d24785978114d41a722f21efc0634e871849428a155969b6143621a0ace9
 ```
 
 ## Files
@@ -90,10 +95,10 @@ earlier work folder into `WORK/src/`:
 
 ```sh
 cd "$WORK"
-WORK=$PWD LABEL=pascal-quants=1 CENSUS=prs_axelclark__ex338.tsv SCREEN=screen_axelclark__ex338.tsv TAG=p4_make1 \
+WORK=$PWD LABEL=pascal-quants=1 CENSUS=prs_axelclark__ex338.tsv SCREEN=screen_axelclark__ex338.tsv TAG=p4_make2 \
   run/make.sh make --repository https://github.com/axelclark/ex338 --numbers 1460,1463,1394
-WORK=$PWD LABEL=pascal-quants=1 TAG=p4_verify1 run/make.sh verify
-WORK=$PWD LABEL=pascal-quants=1 run/checks.sh p4b
+WORK=$PWD LABEL=pascal-quants=1 TAG=p4_verify2 run/make.sh verify
+WORK=$PWD LABEL=pascal-quants=1 run/checks.sh p4c
 ```
 
 `make.sh` runs the container with the network, because the maker fetches each merge commit and its first parent by

@@ -480,7 +480,7 @@ defmodule Eab.BundleMakerTest do
              {:present, second}
   end
 
-  test "the hold-out list holds the plan's 12 projects, and the ex338 recipe is read as provisional" do
+  test "the hold-out list holds the plan's 12 projects, and recipes hold exactly the per-project fields" do
     list = Inventory.read_json(Inventory.path("config/holdout.json"))
 
     assert Enum.map(list["projects"], & &1["project"]) ==
@@ -488,15 +488,29 @@ defmodule Eab.BundleMakerTest do
                plausible-analytics vutuv)
 
     recipe = BundleMaker.read_recipe!(Inventory.path("recipes/axelclark__ex338.json"))
-    assert is_binary(recipe["provisional"])
+    refute Map.has_key?(recipe, "provisional")
     assert recipe["grading"]["protected_paths"] == ["test/"]
 
-    assert_raise BundleMaker.Refusal, ~r/recipe/, fn ->
+    write = fn recipe ->
       path = Path.join(System.tmp_dir!(), "eab-recipe-#{System.unique_integer([:positive])}.json")
-      File.write!(path, Jason.encode!(Map.put(recipe, "task_kind", "bug_fix")))
+      File.write!(path, Jason.encode!(recipe))
+      path
+    end
+
+    provisional = write.(Map.put(recipe, "provisional", "a note"))
+    assert BundleMaker.read_recipe!(provisional)["provisional"] == "a note"
+    File.rm(provisional)
+
+    for bad <- [
+          Map.put(recipe, "task_kind", "bug_fix"),
+          put_in(recipe, ["grading", "test_suffixes"], [".exs"]),
+          put_in(recipe, ["grading", "required"], ["x"]),
+          put_in(recipe, ["grading", "preservation"], "make test")
+        ] do
+      path = write.(bad)
 
       try do
-        BundleMaker.read_recipe!(path)
+        assert_raise BundleMaker.Refusal, ~r/recipe/, fn -> BundleMaker.read_recipe!(path) end
       after
         File.rm(path)
       end

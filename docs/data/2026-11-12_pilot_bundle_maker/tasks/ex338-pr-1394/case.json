@@ -12,7 +12,7 @@
     "environment": {
       "MIX_ENV": "test"
     },
-    "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble",
+    "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble-20260509.1@sha256:05d0223efb52293e146b2b20fee462fd1372264fdd9491d9ea222dbf527c703f",
     "profile": "mix",
     "setup_commands": [
       "mix compile"
@@ -20,7 +20,7 @@
   },
   "services": {
     "postgres": {
-      "image": "postgres:14-alpine"
+      "image": "postgres:14.24-alpine@sha256:928ce526d67711997cc5c6949b55382d4e7cb559d981d5899df132e4936ec03e"
     }
   },
   "baseline": {
@@ -30,6 +30,7 @@
     ],
     "mode": "prepared"
   },
+  "test_timeout": 240,
   "permitted_exclusion_tags": [
     "pending"
   ],
