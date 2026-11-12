@@ -25,7 +25,7 @@ round.
 | 4.–8. The controls (`Eab.Grader.qualify/3`) | 17 | 11 | 6 |
 | 9. A second round of the unchanged project and the reference | 11 | 11 | 0 |
 
-The 11 checked tasks are #1463, #1461, #1460, #1457, #1452, #1450, #1398, #1394, #1392, #1390 and #1350. Ten have a
+The 11 checked tasks are #1463, #1461, #1460, #1457, #1452, #1450, #1398, #1394, #1392, #1390 and #1350. All 11 have a
 partial fix that the gate rejects; none was dropped for lacking one. Two of the 17 that reached the controls had no
 partial fix (`single_hunk`: #1411, #1395), and both were dropped for another reason.
 Every hidden-test failure the probe saw on the unchanged project was in a test's body, none in set-up; one pull
