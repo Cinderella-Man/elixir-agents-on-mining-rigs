@@ -242,7 +242,8 @@ defmodule Eab.Toolchain do
 
   @doc """
   Elixir and OTP from a CI file: GitHub's `elixir-version:` and `otp-version:` (or a matrix's `elixir:` and `otp:`),
-  Travis's `elixir:` and `otp_release:`, each a value or the first item of a list.
+  Travis's `elixir:` and `otp_release:`, each a value or the first item of a list. A value `${{ env.NAME }}` is the
+  version the same file sets for `NAME` (`NAME: 1.18.3` in an `env:` block).
   """
   def ci_versions(text) do
     %{
@@ -262,7 +263,7 @@ defmodule Eab.Toolchain do
           [_, rest] ->
             case String.trim(rest) do
               "" -> lines |> Enum.at(n + 1, "") |> list_item()
-              value -> first_version(value)
+              value -> env_version(value, lines) || first_version(value)
             end
 
           _ ->
@@ -270,6 +271,22 @@ defmodule Eab.Toolchain do
         end
       end)
     end)
+  end
+
+  # `${{ env.NAME }}`: the version of the file's first `NAME:` line, nil when the value is not such a reference.
+  defp env_version(value, lines) do
+    case Regex.run(~r/^["']?\$\{\{\s*env\.([A-Za-z_][A-Za-z0-9_]*)\s*\}\}["']?$/, value) do
+      [_, name] ->
+        Enum.find_value(lines, fn line ->
+          case Regex.run(~r/^\s*["']?#{Regex.escape(name)}["']?\s*:\s*(\S.*)$/, line) do
+            [_, set] -> first_version(set)
+            _ -> nil
+          end
+        end)
+
+      _ ->
+        nil
+    end
   end
 
   defp list_item(line) do
@@ -332,7 +349,14 @@ defmodule Eab.Toolchain do
           otp == nil or prefix?(otp.value, row["otp"]),
           do: row
 
-    case Enum.max_by(matches, &{parts(&1["elixir"]), parts(&1["otp"])}, fn -> nil end) do
+    # In each version a line equal to the one named wins over a longer one (27.3 names 27.3, not 27.3.3); otherwise
+    # the newest line that matches by prefix.
+    rank = fn row ->
+      same_otp = otp != nil and row["otp"] == otp.value
+      {row["elixir"] == elixir.value, parts(row["elixir"]), same_otp, parts(row["otp"])}
+    end
+
+    case Enum.max_by(matches, rank, fn -> nil end) do
       nil ->
         pair = "#{elixir.value}/#{if otp, do: otp.value, else: "-"}"
 

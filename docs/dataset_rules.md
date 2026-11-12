@@ -32,10 +32,10 @@ No task, statement, session or screening is made for a project outside the list.
 - **The project:** `mix.exs` asks for Elixir 1.18 or newer (section 1).
 - **The task:** it is built on the Elixir and OTP of its own starting commit, read from the commit's files
   (`.tool-versions`, the CI workflow, `mix.exs`). That pair must be in the factory's image table
-  (`factory/config/toolchain_images.json`, 13 pairs on 2026-11-12, the newest 1.20.4 with OTP 29.1.2). A commit on a
+  (`factory/config/toolchain_images.json`, 36 pairs on 2026-11-12, the newest 1.20.5 with OTP 29.1.2; E84). A commit on a
   pair the table lacks is left out as `no_image:<elixir>/<otp>` until the pair is added; pairs are added newest first.
-- **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 (its ssl rejects
-  the package server's certificate).
+- **Never built:** Elixir before 1.12 (the engine's Hex install does not support it) and OTP 27.2 and 27.1.3 (their ssl
+  rejects the package server's certificate, so the image cannot install Hex).
 - **The order inside a project:** from the newest merged pull request backwards.
 - **The task's floor:** a task is left out as `elixir_before_1.18` when the Elixir it is built and checked on is
   older than 1.18, also inside a chosen project (the owner, 2026-11-12: "Yes, 1.18+ only"). A candidate on such a

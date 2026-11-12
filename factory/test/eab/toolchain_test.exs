@@ -151,6 +151,38 @@ defmodule Eab.ToolchainTest do
     assert {value(resolved, "elixir"), value(resolved, "otp")} == {"1.18.3", "27.3"}
   end
 
+  test "a workflow's ${{ env.NAME }} is the version its env block sets for NAME" do
+    # source-academy/backend's CI from 2024 to 2026: the versions are env values, and mix.exs asks for ~> 1.10
+    workflow = """
+    jobs:
+      test:
+        env:
+          MIX_ENV: test
+          ELIXIR_VERSION: 1.18.3
+          OTP_VERSION: "27.3"
+        steps:
+          - name: Setup Elixir
+            uses: erlef/setup-elixir@v1
+            with:
+              elixir-version: ${{ env.ELIXIR_VERSION }}
+              otp-version: ${{ env.OTP_VERSION }}
+    """
+
+    resolved =
+      ok!(%{
+        ".github/workflows/ci.yml" => workflow,
+        "mix.exs" => String.replace(@mix, "~> 1.16", "~> 1.10")
+      })
+
+    assert {value(resolved, "elixir"), value(resolved, "otp")} == {"1.18.3", "27.3"}
+    assert source(resolved, "otp") == ".github/workflows/ci.yml"
+    assert resolved["runtime"]["image"] =~ "hexpm/elixir:1.18.3-erlang-27.3-"
+
+    # a name the file does not set gives nothing, so the next source is read
+    unset = String.replace(workflow, "ELIXIR_VERSION: 1.18.3\n", "")
+    assert Toolchain.ci_versions(unset) == %{elixir: nil, otp: "27.3"}
+  end
+
   test "a Travis file gives the first item of its lists, and its Postgres under addons" do
     travis = """
     language: elixir
@@ -192,6 +224,40 @@ defmodule Eab.ToolchainTest do
     assert source(resolved, "elixir") =~ "mix.exs (the lower bound"
     assert resolved["runtime"]["image"] =~ "1.18.4-erlang-28.0"
     assert source(resolved, "image") =~ "1.18.4/28.0 (the newest pair that matches by prefix)"
+  end
+
+  test "a line equal to the version named wins over a longer one; a shorter version takes the newest line" do
+    image = fn e, o ->
+      "hexpm/elixir:#{e}-erlang-#{o}-ubuntu-noble-20260101@sha256:#{String.duplicate("a", 64)}"
+    end
+
+    rows =
+      for {e, o} <- [{"1.18.3", "27.3.3"}, {"1.19.5", "28.5"}, {"1.19.5", "28.5.0.4"}],
+          do: %{"elixir" => e, "otp" => o, "image" => image.(e, o)}
+
+    table = Map.update!(@table, "elixir", &(&1 ++ rows))
+
+    # the pair of the line taken, and the record's source
+    pick = fn elixir, otp ->
+      versions = "elixir #{elixir}\n" <> if(otp, do: "erlang #{otp}\n", else: "")
+      files = %{".tool-versions" => versions, "mix.exs" => @mix}
+      assert {:ok, resolved} = Toolchain.resolve(files, @template, table)
+      got = resolved["runtime"]["image"]
+      [_, e, o] = Regex.run(~r/^hexpm\/elixir:(.+?)-erlang-(.+?)-ubuntu/, got)
+      {"#{e}/#{o}", get_in(resolved["record"], ["image", "source"])}
+    end
+
+    # ex338 names 27.3 and keeps 27.3; a project that names 27.3.3 gets 27.3.3
+    assert pick.("1.18.3", "27.3") == {"1.18.3/27.3", "config/toolchain_images.json: 1.18.3/27.3"}
+    assert {"1.18.3/27.3.3", _} = pick.("1.18.3", "27.3.3")
+    assert {"1.19.5/28.5", _} = pick.("1.19.5", "28.5")
+    assert {"1.19.5/28.5.0.4", _} = pick.("1.19.5", "28.5.0.4")
+
+    # a version with fewer parts still takes the newest line that matches by prefix
+    assert {"1.18.3/27.3.3", source} = pick.("1.18.3", "27")
+    assert source =~ "(the newest pair that matches by prefix)"
+    assert {"1.18.3/27.3.3", _} = pick.("1.18.3", nil)
+    assert {"1.19.5/28.5", _} = pick.("1.19", "28.5")
   end
 
   test "with no version anywhere, the template's image is the default" do
@@ -497,9 +563,22 @@ defmodule Eab.ToolchainTest do
     assert "1.18.3/27.3" in pairs and "1.20.3/29.0.5" in pairs
     assert Enum.all?(table["elixir"], &(Version.compare(&1["elixir"], "1.12.0") != :lt))
 
+    # each image's tag names its own pair, and no pair is listed twice
+    assert Enum.all?(
+             table["elixir"],
+             &String.starts_with?(
+               &1["image"],
+               "hexpm/elixir:#{&1["elixir"]}-erlang-#{&1["otp"]}-"
+             )
+           )
+
+    assert pairs == Enum.uniq(pairs)
+
     # OTP 27.2's ssl rejects the certificate of builds.hex.pm, so such an image cannot install Hex; 27.2.1's does
     # too (radiator #607, 2026-11-12), so no pair of OTP 27.2 or its patch releases is in the table
     refute Enum.any?(table["elixir"], &Toolchain.prefix?("27.2", &1["otp"]))
+    # nor 27.1.3 (Elixir 1.18.0, 2026-11-12, docs/data/2026-11-12_newer_elixir_versions)
+    refute Enum.any?(table["elixir"], &(&1["otp"] == "27.1.3"))
 
     # Redis: the image the engine's own tests pin (test/eab/redis_service_docker_test.exs)
     assert table["redis"] == [

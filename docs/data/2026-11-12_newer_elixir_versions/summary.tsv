@@ -1,0 +1,17 @@
+repo	candidates	served_before	served_after	served_after_other_need	not_served_after
+ambry-app/ambry	92	1	89	67	no_image:1.16.2/26.2.3 1; no_image:1.18.1/27.2 1; no_image:1.18.2/27.2.2 1
+axelclark/ex338	42	17	17	0	elixir_before_1.18:1.17.2/27.0.1 2; elixir_before_1.18:1.16.1/26.2.1 23
+bikebrigade/dispatch	51	5	5	0	elixir_before_1.18:1.15.7/26.0.2 27; no_image:1.14.2/25 19
+blablatdinov/croniq	24	0	23	23	elixir_before_1.18:1.14.4/25.3.2 1
+hexpm/hexpm	150	150	150	72	-
+joladev/jola.dev	7	0	7	2	-
+mbta/screens	150	7	45	0	no_image:1.17.3/27.3.4 105
+nerves-hub/nerves_hub_web	150	150	150	150	-
+notesclub/notesclub	7	0	0	0	no_image:1.14.3/25.0.3 1; no_image:1.16.0/25.3.2.8 1; no_image:1.16.3/25.3.2.8 4; no_image:1.16.0/26.2.1 1
+santiment/sanbase2	150	0	150	42	-
+Simon-Initiative/oli-torus	150	0	150	150	-
+source-academy/backend	39	0	14	6	no_image:1.13.4/25.3.2 25
+supabase/realtime	150	0	150	0	-
+youcongress/youcongress	57	0	8	0	no_image:1.16.2/26.2.1 40; elixir_before_1.18:1.14.4/25.3.2 9
+zorn/flick	30	6	15	0	no_image:1.17.3/27.0.1 1; no_image:1.18.0/27.1.3 1; elixir_before_1.18:1.14.4/25.3.2 2; elixir_before_1.18:1.17.2/27.0.1 11
+zorn/local_cents	21	0	21	21	-
