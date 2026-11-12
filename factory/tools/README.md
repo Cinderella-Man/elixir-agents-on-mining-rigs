@@ -24,6 +24,7 @@ The statement writer and its leak check (job P7) are in [`statements/`](statemen
 | `task_licence.py` | `scan-trees` (the root licence file, then `upstream/license_scan.py` on each tree), `join` (a verdict per touched file and per task), `locks` (the packages in each starting commit's `mix.lock`), `deps` (each package's own licences for the locked version, from the `metadata.config` in its Hex tarball) |
 | `test_task_licence.py` | the tests of the licence list (`python3 -I factory/tools/test_task_licence.py`, standard library only) |
 | `task_holdout.py` | the repository and name check, and the 8- and 12-word spans against the bench's case files, with each hit classed `common`, `own-tree` or `to-read` |
+| `session_scans.py`, `test_session_scans.py` | the session scans of the dataset's rules (E87, E109): what a session quoted and whether it tried to reach the network; [`SESSION_SCANS.md`](SESSION_SCANS.md) |
 | `upstream/license_scan.py`, `upstream/heldout_check.py` | the sister repository's two tools, copied unchanged (origin below) |
 
 ## Running

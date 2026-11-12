@@ -136,7 +136,19 @@ A session is the teacher's whole attempt at one task: its messages, its tool cal
 | `quotes_dependency_outside_licence_list` | the session read or printed a file of a dependency (under `deps/`) whose licence is not in section 9, or that has no licence | the session would republish that code, and there is no permission for it. The task itself stays |
 | `quotes_held_out` | the session read or printed a file of a held-out project's own package (for example Ash's files in an application built on Ash) | the bench's projects must stay unseen (the owner, 2026-11-12) |
 
-These two scans run on every kept session before it is published. They are not built yet: no session has been made.
+These two scans run on every kept session before it is published or trained on
+(`factory/tools/session_scans.py`). **A file is quoted when its content came into the conversation:** a `read` of
+the file or an `edit` of it; a shell command that gives the file, a glob of files, or a folder's files through
+`find -exec`, `xargs` or a `for` loop, to a program that prints it (cat, sed, head, tail, less, awk, nl, an
+editor, a search of that one file) or names it in an interpreter's code, when the output holds any line that is
+not an error message; or a search whose output lines carry the file's path and the line (`path:12:...`). A list
+of file names, a path in an error message, a warning or a stack trace, and a path inside other text are not
+quotes; they are counted apart. A file of Elixir's or Erlang's own standard library is neither in the list nor
+held out; its reads are counted apart. A dependency is a held-out project's own package when its source link is
+that project's repository. A quoted dependency the table does not know, whose licence it could not read, or that
+comes from a held-out project's organisation but not its repository, leaves the session `unclear` for a reading
+by hand. A session in which a command tried to reach the network or the project's own repository is marked
+`tries_to_leave_sandbox` (E109); what happens to it is not decided yet.
 
 **When a session fails** (the owner, 2026-11-12: "what happens if DeepSeek can solve only 5 out of 16 cases? We don't
 know is this the faulty case or faulty DeepSeek?"; decided the same day: "Yes, add it"). A failed session alone does
@@ -235,13 +247,14 @@ is not legal advice.
 | Licence and hold-out of a task | `factory/tools/task_licence.py`, `factory/tools/task_holdout.py` |
 | Statements and the leak check | the statement tool under `factory/tools/` |
 | Sessions kept | `factory/README.md` section 2.2; `bin/factoryctl kept_sessions` |
-| Sessions dropped for what they quote | not built yet |
+| Sessions dropped for what they quote | `factory/tools/session_scans.py` |
 
 ## 11. Open points
 
 - Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
   the pair each of those commits declares is being listed.
-- The two session scans of section 6 are to be built before the first session is published.
+- Sessions that tried to leave the sandbox (E109): drop, cut at the turn, or keep, is the owner's decision; the
+  first run found 2 of 16 (one kept).
 - The licence tool still marks a case `fail` when a file is left out only for its length; the rule of section 9 is
   applied by a recorded reading until the tool reads such files itself (registry E110).
 - The licence tool still marks a case `fail` when its starting commit is older than the project's licence; the rule
