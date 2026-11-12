@@ -9,7 +9,7 @@ and a teacher run used the same Docker daemon.
 
 **In progress (a second job, from 14:36 the same day):** the project is taken toward 15 checked cases, on the same
 controller rebuilt from the factory's `main` at `0d99a67` (each service image under a tag of its own installation).
-5 cases are checked so far: pull request 1284 passed on its second try, and 1279 is new. `cases_ambry.tsv`,
+8 cases are checked so far: pull request 1284 passed on its second try, and 1279, 1274, 1275 and 1272 are new. `cases_ambry.tsv`,
 `counts.tsv` and `whose.tsv` already hold the new tries and a `try` column; the text below is the first job's until the
 second one ends.
 

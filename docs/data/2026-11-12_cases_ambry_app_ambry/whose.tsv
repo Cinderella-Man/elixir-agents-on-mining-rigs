@@ -11,3 +11,9 @@ ambry-pr-1281	1	-	checked
 ambry-pr-1284	2	-	checked, on the controller rebuilt with the fix of the shared tag
 ambry-pr-1280	1	machine	a time-out: one hidden test waits for background work with LiveView's render_async, whose default limit is 100 ms; on the reference fix it ended with "expected async processes to finish within 100ms", while it passed in the ten other runs of the controls (the reference fix's own other runs among them); to be run again
 ambry-pr-1279	1	-	checked
+ambry-pr-1277	1	machine_probably	probably a time-out: the one hidden test that failed on the reference fix waits with LiveView's render_async (default limit 100 ms) while the page reads chapter markers from two audio files; the probe keeps no output (registry E80), so the time-out itself cannot be read; to be run again
+ambry-pr-1276	1	machine_probably	probably a time-out: one hidden test that searches the metadata providers failed on the unchanged project in the probe (32 failing) and passed in the controls' run of it (31 failing); in that run the same test file logged a provider search that ended in :timeout, and the engine left the file out of the existing tests as unstable; to be run again
+ambry-pr-1274	1	-	checked
+ambry-pr-1275	1	-	checked
+ambry-pr-1272	1	-	checked
+ambry-pr-1269	1	pull_request	all three existing-test files fail on the reference fix (books_test, inbox_test, query_test: fails_on_reference), so no existing test is left to protect
