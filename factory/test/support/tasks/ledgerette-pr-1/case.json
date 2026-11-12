@@ -1,0 +1,37 @@
+{
+  "id": "ledgerette-pr-1",
+  "schema_version": 3,
+  "task_kind": "bug_fix",
+  "project": "ledgerette",
+  "repository": {
+    "url": "https://github.com/made-up-org/ledgerette",
+    "revision": "4c1e0a7d2b9f3e6a8c5d1f0b7e2a9c4d6f8b3e1a"
+  },
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.18.4-erlang-27.3.4-ubuntu-noble-20250714@sha256:0000000000000000000000000000000000000000000000000000000000000001",
+    "environment": {"MIX_ENV": "test"},
+    "setup_commands": ["mix compile"],
+    "before_test_commands": []
+  },
+  "test_timeout": 60,
+  "allowed_edit_prefixes": ["lib/", "test/"],
+  "acceptance_patch": "reference-tests.patch",
+  "grading": {
+    "adapter": "exunit",
+    "acceptance": "mix test test/negative_test.exs",
+    "preservation": "mix test test/ledgerette_test.exs",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"],
+    "required": [
+      "Elixir.Ledgerette.NegativeTest::test debits lower the balance",
+      "Elixir.Ledgerette.NegativeTest::test negative amounts keep one sign"
+    ],
+    "starting_failures": [
+      "Elixir.Ledgerette.NegativeTest::test debits lower the balance",
+      "Elixir.Ledgerette.NegativeTest::test negative amounts keep one sign"
+    ],
+    "model_tests": "behavioral"
+  },
+  "partial_control": {"present": true}
+}

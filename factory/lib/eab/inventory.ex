@@ -103,11 +103,12 @@ defmodule Eab.Inventory do
 
   def qualification_inputs(id) do
     spec = spec(id)
-    # Admission and exact-upstream reconstruction do not execute in the grader.
+
+    # The statement, its record and the exact-upstream reconstruction do not execute in the grader.
     # They still bind the release and are verified before a baseline is used.
     # An explicitly selected acceptance patch is executable regardless of name.
     audit_files =
-      ~w(case.json ticket.md provenance.json admission.json upstream-tests.patch upstream-docs.patch) --
+      ~w(case.json ticket.md statement.json provenance.json upstream-docs.patch) --
         [spec["acceptance_patch"]]
 
     %{

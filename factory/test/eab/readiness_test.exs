@@ -14,7 +14,7 @@ defmodule Eab.ReadinessTest do
     Store
   }
 
-  @id "plausible-pr-5939"
+  @id "shelfwise-pr-7"
   @opts [image_exists?: &__MODULE__.exists/1]
 
   def exists(_image), do: true
@@ -23,6 +23,7 @@ defmodule Eab.ReadinessTest do
     old = Application.fetch_env!(:eab, :data_dir)
     root = Path.join(System.tmp_dir!(), "eab-readiness-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
+    Eab.MadeUpTasks.use!(@id)
 
     on_exit(fn ->
       Application.put_env(:eab, :data_dir, old)

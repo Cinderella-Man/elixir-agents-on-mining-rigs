@@ -1,0 +1,10 @@
+diff --git a/lib/shelfwise/item.ex b/lib/shelfwise/item.ex
+--- a/lib/shelfwise/item.ex
++++ b/lib/shelfwise/item.ex
+@@ -14,5 +14,6 @@ defmodule Shelfwise.Item do
+     item
+     |> cast(attrs, [:name, :count])
+     |> validate_required([:name, :count])
++    |> validate_number(:count, greater_than_or_equal_to: 0)
+   end
+ end

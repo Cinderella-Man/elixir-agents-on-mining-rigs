@@ -1,0 +1,9 @@
+diff --git a/lib/ledgerette.ex b/lib/ledgerette.ex
+--- a/lib/ledgerette.ex
++++ b/lib/ledgerette.ex
+@@ -8,3 +8,5 @@ defmodule Ledgerette do
+     end)
+   end
++
++  def debits(entries), do: Enum.sum(for {:debit, amount} <- entries, do: amount)
+ end

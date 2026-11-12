@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/made-up-org/ledgerette",
+  "pull_request": "https://github.com/made-up-org/ledgerette/pull/2",
+  "broken_revision": "4c1e0a7d2b9f3e6a8c5d1f0b7e2a9c4d6f8b3e1a",
+  "broken_tree": "9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d",
+  "fixed_revision": "3d6f9a2c5e8b1d4f7a0c3e6b9d2f5a8c1e4b7d0a",
+  "fixed_tree": "5b7d9f1a3c5e7b9d1f3a5c7e9b1d3f5a7c9e1b3d",
+  "pair_selection": "first parent of the merge commit, and the merge commit",
+  "licence": "MIT",
+  "merged_at": "2026-03-11",
+  "marks": []
+}

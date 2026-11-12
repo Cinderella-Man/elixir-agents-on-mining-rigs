@@ -1,39 +1,24 @@
 defmodule Eab.TaskGradingDockerTest do
   use ExUnit.Case, async: false
   @moduletag :docker
-  @moduletag timeout: 240_000
+  @moduletag timeout: 600_000
   alias Eab.{Command, Grader, Inventory, Store}
 
-  test "feature and refactor grading reject no-ops, incomplete solutions and early exits while accepting alternatives" do
+  test "bug-fix and feature grading reject no-ops, incomplete solutions and early exits while accepting alternatives, with and without a partial fix" do
     previous = Store.root()
     root = Path.join(System.tmp_dir!(), "eab-task-grade-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
-    tag = "elixir-agent-benchmark:synthetic-contract-#{System.unique_integer([:positive])}"
+    tag = "elixir-agent-benchmark:made-up-tasks-#{System.unique_integer([:positive])}"
 
     on_exit(fn ->
-      Eab.Sandbox.cleanup("synthetic-contract")
+      Eab.Sandbox.cleanup("made-up-tasks")
       Command.run("docker", ["image", "rm", tag])
       Application.put_env(:eab, :data_dir, previous)
       File.rm_rf!(root)
     end)
 
-    source = Path.join(root, "context/source")
-    File.mkdir_p!(Path.join(source, "lib"))
-    File.mkdir_p!(Path.join(source, "test"))
-
-    original =
-      "import './exit.mjs';\nexport const existing = () => 3;\nexport const twice = null;\n"
-
-    File.write!(Path.join(source, "lib/app.mjs"), original)
-    File.write!(Path.join(source, "lib/exit.mjs"), "// trusted starting source\n")
-
-    test =
-      "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport {existing, twice} from '../lib/app.mjs';\n"
-
-    File.write!(
-      Path.join(source, "test/original.mjs"),
-      test <> "test('preserve', () => assert.equal(existing(), 3));\n"
-    )
+    # The made-up project's starting source, committed as the workspace image does.
+    source = Eab.MadeUpTasks.write_source!(Path.join(root, "context/source"))
 
     for args <- [
           ["init", "--quiet"],
@@ -53,92 +38,65 @@ defmodule Eab.TaskGradingDockerTest do
       diff
     end
 
-    reference = patch.([{"lib/app.mjs", String.replace(original, "null", "n => n * 2")}])
-    alternative = patch.([{"lib/app.mjs", String.replace(original, "null", "n => n + n")}])
+    ledger = File.read!(Path.join(source, "lib/ledgerette.ex"))
+    format = File.read!(Path.join(source, "lib/ledgerette/format.ex"))
 
-    incomplete =
-      patch.([{"lib/app.mjs", String.replace(original, "null", "n => Math.abs(n) * 2")}])
-
-    reference_tests =
-      patch.([
-        {"test/new.mjs",
-         test <>
-           "test('new capability', () => { assert.equal(typeof twice, 'function'); assert.equal(twice(3), 6); });\n"}
-      ])
-
-    acceptance =
-      patch.([
-        {"test/acceptance.mjs",
-         test <>
-           "test('positive', () => { assert.equal(typeof twice, 'function'); assert.equal(twice(2), 4); });\ntest('negative', () => { assert.equal(typeof twice, 'function'); assert.equal(twice(-2), -4); });\n"}
-      ])
-
-    integrity = patch.([{"lib/exit.mjs", "process.exit(0);\n"}])
+    # Other correct fixes than the references, each with the model's own test.
+    alternatives = %{
+      "ledgerette-pr-1" =>
+        patch.([
+          {"lib/ledgerette.ex",
+           String.replace(
+             ledger,
+             "{:debit, amount}, total -> total + amount",
+             "{:debit, amount}, total -> total + -amount"
+           )},
+          {"lib/ledgerette/format.ex",
+           String.replace(
+             format,
+             "  def amount(cents) do\n",
+             "  def amount(cents) when cents < 0 do\n    \"-\" <> amount(abs(cents))\n  end\n\n  def amount(cents) do\n"
+           )},
+          {"test/sign_test.exs",
+           "defmodule SignTest do\n  use ExUnit.Case\n\n  test \"a debit is subtracted\" do\n    assert Ledgerette.balance([{:debit, 2}]) == -2\n  end\nend\n"}
+        ]),
+      "ledgerette-pr-2" =>
+        patch.([
+          {"lib/ledgerette.ex",
+           String.replace(
+             ledger,
+             "    end)\n  end\nend\n",
+             "    end)\n  end\n\n  def debits(entries) do\n    entries |> Enum.filter(&match?({:debit, _}, &1)) |> Enum.map(&elem(&1, 1)) |> Enum.sum()\n  end\nend\n"
+           )},
+          {"test/total_debits_test.exs",
+           "defmodule TotalDebitsTest do\n  use ExUnit.Case\n\n  test \"debits are summed\" do\n    assert Ledgerette.debits([{:debit, 2}, {:debit, 5}]) == 7\n  end\nend\n"}
+        ])
+    }
 
     File.write!(Path.join(root, "context/Dockerfile"), """
     FROM eab-tooling:dev
-    ENV PATH=/opt/pi:$PATH HOME=/tmp
+    ENV PATH=/opt/pi:$PATH HOME=/tmp MIX_ENV=test MIX_BUILD_ROOT=/workspace/_build MIX_DEPS_PATH=/workspace/deps
     WORKDIR /workspace
     COPY --chown=65534:65534 source/ /workspace/
     RUN chown -R 65534:65534 /workspace
     USER 65534:65534
+    RUN mix compile
     CMD ["sleep", "infinity"]
     """)
 
     Command.run!(
       "docker",
       ["build", "--network=none", "--provenance=false", "-t", tag, Path.join(root, "context")],
-      timeout: 180
+      timeout: 300
     )
 
     image =
       Command.run!("docker", ["image", "inspect", tag, "--format", "{{.Id}}"]) |> String.trim()
 
-    for kind <- ~w(feature refactor) do
-      id = "synthetic-#{kind}"
-      directory = Path.join(root, id)
-      File.mkdir_p!(directory)
-      required = ["test/acceptance.mjs::positive", "test/acceptance.mjs::negative"]
+    for id <- ~w(ledgerette-pr-1 ledgerette-pr-2) do
+      Inventory.with_case(id, Eab.MadeUpTasks.dir(id), fn ->
+        spec = Inventory.spec(id)
 
-      spec = %{
-        "id" => id,
-        "schema_version" => 2,
-        "task_kind" => kind,
-        "test_timeout" => 15,
-        "runtime" => %{},
-        "allowed_edit_prefixes" => ["lib/", "test/"],
-        "acceptance_patch" => "acceptance.patch",
-        "grading" => %{
-          "adapter" => "node",
-          "acceptance" => "node --test test/acceptance.mjs",
-          "preservation" => "node --test test/original.mjs",
-          "protected_paths" => ["test/"],
-          "test_suffixes" => [".mjs"],
-          "model_tests" => if(kind == "refactor", do: "preservation", else: "behavioral"),
-          "required" => required,
-          "starting_failures" => required,
-          "requirements" => [
-            %{
-              "id" => "api",
-              "text" => "Expose twice as a function.",
-              "kind" => if(kind == "refactor", do: "structural", else: "behavior"),
-              "checks" => required
-            }
-          ]
-        }
-      }
-
-      for {file, contents} <- [
-            {"case.json", Jason.encode!(spec)},
-            {"reference.patch", reference},
-            {"reference-tests.patch", reference_tests},
-            {"acceptance.patch", acceptance},
-            {"integrity.patch", integrity},
-            {"incomplete.patch", incomplete}
-          ],
-          do: File.write!(Path.join(directory, file), contents)
-
-      Inventory.with_case(id, directory, fn ->
         Store.write("runtimes/#{id}.json", %{
           "image" => image,
           "services" => %{},
@@ -147,7 +105,7 @@ defmodule Eab.TaskGradingDockerTest do
 
         control =
           try do
-            Grader.qualify(id, "synthetic-contract", fn _ -> :ok end)
+            Grader.qualify(id, "made-up-tasks", fn _ -> :ok end)
           rescue
             error ->
               saved = Store.read("controls/#{id}.json")
@@ -159,14 +117,27 @@ defmodule Eab.TaskGradingDockerTest do
           end
 
         assert control["valid"], inspect(control)
+        assert control["partial_control"] == spec["partial_control"]
+        refute control["empty_patch"]["passed"]
+        refute control["early_exit"]["passed"]
 
-        assert Grader.grade(id, alternative <> reference_tests, "synthetic-contract",
+        if spec["partial_control"]["present"] do
+          refute control["partial_repair"]["passed"]
+          assert control["partial_repair"]["hidden"]["completed"]
+        else
+          assert control["partial_repair"] == nil
+        end
+
+        reference = Inventory.file(id, "reference.patch")
+
+        assert Grader.grade(id, alternatives[id], "made-up-tasks",
                  expected: control["reference_patch"]
                )["passed"]
 
-        refute Grader.grade(id, reference, "synthetic-contract",
-                 expected: control["reference_patch"]
-               )["passed"]
+        # The reference alone adds no test that fails first, so it does not pass.
+        refute Grader.grade(id, reference, "made-up-tasks", expected: control["reference_patch"])[
+                 "passed"
+               ]
       end)
     end
   end

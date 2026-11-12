@@ -1,61 +1,51 @@
 defmodule Eab.CandidatesTest do
   use ExUnit.Case, async: false
-  alias Eab.{Cache, Candidates, Inventory, Store}
+  alias Eab.{Candidates, Inventory, Store}
 
   setup do
     old = Store.root()
     root = Path.join(System.tmp_dir!(), "eab-candidate-#{System.unique_integer([:positive])}")
     Application.put_env(:eab, :data_dir, root)
-    directory = Path.join(root, "draft")
-    File.mkdir_p!(directory)
-    spec = Inventory.spec("livebook-pr-2219")
-
-    contract = %{
-      "adapter" => "exunit",
-      "acceptance" => "mix test test/acceptance_test.exs",
-      "preservation" => "mix test test/original_test.exs",
-      "protected_paths" => ["test/"],
-      "test_suffixes" => ["_test.exs"],
-      "required" => ["named assertion"],
-      "starting_failures" => ["named assertion"],
-      "model_tests" => "behavioral",
-      "requirements" => [
-        %{
-          "id" => "outcome",
-          "text" => "Provide the requested capability.",
-          "kind" => "behavior",
-          "checks" => ["named assertion"]
-        }
-      ]
-    }
-
-    spec =
-      Map.merge(spec, %{
-        "id" => "synthetic-candidate",
-        "schema_version" => 2,
-        "task_kind" => "feature",
-        "grading" => contract
-      })
-
-    File.write!(Path.join(directory, "case.json"), Jason.encode!(spec))
-
-    File.cp!(
-      Inventory.case_path("livebook-pr-2219", "provenance.json"),
-      Path.join(directory, "provenance.json")
-    )
-
-    for file <-
-          ~w(reference.patch reference-tests.patch acceptance.patch incomplete.patch integrity.patch),
-        do: File.write!(Path.join(directory, file), "")
-
-    File.write!(Path.join(directory, "ticket.md"), "Synthetic contract, never admitted.")
+    File.mkdir_p!(root)
 
     on_exit(fn ->
       Application.put_env(:eab, :data_dir, old)
       File.rm_rf!(root)
     end)
 
-    %{directory: directory, root: root}
+    %{
+      directory: bundle(root, "draft", "ledgerette-pr-1"),
+      without_partial: bundle(root, "draft-single", "ledgerette-pr-2"),
+      root: root
+    }
+  end
+
+  # A copy of a made-up task under another id, with a statement and its record.
+  defp bundle(root, name, task) do
+    directory = Path.join(root, name)
+    File.cp_r!(Eab.MadeUpTasks.dir(task), directory)
+    spec = Inventory.read_json(Path.join(directory, "case.json"))
+
+    File.write!(
+      Path.join(directory, "case.json"),
+      Jason.encode!(Map.put(spec, "id", "synthetic-#{name}"))
+    )
+
+    state(directory, "Synthetic statement, never used.")
+    directory
+  end
+
+  defp state(directory, text) do
+    File.write!(Path.join(directory, "ticket.md"), text)
+
+    File.write!(
+      Path.join(directory, "statement.json"),
+      Jason.encode!(%{
+        "writer" => %{"name" => "made-up-writer", "file" => "none", "settings" => %{}},
+        "ticket_sha256" => Inventory.hash(text),
+        "written" => "2026-11-12"
+      })
+    )
   end
 
   test "import stays outside inventory and changed artifacts require another version", %{
@@ -63,10 +53,10 @@ defmodule Eab.CandidatesTest do
   } do
     ids = Inventory.all()
     ref = Candidates.import(directory)
-    assert Candidates.read!(ref)["id"] == "synthetic-candidate"
+    assert Candidates.read!(ref)["id"] == "synthetic-draft"
     assert Inventory.all() == ids
-    assert_raise ArgumentError, fn -> Inventory.spec("synthetic-candidate") end
-    File.write!(Path.join(directory, "ticket.md"), "Changed contract")
+    assert_raise ArgumentError, fn -> Inventory.spec("synthetic-draft") end
+    state(directory, "Changed statement")
     next = Candidates.import(directory)
     refute next == ref
 
@@ -74,81 +64,105 @@ defmodule Eab.CandidatesTest do
              Candidates.read!(next)["files"]["ticket.md"]
   end
 
-  test "review and source/execution evidence are separate admission gates", %{
-    directory: directory,
-    root: root
-  } do
-    ref = Candidates.import(directory)
+  test "the import check takes tasks with and without a partial fix, and only in the one format",
+       %{
+         directory: directory,
+         without_partial: without_partial,
+         root: root
+       } do
+    assert Candidates.import(without_partial)["id"] == "synthetic-draft-single"
 
-    review = %{
-      "author" => "curator",
-      "reviewer" => "reviewer",
-      "rationale" => "Synthetic evidence check",
-      "decision" => "approve",
-      "requirements_read_before_checks" => true,
-      "assertion_mapping_checked" => true
-    }
+    # Every made-up task passes the import check as it is.
+    for id <- Eab.MadeUpTasks.ids(),
+        do: assert(Candidates.import(Eab.MadeUpTasks.dir(id))["id"] == id)
 
-    assert_raise RuntimeError, fn ->
-      Candidates.review(ref, Map.put(review, "reviewer", "curator"))
+    # A task may pass the gate before it has a statement.
+    unstated = Path.join(root, "unstated")
+    File.cp_r!(directory, unstated)
+    File.rm!(Path.join(unstated, "ticket.md"))
+    File.rm!(Path.join(unstated, "statement.json"))
+    assert Candidates.import(unstated)["id"] == "synthetic-draft"
+
+    spec = Inventory.read_json(Path.join(directory, "case.json"))
+
+    refusals = [
+      {"admission.json", fn dir -> File.write!(Path.join(dir, "admission.json"), "{}") end},
+      {"upstream-tests.patch",
+       fn dir ->
+         File.cp!(Path.join(dir, "reference-tests.patch"), Path.join(dir, "upstream-tests.patch"))
+       end},
+      {"version 2",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "case.json"),
+           Jason.encode!(Map.put(spec, "schema_version", 2))
+         )
+       end},
+      {"removed field",
+       fn dir ->
+         File.write!(Path.join(dir, "case.json"), Jason.encode!(Map.put(spec, "family", "x")))
+       end},
+      {"not mix",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "case.json"),
+           Jason.encode!(put_in(spec, ["runtime", "profile"], "plausible_ce"))
+         )
+       end},
+      {"partial recorded, file missing",
+       fn dir -> File.rm!(Path.join(dir, "incomplete.patch")) end},
+      {"partial absent, file present",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "case.json"),
+           Jason.encode!(
+             Map.put(spec, "partial_control", %{
+               "present" => false,
+               "reason" => "no_variant_fails"
+             })
+           )
+         )
+       end},
+      {"statement without its record", fn dir -> File.rm!(Path.join(dir, "statement.json")) end},
+      {"statement changed after its record",
+       fn dir -> File.write!(Path.join(dir, "ticket.md"), "Edited after the record") end},
+      {"no early exit",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "integrity.patch"),
+           File.read!(Path.join(dir, "incomplete.patch"))
+         )
+       end},
+      {"reference outside the allowed folders",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "reference.patch"),
+           "diff --git a/mix.exs b/mix.exs\n--- a/mix.exs\n+++ b/mix.exs\n"
+         )
+       end},
+      {"hidden tests outside the test folders",
+       fn dir ->
+         File.write!(
+           Path.join(dir, "reference-tests.patch"),
+           File.read!(Path.join(dir, "reference.patch"))
+         )
+       end}
+    ]
+
+    for {name, change} <- refusals do
+      copy = Path.join(root, "refused-#{System.unique_integer([:positive])}")
+      File.cp_r!(directory, copy)
+      change.(copy)
+
+      outcome =
+        try do
+          Candidates.import(copy) && :imported
+        rescue
+          RuntimeError -> :refused
+        end
+
+      assert {name, outcome} == {name, :refused}
     end
-
-    assert_raise RuntimeError, fn ->
-      Candidates.review(ref, Map.delete(review, "assertion_mapping_checked"))
-    end
-
-    Candidates.review(ref, review)
-
-    assert_raise RuntimeError, ~r/executable qualification/, fn ->
-      Candidates.export(ref, Path.join(root, "export"))
-    end
-
-    # Synthetic receipts exercise identity gates only; no real candidate is qualified.
-    proof = %{
-      "candidate" => ref,
-      "source" => %{"verified" => true},
-      "controls" => %{"valid" => true},
-      "grader" => Inventory.qualification_hash()
-    }
-
-    path = "candidates/#{ref["id"]}/#{ref["version"]}/qualification.json"
-    destination = Path.join(root, "export")
-    stale = Map.put(proof, "grader", "earlier")
-    Store.write(path, Map.put(stale, "checksum", Cache.key(stale)))
-
-    assert_raise RuntimeError, ~r/current grader/, fn ->
-      Candidates.export(ref, destination)
-    end
-
-    Store.write(path, Map.put(proof, "checksum", Cache.key(proof)))
-    Candidates.export(ref, destination)
-
-    assert :ok ==
-             Inventory.with_case(ref["id"], destination, fn ->
-               Candidates.verify_admission!(ref["id"])
-             end)
-
-    # A later grader change leaves the admitted grader as history only.
-    admission_path = Path.join(destination, "admission.json")
-    admission = Jason.decode!(File.read!(admission_path))
-    recorded = Map.put(admission["qualification"], "grader", "earlier") |> Map.delete("checksum")
-    recorded = Map.put(recorded, "checksum", Cache.key(recorded))
-    File.write!(admission_path, Jason.encode!(%{admission | "qualification" => recorded}))
-
-    assert :ok ==
-             Inventory.with_case(ref["id"], destination, fn ->
-               Candidates.verify_admission!(ref["id"])
-             end)
-
-    File.write!(Path.join(destination, "ticket.md"), "Edited after review")
-
-    assert_raise RuntimeError, ~r/match the case files/, fn ->
-      Inventory.with_case(ref["id"], destination, fn ->
-        Candidates.verify_admission!(ref["id"])
-      end)
-    end
-
-    assert_raise ArgumentError, fn -> Inventory.spec(ref["id"]) end
   end
 
   test "candidate context is restored on exceptions", %{directory: directory} do

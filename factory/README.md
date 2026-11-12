@@ -8,8 +8,9 @@ under the bench's own harness, and keep the sessions that pass. It serves the pi
 note" below.
 
 **State on 2026-11-12: job T0 built the tooling image, ran the copy's checks and added two tests; job T1 removed the
-web page, the results page, the run series and the comparison, and with them Phoenix, LiveView and the web server
-(section 7). Sections 2 to 7 describe the factory after the trimming; jobs T2 to T10 have not started.** Section 7
+web page, the results page, the run series and the comparison, and with them Phoenix, LiveView and the web server;
+job T5 put in the one task format and made-up tasks in place of the bench's cases (section 7). Sections 2 to 7
+describe the factory after the trimming; jobs T2 to T4 and T6 to T10 have not started.** Section 7
 lists the trimming jobs; each one that lands adds its line to the table there.
 
 Words used here are the design note's: a *bundle* is the folder of files that defines one task, *hidden tests* are
@@ -111,8 +112,13 @@ Task details: {}
 
 Two places differ from a bench session, and both follow from the task format, not from the engine:
 - the first empty line is where a bench case has its `Required outcome (<id>): <sentence>` lines, 2 to 6 of them.
-  A training task has no requirement sentences (section 3);
+  A training task has no requirement sentences by default (section 3);
 - `Task details:` is `{}`. Each of the 20 bench cases puts a note about its environment there.
+
+Both come from two optional fields of the one format, `grading.requirements` and `clarifications` (section 3.2).
+They are empty by default, and only a writer the owner approves may fill them. When they are filled, the engine
+writes them by the bench's own code path, so the text is the bench's: the parity test pins a task with two
+requirement sentences and a clarification (2.3).
 
 The second empty line is where the one bench case with a browser has a sentence about Chromium. It is empty in the
 other 19 cases and stays an empty line here when the browser support is cut.
@@ -148,6 +154,14 @@ A session is kept when its attempt ended as `completed` and its patch passed. Th
 - The first trimming job writes `test/eab/bench_parity_test.exs` from the unchanged copy. It pins the blob ids above
   and the exact output of `Eab.Agent.instructions/2`, `Eab.Pi.config/4`, `Eab.Fixtures.dockerfile/4` and the
   `docker run` arguments of `Eab.Sandbox`. Every later job must leave it passing.
+- Job T5 rewrote the test's task inputs in the one format, and the texts it expects stayed byte for byte: a bug fix
+  with no requirement sentences (the text above), and a bug fix with two requirement sentences and a clarification.
+  It removed two expected texts, the bench's text for a task whose added tests are optional and its text for a
+  refactor: the one format cannot express those inputs, so no model can ever be shown those texts. It added the
+  bench's text for a `feature`, captured from the unchanged copy (commit `470301e`). That text has requirement
+  sentences, because the bench's format needs at least one for a feature, so a feature text without them cannot
+  come from the unchanged copy
+  ([data](../docs/data/2026-11-12_factory_t5/README.md)).
 - When the bench changes any of these (a new Pi version, a new instruction sentence), the factory takes the change:
   the files are copied again from the bench's new commit, and that commit is recorded in section 7.
 
@@ -156,9 +170,16 @@ A session is kept when its attempt ended as `completed` and its patch passed. Th
 One format, `schema_version: 3`. The bench reads only its own two formats and refuses a 3, and the factory refuses
 everything else, so a bench case cannot be loaded here and a training task cannot be loaded there.
 
-It is the bench's current format with these parts removed: the requirement sentences and their mapping to tests, the
-review record, the admission file, the separate copy of the upstream tests, the browser switch, and the descriptive
-fields (`title`, `family`, `domains`, `source_inspiration`, `clarifications`). The partial fix is optional.
+It is the bench's current format with these parts removed: the mapping of requirement sentences to tests (the
+sentences stay as an optional field), the review record, the admission file, the separate copy of the upstream
+tests (`upstream-tests.patch`) and of the hidden tests (`acceptance.patch`), the browser switch, the kind
+`refactor`, the test policies other than `behavioral`, and the descriptive fields (`title`, `family`, `domains`,
+`source_inspiration`). `clarifications` stays as an optional field. The partial fix is optional.
+
+`Eab.TaskContract.read/1` refuses every other `schema_version`, and a manifest that still has one of the removed
+fields (`title`, `family`, `domains`, `suite`, `source_inspiration`, the older format's `regression_command`,
+`acceptance_command`, `required_acceptance_tests`, `require_regression_test`, `partial_repair_probe`, or
+`runtime.browser`), so a bench case with its version number changed does not load either (job T5).
 
 ### 3.1 The files of a task
 
@@ -177,6 +198,11 @@ fields (`title`, `family`, `domains`, `source_inspiration`, `clarifications`). T
 The engine keeps its file names, so that the code that reads them is not edited. A task can pass the gate before it
 has a statement. A teacher run takes only tasks that have one.
 
+The import check (`Eab.Candidates.validate!/1`, job T5) takes no other file: the first five are required,
+`incomplete.patch` must exist exactly when `partial_control.present` is true, `ticket.md` and `statement.json` come
+together, and `integrity.patch` must add one new file and contain the line `System.halt(0)`. The partial fix and the
+early exit must stay in the allowed folders, and the hidden tests in the test folders.
+
 ### 3.2 `case.json`
 
 | Field | Value | Where it comes from |
@@ -193,7 +219,7 @@ has a statement. A teacher run takes only tasks that have one.
 | `runtime.setup_commands`, `runtime.before_test_commands` | commands run at build time and before each test run | the project's recipe |
 | `runtime.packages` | new: extra system packages for the image (section 6, change 3) | the project's recipe |
 | `services` | `postgres` and `clickhouse` images, pinned by digest; absent when the project needs none | the project's recipe |
-| `baseline` | the commands that build the database once, such as `mix ecto.create --quiet` and `mix ecto.migrate --quiet` | the project's recipe |
+| `baseline` | the commands that build the database once, as the engine's policy object: `{"mode": "prepared", "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]}` | the project's recipe |
 | `test_timeout` | seconds for one test command; 240 when absent | the project's recipe |
 | `permitted_exclusion_tags` | optional: tags of tests the project itself excludes | the project's recipe |
 | `allowed_edit_prefixes` | the top-level folders the pull request changes | the pull request's diff |
@@ -206,6 +232,8 @@ has a statement. A teacher run takes only tasks that have one.
 | `grading.required` | the names of the hidden tests that pass on the reference | observed in the first run, then fixed |
 | `grading.starting_failures` | the names of those that fail in their body on the unchanged project | observed in the first run, then fixed |
 | `grading.model_tests` | `behavioral`: the model must add a test that fails first | fixed |
+| `grading.requirements` | optional: a list of `{"id": ..., "text": ...}`, written into the instruction text as `Required outcome (<id>): <text>`. No `kind`, no `checks`, no mapping to tests. Empty by default. | only a writer the owner approves |
+| `clarifications` | optional: an object, written into the instruction text as `Task details: <JSON>`. Empty by default. | only a writer the owner approves |
 | `partial_control` | `{"present": true}`, or `{"present": false, "reason": "..."}` | the bundle maker's search |
 
 A project's recipe is one file per project and period of its history: the Elixir image, the services, the
@@ -243,7 +271,9 @@ is a task of its own, and the pairs are counted.
 
 The teacher model writes the statements (decided 2026-11-12); a statement by any other writer is not used. The check
 that a statement does not give the fix away runs outside the engine. The engine checks only that the record exists
-and that the hash matches.
+and that the hash matches. Since job T5 the import check does this: `writer` is a non-empty text or object, `written`
+is a text, and `ticket_sha256` is the SHA-256 of `ticket.md`. A change to either file leaves the controls' receipt
+valid (`Eab.Inventory.qualification_inputs/1`).
 
 ## 4. The gate
 
@@ -326,7 +356,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `browser.ex` | drop | Browser support. |
 | `build_cache.ex` | change | The image tag's prefix. |
 | `cache.ex` | keep | The store of prepared parts, keyed by their inputs. |
-| `candidates.ex` | change | Becomes the import check: `import/1`'s limits and `validate!/1` stay, without the partial fix as a must. The draft store, `review/2`, `export/2`'s review and admission, `verify_admission!/1` and `qualify/3` go: checks run through `Eab.Qualification`, so that many tasks share the preparation scheduler. |
+| `candidates.ex` | change | Becomes the import check: `import/1`'s limits and `validate!/1` stay, without the partial fix as a must. The draft store, `review/2`, `export/2`'s review and admission, `verify_admission!/1` and `qualify/3` go: checks run through `Eab.Qualification`, so that many tasks share the preparation scheduler. T5 removed `review/2`, `export/2` and `verify_admission!/1` and wrote `validate!/1` for the one format (public now, for the entry points); the draft store (`import/1`, `read!/1`) and `qualify/3` stay until T6 and T9 give the check its place. |
 | `chatgpt_auth.ex` | drop | The ChatGPT subscription's sign-in. |
 | `checkpoints.ex` | change | `validate_cases!/2`: a run's tasks are a chosen list; the two harness-check kinds go. The sealed receipts stay. |
 | `claude_code.ex`, `claude_code/attempt.ex`, `claude_code/broker.ex`, `claude_code/mcp.ex`, `claude_code/transcript.ex` | drop | The Claude Code harness. |
@@ -335,10 +365,10 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `database_seed.ex` | keep | Decides when a saved database can be reused for a later commit. |
 | `evidence.ex` | keep | Saves `grade.json` and the short verdict. |
 | `fixtures.ex` | change | Extra system packages; the image tag's prefix; the browser calls and the `plausible_ce` line go. The recipe for a task without packages must not change (section 2). |
-| `grader.ex` | change | The partial control becomes optional per task; the older format's built-in controls go. Grading itself is not touched (section 2.2). |
+| `grader.ex` | change | The partial control becomes optional per task; the older format's built-in controls go. Grading itself is not touched (section 2.2). Done in T5: only `qualify/5`, `partial_patch/1` and `valid_controls?/5` changed; the early exit is read from the task's `integrity.patch`; the saved controls record `partial_control`, and `partial_repair` is null without a partial fix. |
 | `harness.ex` | change | Pi only. |
 | `image_presence.ex` | keep | Asks Docker which images exist, in batches. |
-| `inventory.ex` | change | Tasks come from a mounted folder; no case list in the configuration; `statement.json` joins the files that do not void a receipt. |
+| `inventory.ex` | change | Tasks come from a mounted folder; no case list in the configuration; `statement.json` joins the files that do not void a receipt. T5 did the last part, and `admission.json` and `upstream-tests.patch` left that list: they are not files of the format, so a task that has one is refused at import. |
 | `log_sections.ex` | drop | Splits a log into stages for the web page; nothing else calls it. |
 | `measurement.ex` | change | One sentence: the reason given when nothing is measured. |
 | `memory_collector/cli.ex`, `memory_collector/sampler.ex`, `memory_collector/weights.ex`, `memory_monitor.ex` | drop | The memory collector. |
@@ -353,7 +383,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `provenance.ex` | keep | The source check. It already takes the pull request's own tests when no separate upstream copy exists. |
 | `qualification.ex` | change | Prepares and checks a given list of tasks, not the whole inventory; the second round. |
 | `readiness.ex` | keep | Says which tasks can run with no internet. |
-| `release.ex` | change | Freezes the tasks of one run; the admission check goes (5.1). |
+| `release.ex` | change | Freezes the tasks of one run; the admission check goes (5.1). T5 removed the admission check; every task's contract is read when a release is frozen. |
 | `report.ex` | change | The report's title and its lines about memory, speed and score. |
 | `results.ex`, `results/preview.ex`, `results/resources.ex`, `results/schema.ex` | drop | The results page. |
 | `retention.ex` | change | The image tag's prefix in the removal guard. |
@@ -365,7 +395,7 @@ So it is dropped. What is lost is the live view. A `status` entry point takes it
 | `source.ex` | change | The mirror as a second place to fetch from (section 6, change 4). |
 | `storage.ex` | change | The image tag's prefix. Its report of shared and unique image sizes is what the pilot needs for "disk per task". |
 | `store.ex` | keep | Reads and writes the data folder. |
-| `task_contract.ex` | change | One format (section 3). The instruction text stays (section 2). |
+| `task_contract.ex` | change | One format (section 3). The instruction text stays (section 2). Done in T5. |
 | `test_adapter.ex` | keep | See 5.1. |
 | `thinking.ex` | keep | Same bytes (section 2). |
 | `factory.ex` | **new** | The entry points (section 6, change 5). |
@@ -422,7 +452,13 @@ on the unchanged copy (48 tests when job T0 ran them):
 list every test with its state and cause ([`docs/data/2026-11-12_factory_t0/`](../docs/data/2026-11-12_factory_t0/README.md)).
 
 Each of them that stays is changed to use made-up tasks under `test/support/`, never a bench case and never a real
-project.
+project. Job T5 wrote them: `test/support/made_up_tasks.exs` and the bundles in `test/support/tasks/`. Two tasks of
+an invented ledger with no dependencies apply to its source and are graded in the Docker test, one with a partial
+fix and one without; a third, of an invented application with Postgres and a Node step, serves the tests that
+prepare nothing for real. T5 moved `candidates_test`, `fixtures_test`, `grader_test`, `readiness_test`,
+`runner_test`, `task_contract_test` and `task_grading_docker_test` to them. The tests of `runs_test` and
+`checkpoints_test` that need tasks in the inventory itself wait for the mounted task folder (T6); so does the one of
+`claude_code_test`, which goes with that file in T2.
 
 | File | Verdict | Reason |
 |---|---|---|
@@ -456,7 +492,7 @@ project.
 | 4 | **The source from the upstream repository, with a mirror as backup.** A task names only the upstream repository and the commit. The engine fetches that commit by its id from upstream. When that fails, it fetches the same id from the mirror named for that repository in the file `EAB_MIRRORS` points at. The tree hash is checked in both cases, so a mirror cannot serve other content. The receipt says where the source came from. The archive is kept after the first fetch, as now. A mirror's address is part of the installation, never of a task. | `lib/eab/source.ex`, `config/runtime.exs` | `source_test` with two local repositories. |
 | 5 | **Entry points for scripts,** in one module. `import(dir)` checks every bundle under a folder and copies the valid ones into the task folder; it refuses an id that exists with other bytes, and a repository on the hold-out list. `check(ids)` runs the gate of section 4 and writes one result per task. `export(ids, dest)` copies checked tasks and a table of their gate results. `start_run(url, ids, settings)` starts a teacher run on tasks that have a statement. `kept_sessions(run)` lists the attempts that completed and passed, with their folders. `status()` says what is running. The long ones return at once with a job id and write their progress to files. They are called through the release's `rpc` command; a small script wraps that. | new `lib/eab/factory.ex` and `bin/factoryctl`; `lib/eab/candidates.ex`, `lib/eab/qualification.ex`, `lib/eab/runs.ex`; new `config/holdout.json` | `factory_test` on a made-up task, then job T10. |
 | 6 | **A name of its own.** The inventory id is `elixir-task-factory-v1`. Image tags start with `elixir-task-factory:`; the label keys are `etf.installation` and `etf.run`; container names start with `etf-`. The release, the Compose service, its image and its volume are named `factory`. The report is titled "Task run report". The Elixir modules keep the prefix `Eab` and the settings keep `EAB_`, so that the code can still be compared with the bench, and the names inside the container stay (section 2). The tag prefix matters most: the engine removes only images whose tags all carry its own prefix, so with a prefix of its own a factory on the same machine as a bench controller can never remove the bench's images, nor the bench the factory's. | `config/factory.json`, `mix.exs`, `compose.yaml`, `Dockerfile`, `lib/eab/agent_image.ex`, `lib/eab/build_cache.ex`, `lib/eab/fixtures.ex`, `lib/eab/service_images.ex`, `lib/eab/retention.ex`, `lib/eab/storage.ex`, `lib/eab/sandbox.ex`, `lib/eab/report.ex` | A search of the code for the bench's names outside the list of section 2; the tests that name tags. |
-| 7 | **The one format, with an optional partial control.** `schema_version: 3` as in section 3. With `partial_control.present` false, the controls are the unchanged project, the reference and the early exit. | `lib/eab/task_contract.ex`, `lib/eab/grader.ex` (`qualify/5`, `valid_controls?/5`, `partial_patch/1`), `lib/eab/candidates.ex`, `lib/eab/inventory.ex`, `lib/eab/release.ex` | `task_contract_test`, `grader_test`, `task_grading_docker_test`. |
+| 7 | **The one format, with an optional partial control.** `schema_version: 3` as in section 3. With `partial_control.present` false, the controls are the unchanged project, the reference and the early exit. Done in T5. | `lib/eab/task_contract.ex`, `lib/eab/grader.ex` (`qualify/5`, `valid_controls?/5`, `partial_patch/1`), `lib/eab/candidates.ex`, `lib/eab/inventory.ex`, `lib/eab/release.ex` | `task_contract_test`, `grader_test`, `candidates_test`, and `task_grading_docker_test`, which grades a made-up task with a partial fix and one without. |
 | 8 | **A second round of controls.** After the first round passes, the unchanged project and the reference are graded again, and the named outcomes compared. | `lib/eab/qualification.ex`, `lib/eab/grader.ex` | `grader_test` with a made-up unstable test. |
 
 Change 1 covers the containers. Image builds run inside Docker's builder and take no CPU share from `docker run`.

@@ -1,0 +1,16 @@
+diff --git a/test/negative_test.exs b/test/negative_test.exs
+new file mode 100644
+--- /dev/null
++++ b/test/negative_test.exs
+@@ -0,0 +1,11 @@
++defmodule Ledgerette.NegativeTest do
++  use ExUnit.Case
++
++  test "debits lower the balance" do
++    assert Ledgerette.balance([{:credit, 10}, {:debit, 4}]) == 6
++  end
++
++  test "negative amounts keep one sign" do
++    assert Ledgerette.Format.amount(-150) == "-1.50"
++  end
++end

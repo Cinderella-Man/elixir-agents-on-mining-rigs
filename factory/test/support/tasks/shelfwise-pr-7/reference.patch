@@ -1,0 +1,21 @@
+diff --git a/lib/shelfwise/restock.ex b/lib/shelfwise/restock.ex
+--- a/lib/shelfwise/restock.ex
++++ b/lib/shelfwise/restock.ex
+@@ -6,6 +6,6 @@ defmodule Shelfwise.Restock do
+   def apply(%Item{} = item, quantity) do
+     item
+-    |> Item.changeset(%{count: quantity})
++    |> Item.changeset(%{count: item.count + max(quantity, 0)})
+     |> Repo.update()
+   end
+ end
+diff --git a/lib/shelfwise/item.ex b/lib/shelfwise/item.ex
+--- a/lib/shelfwise/item.ex
++++ b/lib/shelfwise/item.ex
+@@ -14,5 +14,6 @@ defmodule Shelfwise.Item do
+     item
+     |> cast(attrs, [:name, :count])
+     |> validate_required([:name, :count])
++    |> validate_number(:count, greater_than_or_equal_to: 0)
+   end
+ end

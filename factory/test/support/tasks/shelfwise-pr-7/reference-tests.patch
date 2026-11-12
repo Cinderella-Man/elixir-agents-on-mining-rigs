@@ -1,0 +1,20 @@
+diff --git a/test/shelfwise/restock_test.exs b/test/shelfwise/restock_test.exs
+new file mode 100644
+--- /dev/null
++++ b/test/shelfwise/restock_test.exs
+@@ -0,0 +1,15 @@
++defmodule Shelfwise.RestockTest do
++  use Shelfwise.DataCase
++
++  test "a restock never lowers the count" do
++    item = insert_item(count: 5)
++    assert {:ok, %{count: 8}} = Shelfwise.Restock.apply(item, 3)
++    assert {:ok, %{count: 5}} = Shelfwise.Restock.apply(item, -2)
++  end
++
++  test "a restock is logged once" do
++    item = insert_item(count: 1)
++    {:ok, _} = Shelfwise.Restock.apply(item, 1)
++    assert length(Shelfwise.Log.entries(item)) == 1
++  end
++end

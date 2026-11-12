@@ -1,0 +1,45 @@
+{
+  "id": "shelfwise-pr-7",
+  "schema_version": 3,
+  "task_kind": "bug_fix",
+  "project": "shelfwise",
+  "repository": {
+    "url": "https://github.com/made-up-org/shelfwise",
+    "revision": "8b3e1f6a9c2d5b8e1a4c7f0d3b6e9a2c5f8d1b4e"
+  },
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.18.4-erlang-27.3.4-alpine-3.21.3@sha256:0000000000000000000000000000000000000000000000000000000000000002",
+    "node_image": "node:22.11.0-alpine@sha256:0000000000000000000000000000000000000000000000000000000000000003",
+    "environment": {"MIX_ENV": "shelf_test", "ERL_FLAGS": "+S 2:2"},
+    "setup_commands": ["npm ci --prefix assets", "mix compile"],
+    "before_test_commands": ["mix ecto.reset --quiet"]
+  },
+  "services": {
+    "postgres": {
+      "image": "postgres:16-alpine@sha256:0000000000000000000000000000000000000000000000000000000000000004"
+    }
+  },
+  "baseline": {
+    "mode": "prepared",
+    "commands": ["mix ecto.create --quiet", "mix ecto.migrate --quiet"]
+  },
+  "test_timeout": 300,
+  "permitted_exclusion_tags": ["slow"],
+  "allowed_edit_prefixes": ["lib/", "test/"],
+  "acceptance_patch": "reference-tests.patch",
+  "grading": {
+    "adapter": "exunit",
+    "acceptance": "mix test test/shelfwise/restock_test.exs",
+    "preservation": "mix test test/shelfwise/stock_test.exs",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"],
+    "required": [
+      "Elixir.Shelfwise.RestockTest::test a restock never lowers the count",
+      "Elixir.Shelfwise.RestockTest::test a restock is logged once"
+    ],
+    "starting_failures": ["Elixir.Shelfwise.RestockTest::test a restock never lowers the count"],
+    "model_tests": "behavioral"
+  },
+  "partial_control": {"present": true}
+}

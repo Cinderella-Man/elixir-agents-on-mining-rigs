@@ -24,17 +24,19 @@ defmodule Eab.RunnerTest do
   end
 
   test "fixture images contain only broken source, with dependencies installed inside Docker" do
+    Eab.MadeUpTasks.use!("shelfwise-pr-7")
+
     recipe =
       Eab.Fixtures.dockerfile(
-        Eab.Inventory.spec("plausible-pr-5939"),
+        Eab.Inventory.spec("shelfwise-pr-7"),
         "elixir@sha256:base",
         "node@sha256:node"
       )
 
-    assert recipe =~ "mix deps.get --only ce_test"
-    assert recipe =~ "npm ci --prefix tracker"
+    assert recipe =~ "mix deps.get --only shelf_test"
+    assert recipe =~ "npm ci --prefix assets"
     refute recipe =~ "reference.patch"
-    refute recipe =~ "acceptance.patch"
+    refute recipe =~ "reference-tests.patch"
     assert recipe =~ "git init"
   end
 end

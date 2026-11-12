@@ -1,11 +1,19 @@
 defmodule Eab.Candidates do
-  @moduledoc "Immutable candidate bundles, recorded review and qualification before release admission."
+  @moduledoc """
+  The import check of the one task format (factory/README.md, sections 3 and 4, check 1): immutable candidate
+  bundles, validated and stored by content, then checked by the controls. There is no review record and no admission
+  file.
+  """
   alias Eab.{Cache, Fixtures, Grader, Inventory, Provenance, Store, TaskContract}
+
+  # The files of a task (section 3.1). The optional ones may be absent; no other file is accepted.
+  @required ~w(case.json provenance.json reference.patch reference-tests.patch integrity.patch)
+  @optional ~w(upstream-docs.patch incomplete.patch ticket.md statement.json)
 
   def import(directory) do
     files = File.ls!(directory) |> Enum.sort()
 
-    unless files != [] and length(files) <= 64 and "admission.json" not in files and
+    unless files != [] and length(files) <= 64 and
              Enum.all?(files, fn file ->
                Path.basename(file) == file and Path.extname(file) in ~w(.json .md .patch) and
                  File.lstat!(Path.join(directory, file)).type == :regular and
@@ -13,14 +21,15 @@ defmodule Eab.Candidates do
              end),
            do: raise("Candidates require bounded, flat regular fixture files")
 
+    unless Enum.all?(@required, &(&1 in files)) and
+             Enum.all?(files, &(&1 in (@required ++ @optional))),
+           do: raise("A task holds exactly the files of the one format")
+
     spec = Inventory.read_json(Path.join(directory, "case.json"))
     id = spec["id"]
 
-    unless Store.valid_id?(id) and id not in Inventory.all() and spec["schema_version"] == 2,
-      do:
-        raise(
-          "Import needs a new candidate ID and schema version 2; admitted cases are immutable"
-        )
+    unless Store.valid_id?(id) and id not in Inventory.all() and spec["schema_version"] == 3,
+      do: raise("Import needs a new task ID and schema version 3; checked tasks are immutable")
 
     Inventory.with_case(id, directory, fn -> validate!(id) end)
     hashes = Map.new(files, &{&1, Inventory.hash_file(Path.join(directory, &1))})
@@ -54,33 +63,6 @@ defmodule Eab.Candidates do
     end
 
     record
-  end
-
-  def review(ref, review) do
-    read!(ref)
-
-    unless is_map(review) and review["decision"] in ~w(approve reject defer) and
-             Enum.all?(
-               ~w(author reviewer rationale),
-               &(is_binary(review[&1]) and String.trim(review[&1]) != "")
-             ) and
-             review["author"] != review["reviewer"],
-           do: raise("Record an independent reviewer and a reason")
-
-    if review["decision"] == "approve" and
-         (review["requirements_read_before_checks"] != true or
-            review["assertion_mapping_checked"] != true),
-       do: raise("Approval requires requirements-first review and assertion mapping verification")
-
-    entry =
-      Map.merge(review, %{
-        "candidate" => ref,
-        "recorded_at" => DateTime.utc_now() |> DateTime.to_iso8601()
-      })
-
-    Store.write("#{prefix(ref)}/reviews/#{Cache.key(entry)}.json", entry)
-    Store.write("#{prefix(ref)}/review.json", entry)
-    entry
   end
 
   def qualify(ref, emit, opts \\ []) do
@@ -139,98 +121,76 @@ defmodule Eab.Candidates do
     end)
   end
 
-  # Export a reviewable admission bundle. Placing it under cases/ activates it;
-  # importing a candidate never changes the runnable folders.
-  def export(ref, destination) do
-    record = read!(ref)
-
-    review =
-      Store.read("#{prefix(ref)}/review.json") || raise("Candidate needs independent review")
-
-    proof =
-      Store.read("#{prefix(ref)}/qualification.json") ||
-        raise("Candidate needs executable qualification")
-
-    validate_evidence!(ref, review, proof)
-
-    unless proof["grader"] == Inventory.qualification_hash(),
-      do: raise("Admission needs qualification under the current grader")
-
-    unless not File.exists?(destination), do: raise("Admission destination already exists")
-    File.mkdir_p!(destination)
-
-    for {file, _} <- record["files"],
-        do: File.cp!(Store.path("#{prefix(ref)}/files/#{file}"), Path.join(destination, file))
-
-    admission = %{
-      "candidate" => ref,
-      "files" => record["files"],
-      "review" => review,
-      "qualification" => proof
-    }
-
-    File.write!(Path.join(destination, "admission.json"), Jason.encode!(admission, pretty: true))
-    admission
-  end
-
-  def verify_admission!(id) do
-    proof = Inventory.read_json(Inventory.case_path(id, "admission.json"))
-    files = Inventory.fixture_hashes(id) |> Map.delete("admission.json")
-    ref = proof["candidate"]
-
-    unless is_map(ref) and ref["id"] == id and ref["version"] == Cache.key(files) and
-             files == proof["files"],
-           do: raise("Admission does not match the case files")
-
-    # The recorded grader is history. Runs re-qualify every case under the
-    # current grader before any attempt, so grader changes never edit cases.
-    validate_evidence!(ref, proof["review"], proof["qualification"])
-    :ok
-  end
-
-  defp validate_evidence!(ref, review, proof) do
-    unless is_map(review) and is_map(proof) and review["candidate"] == ref and
-             review["decision"] == "approve" and review["author"] != review["reviewer"] and
-             review["requirements_read_before_checks"] == true and
-             review["assertion_mapping_checked"] == true and
-             proof["candidate"] == ref and
-             proof["checksum"] == Cache.key(Map.delete(proof, "checksum")) and
-             get_in(proof, ["source", "verified"]) == true and
-             get_in(proof, ["controls", "valid"]) == true and
-             is_binary(proof["grader"]),
-           do: raise("Admission needs matching source, review and qualification evidence")
-  end
-
-  defp validate!(id) do
+  @doc """
+  Check 1 of the gate for a task the inventory can resolve (directly, or through `Eab.Inventory.with_case/3`): the
+  manifest and its contract, the provenance, the files that must and may exist, the statement record, both test
+  commands, and the folders each patch may touch.
+  """
+  def validate!(id) do
     spec = Inventory.spec(id)
     contract = TaskContract.read(spec)
     Provenance.validate!(spec, Inventory.read_json(Inventory.case_path(id, "provenance.json")))
+    present? = &File.regular?(Inventory.case_path(id, &1))
+    runtime = spec["runtime"] || %{}
 
-    for file <-
-          ~w(ticket.md reference.patch reference-tests.patch acceptance.patch incomplete.patch integrity.patch) do
-      unless File.regular?(Inventory.case_path(id, file)),
-        do: raise("Missing candidate artifact: #{file}")
-    end
+    unless spec["id"] == id and is_binary(spec["project"]) and spec["project"] != "" and
+             runtime["profile"] == "mix" and is_binary(runtime["image"]) and
+             runtime["image"] != "",
+           do: raise("Invalid task manifest")
 
-    unless spec["acceptance_patch"] == "acceptance.patch",
-      do: raise("Use the protected acceptance.patch artifact")
+    for file <- @required, not present?.(file), do: raise("Missing candidate artifact: #{file}")
+
+    unless present?.("incomplete.patch") == contract["partial"],
+      do: raise("incomplete.patch must exist exactly when partial_control.present is true")
+
+    validate_statement!(id, present?)
 
     for command <- [contract["acceptance"], contract["preservation"]],
         do: Eab.TestAdapter.command(contract["adapter"], command, [])
 
-    for file <- ~w(reference-tests.patch acceptance.patch) do
-      unless Grader.validate_patch(Inventory.file(id, file), %{
-               "allowed_edit_prefixes" => contract["protected_paths"]
-             }) == {:ok, []},
-             do: raise("#{file} must only change protected test paths")
-    end
+    unless Grader.validate_patch(Inventory.file(id, "reference-tests.patch"), %{
+             "allowed_edit_prefixes" => contract["protected_paths"]
+           }) == {:ok, []},
+           do: raise("reference-tests.patch must only change protected test paths")
 
-    for file <- ~w(reference.patch incomplete.patch) do
+    for file <- ~w(reference.patch incomplete.patch integrity.patch), present?.(file) do
       unless match?({:ok, _}, Grader.validate_patch(Inventory.file(id, file), spec)),
         do: raise("#{file} violates the allowed edit paths")
     end
 
+    integrity = Inventory.file(id, "integrity.patch")
+
+    unless length(String.split(integrity, "diff --git ")) == 2 and
+             String.contains?(integrity, "\nnew file mode 100644\n") and
+             String.contains?(integrity, "\n+System.halt(0)\n"),
+           do: raise("integrity.patch must add one new file that calls System.halt(0)")
+
     :ok
+  end
+
+  # A task may pass the gate before it has a statement (section 3.1). When it has one, `statement.json` names its
+  # writer and the SHA-256 of `ticket.md` (section 3.4); the check that a statement does not give the fix away runs
+  # outside the engine.
+  defp validate_statement!(id, present?) do
+    case {present?.("ticket.md"), present?.("statement.json")} do
+      {false, false} ->
+        :ok
+
+      {true, true} ->
+        record = Inventory.read_json(Inventory.case_path(id, "statement.json"))
+
+        writer = if is_map(record), do: record["writer"]
+
+        unless is_map(record) and
+                 ((is_binary(writer) and String.trim(writer) != "") or
+                    (is_map(writer) and map_size(writer) > 0)) and is_binary(record["written"]) and
+                 record["ticket_sha256"] ==
+                   Inventory.hash_file(Inventory.case_path(id, "ticket.md")),
+               do: raise("statement.json must name its writer and match ticket.md")
+
+      _ ->
+        raise "ticket.md and statement.json come together"
+    end
   end
 
   defp stage(ref, status, emit) do

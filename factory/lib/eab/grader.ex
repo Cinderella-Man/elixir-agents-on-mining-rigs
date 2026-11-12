@@ -370,31 +370,27 @@ defmodule Eab.Grader do
             "fixture or runtime identity changed"
         end
 
-      emit.("Checking broken, reference, bypass and partial repairs for #{id}: #{reason}")
+      checks = if contract["partial"], do: "bypass and partial", else: "and bypass"
+      emit.("Checking broken, reference, #{checks} repairs for #{id}: #{reason}")
 
       reference =
-        Inventory.file(id, "reference.patch") <>
-          if(File.exists?(Inventory.case_path(id, "reference-tests.patch")),
-            do: Inventory.file(id, "reference-tests.patch"),
-            else: ""
-          )
+        Inventory.file(id, "reference.patch") <> Inventory.file(id, "reference-tests.patch")
 
       emit.("Checking broken source for #{id}")
       empty = grade(id, "", run_id, coverage: false)
       emit.("Checking reference repair for #{id}")
       gold = grade(id, reference, run_id)
-
-      halt =
-        if spec["schema_version"] == 2 do
-          Inventory.file(id, "integrity.patch")
-        else
-          "diff --git a/lib/eab_halt.ex b/lib/eab_halt.ex\nnew file mode 100644\n--- /dev/null\n+++ b/lib/eab_halt.ex\n@@ -0,0 +1 @@\n+System.halt(0)\n"
-        end
-
       emit.("Checking early-exit rejection for #{id}")
+      halt = Inventory.file(id, "integrity.patch")
       bypass = grade(id, reference <> halt, run_id, expected: gold)
-      emit.("Checking partial-repair rejection for #{id}")
-      partial = grade(id, partial_patch(id), run_id, expected: gold, coverage: false)
+
+      # The partial-fix control is optional per task (README section 3.2). Without one, the controls are the
+      # unchanged project, the reference and the early exit.
+      partial =
+        if contract["partial"] do
+          emit.("Checking partial-repair rejection for #{id}")
+          grade(id, partial_patch(id), run_id, expected: gold, coverage: false)
+        end
 
       valid =
         valid_controls?(contract, empty, gold, bypass, partial) and
@@ -406,7 +402,8 @@ defmodule Eab.Grader do
         "empty_patch" => empty,
         "reference_patch" => gold,
         "early_exit" => bypass,
-        "partial_repair" => partial
+        "partial_repair" => partial,
+        "partial_control" => spec["partial_control"]
       }
 
       Store.write("controls/#{id}.json", control)
@@ -419,51 +416,37 @@ defmodule Eab.Grader do
     end
   end
 
+  @doc "The task's partial fix, or nil when its `partial_control` records none."
   def partial_patch(id) do
-    if Inventory.spec(id)["schema_version"] == 2 do
-      Inventory.file(id, "incomplete.patch")
-    else
-      legacy_partial_patch(id)
-    end
+    if Inventory.spec(id)["partial_control"]["present"] == true,
+      do: Inventory.file(id, "incomplete.patch")
   end
 
+  @doc """
+  Whether the first round of controls holds. `partial` is the partial fix's grade, or nil for a task whose contract
+  records no partial fix.
+  """
   def valid_controls?(contract, empty, gold, bypass, partial) do
     starting = contract["starting_failures"]
     empty_failures = behavioral_failures(empty["hidden"] || %{})
-    partial_failures = behavioral_failures(partial["hidden"] || %{})
-    starting_matches = starting == [] or Enum.sort(starting) == Enum.sort(empty_failures)
-    incomplete_matches = starting == [] or Enum.any?(partial_failures, &(&1 in starting))
-    preserved = contract["kind"] != "refactor" or get_in(empty, ["regression", "passed"]) == true
     bypass_executed = is_boolean(get_in(bypass, ["hidden", "completed"]))
 
     not empty["passed"] and get_in(empty, ["hidden", "completed"]) == true and
-      empty_failures != [] and starting_matches and preserved and gold["passed"] and
-      not bypass["passed"] and bypass_executed and
-      get_in(partial, ["hidden", "completed"]) == true and
-      partial_failures != [] and incomplete_matches
+      empty_failures != [] and Enum.sort(starting) == Enum.sort(empty_failures) and
+      gold["passed"] and not bypass["passed"] and bypass_executed and
+      partial_rejected?(contract, partial)
   end
 
-  defp legacy_partial_patch(id) do
-    patch = Inventory.file(id, "reference.patch")
-    probe = Inventory.spec(id)["partial_repair_probe"]
+  # A partial fix is rejected when its hidden run finishes and fails at least one declared starting failure in its
+  # test body. A task without one has nothing to reject; a task with one and no run of it is not valid.
+  defp partial_rejected?(%{"partial" => false}, partial), do: is_nil(partial)
 
-    case probe["kind"] do
-      "replace" ->
-        unless length(String.split(patch, probe["before"])) - 1 == probe["occurrences"],
-          do: raise("Partial-repair probe is stale")
+  defp partial_rejected?(%{"partial" => true} = contract, %{} = partial) do
+    partial_failures = behavioral_failures(partial["hidden"] || %{})
 
-        String.replace(patch, probe["before"], probe["after"])
-
-      "file_only" ->
-        [block] =
-          String.split(patch, "diff --git ")
-          |> Enum.drop(1)
-          |> Enum.filter(&String.starts_with?(&1, "a/#{probe["path"]} b/#{probe["path"]}\n"))
-
-        "diff --git " <> block
-
-      _ ->
-        raise "Missing partial-repair control"
-    end
+    get_in(partial, ["hidden", "completed"]) == true and partial_failures != [] and
+      Enum.any?(partial_failures, &(&1 in contract["starting_failures"]))
   end
+
+  defp partial_rejected?(_contract, _partial), do: false
 end

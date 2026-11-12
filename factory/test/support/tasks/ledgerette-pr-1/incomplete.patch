@@ -1,0 +1,12 @@
+diff --git a/lib/ledgerette.ex b/lib/ledgerette.ex
+--- a/lib/ledgerette.ex
++++ b/lib/ledgerette.ex
+@@ -4,7 +4,7 @@ defmodule Ledgerette do
+   def balance(entries) do
+     Enum.reduce(entries, 0, fn
+       {:credit, amount}, total -> total + amount
+-      {:debit, amount}, total -> total + amount
++      {:debit, amount}, total -> total - amount
+     end)
+   end
+ end

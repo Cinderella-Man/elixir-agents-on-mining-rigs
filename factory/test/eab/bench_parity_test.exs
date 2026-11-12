@@ -8,6 +8,13 @@ defmodule Eab.BenchParityTest do
   - an input is rewritten in a new format when a job changes that format (job T5: the one task format), and the
     expected output stays byte for byte;
   - `@name_prefix`, `@installation_label` and `@run_label` take the factory's own names (section 6, change 6).
+
+  Job T5 removed two expected texts, the bench's text for a task whose added tests are optional and its text for a
+  refactor: the one format cannot express those inputs (`model_tests` is always "behavioral" and `refactor` is not
+  a kind), so no model can ever be shown those texts. It added the text for a `feature`, captured from the unchanged
+  copy (public commit 470301e) with job T0's capture script and this job's `parity_capture_feature.exs`
+  (docs/data/2026-11-12_factory_t5/run/). That text has requirement lines: the bench's format needs at least one
+  for a feature, so a feature text without them cannot come from the unchanged copy.
   """
   use ExUnit.Case, async: false
 
@@ -57,20 +64,6 @@ defmodule Eab.BenchParityTest do
   Task details: {}
   """
 
-  @optional_tests_text ~S"""
-  Complete the bug_fix task in /workspace. Investigate the source and run the relevant tests.
-  Test command: mix test test/widget_test.exs.
-  Run the relevant tests; additional tests are optional.
-
-  Dependencies are prepared. The workspace is offline. Preserve existing behavior and do not weaken tests.
-
-  Allowed edit prefixes: lib/, test/.
-  When finished, give a short summary. Your current patch is then checked in a fresh workspace.
-  Model and tool calls are unlimited. Limits: 65536 generated tokens total, 262144 context tokens including up to 8192 response tokens.
-  History is never compacted. If a budget is exhausted, the current patch is graded.
-  Task details: {}
-  """
-
   @requirements_text ~S"""
   Complete the bug_fix task in /workspace. Investigate the source and run the relevant tests.
   Test command: mix test.
@@ -86,12 +79,12 @@ defmodule Eab.BenchParityTest do
   Task details: {"rounding":"Half up, to two places."}
   """
 
-  @refactor_text ~S"""
-  Complete the refactor task in /workspace. Investigate the source and run the relevant tests.
+  @feature_text ~S"""
+  Complete the feature task in /workspace. Investigate the source and run the relevant tests.
   Test command: mix test.
-  Add or change a test covering the stated contract or preserved behavior. No behavioral regression on the starting source is required for this refactor.
+  Add or change a test that fails in its test body on the starting source and passes after your change. Compilation/setup failures do not count.
   Required outcome (R1): Totals round half up to two places.
-  Required outcome (R2): Totals are computed by Widget.Total.sum/1.
+  Required outcome (R2): An empty order totals zero.
   Dependencies are prepared. The workspace is offline. Preserve existing behavior and do not weaken tests.
 
   Allowed edit prefixes: lib/.
@@ -197,10 +190,9 @@ defmodule Eab.BenchParityTest do
   end
 
   test "the fixed instruction sentences give the bench's text, byte for byte" do
-    assert Eab.Agent.instructions(legacy_spec(true), @settings) == @bug_fix_text
-    assert Eab.Agent.instructions(legacy_spec(false), @settings) == @optional_tests_text
+    assert Eab.Agent.instructions(plain_spec(), @settings) == @bug_fix_text
     assert Eab.Agent.instructions(contract_spec("bug_fix"), @settings) == @requirements_text
-    assert Eab.Agent.instructions(contract_spec("refactor"), @settings) == @refactor_text
+    assert Eab.Agent.instructions(contract_spec("feature"), @settings) == @feature_text
   end
 
   test "Pi's configuration is the bench's for llama.cpp and Strata" do
@@ -422,41 +414,37 @@ defmodule Eab.BenchParityTest do
     }
   end
 
-  # Job T5 rewrites the task inputs below in the one format; the expected texts above stay.
-  defp legacy_spec(require_test) do
+  # The task inputs below are in the one format (job T5); the expected texts above are the bench's.
+  # A training task as the bundle maker writes it: no requirement sentences and no clarifications.
+  defp plain_spec do
     %{
-      "regression_command" => "mix test test/widget_test.exs",
-      "require_regression_test" => require_test,
-      "allowed_edit_prefixes" => ["lib/", "test/"]
+      "schema_version" => 3,
+      "task_kind" => "bug_fix",
+      "allowed_edit_prefixes" => ["lib/", "test/"],
+      "acceptance_patch" => "reference-tests.patch",
+      "partial_control" => %{"present" => false, "reason" => "single_hunk"},
+      "grading" => %{
+        "adapter" => "exunit",
+        "acceptance" => "mix test test/widget_extra_test.exs",
+        "preservation" => "mix test test/widget_test.exs",
+        "protected_paths" => ["test/"],
+        "test_suffixes" => ["_test.exs"],
+        "required" => ["test/widget_extra_test.exs:4"],
+        "starting_failures" => ["test/widget_extra_test.exs:4"],
+        "model_tests" => "behavioral"
+      }
     }
   end
 
+  # The two optional fields of the one format that the bench's prompt uses, filled: requirement sentences and
+  # clarifications.
   defp contract_spec(kind) do
-    {model_tests, requirement} =
-      case kind do
-        "refactor" ->
-          {"preservation",
-           %{
-             "id" => "R2",
-             "text" => "Totals are computed by Widget.Total.sum/1.",
-             "kind" => "structural",
-             "checks" => ["test/widget_test.exs:20"]
-           }}
-
-        _ ->
-          {"behavioral",
-           %{
-             "id" => "R2",
-             "text" => "An empty order totals zero.",
-             "kind" => "behavior",
-             "checks" => ["test/widget_test.exs:20"]
-           }}
-      end
-
     %{
-      "schema_version" => 2,
+      "schema_version" => 3,
       "task_kind" => kind,
       "allowed_edit_prefixes" => ["lib/"],
+      "acceptance_patch" => "reference-tests.patch",
+      "partial_control" => %{"present" => true},
       "clarifications" => %{"rounding" => "Half up, to two places."},
       "grading" => %{
         "adapter" => "exunit",
@@ -466,15 +454,10 @@ defmodule Eab.BenchParityTest do
         "test_suffixes" => ["_test.exs"],
         "required" => ["test/widget_test.exs:12", "test/widget_test.exs:20"],
         "starting_failures" => ["test/widget_test.exs:20"],
-        "model_tests" => model_tests,
+        "model_tests" => "behavioral",
         "requirements" => [
-          %{
-            "id" => "R1",
-            "text" => "Totals round half up to two places.",
-            "kind" => "behavior",
-            "checks" => ["test/widget_test.exs:12"]
-          },
-          requirement
+          %{"id" => "R1", "text" => "Totals round half up to two places."},
+          %{"id" => "R2", "text" => "An empty order totals zero."}
         ]
       }
     }

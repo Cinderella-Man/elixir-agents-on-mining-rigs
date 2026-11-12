@@ -169,19 +169,27 @@ defmodule Eab.GraderTest do
     assert {:ok, []} = Grader.validate_patch("diff --git a/lib/x.ex b/lib/x.ex\n", spec)
   end
 
-  test "all retained PR reference patches satisfy edit rules and have partial controls" do
-    ids = Eab.Inventory.all()
+  test "made-up tasks' reference patches satisfy edit rules and their partial controls are as recorded" do
+    ids = Eab.MadeUpTasks.ids()
     assert ids != []
-    refute "plausible-pr-6300" in ids
-    refute "plausible-pr-6763" in ids
-    refute "plausible-pr-6441" in ids
+    Enum.each(ids, &Eab.MadeUpTasks.use!/1)
+    with_partial = Enum.filter(ids, &Grader.partial_patch/1)
+    assert with_partial != [] and with_partial != ids
 
     for id <- ids do
       spec = Eab.Inventory.spec(id)
-      assert spec["source_inspiration"]["url"] =~ "/pull/"
+      provenance = Eab.Inventory.read_json(Eab.Inventory.case_path(id, "provenance.json"))
+      assert provenance["pull_request"] =~ "/pull/"
       assert {:ok, _} = Grader.validate_patch(Eab.Inventory.file(id, "reference.patch"), spec)
-      assert Grader.partial_patch(id) != ""
-      assert File.exists?(Eab.Inventory.case_path(id, "acceptance.patch"))
+      assert File.exists?(Eab.Inventory.case_path(id, spec["acceptance_patch"]))
+
+      if spec["partial_control"]["present"] do
+        assert Grader.partial_patch(id) not in [nil, ""]
+        assert {:ok, _} = Grader.validate_patch(Grader.partial_patch(id), spec)
+      else
+        assert Grader.partial_patch(id) == nil
+        refute File.exists?(Eab.Inventory.case_path(id, "incomplete.patch"))
+      end
     end
   end
 

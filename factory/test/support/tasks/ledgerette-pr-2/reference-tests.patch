@@ -1,0 +1,12 @@
+diff --git a/test/debits_test.exs b/test/debits_test.exs
+new file mode 100644
+--- /dev/null
++++ b/test/debits_test.exs
+@@ -0,0 +1,7 @@
++defmodule Ledgerette.DebitsTest do
++  use ExUnit.Case
++
++  test "debits sum only the debit entries" do
++    assert Ledgerette.debits([{:credit, 10}, {:debit, 4}, {:debit, 3}]) == 7
++  end
++end

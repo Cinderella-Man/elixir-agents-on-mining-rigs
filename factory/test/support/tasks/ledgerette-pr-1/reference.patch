@@ -1,0 +1,22 @@
+diff --git a/lib/ledgerette.ex b/lib/ledgerette.ex
+--- a/lib/ledgerette.ex
++++ b/lib/ledgerette.ex
+@@ -4,7 +4,7 @@ defmodule Ledgerette do
+   def balance(entries) do
+     Enum.reduce(entries, 0, fn
+       {:credit, amount}, total -> total + amount
+-      {:debit, amount}, total -> total + amount
++      {:debit, amount}, total -> total - amount
+     end)
+   end
+ end
+diff --git a/lib/ledgerette/format.ex b/lib/ledgerette/format.ex
+--- a/lib/ledgerette/format.ex
++++ b/lib/ledgerette/format.ex
+@@ -1,4 +1,6 @@
+ defmodule Ledgerette.Format do
++  def amount(cents) when cents < 0, do: "-" <> amount(-cents)
++
+   def amount(cents) do
+     "#{div(cents, 100)}.#{cents |> rem(100) |> Integer.to_string() |> String.pad_leading(2, "0")}"
+   end

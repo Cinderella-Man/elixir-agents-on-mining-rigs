@@ -28,7 +28,8 @@ defmodule Eab.FixturesTest do
   end
 
   test "matching image records reuse prepared dependencies and refresh fixture evidence" do
-    id = "plausible-pr-5939"
+    id = "shelfwise-pr-7"
+    Eab.MadeUpTasks.use!(id)
     inputs = Fixtures.build_inputs(id, Inventory.spec(id))
 
     runtime = %{
@@ -77,14 +78,15 @@ defmodule Eab.FixturesTest do
     Store.write("runtimes/#{id}.json", result)
     assert_receive {:inspected, "fixture"}
     assert_receive {:inspected, "database"}
-    assert_receive {:progress, "Reusing prepared project for plausible-pr-5939"}
+    assert_receive {:progress, "Reusing prepared project for shelfwise-pr-7"}
     assert result["fixture_hashes"] == Inventory.fixture_hashes(id)
     assert Store.read("runtimes/#{id}.json") == result
     refute File.exists?(Store.path("build/#{id}"))
   end
 
   test "matching qualification receipts are reused without running controls" do
-    id = "plausible-pr-5939"
+    id = "shelfwise-pr-7"
+    Eab.MadeUpTasks.use!(id)
     runtime = %{"image" => "synthetic-prepared-image"}
 
     control = %{
@@ -96,7 +98,7 @@ defmodule Eab.FixturesTest do
     Store.write("qualifications/#{Cache.key(control["identity"])}.json", control)
     parent = self()
     assert Eab.Grader.qualify(id, "cache-test", &send(parent, {:qualification, &1})) == control
-    assert_receive {:qualification, "Reusing checked fixture for plausible-pr-5939"}
+    assert_receive {:qualification, "Reusing checked fixture for shelfwise-pr-7"}
     refute File.exists?(Store.path("runs/cache-test"))
   end
 
@@ -220,7 +222,8 @@ defmodule Eab.FixturesTest do
   end
 
   test "project, database and control identities ignore unrelated runtime metadata" do
-    id = "plausible-pr-5939"
+    id = "shelfwise-pr-7"
+    Eab.MadeUpTasks.use!(id)
     spec = Inventory.spec(id)
     changed = spec |> put_in(["services", "postgres", "image"], "new-db")
     assert Fixtures.build_inputs(id, spec) == Fixtures.build_inputs(id, changed)
@@ -256,7 +259,7 @@ defmodule Eab.FixturesTest do
   test "required acceptance checks and unknown future grading rules invalidate controls", %{
     root: root
   } do
-    id = "plausible-pr-5939"
+    id = "shelfwise-pr-7"
     original_root = Inventory.root()
     fixture_root = Path.join(root, "inventory")
     File.mkdir_p!(Path.join(fixture_root, "config"))
@@ -266,8 +269,9 @@ defmodule Eab.FixturesTest do
       Path.join(fixture_root, "config/benchmark.json")
     )
 
+    # A copy of the made-up task, so that the test's writes never reach test/support.
     File.mkdir_p!(Path.join(fixture_root, "cases"))
-    File.cp_r!(Inventory.case_path(id, ""), Path.join(fixture_root, "cases/#{id}"))
+    File.cp_r!(Eab.MadeUpTasks.dir(id), Path.join(fixture_root, "cases/#{id}"))
     Application.put_env(:eab, :root, fixture_root)
     on_exit(fn -> Application.put_env(:eab, :root, original_root) end)
     spec = Inventory.spec(id)
@@ -275,19 +279,19 @@ defmodule Eab.FixturesTest do
     path = Inventory.case_path(id, "case.json")
 
     for change <- [
-          %{"required_acceptance_tests" => ["new check"]},
+          %{"grading" => Map.put(spec["grading"], "required", ["new check"])},
           %{"future_grading_rule" => true}
         ] do
       File.write!(path, Jason.encode!(Map.merge(spec, change)))
       refute Inventory.qualification_inputs(id) == original
     end
 
-    File.write!(path, Jason.encode!(Map.put(spec, "title", "New description")))
+    File.write!(path, Jason.encode!(Map.put(spec, "clarifications", %{"note" => "New details"})))
     assert Inventory.qualification_inputs(id) == original
 
     hashes = Inventory.fixture_hashes(id)
 
-    for file <- ~w(admission.json upstream-tests.patch upstream-docs.patch) do
+    for file <- ~w(ticket.md statement.json provenance.json upstream-docs.patch) do
       File.write!(Inventory.case_path(id, file), "changed audit record")
       assert Inventory.qualification_inputs(id) == original
       refute Inventory.fixture_hashes(id) == hashes
@@ -296,14 +300,14 @@ defmodule Eab.FixturesTest do
     File.write!(Inventory.case_path(id, "future-grading.patch"), "new executable contract")
     refute Inventory.qualification_inputs(id) == original
 
-    File.write!(path, Jason.encode!(Map.put(spec, "acceptance_patch", "upstream-tests.patch")))
-    explicit = Inventory.qualification_inputs(id)
-    File.write!(Inventory.case_path(id, "upstream-tests.patch"), "changed explicit acceptance")
-    refute Inventory.qualification_inputs(id) == explicit
+    hidden = Inventory.qualification_inputs(id)
+    File.write!(Inventory.case_path(id, "reference-tests.patch"), "changed hidden tests")
+    refute Inventory.qualification_inputs(id) == hidden
   end
 
   test "seed compatibility excludes the PR revision but includes installed tools and build policy" do
-    spec = Inventory.spec("livebook-pr-2800")
+    Eab.MadeUpTasks.use!("shelfwise-pr-7")
+    spec = Inventory.spec("shelfwise-pr-7")
     key = BuildCache.key(spec, "toolchain", "node", "recipe")
     revised = put_in(spec, ["repository", "revision"], "new-revision")
     assert BuildCache.key(revised, "toolchain", "node", "recipe") == key

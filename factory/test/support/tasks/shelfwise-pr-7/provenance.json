@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/made-up-org/shelfwise",
+  "pull_request": "https://github.com/made-up-org/shelfwise/pull/7",
+  "broken_revision": "8b3e1f6a9c2d5b8e1a4c7f0d3b6e9a2c5f8d1b4e",
+  "broken_tree": "6c9f2b5e8a1d4c7f0b3e6a9d2c5f8b1e4a7d0c3f",
+  "fixed_revision": "0e3a6d9c2f5b8e1d4a7c0f3b6e9d2a5c8f1b4e7d",
+  "fixed_tree": "1f4b7e0a3d6c9f2e5b8a1d4c7f0e3b6a9d2c5f8e",
+  "pair_selection": "first parent of the merge commit, and the merge commit",
+  "licence": "Apache-2.0",
+  "merged_at": "2026-05-20",
+  "marks": ["adds_migration"]
+}
