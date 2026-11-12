@@ -48,6 +48,12 @@ defmodule Eab.TaskContract do
     ids = Enum.map(requirements, & &1["id"])
     unless length(Enum.uniq(ids)) == length(ids), do: raise("Requirement ids must be unique")
 
+    %{"release_files" => release_files} = runtime_extras!(spec["runtime"] || %{})
+
+    for %{"url" => url} <- release_files,
+        not Eab.ReleaseFiles.allowed?(url),
+        do: raise("Release file host is not allowed by this installation: #{url}")
+
     for key <- ~w(acceptance preservation) do
       unless Enum.take(OptionParser.split(contract[key] || ""), 2) == ["mix", "test"],
         do: raise("Invalid #{key} test command")
@@ -88,6 +94,42 @@ defmodule Eab.TaskContract do
         &"Required outcome (#{&1["id"]}): #{&1["text"]}"
       )
   end
+
+  @doc """
+  The extra system packages and release files a task asks for (factory/README.md, section 6, change 3), checked for
+  their form: `runtime.packages` is a list of package names, each matching a strict pattern, so no name can carry a
+  shell command; `runtime.release_files` is a list of `{"url", "sha256", "kind"}` with an `https` URL, a lower-case
+  SHA-256 and a known kind. Absent or empty, both are `[]` and the workspace recipe is the bench's. Whether a release
+  file's host is allowed is the installation's setting, checked by `validate!/1` and again when the file is fetched.
+  """
+  def runtime_extras!(runtime) do
+    packages = Map.get(runtime, "packages") || []
+    release_files = Map.get(runtime, "release_files") || []
+
+    unless is_list(packages) and packages == Enum.uniq(packages) and
+             Enum.all?(packages, &package_name?/1),
+           do: raise("Invalid runtime.packages")
+
+    unless is_list(release_files) and Enum.all?(release_files, &release_file?/1) and
+             length(Enum.uniq_by(release_files, & &1["sha256"])) == length(release_files),
+           do: raise("Invalid runtime.release_files")
+
+    %{"packages" => packages, "release_files" => release_files}
+  end
+
+  @release_file_kinds ~w(deb)
+  def release_file_kinds, do: @release_file_kinds
+
+  # Debian and Alpine package names: lower-case letters, digits and `+ . -`, starting with a letter or digit.
+  defp package_name?(name),
+    do: is_binary(name) and Regex.match?(~r/\A[a-z0-9][a-z0-9+.\-]{0,99}\z/, name)
+
+  defp release_file?(%{"url" => url, "sha256" => sha, "kind" => kind} = entry) do
+    map_size(entry) == 3 and kind in @release_file_kinds and is_binary(sha) and
+      Regex.match?(~r/\A[0-9a-f]{64}\z/, sha) and Eab.ReleaseFiles.https_url?(url)
+  end
+
+  defp release_file?(_), do: false
 
   defp safe_directory?(path),
     do:

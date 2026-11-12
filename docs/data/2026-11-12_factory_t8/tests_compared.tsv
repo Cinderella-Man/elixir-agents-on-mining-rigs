@@ -1,0 +1,207 @@
+file	test	old_unit	old_docker	new_unit	new_docker	verdict	old_cause
+test/eab/activity_test.exs	test command output is readable while the process is still waiting	passed	passed	passed	passed	same	
+test/eab/activity_test.exs	test log reads cannot escape artifact paths	passed	passed	passed	passed	same	
+test/eab/activity_test.exs	test model stream is visible before completion and its full body is retained	passed	passed	passed	passed	same	
+test/eab/activity_test.exs	test partial Pi results are shown once and split credentials stay redacted	passed	passed	passed	passed	same	
+test/eab/activity_test.exs	test quiet command output stays out of the activity log	passed	passed	passed	passed	same	
+test/eab/activity_test.exs	test real HTTP streaming preserves the response and writes model text	passed	passed	passed	passed	same	
+test/eab/baseline_docker_test.exs	test clean snapshots preserve both database families and independent writable clones	excluded	passed	excluded	passed	same	
+test/eab/baseline_test.exs	test exact database hits serve different projects without bootstrap or service startup	passed	passed	passed	passed	same	
+test/eab/baseline_test.exs	test migration tasks explicitly retain fresh setup and service-free cases skip database records	passed	passed	passed	passed	same	
+test/eab/baseline_test.exs	test seed selection respects engine, toolchain, history and physical availability	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test Pi's configuration is the bench's for llama.cpp and Strata	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test the budgets are the bench's for both local back ends	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test the files that keep the bench's bytes keep their blob ids	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test the fixed instruction sentences give the bench's text, byte for byte	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test the workspace and its databases start under the bench's limits	passed	passed	passed	passed	same	
+test/eab/bench_parity_test.exs	test the workspace recipe is the bench's	passed	passed	passed	passed	same	
+test/eab/build_seed_docker_test.exs	test generated Docker recipe forks a pristine seed into an isolated offline image	excluded	passed	excluded	passed	same	
+test/eab/build_seed_test.exs	test real Mix reuses unchanged artifacts and invalidates edits, dependencies, configuration and removals	passed	passed	passed	passed	same	
+test/eab/build_seed_test.exs	test source replacement preserves only build directories and removes obsolete source	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test a rebase merge walks back first parents until the census's paths match	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test a squash-merged pull request becomes a task that rebuilds the merged tree and passes the import check	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test observing and searching decide from the hidden runs	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test partial-fix variants leave out one file, then one hunk, with later hunks renumbered	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test refusals: the hold-out list, the screen, links, binary files, and no code or no test part	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test settling the existing tests leaves out files that fail or change between runs	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test test names follow the reporter's form and the changed lines	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test the existing tests' command names changed test files and test files that match changed code files	passed	passed	passed	passed	same	
+test/eab/bundle_maker_test.exs	test the hold-out list holds the plan's 12 projects, and recipes hold exactly the per-project fields	passed	passed	passed	passed	same	
+test/eab/bundle_probe_docker_test.exs	test the test names are observed and a partial fix is searched on made-up tasks, which then pass the controls	excluded	passed	excluded	passed	same	
+test/eab/cache_test.exs	test artifact mutation is detected and keys survive persistence	passed	passed	passed	passed	same	
+test/eab/cache_test.exs	test a warm artifact skips building and a missing component invalidates only its entry	passed	passed	passed	passed	same	
+test/eab/cache_test.exs	test concurrent requests share one preparation and cancellation releases the lock	passed	passed	passed	passed	same	
+test/eab/cache_test.exs	test failed or incomplete publication cannot become reusable	passed	passed	passed	passed	same	
+test/eab/cache_test.exs	test offline mode reuses prepared artifacts and refuses to build missing ones	passed	passed	passed	passed	same	
+test/eab/candidates_test.exs	test candidate context is restored on exceptions	passed	passed	passed	passed	same	
+test/eab/candidates_test.exs	test import stays outside inventory and changed artifacts require another version	passed	passed	passed	passed	same	
+test/eab/candidates_test.exs	test the import check takes tasks with and without a partial fix, and only in the one format	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test a release freezes only the tasks it is given, and resume checks only those	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test a run's parallel attempts reach the pipeline: two attempts run at once	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test completed failure survives lost coordinator notification and detects changed evidence	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test evaluation errors are retained and environment changes cannot reuse a submission	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test incomplete generations retain usage and recovery handles a crash after archive rename	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test resume rejects changed model, settings and reordered cases	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test resume survives a benchmark code change but not a changed agent	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test runner prepares only unfinished cases, skips Pi for a sealed submission and preserves failures	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test same immutable release is reusable and frozen fixture corruption is rejected	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test saved submission binds its prepared images and source receipt	passed	passed	passed	passed	same	
+test/eab/checkpoints_test.exs	test sealed submission survives interruption and never becomes a fresh Pi attempt	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test a command scope drains nested commands started inside callbacks	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test a JSON exchange without a watchdog completes normally	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test bounded output preserves head and tail and drains a command	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test cancelling a JSON exchange without a watchdog interrupts a blocked callback	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test nonzero exit status remains explicit	passed	passed	passed	passed	same	
+test/eab/command_test.exs	test owner cancellation terminates its subprocess tree	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test an unrelated app change can reuse statically understood migrations	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test nested modules and literal module atoms cannot hide changed helpers	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test only forward unchanged migration prefixes can seed a target	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test opaque migration helpers include all app source and cross-repo suffixes are rejected	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test shared cyclic helpers preserve every transitive dependency	passed	passed	passed	passed	same	
+test/eab/database_seed_test.exs	test shortened/renamed helper aliases, dependency versions and priv data invalidate seeds	passed	passed	passed	passed	same	
+test/eab/docker_settings_docker_test.exs	test the engine's containers and images carry the labels and the share, under the factory's names	excluded	passed	excluded	passed	same	
+test/eab/docker_settings_test.exs	test a label that is not key=value and a share below 2 are refused	passed	passed	passed	passed	same	
+test/eab/docker_settings_test.exs	test labels alone add no share, and a share alone adds no label	passed	passed	passed	passed	same	
+test/eab/docker_settings_test.exs	test set, the labels and the share follow the engine's own labels on each docker run	passed	passed	passed	passed	same	
+test/eab/docker_settings_test.exs	test unset, nothing is added	passed	passed	passed	passed	same	
+test/eab/evidence_test.exs	test compact run records preserve verdicts while execution errors override an older verdict	passed	passed	passed	passed	same	
+test/eab/evidence_test.exs	test model budget exhaustion does not replace the actual grading verdict	passed	passed	passed	passed	same	
+test/eab/evidence_test.exs	test named failures and missing preservation checks are compact while raw output is excluded	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test extra packages and release files add one toolchain line each and nothing else	-	-	passed	passed	new	
+test/eab/fixtures_test.exs	test matching image records reuse prepared dependencies and refresh fixture evidence	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test matching qualification receipts are reused without running controls	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test project, database and control identities ignore unrelated runtime metadata	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test recipes install the pinned Hex release on every Elixir version	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test recipes reconcile seeds before compilation and export an independent fixture	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test required acceptance checks and unknown future grading rules invalidate controls	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test scanner changes refresh database analysis without rebuilding the exact project	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test seed compatibility excludes the PR revision but includes installed tools and build policy	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test source cache preserves exact broken files and excludes later edits and git history	passed	passed	passed	passed	same	
+test/eab/fixtures_test.exs	test the workspace commit force-adds tracked files that .gitignore excludes	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test an early zero exit, missing completion, duplicates and truncation cannot pass	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test a test file that cannot compile on the starting source neither counts nor hides others	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test changed and missing protected tests fail	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test delete-and-recreate patches cannot disguise configuration as a new helper	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test made-up tasks' reference patches satisfy edit rules and their partial controls are as recorded	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test new test files join explicit test selections and bare mix test stays broad	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test only a failure in a completed test body establishes coverage	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test only declared exclusions pass, skipped or all-excluded suites fail	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test patches cannot escape edit areas, create links or modify configuration	passed	passed	passed	passed	same	
+test/eab/grader_test.exs	test trusted formatter records survive progress dots written between them	passed	passed	passed	passed	same	
+test/eab/image_presence_test.exs	test 500 unique images use bounded batches, preserving IDs and digest aliases	passed	passed	passed	passed	same	
+test/eab/image_presence_test.exs	test partial missing images remain misses but inspection failures never look like an empty cache	passed	passed	passed	passed	same	
+test/eab/inventory_test.exs	test moving folders out and back restores the same release without config edits	passed	passed	passed	passed	same	
+test/eab/inventory_test.exs	test only direct case folders containing manifests are discovered	passed	passed	passed	passed	same	
+test/eab/inventory_test.exs	test the inventory is the task folder, in the order of its ids, and nothing else	passed	passed	passed	passed	same	
+test/eab/measurement_test.exs	test an attempt started with measuring off records no elapsed time	passed	passed	passed	passed	same	
+test/eab/measurement_test.exs	test completion freezes time before grading and preserves it on a grading error	passed	passed	passed	passed	same	
+test/eab/measurement_test.exs	test every attempt records elapsed time without a configuration flag	passed	passed	passed	passed	same	
+test/eab/measurement_test.exs	test gateway and Pi persist final durations on errors without measuring real time	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test a reported file type is normalized only when the file name carries none	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test a shard suffix is not part of the name, and a size nobody reported stays unknown	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test a Strata pack folder is not a model name; the alias stands until a weight file names it	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test attach stores the identity beside the endpoint it describes	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test discovery names the served weight file and its size, and keeps the server's alias for requests	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test sizes and parameter counts are recorded only when they are positive integers	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test the weight files found on the model host name the model	passed	passed	passed	passed	same	
+test/eab/model_identity_test.exs	test without a weight file the name falls back to reported metadata, then to the alias	passed	passed	passed	passed	same	
+test/eab/model_speed_test.exs	test a run's speed adds up its measured attempts	passed	passed	passed	passed	same	
+test/eab/model_speed_test.exs	test attempts without elapsed time record no speed	passed	passed	passed	passed	same	
+test/eab/model_speed_test.exs	test llama.cpp's own timings become each call's speed and add up per attempt	passed	passed	passed	passed	same	
+test/eab/model_speed_test.exs	test the controller times Strata from request to its first and last token events	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test another caller's connection failure cannot make an ambiguous generation safe to retry	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test a real connection-handshake timeout retries generation before any request is sent	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test a real timeout after submitting generation does not replay the request	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test authentication failures explain the credentials field without blaming JSON or revealing keys	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test automatic budgets adapt to capacity and invalid overrides are rejected	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test connection failures preserve the transport reason instead of suggesting credentials	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test discovery is non-generating and redacts credentials from returned metadata	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test generation retries connection refusal but does not replay ambiguous failures	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test HTTP errors and successful non-JSON replies are reported separately	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test HTTP errors, invalid responses and permanent transport failures are not retried	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test metadata connection retries are bounded and preserve the final failure	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test observed generation submission prevents replay even for a connection error	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test stream accounting includes cached input and rejects missing or excessive usage	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test token counting recovers from transient failures with the same payload before generation	passed	passed	passed	passed	same	
+test/eab/model_test.exs	test URL parsing forbids embedded secrets and Strata counting is non-generating	passed	passed	passed	passed	same	
+test/eab/pi_docker_test.exs	test production launcher runs Pi as an unprivileged user in an offline problem container	excluded	passed	excluded	passed	same	
+test/eab/pipeline_test.exs	test a failed ancestor is recorded once and later baselines may build independently	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test a failed warm workspace cannot clear another case's active attempt	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test a submission waiting for a free grader holds back the next parallel attempt	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test baseline ancestry outside lookahead finishes in order without warming or qualifying ancestors	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test cancellation also drains an overlapping grader and the waiting workspace	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test cancellation drains active and preparing workers including a blocked subprocess callback	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test first case starts alone, then preparation, one warm workspace and grading overlap in order	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test future preparation failure records an error without cancelling active Pi or later cases	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test lookahead and preparation worker limits hold independently	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test parallel attempts outside 1 to 8 are refused	passed	passed	passed	passed	same	
+test/eab/pipeline_test.exs	test parallel attempts start together, finish and grade out of order, and keep case order	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test a recovered token count continues the same Pi call and records retries	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test both adapters continue past 32 calls and stop exactly at the generation budget	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test budgets stop forwarding, count exact Pi requests and retain endpoint errors	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test cancelling a Pi exchange drains a pending connection retry	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test exhausted token-count retries retain the cause without starting generation	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test Pi config cannot inherit credentials, compaction, retries or extra tools	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test real Pi reconnects during token counting and finishes using both native adapters	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test real Pi stops at the token budget without retrying and keeps the edited file	passed	passed	passed	passed	same	
+test/eab/pi_test.exs	test the bash watchdog kills a command that never exits and Pi continues	passed	passed	passed	passed	same	
+test/eab/preparation_test.exs	test orders missing baselines by PR creation order within runtime families	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test a baseline without Pi is not ready, because attaching Pi needs npm	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test a case is ready only with its source check, images, Pi image and qualification	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test an empty installation needs every part	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test a qualification for another runtime does not count	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test a record whose image left Docker is not ready	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test changed fixtures need a new preparation	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test enforcement names unprepared cases only in offline mode	passed	passed	passed	passed	same	
+test/eab/readiness_test.exs	test preparing a case attaches Pi to its prepared image	passed	passed	passed	passed	same	
+test/eab/release_files_test.exs	test a release file is fetched from an allowed host, checked, kept and staged under its SHA-256	-	-	passed	passed	new	
+test/eab/release_files_test.exs	test a wrong checksum, a host that is not allowed and a redirect off the list fail before anything is kept	-	-	passed	passed	new	
+test/eab/report_test.exs	test a run's parallel attempts are reported, and parallel runs record no times	passed	passed	passed	passed	same	
+test/eab/report_test.exs	test reports thinking and synthetic case durations including failed repairs	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test active leases and nested uses prevent removal, and stale previews are rejected	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test corrupt retention roots remain visible and prevent removal	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test low free space rejects a missing build but never evicts or blocks a valid cache hit	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test offline mode refuses removal, because nothing can be rebuilt	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test removing one case preserves shared project and database references	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test removing one release detaches its ownership but preserves another release's exact baseline	passed	passed	passed	passed	same	
+test/eab/retention_test.exs	test retained descendants protect their database seed and eviction failures stay visible	passed	passed	passed	passed	same	
+test/eab/runner_test.exs	test fixture images contain only broken source, with dependencies installed inside Docker	passed	passed	passed	passed	same	
+test/eab/runner_test.exs	test only complete valid runs receive an equally weighted score	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test a failed preparation job reports its error and allows another attempt	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test a run over two of three made-up tasks touches only those two	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test a run starts with no memory settings and finalizes on completion, error and cancellation	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test background progress cannot replace active Pi or regress a case phase	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test concurrent starts admit one run; cancellation preserves history and stops the worker	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test dry attempts run one case, unscored and unpublishable	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test error retries are fresh, bounded to errors, preserve the source and have no full score	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test explicit repeats run only selected completed cases from scratch and retain every prior outcome	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test offline mode refuses a run with unprepared cases before any work starts	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test preparing every case excludes runs and reports each finished case	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test restart finalizes submitted and grading attempts as interrupted	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test restart marks persisted active work interrupted without resuming	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test restart recovers orphan leases without overwriting corrupt run evidence	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test resume keeps completed failures and saved submissions, archives partial attempts, and rejects changed settings	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test stop drains all pipeline workers before installation container cleanup	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test stopping preparation releases its work and allows a run	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test validation runs record their harness and are never publishable	passed	passed	passed	passed	same	
+test/eab/runs_test.exs	test worker errors are saved without the API credential	passed	passed	passed	passed	same	
+test/eab/runtime_extras_docker_test.exs	test a made-up task's image gets its distribution package and its checked release file	-	-	excluded	passed	new	
+test/eab/runtime_extras_docker_test.exs	test a release file whose bytes do not match its checksum fails the build	-	-	excluded	passed	new	
+test/eab/source_test.exs	test a wrong tree fails before an archive is published	passed	passed	passed	passed	same	
+test/eab/source_test.exs	test retained implementation and tests must reconstruct the exact fixed tree	passed	passed	passed	passed	same	
+test/eab/source_test.exs	test the source comes from upstream, and from the installation's mirror when upstream fails	-	-	passed	passed	new	
+test/eab/source_test.exs	test verified archive is reusable without upstream access and contains no Git history	passed	passed	passed	passed	same	
+test/eab/storage_test.exs	test image aliases are deduplicated and shared bytes are never summed as unique storage	passed	passed	passed	passed	same	
+test/eab/store_test.exs	test artifact access rejects traversal and symlinked parents	passed	passed	passed	passed	same	
+test/eab/store_test.exs	test history pages use compact metadata and isolate corrupt run records	passed	passed	passed	passed	same	
+test/eab/store_test.exs	test redaction precedes JSON encoding, including quotes and newlines	passed	passed	passed	passed	same	
+test/eab/task_contract_test.exs	test extra packages and release files: valid lists load, refused lists and hosts do not	-	-	passed	passed	new	
+test/eab/task_contract_test.exs	test new task kinds have explicit test policies and solver-visible requirements	passed	passed	passed	passed	same	
+test/eab/task_contract_test.exs	test qualification rejects missing capabilities only as named completed test failures	passed	passed	passed	passed	same	
+test/eab/task_contract_test.exs	test the one format refuses other versions, removed fields and kinds, and unclear partial records	passed	passed	passed	passed	same	
+test/eab/task_grading_docker_test.exs	test bug-fix and feature grading reject no-ops, incomplete solutions and early exits while accepting alternatives, with and without a partial fix	excluded	passed	excluded	passed	same	
+test/eab/test_adapter_test.exs	test node commands cannot override the trusted reporter or silently discover a different suite	passed	passed	passed	passed	same	
+test/eab/test_adapter_test.exs	test trusted Node events distinguish assertions from setup and incomplete output	passed	passed	passed	passed	same	
+test/eab/thinking_test.exs	test records every host preset, including enabled without a level and custom levels	passed	passed	passed	passed	same	
+test/eab/thinking_test.exs	test removes Pi overrides while preserving reasoning history and unrelated request controls	passed	passed	passed	passed	same	
+test/eab/thinking_test.exs	test uses explicit server metadata, never template capability flags or model names	passed	passed	passed	passed	same	

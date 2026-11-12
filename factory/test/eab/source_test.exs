@@ -52,6 +52,78 @@ defmodule Eab.SourceTest do
     end
   end
 
+  test "the source comes from upstream, and from the installation's mirror when upstream fails",
+       %{
+         repo: repo,
+         tree: tree
+       } do
+    old = Application.get_env(:eab, :mirrors_file)
+    on_exit(fn -> Application.put_env(:eab, :mirrors_file, old) end)
+    mirror = Store.path("mirror.git")
+    Command.run!("git", ["clone", "--quiet", "--bare", repo["url"], mirror])
+    mirrors = Store.path("mirrors.json")
+    File.write!(mirrors, Jason.encode!(%{repo["url"] => mirror}))
+    Application.put_env(:eab, :mirrors_file, mirrors)
+    emit = fn _ -> :ok end
+
+    # Upstream answers: the mirror is not used.
+    first = Store.path("from-upstream")
+    File.mkdir_p!(first)
+    receipt = Source.snapshot(repo, first, emit, expected_tree: tree)
+    assert receipt["fetched_from"] == "upstream"
+    refute Map.has_key?(receipt, "mirror")
+
+    # Upstream is gone: the same commit comes from the mirror, with its tree checked.
+    File.rename!(repo["url"], repo["url"] <> "-gone")
+    gone = Map.put(repo, "url", repo["url"] <> "-moved")
+    File.write!(mirrors, Jason.encode!(%{gone["url"] => mirror}))
+    second = Store.path("from-mirror")
+    File.mkdir_p!(second)
+    receipt = Source.snapshot(gone, second, emit, expected_tree: tree)
+    assert receipt["fetched_from"] == "mirror"
+    assert receipt["mirror"] == mirror
+    assert receipt["tree"] == tree
+    assert receipt["repository"] == gone
+    assert File.read!(Path.join(second, "app.ex")) == "pristine source"
+    refute File.exists?(Path.join(second, ".git"))
+
+    # The tree is checked for a mirror too: a wrong one fails and publishes nothing.
+    other = Map.put(repo, "url", repo["url"] <> "-elsewhere")
+    File.write!(mirrors, Jason.encode!(%{other["url"] => mirror}))
+    third = Store.path("wrong-tree")
+    File.mkdir_p!(third)
+
+    assert_raise RuntimeError, ~r/provenance/, fn ->
+      Source.snapshot(other, third, emit, expected_tree: String.duplicate("0", 40))
+    end
+
+    key = Inventory.hash(Jason.encode!([other["url"], other["revision"]]))
+    refute File.exists?(Store.path("sources/#{key}.json"))
+
+    # A mirror that lacks the commit fails, and so does a repository with no mirror named.
+    empty = Store.path("empty.git")
+    Command.run!("git", ["init", "--quiet", "--bare", empty])
+    lacking = Map.put(repo, "url", repo["url"] <> "-lacking")
+    File.write!(mirrors, Jason.encode!(%{lacking["url"] => empty}))
+    fourth = Store.path("lacking")
+    File.mkdir_p!(fourth)
+
+    assert_raise RuntimeError, ~r/upstream and from the mirror/, fn ->
+      Source.snapshot(lacking, fourth, emit, expected_tree: tree)
+    end
+
+    unnamed = Map.put(repo, "url", repo["url"] <> "-unnamed")
+    fifth = Store.path("unnamed")
+    File.mkdir_p!(fifth)
+
+    assert_raise RuntimeError, ~r/no mirror is set/, fn ->
+      Source.snapshot(unnamed, fifth, emit, expected_tree: tree)
+    end
+
+    Application.put_env(:eab, :mirrors_file, nil)
+    assert Source.mirror(gone["url"]) == nil
+  end
+
   test "a wrong tree fails before an archive is published", %{repo: repo} do
     dest = Store.path("wrong")
     File.mkdir_p!(dest)

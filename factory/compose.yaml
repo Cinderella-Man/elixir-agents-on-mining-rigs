@@ -16,6 +16,8 @@ services:
       EAB_TASKS_DIR: /tasks
       EAB_DOCKER_LABELS: ${EAB_DOCKER_LABELS:-}
       EAB_CPU_SHARES: ${EAB_CPU_SHARES:-}
+      EAB_RELEASE_FILE_HOSTS: ${EAB_RELEASE_FILE_HOSTS:-}
+      EAB_MIRRORS: ${EAB_MIRRORS:-}
     volumes:
       - factory:/data
       - ${EAB_TASKS_HOST_DIR:-./tasks}:/tasks

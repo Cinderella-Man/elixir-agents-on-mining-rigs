@@ -210,6 +210,12 @@ defmodule Eab.Fixtures do
 
     File.write!(Path.join(dest, "Dockerfile"), dockerfile(spec, base, node, force_add: force_add))
 
+    Eab.ReleaseFiles.stage!(
+      Eab.TaskContract.runtime_extras!(spec["runtime"])["release_files"],
+      dest,
+      emit
+    )
+
     # Resolve the *installed* toolchain, not just its base image. Package updates
     # after Docker cache eviction must not inherit incompatible native objects.
     toolchain = build(dest, "elixir-task-factory:toolchain-#{id}", "toolchain")
@@ -349,7 +355,10 @@ defmodule Eab.Fixtures do
         [
           "FROM #{base} AS toolchain",
           "USER root",
-          "RUN if command -v apk; then apk add --no-cache git bash ca-certificates build-base brotli libstdc++ cmake grep ripgrep coreutils findutils diffutils; else apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git bash ca-certificates build-essential brotli cmake grep ripgrep coreutils findutils diffutils && rm -rf /var/lib/apt/lists/*; fi",
+          "RUN if command -v apk; then apk add --no-cache git bash ca-certificates build-base brotli libstdc++ cmake grep ripgrep coreutils findutils diffutils; else apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git bash ca-certificates build-essential brotli cmake grep ripgrep coreutils findutils diffutils && rm -rf /var/lib/apt/lists/*; fi"
+        ] ++
+        extra_lines(runtime) ++
+        [
           "RUN if command -v useradd; then existing=$(getent passwd 1000 | cut -d: -f1); groupadd -f agent; if [ -n \"$existing\" ]; then usermod -l agent -d /home/agent -m -g agent \"$existing\"; else useradd -m -u 1000 -g agent agent; fi; else adduser -D -u 1000 agent; fi"
         ]
 
@@ -428,6 +437,50 @@ defmodule Eab.Fixtures do
         ],
       "\n"
     ) <> "\n"
+  end
+
+  @doc """
+  The toolchain stage's lines for a task's extra system packages and release files (factory/README.md, section 6,
+  change 3): one line for `runtime.packages`, one for `runtime.release_files`, each only when its list is not empty,
+  so a task that asks for nothing extra gets the bench's recipe. A release file comes from the build folder's
+  `release-files/` (put there by `Eab.ReleaseFiles.stage!/3`) through a bind mount, so it leaves no layer behind; its
+  SHA-256 is checked before it is installed, and a mismatch fails the build.
+  """
+  def extra_lines(runtime) do
+    %{"packages" => packages, "release_files" => files} =
+      Eab.TaskContract.runtime_extras!(runtime)
+
+    package_line =
+      if packages != [] do
+        names = Enum.join(packages, " ")
+
+        [
+          "RUN if command -v apk; then apk add --no-cache #{names}; else apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends #{names} && rm -rf /var/lib/apt/lists/*; fi"
+        ]
+      else
+        []
+      end
+
+    release_line =
+      if files != [] do
+        paths = Enum.map(files, &"/tmp/eab-release-files/#{Eab.ReleaseFiles.file_name(&1)}")
+
+        checks =
+          Enum.zip_with(files, paths, fn file, path ->
+            "echo '#{file["sha256"]}  #{path}' | sha256sum -c - && "
+          end)
+
+        [
+          "RUN --mount=type=bind,source=release-files,target=/tmp/eab-release-files " <>
+            Enum.join(checks) <>
+            "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends " <>
+            Enum.join(paths, " ") <> " && rm -rf /var/lib/apt/lists/*"
+        ]
+      else
+        []
+      end
+
+    package_line ++ release_line
   end
 
   defp setup_commands(runtime) do

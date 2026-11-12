@@ -197,6 +197,90 @@ defmodule Eab.FixturesTest do
              "git add . && GIT_LITERAL_PATHSPECS=1 git add -f --pathspec-from-file=/opt/eab-force-add.txt --pathspec-file-nul && git commit"
   end
 
+  test "extra packages and release files add one toolchain line each and nothing else" do
+    image = "hexpm/elixir:1.18.4-erlang-28.0.2-ubuntu-noble-20250714"
+    sha = String.duplicate("cd", 32)
+
+    file = %{
+      "url" => "https://releases.example.test/tool_1.0_amd64.deb",
+      "sha256" => sha,
+      "kind" => "deb"
+    }
+
+    plain = %{"runtime" => %{"image" => image}}
+
+    recipe = fn runtime ->
+      Fixtures.dockerfile(%{"runtime" => Map.put(runtime, "image", image)}, image)
+    end
+
+    lines = fn text -> String.split(text, "\n") end
+
+    # No list, or empty lists: the bench's recipe, byte for byte.
+    for runtime <- [
+          %{},
+          %{"packages" => []},
+          %{"release_files" => []},
+          %{"packages" => [], "release_files" => []}
+        ],
+        do: assert(recipe.(runtime) == Fixtures.dockerfile(plain, image))
+
+    package_line =
+      "RUN if command -v apk; then apk add --no-cache xdelta3 mtools; else apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xdelta3 mtools && rm -rf /var/lib/apt/lists/*; fi"
+
+    release_line =
+      "RUN --mount=type=bind,source=release-files,target=/tmp/eab-release-files echo '#{sha}  /tmp/eab-release-files/#{sha}.deb' | sha256sum -c - && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends /tmp/eab-release-files/#{sha}.deb && rm -rf /var/lib/apt/lists/*"
+
+    bench = lines.(Fixtures.dockerfile(plain, image))
+    # The two lines go right after the bench's own system packages, in the toolchain stage.
+    after_packages = Enum.find_index(bench, &String.contains?(&1, "build-essential")) + 1
+
+    insert = fn extra ->
+      Enum.take(bench, after_packages) ++ extra ++ Enum.drop(bench, after_packages)
+    end
+
+    assert lines.(recipe.(%{"packages" => ["xdelta3", "mtools"]})) == insert.([package_line])
+    assert lines.(recipe.(%{"release_files" => [file]})) == insert.([release_line])
+
+    assert lines.(recipe.(%{"packages" => ["xdelta3", "mtools"], "release_files" => [file]})) ==
+             insert.([package_line, release_line])
+
+    # The release file's URL never enters the recipe; only its SHA-256 does.
+    refute recipe.(%{"release_files" => [file]}) =~ "releases.example.test"
+
+    # A seeded build starts from the built toolchain image, so the lines are not repeated after it.
+    seeded =
+      Fixtures.dockerfile(
+        %{"runtime" => %{"image" => image, "packages" => ["xdelta3"]}},
+        image,
+        nil,
+        toolchain: "tools:1"
+      )
+
+    refute seeded =~ "xdelta3"
+
+    # Both lists key the image and the build seed, through the recipe and through runtime.
+    spec = %{
+      "repository" => %{"url" => "https://github.com/example/app"},
+      "runtime" => %{"image" => image}
+    }
+
+    with_packages = put_in(spec, ["runtime", "packages"], ["xdelta3"])
+    with_file = put_in(spec, ["runtime", "release_files"], [file])
+
+    keys =
+      for s <- [spec, with_packages, with_file],
+          do: BuildCache.key(s, image, nil, Inventory.hash(Fixtures.dockerfile(s, image)))
+
+    assert length(Enum.uniq(keys)) == 3
+
+    # A list that is not valid never reaches a recipe.
+    for runtime <- [
+          %{"packages" => ["xdelta3 && curl x | sh"]},
+          %{"release_files" => [Map.put(file, "url", "http://x/y.deb")]}
+        ],
+        do: assert_raise(RuntimeError, fn -> recipe.(runtime) end)
+  end
+
   test "recipes reconcile seeds before compilation and export an independent fixture" do
     # The made-up tasks as the task folder, read only.
     assert Eab.MadeUpTasks.mount!() != []

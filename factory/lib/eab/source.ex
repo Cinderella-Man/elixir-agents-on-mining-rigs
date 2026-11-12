@@ -23,10 +23,7 @@ defmodule Eab.Source do
       receipt
     else
       Command.run!("git", ["init", "--quiet", source])
-
-      Command.run!("git", ["fetch", "--quiet", "--depth=1", repo["url"], repo["revision"]],
-        cd: source
-      )
+      origin = fetch!(repo, source, emit)
 
       Command.run!("git", ["checkout", "--quiet", "--detach", "FETCH_HEAD"], cd: source)
 
@@ -63,11 +60,61 @@ defmodule Eab.Source do
           "archive_hash" => Inventory.hash_file(archive)
         }
 
+        receipt = Map.merge(receipt, origin)
+
         Store.write(receipt_path, receipt)
         receipt
       after
         File.rm(temp)
       end
+    end
+  end
+
+  # The commit by its id from upstream; when that fails, the same id from the mirror the installation names for this
+  # repository (factory/README.md, section 6, change 4). The caller checks the revision and the tree either way, so a
+  # mirror cannot serve other content. Returns where the source came from, for the receipt.
+  defp fetch!(repo, source, emit) do
+    upstream = fetch(repo["url"], repo["revision"], source)
+
+    if upstream["returncode"] == 0 do
+      %{"fetched_from" => "upstream"}
+    else
+      case mirror(repo["url"]) do
+        nil ->
+          raise "Source fetch failed and no mirror is set for #{repo["url"]}: #{upstream["output"]}"
+
+        mirror ->
+          emit.("Fetching #{repo["revision"]} from the mirror; upstream failed")
+          fetched = fetch(mirror, repo["revision"], source)
+
+          unless fetched["returncode"] == 0,
+            do: raise("Source fetch failed upstream and from the mirror: #{fetched["output"]}")
+
+          %{"fetched_from" => "mirror", "mirror" => mirror}
+      end
+    end
+  end
+
+  defp fetch(url, revision, source),
+    do: Command.run("git", ["fetch", "--quiet", "--depth=1", url, revision], cd: source)
+
+  @doc """
+  The mirror the installation names for a repository: the file `EAB_MIRRORS` points at is a JSON object from a
+  repository's URL to its mirror's URL. No file, or no entry, means no mirror.
+  """
+  def mirror(url) do
+    case Application.get_env(:eab, :mirrors_file) do
+      path when is_binary(path) and path != "" ->
+        mirrors = path |> File.read!() |> Jason.decode!()
+
+        unless is_map(mirrors) and
+                 Enum.all?(mirrors, fn {k, v} -> is_binary(k) and is_binary(v) end),
+               do: raise("Invalid mirror file: #{path}")
+
+        mirrors[url] || mirrors[String.trim_trailing(url, ".git")]
+
+      _ ->
+        nil
     end
   end
 

@@ -18,6 +18,14 @@ if config_env() != :test do
     # (factory/README.md, section 6, change 1; lib/eab/docker_settings.ex). Unset, nothing is added.
     docker_labels:
       String.split(System.get_env("EAB_DOCKER_LABELS", ""), [",", " ", "\t", "\n"], trim: true),
+    # The hosts a task's release files may come from (factory/README.md, section 6, change 3; lib/eab/release_files.ex),
+    # a comma or space separated list. Empty by default: no release file is fetched.
+    release_file_hosts:
+      System.get_env("EAB_RELEASE_FILE_HOSTS", "")
+      |> String.downcase()
+      |> String.split([",", " ", "\t", "\n"], trim: true),
+    # A JSON file from a repository's URL to its mirror's URL (section 6, change 4; lib/eab/source.ex). Unset: no mirror.
+    mirrors_file: System.get_env("EAB_MIRRORS"),
     cpu_shares:
       (case String.trim(System.get_env("EAB_CPU_SHARES", "")) do
          "" -> nil
