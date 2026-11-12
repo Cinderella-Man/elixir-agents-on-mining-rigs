@@ -96,6 +96,8 @@ A survey of every row, its extensions and new ideas (2026-11-09):
 - [task_factory_on_the_bench_engine.md](research/notes/task_factory_on_the_bench_engine.md): how the Elixir SWE
   Bench's own engine makes training tasks for the pilot (E68), which checks a training task keeps, and the pilot as
   single-job sessions.
+- [deepseek_output_terms.md](research/notes/deepseek_output_terms.md): what the published terms of the teacher's
+  weights, its GGUF and DeepSeek's hosted service say about training on and publishing its output.
 
 ## Where work runs
 
