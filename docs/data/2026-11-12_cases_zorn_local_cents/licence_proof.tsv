@@ -1,0 +1,2 @@
+licence_file	first_line	added_by_commit	added_at	pull_request	copyright_line	sha256	commits_touching_it_on_main	same_bytes_at_main_head	head_commit	readme_line	readme_sentence
+LICENSE	MIT License	e55e080aae08ad1bf94bf605fa9318556e95c7eb	2026-08-31T20:40:46-04:00	284	Copyright (c) 2026 Mike Zornek	d0b9504206b46802e1baa53081f9211e89a647bb8c448f33d7da6cf8ab10c6f7	1	yes	432b9496be18806b843d6828cd3262396bf122e9	98	LocalCents is released under the [MIT License](https://github.com/zorn/local_cents/blob/main/LICENSE). Copyright (c) 2026 Mike Zornek.

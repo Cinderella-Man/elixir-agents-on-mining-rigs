@@ -1,0 +1,22 @@
+number	start	merge	licence_at_start	licence_at_merge	paths	human_authors	bot_commits	co_author_trailers	paths_with_other_human_author
+296	a7213208cc9b3cbcd264a5cb77267823a638b20c	056fdde3fd3f0838b8f91ed1fec61ea32de0337c	yes	yes	5	Mike Zornek	2	Copilot Autofix powered by AI;dependabot[bot]	0
+289	e55e080aae08ad1bf94bf605fa9318556e95c7eb	55fee004d7fb8b51b7178fcbbab52cb7673c0415	yes	yes	2	Mike Zornek	0		0
+275	a4fa3bf7384ff0d3dd0399703f83c8872d9a9146	97309efc00a737b41a8f36013e9097be321ae311	no	no	8	Mike Zornek	0	Copilot Autofix powered by AI	0
+270	512374a854c91be0085853a5d4cab51c32263635	7d2a5078552deabe8073c1cc237e472f0122a565	no	no	4	Mike Zornek	0		0
+263	3457e7c2d22e9e15a3af41d55cac499066c8d740	a1c296360ee9a8bae4edcf932d6fa307ea080b21	no	no	11	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+254	1c442a4150872d1e3c5f7484576feab28981938b	affc3b2c3b0e5e4ff0e9c4f39e24b385088f32fa	no	no	10	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+250	8d7665381146eafd4a0e28e8e195c1a261605801	8c35f162b9e9a3b2d55da047df352a5247c477d3	no	no	9	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+242	26f5410144011e1899d8a9e331fde0e56cc97480	87d1b9d77bd81d2c041487682f5394c31faa08fb	no	no	3	Mike Zornek	0	Copilot Autofix powered by AI	0
+241	fc75e565ff4b260b466e6f5482fcce5ba66a542d	26f5410144011e1899d8a9e331fde0e56cc97480	no	no	3	Mike Zornek	0	Copilot Autofix powered by AI	0
+189	58582c7f56fef96515464be53d39810626c6c471	7f71327fa48da030c65e404ef2fbcff70ecfba0d	no	no	36	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+184	b84af02b2c7f60725b020300db8282fc5b19ef61	057932bc43a18ebac2d02e9b61dc2623b3d454d8	no	no	9	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+170	faeda23a58276151f2206bcdc85abbd23911ad59	28a423e6113f0814eb7237e6848c3a1def40f6ce	no	no	24	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+168	4b5e4f4b190aa3b4e6803746a92d3a9a25c83401	165b20a82f4bbab4ed44861eb62b16ed62297a5e	no	no	7	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+150	935f9a5408a6a8676915d470236c68a2f75f2ea1	8683fe497a6b411636aed7ef39dc3af258ffd27d	no	no	7	Mike Zornek	0	Copilot Autofix powered by AI	0
+134	6b294b3dec8bd94972a12c36470f0cf300d2bc9b	50a99407a1ffb2052e2ce9a090e3a63b94c3ca04	no	no	14	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+130	ebc46e1ee9bcf24378b1d1ccc503db98ae5de0e7	ff416afecca9961191d2b565675b0ab862c61eb9	no	no	21	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+127	8a438ed50a5d6a4fc86ebf75fdb4bfb4515611fd	f111a65dc510811f10b08bc8bd88b20a68375051	no	no	16	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+112	d0b9c4c22652f377c2f51c25011f9eb330a179ba	d855adcc03dc40034425aa4024950985f822daf6	no	no	10	Mike Zornek	0	Copilot Autofix powered by AI	0
+94	2b6496add45c98e19f5dc8fe1c057718ed2aa9ab	49a220fc7d065e39a82b01caffc45d749578391f	no	no	27	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+89	88653d61c7cd962a143d8f5e8d470e1f141e5c2c	2b6496add45c98e19f5dc8fe1c057718ed2aa9ab	no	no	6	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0
+86	d6859952eb886c15f80012319e38f2ffc71a46b1	88653d61c7cd962a143d8f5e8d470e1f141e5c2c	no	no	12	Mike Zornek	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	0

@@ -1,0 +1,6 @@
+id	number	scan_result	root_licence	files_touched	files_passing	licence_at_start	licence_added_by	licence_unchanged_at_newest	copyright_line	human_authors	bot_commits_on_touched_files	files_with_other_human_author	co_author_trailers	licence_verdict
+local-cents-pr-275	275	fail	fail:no-licence	11	11	no	e55e080aae08ad1bf94bf605fa9318556e95c7eb	yes	Copyright (c) 2026 Mike Zornek	Mike Zornek	0	0	Copilot Autofix powered by AI	pass_later_licence
+local-cents-pr-263	263	fail	fail:no-licence	14	14	no	e55e080aae08ad1bf94bf605fa9318556e95c7eb	yes	Copyright (c) 2026 Mike Zornek	Mike Zornek	0	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	pass_later_licence
+local-cents-pr-254	254	fail	fail:no-licence	15	15	no	e55e080aae08ad1bf94bf605fa9318556e95c7eb	yes	Copyright (c) 2026 Mike Zornek	Mike Zornek	0	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	pass_later_licence
+local-cents-pr-250	250	fail	fail:no-licence	9	9	no	e55e080aae08ad1bf94bf605fa9318556e95c7eb	yes	Copyright (c) 2026 Mike Zornek	Mike Zornek	0	0	Claude Sonnet 4.6;Copilot Autofix powered by AI	pass_later_licence
+local-cents-pr-241	241	fail	fail:no-licence	3	3	no	e55e080aae08ad1bf94bf605fa9318556e95c7eb	yes	Copyright (c) 2026 Mike Zornek	Mike Zornek	0	0	Copilot Autofix powered by AI	pass_later_licence

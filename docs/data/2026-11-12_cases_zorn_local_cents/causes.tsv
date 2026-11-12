@@ -1,0 +1,5 @@
+id	cause
+local-cents-pr-296	pull_request: a new module with a new test file; no existing test file is changed or matches a changed code file
+local-cents-pr-289	pull_request: its one test file is new; no existing test file is changed or matches a changed code file
+local-cents-pr-270	not settled yet: one existing LiveView test of the unchanged project passed in round one and failed in round two while the 1-minute load reached 15.38; to be checked once more at the end
+local-cents-pr-242	pull_request: its only existing test file is the file it rewrites; that file at the starting commit fails on the merged code (fails_on_reference). Its 9 hidden tests failed before and passed after, with the Rust library rebuilt in the test container

@@ -1,0 +1,28 @@
+{
+  "runtime": {
+    "profile": "mix",
+    "image": "hexpm/elixir:1.20.2-erlang-29.0.4-ubuntu-noble-20260730.1@sha256:e9301bad4a5e7238674db45a8cc00cb3a80310a037294fc6f8616d1ed9c0b796",
+    "environment": {
+      "MIX_ENV": "test",
+      "PATH": "/usr/lib/rust-1.97/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CARGO_HOME": "/opt/eab-seed/cargo",
+      "CARGO_BUILD_JOBS": "4",
+      "CARGO_TERM_PROGRESS_WHEN": "never"
+    },
+    "setup_commands": ["mix compile", "test -e priv/native/ex_automerge.so || mix compile --force"],
+    "before_test_commands": [],
+    "packages": ["rustc-1.97", "cargo-1.97"]
+  },
+  "services": {},
+  "baseline": {"mode": "prepared", "commands": []},
+  "test_timeout": 240,
+  "permitted_exclusion_tags": [],
+  "grading": {
+    "preservation": "mix test",
+    "protected_paths": ["test/"],
+    "test_suffixes": ["_test.exs"]
+  },
+  "toolchain": {
+    "baseline": []
+  }
+}
