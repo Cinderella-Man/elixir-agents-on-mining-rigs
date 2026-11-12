@@ -1,0 +1,193 @@
+{
+ "attempts": 20,
+ "calls": 1177,
+ "calls_with_a_call_before_them": 1157,
+ "first_calls": {
+  "first call of an attempt, cache_n 0": 18,
+  "first call of an attempt, cache_n above 0": 2
+ },
+ "field_checks": {
+  "cached_tokens == cache_n: True": 1177,
+  "cache_n + prompt_n == prompt_tokens: True": 1177
+ },
+ "previous prompt_tokens + completion_tokens - cache_n: value -> calls": {
+  "1": 746,
+  "0": 322,
+  "110": 3,
+  "65": 2,
+  "83": 2,
+  "88": 2,
+  "96": 2,
+  "99": 2,
+  "104": 2,
+  "112": 2,
+  "172": 2,
+  "215": 2,
+  "66": 1,
+  "74": 1,
+  "78": 1,
+  "82": 1,
+  "84": 1,
+  "85": 1,
+  "86": 1,
+  "89": 1,
+  "92": 1,
+  "97": 1,
+  "100": 1,
+  "103": 1,
+  "106": 1
+ },
+ "values_listed": 25,
+ "distinct_values": 80,
+ "calls that missed more than 1 token": 89,
+ "smallest value above 1": 65,
+ "largest value": 8043,
+ "smallest value": 0,
+ "by the shape of the reply before the call: calls that missed 0, 1 or more tokens": {
+  "1 call": {
+   "0": 264,
+   "1": 586,
+   "more": 82
+  },
+  "2 calls": {
+   "0": 56,
+   "1": 157,
+   "more": 7
+  },
+  "3 calls": {
+   "0": 2,
+   "1": 3,
+   "more": 0
+  },
+  "a value that is not text: bash.timeout:int": {
+   "0": 89,
+   "1": 133,
+   "more": 7
+  },
+  "a value that is not text: edit.edits:list": {
+   "0": 26,
+   "1": 50,
+   "more": 7
+  },
+  "a value that is not text: read.limit:int": {
+   "0": 9,
+   "1": 21,
+   "more": 46
+  },
+  "a value that is not text: read.offset:int": {
+   "0": 9,
+   "1": 20,
+   "more": 51
+  },
+  "all replies": {
+   "0": 322,
+   "1": 746,
+   "more": 89
+  },
+  "calls bash": {
+   "0": 253,
+   "1": 576,
+   "more": 26
+  },
+  "calls edit": {
+   "0": 26,
+   "1": 50,
+   "more": 7
+  },
+  "calls read": {
+   "0": 45,
+   "1": 128,
+   "more": 59
+  },
+  "calls write": {
+   "0": 6,
+   "1": 23,
+   "more": 1
+  },
+  "every value is text": {
+   "0": 198,
+   "1": 539,
+   "more": 22
+  },
+  "no text beside the calls": {
+   "0": 238,
+   "1": 583,
+   "more": 67
+  },
+  "one call, no text: bash {\"command\":\"<COMMAND>\",\"timeout\":<NUMBER>}": {
+   "0": 56,
+   "1": 89,
+   "more": 3
+  },
+  "one call, no text: bash {\"command\":\"<COMMAND>\"}": {
+   "0": 98,
+   "1": 272,
+   "more": 7
+  },
+  "one call, no text: edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<1 MORE LIKE IT>],\"path\":\"<PATH>\"}": {
+   "0": 0,
+   "1": 2,
+   "more": 1
+  },
+  "one call, no text: edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<2 MORE LIKE IT>],\"path\":\"<PATH>\"}": {
+   "0": 0,
+   "1": 1,
+   "more": 0
+  },
+  "one call, no text: edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<3 MORE LIKE IT>],\"path\":\"<PATH>\"}": {
+   "0": 0,
+   "1": 1,
+   "more": 0
+  },
+  "one call, no text: edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}],\"path\":\"<PATH>\"}": {
+   "0": 10,
+   "1": 15,
+   "more": 2
+  },
+  "one call, no text: edit {\"path\":\"<PATH>\",\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<1 MORE LIKE IT>]}": {
+   "0": 0,
+   "1": 0,
+   "more": 1
+  },
+  "one call, no text: edit {\"path\":\"<PATH>\",\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}]}": {
+   "0": 1,
+   "1": 0,
+   "more": 0
+  },
+  "one call, no text: read {\"path\":\"<PATH>\",\"limit\":<NUMBER>,\"offset\":<NUMBER>}": {
+   "0": 7,
+   "1": 10,
+   "more": 35
+  },
+  "one call, no text: read {\"path\":\"<PATH>\",\"limit\":<NUMBER>}": {
+   "0": 0,
+   "1": 4,
+   "more": 1
+  },
+  "one call, no text: read {\"path\":\"<PATH>\",\"offset\":<NUMBER>,\"limit\":<NUMBER>}": {
+   "0": 0,
+   "1": 0,
+   "more": 2
+  },
+  "one call, no text: read {\"path\":\"<PATH>\",\"offset\":<NUMBER>}": {
+   "0": 0,
+   "1": 2,
+   "more": 6
+  },
+  "one call, no text: read {\"path\":\"<PATH>\"}": {
+   "0": 13,
+   "1": 41,
+   "more": 4
+  },
+  "one call, no text: write {\"content\":\"<TEXT>\",\"path\":\"<PATH>\"}": {
+   "0": 3,
+   "1": 8,
+   "more": 0
+  },
+  "with text beside the calls": {
+   "0": 84,
+   "1": 163,
+   "more": 22
+  }
+ }
+}

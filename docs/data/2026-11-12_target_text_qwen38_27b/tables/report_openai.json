@@ -1,0 +1,175 @@
+{
+  "attempts": 20,
+  "requests_read": 74,
+  "top_level_keys": {
+    "max_tokens,messages,model,seed,stream,stream_options,tools": 74
+  },
+  "values": {
+    "max_tokens": {
+      "8192": 70,
+      "618": 1,
+      "496": 1,
+      "6933": 1,
+      "53": 1
+    },
+    "model": {
+      "\"qwen27b-ud-q6kl\"": 74
+    },
+    "seed": {
+      "101": 74
+    },
+    "stream": {
+      "true": 74
+    },
+    "stream_options": {
+      "{\"include_usage\":true}": 74
+    }
+  },
+  "tools": {
+    "b72b0ec532c465c9e8b78520d7cc7ed3664d9a720ea87dc99c78336184f010c0": 74
+  },
+  "system_before_instructions": {
+    "2664 characters, sha256 259fed2d5473ca12afd69e576b5da2abc8e7d68d7b22f1539fd5b13d06fa4d8e": 20
+  },
+  "system_after_instructions": {
+    "37 characters, sha256 c8ee3ae31cca78f85982c898c67f9e4ac96e1b224b27551c0bc7f597591b53f9": 19,
+    "240 characters, sha256 7bedf211c4df8a8b373e64a1f3d8a01cc9a6c7add9f4e41818a9114f070f284c (with a project guide)": 1
+  },
+  "instructions": {
+    "known sentences": {
+      "yes": 20
+    },
+    "kind": {
+      "feature": 8,
+      "bug_fix": 12
+    },
+    "tests_sentence": {
+      "behavioral": 20
+    },
+    "required_outcome_lines": {
+      "6": 1,
+      "3": 6,
+      "5": 5,
+      "2": 8
+    },
+    "line_after_dependencies": {
+      "empty": 19,
+      "the browser sentence": 1
+    },
+    "limits": {
+      "65536/262144/8192": 20
+    },
+    "task_details_keys": {
+      "environment": 11,
+      "environment,verification": 6,
+      "edition,verification": 3
+    }
+  },
+  "first_user_message": {
+    "one text part, keys text,type; file wrapper, the text inside ends with a line break": 20
+  },
+  "role_pairs": {
+    "start -> system": 20,
+    "system -> user": 20,
+    "user -> assistant": 20,
+    "assistant -> tool": 1157,
+    "tool -> tool": 230,
+    "tool -> assistant": 1137
+  },
+  "assistant_keys": {
+    "content,reasoning_content,role,tool_calls": 1157
+  },
+  "assistant_content": {
+    "null": 888,
+    "str": 269
+  },
+  "assistant_reasoning": {
+    "text; starts with a line break: no; ends with a line break: yes; other space at an end: no": 1157
+  },
+  "tool_calls_per_assistant_message": {
+    "2": 220,
+    "1": 932,
+    "3": 5
+  },
+  "tool_call": {
+    "keys": {
+      "function,id,type / arguments,name": 1387
+    },
+    "type": {
+      "function": 1387
+    },
+    "name": {
+      "bash": 989,
+      "read": 283,
+      "edit": 85,
+      "write": 30
+    },
+    "id": {
+      "32 letters and digits": 1387
+    },
+    "arguments are compact JSON, as JSON.stringify writes it": {
+      "yes": 1387
+    }
+  },
+  "tool_call_arguments": {
+    "bash {\"command\":\"<COMMAND>\"}": 760,
+    "read {\"path\":\"<PATH>\"}": 195,
+    "read {\"path\":\"<PATH>\",\"offset\":<NUMBER>}": 11,
+    "bash {\"command\":\"<COMMAND>\",\"timeout\":<NUMBER>}": 229,
+    "read {\"path\":\"<PATH>\",\"limit\":<NUMBER>,\"offset\":<NUMBER>}": 69,
+    "edit {\"path\":\"<PATH>\",\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}]}": 2,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<1 MORE LIKE IT>],\"path\":\"<PATH>\"}": 15,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}],\"path\":\"<PATH>\"}": 59,
+    "write {\"content\":\"<TEXT>\",\"path\":\"<PATH>\"}": 30,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<2 MORE LIKE IT>],\"path\":\"<PATH>\"}": 6,
+    "read {\"path\":\"<PATH>\",\"limit\":<NUMBER>}": 6,
+    "read {\"path\":\"<PATH>\",\"offset\":<NUMBER>,\"limit\":<NUMBER>}": 2,
+    "edit {\"path\":\"<PATH>\",\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<1 MORE LIKE IT>]}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<4 MORE LIKE IT>],\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},<3 MORE LIKE IT>],\"path\":\"<PATH>\"}": 1
+  },
+  "tool_message_keys": {
+    "content,role,tool_call_id": 1387
+  },
+  "tool_message_content": {
+    "bash: text, ends with a line break": 902,
+    "bash: text, no line break at the end": 87,
+    "read: text, ends with a line break": 206,
+    "read: text, no line break at the end": 77,
+    "edit: text, no line break at the end": 85,
+    "write: text, no line break at the end": 30
+  },
+  "tool_results_follow_their_calls_in_order": {
+    "yes": 1387
+  },
+  "tool_result_forms": {
+    "bash: <OUTPUT OF THE COMMAND>": 905,
+    "bash: <OUTPUT OF THE COMMAND>\\n\\nCommand exited with code <NUMBER>": 33,
+    "read: <FILE TEXT>": 206,
+    "read: <FILE TEXT>\\n[Showing lines <NUMBER>-<NUMBER> of <NUMBER>. Use offset=<NUMBER> to continue.]": 1,
+    "bash: (no output)": 41,
+    "read: <FILE TEXT>\\n\\n[<NUMBER> more lines in file. Use offset=<NUMBER> to continue.]": 75,
+    "bash: (no output)\\n\\nCommand exited with code <NUMBER>": 10,
+    "edit: Successfully replaced <NUMBER> block(s) in <PATH>.": 77,
+    "edit: Could not find edits[<NUMBER>] in <PATH>. The oldText must match exactly including all whitespace and newlines.": 4,
+    "write: Successfully wrote to <PATH>": 30,
+    "edit: Could not find the exact text in <PATH>. The old text must match exactly including all whitespace and newlines.": 3,
+    "read: <FILE TEXT>\\n[Showing lines <NUMBER>-<NUMBER> of <NUMBER> (<NUMBER>.<NUMBER>KB limit). Use offset=<NUMBER> to continue.]": 1,
+    "edit: edits[<NUMBER>] and edits[<NUMBER>] overlap in <PATH>. Merge them into one edit or target disjoint regions.": 1
+  },
+  "grows_only": {
+    "yes": 37
+  },
+  "frames": {
+    "first_request.frame.json": {
+      "request": 0,
+      "prompt_tokens": 2058,
+      "messages": 2
+    },
+    "middle_request.frame.json": {
+      "request": 3,
+      "prompt_tokens": 12836,
+      "messages": 9
+    }
+  }
+}

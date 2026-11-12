@@ -1,0 +1,200 @@
+{
+  "attempts": 15,
+  "requests_read": 538,
+  "top_level_keys": {
+    "max_tokens,messages,model,seed,stream,system,tools": 538
+  },
+  "values": {
+    "max_tokens": {
+      "8192": 523,
+      "7996": 1,
+      "7929": 1,
+      "7735": 1,
+      "7660": 1,
+      "6928": 1,
+      "6714": 1,
+      "6510": 1,
+      "6374": 1,
+      "4736": 1,
+      "4426": 1,
+      "3994": 1,
+      "876": 1,
+      "180": 1,
+      "8148": 1,
+      "7957": 1
+    },
+    "model": {
+      "\"deepseek-v41-flash\"": 538
+    },
+    "seed": {
+      "101": 538
+    },
+    "stream": {
+      "true": 538
+    }
+  },
+  "tools": {
+    "as the bench's form, sha256 b72b0ec532c465c9e8b78520d7cc7ed3664d9a720ea87dc99c78336184f010c0": 538
+  },
+  "tool_keys": {
+    "description,input_schema,name": 2152
+  },
+  "system_shape": {
+    "a list of one text part, keys cache_control,text,type": 15
+  },
+  "system_before_instructions": {
+    "2664 characters, sha256 259fed2d5473ca12afd69e576b5da2abc8e7d68d7b22f1539fd5b13d06fa4d8e": 15
+  },
+  "system_after_instructions": {
+    "240 characters, sha256 7bedf211c4df8a8b373e64a1f3d8a01cc9a6c7add9f4e41818a9114f070f284c (with a project guide)": 9,
+    "37 characters, sha256 c8ee3ae31cca78f85982c898c67f9e4ac96e1b224b27551c0bc7f597591b53f9": 6
+  },
+  "instructions": {
+    "known sentences": {
+      "yes": 15
+    },
+    "kind": {
+      "bug_fix": 6,
+      "feature": 9
+    },
+    "tests_sentence": {
+      "behavioral": 15
+    },
+    "required_outcome_lines": {
+      "0": 15
+    },
+    "line_after_dependencies": {
+      "empty": 15
+    },
+    "limits": {
+      "65536/262144/8192": 15
+    },
+    "task_details_keys": {
+      "none: {}": 15
+    }
+  },
+  "first_user_message": {
+    "one text part, keys cache_control,text,type; file wrapper, the text inside ends with a line break": 15
+  },
+  "cache_marks_per_request": {
+    "2": 538
+  },
+  "role_pairs": {
+    "start -> user": 15,
+    "user -> assistant": 15,
+    "assistant -> user (tool results)": 523,
+    "user (tool results) -> assistant": 508
+  },
+  "assistant_blocks": {
+    "thinking, tool_use": 498,
+    "tool_use": 24,
+    "thinking, text, tool_use": 1
+  },
+  "thinking_block": {
+    "keys signature,thinking,type; signature empty": 499
+  },
+  "thinking_text": {
+    "starts with: none; ends with: none": 496,
+    "starts with: none; ends with: line breaks only": 3
+  },
+  "text_block": {
+    "starts with: none; ends with: none": 1
+  },
+  "tool_calls_per_assistant_message": {
+    "2": 100,
+    "1": 397,
+    "3": 25,
+    "4": 1
+  },
+  "tool_call": {
+    "keys": {
+      "id,input,name,type": 676
+    },
+    "name": {
+      "bash": 544,
+      "edit": 123,
+      "read": 7,
+      "write": 2
+    },
+    "id": {
+      "call_ and 24 hex digits": 676
+    },
+    "input in the reply stream is compact JSON": {
+      "yes": 552,
+      "no": 123
+    }
+  },
+  "tool_call_inputs_in_requests": {
+    "bash {\"command\":\"<COMMAND>\"}": 423,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<2 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 6,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}],\"path\":\"<PATH>\"}": 91,
+    "bash {\"command\":\"<COMMAND>\",\"timeout\":\"<NUMBER>\"}": 121,
+    "read {\"path\":\"<PATH>\"}": 6,
+    "read {\"limit\":\"<NUMBER>\",\"offset\":\"<NUMBER>\",\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<1 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 18,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<9 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<7 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<6 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<3 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 5,
+    "write {\"content\":\"<TEXT>\",\"path\":\"<PATH>\"}": 2
+  },
+  "tool_call_inputs_in_reply_streams": {
+    "bash {\"command\":\"<COMMAND>\"}": 422,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<2 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 6,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"}],\"path\":\"<PATH>\"}": 87,
+    "bash {\"command\":\"<COMMAND>\",\"timeout\":\"<NUMBER>\"}": 121,
+    "read {\"path\":\"<PATH>\"}": 6,
+    "read {\"path\":\"<PATH>\",\"offset\":\"<NUMBER>\",\"limit\":\"<NUMBER>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<1 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 15,
+    "edit {\"path\":\"<PATH>\",\"edits\":[{\"oldText\":\"<TEXT>\",\"newText\":\"<TEXT>\"},\"<9 MORE LIKE IT>\"]}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<7 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 1,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<6 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 1,
+    "bash <NOT JSON>": 2,
+    "edit {\"edits\":[{\"newText\":\"<TEXT>\",\"oldText\":\"<TEXT>\"},\"<3 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 5,
+    "edit {\"edits\":[{\"oldText\":\"<TEXT>\",\"newText\":\"<TEXT>\"}],\"path\":\"<PATH>\"}": 2,
+    "edit {\"path\":\"<PATH>\",\"edits\":[{\"oldText\":\"<TEXT>\",\"newText\":\"<TEXT>\"},\"<1 MORE LIKE IT>\"]}": 1,
+    "edit {\"path\":\"<PATH>\",\"edits\":[{\"oldText\":\"<TEXT>\",\"newText\":\"<TEXT>\"}]}": 2,
+    "edit {\"edits\":[{\"oldText\":\"<TEXT>\",\"newText\":\"<TEXT>\"},\"<1 MORE LIKE IT>\"],\"path\":\"<PATH>\"}": 2,
+    "write {\"path\":\"<PATH>\",\"content\":\"<TEXT>\"}": 1,
+    "write {\"content\":\"<TEXT>\",\"path\":\"<PATH>\"}": 1
+  },
+  "tool_result_blocks": {
+    "keys content,is_error,tool_use_id,type; content is str": 661,
+    "keys cache_control,content,is_error,tool_use_id,type; content is str": 15
+  },
+  "tool_result_forms": {
+    "bash: <OUTPUT OF THE COMMAND> | is_error false": 492,
+    "bash: <OUTPUT OF THE COMMAND>\\n\\nCommand exited with code <NUMBER> | is_error true": 31,
+    "edit: Successfully replaced <NUMBER> block(s) in <PATH>. | is_error false": 117,
+    "bash: (no output) | is_error false": 17,
+    "read: <FILE TEXT> | is_error false": 6,
+    "read: <FILE TEXT>\\n\\n[<NUMBER> more lines in file. Use offset=<NUMBER> to continue.] | is_error false": 1,
+    "edit: Found <NUMBER> occurrences of the text in <PATH>. The text must be unique. Please provide more context to make it unique. | is_error true": 2,
+    "bash: (no output)\\n\\nCommand exited with code <NUMBER> | is_error true": 3,
+    "edit: <RESULT OF EDIT, NOT ONE LINE WITH THE PATH> | is_error true": 1,
+    "bash: <OUTPUT OF THE COMMAND> | is_error true": 1,
+    "edit: Found <NUMBER> occurrences of edits[<NUMBER>] in <PATH>. Each oldText must be unique. Please provide more context to make it unique. | is_error true": 2,
+    "edit: edits[<NUMBER>] and edits[<NUMBER>] overlap in <PATH>. Merge them into one edit or target disjoint regions. | is_error true": 1,
+    "write: Successfully wrote to <PATH> | is_error false": 2
+  },
+  "tool_results_follow_their_calls_in_order": {
+    "yes": 676
+  },
+  "grows_only": {
+    "yes": 523
+  },
+  "frames": {
+    "teacher_first_request.frame.json": {
+      "request": 0,
+      "messages": 1
+    },
+    "teacher_middle_request.frame.json": {
+      "request": 3,
+      "messages": 7
+    }
+  },
+  "against_the_bench": {
+    "pi_system_text_before_instructions.txt": "the same bytes",
+    "pi_tools_openai.json": "the same values"
+  }
+}
