@@ -1,0 +1,4 @@
+pull_requests	verdict	dropped_at	reason
+10	not run	-	made_only
+1	refused	maker	no_existing_tests
+1	dropped	prepare	environment

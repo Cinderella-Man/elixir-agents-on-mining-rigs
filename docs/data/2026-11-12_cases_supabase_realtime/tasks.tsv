@@ -1,0 +1,13 @@
+try	number	id	merged	elixir_otp	task_kind	folder	verdict	dropped_at	reason	make_s	import_s	check_s	export_s	engine_import_check_s	engine_source_s	engine_prepare_s	engine_probe_s	engine_controls_s	engine_total_s	load_start	load_end	load_max_check	settled	images_bytes	build_cache_change_bytes	disk_used_bytes	start	end
+1	2547	realtime-pr-2547	2026-11-12	-	-	not_made	refused	maker	no_existing_tests	5	-	-	-	-	-	-	-	-	-	6.83	6.76	-	settled	0	0	60141568	2026-11-12T14:15:21+01:00	2026-11-12T14:15:27+01:00
+1	2543	realtime-pr-2543	2026-11-11	1.19.5/28.5.0.4	feature	held	dropped	prepare	environment	-	-	20	-	0.0	0.0	10.2	-	-	10.3	7.26	8.70	7.78	settled	2239266837	1659954	-63950848	2026-11-12T14:15:28+01:00	2026-11-12T14:15:49+01:00
+-	2555	realtime-pr-2555	2026-11-11	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2549	realtime-pr-2549	2026-11-11	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2544	realtime-pr-2544	2026-11-11	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2545	realtime-pr-2545	2026-11-11	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2534	realtime-pr-2534	2026-11-11	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2532	realtime-pr-2532	2026-11-10	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2526	realtime-pr-2526	2026-11-10	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2523	realtime-pr-2523	2026-11-10	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2529	realtime-pr-2529	2026-11-09	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	2511	realtime-pr-2511	2026-11-09	-	-	-	not run	-	made_only	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-

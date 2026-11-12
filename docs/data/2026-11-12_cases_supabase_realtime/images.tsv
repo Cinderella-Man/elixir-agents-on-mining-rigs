@@ -1,0 +1,4 @@
+image_id	kind	made_for	starting_commit	bytes
+e46ed18b5dbe	toolchain: hexpm/elixir 1.19.5 with OTP 28.5.0.4 and the engine's tools	the project's set-up run (pull request 2547's starting commit); reused for 2543	-	908082459
+3a2dd0bddc61	project and build seed: the workspace with its dependencies fetched and compiled	the project's set-up run	87c669e5df978464ca97611a860ff02c57b2e1b9	1092040540
+568a515fdff8	project and build seed	the gate's first try of 2543 (seeded from 3a2dd0bddc61)	005b2ab9bd108b41ea54be1d335326e9c50d7299	1092009336
