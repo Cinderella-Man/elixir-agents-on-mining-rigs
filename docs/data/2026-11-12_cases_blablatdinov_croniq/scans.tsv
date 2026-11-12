@@ -1,0 +1,10 @@
+id	licence_file	licence_families	files_touched	files_passing	licence_result	failing	name_hits	spans8	spans8_to_read	spans12	spans12_to_read	holdout_result	deps_classes	scan_rc
+croniq-pr-90	LICENSE	MIT	4	4	pass	-	0	3	0	0	0	pass	allowed=62; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=2	0
+croniq-pr-88	README.md	MIT	3	3	pass	-	0	3	0	0	0	pass	allowed=62; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=2	0
+croniq-pr-86	README.md	MIT	4	4	pass	-	0	3	0	0	0	pass	allowed=62; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=2	0
+croniq-pr-75	-	none	4	4	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=62; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=2	0
+croniq-pr-65	-	none	6	6	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=61; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=1	0
+croniq-pr-53	-	none	2	2	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=61; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=1	0
+croniq-pr-52	-	none	2	2	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=61; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=1	0
+croniq-pr-47	-	none	4	4	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=61; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=1	0
+croniq-pr-31	-	none	4	4	fail	root licence not MIT, Apache-2.0, BSD or ISC (fail:no-licence); 	0	3	0	0	0	pass	allowed=59; allowed, not an SPDX id=3; git dependency: licence not read=1; several, some outside=1	0

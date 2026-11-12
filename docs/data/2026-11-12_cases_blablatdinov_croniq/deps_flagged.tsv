@@ -1,0 +1,7 @@
+kind	package	version	licences	class	cases
+hex	bcrypt_elixir	3.3.2	BSD-3-Clause | ISC | BSD-4-Clause	several, some outside	9
+git	heroicons	https://github.com/tailwindlabs/heroicons.git#0435d4ca364a608cc75e2f8683d374e55abbae26		git dependency: licence not read	9
+hex	metrics	1.0.1	BSD	allowed, not an SPDX id	9
+hex	parse_trans	3.4.1	Apache 2.0	allowed, not an SPDX id	9
+hex	unicode_util_compat	0.7.1	Apache 2.0	allowed, not an SPDX id	9
+hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside	4

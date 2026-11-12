@@ -1,0 +1,10 @@
+task	kind	try	hidden_failing_first	hidden_passing_after	existing_files_kept	existing_files_left_out	left_out_reasons	partial_fix	second_round_same	licence_result	root_licence	files_touched	files_passing	holder_wrote_all	licence_route	holdout_result	counts
+croniq-pr-90	feature	1	2	35	1	0	-	present	yes	pass	ok:licence-file	4	4	yes	licence-file	pass	yes
+croniq-pr-88	feature	1	3	32	1	0	-	present	yes	pass	ok:readme-statement	3	3	yes	readme-statement	pass	yes
+croniq-pr-86	feature	2	1	29	2	0	-	present	yes	pass	ok:readme-statement	4	4	yes	readme-statement	pass	yes
+croniq-pr-75	bug_fix	2	2	21	1	0	-	present	yes	fail	fail:no-licence	4	4	yes	licence-stated-later	pass	yes
+croniq-pr-65	bug_fix	1	3	14	2	0	-	present	yes	fail	fail:no-licence	6	6	yes	licence-stated-later	pass	yes
+croniq-pr-53	bug_fix	2	1	16	1	0	-	single_hunk	yes	fail	fail:no-licence	2	2	yes	licence-stated-later	pass	yes
+croniq-pr-52	bug_fix	2	1	11	1	0	-	single_hunk	yes	fail	fail:no-licence	2	2	yes	licence-stated-later	pass	yes
+croniq-pr-47	bug_fix	2	1	16	1	0	-	present	yes	fail	fail:no-licence	4	4	yes	licence-stated-later	pass	yes
+croniq-pr-31	bug_fix	2	7	16	1	0	-	present	yes	fail	fail:no-licence	4	4	yes	licence-stated-later	pass	yes

@@ -1,0 +1,10 @@
+task	repository	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_common	spans12_syntax	spans12_own_tree	spans12_to_read	holdout_result
+croniq-pr-90	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-88	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-86	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-75	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-65	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-53	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-52	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-47	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass
+croniq-pr-31	https://github.com/blablatdinov/croniq	pass	0	3	3	0	0	0	0	0	0	0	0	pass

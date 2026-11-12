@@ -1,0 +1,6 @@
+pull_requests	verdict	dropped_at	reason
+9	checked	-	-
+6	dropped	probe	skipped_test
+4	dropped	probe	no_starting_failure
+3	dropped	probe	no_existing_tests
+1	refused	maker	no_existing_tests

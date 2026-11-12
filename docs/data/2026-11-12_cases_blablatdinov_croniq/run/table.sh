@@ -20,8 +20,14 @@ HELD_REASON=${HELD_REASON:-held}
 PREFIX=${PREFIX:-croniq}
 # the merge date of a pull request, from the screen table
 merged() { awk -F'\t' -v n="$1" '$1 == n {print substr($2, 1, 10); f = 1} END {if (!f) print "-"}' "$SCREEN_TSV"; }
-# the Elixir/OTP pair the maker resolved, and the task kind, from the made folder; "-" when there is none
-pair() { jq -r '"\(.toolchain.elixir.value // "-")/\(.toolchain.otp.value // "-")"' "$TASKDIR/$1/provenance.json" 2>/dev/null || echo -; }
+# the Elixir/OTP pair the maker resolved (for a fixed recipe: the image case.json names), and the task kind, from the
+# made folder; "-" when there is none
+pair() { # from the resolver's record, else (a fixed recipe) from the image in case.json
+  local p
+  p=$(jq -r '"\(.toolchain.elixir.value // "-")/\(.toolchain.otp.value // "-")"' "$TASKDIR/$1/provenance.json" 2>/dev/null || echo -)
+  if [ "$p" = "-/-" ]; then p=$(jq -r '.runtime.image | capture("elixir:(?<e>[0-9.]+)-erlang-(?<o>[0-9.]+)-") | "\(.e)/\(.o)"' "$TASKDIR/$1/case.json" 2>/dev/null || echo -); fi
+  echo "${p:--}"
+}
 kind() { jq -r '.task_kind // "-"' "$TASKDIR/$1/case.json" 2>/dev/null || echo -; }
 # the listed ids that have no row: id, then the reason
 not_run() {

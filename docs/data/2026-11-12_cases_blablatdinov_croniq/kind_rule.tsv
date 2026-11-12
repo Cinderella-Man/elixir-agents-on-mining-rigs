@@ -1,0 +1,10 @@
+task	kind_case_json	kind_by_rule	files_added	public_functions_added	names
+croniq-pr-31	bug_fix	bug_fix	0	0	-
+croniq-pr-47	bug_fix	bug_fix	0	0	-
+croniq-pr-52	bug_fix	bug_fix	0	0	-
+croniq-pr-53	bug_fix	bug_fix	0	0	-
+croniq-pr-65	bug_fix	bug_fix	0	0	-
+croniq-pr-75	bug_fix	bug_fix	0	0	-
+croniq-pr-86	feature	feature	0	1	delete_with_logs
+croniq-pr-88	feature	feature	1	4	offset parse_params total total_pages
+croniq-pr-90	feature	feature	0	1	parse_params
