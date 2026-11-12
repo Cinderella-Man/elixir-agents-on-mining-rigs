@@ -40,7 +40,7 @@ model's set-up; what had run by then is below.
     disk was 90.9 % busy with a 219 ms write latency, and `/proc/pressure/io` "full" was at 82.9 (60-second
     average). The same Postgres 10.23 container, started by hand with the engine's flags at 08:17, answered after
     132 s: initdb's sync and the shutdown checkpoint took most of that time. These three drops are the machine's,
-    not the pull requests'. **Not settled: re-run on another machine.**
+    not the pull requests'. **Not settled: re-run on another machine.** The engine's wait is registry row E78, parked.
 - **The 26 as a list:** stopped while the maker was making them. None was gated, and none is checked.
 
 | | Pull requests |
@@ -74,7 +74,7 @@ imports it. One assertion block was added to `toolchain_test`'s table test: the 
 pin, and an unpinned line is refused. The tests that check the refusal still pass unchanged, because their tables
 have no `redis` line. `bench_parity_test` passes 6 of 6, not edited; no file of README section 2 changed. **The
 Docker suite is not settled.** `docker_settings_docker_test.exs` removes every `elixir-task-factory:*` tag made on
-the machine while it runs, so it is run alone, only when no controller is building images.
+the machine while it runs, so it is run alone, only when no controller is building images. After the rebase onto public `main` (the retry job's change to `lib/eab/factory.ex` and `factory_test`, the nerves_hub_web template, one comment in `toolchain_test` and the image table's note), the tree was not run again: task work on the 7-GPU machine had ended. None of those commits changed `toolchain.ex` or `bundle_maker.ex`.
 
 ## Time and disk
 
