@@ -1,9 +1,9 @@
 pull_requests	verdict	dropped_at	reason
-369	not run	-	not reached
-20	checked	-	-
-8	dropped	probe	start_run_did_not_finish
-2	dropped	probe	reference_fails_hidden
+361	not run	-	not reached
+27	checked	-	-
+10	dropped	probe	start_run_did_not_finish
 1	refused	maker	no_existing_tests
+1	refused	maker	binary_file
+1	dropped	probe	reference_fails_hidden
 1	dropped	probe	no_existing_tests
-1	dropped	controls	starting_failures_differ
 1	dropped	controls	reference_existing_tests_fail
