@@ -1,0 +1,62 @@
+{
+  "id": "ex338-pr-1463",
+  "schema_version": 3,
+  "task_kind": "bug_fix",
+  "project": "ex338",
+  "repository": {
+    "url": "https://github.com/axelclark/ex338",
+    "revision": "345e0c7e015b8e93c0cc23277152a35db35e675e"
+  },
+  "runtime": {
+    "before_test_commands": [],
+    "environment": {
+      "MIX_ENV": "test"
+    },
+    "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble",
+    "profile": "mix",
+    "setup_commands": [
+      "mix compile"
+    ]
+  },
+  "services": {
+    "postgres": {
+      "image": "postgres:14-alpine"
+    }
+  },
+  "baseline": {
+    "commands": [
+      "mix ecto.create --quiet",
+      "mix ecto.migrate --quiet"
+    ],
+    "mode": "prepared"
+  },
+  "permitted_exclusion_tags": [
+    "pending"
+  ],
+  "allowed_edit_prefixes": [
+    "lib/",
+    "test/"
+  ],
+  "acceptance_patch": "reference-tests.patch",
+  "grading": {
+    "adapter": "exunit",
+    "acceptance": "mix test test/ex338/waivers/waiver_test.exs",
+    "preservation": "mix test",
+    "protected_paths": [
+      "test/"
+    ],
+    "test_suffixes": [
+      "_test.exs"
+    ],
+    "required": [
+      "Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 valid if add only waiver and the league has more than 20 roster positions"
+    ],
+    "starting_failures": [
+      "Elixir.Ex338.Waivers.WaiverTest::test new_changeset/2 valid if add only waiver and the league has more than 20 roster positions"
+    ],
+    "model_tests": "behavioral"
+  },
+  "partial_control": {
+    "present": true
+  }
+}

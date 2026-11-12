@@ -1,0 +1,65 @@
+{
+  "id": "ex338-pr-1394",
+  "schema_version": 3,
+  "task_kind": "feature",
+  "project": "ex338",
+  "repository": {
+    "url": "https://github.com/axelclark/ex338",
+    "revision": "f846028ad8b2641da1814ff519cefc65482656a1"
+  },
+  "runtime": {
+    "before_test_commands": [],
+    "environment": {
+      "MIX_ENV": "test"
+    },
+    "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble",
+    "profile": "mix",
+    "setup_commands": [
+      "mix compile"
+    ]
+  },
+  "services": {
+    "postgres": {
+      "image": "postgres:14-alpine"
+    }
+  },
+  "baseline": {
+    "commands": [
+      "mix ecto.create --quiet",
+      "mix ecto.migrate --quiet"
+    ],
+    "mode": "prepared"
+  },
+  "permitted_exclusion_tags": [
+    "pending"
+  ],
+  "allowed_edit_prefixes": [
+    "lib/",
+    "priv/",
+    "test/"
+  ],
+  "acceptance_patch": "reference-tests.patch",
+  "grading": {
+    "adapter": "exunit",
+    "acceptance": "mix test test/ex338_web/controllers/draft_pick_controller_test.exs",
+    "preservation": "mix test",
+    "protected_paths": [
+      "test/"
+    ],
+    "test_suffixes": [
+      "_test.exs"
+    ],
+    "required": [
+      "Elixir.Ex338Web.DraftPickControllerTest::test edit/2 redirects if draft picks are locked",
+      "Elixir.Ex338Web.DraftPickControllerTest::test update/2 redirects if draft picks are locked"
+    ],
+    "starting_failures": [
+      "Elixir.Ex338Web.DraftPickControllerTest::test edit/2 redirects if draft picks are locked",
+      "Elixir.Ex338Web.DraftPickControllerTest::test update/2 redirects if draft picks are locked"
+    ],
+    "model_tests": "behavioral"
+  },
+  "partial_control": {
+    "present": true
+  }
+}

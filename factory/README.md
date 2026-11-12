@@ -275,6 +275,79 @@ and that the hash matches. Since job T5 the import check does this: `writer` is 
 is a text, and `ticket_sha256` is the SHA-256 of `ticket.md`. A change to either file leaves the controls' receipt
 valid (`Eab.Inventory.qualification_inputs/1`).
 
+### 3.5 The bundle maker
+
+`Eab.BundleMaker` (`lib/eab/bundle_maker.ex`, job P4) turns one screened pull request into one task folder, or
+refuses it with a reason. `Eab.BundleProbe` (`lib/eab/bundle_probe.ex`) holds its two steps that need a prepared
+project. Neither writes a statement.
+
+**Input:** the upstream repository's address, the pull request's number and merge commit (the census), its changed
+paths (the census), its verdict and marks (the screen), and the project's recipe,
+`recipes/<owner>__<repo>.json`. A recipe holds exactly the per-project fields of `case.json`: `runtime`,
+`services`, `baseline`, `test_timeout`, `permitted_exclusion_tags`, and `grading.protected_paths` and
+`grading.preservation` (the command for the existing tests). A recipe that is not final carries one more field,
+`provisional`, a note the maker never copies; the result line says `provisional`. `recipes/axelclark__ex338.json` is
+provisional: job P4 wrote it from the project's files for its proofs, and job P3 replaces it.
+
+**What it does,** in order:
+1. **The source pair.** The merge commit and its first parents are fetched by id into a local cache. The starting
+   commit is the first parent when the difference to the merge commit changes exactly the census's paths. When it
+   does not (a rebase merge leaves several commits), the maker walks back along first parents, up to 30, until the
+   paths match; `pair_selection` then names the commit it took.
+2. **The split,** by path, of the difference without rename detection: paths under the recipe's test folders are
+   `reference-tests.patch`; `.md` and `.txt` files whose top folder the code part does not touch are
+   `upstream-docs.patch`; everything else is `reference.patch`, CI files, assets, lock files and migrations
+   included, because the source check needs every changed path in one of the three. The three patches applied to
+   the starting tree must give the merged tree; the maker checks this on its local copy before it writes anything.
+3. **The manifest and the provenance record** (3.2, 3.3). `allowed_edit_prefixes` are the top folders (or root
+   files) the code part touches, and the test folders. `grading.acceptance` is `mix test` with the test files the
+   pull request adds or changes; `grading.preservation` is the recipe's command. `task_kind` follows a provisional
+   rule (section 8): `feature` when the reference adds a file or a public function it does not also remove, else
+   `bug_fix`. `licence` is a first reading of the licence file at the starting commit; the licence scan (E51) has
+   the last word. `marks` are the screen's `adds_migration`, `touches_assets` and `ai_written` (the screen does not
+   record the tool's name). `integrity.patch` adds `lib/eab_halt.ex`, or the same file in the first folder the task
+   may edit when `lib/` is not one.
+4. **A first reading of the test names and the partial fix.** The format needs both before any run. `required` and
+   `starting_failures` are the tests (`Elixir.<Module>::test <describe> <name>`, the reporter's form) whose body
+   holds a line the pull request adds or changes, read from the merged test files. `incomplete.patch` is the first
+   variant of the search below, or `partial_control` is `single_hunk` when there is none.
+5. **The import check** (`Eab.Candidates.validate!/1`) on the written folder; a folder that fails it is not kept.
+
+**The two steps that need a prepared project,** `Eab.BundleProbe.finish/4`, for a task whose runtime the gate has
+prepared:
+- **Observing the test names:** only the hidden tests run, on the unchanged project and on the reference.
+  `required` becomes the hidden tests that pass on the reference, and `starting_failures` those that fail in their
+  body on the unchanged project. It refuses, and leaves the folder as it was, when a run does not finish, a hidden
+  test fails on the reference, or nothing fails in its body on the unchanged project.
+- **The search for a partial fix:** the reference with one file left out, each in turn when there are two or more,
+  then with one hunk left out of each file that has two or more. The first variant whose hidden run finishes and
+  fails a starting failure in its body becomes `incomplete.patch`. Otherwise `partial_control` records
+  `single_hunk`, `no_variant_compiles` or `no_variant_fails`.
+
+**What it refuses** (the result line's `reason`): `holdout` (the owner or repository is on
+[`config/holdout.json`](config/holdout.json): the bench's 12 projects of [the plan](../docs/plan.md), their GitHub
+organisations, the bench's copies of them, and any repository with one of their names), `screen_rejected`,
+`not_in_census`, `paths_never_match`, `fetch_failed`, `submodule` (in the pull request or anywhere in either
+tree), `symbolic_link`, `binary_file`, `unsupported_path` (a path with a space, a quote or another character the
+engine's patch check cannot read), `patch_over_1_mib`, `no_code_part`, `no_test_part` (no added or changed
+`_test.exs` file), `no_test_names` (no test with a literal name and a changed body), `does_not_apply`,
+`does_not_rebuild`, `import_check`, `no_folder_for_early_exit`, `exists` (the task folder is already there), and
+`error` with the message for anything else. One refusal never stops a list.
+
+**How it is called,** on the build machine, in the tooling image, with the network (it fetches from GitHub). The
+scripts are in [`docs/data/2026-11-12_pilot_bundle_maker/run/`](../docs/data/2026-11-12_pilot_bundle_maker/README.md):
+
+```sh
+WORK=<work folder> LABEL=<key=value> CENSUS=prs_axelclark__ex338.tsv SCREEN=screen_axelclark__ex338.tsv \
+  run/make.sh make --repository https://github.com/axelclark/ex338 --numbers 1460,1463,1394
+WORK=<work folder> LABEL=<key=value> run/make.sh verify
+```
+
+`make` writes the folders to `WORK/tasks/` and one line per pull request to `WORK/out/results.tsv` (made, or
+refused with the reason). `verify` runs the source check (`Eab.Provenance.verify/3`) and the import check
+(`Eab.Candidates.import/1`) on every folder there. In Elixir: `Eab.BundleMaker.make/2`, `make_list/2`,
+`requests/3` and `verify/2`; `Eab.BundleProbe.finish/4`.
+
 ## 4. The gate
 
 The checks a task must pass before the teacher sees it, in the order the engine runs them. They are the "keep" rows
@@ -548,8 +621,9 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 
 **Not decided:**
 - the licence line for this folder (section 1);
-- the rule by which the bundle maker names a task `bug_fix` or `feature`;
-- which existing test files the bundle maker puts into `grading.preservation`;
+- the rule by which the bundle maker names a task `bug_fix` or `feature`. Job P4 uses a provisional one (3.5);
+- which existing test files the bundle maker puts into `grading.preservation`. Job P4 uses the recipe's command
+  for the existing tests (3.5);
 - whether a task whose every partial variant passes the hidden tests (`no_variant_fails`) stays in the pool or is
   dropped. This page keeps it and counts it apart;
 - whether a fix spread over two pull requests is ever combined. The pilot does not combine.

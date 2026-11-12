@@ -1,0 +1,92 @@
+{
+  "id": "ex338-pr-1460",
+  "schema_version": 3,
+  "task_kind": "feature",
+  "project": "ex338",
+  "repository": {
+    "url": "https://github.com/axelclark/ex338",
+    "revision": "a502f92e38a4b6286e6db51d7771c10899cf635c"
+  },
+  "runtime": {
+    "before_test_commands": [],
+    "environment": {
+      "MIX_ENV": "test"
+    },
+    "image": "hexpm/elixir:1.18.3-erlang-27.3-ubuntu-noble",
+    "profile": "mix",
+    "setup_commands": [
+      "mix compile"
+    ]
+  },
+  "services": {
+    "postgres": {
+      "image": "postgres:14-alpine"
+    }
+  },
+  "baseline": {
+    "commands": [
+      "mix ecto.create --quiet",
+      "mix ecto.migrate --quiet"
+    ],
+    "mode": "prepared"
+  },
+  "permitted_exclusion_tags": [
+    "pending"
+  ],
+  "allowed_edit_prefixes": [
+    "lib/",
+    "test/"
+  ],
+  "acceptance_patch": "reference-tests.patch",
+  "grading": {
+    "adapter": "exunit",
+    "acceptance": "mix test test/ex338_web/controllers/api/v1/mcp_controller_test.exs",
+    "preservation": "mix test",
+    "protected_paths": [
+      "test/"
+    ],
+    "test_suffixes": [
+      "_test.exs"
+    ],
+    "required": [
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue a non-owner cannot delete another team's queue entry",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an admin can delete any team's queue entry",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an owner can delete an entry and the rest close up",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an unknown queue is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues a non-owner cannot reorder another team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues a partial id list is rejected and changes nothing",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an admin can reorder any team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an owner can reorder their team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an unknown team is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues another team's queue id cannot be smuggled into the order",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting a non-owner cannot change another team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an admin can change any team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an owner can change their team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an unknown team is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an unrecognized setting is a validation error",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/list advertises the available tools"
+    ],
+    "starting_failures": [
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue a non-owner cannot delete another team's queue entry",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an admin can delete any team's queue entry",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an owner can delete an entry and the rest close up",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call delete_draft_queue an unknown queue is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues a non-owner cannot reorder another team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues a partial id list is rejected and changes nothing",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an admin can reorder any team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an owner can reorder their team's queue",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues an unknown team is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call reorder_draft_queues another team's queue id cannot be smuggled into the order",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting a non-owner cannot change another team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an admin can change any team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an owner can change their team's setting",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an unknown team is not found",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/call update_autodraft_setting an unrecognized setting is a validation error",
+      "Elixir.Ex338Web.Api.V1.McpControllerTest::test tools/list advertises the available tools"
+    ],
+    "model_tests": "behavioral"
+  },
+  "partial_control": {
+    "present": true
+  }
+}

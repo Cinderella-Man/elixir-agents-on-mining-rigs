@@ -1,0 +1,4 @@
+repository	number	id	result	reason	start_revision	walked	code_files	test_files	docs_files	hidden_tests	task_kind	partial	licence	recipe	detail
+https://github.com/axelclark/ex338	1460	ex338-pr-1460	made	-	a502f92e38a4b6286e6db51d7771c10899cf635c	0	5	1	0	16	feature	first_variant	MIT	provisional	-
+https://github.com/axelclark/ex338	1463	ex338-pr-1463	made	-	345e0c7e015b8e93c0cc23277152a35db35e675e	0	1	1	0	1	bug_fix	first_variant	MIT	provisional	-
+https://github.com/axelclark/ex338	1394	ex338-pr-1394	made	-	f846028ad8b2641da1814ff519cefc65482656a1	0	5	1	0	2	feature	first_variant	MIT	provisional	-

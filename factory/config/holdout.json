@@ -1,0 +1,61 @@
+{
+  "source": "docs/plan.md, Hold-out rule: the bench's 20 cases come from 12 projects, and nothing that shapes a model may come from them",
+  "projects": [
+    {"project": "absinthe", "repository": "absinthe-graphql/absinthe"},
+    {"project": "accent", "repository": "mirego/accent"},
+    {"project": "ash", "repository": "ash-project/ash"},
+    {"project": "beacon", "repository": "BeaconCMS/beacon"},
+    {"project": "cachex", "repository": "whitfin/cachex"},
+    {"project": "guardian", "repository": "ueberauth/guardian"},
+    {"project": "live_beats", "repository": "fly-apps/live_beats"},
+    {"project": "livebook", "repository": "livebook-dev/livebook"},
+    {"project": "operately", "repository": "operately/operately"},
+    {"project": "pinchflat", "repository": "kieraneglin/pinchflat"},
+    {"project": "plausible-analytics", "repository": "plausible/analytics"},
+    {"project": "vutuv", "repository": "wintermeyer/vutuv"}
+  ],
+  "organisations": [
+    "absinthe-graphql",
+    "mirego",
+    "ash-project",
+    "BeaconCMS",
+    "whitfin",
+    "ueberauth",
+    "fly-apps",
+    "livebook-dev",
+    "operately",
+    "kieraneglin",
+    "plausible",
+    "wintermeyer",
+    "vutuv"
+  ],
+  "repositories": [
+    "Cinderella-Man/absinthe",
+    "Cinderella-Man/accent",
+    "Cinderella-Man/ash",
+    "Cinderella-Man/beacon",
+    "Cinderella-Man/cachex",
+    "Cinderella-Man/guardian",
+    "Cinderella-Man/live_beats",
+    "Cinderella-Man/livebook",
+    "Cinderella-Man/operately",
+    "Cinderella-Man/pinchflat",
+    "Cinderella-Man/plausible-analytics",
+    "Cinderella-Man/vutuv"
+  ],
+  "names": [
+    "absinthe",
+    "accent",
+    "analytics",
+    "ash",
+    "beacon",
+    "cachex",
+    "guardian",
+    "live_beats",
+    "livebook",
+    "operately",
+    "pinchflat",
+    "plausible-analytics",
+    "vutuv"
+  ]
+}

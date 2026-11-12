@@ -1,0 +1,158 @@
+diff --git a/lib/ex338/fantasy_leagues/fantasy_league_admin.ex b/lib/ex338/fantasy_leagues/fantasy_league_admin.ex
+index 8c2b66358845b3b2659eeb88ba0c71af5871ab05..0cd5f7c1722c94f31f1031f193d66219be81e0ee 100644
+--- a/lib/ex338/fantasy_leagues/fantasy_league_admin.ex
++++ b/lib/ex338/fantasy_leagues/fantasy_league_admin.ex
+@@ -13,6 +13,7 @@ defmodule Ex338.FantasyLeagues.FantasyLeagueAdmin do
+       must_draft_each_sport?: nil,
+       draft_method: %{choices: draft_method_options()},
+       max_draft_hours: nil,
++      draft_picks_locked?: nil,
+       sport_draft_id: %{
+         label: "Select Sport With Active InSeason Draft",
+         choices: [{"None", nil}] ++ Ex338.FantasyPlayers.list_sport_options()
+diff --git a/lib/ex338_web/controllers/draft_pick_controller.ex b/lib/ex338_web/controllers/draft_pick_controller.ex
+index eae40d5e47396b4a2dd49654d883d5e19c509d32..9b7d09818e735cf795dde7cafeda8a1460c6d780 100644
+--- a/lib/ex338_web/controllers/draft_pick_controller.ex
++++ b/lib/ex338_web/controllers/draft_pick_controller.ex
+@@ -22,38 +22,53 @@ defmodule Ex338Web.DraftPickController do
+ 
+   def edit(conn, %{"id" => _}) do
+     draft_pick = %{fantasy_league_id: league_id} = conn.assigns.draft_pick
++    fantasy_league = FantasyLeagues.get_fantasy_league!(league_id)
+ 
+-    render(
+-      conn,
+-      :edit,
+-      draft_pick: draft_pick,
+-      fantasy_league: FantasyLeagues.get(league_id),
+-      fantasy_players: FantasyPlayers.available_players(league_id),
+-      changeset: DraftPicks.DraftPick.owner_changeset(draft_pick)
+-    )
++    if fantasy_league.draft_picks_locked? do
++      conn
++      |> put_flash(:error, "Draft picks are locked for this league.")
++      |> redirect(to: ~p"/fantasy_leagues/#{league_id}/draft_picks")
++    else
++      render(
++        conn,
++        :edit,
++        draft_pick: draft_pick,
++        fantasy_league: fantasy_league,
++        fantasy_players: FantasyPlayers.available_players(league_id),
++        changeset: DraftPicks.DraftPick.owner_changeset(draft_pick)
++      )
++    end
+   end
+ 
+   def update(conn, %{"id" => _, "draft_pick" => params}) do
+     draft_pick = %{fantasy_league_id: league_id} = conn.assigns.draft_pick
++    fantasy_league = FantasyLeagues.get_fantasy_league!(league_id)
++
++    if fantasy_league.draft_picks_locked? do
++      conn
++      |> put_flash(:error, "Draft picks are locked for this league.")
++      |> redirect(to: ~p"/fantasy_leagues/#{league_id}/draft_picks")
++    else
++      case DraftPicks.draft_player(draft_pick, params) do
++        {:ok, %{draft_pick: draft_pick}} ->
++          Ex338Web.DraftPickNotifier.send_update(draft_pick)
++          DraftQueues.reorder_for_league(league_id)
++          Task.start(fn -> AutoDraft.make_picks_from_queues(draft_pick, [], @autodraft_delay) end)
++
++          conn
++          |> put_flash(:info, "Draft pick successfully submitted.")
++          |> redirect(to: ~p"/fantasy_leagues/#{draft_pick.fantasy_league_id}/draft_picks")
+ 
+-    case DraftPicks.draft_player(draft_pick, params) do
+-      {:ok, %{draft_pick: draft_pick}} ->
+-        Ex338Web.DraftPickNotifier.send_update(draft_pick)
+-        DraftQueues.reorder_for_league(league_id)
+-        Task.start(fn -> AutoDraft.make_picks_from_queues(draft_pick, [], @autodraft_delay) end)
+-
+-        conn
+-        |> put_flash(:info, "Draft pick successfully submitted.")
+-        |> redirect(to: ~p"/fantasy_leagues/#{draft_pick.fantasy_league_id}/draft_picks")
+-
+-      {:error, _, changeset, _} ->
+-        render(
+-          conn,
+-          :edit,
+-          draft_pick: draft_pick,
+-          fantasy_players: FantasyPlayers.available_players(league_id),
+-          changeset: changeset
+-        )
++        {:error, _, changeset, _} ->
++          render(
++            conn,
++            :edit,
++            draft_pick: draft_pick,
++            fantasy_league: fantasy_league,
++            fantasy_players: FantasyPlayers.available_players(league_id),
++            changeset: changeset
++          )
++      end
+     end
+   end
+ end
+diff --git a/lib/ex338_web/live/draft_pick_live/index.ex b/lib/ex338_web/live/draft_pick_live/index.ex
+index 6292974ce0be6edab35de177746b6e928150435c..43121c63c8309528b292cfe48c4838c444cd95b5 100644
+--- a/lib/ex338_web/live/draft_pick_live/index.ex
++++ b/lib/ex338_web/live/draft_pick_live/index.ex
+@@ -241,10 +241,16 @@ defmodule Ex338Web.DraftPickLive.Index do
+                   />
+                 </span>
+               <% else %>
+-                <%= if draft_pick.available_to_pick? && (owner?(@current_user, draft_pick) || admin?(@current_user)) do %>
+-                  <.link href={~p"/draft_picks/#{draft_pick}/edit"} class="text-indigo-700">
+-                    Submit Pick
+-                  </.link>
++                <%= if draft_pick.available_to_pick? do %>
++                  <%= if @fantasy_league.draft_picks_locked? do %>
++                    <span class="text-gray-500">Draft Locked</span>
++                  <% else %>
++                    <%= if owner?(@current_user, draft_pick) || admin?(@current_user) do %>
++                      <.link href={~p"/draft_picks/#{draft_pick}/edit"} class="text-indigo-700">
++                        Submit Pick
++                      </.link>
++                    <% end %>
++                  <% end %>
+                 <% end %>
+               <% end %>
+             </.legacy_td>
+@@ -354,10 +360,16 @@ defmodule Ex338Web.DraftPickLive.Index do
+                   />
+                 </span>
+               <% else %>
+-                <%= if draft_pick.available_to_pick? && (owner?(@current_user, draft_pick) || admin?(@current_user)) do %>
+-                  <.link href={~p"/draft_picks/#{draft_pick}/edit"} class="text-indigo-700">
+-                    Submit Pick
+-                  </.link>
++                <%= if draft_pick.available_to_pick? do %>
++                  <%= if @fantasy_league.draft_picks_locked? do %>
++                    <span class="text-gray-500">Draft Locked</span>
++                  <% else %>
++                    <%= if owner?(@current_user, draft_pick) || admin?(@current_user) do %>
++                      <.link href={~p"/draft_picks/#{draft_pick}/edit"} class="text-indigo-700">
++                        Submit Pick
++                      </.link>
++                    <% end %>
++                  <% end %>
+                 <% end %>
+               <% end %>
+             </.legacy_td>
+diff --git a/priv/repo/migrations/20250725042432_add_draft_picks_locked_to_fantasy_leagues.exs b/priv/repo/migrations/20250725042432_add_draft_picks_locked_to_fantasy_leagues.exs
+new file mode 100644
+index 0000000000000000000000000000000000000000..f0026f82c77809018524a7116c2b48002a2fcfd6
+--- /dev/null
++++ b/priv/repo/migrations/20250725042432_add_draft_picks_locked_to_fantasy_leagues.exs
+@@ -0,0 +1,9 @@
++defmodule Ex338.Repo.Migrations.AddDraftPicksLockedToFantasyLeagues do
++  use Ecto.Migration
++
++  def change do
++    alter table(:fantasy_leagues) do
++      add :draft_picks_locked?, :boolean, default: false, null: false
++    end
++  end
++end
+\ No newline at end of file

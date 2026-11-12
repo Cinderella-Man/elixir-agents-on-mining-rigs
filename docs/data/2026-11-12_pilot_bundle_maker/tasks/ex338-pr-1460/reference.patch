@@ -1,0 +1,388 @@
+diff --git a/lib/ex338/draft_queues.ex b/lib/ex338/draft_queues.ex
+index 354e1e4ffcfdc1f0b9dfe82bb0a9335e496bcab6..6750a201dc79cac7e9f9d569a739b3fd8b5be36d 100644
+--- a/lib/ex338/draft_queues.ex
++++ b/lib/ex338/draft_queues.ex
+@@ -3,6 +3,7 @@ defmodule Ex338.DraftQueues do
+ 
+   import Ecto.Query, only: [limit: 2]
+ 
++  alias Ecto.Multi
+   alias Ex338.DraftQueues
+   alias Ex338.DraftQueues.DraftQueue
+   alias Ex338.FantasyTeams
+@@ -29,6 +30,84 @@ defmodule Ex338.DraftQueues do
+     |> Repo.get!(queue_id)
+   end
+ 
++  @doc """
++  Fetches a draft queue, or nil if it doesn't exist.
++
++  Accepts untrusted ids and returns nil for anything that isn't a valid integer
++  id, rather than raising `Ecto.Query.CastError`, since API/MCP callers pass
++  client-supplied values.
++  """
++  def get_draft_queue(queue_id) do
++    case cast_id(queue_id) do
++      {:ok, id} -> DraftQueue |> DraftQueue.preload_assocs() |> Repo.get(id)
++      :error -> nil
++    end
++  end
++
++  @doc """
++  Rewrites a team's pending draft queue to the order given by `ordered_queue_ids`.
++
++  The list must name every pending queue for the team exactly once. A partial
++  list is rejected rather than applied, because renumbering only some entries
++  would leave the rest holding duplicate positions — and `order` is what
++  autodraft reads to decide who to take next.
++
++  Returns `{:ok, [%DraftQueue{}]}` in the new order, `{:error, :queue_ids_mismatch}`
++  if the ids don't match the team's pending queues.
++  """
++  def reorder_for_team(team_id, ordered_queue_ids) do
++    pending_ids = team_id |> list_team_queues() |> Enum.map(& &1.id)
++
++    if Enum.sort(pending_ids) == Enum.sort(ordered_queue_ids) do
++      ordered_queue_ids
++      |> Enum.with_index(1)
++      |> Enum.reduce(Multi.new(), &set_queue_order/2)
++      |> Repo.transaction()
++
++      {:ok, list_team_queues(team_id)}
++    else
++      {:error, :queue_ids_mismatch}
++    end
++  end
++
++  defp set_queue_order({queue_id, order}, multi) do
++    update_query = DraftQueue |> DraftQueue.by_id(queue_id) |> DraftQueue.update_order(order)
++
++    Multi.update_all(multi, {:queue, queue_id}, update_query, [])
++  end
++
++  @doc """
++  Deletes a draft queue and closes the gap it leaves in its team's order.
++
++  The remaining entries are renumbered from 1 in the same transaction; leaving a
++  hole would be harmless for display but not for the `order` autodraft reads.
++  """
++  def delete_draft_queue(%DraftQueue{} = draft_queue) do
++    Multi.new()
++    |> Multi.delete(:draft_queue, draft_queue)
++    |> Multi.merge(fn _changes ->
++      draft_queue.fantasy_team_id
++      |> list_team_queues()
++      |> DraftQueues.Admin.reorder_for_league()
++    end)
++    |> Repo.transaction()
++    |> case do
++      {:ok, %{draft_queue: deleted}} -> {:ok, deleted}
++      {:error, _operation, reason, _changes} -> {:error, reason}
++    end
++  end
++
++  defp cast_id(id) when is_integer(id), do: {:ok, id}
++
++  defp cast_id(id) when is_binary(id) do
++    case Integer.parse(id) do
++      {int, ""} -> {:ok, int}
++      _ -> :error
++    end
++  end
++
++  defp cast_id(_id), do: :error
++
+   def get_league_queues(fantasy_league_id) do
+     DraftQueue
+     |> DraftQueue.by_league(fantasy_league_id)
+diff --git a/lib/ex338/fantasy_teams.ex b/lib/ex338/fantasy_teams.ex
+index f0bfef59aba0c02eb0a179a95191536ddbfef18f..beb97a581c35ffdbee95a0b6fa9204fe3b0c1c5a 100644
+--- a/lib/ex338/fantasy_teams.ex
++++ b/lib/ex338/fantasy_teams.ex
+@@ -238,6 +238,19 @@ defmodule Ex338.FantasyTeams do
+     |> Repo.update()
+   end
+ 
++  @doc """
++  Updates only a team's autodraft setting ("on", "off", or "single").
++
++  Separate from `update_team/2` so a caller that only wants this field doesn't
++  have to send the nested draft-queue and roster params `owner_changeset/2`
++  expects. Returns `{:ok, %FantasyTeam{}}` or `{:error, %Ecto.Changeset{}}`.
++  """
++  def update_autodraft_setting(%FantasyTeam{} = fantasy_team, autodraft_setting) do
++    fantasy_team
++    |> FantasyTeam.autodraft_changeset(%{autodraft_setting: autodraft_setting})
++    |> Repo.update()
++  end
++
+   def without_player_from_sport(league_id, sport_id) do
+     FantasyTeam
+     |> FantasyTeam.by_league(league_id)
+diff --git a/lib/ex338/fantasy_teams/fantasy_team.ex b/lib/ex338/fantasy_teams/fantasy_team.ex
+index 7a2f9ffed60a681c3071ba6e06521589f6b1a6d0..ad143859418518f057505783d57f1aa85a11e7ef 100644
+--- a/lib/ex338/fantasy_teams/fantasy_team.ex
++++ b/lib/ex338/fantasy_teams/fantasy_team.ex
+@@ -134,6 +134,19 @@ defmodule Ex338.FantasyTeams.FantasyTeam do
+     from(t in query, where: t.id == ^id)
+   end
+ 
++  @doc """
++  Changes only the autodraft setting.
++
++  `owner_changeset/2` also drives the draft-queue and roster nested forms, so it
++  is the wrong tool for a caller that just wants to flip this one field — this
++  one touches nothing else.
++  """
++  def autodraft_changeset(struct, params \\ %{}) do
++    struct
++    |> cast(params, [:autodraft_setting])
++    |> validate_required([:autodraft_setting])
++  end
++
+   def owner_changeset(struct, params \\ %{}) do
+     struct
+     |> cast(params, [:team_name, :autodraft_setting])
+diff --git a/lib/ex338_web/api_actions.ex b/lib/ex338_web/api_actions.ex
+index bc940ff8d92f0d5332107736624f8a7e3739e811..b6fbaed73e00b9066f0d73281de867603117f93a 100644
+--- a/lib/ex338_web/api_actions.ex
++++ b/lib/ex338_web/api_actions.ex
+@@ -141,6 +141,101 @@ defmodule Ex338Web.ApiActions do
+     |> Map.put("fantasy_team_id", team.id)
+   end
+ 
++  @doc """
++  Reorders a fantasy team's pending draft queue. Returns `{:ok, [%DraftQueue{}]}`,
++  `{:error, :not_found}`, `{:error, :forbidden}`, or `{:error, :queue_ids_mismatch}`.
++  """
++  def reorder_draft_queues(actor, source, team_id, params) do
++    team = FantasyTeams.get_team_with_owners(team_id)
++    result = do_reorder_draft_queues(actor.user, team, params)
++
++    audit(actor, source, "draft_queue.reorder", "DraftQueue", result, league_id(team), %{
++      fantasy_team_id: team_id,
++      params: params
++    })
++
++    result
++  end
++
++  defp do_reorder_draft_queues(_user, nil, _params), do: {:error, :not_found}
++
++  defp do_reorder_draft_queues(user, %FantasyTeam{} = team, params) do
++    if Canada.Can.can?(user, :update, team) do
++      DraftQueues.reorder_for_team(team.id, params["draft_queue_ids"] || [])
++    else
++      {:error, :forbidden}
++    end
++  end
++
++  @doc """
++  Removes an entry from a fantasy team's draft queue. Authorized against the
++  queue's own team, so a client can't delete another team's queue by id.
++
++  Returns `{:ok, %DraftQueue{}}`, `{:error, :not_found}`, or `{:error, :forbidden}`.
++  """
++  def delete_draft_queue(actor, source, draft_queue_id) do
++    draft_queue = DraftQueues.get_draft_queue(draft_queue_id)
++    result = do_delete_draft_queue(actor.user, draft_queue)
++
++    # A queue reaches its league through its team, so read the id from there
++    # rather than from the queue (which has no fantasy_league_id of its own).
++    league = draft_queue && league_id(draft_queue.fantasy_team)
++
++    audit(actor, source, "draft_queue.delete", "DraftQueue", result, league, %{
++      draft_queue_id: draft_queue_id
++    })
++
++    result
++  end
++
++  defp do_delete_draft_queue(_user, nil), do: {:error, :not_found}
++
++  defp do_delete_draft_queue(user, draft_queue) do
++    team = FantasyTeams.get_team_with_owners(draft_queue.fantasy_team_id)
++
++    if team && Canada.Can.can?(user, :update, team) do
++      DraftQueues.delete_draft_queue(draft_queue)
++    else
++      {:error, :forbidden}
++    end
++  end
++
++  @doc """
++  Updates a fantasy team's autodraft setting ("on", "off", or "single").
++
++  Returns `{:ok, %FantasyTeam{}}`, `{:error, :not_found}`, `{:error, :forbidden}`,
++  or `{:error, %Ecto.Changeset{}}`.
++  """
++  def update_autodraft_setting(actor, source, team_id, params) do
++    team = FantasyTeams.get_team_with_owners(team_id)
++    result = do_update_autodraft_setting(actor.user, team, params)
++
++    audit(
++      actor,
++      source,
++      "fantasy_team.autodraft_setting",
++      "FantasyTeam",
++      result,
++      league_id(team),
++      %{
++        fantasy_team_id: team_id,
++        params: params
++      }
++    )
++
++    result
++  end
++
++  defp do_update_autodraft_setting(_user, nil, _params), do: {:error, :not_found}
++
++  defp do_update_autodraft_setting(user, %FantasyTeam{} = team, params) do
++    if Canada.Can.can?(user, :update, team) do
++      FantasyTeams.update_autodraft_setting(team, params["autodraft_setting"])
++    else
++      {:error, :forbidden}
++    end
++  end
++
+   @doc """
+   Drafts a player with a draft pick — the same action an owner takes on the draft
+   page, with the same validations (your pick must be up, flex spots, player
+diff --git a/lib/ex338_web/controllers/api/v1/mcp/tools.ex b/lib/ex338_web/controllers/api/v1/mcp/tools.ex
+index fc86385365a6692d1d8f5443be9d8fdc291c60ae..cd83413222a5147cafa285be8ad03fb5066fbbe4 100644
+--- a/lib/ex338_web/controllers/api/v1/mcp/tools.ex
++++ b/lib/ex338_web/controllers/api/v1/mcp/tools.ex
+@@ -122,6 +122,67 @@ defmodule Ex338Web.Api.V1.Mcp.Tools do
+           additionalProperties: false
+         }
+       },
++      %{
++        name: "reorder_draft_queues",
++        description:
++          "Set the order of a fantasy team's draft queue (its wishlist). Pass every pending " <>
++            "queue id for the team, in the order you want them — position 1 is taken first by " <>
++            "autodraft. Call list_team_draft_queues first to get the ids. The list must name " <>
++            "each pending queue exactly once; a partial list is rejected rather than applied, " <>
++            "so use delete_draft_queue to remove an entry. Owners may act on their own team; " <>
++            "admins on any team.",
++        inputSchema: %{
++          type: "object",
++          properties: %{
++            fantasy_team_id: %{type: "integer", description: "The fantasy team id (from whoami)"},
++            draft_queue_ids: %{
++              type: "array",
++              items: %{type: "integer"},
++              description: "Every pending draft queue id for the team, in the desired order"
++            }
++          },
++          required: ["fantasy_team_id", "draft_queue_ids"],
++          additionalProperties: false
++        }
++      },
++      %{
++        name: "delete_draft_queue",
++        description:
++          "Remove one entry from a fantasy team's draft queue. The remaining entries close up " <>
++            "to keep their order contiguous. Owners may act on their own team's queues; admins " <>
++            "on any team's.",
++        inputSchema: %{
++          type: "object",
++          properties: %{
++            draft_queue_id: %{
++              type: "integer",
++              description: "The draft queue entry to remove (from list_team_draft_queues)"
++            }
++          },
++          required: ["draft_queue_id"],
++          additionalProperties: false
++        }
++      },
++      %{
++        name: "update_autodraft_setting",
++        description:
++          "Set a fantasy team's autodraft setting. \"on\" drafts automatically from the queue, " <>
++            ~s("off" never does, and "single" makes one pick then switches itself back to ) <>
++            "off. Owners may act on their own team; admins on any team.",
++        inputSchema: %{
++          type: "object",
++          properties: %{
++            fantasy_team_id: %{type: "integer", description: "The fantasy team id (from whoami)"},
++            autodraft_setting: %{
++              type: "string",
++              enum: ["on", "off", "single"],
++              description: "The new autodraft setting"
++            }
++          },
++          required: ["fantasy_team_id", "autodraft_setting"],
++          additionalProperties: false
++        }
++      },
+       %{
+         name: "list_league_draft_picks",
+         description:
+@@ -271,6 +332,48 @@ defmodule Ex338Web.Api.V1.Mcp.Tools do
+     {:error, {:invalid_params, "fantasy_team_id is required"}}
+   end
+ 
++  def call("reorder_draft_queues", %{"fantasy_team_id" => team_id} = args, actor) do
++    case ApiActions.reorder_draft_queues(actor, "mcp", team_id, args) do
++      {:ok, draft_queues} ->
++        {:ok, %{draft_queues: Enum.map(draft_queues, &draft_queue_summary/1)}}
++
++      {:error, :queue_ids_mismatch} ->
++        {:error,
++         {:invalid_params,
++          "draft_queue_ids must list every pending draft queue for this team exactly once; " <>
++            "call list_team_draft_queues for the current ids"}}
++
++      error ->
++        error
++    end
++  end
++
++  def call("reorder_draft_queues", _args, _actor) do
++    {:error, {:invalid_params, "fantasy_team_id is required"}}
++  end
++
++  def call("delete_draft_queue", %{"draft_queue_id" => queue_id}, actor) do
++    case ApiActions.delete_draft_queue(actor, "mcp", queue_id) do
++      {:ok, draft_queue} -> {:ok, draft_queue_summary(draft_queue)}
++      error -> error
++    end
++  end
++
++  def call("delete_draft_queue", _args, _actor) do
++    {:error, {:invalid_params, "draft_queue_id is required"}}
++  end
++
++  def call("update_autodraft_setting", %{"fantasy_team_id" => team_id} = args, actor) do
++    case ApiActions.update_autodraft_setting(actor, "mcp", team_id, args) do
++      {:ok, fantasy_team} -> {:ok, fantasy_team_summary(fantasy_team)}
++      error -> error
++    end
++  end
++
++  def call("update_autodraft_setting", _args, _actor) do
++    {:error, {:invalid_params, "fantasy_team_id is required"}}
++  end
++
+   def call("list_league_draft_picks", %{"fantasy_league_id" => league_id}, %{user: user}) do
+     with_league_access(league_id, user, fn ->
+       %{draft_picks: draft_picks} = DraftPicks.get_picks_for_league(league_id)
+@@ -404,6 +507,15 @@ defmodule Ex338Web.Api.V1.Mcp.Tools do
+     )
+   end
+ 
++  defp fantasy_team_summary(fantasy_team) do
++    %{
++      id: fantasy_team.id,
++      team_name: fantasy_team.team_name,
++      fantasy_league_id: fantasy_team.fantasy_league_id,
++      autodraft_setting: fantasy_team.autodraft_setting
++    }
++  end
++
+   # A bare fantasy_team_id is ambiguous for an owner with teams in more than one
+   # league, so every team-scoped result names its team and the league it plays in.
+   defp team_fields(fantasy_team) do

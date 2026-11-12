@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/axelclark/ex338",
+  "pull_request": "https://github.com/axelclark/ex338/pull/1463",
+  "broken_revision": "345e0c7e015b8e93c0cc23277152a35db35e675e",
+  "broken_tree": "6f7622b30da1936deafb9379f6696e69b7dd9ac6",
+  "fixed_revision": "a8f87d0f24b22e1dacc61fb35763df824a433856",
+  "fixed_tree": "e8ac7e5bc51b98bba80091ecde21265528c9c416",
+  "pair_selection": "first parent of the merge commit, and the merge commit",
+  "licence": "MIT",
+  "merged_at": "2026-09-09",
+  "marks": []
+}
