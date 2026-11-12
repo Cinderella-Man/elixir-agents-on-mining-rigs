@@ -127,6 +127,22 @@ A session is the teacher's whole attempt at one task: its messages, its tool cal
 
 These two scans run on every kept session before it is published. They are not built yet: no session has been made.
 
+**When a session fails** (the owner, 2026-11-12: "what happens if DeepSeek can solve only 5 out of 16 cases? We don't
+know is this the faulty case or faulty DeepSeek?"; decided the same day: "Yes, add it"). A failed session alone does
+not say whose fault it is. Before the teacher runs, every case is known to have a fix that passes; what is not known is
+whether its description says everything the hidden tests want. So after every run each failed session is sorted:
+
+| The fault is | When | What happens |
+|---|---|---|
+| the machine's (`machine_fault`) | a time-out, a tool error, the server not answering | the case is run again; the session does not count as an attempt |
+| the description's (`description_gap`) | the failing test wants something the description does not say: an exact name, a message, a rule | the teacher writes the description again with the gap named, it passes the leak check again, and the case is run again |
+| the teacher's own (`teacher_failure`) | the description was fair and the work was wrong or unfinished | the case gets up to 3 attempts |
+
+A case that fails 3 attempts with a fair description gets one blind attempt by a second strong model, as a tie-breaker
+only: that attempt is never training data. If it fails too, the case is set aside as `not_solvable_from_description`.
+The rounds are repeated until the failures that remain are the teacher's own, as the bench's own cases were run until
+every fault of a case was caught.
+
 ## 7. Balance
 
 Decided by the owner on 2026-11-12 ("Yes, add them"), so that no project and no kind of work dominates the dataset.
