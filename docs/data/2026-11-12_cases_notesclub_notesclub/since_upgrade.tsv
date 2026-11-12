@@ -1,0 +1,14 @@
+number	merged_at	merge_commit	verdict	reason	rules	code_files	test_files
+241	2026-08-17T17:03:49Z	cd4c9d79e7538aebe6b5688c9994757455d73834	rejected	no_code_change	no_code_change;no_test_change;mix_files	0	0
+242	2026-08-17T19:04:18Z	a6cd526348d27d28417b8106039e88375050ec00	rejected	mix_files	mix_files	1	1
+243	2026-09-05T17:04:02Z	11e518b93ef3f44f2f4b3fd0b843a71da4cca327	rejected	mix_files	mix_files	3	2
+244	2026-09-05T17:04:28Z	7408dd1b50123870c6ad901e0ff51768fcef0e9c	rejected	no_test_change	no_test_change	1	0
+245	2026-09-26T12:24:37Z	a7676f3b9ca6801fd1b5add4111ac5e1228f0168	rejected	no_code_change	no_code_change;no_test_change;mix_files	0	0
+251	2026-10-22T18:31:30Z	e94bb52e009be206973d9eae953fedfe7b106051	rejected	no_code_change	no_code_change;no_test_change;bot;dependency_only;mix_files	0	0
+252	2026-10-26T20:00:21Z	d4e188f95781639076cc3e782b27493fe16ffc31	rejected	no_code_change	no_code_change;no_test_change;dependency_only;mix_files	0	0
+258	2026-10-27T19:26:12Z	a1038bbb65c84cf731b2cf8b362f65ff3b1019a3	rejected	no_test_change	no_test_change;mix_files	2	0
+264	2026-11-03T19:02:03Z	fc71380f980dc64daf6c423f25944a3ec4d0b6d6	rejected	no_code_change	no_code_change;no_test_change;dependency_only;mix_files	0	0
+268	2026-11-11T18:38:43Z	67de18c6128dcc7a6a1d68861b9b9cf7f49021c4	rejected	no_code_change	no_code_change;no_test_change	0	0
+266	2026-11-11T18:41:52Z	f8312556c49c94732ad197ef6a10d76972f24463	rejected	no_code_change	no_code_change;no_test_change;bot;dependency_only;mix_files	0	0
+265	2026-11-11T19:20:20Z	3c0adc85633e943c4028d5c0e75f8d8973f38654	rejected	no_code_change	no_code_change;no_test_change;bot;dependency_only	0	0
+267	2026-11-11T19:27:10Z	9d6e25e68b54dcedbc813e9e5dc02582452edd9e	rejected	no_test_change	no_test_change;bot;mix_files	1	0
