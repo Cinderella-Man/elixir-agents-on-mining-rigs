@@ -13,15 +13,24 @@ of its own, beside one job that uses the model; nothing ran on the model's machi
 ## Result
 
 **The run is in progress;** this page is written again at every tenth checked task (times are the data-mining
-machine's). At 13:15, 17 pull requests had been tried, newest merged first: **10 checked, 7 dropped**, every verdict
-settled (the highest 1-minute load during any check was 5.89 on 28 threads).
+machine's). At 15:22, 34 pull requests had been tried (35 tries), newest merged first: **20 checked, 14 dropped**, every verdict
+settled (the highest 1-minute load during any check was 11.48 on 28 threads; from 13:15 five other project sessions
+shared the machine). The per-try table is `tasks_nerves_hub_web.tsv`; the counts by reason are `counts.tsv`.
 
-- **The gaps are settled** (section 1), and the factory's tests pass: 243 without Docker, 253 with it.
+- **The gaps are settled** (section 1), and the factory's tests pass: 245 without Docker, 255 with it (after the fourth
+  gap's change, on `main` with the image-table job's two tests).
+- **Drops by cause, so far:** the pull requests' own 10 (8 `start_run_did_not_finish`; 2 `no_existing_tests`, one at
+  the maker and one at the probe). Not settled yet 4: in 3135 (`starting_failures_differ`), 3101
+  (`reference_existing_tests_fail`) and 3261 (`reference_fails_hidden`) a test that waits 100 ms for a message
+  (`assert_receive`) failed at a load of 7.7 to 9.6, while the same tests passed at a load near 1 earlier; they are
+  tried again at the end. In 3111 (`reference_fails_hidden`) one hidden test fails on the fixed code, and its error is
+  read at the end. The factory's cause dropped two tries, not pull requests: the shared service-image tag (section 1)
+  took 3108's first try and 3097's first, and both were checked when tried again.
 - **The project's whole suite finishes** at the starting commit of the newest candidate, pull request 3261, on Elixir
   1.20.4 with OTP 29.1.2: ExUnit's 4,605 tests (9 doctests) all passed, 4 were excluded (the `detools` tests) and none
   failed, in 237.4 s. The engine's record is complete: 4,609 records, all distinct; the 46 tests of the module that
   runs under `parameterize:` are 92 records (section 2).
-- **The 7 drops are all the pull requests' own:** `start_run_did_not_finish` at the probe. Each is a feature that adds
+- **The 8 `start_run_did_not_finish` drops** are features that each add
   3 to 16 new modules under `lib/` and new test files that use them, so its hidden tests cannot compile on the
   unchanged project (the rules' "cannot run at all", section 4 of the [rules](../../dataset_rules.md)). Each probe took
   13 to 34 s, far under the engine's 240-second limit for one test command.
@@ -107,10 +116,11 @@ Each pull request went through `run/one.sh`, one at a time, before the next star
    images and build-cache bytes added. A verdict is settled when the load stayed under 12 during the check; otherwise
    the pull request is run once more.
 
-The stop rules ran beside it (`run/watch.sh`): free space under 700,000,000,000 bytes, the 1-minute load above 20 in
-two readings five minutes apart, or a bench run on the same Docker. None fired.
+The stop rules ran beside it (`run/watch.sh`): free space under 700,000,000,000 bytes (lowered to 50,000,000,000 at
+about 14:43 on the owner's word: "do not stop - you can use drive up to 50GB left"), the 1-minute load above 20 in two
+readings five minutes apart, or a bench run on the same Docker. None fired.
 
-`tasks_nerves_hub_web.tsv` has one line per try. So far (merged 2026-10-15 to 2026-10-19, all on Elixir 1.20.3 with
+`tasks_nerves_hub_web.tsv` has one line per try. The first 17 tries (merged 2026-10-15 to 2026-10-19, all on Elixir 1.20.3 with
 OTP 29.0.5, Postgres 18.6 and ClickHouse 25.4.2.31):
 
 | Pull request | Kind | Verdict | Step, reason | Check (s) | Prepare / probe / controls (s) | Highest load |
