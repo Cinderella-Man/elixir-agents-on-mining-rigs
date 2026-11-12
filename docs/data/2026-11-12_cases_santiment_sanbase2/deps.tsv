@@ -1,178 +1,179 @@
 kind	package	version	licences	class	tasks
-git	absinthe	https://github.com/santiment/absinthe.git#9de55dd55ea5e46668ab66b951f2219c5742cb77		git dependency: licence not read	12
-git	absinthe_phoenix	https://github.com/IvanIvanoff/absinthe_phoenix.git#c96140e821c73d554e2dd4311c7f96072fd7d0b9		git dependency: licence not read	12
-git	crc32cer	https://github.com/zmstone/crc32cer.git#3f6d73c46442c7d613655dd101b1761a75a61e2c		git dependency: licence not read	12
-git	faker	https://github.com/santiment/faker.git#35b158120552025b9a08fbf0a68c24230391a4d8		git dependency: licence not read	12
-git	langfuse_sdk	https://github.com/workera-ai/langfuse_sdk.git#1fbf2a84ec8b8e050b02b988b708247fd8471cbd		git dependency: licence not read	12
-hex	absinthe_plug	1.5.10	MIT	allowed	12
-hex	anubis_mcp	1.10.0	LGPL-3.0	outside	12
-hex	boruta	2.3.6	MIT	allowed	12
-hex	brod	4.5.7	Apache-2.0	allowed	12
-hex	browser	0.5.5	MIT	allowed	12
-hex	bunt	1.0.0	MIT	allowed	12
-hex	cachex	4.1.1	MIT	allowed	12
-hex	castle	0.3.1	MIT	allowed	12
+git	absinthe	https://github.com/santiment/absinthe.git#9de55dd55ea5e46668ab66b951f2219c5742cb77		git dependency: licence not read	15
+git	absinthe_phoenix	https://github.com/IvanIvanoff/absinthe_phoenix.git#c96140e821c73d554e2dd4311c7f96072fd7d0b9		git dependency: licence not read	15
+git	crc32cer	https://github.com/zmstone/crc32cer.git#3f6d73c46442c7d613655dd101b1761a75a61e2c		git dependency: licence not read	15
+git	faker	https://github.com/santiment/faker.git#35b158120552025b9a08fbf0a68c24230391a4d8		git dependency: licence not read	15
+git	langfuse_sdk	https://github.com/workera-ai/langfuse_sdk.git#1fbf2a84ec8b8e050b02b988b708247fd8471cbd		git dependency: licence not read	15
+hex	absinthe_plug	1.5.10	MIT	allowed	15
+hex	anubis_mcp	1.10.0	LGPL-3.0	outside	15
+hex	boruta	2.3.6	MIT	allowed	15
+hex	brod	4.5.7	Apache-2.0	allowed	15
+hex	browser	0.5.5	MIT	allowed	15
+hex	bunt	1.0.0	MIT	allowed	15
+hex	cachex	4.1.1	MIT	allowed	15
+hex	castle	0.3.1	MIT	allowed	15
+hex	castore	1.0.20	Apache-2.0	allowed	3
 hex	castore	1.0.22	Apache-2.0	allowed	12
-hex	cc_precompiler	0.1.11	Apache-2.0	allowed	12
-hex	certifi	2.17.0	BSD-3-Clause	allowed	12
-hex	ch	0.8.3	MIT	allowed	12
-hex	cidr	1.2.0	Mozilla Public License 2.0	outside	12
-hex	circular_buffer	1.0.0	MIT	allowed	12
-hex	combine	0.10.0	MIT	allowed	12
-hex	con_cache	1.1.1	MIT	allowed	12
-hex	cowboy	2.18.0	ISC	allowed	12
-hex	cowboy_telemetry	0.4.0	Apache 2.0	allowed, not an SPDX id	12
-hex	cowlib	2.19.0	ISC	allowed	12
-hex	credo	1.7.19	MIT	allowed	12
-hex	crontab	1.2.0	MIT	allowed	12
-hex	crypto_rand	1.0.4	MIT	allowed	12
-hex	dataloader	2.0.2	MIT	allowed	12
-hex	db_connection	2.10.2	Apache-2.0	allowed	12
-hex	decimal	2.4.1	Apache-2.0	allowed	12
-hex	dialyxir	1.4.7	Apache-2.0	allowed	12
-hex	earmark	1.4.49	Apache-2.0	allowed	12
-hex	ecto	3.13.6	Apache-2.0	allowed	12
-hex	ecto_ch	0.10.0	MIT	allowed	12
-hex	ecto_psql_extras	0.8.8	MIT	allowed	12
-hex	ecto_sql	3.13.5	Apache-2.0	allowed	12
-hex	elixir_make	0.10.0	Apache-2.0	allowed	12
-hex	elixir_uuid	1.2.1	Apache 2.0	allowed, not an SPDX id	12
-hex	erlex	0.2.8	Apache-2.0	allowed	12
-hex	esbuild	0.10.0	MIT	allowed	12
-hex	eternal	1.2.2	MIT	allowed	12
-hex	ethereumex	0.14.0	MIT	allowed	12
-hex	event_bus	1.7.0	MIT	allowed	12
-hex	ex_abi	0.8.3	GPL-3.0	outside	12
-hex	ex_audit	0.10.0	MIT	allowed	12
-hex	ex_aws	2.6.1	MIT	allowed	12
-hex	ex_aws_s3	2.5.9	MIT	allowed	12
-hex	ex_aws_ses	2.4.1	MIT	allowed	12
-hex	ex_hash_ring	6.0.4	MIT	allowed	12
-hex	ex_json_schema	0.11.3	MIT	allowed	12
-hex	ex_keccak	0.7.8	Apache License 2.0	allowed, not an SPDX id	12
-hex	ex_machina	2.8.1	MIT	allowed	12
-hex	expletive	0.1.6	Apache 2.0	allowed, not an SPDX id	12
-hex	expo	1.1.1	Apache-2.0	allowed	12
-hex	file_system	1.1.1	Apache-2.0	allowed	12
-hex	finch	0.23.0	MIT	allowed	12
-hex	fine	0.1.6	Apache-2.0	allowed	12
-hex	floki	0.38.4	MIT	allowed	12
-hex	forecastle	0.1.3	MIT	allowed	12
-hex	fuzzy_compare	1.1.0	MIT	allowed	12
-hex	gen_smtp	1.3.0	BSD-2-Clause	allowed	12
-hex	gen_stage	1.3.2	Apache-2.0	allowed	12
-hex	gettext	1.0.2	Apache-2.0	allowed	12
-hex	guardian	2.4.0	MIT	allowed	12
-hex	guardian_db	3.0.0	MIT	allowed	12
-hex	gun	2.5.0	ISC	allowed	12
-hex	hackney	1.17.1	Apache 2.0	allowed, not an SPDX id	12
-hex	hammer	7.4.0	MIT	allowed	12
-hex	hpax	1.0.4	Apache-2.0	allowed	12
-hex	htmd	0.2.0	MIT	allowed	12
-hex	html_sanitize_ex	1.5.2	MIT	allowed	12
-hex	httpoison	2.3.0	MIT	allowed	12
-hex	idna	6.1.1	MIT	allowed	12
-hex	inflex	2.1.0	Apache 2.0	allowed, not an SPDX id	12
-hex	jason	1.4.5	Apache-2.0	allowed	12
-hex	joken	2.6.2	Apache-2.0	allowed	12
-hex	jose	1.11.12	MIT	allowed	12
-hex	jumper	1.0.2	MIT	allowed	12
-hex	kafka_protocol	4.3.4	Apache License 2.0	allowed, not an SPDX id	12
-hex	kino	0.19.0	Apache-2.0	allowed	12
-hex	kino_db	0.5.0	Apache-2.0	allowed	12
-hex	kino_vega_lite	0.1.13	Apache-2.0	allowed	12
-hex	lazy_html	0.1.12	Apache-2.0	allowed	12
-hex	libcluster	3.5.0	MIT	allowed	12
-hex	libcluster_postgres	0.2.0	MIT	allowed	12
-hex	makeup	1.2.1	BSD-2-Clause	allowed	12
-hex	makeup_elixir	1.0.1	BSD-2-Clause	allowed	12
-hex	meck	1.2.0	Apache-2.0	allowed	12
-hex	metrics	1.0.1	BSD	allowed, not an SPDX id	12
-hex	mime	2.0.7	Apache-2.0	allowed	12
-hex	mimerl	1.5.0	MIT	allowed	12
-hex	mint	1.9.3	Apache-2.0	allowed	12
-hex	mochiweb	3.4.0	MIT	allowed	12
-hex	mock	0.3.9	MIT	allowed	12
-hex	mockery	2.5.0	Apache-2.0	allowed	12
-hex	mogrify	0.9.3	MIT	allowed	12
-hex	mox	1.2.0	Apache-2.0	allowed	12
-hex	nebulex	3.0.4	MIT	allowed	12
-hex	nebulex_distributed	3.2.3	MIT	allowed	12
-hex	nebulex_local	3.0.0	MIT	allowed	12
-hex	nebulex_streams	0.2.0	MIT	allowed	12
-hex	nimble_csv	1.3.0	Apache-2.0	allowed	12
-hex	nimble_options	1.1.1	Apache-2.0	allowed	12
-hex	nimble_ownership	1.0.2	Apache-2.0	allowed	12
-hex	nimble_parsec	1.4.2	Apache-2.0	allowed	12
-hex	nimble_pool	1.1.0	Apache-2.0	allowed	12
-hex	norm	0.13.1	MIT	allowed	12
-hex	nostrum	0.10.4	MIT	allowed	12
-hex	number	1.0.5	MIT	allowed	12
-hex	oauth2	2.1.0	MIT	allowed	12
-hex	oauther	1.3.0	ISC	allowed	12
-hex	oban	2.23.0	Apache-2.0	allowed	12
-hex	observer_cli	2.0.0	MIT	allowed	12
-hex	octo_fetch	0.5.0	MIT	allowed	12
-hex	parse_trans	3.4.2	Apache 2.0	allowed, not an SPDX id	12
-hex	partitioned_buffer	0.4.3	MIT	allowed	12
-hex	peep	3.5.0	Apache-2.0	allowed	12
-hex	peri	0.9.0	MIT	allowed	12
-hex	pgvector	0.4.0	MIT	allowed	12
-hex	phoenix	1.8.9	MIT	allowed	12
-hex	phoenix_ecto	4.7.0	MIT	allowed	12
-hex	phoenix_html	4.3.0	MIT	allowed	12
-hex	phoenix_html_helpers	1.0.1	MIT	allowed	12
-hex	phoenix_live_dashboard	0.8.7	MIT	allowed	12
-hex	phoenix_live_reload	1.6.2	MIT	allowed	12
-hex	phoenix_live_view	1.2.8	MIT	allowed	12
-hex	phoenix_pubsub	2.2.0	MIT	allowed	12
-hex	phoenix_template	1.0.4	MIT	allowed	12
-hex	plug	1.20.3	Apache-2.0	allowed	12
-hex	plug_cowboy	2.9.0	Apache-2.0	allowed	12
-hex	plug_crypto	2.2.0	Apache-2.0	allowed	12
-hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside	12
-hex	postgrex	0.22.3	Apache-2.0	allowed	12
-hex	prom_ex	1.11.0	MIT	allowed	12
-hex	puid	1.1.2	MIT	allowed	12
-hex	quantum	3.5.3	Apache-2.0	allowed	12
-hex	ranch	2.2.1	ISC	allowed	12
-hex	recon	2.5.6	BSD-3-Clause	allowed	12
-hex	redbug	1.2.2	MIT	allowed	12
-hex	remote_ip	1.2.0	MIT	allowed	12
-hex	req	0.7.0	Apache-2.0	allowed	12
-hex	rexbug	1.0.6	MIT	allowed	12
-hex	rustler_precompiled	0.8.4	Apache-2.0	allowed	12
-hex	secure_random	0.5.1	Apache 2.0	allowed, not an SPDX id	12
-hex	sentry	13.3.0	MIT	allowed	12
-hex	shards	1.1.1	MIT	allowed	12
-hex	sleeplocks	1.1.4	MIT	allowed	12
-hex	ssl_verify_fun	1.1.7	MIT	allowed	12
-hex	stream_data	1.4.0	Apache-2.0	allowed	12
-hex	stripity_stripe	3.2.0	BSD-3-Clause	allowed	12
-hex	sweet_xml	0.7.5	MIT	allowed	12
-hex	swoosh	1.26.3	MIT	allowed	12
-hex	table	0.1.2	Apache-2.0	allowed	12
-hex	table_rex	4.1.0	MIT	allowed	12
-hex	tailwind	0.5.1	MIT	allowed	12
-hex	telemetry	1.4.2	Apache-2.0	allowed	12
-hex	telemetry_metrics	1.1.0	Apache-2.0	allowed	12
-hex	telemetry_metrics_prometheus_core	1.2.1	Apache-2.0	allowed	12
-hex	telemetry_poller	1.3.0	Apache-2.0	allowed	12
-hex	telemetry_registry	0.3.2	Apache-2.0	allowed	12
-hex	tesla	1.20.0	MIT	allowed	12
-hex	text_chunker	0.6.1	MIT	allowed	12
-hex	tidewave	0.8.0	Apache-2.0	allowed	12
-hex	timex	3.7.13	MIT	allowed	12
-hex	tzdata	1.1.3	MIT	allowed	12
-hex	ueberauth	0.10.8	MIT	allowed	12
-hex	ueberauth_google	0.12.1	MIT	allowed	12
-hex	ueberauth_twitter	0.4.1	MIT	allowed	12
-hex	unicode_util_compat	0.7.1	Apache 2.0	allowed, not an SPDX id	12
-hex	unsafe	1.0.2	MIT	allowed	12
-hex	uri_query	0.2.0	MIT	allowed	12
-hex	vega_lite	0.1.11	Apache-2.0	allowed	12
-hex	vex	0.9.2	MIT License	allowed, not an SPDX id	12
-hex	waffle	1.1.10	Apache 2.0	allowed, not an SPDX id	12
-hex	websock	0.5.3	MIT	allowed	12
-hex	websock_adapter	0.6.0	MIT	allowed	12
-hex	websockex	0.5.1	MIT	allowed	12
+hex	cc_precompiler	0.1.11	Apache-2.0	allowed	15
+hex	certifi	2.17.0	BSD-3-Clause	allowed	15
+hex	ch	0.8.3	MIT	allowed	15
+hex	cidr	1.2.0	Mozilla Public License 2.0	outside	15
+hex	circular_buffer	1.0.0	MIT	allowed	15
+hex	combine	0.10.0	MIT	allowed	15
+hex	con_cache	1.1.1	MIT	allowed	15
+hex	cowboy	2.18.0	ISC	allowed	15
+hex	cowboy_telemetry	0.4.0	Apache 2.0	allowed, not an SPDX id	15
+hex	cowlib	2.19.0	ISC	allowed	15
+hex	credo	1.7.19	MIT	allowed	15
+hex	crontab	1.2.0	MIT	allowed	15
+hex	crypto_rand	1.0.4	MIT	allowed	15
+hex	dataloader	2.0.2	MIT	allowed	15
+hex	db_connection	2.10.2	Apache-2.0	allowed	15
+hex	decimal	2.4.1	Apache-2.0	allowed	15
+hex	dialyxir	1.4.7	Apache-2.0	allowed	15
+hex	earmark	1.4.49	Apache-2.0	allowed	15
+hex	ecto	3.13.6	Apache-2.0	allowed	15
+hex	ecto_ch	0.10.0	MIT	allowed	15
+hex	ecto_psql_extras	0.8.8	MIT	allowed	15
+hex	ecto_sql	3.13.5	Apache-2.0	allowed	15
+hex	elixir_make	0.10.0	Apache-2.0	allowed	15
+hex	elixir_uuid	1.2.1	Apache 2.0	allowed, not an SPDX id	15
+hex	erlex	0.2.8	Apache-2.0	allowed	15
+hex	esbuild	0.10.0	MIT	allowed	15
+hex	eternal	1.2.2	MIT	allowed	15
+hex	ethereumex	0.14.0	MIT	allowed	15
+hex	event_bus	1.7.0	MIT	allowed	15
+hex	ex_abi	0.8.3	GPL-3.0	outside	15
+hex	ex_audit	0.10.0	MIT	allowed	15
+hex	ex_aws	2.6.1	MIT	allowed	15
+hex	ex_aws_s3	2.5.9	MIT	allowed	15
+hex	ex_aws_ses	2.4.1	MIT	allowed	15
+hex	ex_hash_ring	6.0.4	MIT	allowed	15
+hex	ex_json_schema	0.11.3	MIT	allowed	15
+hex	ex_keccak	0.7.8	Apache License 2.0	allowed, not an SPDX id	15
+hex	ex_machina	2.8.1	MIT	allowed	15
+hex	expletive	0.1.6	Apache 2.0	allowed, not an SPDX id	15
+hex	expo	1.1.1	Apache-2.0	allowed	15
+hex	file_system	1.1.1	Apache-2.0	allowed	15
+hex	finch	0.23.0	MIT	allowed	15
+hex	fine	0.1.6	Apache-2.0	allowed	15
+hex	floki	0.38.4	MIT	allowed	15
+hex	forecastle	0.1.3	MIT	allowed	15
+hex	fuzzy_compare	1.1.0	MIT	allowed	15
+hex	gen_smtp	1.3.0	BSD-2-Clause	allowed	15
+hex	gen_stage	1.3.2	Apache-2.0	allowed	15
+hex	gettext	1.0.2	Apache-2.0	allowed	15
+hex	guardian	2.4.0	MIT	allowed	15
+hex	guardian_db	3.0.0	MIT	allowed	15
+hex	gun	2.5.0	ISC	allowed	15
+hex	hackney	1.17.1	Apache 2.0	allowed, not an SPDX id	15
+hex	hammer	7.4.0	MIT	allowed	15
+hex	hpax	1.0.4	Apache-2.0	allowed	15
+hex	htmd	0.2.0	MIT	allowed	15
+hex	html_sanitize_ex	1.5.2	MIT	allowed	15
+hex	httpoison	2.3.0	MIT	allowed	15
+hex	idna	6.1.1	MIT	allowed	15
+hex	inflex	2.1.0	Apache 2.0	allowed, not an SPDX id	15
+hex	jason	1.4.5	Apache-2.0	allowed	15
+hex	joken	2.6.2	Apache-2.0	allowed	15
+hex	jose	1.11.12	MIT	allowed	15
+hex	jumper	1.0.2	MIT	allowed	15
+hex	kafka_protocol	4.3.4	Apache License 2.0	allowed, not an SPDX id	15
+hex	kino	0.19.0	Apache-2.0	allowed	15
+hex	kino_db	0.5.0	Apache-2.0	allowed	15
+hex	kino_vega_lite	0.1.13	Apache-2.0	allowed	15
+hex	lazy_html	0.1.12	Apache-2.0	allowed	15
+hex	libcluster	3.5.0	MIT	allowed	15
+hex	libcluster_postgres	0.2.0	MIT	allowed	15
+hex	makeup	1.2.1	BSD-2-Clause	allowed	15
+hex	makeup_elixir	1.0.1	BSD-2-Clause	allowed	15
+hex	meck	1.2.0	Apache-2.0	allowed	15
+hex	metrics	1.0.1	BSD	allowed, not an SPDX id	15
+hex	mime	2.0.7	Apache-2.0	allowed	15
+hex	mimerl	1.5.0	MIT	allowed	15
+hex	mint	1.9.3	Apache-2.0	allowed	15
+hex	mochiweb	3.4.0	MIT	allowed	15
+hex	mock	0.3.9	MIT	allowed	15
+hex	mockery	2.5.0	Apache-2.0	allowed	15
+hex	mogrify	0.9.3	MIT	allowed	15
+hex	mox	1.2.0	Apache-2.0	allowed	15
+hex	nebulex	3.0.4	MIT	allowed	15
+hex	nebulex_distributed	3.2.3	MIT	allowed	15
+hex	nebulex_local	3.0.0	MIT	allowed	15
+hex	nebulex_streams	0.2.0	MIT	allowed	15
+hex	nimble_csv	1.3.0	Apache-2.0	allowed	15
+hex	nimble_options	1.1.1	Apache-2.0	allowed	15
+hex	nimble_ownership	1.0.2	Apache-2.0	allowed	15
+hex	nimble_parsec	1.4.2	Apache-2.0	allowed	15
+hex	nimble_pool	1.1.0	Apache-2.0	allowed	15
+hex	norm	0.13.1	MIT	allowed	15
+hex	nostrum	0.10.4	MIT	allowed	15
+hex	number	1.0.5	MIT	allowed	15
+hex	oauth2	2.1.0	MIT	allowed	15
+hex	oauther	1.3.0	ISC	allowed	15
+hex	oban	2.23.0	Apache-2.0	allowed	15
+hex	observer_cli	2.0.0	MIT	allowed	15
+hex	octo_fetch	0.5.0	MIT	allowed	15
+hex	parse_trans	3.4.2	Apache 2.0	allowed, not an SPDX id	15
+hex	partitioned_buffer	0.4.3	MIT	allowed	15
+hex	peep	3.5.0	Apache-2.0	allowed	15
+hex	peri	0.9.0	MIT	allowed	15
+hex	pgvector	0.4.0	MIT	allowed	15
+hex	phoenix	1.8.9	MIT	allowed	15
+hex	phoenix_ecto	4.7.0	MIT	allowed	15
+hex	phoenix_html	4.3.0	MIT	allowed	15
+hex	phoenix_html_helpers	1.0.1	MIT	allowed	15
+hex	phoenix_live_dashboard	0.8.7	MIT	allowed	15
+hex	phoenix_live_reload	1.6.2	MIT	allowed	15
+hex	phoenix_live_view	1.2.8	MIT	allowed	15
+hex	phoenix_pubsub	2.2.0	MIT	allowed	15
+hex	phoenix_template	1.0.4	MIT	allowed	15
+hex	plug	1.20.3	Apache-2.0	allowed	15
+hex	plug_cowboy	2.9.0	Apache-2.0	allowed	15
+hex	plug_crypto	2.2.0	Apache-2.0	allowed	15
+hex	poolboy	1.5.2	Unlicense | Apache 2.0	several, some outside	15
+hex	postgrex	0.22.3	Apache-2.0	allowed	15
+hex	prom_ex	1.11.0	MIT	allowed	15
+hex	puid	1.1.2	MIT	allowed	15
+hex	quantum	3.5.3	Apache-2.0	allowed	15
+hex	ranch	2.2.1	ISC	allowed	15
+hex	recon	2.5.6	BSD-3-Clause	allowed	15
+hex	redbug	1.2.2	MIT	allowed	15
+hex	remote_ip	1.2.0	MIT	allowed	15
+hex	req	0.7.0	Apache-2.0	allowed	15
+hex	rexbug	1.0.6	MIT	allowed	15
+hex	rustler_precompiled	0.8.4	Apache-2.0	allowed	15
+hex	secure_random	0.5.1	Apache 2.0	allowed, not an SPDX id	15
+hex	sentry	13.3.0	MIT	allowed	15
+hex	shards	1.1.1	MIT	allowed	15
+hex	sleeplocks	1.1.4	MIT	allowed	15
+hex	ssl_verify_fun	1.1.7	MIT	allowed	15
+hex	stream_data	1.4.0	Apache-2.0	allowed	15
+hex	stripity_stripe	3.2.0	BSD-3-Clause	allowed	15
+hex	sweet_xml	0.7.5	MIT	allowed	15
+hex	swoosh	1.26.3	MIT	allowed	15
+hex	table	0.1.2	Apache-2.0	allowed	15
+hex	table_rex	4.1.0	MIT	allowed	15
+hex	tailwind	0.5.1	MIT	allowed	15
+hex	telemetry	1.4.2	Apache-2.0	allowed	15
+hex	telemetry_metrics	1.1.0	Apache-2.0	allowed	15
+hex	telemetry_metrics_prometheus_core	1.2.1	Apache-2.0	allowed	15
+hex	telemetry_poller	1.3.0	Apache-2.0	allowed	15
+hex	telemetry_registry	0.3.2	Apache-2.0	allowed	15
+hex	tesla	1.20.0	MIT	allowed	15
+hex	text_chunker	0.6.1	MIT	allowed	15
+hex	tidewave	0.8.0	Apache-2.0	allowed	15
+hex	timex	3.7.13	MIT	allowed	15
+hex	tzdata	1.1.3	MIT	allowed	15
+hex	ueberauth	0.10.8	MIT	allowed	15
+hex	ueberauth_google	0.12.1	MIT	allowed	15
+hex	ueberauth_twitter	0.4.1	MIT	allowed	15
+hex	unicode_util_compat	0.7.1	Apache 2.0	allowed, not an SPDX id	15
+hex	unsafe	1.0.2	MIT	allowed	15
+hex	uri_query	0.2.0	MIT	allowed	15
+hex	vega_lite	0.1.11	Apache-2.0	allowed	15
+hex	vex	0.9.2	MIT License	allowed, not an SPDX id	15
+hex	waffle	1.1.10	Apache 2.0	allowed, not an SPDX id	15
+hex	websock	0.5.3	MIT	allowed	15
+hex	websock_adapter	0.6.0	MIT	allowed	15
+hex	websockex	0.5.1	MIT	allowed	15

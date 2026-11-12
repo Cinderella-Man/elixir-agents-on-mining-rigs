@@ -30,10 +30,10 @@ try	number	id	merged	elixir_otp	task_kind	folder	verdict	dropped_at	reason	make_
 1	5391	sanbase2-pr-5391	2026-10-22	-	-	not_made	refused	maker	no_existing_tests	5	-	-	-	-	-	-	-	-	-	5.20	5.97	-	settled	0	0	22634496	-	-	pull_request	-	-	-	-	2026-11-12T17:11:49+01:00	2026-11-12T17:11:56+01:00
 1	5394	sanbase2-pr-5394	2026-10-22	1.20.2/29.0.4	feature	made	checked	-	-	10	1	600	0	0.0	0.0	220.0	116.0	264.2	600.2	5.97	4.53	9.23	settled	2128310063	2176614324	776351744	fail	pass	factory	4	81	present	1	2026-11-12T17:11:57+01:00	2026-11-12T17:22:10+01:00
 1	5393	sanbase2-pr-5393	2026-10-22	1.20.2/29.0.4	bug_fix	made	checked	-	-	5	1	550	1	0.0	0.0	192.7	110.6	242.3	545.7	4.22	4.05	9.49	settled	2129305454	1654738696	3125342208	pass	pass	-	1	45	single_hunk	2	2026-11-12T17:22:29+01:00	2026-11-12T17:31:48+01:00
--	5392	sanbase2-pr-5392	2026-10-21	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5388	sanbase2-pr-5388	2026-10-19	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5386	sanbase2-pr-5386	2026-10-19	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
--	5385	sanbase2-pr-5385	2026-10-16	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+1	5392	sanbase2-pr-5392	2026-10-21	1.20.2/29.0.4	feature	made	dropped	probe	start_run_did_not_finish	6	0	230	-	0.0	0.0	175.7	46.6	-	222.3	3.81	3.74	4.6	settled	2127241906	868928095	1375223808	-	-	pull_request	87	87	present	1	2026-11-12T17:31:58+01:00	2026-11-12T17:35:56+01:00
+1	5388	sanbase2-pr-5388	2026-10-19	1.20.2/29.0.4	bug_fix	made	checked	-	-	10	1	370	0	0.0	0.0	166.5	52.4	147.0	365.9	3.74	2.79	5.54	settled	2126256395	1099486153	2098499584	pass	pass	-	6	19	present	1	2026-11-12T17:35:58+01:00	2026-11-12T17:42:21+01:00
+1	5386	sanbase2-pr-5386	2026-10-19	1.20.2/29.0.4	feature	made	checked	-	-	5	0	400	0	0.0	0.0	183.6	64.9	149.5	398.1	2.68	3.58	5.82	settled	2127172617	1101520916	1830719488	pass	pass	-	6	15	present	1	2026-11-12T17:42:40+01:00	2026-11-12T17:49:27+01:00
+1	5385	sanbase2-pr-5385	2026-10-16	1.20.2/29.0.4	feature	made	checked	-	-	20	0	461	1	0.0	0.0	172.4	77.8	207.3	457.5	3.37	4.50	7.95	settled	2126259383	1099125481	2492481536	pass	pass	-	1	27	present	3	2026-11-12T17:49:51+01:00	2026-11-12T17:57:55+01:00
 -	5380	sanbase2-pr-5380	2026-10-14	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5378	sanbase2-pr-5378	2026-10-12	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
 -	5377	sanbase2-pr-5377	2026-10-12	-	-	-	not run	-	not reached	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-

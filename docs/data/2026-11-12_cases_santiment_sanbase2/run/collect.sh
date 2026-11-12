@@ -9,7 +9,8 @@
 #                        hold-out's repository check, name hits and span counts (no span text)
 #   holdout_reviews.tsv  the `review` hits read by a person: span id, the bench case, what was read, the verdict
 #   licence_large.tsv    the checked tasks whose licence result fails only on files the scan set aside as too large:
-#                        the file, its bytes at both commits, and the number of other failing files
+#                        the file, its bytes at both commits, the number of other failing files, and a person's reading
+#                        of the changed part (SCANS/large_reads.tsv; the rules page, section 9)
 #   deps.tsv             the locked packages over all checked tasks, with their declared licences, class and the
 #                        number of tasks that lock them
 #   own_images.tsv       every image that carries this job's label: id, names, Docker's size and its unique size
@@ -45,7 +46,7 @@ cp "$OUT/good.tsv" "$PUB/good.tsv"
 # the checked tasks whose licence result fails only on files the scan set aside as too large (exclude:large): each
 # such file with its size in bytes at the starting and the merge commit (from the full clone), and the other findings
 {
-  printf 'task\tpath\tbytes_start\tbytes_merge\tverdict_start\tverdict_merge\tother_failing_files\n'
+  printf 'task\tpath\tbytes_start\tbytes_merge\tverdict_start\tverdict_merge\tother_failing_files\twhat_the_file_is\tlines_added\tlines_removed\twhat_the_changed_part_holds\tnotice_or_copyright_lines\tread_verdict\n'
   for d in "$SCANS"/*/; do
     id=$(basename "$d"); [ "$id" != work ] || continue
     f=$d/licence.files.tsv; [ -s "$f" ] || continue
@@ -56,7 +57,8 @@ cp "$OUT/good.tsv" "$PUB/good.tsv"
     awk -F'\t' '$6 == "fail:exclude:large" {print $2 "\t" $4 "\t" $5}' "$JOB/fails.tmp" | while IFS=$'\t' read -r path vs vm; do
       bs=$(git --git-dir "$JOB/sanbase2-full.git" cat-file -s "$start:$path" 2>/dev/null || echo -)
       bm=$(git --git-dir "$JOB/sanbase2-full.git" cat-file -s "$fixed:$path" 2>/dev/null || echo -)
-      printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$id" "$path" "$bs" "$bm" "$vs" "$vm" "$others"
+      readrow=$(awk -F'\t' -v id="$id" -v p="$path" '$1 == id && $2 == p {print $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7 "\t" $8; f = 1; exit} END {if (!f) print "-\t-\t-\t-\t-\tnot read yet"}' "$SCANS/large_reads.tsv" 2>/dev/null || printf '-\t-\t-\t-\t-\tnot read yet')
+      printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$id" "$path" "$bs" "$bm" "$vs" "$vm" "$others" "$readrow"
     done
   done
   rm -f "$JOB/fails.tmp"

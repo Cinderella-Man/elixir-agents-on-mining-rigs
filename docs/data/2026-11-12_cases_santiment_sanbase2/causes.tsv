@@ -15,3 +15,4 @@ sanbase2-pr-5399	pull_request	the hidden tests do not finish on the unchanged pr
 sanbase2-pr-5397	pull_request	the hidden tests do not finish on the unchanged project (rules: no_starting_failure, cannot run at all): the probe ended after 49290 ms, not a time-out; a feature
 sanbase2-pr-5396	pull_request	the hidden tests do not finish on the unchanged project (rules: no_starting_failure, cannot run at all): the probe ended after 19065 ms, not a time-out; a feature
 sanbase2-pr-5394	factory	checked; not good: the licence scan marks priv/repo/structure.sql (the project's own generated schema dump) exclude:large, over the scan's size limit of 262,144 bytes, which fails the case; no other licence was found in it
+sanbase2-pr-5392	pull_request	the hidden tests do not finish on the unchanged project (rules: no_starting_failure, cannot run at all): the probe ended after 46563 ms, not a time-out; a feature

@@ -1,5 +1,8 @@
 task	start	licence_file	licence_families	files_touched	files_passing	licence_result	repository_check	name_hits	spans8	spans8_common	spans8_syntax	spans8_own_tree	spans8_to_read	spans12	spans12_to_read	holdout_result
 sanbase2-pr-5382	79c81202d02aac06b46f24f2f08bfee3efca1ecf	LICENSE.md	MIT	90	90	pass	pass	0	23	8	11	0	4	2	2	review
+sanbase2-pr-5385	9814e86e969826762c7250679262974a5bcf73dd	LICENSE.md	MIT	7	7	pass	pass	0	5	5	0	0	0	0	0	pass
+sanbase2-pr-5386	60214ecb49baaef004253ead1dc1d38fd0d9b1e5	LICENSE.md	MIT	3	3	pass	pass	0	6	5	1	0	0	0	0	pass
+sanbase2-pr-5388	4037f13079fbf2c65836bbddf2c9ad942f746889	LICENSE.md	MIT	5	5	pass	pass	0	6	5	1	0	0	0	0	pass
 sanbase2-pr-5393	8a132530c89368b1b811eebbe2b15e60aad8966d	LICENSE.md	MIT	3	3	pass	pass	0	5	5	0	0	0	0	0	pass
 sanbase2-pr-5394	d068b345a044a90e46ae3db96d48ee856a8870d8	LICENSE.md	MIT	5	4	fail	pass	0	5	5	0	0	0	0	0	pass
 sanbase2-pr-5395	9d07db8babd3ccee08c37262af50e9e4aba17472	LICENSE.md	MIT	14	14	pass	pass	0	18	7	10	1	0	0	0	pass

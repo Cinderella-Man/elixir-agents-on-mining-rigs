@@ -1,3 +1,3 @@
-task	path	bytes_start	bytes_merge	verdict_start	verdict_merge	other_failing_files
-sanbase2-pr-5394	priv/repo/structure.sql	369778	369852	exclude:large	exclude:large	0
-sanbase2-pr-5405	priv/repo/structure.sql	373423	373821	exclude:large	exclude:large	0
+task	path	bytes_start	bytes_merge	verdict_start	verdict_merge	other_failing_files	what_the_file_is	lines_added	lines_removed	what_the_changed_part_holds	notice_or_copyright_lines	read_verdict
+sanbase2-pr-5394	priv/repo/structure.sql	369778	369852	exclude:large	exclude:large	0	the database layout (schema dump) written by the project's own tools (mix ecto.dump), MIT like the rest of the repository	1	0	one new row of schema_migrations (20261022073128), the pull request's own migration	0	pass
+sanbase2-pr-5405	priv/repo/structure.sql	373423	373821	exclude:large	exclude:large	0	the database layout (schema dump) written by the project's own tools (mix ecto.dump), MIT like the rest of the repository	12	1	three new columns on the table ai_context (delivery_status, delivery_error, tool_issues; the line before gains a comma), one new index on it (with its three comment lines and two blank lines), and one new row of schema_migrations (20261028145234): the pull request's own migration, as the project's tools write it	0	pass

@@ -10,7 +10,7 @@ controller of its own, built from the factory's `main`, while other task jobs us
 
 ## Result
 
-**Milestone 2 of the job (2026-11-12 17:31): 10 good cases of 29 pull requests tried.** A case is good when the gate
+**Milestone 3 of the job (2026-11-12 17:58): 15 good cases of 33 pull requests tried.** A case is good when the gate
 checked it and it passes both scans. The job goes on, newest merged first, to 20 good cases or 80 tried (the owner,
 2026-11-12: "Yes, 15 each", then "I would do 20 each because there could be more issues / unsolved"); this page is
 brought up to date at each milestone.
@@ -20,27 +20,29 @@ brought up to date at each milestone.
   (`pgvector/pgvector:pg17`, the image the project's CI uses), `psql` and ImageMagick in the image, `libsctp1` so that
   Erlang prints no warning into a dependency's build, and, since 16:04, an empty database at the start of every test
   run, which the project's test alias fills from the dump in the code under test, as its CI does (section 1).
-- **Good (10): 5425, 5427, 5422, 5423, 5414, 5407, 5401, 5382, 5395 and 5393** (merged 2026-10-22 to 2026-11-12).
-  Seven are features, three bug fixes. All pass the licence scan (MIT, every touched file); eight pass the hold-out
-  check outright and two (5422, 5382) after their shared phrases were read: standard test assertions, and a common
-  Elixir idiom.
-- **Checked but not counted (2): 5405 and 5394.** Each passes every check of the gate and the hold-out check, and fails
-  the licence scan on one file only: `priv/repo/structure.sql`, the project's own generated schema dump (369,778 and
-  369,852 bytes at 5394's two commits, 373,423 and 373,821 at 5405's; [`licence_large.tsv`](licence_large.tsv)), which the scan sets aside
-  as too large (over 262,144 bytes) without any other finding. Whether such a file may pass on a person's reading is a
-  new licence rule, put to the owner; until then they do not count.
-- **Left out (17), all for the pull request's own reason:** 10 have no existing test left to protect (6 refused by the
-  maker, 4 at the probe because their one nearby test file is the file they rewrite), 6 are features whose hidden tests
+- **Good (15): 5425, 5427, 5422, 5423, 5414, 5407, 5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386 and 5385** (merged
+  2026-10-16 to 2026-11-12). Eleven are features, four bug fixes. Thirteen pass the licence scan outright (MIT, every
+  touched file). Two (5405, 5394) pass it under the owner's rule for long files (rules page, section 9: "if they are
+  rejected only because they are long - count them"): their one failing file is `priv/repo/structure.sql`, the
+  project's own schema dump, which the scan sets aside as too long (over 262,144 bytes), and the part their change adds
+  (12 lines added and 1 removed in 5405, 1 line added in 5394) was read: the pull request's own columns, index and
+  migration rows, with no licence notice, copyright line or outside code ([`licence_large.tsv`](licence_large.tsv)).
+  Thirteen pass the hold-out check outright and two (5422, 5382) after their shared phrases were read: standard test
+  assertions, and a common Elixir idiom.
+- **Left out (18), all for the pull request's own reason:** 10 have no existing test left to protect (6 refused by the
+  maker, 4 at the probe because their one nearby test file is the file they rewrite), 7 are features whose hidden tests
   cannot run before the change (`no_starting_failure`), and 1 has an unstable test of its own (5409: a test that waits
   on a background task passed once and failed once on the merged code). None was the machine's. The factory's side
   caused 5405's first two tries (its migration was never applied; fixed, section 1).
 - **Time per checked case** (the engine's own count, in [`cases.tsv`](cases.tsv)): 525.9, 894.1, 626.5, 528.0, 674.0,
-  626.0, 574.9, 499.2, 1,432.1, 707.9, 600.2 and 545.7 s for 5425, 5427, 5422, 5423, 5414, 5407, 5405, 5401, 5382,
-  5395, 5394 and 5393. 5382 ran while the machine's 1-minute load reached 13.06. The maker's step per pull request is the column `make_s`.
+  626.0, 574.9, 499.2, 1,432.1, 707.9, 600.2, 545.7, 365.9, 398.1 and 457.5 s for 5425, 5427, 5422, 5423, 5414, 5407,
+  5405, 5401, 5382, 5395, 5394, 5393, 5388, 5386 and 5385. 5382 ran while the machine's 1-minute load reached 13.06.
+  The maker's step per pull request is the column `make_s`.
 - **Disk per checked case:** a project image of about 1.45 GB and a database snapshot of about 0.69 GB by Docker's sizes,
   which overlap; the layers only that case uses are about 475 MB and 66 MB (Docker's rounded unique sizes in
   [`own_images.tsv`](own_images.tsv)). The first case also built the shared layers once: the toolchain image
   (974,739,987 bytes) and the database layout on the pgvector image (627,219,456 bytes).
+
 
 
 
@@ -144,7 +146,7 @@ all the same).
 | 5407 | 2026-10-30 | feature | checked | - | 16 / 53 | pass | pass |
 | 5405 (try 1) | 2026-10-28 | feature | dropped | probe, reference_fails_hidden (the recipe's cause: its migration was not applied) | - | - | - |
 | 5405 (try 2) | 2026-10-28 | feature | dropped | probe, reference_fails_hidden (the same; the migration step ran before the patch) | - | - | - |
-| 5405 (try 3) | 2026-10-28 | feature | checked, not counted | - | 18 / 20 | fail (size limit only) | pass |
+| 5405 (try 3) | 2026-10-28 | feature | checked | - | 18 / 20 | pass on reading (one long file) | pass |
 | 5198 | 2026-10-28 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
 | 5402 | 2026-10-28 | - | refused | maker, no_existing_tests | - | - | - |
 | 5401 | 2026-10-28 | bug_fix | checked | - | 1 / 26 | pass | pass |
@@ -154,10 +156,14 @@ all the same).
 | 5396 | 2026-10-23 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
 | 5395 | 2026-10-22 | feature | checked | - | 41 / 97 | pass | pass |
 | 5391 | 2026-10-22 | - | refused | maker, no_existing_tests | - | - | - |
-| 5394 | 2026-10-22 | feature | checked, not counted | - | 4 / 81 | fail (size limit only) | pass |
+| 5394 | 2026-10-22 | feature | checked | - | 4 / 81 | pass on reading (one long file) | pass |
 | 5393 | 2026-10-22 | bug_fix | checked | - | 1 / 45 | pass | pass |
+| 5392 | 2026-10-21 | feature | dropped | probe, start_run_did_not_finish | - | - | - |
+| 5388 | 2026-10-19 | bug_fix | checked | - | 6 / 19 | pass | pass |
+| 5386 | 2026-10-19 | feature | checked | - | 6 / 15 | pass | pass |
+| 5385 | 2026-10-16 | feature | checked | - | 1 / 27 | pass | pass |
 
-Counts by the last try ([`counts.tsv`](counts.tsv)): 12 checked (10 good, 2 not counted); 6 refused by the maker and 4 dropped at the probe, all `no_existing_tests`; 6 dropped at the probe because the hidden tests do not finish on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`); 1 dropped at the controls (`reference_existing_tests_fail`, an unstable test); 51 not reached yet.
+Counts by the last try ([`counts.tsv`](counts.tsv)): 15 checked, all good; 6 refused by the maker and 4 dropped at the probe, all `no_existing_tests`; 7 dropped at the probe because the hidden tests do not finish on the unchanged project (`start_run_did_not_finish`, the rules' `no_starting_failure`); 1 dropped at the controls (`reference_existing_tests_fail`, an unstable test); 47 not reached yet.
 
 **The balance of kinds** (rules page, section 7): the driver prefers the short kind once 12 cases are good and one
 kind has fewer than 4 (until the target was raised to 20: 10 and 3); a candidate of the other kind is then made but deferred, not counted as tried, and run at the
@@ -170,7 +176,11 @@ project's database layout is built on the pgvector image, which no other job use
 
 **The scans** ([`scans.tsv`](scans.tsv), [`good.tsv`](good.tsv), [`holdout_reviews.tsv`](holdout_reviews.tsv),
 [`deps.tsv`](deps.tsv)): the licence file is `LICENSE.md` (MIT) at every starting commit, and every file a case touches
-passes, except the schema dump of 5405 and 5394, set aside as too large ([`licence_large.tsv`](licence_large.tsv)). The hold-out check found no held-out name and no shared 12-word run; the shared 8-word runs are common to
+passes, except the schema dump of 5405 and 5394, set aside as too long and passed on reading under the owner's rule
+(rules page, section 9; [`licence_large.tsv`](licence_large.tsv): the file, its bytes before and after, what it is, the
+lines the change adds and removes, what they hold, the notice lines found and the verdict). The reading used
+[`run/read_large_file_hunks.py`](run/read_large_file_hunks.py) (the mbta/screens job's helper, unchanged) and the
+changed lines themselves, read in full. The hold-out check found no held-out name and no shared 12-word run; the shared 8-word runs are common to
 several held-out projects, syntax, or already in sanbase2, except two in 5422 and six in 5382 (span ids in
 [`holdout_reviews.tsv`](holdout_reviews.tsv)), read as boilerplate: two standard test assertions, and the common idiom
 that counts a process's messages (`after 0 -> count`). The scans read a full clone of the project: a
@@ -193,12 +203,12 @@ dependencies are read by hand in section 1 (the tool marks them "licence not rea
 | [`good.tsv`](good.tsv) | every checked case with its licence and hold-out results, its kind, and whether it counts |
 | [`scans.tsv`](scans.tsv) | the two scans per checked case: licence file, family, files touched and passing; the hold-out's checks and span counts |
 | [`holdout_reviews.tsv`](holdout_reviews.tsv) | the hold-out hits read by a person (span ids, never their text) |
-| [`licence_large.tsv`](licence_large.tsv) | the checked cases whose licence result fails only on files the scan set aside as too large: the file, its bytes at both commits, the number of other failing files |
+| [`licence_large.tsv`](licence_large.tsv) | the checked cases whose licence result fails only on files the scan set aside as too long: the file, its bytes at both commits, the number of other failing files, and a person's reading of the changed part (rules page, section 9) |
 | [`deps.tsv`](deps.tsv) | the locked packages of the checked cases, their declared licences and class, and how many cases lock them |
 | [`own_images.tsv`](own_images.tsv) | every image of this job: id, tags, Docker's size and its unique size |
 | [`list.tsv`](list.tsv) | the 150 screened candidates and each one's status in this job |
 | [`project_tests.tsv`](project_tests.tsv) | the project's own suite: the engine's verdict, ExUnit's summary, the output's size |
-| [`run/`](run/) | the scripts that ran: `controller.sh`, `build.sh`, `state.sh`, `watch.sh`; the suite (`suite.sh`, `env_tests.sh`, `make_probe.sh`, `prepare.exs`, `tests.exs`, `suite_tables.sh`); the cases (`list.sh`, `resolve.exs`, `all.sh`, `one.sh`, `make_one.exs`, `row.sh`, `scans.sh`); the tables (`table.sh`, `collect.sh`) |
+| [`run/`](run/) | the scripts that ran: `controller.sh`, `build.sh`, `state.sh`, `watch.sh`; the suite (`suite.sh`, `env_tests.sh`, `make_probe.sh`, `prepare.exs`, `tests.exs`, `suite_tables.sh`); the cases (`list.sh`, `resolve.exs`, `all.sh`, `one.sh`, `make_one.exs`, `row.sh`, `scans.sh`); the tables (`table.sh`, `collect.sh`); the reading of a long file (`read_large_file_hunks.py`) |
 
 
 ## 5. Exact commands

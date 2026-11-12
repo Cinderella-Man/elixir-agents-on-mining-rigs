@@ -81,13 +81,21 @@ run|retry)
   scanned() { [ -s "$SCANS/$1/licence.tasks.tsv" ] && [ -s "$SCANS/$1/holdout.tasks.tsv" ]; }
   goods() { # OUT/good.tsv: every checked task with its scan results and kind; prints the number of good ones
     {
-      printf 'id\tlicence\tholdout\tkind\tgood\n'
+      printf 'id\tlicence\tholdout\tkind\tgood\tlong_file_read\n'
       last | awk -F'\t' '$2 == "checked" {print $1}' | sort | while read -r id; do
         lic=$(awk -F'\t' 'NR == 2 {print $8}' "$SCANS/$id/licence.tasks.tsv" 2>/dev/null || true)
         hold=$(awk -F'\t' 'NR == 2 {print $NF}' "$SCANS/$id/holdout.tasks.tsv" 2>/dev/null || true)
         kind=$(jq -r '.task_kind // "-"' "$DEST/$id/case.json" 2>/dev/null || echo -)
-        g=no; [ "$lic" = pass ] && { [ "$hold" = pass ] || [ "$hold" = review ]; } && g=yes
-        printf '%s\t%s\t%s\t%s\t%s\n' "$id" "${lic:--}" "${hold:--}" "$kind" "$g"
+        # the rules page, section 9: a licence result that fails only on files the scan left out for their length
+        # passes once each such file's changed part is read (SCANS/large_reads.tsv, verdict pass)
+        read_ok=-
+        if [ "$lic" = fail ]; then
+          read_ok=$(awk -F'\t' -v id="$id" 'NR == FNR {if ($1 == id && $8 == "pass") ok[$2] = 1; next}
+            FNR > 1 && $6 != "pass" {n++; if ($6 != "fail:exclude:large" || !($2 in ok)) bad++}
+            END {print (n > 0 && bad == 0) ? "yes" : "no"}' "$SCANS/large_reads.tsv" "$SCANS/$id/licence.files.tsv" 2>/dev/null || echo no)
+        fi
+        g=no; { [ "$lic" = pass ] || [ "$read_ok" = yes ]; } && { [ "$hold" = pass ] || [ "$hold" = review ]; } && g=yes
+        printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$id" "${lic:--}" "${hold:--}" "$kind" "$g" "$read_ok"
       done
     } > "$OUT/good.tsv"
     awk -F'\t' 'NR > 1 && $5 == "yes"' "$OUT/good.tsv" | wc -l
