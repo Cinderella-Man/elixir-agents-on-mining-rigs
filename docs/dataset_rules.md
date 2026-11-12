@@ -168,6 +168,11 @@ table keeps its id and the reason name of this page, and the counts per reason a
 | In the list | MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC (ISC added by the owner on 2026-11-12) |
 | Outside the list | copyleft and weak copyleft (GPL, AGPL, LGPL, MPL, EPL), no licence at all, a custom or unclear licence text, and any other licence until it is read and added |
 
+**A licence stated in the README counts when the repository has no licence file at its root** (the owner, 2026-11-12:
+"Yes, accept it", for hexpm/hexpm, which states Apache-2.0 in its README and has no licence file). The statement must
+name a licence of the list in plain words and be the maintainers' own; the file, the commit and the sentence are
+recorded with every case of that project as the proof. A licence file, where there is one, still decides.
+
 The list is applied three times: to the repository (section 1), to every file a task touches (section 4) and to every
 dependency file a session quotes (section 6). The dataset's own licence: third-party code keeps its licence, named
 per row with the notices shipped; the licence of the owner's own part is not final (the owner leans to MIT). This page
@@ -191,4 +196,5 @@ is not legal advice.
 - Sixteen ex338 tasks were built on the project's 1.18.3 image before the maker read each commit's own Elixir and OTP;
   the pair each of those commits declares is being listed.
 - The two session scans of section 6 are to be built before the first session is published.
-- `hexpm/hexpm` states Apache-2.0 and has no licence file at its root; the per-file scan decides for each of its tasks.
+- The licence tool reads only a root licence file: it does not yet accept a README statement (section 9), so
+  `hexpm/hexpm`'s cases fail it until that is added.
