@@ -818,6 +818,9 @@ they found is in the rows that name them (`application.ex`, `baseline_test.exs`)
 
 ## 9. Calling the factory
 
+**Where it runs:** on the data-mining machine, never on the machine that serves the model, and one task at a time
+(decided 2026-11-12, registry row E76). Beside the model server, task jobs made database steps and tests time out.
+
 The entry points are the functions of `Eab.Factory` (`lib/eab/factory.ex`, job T9). `bin/factoryctl` calls one of
 them in a running controller through the release's `rpc` command (`docker exec <controller> bin/factory rpc`) and prints
 the answer as JSON: `{"ok": ...}` or `{"error": "..."}`. It runs on the machine whose Docker runs the controller.

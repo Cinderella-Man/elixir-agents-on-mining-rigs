@@ -13,6 +13,9 @@ live in the sister repo `llms-on-crypto-mining-rigs`.
 - **Speed is agentic:** time per task in a coding-agent session on the rig. Single-request tok/s is a diagnostic.
 - **Exact numbers:** each number is one run with its file, build and settings. Repeats are listed by value, never as
   a range, and estimates are marked est.
+- **The model's machine runs only the model:** task making, task checks and the project containers of the teacher's
+  sessions run on a separate data-mining machine with no GPU, one task at a time. Beside the model server they fought
+  it for processor, memory and disk, and their tests timed out, which reads as a failed task (2026-11-12, E76).
 - **Every idea gets a row in `experiments.md` at once,** however small. Ideas the evidence argues against stay as
   parked rows with the reason and what would reopen them.
 - **Search both registries before adding an idea:** this `experiments.md`, and the sister repo's
