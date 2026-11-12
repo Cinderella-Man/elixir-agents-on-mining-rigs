@@ -1,0 +1,22 @@
+repo	licence	mix_elixir	last_pushed	merged_prs_pool
+Simon-Initiative/oli-torus	MIT	~> 1.19	2026-11-09	5116
+santiment/sanbase2	MIT	~> 1.19	2026-11-09	5112
+mbta/screens	MIT	~> 1.20	2026-11-09	2468
+nerves-hub/nerves_hub_web	Apache-2.0	~> 1.20.0	2026-11-09	2455
+supabase/realtime	Apache-2.0	~> 1.19	2026-11-09	1687
+hexpm/hexpm	Apache-2.0	~> 1.20	2026-11-08	1402
+ambry-app/ambry	MIT	~> 1.18	2026-11-09	1083
+axelclark/ex338	MIT	~> 1.18	2026-09-10	749
+source-academy/backend	Apache-2.0	~> 1.19	2026-11-09	695
+cesium/safira	MIT	~> 1.19	2026-10-29	407
+bikebrigade/dispatch	Apache-2.0	~> 1.20	2026-11-07	306
+blablatdinov/croniq	MIT	~> 1.20	2026-10-28	232
+covalenthq/refiner	Apache-2.0	~> 1.18.0	2026-05-22	220
+joladev/jola.dev	MIT	~> 1.18	2026-11-09	175
+notesclub/notesclub	MIT	~> 1.20.2	2026-11-05	163
+zorn/flick	MIT	~> 1.20.5	2026-11-08	155
+hexpm/preview	Apache-2.0	~> 1.18	2026-07-16	153
+cr0t/lexin	MIT	~> 1.18	2026-09-05	130
+zorn/local_cents	MIT	~> 1.20	2026-11-01	130
+youcongress/youcongress	MIT	~> 1.18	2026-11-09	121
+asciinema/asciinema-server	Apache-2.0	~> 1.19	2026-11-08	106

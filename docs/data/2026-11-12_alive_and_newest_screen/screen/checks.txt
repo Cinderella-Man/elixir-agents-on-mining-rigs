@@ -1,0 +1,76 @@
+ok   ambry-app/ambry: same pull-request numbers in the same order as the census
+ok   ambry-app/ambry: 125 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   ambry-app/ambry: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   asciinema/asciinema-server: same pull-request numbers in the same order as the census
+ok   asciinema/asciinema-server: 10 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   asciinema/asciinema-server: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   bikebrigade/dispatch: same pull-request numbers in the same order as the census
+FAIL bikebrigade/dispatch: 78 counted from the census, 77 in the screen
+ok   bikebrigade/dispatch: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   blablatdinov/croniq: same pull-request numbers in the same order as the census
+ok   blablatdinov/croniq: 24 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   blablatdinov/croniq: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   cesium/safira: same pull-request numbers in the same order as the census
+ok   cesium/safira: 50 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   cesium/safira: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   covalenthq/refiner: same pull-request numbers in the same order as the census
+ok   covalenthq/refiner: 16 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   covalenthq/refiner: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   cr0t/lexin: same pull-request numbers in the same order as the census
+ok   cr0t/lexin: 0 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   cr0t/lexin: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   hexpm/hexpm: same pull-request numbers in the same order as the census
+ok   hexpm/hexpm: 578 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   hexpm/hexpm: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   hexpm/preview: same pull-request numbers in the same order as the census
+ok   hexpm/preview: 7 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   hexpm/preview: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   joladev/jola.dev: same pull-request numbers in the same order as the census
+ok   joladev/jola.dev: 7 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   joladev/jola.dev: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   mbta/screens: same pull-request numbers in the same order as the census
+FAIL mbta/screens: 513 counted from the census, 508 in the screen
+ok   mbta/screens: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   notesclub/notesclub: same pull-request numbers in the same order as the census
+ok   notesclub/notesclub: 54 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   notesclub/notesclub: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   santiment/sanbase2: same pull-request numbers in the same order as the census
+FAIL santiment/sanbase2: 1501 counted from the census, 1488 in the screen
+ok   santiment/sanbase2: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   Simon-Initiative/oli-torus: same pull-request numbers in the same order as the census
+ok   Simon-Initiative/oli-torus: 1794 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   Simon-Initiative/oli-torus: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   source-academy/backend: same pull-request numbers in the same order as the census
+FAIL source-academy/backend: 211 counted from the census, 210 in the screen
+ok   source-academy/backend: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   supabase/realtime: same pull-request numbers in the same order as the census
+ok   supabase/realtime: 283 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   supabase/realtime: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   youcongress/youcongress: same pull-request numbers in the same order as the census
+ok   youcongress/youcongress: 58 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   youcongress/youcongress: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   zorn/flick: same pull-request numbers in the same order as the census
+ok   zorn/flick: 31 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   zorn/flick: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   zorn/local_cents: same pull-request numbers in the same order as the census
+ok   zorn/local_cents: 24 pull requests pass every rule before the repair rule (candidates plus repaired), counted two ways
+ok   zorn/local_cents: every census mention pair within 50 merged pull requests is in pairs.tsv
+ok   ambry-app/ambry: 125 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   asciinema/asciinema-server: 10 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   bikebrigade/dispatch: 78 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 1), counted two ways
+ok   blablatdinov/croniq: 24 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   cesium/safira: 50 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   covalenthq/refiner: 16 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   cr0t/lexin: 0 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   hexpm/hexpm: 578 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   hexpm/preview: 7 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   joladev/jola.dev: 7 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   mbta/screens: 513 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 5), counted two ways
+ok   notesclub/notesclub: 54 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   santiment/sanbase2: 1501 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 13), counted two ways
+ok   Simon-Initiative/oli-torus: 1794 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   source-academy/backend: 211 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 1), counted two ways
+ok   supabase/realtime: 283 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   youcongress/youcongress: 58 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   zorn/flick: 31 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways
+ok   zorn/local_cents: 24 pull requests pass every rule before the repair rule (candidates, repaired and reverted later 0), counted two ways

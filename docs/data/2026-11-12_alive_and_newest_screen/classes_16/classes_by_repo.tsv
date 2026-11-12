@@ -1,0 +1,17 @@
+repo	candidates_all	candidates_since	taken	table_has_pair	pair_missing	service_missing	before_1_12	no_version_named	no_starting_commit	table_has_pair_with_other_lack	resolver_gap	newest_taken	oldest_taken	elixir_below_1_18	below_floor
+Simon-Initiative/oli-torus	1751	1042	150	0	150	0	0	0	0	0	0	2026-11-11	2026-07-09	0	0
+santiment/sanbase2	1482	422	150	0	150	0	0	0	0	0	0	2026-11-12	2026-05-29	0	0
+mbta/screens	505	302	150	0	45	0	0	0	0	0	0	2026-11-09	2025-11-03	105	105
+nerves-hub/nerves_hub_web	705	477	150	106	44	0	0	0	0	106	0	2026-11-10	2026-08-21	0	0
+supabase/realtime	273	258	150	0	150	0	0	0	0	0	0	2026-11-12	2026-06-24	0	0
+hexpm/hexpm	557	358	150	21	129	0	0	0	0	21	0	2026-11-11	2026-09-03	0	0
+ambry-app/ambry	101	92	92	1	90	0	0	0	0	0	0	2026-08-24	2024-03-21	1	1
+axelclark/ex338	305	42	42	17	0	0	0	0	0	0	0	2026-09-09	2024-02-20	25	25
+source-academy/backend	204	39	39	0	14	0	0	0	0	0	0	2026-11-10	2024-02-03	25	25
+bikebrigade/dispatch	75	51	51	0	0	5	0	0	0	0	0	2026-11-07	2024-01-03	46	46
+blablatdinov/croniq	24	24	24	0	23	0	0	0	0	0	0	2025-07-28	2025-06-14	1	1
+joladev/jola.dev	7	7	7	0	7	0	0	0	0	0	0	2026-05-24	2025-08-10	0	0
+notesclub/notesclub	53	7	7	0	0	0	0	0	0	0	0	2026-08-17	2024-01-06	7	7
+zorn/flick	30	30	30	0	16	0	0	0	0	0	0	2026-10-28	2024-04-30	14	14
+zorn/local_cents	21	21	21	0	21	0	0	0	0	0	0	2026-09-10	2026-07-08	0	0
+youcongress/youcongress	57	57	57	0	8	0	0	0	0	0	0	2026-08-29	2024-01-06	49	49

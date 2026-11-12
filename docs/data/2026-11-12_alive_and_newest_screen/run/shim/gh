@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# A stand-in for the two `gh` calls the earlier fetch scripts make, on a machine with curl and a token but no gh:
+#   gh api graphql [-f name=string | -F name=typed]...   POST https://api.github.com/graphql, the answer on stdout
+#   gh api rate_limit [--jq <expression>]                GET  https://api.github.com/rate_limit
+# -F gives a number, true, false or null as such, anything else as a string (as gh does).
+#   GITHUB_TOKEN_FILE  a file holding the token (read here, never printed or logged)
+#   GH_SHIM_LOG        a file each request appends to: time, endpoint, HTTP status
+#   GH_SHIM_STOP       a file written when GitHub answers with a rate-limit or abuse error three times in a row
+# The exit status is 0 for HTTP 200 and 1 otherwise (the answer is printed either way).
+set -euo pipefail
+: "${GITHUB_TOKEN_FILE:?}"
+log="${GH_SHIM_LOG:-/dev/null}"; stop="${GH_SHIM_STOP:-/dev/null}"
+[ "${1:-}" = api ] || { echo "gh stand-in: only 'gh api' is served" >&2; exit 2; }
+shift
+endpoint="${1:?endpoint}"; shift
+hdr=$(mktemp); out=$(mktemp); trap 'rm -f "$hdr" "$out"' EXIT
+chmod 600 "$hdr"
+{ printf 'Authorization: bearer '; tr -d '\n\r ' < "$GITHUB_TOKEN_FILE"; printf '\n'; } > "$hdr"
+count="${GH_SHIM_STOP:+$GH_SHIM_STOP.count}"
+call() {  # call <curl args...>: the status, logged, with the count of rate-limit answers in a row
+  local code
+  code=$(curl -sS --max-time 120 -o "$out" -w '%{http_code}' -H @"$hdr" -H 'Accept: application/vnd.github+json' \
+         -A 'repository-screening' "$@" 2>> "$log" || echo 000)
+  printf '%s\t%s\t%s\n' "$(date -u +%FT%TZ)" "$endpoint" "$code" >> "$log"
+  if [ -n "$count" ]; then
+    if [ "$code" = 403 ] || [ "$code" = 429 ] || grep -q -i -E 'rate limit|abuse' "$out" 2> /dev/null && [ "$code" != 200 ]; then
+      n=$(( $(cat "$count" 2> /dev/null || echo 0) + 1 )); echo "$n" > "$count"
+      [ "$n" -ge 3 ] && echo "$(date -u +%FT%TZ) GitHub answered with a rate-limit or abuse error $n times in a row" > "$stop"
+    else echo 0 > "$count"; fi
+  fi
+  echo "$code"
+}
+case "$endpoint" in
+  graphql)
+    vars='{}'; query=""
+    while [ $# -gt 0 ]; do
+      flag="$1"; kv="${2:?value}"; shift 2
+      k="${kv%%=*}"; v="${kv#*=}"
+      if [ "$k" = query ]; then query="$v"; continue; fi
+      if [ "$flag" = -F ] && printf '%s' "$v" | grep -q -E '^(-?[0-9]+|true|false|null)$'; then
+        vars=$(jq -c --arg k "$k" --argjson v "$v" '. + {($k): $v}' <<< "$vars")
+      else
+        vars=$(jq -c --arg k "$k" --arg v "$v" '. + {($k): $v}' <<< "$vars")
+      fi
+    done
+    body=$(jq -n -c --arg q "$query" --argjson v "$vars" '{query: $q, variables: $v}')
+    code=$(call -X POST --data-binary @- https://api.github.com/graphql <<< "$body")
+    cat "$out"; [ "$code" = 200 ] ;;
+  rate_limit)
+    code=$(call https://api.github.com/rate_limit)
+    if [ "${1:-}" = --jq ]; then jq -r "$2" "$out"; else cat "$out"; fi
+    [ "$code" = 200 ] ;;
+  *) echo "gh stand-in: endpoint $endpoint is not served" >&2; exit 2 ;;
+esac

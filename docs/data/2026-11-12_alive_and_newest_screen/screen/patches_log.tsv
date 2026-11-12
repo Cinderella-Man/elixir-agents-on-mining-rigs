@@ -1,0 +1,519 @@
+2026-11-12T10:13:40Z ambry-app/ambry: 0 pull requests to diff
+2026-11-12T10:13:40Z hexpm/hexpm: 0 pull requests to diff
+2026-11-12T10:13:40Z mbta/screens: 43 pull requests to diff
+mbta/screens	185	ok_from_diff_page(head_on_base_branch)	aa9990d4ee1a106aea7c8a7f71e410ebaf0a2b38	4 files
+mbta/screens	219	ok_from_diff_page(head_on_base_branch)	3980564ed6ffe6afce5dd8bda863fb0fa50554d2	1 files
+mbta/screens	714	ok_from_diff_page(head_on_base_branch)	21100274619ad05f8e169197878ed79013faa1c7	1 files
+mbta/screens	716	ok_from_diff_page(head_on_base_branch)	b1e8a5f36caa3728aee26a449092718195130127	6 files
+mbta/screens	717	ok_from_diff_page(head_on_base_branch)	542758eeca014843b88a12d9a83c30bb799c0cda	9 files
+mbta/screens	718	ok_from_diff_page(head_on_base_branch)	0c096b58fae9698af98a906c64f6128f805a5165	2 files
+mbta/screens	734	ok_from_diff_page(head_on_base_branch)	82a02d5b74868b4cf30e57e7adb0892f8ca2a7fc	4 files
+mbta/screens	1490	ok	a91988206795d31abbd1d4fd7c018f0dee7e9bf3	10 files
+mbta/screens	1491	ok	6a1a33b9c6a288d2549e30bbf4333793ce2ff637	1 files
+mbta/screens	1507	ok	67926a6ad52b83bb0741210536b32c04518fccb2	2 files
+mbta/screens	1508	ok	3631c72226ef3238f41da12205e99ddb9b6a7206	1 files
+mbta/screens	1528	ok	43e527a373f26e1e0a6861dc6d81fe3293339363	12 files
+mbta/screens	1531	ok	c45b415cce430e3edb981ff2b4f690338c365dba	12 files
+mbta/screens	1785	ok	65915a20451cfc5d4578c14f39f21a2f920e1853	12 files
+mbta/screens	1792	ok	cb1861f39146e6027b2c56bf21370d5ac5be6a59	3 files
+mbta/screens	2068	ok	19125d8a9b6d64ce2fe3b66fe2dd39e26c7b11ae	3 files
+mbta/screens	2091	ok	df578203bac1715b4f843f1a438b1f405b34ca6e	4 files
+mbta/screens	2092	ok	9c8d9dff63ee3797586db3e5b8663d44cd52ec05	6 files
+mbta/screens	2093	ok	d6c7e4b4ec8fc4668fb8e1fcab4db5b2d725e4a5	4 files
+mbta/screens	2094	ok	9ffd4b465449b666237b77d041b454e4bdeea993	2 files
+mbta/screens	2096	ok	13b4be0220a2323cbe8436652a11265587099f9c	1 files
+mbta/screens	2111	ok	8d8efc1e7dcddbd923f6e40d59c38968812a161b	2 files
+mbta/screens	2112	ok	7a81c93fa22d2ec1602cd2da88cc299bcd2c51f2	2 files
+mbta/screens	2190	ok	b0b685c081112df9d867f44f574ab6dfba27a7ee	22 files
+mbta/screens	2200	ok	84a5aa8d4ad3604a10f303833ae632044616979f	1 files
+mbta/screens	2318	ok	6e25840b435b84b25f82c1f771a93d56b4a98164	3 files
+mbta/screens	2320	ok	c117c92c70578f9e287f3ca8583c1648b7d0f677	2 files
+mbta/screens	2413	ok	61ac7254a1bb085af443c344bbedde544e155c13	4 files
+mbta/screens	2415	ok	e914950e655b4c76b037311beaff640a2e57a67b	10 files
+mbta/screens	2559	ok	2dede2a216dda0f212e0a14775c44240e829a7b1	8 files
+mbta/screens	2561	ok	ecb424feac361364de6e9a2ee66dc328cfc696ef	1 files
+mbta/screens	2916	ok	326266741a7af7cfc9a4ab0250582cba23dbd626	24 files
+mbta/screens	2925	ok	727988881db30522270cccdd54826c38beba4a4d	1 files
+mbta/screens	2948	ok	3d11f35d35e7dcd1db9969f80dd6304dda5b119d	11 files
+mbta/screens	3003	ok	8f38e21443e8c3548a8c6cad845fa81b946a16ae	1 files
+mbta/screens	3073	ok	ff24c2f402eff61b7382d2d8c721434ef11f3e55	2 files
+mbta/screens	3087	ok	341c89e2bb6a58dd9d1c0c3f665a112a3e3cd3bb	3 files
+mbta/screens	3102	ok	ead5925acb33a3b5b8a60fcf54580f35465a9f0b	3 files
+mbta/screens	3103	ok	21dbe250aeb7bbdce66ea234f6b8f776b7c4791a	1 files
+mbta/screens	3245	ok	6592e3a9fbff3cd829134d7104abb785fda558f7	7 files
+mbta/screens	3257	ok	f2afc80873610a9f5e39208aab3466191461b4bd	7 files
+mbta/screens	3344	ok	c2d7c9ffbcdcc1967e8dfc8fd5a297fd34e42c97	12 files
+mbta/screens	3353	ok	40bcb9bfcc70cf7b91f1fdad5f1d1f3197ff228f	5 files
+2026-11-12T10:14:17Z mbta/screens: 43 made, 0 without a patch
+2026-11-12T10:14:17Z source-academy/backend: 0 pull requests to diff
+2026-11-12T10:14:17Z supabase/realtime: 86 pull requests to diff
+supabase/realtime	442	ok	285aa2ea483e758e0b90203c3fddb563fb97d288	6 files
+supabase/realtime	463	ok	36c8a4b6a93e6e7eddc2acd20b1cb141bf352757	41 files
+supabase/realtime	468	ok	98f0f008d5b3e8413da0892ab52c529a4ea7a709	15 files
+supabase/realtime	473	ok	36b57c0fd28fdf149a6b20c5db5e78622b373858	4 files
+supabase/realtime	480	ok	c3d7f6d09c7c997cd436432dfc0d1ef5a9c7a0cb	7 files
+supabase/realtime	481	ok	d3930d4dfa0dfe88668913818afc69966809a882	1 files
+supabase/realtime	482	ok	85afc5387b84fcfcd3be9514022c253e364c4d97	2 files
+supabase/realtime	485	ok	4bd3018452236218c03366c62945fe46805403bc	12 files
+supabase/realtime	487	ok	75c11344fb6b9892e6e8512489bf16a609b4f833	1 files
+supabase/realtime	488	ok	2d0e9d7f0eac66bdf976b86fe64be86973a714a2	1 files
+supabase/realtime	494	ok	a2e9f62bd9b8700d04dbb33c70ed6607ada0afb1	4 files
+supabase/realtime	495	ok	823144fa92a4a271db45fde2339bd62dd255276c	1 files
+supabase/realtime	499	ok	ad363a9e823844d6836a579ba5f87a150eeb8543	11 files
+supabase/realtime	507	ok	337b33fec9b3e57f11018e49af1625f7668878ad	2 files
+supabase/realtime	509	ok	08c6ace6c3fe105fb0ddf43a8a81cf1305f2ce99	5 files
+supabase/realtime	538	ok	36793c3a34534a0931b79d8a8d7b3450485fce98	6 files
+supabase/realtime	539	ok	b3d76ee7cb038573dbcf04cd88bb57cff7dd3204	1 files
+supabase/realtime	540	ok	bf803c2f06c02ca18f698895d72e0508377658c7	1 files
+supabase/realtime	542	ok	61628e307c1a86dd93ca5767452bae920c85e21d	2 files
+supabase/realtime	543	ok	de872f3833f5c2a5bfc8cc24fbb00f677ba29a2c	2 files
+supabase/realtime	545	ok_from_diff_page(head_on_base_branch)	a4f9ef971b512e92594ce44f9c431e33ff3e08ca	13 files
+supabase/realtime	593	ok	4b02990e7e6b1a7fb1b2de73f7777211a491d1d7	17 files
+supabase/realtime	602	ok	0bf1110a0522d0aa83de184d91c8d8dbc31c9f18	17 files
+supabase/realtime	743	ok	edca213b6992feb3dd3ba752dc8f3cb8959ac90b	9 files
+supabase/realtime	744	ok	22e277d8bb09fa87398fa3d5b681b76e90708d84	7 files
+supabase/realtime	850	ok	434d2a05dd421a5b56eef485a96f5c40eb51b327	3 files
+supabase/realtime	866	ok	7bf2ba5e5d537a7f90041c7bdd98b7e813f9f5d1	4 files
+supabase/realtime	873	ok	c4cab290da49f457bf7a32c6832332a875089a78	4 files
+supabase/realtime	1078	ok	3194eb269c8b8a808da5deab347e30cb1092951b	4 files
+supabase/realtime	1419	ok	1e6abde8708f7dbda54952e3f170bd32e5f120ca	24 files
+supabase/realtime	1425	ok	0674bc21fe3cd117e5b0288af20a919ad15fcfa6	5 files
+supabase/realtime	1432	ok	eddfb79095eb15d4d37d3660816955f8505401b8	5 files
+supabase/realtime	1445	ok	177d5aaa2afcd1836ba96193d50120712a1a0135	11 files
+supabase/realtime	1450	ok	ef18c27097a2fa37556fa4e3a3e1f3908548f89f	4 files
+supabase/realtime	1451	ok	e2eac5efa31fcc1a6efc41399b5269061ba6a006	9 files
+supabase/realtime	1455	ok	32cd5004e9941e062740c847c15c74ea74c89aec	6 files
+supabase/realtime	1464	ok	1efdf781904e6e3ed2d393fc1b8bfa7de836b6bd	3 files
+supabase/realtime	1593	ok	04238252f5ea403cba859f38b3d2f5a13b5e18c1	10 files
+supabase/realtime	1596	ok	dec8f0cac9a1303d0112ef3ab3f439f9bed4f92b	4 files
+supabase/realtime	1664	ok	bdadcecf944525919f749aa06775658c3fefc563	24 files
+supabase/realtime	1673	ok	e86e9849ad92874b55ac7ed1e4ab55be702a49cb	3 files
+supabase/realtime	1841	ok	df84e75e2be8de304b7581f722125119333ffc16	12 files
+supabase/realtime	1845	ok	395560e19548bfb07224c4be13d586cecf570dbd	9 files
+supabase/realtime	1846	ok	3acaa3cf909060a125cac961a4af984a2c306d77	2 files
+supabase/realtime	1850	ok	1bbd3cb569c741d0ec711a980c3c1fd7b29fea04	7 files
+supabase/realtime	1852	ok	a1e19f04b945e61f7e2ab2bb312d41e90810787a	42 files
+supabase/realtime	1939	ok	6c43bd3d32e7d00b9902889c335d6bfb6ba0f36a	4 files
+supabase/realtime	1945	ok	e7532bb3c7b73284cf46c078805086fd0e80c73c	11 files
+supabase/realtime	1954	ok	388992c3e23b71b6f78f185a34fb04891927d1ff	21 files
+supabase/realtime	1969	ok	c039bca9b57c2e554a67fdf462970b54641d82eb	11 files
+supabase/realtime	1976	ok	3b960b58871f2799925fd3f3634557eaf668076c	4 files
+supabase/realtime	2002	ok	51c7ebf375c94f6d770b5719b56e1f5165a8a2c6	3 files
+supabase/realtime	2008	ok	bd1381b32880f7568955f9d1c28aa8bd0834256d	5 files
+supabase/realtime	2026	ok	edf06573fdce65149ce304908b2b5e87246a40aa	6 files
+supabase/realtime	2031	ok	389f2d384228e7dbe7b9edd62cb0778bea2a6bcd	2 files
+supabase/realtime	2048	ok	c26fe9ad09badedf76f10da83762f3cf335fc355	2 files
+supabase/realtime	2097	ok	b84d8556e1d644d046cb20d236aa83f3dd398994	11 files
+supabase/realtime	2110	ok	b4fea9fc5e28275040c690991d4dd8f8dca8f10a	38 files
+supabase/realtime	2158	ok	4005b93a56b018be45a9acd27689030d59fefe1b	6 files
+supabase/realtime	2162	ok	ef087b8495b871034dc0d1a5e3ebf31c7bba1119	23 files
+supabase/realtime	2164	ok	c06f392c3f445b624ca53b1dd798e1fae6d7f4d0	1 files
+supabase/realtime	2165	ok	8a63c01abe71143d1db5eabe87f622266249b4ec	1 files
+supabase/realtime	2167	ok	246d22795f70e8d06fed0c07150522f2dc774db5	2 files
+supabase/realtime	2217	ok	1a42b30da95a2f35b83fca9c264968516af99292	9 files
+supabase/realtime	2218	ok	3fbd5b3aa92487305e5d18755d75c74e5bd71956	2 files
+supabase/realtime	2222	ok	a85489e0e2fdbc52611e29f03f92c62315353d39	1 files
+supabase/realtime	2228	ok	2986e66e7f070f2a09783f041f6b3d6a01e4030b	7 files
+supabase/realtime	2231	ok	9275c278cce136817237ce3a121d6ed23f42d0d2	1 files
+supabase/realtime	2235	ok	f8f7208bd773894cea7194031e139fa025dded18	28 files
+supabase/realtime	2238	ok	6d58a03ea320e957dfe8307b01cefb58471322de	53 files
+supabase/realtime	2254	ok	90ccb30cde4c8770c1f6dd8d0059b283ffbed55c	5 files
+supabase/realtime	2259	ok	0690f798f9c98a75b553e006c3963e8254bde79e	2 files
+supabase/realtime	2261	ok	5fb15d39461a087ad758c1bb8837a11e225cb570	5 files
+supabase/realtime	2272	ok	68847158d39beddf4594b295f532bbfb07924ccb	21 files
+supabase/realtime	2275	ok	ce78122cf9f4222756e780ca53578fd49642954d	5 files
+supabase/realtime	2318	ok	98606a32a3e67fb414e4c01bd3ca3ff68da04402	17 files
+supabase/realtime	2359	ok	b8cec8b7a982a7251366459546d0a3b931c35032	2 files
+supabase/realtime	2363	ok	912b154271f0d29b6ba6e72b6f6c9951ac79f8b2	14 files
+supabase/realtime	2372	ok	e95139d306eaaf1a3d03faf69b24e98df5c955be	4 files
+supabase/realtime	2397	ok	af1df0e7245de103251bac9e50d6c31ffe8fb62a	2 files
+supabase/realtime	2406	ok	68be885e1951748ea58e01af5a630aac171cd0aa	10 files
+supabase/realtime	2428	ok	2ab2a6d94a97305086597ae09e2e15d9770ff189	9 files
+supabase/realtime	2458	ok	67af9ce75d63da0650cda449c0adee0636d9b2c7	9 files
+supabase/realtime	2463	ok	6c829e6038c30a89ea46c4e7baae560bdaff97b1	9 files
+supabase/realtime	2464	ok	350078fd55f498136cbd35f72a0ff8020a67f3ad	6 files
+supabase/realtime	2479	ok	bc45c49d09c4ee8135e973858625f52ea878c21d	5 files
+2026-11-12T10:14:30Z supabase/realtime: 86 made, 0 without a patch
+2026-11-12T10:17:10Z ambry-app/ambry: 0 pull requests to diff
+2026-11-12T10:17:10Z hexpm/hexpm: 0 pull requests to diff
+2026-11-12T10:17:10Z mbta/screens: 0 pull requests to diff
+2026-11-12T10:17:10Z source-academy/backend: 0 pull requests to diff
+2026-11-12T10:17:10Z supabase/realtime: 0 pull requests to diff
+2026-11-12T11:07:38Z ambry-app/ambry: 0 pull requests to diff
+2026-11-12T11:07:38Z bikebrigade/dispatch: 22 pull requests to diff
+bikebrigade/dispatch	2	ok_from_diff_page(head_on_base_branch)	ecc2e119d63723c3fdf03a3f0156b722149a179a	6 files
+bikebrigade/dispatch	22	ok_from_diff_page(head_on_base_branch)	f20837c2d8141fe1b3d6329a2f9fe9846fb50706	2 files
+bikebrigade/dispatch	148	ok	e61ea2dfdc77bb08e58c6b062dffa46a6c79202d	2 files
+bikebrigade/dispatch	168	ok	cf1a4ba3f2bf26348802ca8360156a1426712c2e	1 files
+bikebrigade/dispatch	208	ok	8ee220ba4cf796d7c50bf72ecf29032a8ec60c73	11 files
+bikebrigade/dispatch	211	ok	78ec0c3d63c1c529e7e690fd29ed7b40eef81d38	22 files
+bikebrigade/dispatch	217	ok	5cc24036114f5e6bb060d5bd63f0d6068641d952	22 files
+bikebrigade/dispatch	218	ok	d9a76b30c4b2c07f0529ea0ad6f9036ad1b4d75f	5 files
+bikebrigade/dispatch	252	ok	d3e7fefeface5a5f70f324e2c55597ff8d4d50c6	3 files
+bikebrigade/dispatch	253	ok	c167b190d19480f9b64a382baadafd637bbd3135	4 files
+bikebrigade/dispatch	271	ok	e877b82c83b75cd34d1f96b5bf27d2369d000965	16 files
+bikebrigade/dispatch	281	ok	f8c967422f1c00ba84458d2c323ec329b872111b	16 files
+bikebrigade/dispatch	388	ok	3cfae804d1ccf34daa60fdad2d4c1ef4bd27beeb	3 files
+bikebrigade/dispatch	389	ok	491a4562c6ffeaab9d3346bbc48460b37422c157	10 files
+bikebrigade/dispatch	396	ok	f87c6924f2fa0fece73b9a934758057f80d5f612	37 files
+bikebrigade/dispatch	404	ok	1b98879bf7071989c435040d8f72a8d16b0dff2b	18 files
+bikebrigade/dispatch	405	ok	164863984aa3f5cbd9bb13d8a08000b9932cfe17	1 files
+bikebrigade/dispatch	407	ok	3f367002f1bdb7a964218a188ae0ae90759283cc	1 files
+bikebrigade/dispatch	444	ok	53811b7b3cf13d50a70eafc6a4cd0dd623ac151e	2 files
+bikebrigade/dispatch	445	ok	d885a6439409d271dfab8b950cd7f905087598be	2 files
+bikebrigade/dispatch	541	ok	49146aa59db76a18a7cf3a675c4889d57999ca8a	41 files
+bikebrigade/dispatch	544	ok	88e9118ebb3b1017af6337efa63eb93c5bd9a8d3	53 files
+2026-11-12T11:08:00Z bikebrigade/dispatch: 22 made, 0 without a patch
+2026-11-12T11:08:00Z cesium/safira: 8 pull requests to diff
+cesium/safira	350	ok	30de570e025546774d78b019930deadaf05e6cfb	2 files
+cesium/safira	352	ok	61ac89be78c6055355741e47c06b692b006004ba	1 files
+cesium/safira	437	ok	6c8d4eba7697c28c276b41fba2b74dd59a725208	30 files
+cesium/safira	443	ok	9b727362c142776c8061f18cb8a9f9cf0a0a68b5	17 files
+cesium/safira	447	ok	44352d9e06442e553e366f3bd0149f56a7b93c31	41 files
+cesium/safira	473	ok	56d210fe4907588c0cb291691ba058aecbed428a	6 files
+cesium/safira	489	ok	cf3c36c3ec22d374180290bae0a665218c0e6c20	18 files
+cesium/safira	494	ok	dc01d24c926c952a0785ece6a34822c962caab4f	1 files
+2026-11-12T11:08:07Z cesium/safira: 8 made, 0 without a patch
+2026-11-12T11:08:07Z covalenthq/refiner: 31 pull requests to diff
+covalenthq/refiner	3	ok_from_diff_page(head_on_base_branch)	2d6f9cd9df2fd9620ef94cfba8e2f48130c9e953	49 files
+covalenthq/refiner	4	ok_from_diff_page(head_on_base_branch)	c89e1b393133e4553be46dc9385c9730b98a8805	51 files
+covalenthq/refiner	6	ok_from_diff_page(head_on_base_branch)	6f19055901a4936520371d7a936eaef7889e67db	45 files
+covalenthq/refiner	7	ok_from_diff_page(head_on_base_branch)	334199a2aec71386d75e9e00e5e63e7a4c565b1f	3 files
+covalenthq/refiner	81	ok_from_diff_page(head_on_base_branch)	594d4f23b71d97a789c08da37902400a5ebb8731	43 files
+covalenthq/refiner	82	ok_from_diff_page(head_on_base_branch)	102bf9b70dbe971682b9ff109da72672ffe43e72	10 files
+covalenthq/refiner	84	ok_from_diff_page(head_on_base_branch)	8a8503a6be91db9be4c6144ed4301510a8e85565	4 files
+covalenthq/refiner	85	ok_from_diff_page(head_on_base_branch)	aa068476f4bf04f2c9b0dba624ab31ecbb38f1e3	27 files
+covalenthq/refiner	91	ok_from_diff_page(head_on_base_branch)	0729797c130a7899f4518467cc13c866ea70bce5	2 files
+covalenthq/refiner	96	ok_from_diff_page(head_on_base_branch)	03d1e9ca2c4d313b27ef201378ed38ced6a6f70b	9 files
+covalenthq/refiner	100	ok_from_diff_page(head_on_base_branch)	7c0cd363869c689cb5c342a4c2d7f3966d7a32cd	1 files
+covalenthq/refiner	109	ok_from_diff_page(head_on_base_branch)	fcea46d131a877bd7efa64c275b6061261870098	9 files
+covalenthq/refiner	113	ok_from_diff_page(head_on_base_branch)	629d703810bb2889be61e47ca137ac3b5be8296d	19 files
+covalenthq/refiner	116	ok_from_diff_page(head_on_base_branch)	fd1a183f5f7b8c2e8ca8f9c6b7f6391ea5654f65	64 files
+covalenthq/refiner	117	ok_from_diff_page(head_on_base_branch)	84a5a226fea0cd0b72256c62392e845ddb7b9eb3	41 files
+covalenthq/refiner	120	ok_from_diff_page(head_on_base_branch)	f96532993d80839077f32666b68c058db70227c4	8 files
+covalenthq/refiner	121	ok_from_diff_page(head_on_base_branch)	3fab65cdf8da0d2b5edfc46db62cf184b8cf4f98	2 files
+covalenthq/refiner	122	ok_from_diff_page(head_on_base_branch)	1a860458228ee8fca149ba4bc03538bdac413c25	26 files
+covalenthq/refiner	124	ok_from_diff_page(head_on_base_branch)	a0f889c445b6d27c4e2f7017c0508b2245cef9f0	20 files
+covalenthq/refiner	125	ok_from_diff_page(head_on_base_branch)	77f7491a4d49c8463b84b289bde8a70bac6bfc90	20 files
+covalenthq/refiner	128	ok_from_diff_page(head_on_base_branch)	4cceea79d7d9a4786071590fd7049be393f0eba2	14 files
+covalenthq/refiner	129	ok_from_diff_page(head_on_base_branch)	dd9baa8b861305b770d118b9cc164a0f6bb19f21	8 files
+covalenthq/refiner	131	ok_from_diff_page(head_on_base_branch)	fd27e725473a9bdad7d0a798cef07340b1f5fc52	1 files
+covalenthq/refiner	137	ok_from_diff_page(head_on_base_branch)	4cedf2a8e74a3f92c2dcea122802b54a5f24d536	4 files
+covalenthq/refiner	138	ok_from_diff_page(head_on_base_branch)	266a8ec105f1046b2387194eea74b01c5f982103	7 files
+covalenthq/refiner	142	ok_from_diff_page(head_on_base_branch)	88c77e6bc790b878eac816df6f1b815bd733e01b	21 files
+covalenthq/refiner	147	ok_from_diff_page(head_on_base_branch)	5f37ad76087febee41a6f3fbb121af49017e107c	8 files
+covalenthq/refiner	159	ok_from_diff_page(head_on_base_branch)	c34bbd37e5ca87b996940e915d58a0ff5e42822e	2 files
+covalenthq/refiner	161	ok_from_diff_page(head_on_base_branch)	0c148441cef7355350bc833a9505132343295e00	5 files
+covalenthq/refiner	178	ok_from_diff_page(head_on_base_branch)	42a919b489c2140be0aaef52c7413c25681d6efa	6 files
+covalenthq/refiner	182	ok_from_diff_page(head_on_base_branch)	f06d4250d80d99f61d04445e9f8adc1078ae07d2	7 files
+2026-11-12T11:11:39Z covalenthq/refiner: 31 made, 0 without a patch
+2026-11-12T11:11:39Z cr0t/lexin: 2 pull requests to diff
+cr0t/lexin	59	ok	02ff1c8cafbb425f4237a597ac2089fea8651fa7	17 files
+cr0t/lexin	61	ok_from_diff_page(head_on_base_branch)	376f6b71c62897b7ece968830d86dc6720cbd6cf	2 files
+2026-11-12T11:11:46Z cr0t/lexin: 2 made, 0 without a patch
+2026-11-12T11:11:46Z hexpm/hexpm: 0 pull requests to diff
+2026-11-12T11:11:46Z mbta/screens: 0 pull requests to diff
+2026-11-12T11:11:46Z notesclub/notesclub: 4 pull requests to diff
+notesclub/notesclub	16	ok_from_diff_page(head_on_base_branch)	d25071b56009b4305540547fa4a771220e33dd8f	21 files
+notesclub/notesclub	22	ok_from_diff_page(head_on_base_branch)	8998210071b0606be421aff6478669fee3e424cf	22 files
+notesclub/notesclub	84	ok_from_diff_page(head_on_base_branch)	817f15b62378cd92821f60f6c639bc5f7a8fbab0	9 files
+notesclub/notesclub	85	ok_from_diff_page(head_on_base_branch)	d0ae13433153f15fb50a91db451015b08e2318fc	2 files
+2026-11-12T11:12:07Z notesclub/notesclub: 4 made, 0 without a patch
+2026-11-12T11:12:07Z santiment/sanbase2: 40 pull requests to diff
+santiment/sanbase2	204	ok_from_diff_page(head_on_base_branch)	8ebbf5575ff81015ef78d5644e48f591b5ec8ecc	17 files
+santiment/sanbase2	209	ok_from_diff_page(head_on_base_branch)	90a72cb7112d858462a86fc9100e0ab453288652	1 files
+santiment/sanbase2	511	ok_from_diff_page(head_on_base_branch)	1d94f77947da28dd1539d10cb008a4a5d616d3c8	27 files
+santiment/sanbase2	518	ok_from_diff_page(head_on_base_branch)	77b8d27a1b9364c58c9c42e16a308faa9cb5b811	24 files
+santiment/sanbase2	774	ok_from_diff_page(head_on_base_branch)	ab3791f5464a2979bad0c52d088f717ae717d57e	6 files
+santiment/sanbase2	782	ok_from_diff_page(head_on_base_branch)	e8107da7c793e82bc1cdb4e15692d78e6edffefc	12 files
+santiment/sanbase2	932	ok_from_diff_page(head_on_base_branch)	bd28de603dcd45f4a40007c294d3c1c66edd5026	19 files
+santiment/sanbase2	937	ok_from_diff_page(head_on_base_branch)	e5087f193a38746dc43b23a195cc154bb0d59b62	20 files
+santiment/sanbase2	1005	ok_from_diff_page(head_on_base_branch)	ba957163d4291f4b2ae3875f6730efb02f6a01d4	11 files
+santiment/sanbase2	1009	ok_from_diff_page(head_on_base_branch)	f4316590f10742d83231535000203cdddbf34b03	11 files
+santiment/sanbase2	1270	ok_from_diff_page(head_on_base_branch)	ec15d335885e975f239a9de9c09808cfdbc82a07	14 files
+santiment/sanbase2	1275	ok_from_diff_page(head_on_base_branch)	d9da6c8e3090b555016d5cacd2b0bfd8255a8f63	20 files
+santiment/sanbase2	1435	ok_from_diff_page(head_on_base_branch)	1e32e53fffbc53646a387248fabb6aff50f08040	123 files
+santiment/sanbase2	1437	ok_from_diff_page(head_on_base_branch)	4561099636bf6c094bb28e6ccd30316db7275fde	22 files
+santiment/sanbase2	1599	ok_from_diff_page(head_on_base_branch)	54593de987120c2f909908e02cef4a2015b0426e	16 files
+santiment/sanbase2	1617	ok_from_diff_page(head_on_base_branch)	5ca2607222b650acd110e70426f6da2e7351a976	7 files
+santiment/sanbase2	2301	ok_from_diff_page(head_on_base_branch)	1e38b0b6ba13d1219fe8b4465d9acb261ddccfcc	4 files
+santiment/sanbase2	2303	ok_from_diff_page(head_on_base_branch)	3b8068cb483b5459f0377181ab183ea25585b095	13 files
+santiment/sanbase2	2304	ok_from_diff_page(head_on_base_branch)	a69aedb017521dfdaec9aeae228597e537d051f8	3 files
+santiment/sanbase2	2305	ok_from_diff_page(head_on_base_branch)	9c4f81380e75b130a6d80f970e0d1ddfdec9d399	17 files
+santiment/sanbase2	2404	ok_from_diff_page(head_on_base_branch)	41ad7951502a9a0892154a55bdbc94b262b815fc	9 files
+santiment/sanbase2	2408	ok_from_diff_page(head_on_base_branch)	bb3d7128ac42733b786acc1f0b0e4cf8a9f1ded4	5 files
+santiment/sanbase2	2613	ok_from_diff_page(head_on_base_branch)	71b59c15fc90748585fc62b7f11aee3fa66cea24	11 files
+santiment/sanbase2	2662	ok_from_diff_page(head_on_base_branch)	0b78d22716fb87359807c61805c155e049befa2f	9 files
+santiment/sanbase2	2800	ok_from_diff_page(head_on_base_branch)	c1c90a4457e1f061cd4d41b637b874b74ccb37a9	21 files
+santiment/sanbase2	2847	ok_from_diff_page(head_on_base_branch)	3e5954f89d07cdf61d61bb7810ce8d2f48494eeb	22 files
+santiment/sanbase2	3418	ok_from_diff_page(head_on_base_branch)	6f5a661eba2fbc6bf16556a01ef3246804272189	14 files
+santiment/sanbase2	3419	ok_from_diff_page(head_on_base_branch)	e40f3003eb94ae14615571bd1f6d178e459b7e04	1 files
+santiment/sanbase2	3470	ok	342316de258ac8bdcedd3baccbe4f436af926874	3 files
+santiment/sanbase2	3476	ok	98046bd21634d331282013ff1e9a38cc4f757d9f	1 files
+santiment/sanbase2	3633	ok_from_diff_page(head_on_base_branch)	aa2c680f698a4c3945f6832c3137ed1de66f1c78	1 files
+santiment/sanbase2	3634	ok_from_diff_page(head_on_base_branch)	6d5edd96ed10e7ecc1962e084fae5560f8722a93	1 files
+santiment/sanbase2	3996	ok	ce312c39df436e9db08c38a3ee1aff42af59e5fd	3 files
+santiment/sanbase2	4011	ok	fad523f1dccaa22558d128219629aba12192516b	4 files
+santiment/sanbase2	4152	ok	5208cbbcac29f96dc2b353037c8e10e2d98214ac	22 files
+santiment/sanbase2	4212	ok	5256fb865674e145c9d1e7da7583f3cfa3298d96	1 files
+santiment/sanbase2	4317	ok	0309b65256f989ebcd7981d2af537e243ca8509e	21 files
+santiment/sanbase2	4322	ok	cfcbb50b8c23515447421e28bd1e1215586930c4	23 files
+santiment/sanbase2	4369	ok	04cf6fe0d1caac4815b51aa2d4de663fc3ef8223	1 files
+santiment/sanbase2	4370	ok	0bc11567c4e0fe1f5065c55c991faade8c14a6fe	2 files
+2026-11-12T11:14:39Z santiment/sanbase2: 40 made, 0 without a patch
+2026-11-12T11:14:39Z Simon-Initiative/oli-torus: 195 pull requests to diff
+Simon-Initiative/oli-torus	1866	ok	4ddf52fa334ad024e901c34434fd88d60d9c72b4	54 files
+Simon-Initiative/oli-torus	1925	ok	f7574cd8f561f7c7d65435d33b9146928072689f	10 files
+Simon-Initiative/oli-torus	2424	ok	921760dc156a14bcabf0baffcd1b020d6b56e1d7	10 files
+Simon-Initiative/oli-torus	2438	ok	4846bd0bba72a3d9ff92f1123f07fc6a1399e32a	1 files
+Simon-Initiative/oli-torus	2493	ok	967ff32549fad84d1284647f3a4925f663ab3550	5 files
+Simon-Initiative/oli-torus	2536	ok	82e86b9303c2936a45e32848944f47c35b4fdab4	3 files
+Simon-Initiative/oli-torus	2539	ok	8af64e762a7c8a2058bd27a7ab8e96539ffc055f	3 files
+Simon-Initiative/oli-torus	2777	ok	29748f9e2a50c0811855ca8b6a1688f3172e918b	1 files
+Simon-Initiative/oli-torus	2781	ok	e19bd709bc5cec97d3debea7715d080874560c5f	3 files
+Simon-Initiative/oli-torus	2790	ok	4efd32381e12416c7146aa0cd52efd83c2b201cf	3 files
+Simon-Initiative/oli-torus	2900	ok	426400ff1bbf4df89ab7c4ca39550df3497da30f	5 files
+Simon-Initiative/oli-torus	2914	ok	d82544cde9c08ca3be77ad519922a172dc027da9	2 files
+Simon-Initiative/oli-torus	3166	ok	27807efa9c5593e5d2f1af479e380830e4fc790c	39 files
+Simon-Initiative/oli-torus	3169	ok	dbf8dc337236a19ae634f210685e125d6f73d3cd	5 files
+Simon-Initiative/oli-torus	3246	ok	b9f1fbc8637fc849e32eb2addd2e209f56c246dc	15 files
+Simon-Initiative/oli-torus	3250	ok	384ad812dbd8c12f9836b5e545349d4ae10efe87	3 files
+Simon-Initiative/oli-torus	3583	ok	11ee8ddba60b5be666ef4d942e81358692ca2c49	6 files
+Simon-Initiative/oli-torus	3585	ok	272f814e1821c24863ae90da3acf839c753d3be9	10 files
+Simon-Initiative/oli-torus	3706	ok	d3b912cc4358c4de63015915d0bbf6193faade5f	23 files
+Simon-Initiative/oli-torus	3754	ok	a17e88c22ea31ba68ce1ff2f7c046612d6eb45fd	1 files
+Simon-Initiative/oli-torus	3773	ok	cb2aa9616eda1fa8146b33b511d37e29b9c4e644	1 files
+Simon-Initiative/oli-torus	3795	ok	ce89edc2a1e7edb9a14dd6037ec6a7c7f0ecedb9	15 files
+Simon-Initiative/oli-torus	3830	ok	78d44616761d6bae571cde4659ccf4cd5d212c59	3 files
+Simon-Initiative/oli-torus	3832	ok	8b34735b2b6eb3b975dbb8f86320acab67664002	3 files
+Simon-Initiative/oli-torus	3867	ok	274cc968b495b6660b9516d3dc1adbf54585a8db	2 files
+Simon-Initiative/oli-torus	3911	ok	ba2bd92403ca38e963cbc32774139a0a298683ef	1 files
+Simon-Initiative/oli-torus	4244	ok	9ea6a8757903e212690d2b1ca5e67c0c560b1e2f	1 files
+Simon-Initiative/oli-torus	4282	ok	bac0ab87a73893fa435330fbaa479ca5ed0bd237	8 files
+Simon-Initiative/oli-torus	4359	ok_from_diff_page(head_on_base_branch)	e84fbea054af9c9f1b07d2ec883ca9dfa39a2982	6 files
+Simon-Initiative/oli-torus	4365	ok_from_diff_page(head_on_base_branch)	81115bf50cecfbaa1a23cf63918790c3f056f574	3 files
+Simon-Initiative/oli-torus	4459	ok_from_diff_page(head_on_base_branch)	f613ec48fcc70c3fcb04125a04f1a5249279835d	18 files
+Simon-Initiative/oli-torus	4464	ok_from_diff_page(head_on_base_branch)	5aed47456217b282452f3382a925af9349d88913	13 files
+Simon-Initiative/oli-torus	4520	ok_from_diff_page(head_on_base_branch)	be3973d0dedd3315f1b803233989559d48308f3f	6 files
+Simon-Initiative/oli-torus	4531	ok_from_diff_page(head_on_base_branch)	a2855aaa608f06fe506cbc2f4076252efb800bf4	4 files
+Simon-Initiative/oli-torus	4561	ok_from_diff_page(head_on_base_branch)	0d8c90234f4c15f7141beed6494cfc4d3b6b52bf	10 files
+Simon-Initiative/oli-torus	4565	ok_from_diff_page(head_on_base_branch)	1c8a057e167db8d8147cf9d6d023e50f85e70e6c	7 files
+Simon-Initiative/oli-torus	4628	ok_from_diff_page(head_on_base_branch)	7df7143f69ee2bf81df57da81f4a94305f2c77d0	5 files
+Simon-Initiative/oli-torus	4641	ok_from_diff_page(head_on_base_branch)	c63fbcc281ac58e4d72140c9aab104932350f4b3	1 files
+Simon-Initiative/oli-torus	4671	ok_from_diff_page(head_on_base_branch)	60c9fb92432b8b5c7c8b1f4c925dbdcfc037f771	22 files
+Simon-Initiative/oli-torus	4708	ok_from_diff_page(head_on_base_branch)	b801c6b0e4dd613377d992ab278c5a6c20e801b2	6 files
+Simon-Initiative/oli-torus	4715	ok	64e8504e0fdbbc67a3043255124a048038593d5d	2 files
+Simon-Initiative/oli-torus	4717	ok	cad3eb17c656911c91ddef43cb74e9dde1544123	2 files
+Simon-Initiative/oli-torus	4721	ok_from_diff_page(head_on_base_branch)	14625e2e131d65c78fd5e3cf76424ac051395872	4 files
+Simon-Initiative/oli-torus	4724	ok_from_diff_page(head_on_base_branch)	9d1bbbed67214954c473fde6cf395c1e42227a2e	6 files
+Simon-Initiative/oli-torus	4726	ok_from_diff_page(head_on_base_branch)	db12bd29206f9020b46aef787359f8ce820133f1	8 files
+Simon-Initiative/oli-torus	4729	ok_from_diff_page(head_on_base_branch)	ec7873285882e5f3a75ac9521bee73d61310162c	11 files
+Simon-Initiative/oli-torus	4736	ok_from_diff_page(head_on_base_branch)	a20b50349ef93344d698fedace34819bb14235c5	3 files
+Simon-Initiative/oli-torus	4741	ok_from_diff_page(head_on_base_branch)	171acce1abda24e993db666d6f58afa6583a5249	1 files
+Simon-Initiative/oli-torus	4746	ok_from_diff_page(head_on_base_branch)	987706a03ffd8e1e7a262417cc193a17a34ac87b	1 files
+Simon-Initiative/oli-torus	4747	ok_from_diff_page(head_on_base_branch)	b049ff7027d6a41d300a430187208a04122c762c	11 files
+Simon-Initiative/oli-torus	4758	ok_from_diff_page(head_on_base_branch)	2b298d30d9048942ea6b7853b4b48acd1b949f05	7 files
+Simon-Initiative/oli-torus	4759	ok_from_diff_page(head_on_base_branch)	47cbe376253a52650c507e513561140c28af11cc	6 files
+Simon-Initiative/oli-torus	4761	ok_from_diff_page(head_on_base_branch)	475cfb358fc50218f07825bdfa5c10f5fed042ae	2 files
+Simon-Initiative/oli-torus	4768	ok_from_diff_page(head_on_base_branch)	dc46e93ac505f056d83c8d73794f2f139e3d8e7b	4 files
+Simon-Initiative/oli-torus	4770	ok_from_diff_page(head_on_base_branch)	8e911a1d650f16df4a7776513731830b90bf8bc6	11 files
+Simon-Initiative/oli-torus	4777	ok	32498051478aaab4ccd54d27525b2a10899cc336	9 files
+Simon-Initiative/oli-torus	4788	ok_from_diff_page(head_on_base_branch)	609e84ae05cbf603229ea836c7c07abd46387121	9 files
+Simon-Initiative/oli-torus	4799	ok_from_diff_page(head_on_base_branch)	d9d7edfed0055e0c93f3614591474ecc59bcc185	2 files
+Simon-Initiative/oli-torus	4834	ok_from_diff_page(head_on_base_branch)	af8bfc65a84512d507b76c52c7d74e0c26fb5e9e	12 files
+Simon-Initiative/oli-torus	4845	ok_from_diff_page(head_on_base_branch)	4e8e5104ac4c59f046405c892012c8c0a263fe3f	6 files
+Simon-Initiative/oli-torus	4854	ok_from_diff_page(head_on_base_branch)	fa39bd962a4e288a8dbddec93ea1a87ad5a8d821	7 files
+Simon-Initiative/oli-torus	4871	ok_from_diff_page(head_on_base_branch)	d77ca79775e3d84e952f2ced2850dd6f2d057237	16 files
+Simon-Initiative/oli-torus	4883	ok_from_diff_page(head_on_base_branch)	b0ac177632310e73c526d682a1acee8a9680f49f	4 files
+Simon-Initiative/oli-torus	4895	ok_from_diff_page(head_on_base_branch)	e683e8d4bf545450ac6a19677da6040528d1a34d	17 files
+Simon-Initiative/oli-torus	4898	ok_from_diff_page(head_on_base_branch)	d088be90642718fd265e97431b6f645fa323cb57	2 files
+Simon-Initiative/oli-torus	4901	ok_from_diff_page(head_on_base_branch)	19292de91253125c4bd1bbf5532b3e81a78812d5	4 files
+Simon-Initiative/oli-torus	4917	ok	61e9f39bc6b9aa004499f77a564a03fa9d1b28b0	2 files
+Simon-Initiative/oli-torus	4929	ok_from_diff_page(head_on_base_branch)	bd6c19c6889d21ddb98b55cd724dcfc1142950de	3 files
+Simon-Initiative/oli-torus	4946	ok_from_diff_page(head_on_base_branch)	04d583093372a356135b82f9702caea98d4c448d	3 files
+Simon-Initiative/oli-torus	4963	ok_from_diff_page(head_on_base_branch)	ca77358592c273f79ea86df4445a950dcd0cf951	12 files
+Simon-Initiative/oli-torus	4965	ok	b4518e2350f59abe0515e309891936cbb5661737	7 files
+Simon-Initiative/oli-torus	4982	ok	df8da86b22165199fc498fa94ca64a805754a079	30 files
+Simon-Initiative/oli-torus	4987	ok	78ed30678ae4cace41b6ec3de643d6f997b8de20	10 files
+Simon-Initiative/oli-torus	5001	ok	a7ac9acfae258af76b56c27d34e1b8a7c1b6ca41	35 files
+Simon-Initiative/oli-torus	5025	ok	2dce1d9314aedca7b92038aec08922efc37c3958	13 files
+Simon-Initiative/oli-torus	5034	ok	5350c88e30011be85bd20b474e73d8999bea6ae3	3 files
+Simon-Initiative/oli-torus	5036	ok	a28ddaa5e04833dfc6a03c5fa1fab98651c97c94	2 files
+Simon-Initiative/oli-torus	5039	ok	cec640626bc0d6df1bd16c0e594c2b0ff2518cd6	3 files
+Simon-Initiative/oli-torus	5042	ok	0a61fed9c01e1ab40cc370afdab48761df113606	4 files
+Simon-Initiative/oli-torus	5044	ok	595d7d23436ede6f0dc0ed153e4f387d0c2dda5b	4 files
+Simon-Initiative/oli-torus	5054	ok	4a026df5b1866e55f981ecb6e634f92dce8df1cf	28 files
+Simon-Initiative/oli-torus	5061	ok	333b5fa3254e466e4bc73a54f65bc71bfdfa17a2	4 files
+Simon-Initiative/oli-torus	5067	ok	1f67d34c80945b42cbe044be9abb13ba14e35dbe	12 files
+Simon-Initiative/oli-torus	5069	ok	a64c79c04df1fa4bb8d3f02f06953bb99ce0dd25	29 files
+Simon-Initiative/oli-torus	5078	ok	9948c7b4de561252b48878f1cf769b575b5887cc	2 files
+Simon-Initiative/oli-torus	5083	ok	004595a58a802ebe03854ce83fdc7f84ddef90aa	7 files
+Simon-Initiative/oli-torus	5119	ok	5b2aedba0387844381f4a69f5a0bc3362aed9e63	13 files
+Simon-Initiative/oli-torus	5142	ok	477fe2ece0098038448b9d107295475b5823b675	1 files
+Simon-Initiative/oli-torus	5155	ok	ed87a6f919c629fe428b32b687f7cabcaf621699	2 files
+Simon-Initiative/oli-torus	5160	ok	50ddc976c638594c934e53868377d4ab1866a27a	2 files
+Simon-Initiative/oli-torus	5179	ok	5e483e6221a3d03996f3c1ebd62c4790a9fe3436	4 files
+Simon-Initiative/oli-torus	5219	ok	2a5e7380ea49af05d0b5e4e16dec2d40f8e017e7	1 files
+Simon-Initiative/oli-torus	5277	ok	c5e86cb768fa49aef850c200e9ab52ff81d5199f	5 files
+Simon-Initiative/oli-torus	5279	ok	6c99c8ebdffdda209d0adbcca87314a886181f68	11 files
+Simon-Initiative/oli-torus	5286	ok	de4028015c78a1a669a86b657e0e0b45e0d86a1d	3 files
+Simon-Initiative/oli-torus	5287	ok	84a38d682ae0f7bd594c89f9e557c4759ec0a305	2 files
+Simon-Initiative/oli-torus	5329	ok	758cf554ae40a30751a4eb3b7ea5794928d65cee	1 files
+Simon-Initiative/oli-torus	5330	ok	ebcf40a99673e394b0a68ae597b2f8724730ec84	1 files
+Simon-Initiative/oli-torus	5337	ok	2b35bd0fdc13e042454f78f182da7f9a6ce8bbc7	34 files
+Simon-Initiative/oli-torus	5362	ok	d70819d3e50128a9f903ad8713e677ea35c208b8	5 files
+Simon-Initiative/oli-torus	5365	ok	90c1fd5a568977bc1e192ea47af6fd07a9812849	15 files
+Simon-Initiative/oli-torus	5374	ok	20e117fb8abd422e585906ec5c7ee342fe1c00be	9 files
+Simon-Initiative/oli-torus	5376	ok	bb4947acdf97db4573ba8c5d9491fc309b8e4c4d	10 files
+Simon-Initiative/oli-torus	5392	ok	b1f6a5b1cb9871ae98a1711719c12391e4dbd28a	1 files
+Simon-Initiative/oli-torus	5396	ok	74f6ad3f6269c31471e830f28609b0854a2ab71d	5 files
+Simon-Initiative/oli-torus	5405	ok	6bbf337d6028e4273a0486fe111117cb3a94ef40	2 files
+Simon-Initiative/oli-torus	5455	ok	e15554537ddb46f3b36190103bc81c932c36458d	8 files
+Simon-Initiative/oli-torus	5507	ok	49e7a69d9893d9ec9d7afe04c23ac5ef8a9397c6	1 files
+Simon-Initiative/oli-torus	5517	ok	5c9936ca9f5337d63a067c25ba965bb1205c8f32	3 files
+Simon-Initiative/oli-torus	5526	ok	1f3cae991365bd43306820842478c9500bd2d5fb	3 files
+Simon-Initiative/oli-torus	5527	ok	054181484dcdadb4a45afdde97af6f9974bffa57	29 files
+Simon-Initiative/oli-torus	5562	ok	17ee525ccb9ef7c62a0b3e6d9a0fad29937c04dc	6 files
+Simon-Initiative/oli-torus	5565	ok	c6c008083d2577da399f369ea19b390cc54a9b37	6 files
+Simon-Initiative/oli-torus	5566	ok	bca78581044298f7b2b9b1675442484f1e3d1513	6 files
+Simon-Initiative/oli-torus	5569	ok	8604b32bb673b3887086e54549acf17f6bf6fe41	17 files
+Simon-Initiative/oli-torus	5589	ok	bd42b44e0628cbc178bb4e826066209219495ae2	2 files
+Simon-Initiative/oli-torus	5595	ok	4066614003eebcdbe7d30325e41b6a00364426ff	8 files
+Simon-Initiative/oli-torus	5600	ok	723b6eb813c4e372dfcbeb04ee0b9390fc5bc9cd	13 files
+Simon-Initiative/oli-torus	5614	ok	ad9515257438aa665ee467ca74f1075ca0b6b64e	2 files
+Simon-Initiative/oli-torus	5617	ok	3de275b6857b33da04b4f0e1bfa21071f1f150f0	10 files
+Simon-Initiative/oli-torus	5621	ok	553908123e7d915ffe0bb41e59dfa25504d315ac	1 files
+Simon-Initiative/oli-torus	5662	ok	d1f42c9673e05b0184099844bfaa859e38322b67	2 files
+Simon-Initiative/oli-torus	5676	ok	3b3f9f17a8b71f8f5dc65f6bf8a1b368b8d2bddf	2 files
+Simon-Initiative/oli-torus	5696	ok	d9fa9a3761ba15977ca90a33f3787eed95e85a79	23 files
+Simon-Initiative/oli-torus	5708	ok	9fa31fff4edc9fd7697930d0e9b911bdf339b9a7	21 files
+Simon-Initiative/oli-torus	5741	ok	c7d6c5a2e2290a5fc29d7c8b2a2e54a73c436a34	2 files
+Simon-Initiative/oli-torus	5755	ok	6fbe992d13057f3568da7e7f15a51dfc85c4e0b9	7 files
+Simon-Initiative/oli-torus	5759	ok	32c61f6743c0a4bb58bb284352183ea92be27c0b	2 files
+Simon-Initiative/oli-torus	5775	ok	76649f9847675c324559518ab45d5d4ff76c32ac	455 files
+Simon-Initiative/oli-torus	5776	ok	52a5b44d6c7144ad66be943da8ba71d45c39b7fd	355 files
+Simon-Initiative/oli-torus	5781	ok	e056b0bdd16659224c8eaa6467f75f3e34845602	19 files
+Simon-Initiative/oli-torus	5783	ok	214b09b463a73c1544e63a95784ea4a266dec9b3	4 files
+Simon-Initiative/oli-torus	5785	ok	5586a3d9ac5356eed76751cdca6ff7e4b11a9236	95 files
+Simon-Initiative/oli-torus	5787	ok	1baa3e938ec014d1ef70ab72ef5803226ed16dbb	4 files
+Simon-Initiative/oli-torus	5805	ok	a2a9f749fa5ead0687d9b1944f52018732b64513	1 files
+Simon-Initiative/oli-torus	5806	ok	5a1685802707ff444038918210c3d3fb2a61c83b	2 files
+Simon-Initiative/oli-torus	5813	ok	226130b4339d830dfc6b304d87585904c2c97bc6	1 files
+Simon-Initiative/oli-torus	5814	ok	a9783e2c204f8f21bb5d959b75cb022fd0f9a76d	1 files
+Simon-Initiative/oli-torus	5833	ok	fe3c3b097a14d8285f2f6ddf9c74dfb96b4331ba	12 files
+Simon-Initiative/oli-torus	5840	ok	2f97ff340a331ac8b78da4d4609943b1978ac5ac	2 files
+Simon-Initiative/oli-torus	5842	ok	22ddf29c209878a698215ac4c852d10f8bb5b687	3 files
+Simon-Initiative/oli-torus	5981	ok	d81e4324f48abfd2a74f33c4bd93c6389e48c544	9 files
+Simon-Initiative/oli-torus	6004	ok	3f6652b1940c6c0e1ea04e1dc905a7fef7e07609	4 files
+Simon-Initiative/oli-torus	6145	ok	9121d229f465ba103c2dfc4e8b0307e38a199cd4	26 files
+Simon-Initiative/oli-torus	6150	ok	4bf5223644134bbae98fbe7537cf927ad860a4bc	4 files
+Simon-Initiative/oli-torus	6188	ok	1ca6c3f50fec77c57148765d75daeffcb6691590	7 files
+Simon-Initiative/oli-torus	6202	ok	da6cfaaadfbb5dcb8f9316229429f63f4ad7f26d	2 files
+Simon-Initiative/oli-torus	6277	ok	4d37822531222209bf86371bed899aed2483b054	22 files
+Simon-Initiative/oli-torus	6287	ok	890eee4f5ae755acbeee5b635fdb29ba9edd6355	37 files
+Simon-Initiative/oli-torus	6348	ok	578b787aa98cac477ec661d09d855d9563cb8d9d	19 files
+Simon-Initiative/oli-torus	6368	ok	37f5d4d0b7a697b55d7f6d4a62239715f5f7bc49	14 files
+Simon-Initiative/oli-torus	6416	ok	da0f9951a379c12f0b38935a79c7d3b6c221ee0a	23 files
+Simon-Initiative/oli-torus	6445	ok	5643344a2e673a5bf7e85d45a89eec6e83e14634	21 files
+Simon-Initiative/oli-torus	6577	ok	47754de1020c221a8ab69193e5175fa58200aa32	4 files
+Simon-Initiative/oli-torus	6619	ok	95c54dabbdc4e6a835d6a5a947a921026212f250	327 files
+Simon-Initiative/oli-torus	6620	ok	73001ff4e087784a28286dc30933aacde658a511	14 files
+Simon-Initiative/oli-torus	6629	ok	46759654cc50d9c42d63115f11f04ccd9b4fbf5f	3 files
+Simon-Initiative/oli-torus	6635	ok	08407ee48613e3e7797fd1d2c86802be0b4be820	60 files
+Simon-Initiative/oli-torus	6658	ok	f50af205f398fdbb2e82cb3fdaf9a910ed26ef68	4 files
+Simon-Initiative/oli-torus	6712	ok	0a05e432b1b65e0d0b73b8c40af57b1f68787d07	29 files
+Simon-Initiative/oli-torus	6717	ok	51cb055b9a5f81861c0395334703dc43ee7e0e63	23 files
+Simon-Initiative/oli-torus	6720	ok	8ac36a8158643d9066f38920b214b7e6fe52cfa4	15 files
+Simon-Initiative/oli-torus	6724	ok	ddd6a69c6b7e7365d9a0ad754841aa78825108bd	13 files
+Simon-Initiative/oli-torus	6786	ok	539b3c98d5001b823bf806fe7c25631e96d87193	60 files
+Simon-Initiative/oli-torus	6787	ok	a9db7689040fa5d870d5414f62ff83b744ff7154	15 files
+Simon-Initiative/oli-torus	6789	ok	c34470a1b5211c75a3c6339cd0786bb07226eb31	73 files
+Simon-Initiative/oli-torus	6807	ok	cf9f990d3d7a85cf1f94b8f085ba27fe425523b1	8 files
+Simon-Initiative/oli-torus	6816	ok	415812c391c606ef0374034bf0b985af1b643261	25 files
+Simon-Initiative/oli-torus	6834	ok	a9557db439ac88d152408117321727e7fe557bcb	8 files
+Simon-Initiative/oli-torus	6837	ok	fca7b4f2871ec9ea72763253b11aa3b664f87da6	7 files
+Simon-Initiative/oli-torus	6841	ok	5b9a769d708e5562b6e4e7c0dd7c0003464e2829	2 files
+Simon-Initiative/oli-torus	6909	ok	791b797d77f055db47374aae9772404e942662e2	30 files
+Simon-Initiative/oli-torus	6913	ok_from_diff_page(head_on_base_branch)	fbd92fc35a78f4d427e40f7db680ea1d5d8c1f6d	22 files
+Simon-Initiative/oli-torus	6919	ok_from_diff_page(head_on_base_branch)	f31a431152d8831272a633ec45dc91d867091db4	69 files
+Simon-Initiative/oli-torus	6920	ok_from_diff_page(head_on_base_branch)	fabec75d5cf33e89110fd4ff4b03aeec620e4037	19 files
+Simon-Initiative/oli-torus	6924	ok_from_diff_page(head_on_base_branch)	fbd92fc35a78f4d427e40f7db680ea1d5d8c1f6d	56 files
+Simon-Initiative/oli-torus	6929	ok_from_diff_page(head_on_base_branch)	fbd92fc35a78f4d427e40f7db680ea1d5d8c1f6d	19 files
+Simon-Initiative/oli-torus	6932	ok	c3640c89cc46a190037c1a50e27142706b89f39b	12 files
+Simon-Initiative/oli-torus	6933	ok	a660c3661f5bf65139b2650e79d99abb5eee9603	46 files
+Simon-Initiative/oli-torus	6934	ok	5c8e668bf2d4f94d63bab48cc11a57439fdc1551	30 files
+Simon-Initiative/oli-torus	6936	ok	5a1bdede0853ef41853f2f857484e8ad851f918a	12 files
+Simon-Initiative/oli-torus	6944	ok	8608338df11142f2cabc6e212b22b9586b016ab0	22 files
+Simon-Initiative/oli-torus	6950	ok_from_diff_page(head_on_base_branch)	35b3a9aa2bac146f388bfe1749d3c66c033409be	5 files
+Simon-Initiative/oli-torus	6954	ok	f48108d054618d9521c6608c82d7da84e0ddba74	17 files
+Simon-Initiative/oli-torus	6976	ok_from_diff_page(head_on_base_branch)	27fe3b4e74cc19ad53c830a76c5cfac3846b2da9	4 files
+Simon-Initiative/oli-torus	6984	ok_from_diff_page(head_on_base_branch)	3cab69bf653167f91ea9645f3cfb4672096ce05b	8 files
+Simon-Initiative/oli-torus	6985	ok	9ab43b2102bc30bb9bd6e5415ba795380265b20f	5 files
+Simon-Initiative/oli-torus	6988	ok_from_diff_page(head_on_base_branch)	004dc74a980d0bdccc6a0f4e945ba2bdd7e3fabd	342 files
+Simon-Initiative/oli-torus	6990	ok_from_diff_page(head_on_base_branch)	f6df1b38c164a3b1cc8c35d602a2e6e4446e4fb3	3 files
+Simon-Initiative/oli-torus	6992	ok	6d77e9a7244bd128eb5b9b18be0773190031212d	4 files
+Simon-Initiative/oli-torus	6994	ok	d6c2c3bb572f408bdbdd004dfc3529257c8f60c4	3 files
+Simon-Initiative/oli-torus	7006	ok_from_diff_page(head_on_base_branch)	f2b78fbf1138f830dae83f44df7d06edd70185cd	5 files
+Simon-Initiative/oli-torus	7010	ok	39089b8d7383a6bbbe08171dbfcfb21685b8588b	69 files
+Simon-Initiative/oli-torus	7012	ok	d84cff446461023f91606788fbe0fe05b4a863f1	5 files
+Simon-Initiative/oli-torus	7017	ok	26bcb97f7c9759f19c6cf8b0d7dbaef6f9305fc2	8 files
+2026-11-12T11:20:18Z Simon-Initiative/oli-torus: 195 made, 0 without a patch
+2026-11-12T11:20:18Z source-academy/backend: 0 pull requests to diff
+2026-11-12T11:20:18Z supabase/realtime: 0 pull requests to diff
+2026-11-12T11:20:19Z youcongress/youcongress: 4 pull requests to diff
+youcongress/youcongress	62	ok	4315a3e3b5177ee23001b3b66f8e80d330eb9cff	7 files
+youcongress/youcongress	63	ok	90cff294af07d34d73f49a4c59ee844171d5334b	1 files
+youcongress/youcongress	66	ok	616bbb4568cb3371b92fb8a0643fa8ebec35488b	10 files
+youcongress/youcongress	68	ok	79c5f9eed71f0c8cf44122f511703bb26be6548e	1 files
+2026-11-12T11:20:24Z youcongress/youcongress: 4 made, 0 without a patch
+2026-11-12T11:20:24Z zorn/flick: 12 pull requests to diff
+zorn/flick	181	ok	13a32a63e4e419587db63f08363ea98e9d9623ab	1 files
+zorn/flick	182	ok	bb47a27a70ece776e750c87ce699e0121d536d83	2 files
+zorn/flick	214	ok	900762105486c14691204c3a9a2f97dfefb6acff	20 files
+zorn/flick	215	ok	8d4cb9d4937d3b3feaedeaad90b8edba34de4597	5 files
+zorn/flick	221	ok	601a5adee7a96e3b3d24d12f91322a7ebfc14d64	2 files
+zorn/flick	222	ok	c1c76f5b6405cc5d3871fbe81668165f1e5b7ca3	7 files
+zorn/flick	223	ok	995b10afa13931569686257a3d2e33295f638508	28 files
+zorn/flick	276	ok	dbdbb8445ad16a02af2e7577e8d27c61e8d6cccf	4 files
+zorn/flick	320	ok	e2aa1b52acf5475fd4acb34ebd580cf471a30ac2	3 files
+zorn/flick	321	ok	84733c139ad4340c99da006773e535b581676aab	2 files
+zorn/flick	330	ok	e68669896edfeb645491c60eef946c1580615515	3 files
+zorn/flick	341	ok	aa58df2bbda1a9c78685d41d78830d11c1c80cd7	4 files
+2026-11-12T11:20:34Z zorn/flick: 12 made, 0 without a patch
+2026-11-12T11:20:34Z zorn/local_cents: 16 pull requests to diff
+zorn/local_cents	75	ok	d216ca315915fa3b6a38d79834d5589a1c93aafd	20 files
+zorn/local_cents	80	ok	0c4fb1056541f3fa432309c3308fa906e8f6584c	10 files
+zorn/local_cents	82	ok	77ab6bcfb96f89093f70f210f7d3a870f989852d	2 files
+zorn/local_cents	243	ok	6d8248c9299ed66cead64866a84d1392986fd5d4	4 files
+zorn/local_cents	246	ok	7de28710686b5de55ee32515fdb3d6e0b6f5c5ab	1 files
+zorn/local_cents	247	ok	8d7665381146eafd4a0e28e8e195c1a261605801	19 files
+zorn/local_cents	249	ok	5e417848daf0b785bb92ddba5628c2820cc20f68	7 files
+zorn/local_cents	250	ok	8c35f162b9e9a3b2d55da047df352a5247c477d3	9 files
+zorn/local_cents	254	ok	affc3b2c3b0e5e4ff0e9c4f39e24b385088f32fa	10 files
+zorn/local_cents	256	ok	62b37cbe42309c2c6be42ab12b8303728d1898da	1 files
+zorn/local_cents	259	ok	80a19a30b04d574982198823ab9f09474b16b16d	13 files
+zorn/local_cents	262	ok	3457e7c2d22e9e15a3af41d55cac499066c8d740	9 files
+zorn/local_cents	263	ok	a1c296360ee9a8bae4edcf932d6fa307ea080b21	11 files
+zorn/local_cents	269	ok	512374a854c91be0085853a5d4cab51c32263635	2 files
+zorn/local_cents	275	ok	97309efc00a737b41a8f36013e9097be321ae311	8 files
+zorn/local_cents	278	ok	fd604a98b39ba3f860449cd786d657baf6e3a43b	3 files
+2026-11-12T11:20:45Z zorn/local_cents: 16 made, 0 without a patch
+2026-11-12T11:23:07Z ambry-app/ambry: 0 pull requests to diff
+2026-11-12T11:23:07Z asciinema/asciinema-server: 0 pull requests to diff
+2026-11-12T11:23:07Z bikebrigade/dispatch: 0 pull requests to diff
+2026-11-12T11:23:07Z blablatdinov/croniq: 0 pull requests to diff
+2026-11-12T11:23:07Z cesium/safira: 0 pull requests to diff
+2026-11-12T11:23:07Z covalenthq/refiner: 0 pull requests to diff
+2026-11-12T11:23:07Z cr0t/lexin: 0 pull requests to diff
+2026-11-12T11:23:07Z hexpm/hexpm: 0 pull requests to diff
+2026-11-12T11:23:08Z hexpm/preview: 0 pull requests to diff
+2026-11-12T11:23:08Z joladev/jola.dev: 0 pull requests to diff
+2026-11-12T11:23:08Z mbta/screens: 0 pull requests to diff
+2026-11-12T11:23:08Z notesclub/notesclub: 0 pull requests to diff
+2026-11-12T11:23:08Z santiment/sanbase2: 0 pull requests to diff
+2026-11-12T11:23:08Z Simon-Initiative/oli-torus: 0 pull requests to diff
+2026-11-12T11:23:08Z source-academy/backend: 0 pull requests to diff
+2026-11-12T11:23:08Z supabase/realtime: 0 pull requests to diff
+2026-11-12T11:23:08Z youcongress/youcongress: 0 pull requests to diff
+2026-11-12T11:23:08Z zorn/flick: 0 pull requests to diff
+2026-11-12T11:23:08Z zorn/local_cents: 0 pull requests to diff
