@@ -381,7 +381,9 @@ defmodule Eab.ToolchainTest do
     pairs = Enum.map(table["elixir"], &"#{&1["elixir"]}/#{&1["otp"]}")
     assert "1.18.3/27.3" in pairs and "1.20.3/29.0.5" in pairs
     assert Enum.all?(table["elixir"], &(Version.compare(&1["elixir"], "1.12.0") != :lt))
-    # OTP 27.2's ssl rejects the certificate of builds.hex.pm, so such an image cannot install Hex
+
+    # OTP 27.2's ssl rejects the certificate of builds.hex.pm, so such an image cannot install Hex; 27.2.1's does
+    # too (radiator #607, 2026-11-12), so no pair of OTP 27.2 or its patch releases is in the table
     refute Enum.any?(table["elixir"], &Toolchain.prefix?("27.2", &1["otp"]))
 
     for name <- ["axelclark__ex338", "podlove__radiator"] do

@@ -393,13 +393,16 @@ defmodule Eab.Factory do
     with {:ok, row} <- step(row, "import_check", fn -> validate(id, work) end),
          {:ok, row} <- step(row, "source", fn -> steps.source.(id, work, run_id, emit) end),
          {:ok, row} <- step(row, "prepare", fn -> steps.prepare.(id, work, run_id, emit) end),
-         {:ok, row} <- probe(row, steps.probe.(id, work, run_id, emit)),
+         {:ok, row} <- probe(row, fn -> steps.probe.(id, work, run_id, emit) end),
          {:ok, row} <- step(row, "import_check_after_probe", fn -> validate(id, work) end),
          {:ok, row} <-
            step(row, "source_after_probe", fn -> steps.source.(id, work, run_id, emit) end),
          {:ok, row} <-
            step(row, "prepare_after_probe", fn -> steps.prepare.(id, work, run_id, emit) end) do
-      verdict(id, work, row, steps.controls.(id, work, run_id, emit))
+      t = System.monotonic_time(:millisecond)
+      control = steps.controls.(id, work, run_id, emit)
+      row = Map.put(row, "controls_ms", System.monotonic_time(:millisecond) - t)
+      verdict(id, work, row, control)
     end
   end
 
@@ -416,24 +419,45 @@ defmodule Eab.Factory do
         reason = if name in ~w(prepare prepare_after_probe), do: "environment", else: name
 
         Map.merge(row, %{
+          "#{name}_ms" => System.monotonic_time(:millisecond) - t,
           "verdict" => "dropped",
           "dropped_at" => name,
           "reason" => reason,
-          "detail" => error |> Exception.message() |> String.slice(0, 2000)
+          "detail" => error |> Exception.message() |> detail()
         })
     end
   end
 
-  defp probe(row, {:ok, _summary}), do: {:ok, Map.put(row, "probe", "ok")}
+  defp probe(row, fun) do
+    t = System.monotonic_time(:millisecond)
+    answer = fun.()
+    row = Map.put(row, "probe_ms", System.monotonic_time(:millisecond) - t)
 
-  defp probe(row, {:refused, reason, detail}),
-    do:
-      Map.merge(row, %{
-        "verdict" => "dropped",
-        "dropped_at" => "probe",
-        "reason" => to_string(reason),
-        "detail" => detail |> to_string() |> String.slice(0, 2000)
-      })
+    case answer do
+      {:ok, _summary} ->
+        {:ok, Map.put(row, "probe", "ok")}
+
+      {:refused, reason, detail} ->
+        Map.merge(row, %{
+          "verdict" => "dropped",
+          "dropped_at" => "probe",
+          "reason" => to_string(reason),
+          "detail" => detail(detail)
+        })
+    end
+  end
+
+  # The detail of a failure: its head and its tail when it is long. A failed build or command says why at the end of
+  # its output: a toolchain build's log of 54 kB ended with builds.hex.pm's certificate refused, which a cut after the
+  # first 2,000 characters left out.
+  defp detail(message) do
+    text = to_string(message)
+    size = String.length(text)
+
+    if size <= 2000,
+      do: text,
+      else: String.slice(text, 0, 300) <> "\n[...]\n" <> String.slice(text, size - 1700, 1700)
+  end
 
   defp verdict(id, work, row, {:ok, control}) do
     install!(id, work)
@@ -451,12 +475,12 @@ defmodule Eab.Factory do
         "verdict" => "dropped",
         "dropped_at" => "controls",
         "reason" => "error",
-        "detail" => String.slice(message, 0, 2000)
+        "detail" => detail(message)
       })
 
   defp verdict(id, work, row, {:error, control, message}) do
     second = control["second_round"]
-    row = Map.merge(row, %{"second_round" => second, "detail" => String.slice(message, 0, 2000)})
+    row = Map.merge(row, %{"second_round" => second, "detail" => detail(message)})
 
     if is_map(second) and second["same"] != true do
       Map.merge(row, %{

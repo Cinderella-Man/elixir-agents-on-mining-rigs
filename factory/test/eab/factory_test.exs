@@ -237,6 +237,33 @@ defmodule Eab.FactoryTest do
     assert {:error, _} = Factory.check(["ledgerette-pr-1", "ledgerette-pr-1"])
   end
 
+  test "check times every step, a failing one too, and keeps the tail of a long failure, where a build says why" do
+    assert {:ok, job} = Factory.check(["ledgerette-pr-1"], steps: steps())
+    assert await_job(job)["counts"] == %{"checked" => 1}
+    {:ok, %{"results" => [passed]}} = Factory.job(job)
+
+    for step <- ~w(import_check source prepare probe import_check_after_probe source_after_probe
+                   prepare_after_probe controls),
+        do: assert(is_integer(passed["#{step}_ms"]), step)
+
+    log = "#1 building\n" <> String.duplicate("#5 Get: a package\n", 500) <> "ERROR: the cause"
+    failing = Map.put(steps(), :prepare, fn _, _, _, _ -> raise log end)
+    assert {:ok, job} = Factory.check(["ledgerette-pr-2"], steps: failing)
+    assert await_job(job)["counts"] == %{"dropped" => 1}
+    {:ok, %{"results" => [dropped]}} = Factory.job(job)
+    assert {dropped["dropped_at"], dropped["reason"]} == {"prepare", "environment"}
+    assert is_integer(dropped["prepare_ms"])
+    assert String.starts_with?(dropped["detail"], "#1 building\n")
+    assert String.ends_with?(dropped["detail"], "\nERROR: the cause")
+    assert String.length(dropped["detail"]) < 2010
+
+    short = Map.put(steps(), :probe, fn _, _, _, _ -> {:refused, "made_up", "short"} end)
+    assert {:ok, job} = Factory.check(["ledgerette-pr-2"], steps: short)
+    assert await_job(job)["counts"] == %{"dropped" => 1}
+    {:ok, %{"results" => [refused]}} = Factory.job(job)
+    assert {refused["detail"], is_integer(refused["probe_ms"])} == {"short", true}
+  end
+
   test "export copies checked tasks with a table of their results and refuses the others", %{
     root: root
   } do

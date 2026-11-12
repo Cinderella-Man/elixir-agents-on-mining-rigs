@@ -351,7 +351,8 @@ resolver reads each starting commit's own files instead. In order, each step rec
    `no_image:<elixir>/<otp>`. The maker never asks a registry: [`scripts/toolchain_image.sh`](scripts/toolchain_image.sh),
    run by a person on the build machine, looks a pair up at Docker Hub (ubuntu-noble first, then older bases) and
    prints the line to add, so the table grows only by lines someone has read. Elixir before 1.12 is never added: the
-   engine's Hex install (2.1) pins Hex 2.5.3 only from Elixir 1.12 on. OTP 27.2 is never added either: its `ssl`
+   engine's Hex install (2.1) pins Hex 2.5.3 only from Elixir 1.12 on. OTP 27.2 is never added either, nor its patch
+   release 27.2.1 (tried on radiator #607 by the retry of 2026-11-12): their `ssl`
    rejects the certificate of builds.hex.pm, so the image cannot install Hex. With no version in any file, the recipe's
    image is the default.
 3. **The database:** the Postgres or ClickHouse image a CI file starts (a GitHub `services:` entry, Travis's
@@ -736,6 +737,7 @@ The jobs run in this order, one at a time. Several edit the same files (`runs.ex
 | 2026-11-12 | P6 (pilot): the licence scan and the hold-out check for task folders in `factory/tools/` ([README](tools/README.md)): `check_tasks.sh` over any list of task folders, the reader `task_folder.py`, `task_licence.py` (per-file verdicts of the sister repository's `license_scan.py`, copied unchanged, at the starting and merge commits; the licences the locked Hex packages declare), `task_holdout.py` (repository and names, 8- and 12-word spans against the bench's cases, the method of `heldout_check.py`, copied unchanged); run on the 16 checked ex338 tasks ([data](../docs/data/2026-11-12_pilot_licence_holdout/README.md)) | see the data folder | no engine code changed, no engine test run; a positive control (a task with one bench case's hidden tests) gives 533 and 557 spans to read, and the repository rule holds out a held-out organisation, repository and name |
 | 2026-11-12 | Every candidate the resolver serves, made and checked (E68, E72): radiator 27 checked of 64, ex338 7 of 12 tried. Two fixes from the lists: `bundle_probe.ex` `settle/4` leaves out an existing test file with a skipped test (`skipped_on_unchanged`, `skipped_on_reference`), since the grader does not pass a skipped test (2.2); the OTP 27.2 pairs left `config/toolchain_images.json`, since such an image cannot install Hex ([data](../docs/data/2026-11-12_pilot_tasks_all/README.md)) | see the data folder | format check passes; compiles with warnings as errors; 231 passed, 0 failed, 10 excluded without Docker and 241, 0, 0 with it, every test as on `origin/main` (with P6) the same hour; one new case in `bundle_maker_test`'s settling test and one assertion in `toolchain_test`; the parity test 6 of 6, not edited |
 | 2026-11-12 | nerves_hub_web with `fwup` (E68): `recipes/nerves-hub__nerves_hub_web.json` becomes a template (a `toolchain` block) with `runtime.packages` (`xdelta3`, `mtools`), one release file (fwup 1.17.1's `.deb`, SHA-256 from the release's `SHA256SUMS`), the four tests that need `detools` left out of the whole-suite command by their `describe`, and `mtools` no longer excluded. The project's suite ran twice in the engine: 4,033 and 4,025 of 4,046 passed; 29 of the 30 newest P02 candidates made, none checked (the disk floor) ([data](../docs/data/2026-11-12_pilot_tasks_nerves_hub_web/README.md)) | see the data folder | no code changed; no factory test reads this recipe; the maker read and resolved the template for 29 pull requests |
+| 2026-11-12 | The mass run's drops tried again through a controller built from this code and `bin/factoryctl` only (`import`, `check`, `export`): 11 tried, 1 checked; the "Workspace command failed" drops explained (the grader's `git add -A` killed by its 120-second limit). Fix in `factory.ex`: a result holds the time of every step (`probe_ms`, `controls_ms`, and a failing step's), and a long `detail` keeps its head and its tail (a failed build says why at its end); the image table's note: OTP 27.2.1 cannot install Hex either ([data](../docs/data/2026-11-12_pilot_tasks_retry/README.md)) | see the data folder | format check passes; without Docker 232 passed, 0 failed, 10 excluded (one new test); with Docker not run (the job's disk floor); parity test untouched |
 
 ## 8. What is not decided, and what is not verified
 
@@ -847,7 +849,9 @@ bin/factoryctl status                                     # the active run, a pr
   `_after_probe`, `controls`, `second_round`) and the reason (`environment` for a preparation, the probe's refusal,
   the first control that failed, or `unstable` with the tests that changed), the counts of hidden tests that fail
   first and pass after, the partial fix (`partial_control`), the existing-tests command and the files left out of it,
-  and the time of each step. One task's failure never stops the list.
+  and the time of each step, the one that failed included (`<step>_ms`; the controls with their second round are
+  `controls_ms`). A long detail keeps its first 300 and its last 1,700 characters, since a failed build says why at
+  its end. One task's failure never stops the list.
 - **`export`** refuses a task without a passing check (`not_checked`), a task changed since its check
   (`changed_since_check`; a statement added later does not count), and a folder the destination holds with other
   bytes.
