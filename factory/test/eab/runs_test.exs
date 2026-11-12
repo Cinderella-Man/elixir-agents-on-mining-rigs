@@ -3,7 +3,7 @@ defmodule Eab.RunsTest do
   alias Eab.{Runs, Store}
 
   setup do
-    keys = [:data_dir, :runner, :cleanup, :memory_monitor]
+    keys = [:data_dir, :runner, :cleanup]
     old = Map.new(keys, &{&1, Application.get_env(:eab, &1)})
     Supervisor.terminate_child(Eab.Supervisor, Runs)
     root = Path.join(System.tmp_dir!(), "eab-run-test-#{System.unique_integer([:positive])}")
@@ -31,18 +31,9 @@ defmodule Eab.RunsTest do
     :ok
   end
 
-  test "memory collection starts before work and finalizes on completion, error and cancellation" do
+  test "a run starts with no memory settings and finalizes on completion, error and cancellation" do
     parent = self()
     Runs.subscribe()
-
-    Application.put_env(:eab, :memory_monitor,
-      hosts: ["fixture"],
-      target: "fixture",
-      collector: "fixture",
-      known_hosts: "fixture",
-      executable: "/opt/pi/node",
-      args: ["test/support/memory_collector.mjs", "normal"]
-    )
 
     endpoint = %{
       "url" => "http://fixture:8414",
@@ -67,29 +58,15 @@ defmodule Eab.RunsTest do
         ] do
       {:ok, id} = Runs.start(endpoint, "", %{}, cases: tasks())
       assert_receive {:started, worker, run}, 3000
-      assert run["memory"]["sample_count"] == 1
+      refute Map.has_key?(run, "memory")
       if result == :stop, do: Runs.stop(), else: send(worker, {:finish, result})
       await_terminal(id)
       await_cleanup()
       saved = Store.run(id)
       assert saved["status"] == status
-      assert saved["memory"]["status"] == "complete"
-      assert saved["memory"]["sample_count"] == 2
-      assert File.read!(Store.path("runs/#{id}/report.md")) =~ "Sampled model-service memory"
+      refute Map.has_key?(saved, "memory")
+      refute File.read!(Store.path("runs/#{id}/report.md")) =~ ~r/memory/i
     end
-
-    config = Application.get_env(:eab, :memory_monitor)
-
-    Application.put_env(
-      :eab,
-      :memory_monitor,
-      Keyword.put(config, :args, ["test/support/memory_collector.mjs", "startup_error"])
-    )
-
-    assert {:error, message} = Runs.start(endpoint, "", %{}, cases: tasks())
-    assert message =~ "Memory collection could not start"
-    refute_receive {:started, _, _}
-    assert Runs.snapshot().active == nil
   end
 
   defp endpoint, do: %{"model" => "fixture", "context" => 32768}

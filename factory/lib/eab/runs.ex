@@ -4,7 +4,6 @@ defmodule Eab.Runs do
   alias Eab.{
     Checkpoints,
     Inventory,
-    MemoryMonitor,
     Model,
     Pipeline,
     Qualification,
@@ -65,7 +64,6 @@ defmodule Eab.Runs do
             Map.merge(run, %{
               "status" => "interrupted",
               "phase" => "interrupted",
-              "memory" => MemoryMonitor.recover(run["id"]),
               "message" =>
                 "Application restarted. Reconnect the same model to resume unfinished cases."
             })
@@ -83,7 +81,6 @@ defmodule Eab.Runs do
      %{
        active: nil,
        worker: nil,
-       memory_monitor: nil,
        cleanup: task,
        cleanup_error: nil,
        preparing: nil,
@@ -341,13 +338,10 @@ defmodule Eab.Runs do
     owner = state.worker.pid
     Task.shutdown(state.worker, :brutal_kill)
 
-    memory = MemoryMonitor.finish(state.memory_monitor, state.active["id"], "cancelled")
-
     run =
       Map.merge(state.active, %{
         "status" => "cancelled",
         "phase" => "cancelled",
-        "memory" => memory,
         "message" => "Stopped. This run remains incomplete."
       })
 
@@ -360,17 +354,10 @@ defmodule Eab.Runs do
       end)
 
     broadcast()
-    {:reply, :ok, %{state | active: nil, worker: nil, memory_monitor: nil, cleanup: task}}
+    {:reply, :ok, %{state | active: nil, worker: nil, cleanup: task}}
   end
 
   @impl true
-  def handle_info({:memory_updated, id, memory}, %{active: %{"id" => id}} = state) do
-    run = Map.put(state.active, "memory", memory)
-    persist(run)
-    broadcast()
-    {:noreply, %{state | active: run}}
-  end
-
   def handle_info({:progress, id, event}, %{active: %{"id" => id}} = state) do
     log =
       case event do
@@ -545,16 +532,6 @@ defmodule Eab.Runs do
   end
 
   defp launch(run, key, state) do
-    case MemoryMonitor.start(run, key) do
-      {:ok, monitor, memory} ->
-        launch_monitored(Map.put(run, "memory", memory), key, state, monitor)
-
-      {:error, message} ->
-        {:reply, {:error, "Memory collection could not start: #{message}"}, state}
-    end
-  end
-
-  defp launch_monitored(run, key, state, monitor) do
     Eab.Retention.lease(run["id"])
     id = run["id"]
     parent = self()
@@ -578,24 +555,20 @@ defmodule Eab.Runs do
         end)
       rescue
         error ->
-          MemoryMonitor.finish(monitor, id, "Run could not start")
           Eab.Retention.release(id)
           reraise error, __STACKTRACE__
       end
 
     broadcast()
-    {:reply, {:ok, id}, %{state | active: run, worker: task, memory_monitor: monitor}}
+    {:reply, {:ok, id}, %{state | active: run, worker: task}}
   end
 
   defp finish(state, status, message) do
-    memory = MemoryMonitor.finish(state.memory_monitor, state.active["id"], status)
-
     run =
       Map.merge(state.active, %{
         "status" => status,
         "phase" => status,
-        "message" => message,
-        "memory" => memory
+        "message" => message
       })
 
     persist(run)
@@ -608,7 +581,7 @@ defmodule Eab.Runs do
       end)
 
     broadcast()
-    {:noreply, %{state | active: nil, worker: nil, memory_monitor: nil, cleanup: task}}
+    {:noreply, %{state | active: nil, worker: nil, cleanup: task}}
   end
 
   defp end_preparation(state, status, message) do

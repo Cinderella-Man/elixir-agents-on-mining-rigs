@@ -10,12 +10,6 @@ services:
       EAB_CACHE_MIN_FREE_GB: ${EAB_CACHE_MIN_FREE_GB:-5}
       EAB_OFFLINE: ${EAB_OFFLINE:-}
       EAB_TASKS_DIR: /tasks
-      EAB_MEMORY: ${EAB_MEMORY:-}
-      EAB_MEMORY_SSH_TARGET: ${EAB_MEMORY_SSH_TARGET:-}
-      EAB_MEMORY_SSH_KEY: ${EAB_MEMORY_SSH_KEY:-}
-      EAB_MEMORY_HOSTS: ${EAB_MEMORY_HOSTS:-}
-      EAB_MEMORY_REMOTE_COLLECTOR: ${EAB_MEMORY_REMOTE_COLLECTOR:-/srv/elixir-agent-benchmark/memory-collector/bin/eab_memory_collector}
-      EAB_MEMORY_REMOTE_KEY_FILE: ${EAB_MEMORY_REMOTE_KEY_FILE:-}
     volumes:
       - benchmark-data:/data
       - ${EAB_TASKS_HOST_DIR:-./tasks}:/tasks

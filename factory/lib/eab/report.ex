@@ -68,8 +68,6 @@ defmodule Eab.Report do
 
     #{escape(run["message"] || "")}
 
-    #{memory(run)}
-
     Effective settings:
 
     ```json
@@ -110,13 +108,6 @@ defmodule Eab.Report do
       n -> "#{n} (no elapsed times recorded)"
     end
   end
-
-  defp memory(%{"memory" => memory}) when is_map(memory) do
-    "Sampled model-service memory peaks: #{escape(Eab.MemoryMonitor.label(memory))}. " <>
-      "RAM includes the service's charged page cache. [Summary](memory.json) · [Samples](memory-samples.jsonl)."
-  end
-
-  defp memory(_), do: ""
 
   defp escape(text), do: text |> String.replace("|", "\\|") |> String.replace(~r/[\r\n]+/, " ")
 end
